@@ -1,0 +1,863 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		72E2A15FF930A0C732FF6F67 /* Pods_ketekmall4_ketekmall4UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221CB3058260853602BB06FC /* Pods_ketekmall4_ketekmall4UITests.framework */; };
+		B28902A5740A152C000EBE86 /* Pods_ketekmall4Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEE3CB972ACB70C4B0F64C5 /* Pods_ketekmall4Tests.framework */; };
+		FB4557B124F90EDA00FC502B /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4557B024F90EDA00FC502B /* AccountSettingsViewController.swift */; };
+		FB4557B324F91EE700FC502B /* MyProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4557B224F91EE700FC502B /* MyProductsCollectionViewController.swift */; };
+		FB4B72CD24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72CC24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift */; };
+		FB4B72CF24FB6FC000293B81 /* MyBuyingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72CE24FB6FC000293B81 /* MyBuyingViewController.swift */; };
+		FB4B72D124FB792000293B81 /* MyRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72D024FB792000293B81 /* MyRatingViewController.swift */; };
+		FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72D224FB793000293B81 /* MyRatingCollectionViewCell.swift */; };
+		FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72D424FB89E100293B81 /* MyLikesCollectionViewCell.swift */; };
+		FB4B72D724FB89FA00293B81 /* MyLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72D624FB89FA00293B81 /* MyLikesViewController.swift */; };
+		FB4B72D924FBE00800293B81 /* ViewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */; };
+		FB4B72DB24FBE24A00293B81 /* ReviewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */; };
+		FB4B72DD24FBEF1A00293B81 /* ViewSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */; };
+		FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */; };
+		FB528AC624FA616800A968E8 /* MySellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AC524FA616800A968E8 /* MySellingViewController.swift */; };
+		FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */; };
+		FB528ACB24FA84BF00A968E8 /* MyIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528ACA24FA84BF00A968E8 /* MyIncomeViewController.swift */; };
+		FB528ACD24FA84DA00A968E8 /* ProductRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528ACC24FA84DA00A968E8 /* ProductRatingViewController.swift */; };
+		FB528ACF24FA84E700A968E8 /* BoostAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528ACE24FA84E700A968E8 /* BoostAdViewController.swift */; };
+		FB528AD124FA88BD00A968E8 /* BoostAdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AD024FA88BD00A968E8 /* BoostAdCollectionViewCell.swift */; };
+		FB528AD324FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AD224FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift */; };
+		FB528AD524FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AD424FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift */; };
+		FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48E024F7F06B00F5464C /* AppDelegate.swift */; };
+		FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */; };
+		FB5A48E824F7F06B00F5464C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5A48E624F7F06B00F5464C /* Main.storyboard */; };
+		FB5A48EA24F7F07B00F5464C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB5A48E924F7F07B00F5464C /* Assets.xcassets */; };
+		FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */; };
+		FB5A48F824F7F07B00F5464C /* ketekmall4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48F724F7F07B00F5464C /* ketekmall4Tests.swift */; };
+		FB5A490324F7F07B00F5464C /* ketekmall4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A490224F7F07B00F5464C /* ketekmall4UITests.swift */; };
+		FB5A491324F7F47000F5464C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491224F7F47000F5464C /* LoginViewController.swift */; };
+		FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491424F7F49E00F5464C /* HomeViewController.swift */; };
+		FB5A491724F7F4AC00F5464C /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491624F7F4AC00F5464C /* MeViewController.swift */; };
+		FB5A491924F7F5EE00F5464C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491824F7F5EE00F5464C /* RegisterViewController.swift */; };
+		FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */; };
+		FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */; };
+		FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */; };
+		FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB5A48F424F7F07B00F5464C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB5A48D524F7F06B00F5464C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB5A48DC24F7F06B00F5464C;
+			remoteInfo = ketekmall4;
+		};
+		FB5A48FF24F7F07B00F5464C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB5A48D524F7F06B00F5464C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB5A48DC24F7F06B00F5464C;
+			remoteInfo = ketekmall4;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0DEE3CB972ACB70C4B0F64C5 /* Pods_ketekmall4Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
+		12D9B3AC60B3CABD62417754 /* Pods-ketekmall4Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4Tests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4Tests/Pods-ketekmall4Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		19DCAF0CB17AA8AC61942354 /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; sourceTree = "<group>"; };
+		221CB3058260853602BB06FC /* Pods_ketekmall4_ketekmall4UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4_ketekmall4UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
+		533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A03EFF8EB142E13EA49DAB /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		73C0293737E512367AF07977 /* Pods-ketekmall4Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4Tests.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4Tests/Pods-ketekmall4Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FB4557B024F90EDA00FC502B /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
+		FB4557B224F91EE700FC502B /* MyProductsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProductsCollectionViewController.swift; sourceTree = "<group>"; };
+		FB4B72CC24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBuyingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB4B72CE24FB6FC000293B81 /* MyBuyingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBuyingViewController.swift; sourceTree = "<group>"; };
+		FB4B72D024FB792000293B81 /* MyRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingViewController.swift; sourceTree = "<group>"; };
+		FB4B72D224FB793000293B81 /* MyRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB4B72D424FB89E100293B81 /* MyLikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikesCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB4B72D624FB89FA00293B81 /* MyLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikesViewController.swift; sourceTree = "<group>"; };
+		FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProductViewController.swift; sourceTree = "<group>"; };
+		FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPageViewController.swift; sourceTree = "<group>"; };
+		FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSellingViewController.swift; sourceTree = "<group>"; };
+		FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB528AC524FA616800A968E8 /* MySellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellingViewController.swift; sourceTree = "<group>"; };
+		FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB528ACA24FA84BF00A968E8 /* MyIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIncomeViewController.swift; sourceTree = "<group>"; };
+		FB528ACC24FA84DA00A968E8 /* ProductRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRatingViewController.swift; sourceTree = "<group>"; };
+		FB528ACE24FA84E700A968E8 /* BoostAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostAdViewController.swift; sourceTree = "<group>"; };
+		FB528AD024FA88BD00A968E8 /* BoostAdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostAdCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB528AD224FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRatingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB528AD424FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIncomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB5A48DD24F7F06B00F5464C /* ketekmall4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ketekmall4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB5A48E024F7F06B00F5464C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FB5A48E724F7F06B00F5464C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB5A48E924F7F07B00F5464C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB5A48EC24F7F07B00F5464C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FB5A48EE24F7F07B00F5464C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB5A48F324F7F07B00F5464C /* ketekmall4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ketekmall4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB5A48F724F7F07B00F5464C /* ketekmall4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ketekmall4Tests.swift; sourceTree = "<group>"; };
+		FB5A48F924F7F07B00F5464C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB5A48FE24F7F07B00F5464C /* ketekmall4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ketekmall4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB5A490224F7F07B00F5464C /* ketekmall4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ketekmall4UITests.swift; sourceTree = "<group>"; };
+		FB5A490424F7F07B00F5464C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB5A491224F7F47000F5464C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FB5A491424F7F49E00F5464C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FB5A491624F7F4AC00F5464C /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		FB5A491824F7F5EE00F5464C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProductViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB5A48DA24F7F06B00F5464C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB5A48F024F7F07B00F5464C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B28902A5740A152C000EBE86 /* Pods_ketekmall4Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB5A48FB24F7F07B00F5464C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72E2A15FF930A0C732FF6F67 /* Pods_ketekmall4_ketekmall4UITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9744CE111CB0B2C47541132C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */,
+				1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */,
+				63A03EFF8EB142E13EA49DAB /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */,
+				19DCAF0CB17AA8AC61942354 /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */,
+				12D9B3AC60B3CABD62417754 /* Pods-ketekmall4Tests.debug.xcconfig */,
+				73C0293737E512367AF07977 /* Pods-ketekmall4Tests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DA31A870D06CDB1C895BF9A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */,
+				221CB3058260853602BB06FC /* Pods_ketekmall4_ketekmall4UITests.framework */,
+				0DEE3CB972ACB70C4B0F64C5 /* Pods_ketekmall4Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB5A48D424F7F06B00F5464C = {
+			isa = PBXGroup;
+			children = (
+				FB5A48DF24F7F06B00F5464C /* ketekmall4 */,
+				FB5A48F624F7F07B00F5464C /* ketekmall4Tests */,
+				FB5A490124F7F07B00F5464C /* ketekmall4UITests */,
+				FB5A48DE24F7F06B00F5464C /* Products */,
+				9744CE111CB0B2C47541132C /* Pods */,
+				DA31A870D06CDB1C895BF9A6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FB5A48DE24F7F06B00F5464C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A48DD24F7F06B00F5464C /* ketekmall4.app */,
+				FB5A48F324F7F07B00F5464C /* ketekmall4Tests.xctest */,
+				FB5A48FE24F7F07B00F5464C /* ketekmall4UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
+				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
+				FB5A48E624F7F06B00F5464C /* Main.storyboard */,
+				FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */,
+				FB5A491124F7F0F900F5464C /* View Controller */,
+				FB5A491024F7F0E200F5464C /* Models */,
+				FB5A48EE24F7F07B00F5464C /* Info.plist */,
+			);
+			path = ketekmall4;
+			sourceTree = "<group>";
+		};
+		FB5A48F624F7F07B00F5464C /* ketekmall4Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A48F724F7F07B00F5464C /* ketekmall4Tests.swift */,
+				FB5A48F924F7F07B00F5464C /* Info.plist */,
+			);
+			path = ketekmall4Tests;
+			sourceTree = "<group>";
+		};
+		FB5A490124F7F07B00F5464C /* ketekmall4UITests */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A490224F7F07B00F5464C /* ketekmall4UITests.swift */,
+				FB5A490424F7F07B00F5464C /* Info.plist */,
+			);
+			path = ketekmall4UITests;
+			sourceTree = "<group>";
+		};
+		FB5A491024F7F0E200F5464C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A48E924F7F07B00F5464C /* Assets.xcassets */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FB5A491124F7F0F900F5464C /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */,
+				FB5A491224F7F47000F5464C /* LoginViewController.swift */,
+				FB5A491424F7F49E00F5464C /* HomeViewController.swift */,
+				FB5A491624F7F4AC00F5464C /* MeViewController.swift */,
+				FB5A491824F7F5EE00F5464C /* RegisterViewController.swift */,
+				FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */,
+				FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */,
+				FB4557B024F90EDA00FC502B /* AccountSettingsViewController.swift */,
+				FB4557B224F91EE700FC502B /* MyProductsCollectionViewController.swift */,
+				FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */,
+				FB528AC524FA616800A968E8 /* MySellingViewController.swift */,
+				FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */,
+				FB528ACA24FA84BF00A968E8 /* MyIncomeViewController.swift */,
+				FB528AD424FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift */,
+				FB528ACC24FA84DA00A968E8 /* ProductRatingViewController.swift */,
+				FB528AD224FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift */,
+				FB528ACE24FA84E700A968E8 /* BoostAdViewController.swift */,
+				FB528AD024FA88BD00A968E8 /* BoostAdCollectionViewCell.swift */,
+				FB4B72CC24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift */,
+				FB4B72CE24FB6FC000293B81 /* MyBuyingViewController.swift */,
+				FB4B72D024FB792000293B81 /* MyRatingViewController.swift */,
+				FB4B72D224FB793000293B81 /* MyRatingCollectionViewCell.swift */,
+				FB4B72D424FB89E100293B81 /* MyLikesCollectionViewCell.swift */,
+				FB4B72D624FB89FA00293B81 /* MyLikesViewController.swift */,
+				FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */,
+				FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */,
+				FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB5A48DC24F7F06B00F5464C /* ketekmall4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB5A490724F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4" */;
+			buildPhases = (
+				1B474829E49B43BC23315B64 /* [CP] Check Pods Manifest.lock */,
+				FB5A48D924F7F06B00F5464C /* Sources */,
+				FB5A48DA24F7F06B00F5464C /* Frameworks */,
+				FB5A48DB24F7F06B00F5464C /* Resources */,
+				FCBC7E2B4C37AE0E64EBCE53 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ketekmall4;
+			productName = ketekmall4;
+			productReference = FB5A48DD24F7F06B00F5464C /* ketekmall4.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FB5A48F224F7F07B00F5464C /* ketekmall4Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB5A490A24F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4Tests" */;
+			buildPhases = (
+				8AEBEBF831D71393A062F7C2 /* [CP] Check Pods Manifest.lock */,
+				FB5A48EF24F7F07B00F5464C /* Sources */,
+				FB5A48F024F7F07B00F5464C /* Frameworks */,
+				FB5A48F124F7F07B00F5464C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB5A48F524F7F07B00F5464C /* PBXTargetDependency */,
+			);
+			name = ketekmall4Tests;
+			productName = ketekmall4Tests;
+			productReference = FB5A48F324F7F07B00F5464C /* ketekmall4Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FB5A48FD24F7F07B00F5464C /* ketekmall4UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB5A490D24F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4UITests" */;
+			buildPhases = (
+				30D687661CF72E24A11F64C3 /* [CP] Check Pods Manifest.lock */,
+				FB5A48FA24F7F07B00F5464C /* Sources */,
+				FB5A48FB24F7F07B00F5464C /* Frameworks */,
+				FB5A48FC24F7F07B00F5464C /* Resources */,
+				8C6C37C3D03067B51BAD2D0B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB5A490024F7F07B00F5464C /* PBXTargetDependency */,
+			);
+			name = ketekmall4UITests;
+			productName = ketekmall4UITests;
+			productReference = FB5A48FE24F7F07B00F5464C /* ketekmall4UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB5A48D524F7F06B00F5464C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Alfreeana Alfie";
+				TargetAttributes = {
+					FB5A48DC24F7F06B00F5464C = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					FB5A48F224F7F07B00F5464C = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = FB5A48DC24F7F06B00F5464C;
+					};
+					FB5A48FD24F7F07B00F5464C = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = FB5A48DC24F7F06B00F5464C;
+					};
+				};
+			};
+			buildConfigurationList = FB5A48D824F7F06B00F5464C /* Build configuration list for PBXProject "ketekmall4" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FB5A48D424F7F06B00F5464C;
+			productRefGroup = FB5A48DE24F7F06B00F5464C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB5A48DC24F7F06B00F5464C /* ketekmall4 */,
+				FB5A48F224F7F07B00F5464C /* ketekmall4Tests */,
+				FB5A48FD24F7F07B00F5464C /* ketekmall4UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB5A48DB24F7F06B00F5464C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */,
+				FB5A48EA24F7F07B00F5464C /* Assets.xcassets in Resources */,
+				FB5A48E824F7F06B00F5464C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB5A48F124F7F07B00F5464C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB5A48FC24F7F07B00F5464C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B474829E49B43BC23315B64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ketekmall4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30D687661CF72E24A11F64C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ketekmall4-ketekmall4UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AEBEBF831D71393A062F7C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ketekmall4Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C6C37C3D03067B51BAD2D0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCBC7E2B4C37AE0E64EBCE53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB5A48D924F7F06B00F5464C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB4557B324F91EE700FC502B /* MyProductsCollectionViewController.swift in Sources */,
+				FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */,
+				FB528ACB24FA84BF00A968E8 /* MyIncomeViewController.swift in Sources */,
+				FB5A491724F7F4AC00F5464C /* MeViewController.swift in Sources */,
+				FB4B72CF24FB6FC000293B81 /* MyBuyingViewController.swift in Sources */,
+				FB528AD124FA88BD00A968E8 /* BoostAdCollectionViewCell.swift in Sources */,
+				FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */,
+				FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */,
+				FB5A491324F7F47000F5464C /* LoginViewController.swift in Sources */,
+				FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */,
+				FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */,
+				FB4B72DB24FBE24A00293B81 /* ReviewPageViewController.swift in Sources */,
+				FB5A491924F7F5EE00F5464C /* RegisterViewController.swift in Sources */,
+				FB4B72DD24FBEF1A00293B81 /* ViewSellingViewController.swift in Sources */,
+				FB528AD524FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift in Sources */,
+				FB528ACD24FA84DA00A968E8 /* ProductRatingViewController.swift in Sources */,
+				FB528AC624FA616800A968E8 /* MySellingViewController.swift in Sources */,
+				FB4B72D724FB89FA00293B81 /* MyLikesViewController.swift in Sources */,
+				FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */,
+				FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */,
+				FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */,
+				FB4B72CD24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift in Sources */,
+				FB4557B124F90EDA00FC502B /* AccountSettingsViewController.swift in Sources */,
+				FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */,
+				FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */,
+				FB528AD324FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift in Sources */,
+				FB4B72D124FB792000293B81 /* MyRatingViewController.swift in Sources */,
+				FB4B72D924FBE00800293B81 /* ViewProductViewController.swift in Sources */,
+				FB528ACF24FA84E700A968E8 /* BoostAdViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB5A48EF24F7F07B00F5464C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB5A48F824F7F07B00F5464C /* ketekmall4Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB5A48FA24F7F07B00F5464C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB5A490324F7F07B00F5464C /* ketekmall4UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB5A48F524F7F07B00F5464C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB5A48DC24F7F06B00F5464C /* ketekmall4 */;
+			targetProxy = FB5A48F424F7F07B00F5464C /* PBXContainerItemProxy */;
+		};
+		FB5A490024F7F07B00F5464C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB5A48DC24F7F06B00F5464C /* ketekmall4 */;
+			targetProxy = FB5A48FF24F7F07B00F5464C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FB5A48E624F7F06B00F5464C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB5A48E724F7F06B00F5464C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB5A48EC24F7F07B00F5464C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FB5A490524F7F07B00F5464C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FB5A490624F7F07B00F5464C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB5A490824F7F07B00F5464C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ketekmall4/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FB5A490924F7F07B00F5464C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ketekmall4/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FB5A490B24F7F07B00F5464C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12D9B3AC60B3CABD62417754 /* Pods-ketekmall4Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ketekmall4Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ketekmall4.app/ketekmall4";
+			};
+			name = Debug;
+		};
+		FB5A490C24F7F07B00F5464C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73C0293737E512367AF07977 /* Pods-ketekmall4Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ketekmall4Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ketekmall4.app/ketekmall4";
+			};
+			name = Release;
+		};
+		FB5A490E24F7F07B00F5464C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63A03EFF8EB142E13EA49DAB /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ketekmall4UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ketekmall4;
+			};
+			name = Debug;
+		};
+		FB5A490F24F7F07B00F5464C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19DCAF0CB17AA8AC61942354 /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ketekmall4UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ketekmall4;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB5A48D824F7F06B00F5464C /* Build configuration list for PBXProject "ketekmall4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB5A490524F7F07B00F5464C /* Debug */,
+				FB5A490624F7F07B00F5464C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB5A490724F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB5A490824F7F07B00F5464C /* Debug */,
+				FB5A490924F7F07B00F5464C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB5A490A24F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB5A490B24F7F07B00F5464C /* Debug */,
+				FB5A490C24F7F07B00F5464C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB5A490D24F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB5A490E24F7F07B00F5464C /* Debug */,
+				FB5A490F24F7F07B00F5464C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB5A48D524F7F06B00F5464C /* Project object */;
+}
