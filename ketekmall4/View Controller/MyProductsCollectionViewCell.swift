@@ -11,6 +11,7 @@ import UIKit
 protocol MyProductDelegate: class {
     func btnRemove(cell: MyProductsCollectionViewCell)
     func btnEdit(cell: MyProductsCollectionViewCell)
+    func btnBoost(cell: MyProductsCollectionViewCell)
 }
 
 class MyProductsCollectionViewCell: UICollectionViewCell {
@@ -24,6 +25,7 @@ class MyProductsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var Btn_Edit: UIButton!
     @IBOutlet weak var Btn_Cancel: UIButton!
+    @IBOutlet weak var Btn_Boost: UIButton!
     
     @IBAction func Edit(sender: Any){
         self.delegate?.btnEdit(cell: self)
@@ -33,4 +35,7 @@ class MyProductsCollectionViewCell: UICollectionViewCell {
         self.delegate?.btnRemove(cell: self)
     }
     
+    @IBAction func Boost(_ sender: Any) {
+        self.delegate?.btnRemove(cell: self)
+    }
 }

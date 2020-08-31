@@ -14,9 +14,12 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     
     
     
+    
+    
     var userID: String = ""
     let URL_READ = "https://ketekmall.com/ketekmall/readuser.php";
     let URL_REMOVE = "https://ketekmall.com/ketekmall/delete_item.php";
+    let URL_EDIT_BOOST = "https://ketekmall.com/ketekmall/edit_boost_ad.php";
     
     @IBOutlet var productView: UICollectionView!
     
@@ -96,8 +99,6 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         }
         
         let ID = self.ItemID[indexPath.row]
-        
-        
         let parameters: Parameters=[
             "id": ID,
         ]
@@ -131,5 +132,31 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         if let navigator = self.navigationController {
             navigator.pushViewController(ProductView, animated: true)
         }
+    }
+    
+    func btnBoost(cell: MyProductsCollectionViewCell) {
+        guard let indexPath = self.productView.indexPath(for: cell) else{
+            return
+        }
+        
+        let ID = self.ItemID[indexPath.row]
+        let parameters: Parameters=[
+            "id": ID,
+            "user_id": userID,
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_REMOVE, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        print("SUCCESS")
+                    }
+                }
+        }
+        
     }
 }

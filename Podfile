@@ -9,6 +9,7 @@ pod 'AFNetworking'
 pod 'DropDown' 
 pod 'SDWebImage', '~> 5.0'
 pod 'AlamofireImage', '~> 3.1'
+pod 'EasyNotificationBadge'
 
   # Pods for ketekmall4
 
