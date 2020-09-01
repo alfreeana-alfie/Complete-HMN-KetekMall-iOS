@@ -11,8 +11,6 @@ import Alamofire
 
 class MySellingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MySellingDelegate {
     
-    
-    
     @IBOutlet var MySellingView: UICollectionView!
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done_two.php";
@@ -27,6 +25,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     var item_status: [String] = []
     var item_orderID: [String] = []
     var order_date: [String] = []
+    var customer_id: [String] = []
+    var tracking_no: [String] = []
     
     var userID: String = ""
     
@@ -66,6 +66,10 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         let Division = user.value(forKey: "division") as! [String]
                         let Order_Date = user.value(forKey: "order_date") as! [String]
                         
+                        let Tracking_NO = user.value(forKey: "tracking_no") as! [String]
+                        
+                        self.tracking_no = Tracking_NO
+                        self.customer_id = CustomerID
                         self.item_orderID = OrderID
                         self.ad_Detail = AdDetail
                         self.item_photo = Photo
@@ -74,6 +78,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.item_orderDate = OrderDate
                         self.item_Shipped = Division
                         self.item_status = Status
+                        
                         self.order_date = Order_Date
                         
                         self.MySellingView.reloadData()
@@ -98,6 +103,9 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         cell.DateOrder.text! = "Order Placed on " + self.item_orderDate[indexPath.row]
         cell.ShipPlace.text! = "Shipped out to " + self.item_Shipped[indexPath.row]
         cell.Status.text! = self.item_status[indexPath.row]
+        let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         
         cell.delegate = self
         return cell
@@ -145,6 +153,17 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         let MySelling = self.storyboard!.instantiateViewController(identifier: "ViewSellingViewController") as! ViewSellingViewController
         let ID = self.item_orderID[indexPath.row]
         MySelling.ItemID = ID
+        MySelling.ITEMIMAGE = self.item_photo[indexPath.row]
+        MySelling.ITEMNAME = self.ad_Detail[indexPath.row]
+        MySelling.ORDERID = self.item_orderID[indexPath.row]
+        MySelling.ITEMPRICE = self.item_price[indexPath.row]
+        MySelling.DATEORDER = self.item_orderDate[indexPath.row]
+        MySelling.SHIPPLACED = self.item_Shipped[indexPath.row]
+        MySelling.STATUS = self.item_status[indexPath.row]
+        MySelling.QUANTITY = self.item_quantity[indexPath.row]
+        MySelling.CUSTOMERID = self.customer_id[indexPath.row]
+        MySelling.ORDER_DATE = self.order_date[indexPath.row]
+        MySelling.TRACKINGNO = self.tracking_no[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(MySelling, animated: true)
         }

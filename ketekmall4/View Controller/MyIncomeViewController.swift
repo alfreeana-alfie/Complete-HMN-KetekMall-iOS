@@ -140,6 +140,10 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyIncomeCollectionViewCell", for: indexPath) as! MyIncomeCollectionViewCell
         
+        let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
 //        cell.UserName.text! = self.customer_name[indexPath.row]
         cell.Price.text! = self.item_price[indexPath.row]

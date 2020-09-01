@@ -102,8 +102,11 @@ class MyRatingViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyRatingCollectionViewCell", for: indexPath) as! MyRatingCollectionViewCell
         
+        let NEWIm = self.item_image[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
         cell.AdDetail.text! = self.ad_detail[indexPath.row]
-        cell.ItemImage.setImageWith(URL(string: Customer_Image)!)
         cell.UserName.text! = self.customer_name[indexPath.row]
         cell.UserImage.setImageWith(URL(string: Customer_Image)!)
         cell.UserReview.text! = self.customer_review[indexPath.row]

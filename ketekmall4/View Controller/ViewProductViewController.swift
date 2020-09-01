@@ -159,6 +159,11 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var PRICE_DEL: [String] = []
     var DEL_ID: [String] = []
     
+    var SELLERIMAGE: String = ""
+    var SELLERNAME: String = ""
+    var SELLERLOCATION: String = ""
+    var SELLERPHONE: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -176,16 +181,20 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         MoreDetails.isUserInteractionEnabled = true
         ViewReview.isUserInteractionEnabled = true
         ViewSameShop.isUserInteractionEnabled = true
+        WhatsappButton.isUserInteractionEnabled = true
         
         let ShippingInfo_Click = UITapGestureRecognizer(target: self, action: #selector(onShippingInfoClick(sender:)))
         let MoreDetails_Click = UITapGestureRecognizer(target: self, action: #selector(onMoreDetailsClick(sender:)))
         let ViewReview_Click = UITapGestureRecognizer(target: self, action: #selector(onViewReview(sender:)))
         let ViewSameShop_Click = UITapGestureRecognizer(target: self, action: #selector(onFromSameShopClick(sender:)))
         
+        let Whatsapp_Click = UITapGestureRecognizer(target: self, action: #selector(openWhatsapp(sender:)))
+        
         ShippingInfo.addGestureRecognizer(ShippingInfo_Click)
         MoreDetails.addGestureRecognizer(MoreDetails_Click)
         ViewReview.addGestureRecognizer(ViewReview_Click)
         ViewSameShop.addGestureRecognizer(ViewSameShop_Click)
+        WhatsappButton.addGestureRecognizer(Whatsapp_Click)
         
         getSellerDetails()
         getReview()
@@ -210,6 +219,12 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         let name = user.value(forKey: "name") as! [String]
                         let district = user.value(forKey: "division") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Phone = user.value(forKey: "phone_no") as! [String]
+                        
+                        self.SELLERPHONE = Phone[0]
+                        self.SELLERIMAGE = Photo[0]
+                        self.SELLERNAME = name[0]
+                        self.SELLERLOCATION = district[0]
                         
                         self.SellerName.text = name[0]
                         self.SellerDivision.text! = district[0]
@@ -376,9 +391,14 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
-    @IBAction func onAboutSellerClick(_ sender: Any){
-        
+    @IBAction func onAboutSellerClick(_ sender: Any){        
         let click = self.storyboard!.instantiateViewController(identifier: "AboutSellerViewController") as! AboutSellerViewController
+        click.UserID = USERID
+        click.SELLERID1 = SELLERID
+        click.SELLLERNAME = SELLERNAME
+        click.SELLERIMAGE = SELLERIMAGE
+        click.SELLERLOCATION = SELLERLOCATION
+        click.SELLERPHONE = SELLERPHONE
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -394,8 +414,32 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @objc func onFromSameShopClick(sender: Any){
         let click = self.storyboard!.instantiateViewController(identifier: "AboutSellerViewController") as! AboutSellerViewController
+        click.UserID = USERID
+        click.SELLERID1 = SELLERID
+        click.SELLLERNAME = SELLERNAME
+        click.SELLERIMAGE = SELLERIMAGE
+        click.SELLERLOCATION = SELLERLOCATION
+        click.SELLERPHONE = SELLERPHONE
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
+        }
+    }
+    
+    @objc func openWhatsapp(sender: Any){
+        let urlWhats = "whatsapp://send?phone=" + "+6" + SELLERPHONE
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            if let whatsappURL = URL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL){
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(whatsappURL)
+                    }
+                }
+                else {
+                    print("Install Whatsapp")
+                }
+            }
         }
     }
     

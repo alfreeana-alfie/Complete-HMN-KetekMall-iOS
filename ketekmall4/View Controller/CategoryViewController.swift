@@ -95,6 +95,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
         
+        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.Price.text! = self.PRICE[indexPath.row]
         cell.District.text! = self.DISTRICT[indexPath.row]

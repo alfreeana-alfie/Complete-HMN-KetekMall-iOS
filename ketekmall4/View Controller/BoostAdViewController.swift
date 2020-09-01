@@ -56,6 +56,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                         let Photo = user.value(forKey: "photo") as! [String]
                         let ShockingSale = user.value(forKey: "shocking_sale") as! [String]
                         
+                        self.Item_Photo = Photo
                         self.item_id = ID
                         self.ad_Detail = AdDetail
                         self.item_price = Price
@@ -73,6 +74,10 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoostAdCollectionViewCell", for: indexPath) as! BoostAdCollectionViewCell
+        
+        let NEWIm = self.Item_Photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         
         cell.AdDetail.text! = ad_Detail[indexPath.row]
         cell.Price.text! = item_price[indexPath.row]

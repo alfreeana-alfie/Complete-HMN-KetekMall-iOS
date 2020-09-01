@@ -39,6 +39,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if collectionView == self.HotView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotCollectionViewCell", for: indexPath) as! HotCollectionViewCell
             
+            let NEWIm = self.PHOTOHOT[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+            
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
             cell.ItemPrice.text! = self.PRICEHOT[indexPath.row]
             
@@ -46,7 +50,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             return cell
         }else{
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "ShockingSaleCollectionViewCell", for: indexPath) as! ShockingSaleCollectionViewCell
+                    let NEWIm = self.PHOTOSHOCKING[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                     
+                    cell1.ItemImage.setImageWith(URL(string: NEWIm!)!)
                 cell1.ItemName.text! = self.ADDETAILSHOCKING[indexPath.row]
                 cell1.ItemPrice.text! = self.PRICESHOCKING[indexPath.row]
             cell1.delegate = self

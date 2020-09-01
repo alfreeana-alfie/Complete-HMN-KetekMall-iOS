@@ -11,11 +11,7 @@ import Alamofire
 import SDWebImage
 
 class MyProductsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyProductDelegate{
-    
-    
-    
-    
-    
+
     var userID: String = ""
     let URL_READ = "https://ketekmall.com/ketekmall/readuser.php";
     let URL_REMOVE = "https://ketekmall.com/ketekmall/delete_item.php";
@@ -30,6 +26,21 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     var location: [String] = []
     var ItemPhoto: [String] = []
     var ItemID: [String] = []
+    
+        var MAINCATE: [String] = []
+        var SUBCATE: [String] = []
+        var BRAND: [String] = []
+        var INNER: [String] = []
+        var STOCK: [String] = []
+        var DESC: [String] = []
+        var MAXORDER: [String] = []
+        var DIVISION: [String] = []
+    //    var RATING: [String] = []
+//        var ITEMID: String = ""
+//        var ADDETAIL: String = ""
+//        var PRICE: String = ""
+//        var PHOTO: String = ""
+//        var DISTRICT: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +73,35 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         let Photo = user.value(forKey: "photo") as! [String]
                         let ID = user.value(forKey: "id") as! [String]
                         
+                        let Main_Cate = user.value(forKey: "main_category") as! [String]
+                        let Sub_Cate = user.value(forKey: "sub_category") as! [String]
+//                        let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
+                        let brand_mat = user.value(forKey: "brand_material") as! [String]
+                        let inner_mat = user.value(forKey: "inner_material") as! [String]
+                        let stock = user.value(forKey: "stock") as! [String]
+                        let description = user.value(forKey: "description") as! [String]
+                        let max_order = user.value(forKey: "max_order") as! [String]
+//                        let rating = user.value(forKey: "rating") as! [String]
+//                        let Price = user.value(forKey: "price") as! [String]
+//                        let Photo = user.value(forKey: "photo") as! [String]
+                        let Division = user.value(forKey: "division") as! [String]
+//                        let District = user.value(forKey: "district") as! [String]
+                        
                         self.ItemID = ID
                         self.ad_Detail = AdDetail
                         self.price = Price
                         self.location = Location
                         self.ItemPhoto = Photo
+                        self.MAINCATE = Main_Cate
+                        self.SUBCATE = Sub_Cate
+                        self.MAXORDER = max_order
+                        self.BRAND = brand_mat
+                        self.INNER = inner_mat
+                        self.STOCK = stock
+                        self.DESC = description
+                        self.DIVISION = Division
                         
-                        print(Photo)
+//                        print(Photo)
                         self.productView.reloadData()
                         
                     }
@@ -83,6 +116,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyProductsCollectionViewCell", for: indexPath) as! MyProductsCollectionViewCell
+        
+        let NEWIm = self.ItemPhoto[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
         cell.ItemPrice.text! = "MYR" + self.price[indexPath.row]
@@ -126,9 +163,22 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             return
         }
         
-        let ProductView = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
-        let ID = self.ItemID[indexPath.row]
-        ProductView.ItemID = ID
+        let ProductView = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController
+//        let ID = self.ItemID[indexPath.row]
+        ProductView.USERID = userID
+        ProductView.ITEMID = self.ItemID[indexPath.row]
+        ProductView.ADDETAIL = self.ad_Detail[indexPath.row]
+        ProductView.MAINCATE = self.MAINCATE[indexPath.row]
+        ProductView.SUBCATE = self.SUBCATE[indexPath.row]
+        ProductView.PRICE = self.price[indexPath.row]
+        ProductView.BRAND = self.BRAND[indexPath.row]
+        ProductView.INNER = self.INNER[indexPath.row]
+        ProductView.STOCK = self.STOCK[indexPath.row]
+        ProductView.DESC = self.DESC[indexPath.row]
+        ProductView.DIVISION = self.DIVISION[indexPath.row]
+        ProductView.DISTRICT = self.location[indexPath.row]
+        ProductView.PHOTO = self.ItemPhoto[indexPath.row]
+        ProductView.MAXORDER = self.MAXORDER[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(ProductView, animated: true)
         }

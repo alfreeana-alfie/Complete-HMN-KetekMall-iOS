@@ -29,6 +29,10 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var item_shipplaced: String = ""
     var item_status: String = ""
     var order_date: String = ""
+    var tracking_no: String = ""
+    var delivery_price: String = ""
+    var delivery_date: String = ""
+    var Seller_ID: String = ""
     
     var OrderID: [String] = []
     var ad_Detail: [String] = []
@@ -40,6 +44,10 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ItemStatus: [String] = []
     var OrderDate: [String] = []
     
+    var seller_id: [String] = []
+    var TrackingNo: [String] = []
+    var DeliveryPrice: [String] = []
+    var DeliveryDate: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +75,12 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.item_shipplaced = i["division"] as! String
                             self.item_status = i["status"] as! String
                             self.order_date = i["order_date"] as! String
+                            self.delivery_price = i["delivery_price"] as! String
+                            self.delivery_date = i["delivery_date"] as! String
+                            self.tracking_no = i["tracking_no"] as! String
+                            self.Seller_ID = i["seller_id"] as! String
                             
+                            self.seller_id.append(self.Seller_ID)
                             self.OrderID.append(self.order_id)
                             self.ad_Detail.append(self.ad_detail)
                             self.ItemImage.append(self.item_img)
@@ -78,6 +91,9 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.ItemStatus.append(self.item_status)
                             self.OrderDate.append(self.order_date)
                             
+                            self.TrackingNo.append(self.tracking_no)
+                            self.DeliveryPrice.append(self.delivery_price)
+                            self.DeliveryDate.append(self.delivery_date)
                             
                             self.MyBuyingView.reloadData()
                         }
@@ -94,8 +110,12 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyBuyingCollectionViewCell", for: indexPath) as! MyBuyingCollectionViewCell
         
+        let NEWIm = self.ItemImage[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
         cell.AdDetail.text! = ad_Detail[indexPath.row]
-        cell.ItemImage.setImageWith(URL(string: Main_Photo)!)
+        
         cell.OrderID.text! = "KM" + OrderID[indexPath.row]
         cell.Price.text! = "MYR" + ItemPrice[indexPath.row]
         cell.Quantity.text! = "x" + ItemQuan[indexPath.row]
@@ -149,6 +169,18 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         let ReviewProduct = self.storyboard!.instantiateViewController(identifier: "ReviewPageViewController") as! ReviewPageViewController
         let ID = self.OrderID[indexPath.row]
         ReviewProduct.itemID = ID
+        ReviewProduct.ORDERID = self.OrderID[indexPath.row]
+        ReviewProduct.TRACKINGNO = self.TrackingNo[indexPath.row]
+        ReviewProduct.DATEORDER = self.OrderDate[indexPath.row]
+        ReviewProduct.DATERECEIVED = self.DeliveryDate[indexPath.row]
+        ReviewProduct.ADDETAIL = self.ad_Detail[indexPath.row]
+        ReviewProduct.PRICE = self.ItemPrice[indexPath.row]
+        ReviewProduct.QUANTITY = self.ItemQuan[indexPath.row]
+        ReviewProduct.PHOTO = self.ItemImage[indexPath.row]
+        ReviewProduct.SHIPPINGTOTAL = self.DeliveryPrice[indexPath.row]
+        ReviewProduct.SHIPPEDTO = self.ItemShipPlaced[indexPath.row]
+        ReviewProduct.USERID = userID
+        ReviewProduct.SELLERID = self.seller_id[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(ReviewProduct, animated: true)
         }
