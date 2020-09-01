@@ -33,6 +33,7 @@
 		FB5490CB24FD209B004E6D73 /* GotoRegisterSellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5490CA24FD209B004E6D73 /* GotoRegisterSellerViewController.swift */; };
 		FB5490CD24FD3C8D004E6D73 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5490CC24FD3C8D004E6D73 /* CategoryViewController.swift */; };
 		FB5490CF24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5490CE24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift */; };
+		FB5490D124FD7019004E6D73 /* FromSameShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5490D024FD7019004E6D73 /* FromSameShopCollectionViewCell.swift */; };
 		FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48E024F7F06B00F5464C /* AppDelegate.swift */; };
 		FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */; };
 		FB5A48E824F7F06B00F5464C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5A48E624F7F06B00F5464C /* Main.storyboard */; };
@@ -47,6 +48,12 @@
 		FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */; };
 		FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */; };
 		FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */; };
+		FB7787B724FE0F0500AB01F4 /* ShippingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7787B624FE0F0500AB01F4 /* ShippingInfoViewController.swift */; };
+		FB7787B924FE0F5500AB01F4 /* MoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7787B824FE0F5500AB01F4 /* MoreDetailsViewController.swift */; };
+		FB7787BB24FE0F7A00AB01F4 /* AboutSellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7787BA24FE0F7A00AB01F4 /* AboutSellerViewController.swift */; };
+		FB7787BD24FE0FCA00AB01F4 /* ViewReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7787BC24FE0FCA00AB01F4 /* ViewReviewViewController.swift */; };
+		FB7787BF24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7787BE24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift */; };
+		FB7787C124FE35CA00AB01F4 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7787C024FE35CA00AB01F4 /* ReviewCollectionViewCell.swift */; };
 		FB77A15324FCD3D70005EB39 /* HotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77A15224FCD3D70005EB39 /* HotCollectionViewCell.swift */; };
 		FB77A15524FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77A15424FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift */; };
 		FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */; };
@@ -103,6 +110,7 @@
 		FB5490CA24FD209B004E6D73 /* GotoRegisterSellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoRegisterSellerViewController.swift; sourceTree = "<group>"; };
 		FB5490CC24FD3C8D004E6D73 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FB5490CE24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB5490D024FD7019004E6D73 /* FromSameShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromSameShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB5A48DD24F7F06B00F5464C /* ketekmall4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ketekmall4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5A48E024F7F06B00F5464C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +131,12 @@
 		FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewProductViewController.swift; sourceTree = "<group>"; };
+		FB7787B624FE0F0500AB01F4 /* ShippingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoViewController.swift; sourceTree = "<group>"; };
+		FB7787B824FE0F5500AB01F4 /* MoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsViewController.swift; sourceTree = "<group>"; };
+		FB7787BA24FE0F7A00AB01F4 /* AboutSellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSellerViewController.swift; sourceTree = "<group>"; };
+		FB7787BC24FE0FCA00AB01F4 /* ViewReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReviewViewController.swift; sourceTree = "<group>"; };
+		FB7787BE24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB7787C024FE35CA00AB01F4 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB77A15224FCD3D70005EB39 /* HotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB77A15424FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShockingSaleCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,6 +290,13 @@
 				FB5490CA24FD209B004E6D73 /* GotoRegisterSellerViewController.swift */,
 				FB5490CC24FD3C8D004E6D73 /* CategoryViewController.swift */,
 				FB5490CE24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift */,
+				FB5490D024FD7019004E6D73 /* FromSameShopCollectionViewCell.swift */,
+				FB7787B624FE0F0500AB01F4 /* ShippingInfoViewController.swift */,
+				FB7787B824FE0F5500AB01F4 /* MoreDetailsViewController.swift */,
+				FB7787BA24FE0F7A00AB01F4 /* AboutSellerViewController.swift */,
+				FB7787BC24FE0FCA00AB01F4 /* ViewReviewViewController.swift */,
+				FB7787BE24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift */,
+				FB7787C024FE35CA00AB01F4 /* ReviewCollectionViewCell.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -526,11 +547,14 @@
 				FB528ACB24FA84BF00A968E8 /* MyIncomeViewController.swift in Sources */,
 				FB5A491724F7F4AC00F5464C /* MeViewController.swift in Sources */,
 				FB4B72CF24FB6FC000293B81 /* MyBuyingViewController.swift in Sources */,
+				FB7787BB24FE0F7A00AB01F4 /* AboutSellerViewController.swift in Sources */,
 				FB528AD124FA88BD00A968E8 /* BoostAdCollectionViewCell.swift in Sources */,
 				FB77A15324FCD3D70005EB39 /* HotCollectionViewCell.swift in Sources */,
 				FB5490C924FD1ECF004E6D73 /* RegisterSellerViewController.swift in Sources */,
+				FB5490D124FD7019004E6D73 /* FromSameShopCollectionViewCell.swift in Sources */,
 				FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */,
 				FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */,
+				FB7787BF24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift in Sources */,
 				FB5A491324F7F47000F5464C /* LoginViewController.swift in Sources */,
 				FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */,
 				FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */,
@@ -544,14 +568,18 @@
 				FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */,
 				FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */,
 				FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */,
+				FB7787C124FE35CA00AB01F4 /* ReviewCollectionViewCell.swift in Sources */,
 				FB5490CB24FD209B004E6D73 /* GotoRegisterSellerViewController.swift in Sources */,
 				FB5490CF24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift in Sources */,
 				FB4B72CD24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift in Sources */,
 				FB4557B124F90EDA00FC502B /* AccountSettingsViewController.swift in Sources */,
 				FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */,
 				FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */,
+				FB7787B924FE0F5500AB01F4 /* MoreDetailsViewController.swift in Sources */,
+				FB7787B724FE0F0500AB01F4 /* ShippingInfoViewController.swift in Sources */,
 				FB528AD324FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift in Sources */,
 				FB4B72D124FB792000293B81 /* MyRatingViewController.swift in Sources */,
+				FB7787BD24FE0FCA00AB01F4 /* ViewReviewViewController.swift in Sources */,
 				FB4B72D924FBE00800293B81 /* ViewProductViewController.swift in Sources */,
 				FB528ACF24FA84E700A968E8 /* BoostAdViewController.swift in Sources */,
 			);

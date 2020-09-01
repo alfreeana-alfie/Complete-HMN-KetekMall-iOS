@@ -10,6 +10,8 @@ import UIKit
 
 protocol CategoryDelegate: class {
     func onViewClick(cell: CategoryCollectionViewCell)
+    func onAddToFav(cell: CategoryCollectionViewCell)
+    func onAddToCart(cell: CategoryCollectionViewCell)
 }
 
 class CategoryCollectionViewCell: UICollectionViewCell {
@@ -21,9 +23,19 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Price: UILabel!
     @IBOutlet weak var District: UILabel!
     @IBOutlet weak var ButtonView: UIButton!
+    @IBOutlet weak var ButtonAddToFav: UIButton!
+    @IBOutlet weak var ButtonAddToCart: UIButton!
     
     @IBAction func ViewClick(_ sender: Any) {
         self.delegate?.onViewClick(cell: self)
+    }
+    
+    @IBAction func AddToFav(_ sender: Any) {
+        self.delegate?.onAddToFav(cell: self)
+    }
+    
+    @IBAction func AddToCart(_ sender: Any) {
+        self.delegate?.onAddToCart(cell: self)
     }
     
 }

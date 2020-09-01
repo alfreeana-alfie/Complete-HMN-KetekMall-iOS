@@ -87,6 +87,8 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
         cell.ItemPrice.text! = "MYR" + self.price[indexPath.row]
         cell.ItemLocation.text! = self.location[indexPath.row]
+        
+        
 //        print(self.ItemPhoto[indexPath.row])
         
         cell.delegate = self

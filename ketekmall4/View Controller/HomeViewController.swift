@@ -63,25 +63,25 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_READ_CAKE = "https://ketekmall.com/ketekmall/category/read_cake.php"
     let URL_READ_PROCESS = "https://ketekmall.com/ketekmall/category/read_process.php"
     let URL_READ_HEALTH = "https://ketekmall.com/ketekmall/category/read_health.php"
-    let URL_READ_HANDICRAFT = "https://ketekmall.com/ketekmall/category/readall_handicraft.php"
-    let URL_READ_HOMELIVING = "https://ketekmall.com/ketekmall/category/readall_home.php"
-    let URL_READ_RETAIL = "https://ketekmall.com/ketekmall/category/readall_retail.php"
-    let URL_READ_AGRICULTURE = "https://ketekmall.com/ketekmall/category/readall_agri.php"
-    let URL_READ_SARAWAKBASED = "https://ketekmall.com/ketekmall/category/readall_pepper.php"
-    let URL_READ_SERVICE = "https://ketekmall.com/ketekmall/category/readall_service.php"
-    let URL_READ_FASHION = "https://ketekmall.com/ketekmall/category/readall_fashion.php"
+    let URL_READ_HANDICRAFT = "https://ketekmall.com/ketekmall/category/read_handicraft.php"
+    let URL_READ_HOMELIVING = "https://ketekmall.com/ketekmall/category/read_home.php"
+    let URL_READ_RETAIL = "https://ketekmall.com/ketekmall/category/read_retail.php"
+    let URL_READ_AGRICULTURE = "https://ketekmall.com/ketekmall/category/read_agri.php"
+    let URL_READ_SARAWAKBASED = "https://ketekmall.com/ketekmall/category/read_pepper.php"
+    let URL_READ_SERVICE = "https://ketekmall.com/ketekmall/category/read_service.php"
+    let URL_READ_FASHION = "https://ketekmall.com/ketekmall/category/read_fashion.php"
     let URL_READ_VIEWALL = "https://ketekmall.com/ketekmall/category/readall.php"
     
     let URL_SEARCH_CAKE = "https://ketekmall.com/ketekmall/search/read_cake.php"
     let URL_SEARCH_PROCESS = "https://ketekmall.com/ketekmall/search/read_process.php"
     let URL_SEARCH_HEALTH = "https://ketekmall.com/ketekmall/search/read_health.php"
-    let URL_SEARCH_HANDICRAFT = "https://ketekmall.com/ketekmall/search/readall_handicraft.php"
-    let URL_SEARCH_HOMELIVING = "https://ketekmall.com/ketekmall/search/readall_home.php"
-    let URL_SEARCH_RETAIL = "https://ketekmall.com/ketekmall/search/readall_retail.php"
-    let URL_SEARCH_AGRICULTURE = "https://ketekmall.com/ketekmall/search/readall_agri.php"
-    let URL_SEARCH_SARAWAKBASED = "https://ketekmall.com/ketekmall/search/readall_pepper.php"
-    let URL_SEARCH_SERVICE = "https://ketekmall.com/ketekmall/search/readall_service.php"
-    let URL_SEARCH_FASHION = "https://ketekmall.com/ketekmall/search/readall_fashion.php"
+    let URL_SEARCH_HANDICRAFT = "https://ketekmall.com/ketekmall/search/read_handicraft.php"
+    let URL_SEARCH_HOMELIVING = "https://ketekmall.com/ketekmall/search/read_home.php"
+    let URL_SEARCH_RETAIL = "https://ketekmall.com/ketekmall/search/read_retail.php"
+    let URL_SEARCH_AGRICULTURE = "https://ketekmall.com/ketekmall/search/read_agri.php"
+    let URL_SEARCH_SARAWAKBASED = "https://ketekmall.com/ketekmall/search/read_pepper.php"
+    let URL_SEARCH_SERVICE = "https://ketekmall.com/ketekmall/search/read_service.php"
+    let URL_SEARCH_FASHION = "https://ketekmall.com/ketekmall/search/read_fashion.php"
     let URL_SEARCH_VIEWALL = "https://ketekmall.com/ketekmall/search/readall.php"
     let URL_SEARCH_HOT = "https://ketekmall.com/ketekmall/search/readall_sold.php"
     let URL_SEARCH_SHOCKING_SALE = "https://ketekmall.com/ketekmall/search/readall_shocking.php"
@@ -89,13 +89,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_FILTER_DIVISION_CAKE = "https://ketekmall.com/ketekmall/filter_division/read_cake.php"
     let URL_FILTER_DIVISION_PROCESS = "https://ketekmall.com/ketekmall/filter_division/read_process.php"
     let URL_FILTER_DIVISION_HEALTH = "https://ketekmall.com/ketekmall/filter_division/read_health.php"
-    let URL_FILTER_DIVISION_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_division/readall_handicraft.php"
-    let URL_FILTER_DIVISION_HOMELIVING = "https://ketekmall.com/ketekmall/filter_division/readall_home.php"
-    let URL_FILTER_DIVISION_RETAIL = "https://ketekmall.com/ketekmall/filter_division/readall_retail.php"
-    let URL_FILTER_DIVISION_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_division/readall_agri.php"
-    let URL_FILTER_DIVISION_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_division/readall_pepper.php"
-    let URL_FILTER_DIVISION_SERVICE = "https://ketekmall.com/ketekmall/filter_division/readall_service.php"
-    let URL_FILTER_DIVISION_FASHION = "https://ketekmall.com/ketekmall/filter_division/readall_fashion.php"
+    let URL_FILTER_DIVISION_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_division/read_handicraft.php"
+    let URL_FILTER_DIVISION_HOMELIVING = "https://ketekmall.com/ketekmall/filter_division/read_home.php"
+    let URL_FILTER_DIVISION_RETAIL = "https://ketekmall.com/ketekmall/filter_division/read_retail.php"
+    let URL_FILTER_DIVISION_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_division/read_agri.php"
+    let URL_FILTER_DIVISION_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_division/read_pepper.php"
+    let URL_FILTER_DIVISION_SERVICE = "https://ketekmall.com/ketekmall/filter_division/read_service.php"
+    let URL_FILTER_DIVISION_FASHION = "https://ketekmall.com/ketekmall/filter_division/read_fashion.php"
     let URL_FILTER_DIVISION_VIEWALL = "https://ketekmall.com/ketekmall/filter_division/readall.php"
     let URL_FILTER_DIVISION_HOT = "https://ketekmall.com/ketekmall/filter_division/readall_sold.php"
     let URL_FILTER_DIVISION_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_division/readall_shocking.php"
@@ -103,13 +103,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_FILTER_DISTRICT_CAKE = "https://ketekmall.com/ketekmall/filter_district/read_cake.php"
     let URL_FILTER_DISTRICT_PROCESS = "https://ketekmall.com/ketekmall/filter_district/read_process.php"
     let URL_FILTER_DISTRICT_HEALTH = "https://ketekmall.com/ketekmall/filter_district/read_health.php"
-    let URL_FILTER_DISTRICT_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_district/readall_handicraft.php"
-    let URL_FILTER_DISTRICT_HOMELIVING = "https://ketekmall.com/ketekmall/filter_district/readall_home.php"
-    let URL_FILTER_DISTRICT_RETAIL = "https://ketekmall.com/ketekmall/filter_district/readall_retail.php"
-    let URL_FILTER_DISTRICT_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_district/readall_agri.php"
-    let URL_FILTER_DISTRICT_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_district/readall_pepper.php"
-    let URL_FILTER_DISTRICT_SERVICE = "https://ketekmall.com/ketekmall/filter_district/readall_service.php"
-    let URL_FILTER_DISTRICT_FASHION = "https://ketekmall.com/ketekmall/filter_district/readall_fashion.php"
+    let URL_FILTER_DISTRICT_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_district/read_handicraft.php"
+    let URL_FILTER_DISTRICT_HOMELIVING = "https://ketekmall.com/ketekmall/filter_district/read_home.php"
+    let URL_FILTER_DISTRICT_RETAIL = "https://ketekmall.com/ketekmall/filter_district/read_retail.php"
+    let URL_FILTER_DISTRICT_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_district/read_agri.php"
+    let URL_FILTER_DISTRICT_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_district/read_pepper.php"
+    let URL_FILTER_DISTRICT_SERVICE = "https://ketekmall.com/ketekmall/filter_district/read_service.php"
+    let URL_FILTER_DISTRICT_FASHION = "https://ketekmall.com/ketekmall/filter_district/read_fashion.php"
     let URL_FILTER_DISTRICT_VIEWALL = "https://ketekmall.com/ketekmall/filter_district/readall.php"
     let URL_FILTER_DISTRICT_HOT = "https://ketekmall.com/ketekmall/filter_district/readall_sold.php"
     let URL_FILTER_DISTRICT_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_district/readall_shocking.php"
@@ -117,13 +117,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_FILTER_SEARCH_DIVISION_CAKE = "https://ketekmall.com/ketekmall/filter_search_division/read_cake.php"
     let URL_FILTER_SEARCH_DIVISION_PROCESS = "https://ketekmall.com/ketekmall/filter_search_division/read_process.php"
     let URL_FILTER_SEARCH_DIVISION_HEALTH = "https://ketekmall.com/ketekmall/filter_search_division/read_health.php"
-    let URL_FILTER_SEARCH_DIVISION_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_search_division/readall_handicraft.php"
-    let URL_FILTER_SEARCH_DIVISION_HOMELIVING = "https://ketekmall.com/ketekmall/filter_search_division/readall_home.php"
-    let URL_FILTER_SEARCH_DIVISION_RETAIL = "https://ketekmall.com/ketekmall/filter_search_division/readall_retail.php"
-    let URL_FILTER_SEARCH_DIVISION_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_search_division/readall_agri.php"
-    let URL_FILTER_SEARCH_DIVISION_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_search_division/readall_pepper.php"
-    let URL_FILTER_SEARCH_DIVISION_SERVICE = "https://ketekmall.com/ketekmall/filter_search_division/readall_service.php"
-    let URL_FILTER_SEARCH_DIVISION_FASHION = "https://ketekmall.com/ketekmall/filter_search_division/readall_fashion.php"
+    let URL_FILTER_SEARCH_DIVISION_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_search_division/read_handicraft.php"
+    let URL_FILTER_SEARCH_DIVISION_HOMELIVING = "https://ketekmall.com/ketekmall/filter_search_division/read_home.php"
+    let URL_FILTER_SEARCH_DIVISION_RETAIL = "https://ketekmall.com/ketekmall/filter_search_division/read_retail.php"
+    let URL_FILTER_SEARCH_DIVISION_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_search_division/read_agri.php"
+    let URL_FILTER_SEARCH_DIVISION_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_search_division/read_pepper.php"
+    let URL_FILTER_SEARCH_DIVISION_SERVICE = "https://ketekmall.com/ketekmall/filter_search_division/read_service.php"
+    let URL_FILTER_SEARCH_DIVISION_FASHION = "https://ketekmall.com/ketekmall/filter_search_division/read_fashion.php"
     let URL_FILTER_SEARCH_DIVISION_VIEWALL = "https://ketekmall.com/ketekmall/filter_search_division/readall.php"
     let URL_FILTER_SEARCH_DIVISION_HOT = "https://ketekmall.com/ketekmall/filter_search_division/readall_sold.php"
     let URL_FILTER_SEARCH_DIVISION_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_search_division/readall_shocking.php"
@@ -290,7 +290,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         SarawakBased.isUserInteractionEnabled = true
         Service.isUserInteractionEnabled = true
         Fashion.isUserInteractionEnabled = true
+        FindBar.isUserInteractionEnabled = true
+        CartBar.isUserInteractionEnabled = true
         
+        let FindClick = UITapGestureRecognizer(target: self, action: #selector(onFindBarClick(sender:)))
+        let CartClick = UITapGestureRecognizer(target: self, action: #selector(onCartBarClick(sender:)))
+
         let CakeClick = UITapGestureRecognizer(target: self, action: #selector(onCake(sender:)))
         let ProcessClick = UITapGestureRecognizer(target: self, action: #selector(onProcess(sender:)))
         let HealthClick = UITapGestureRecognizer(target: self, action: #selector(onHealth))
@@ -301,6 +306,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let SarawakClick = UITapGestureRecognizer(target: self, action: #selector(onSarawakBased(sender:)))
         let ServiceClick = UITapGestureRecognizer(target: self, action: #selector(onService(sender:)))
         let FashionClick = UITapGestureRecognizer(target: self, action: #selector(onFashion(sender:)))
+        
+        FindBar.addGestureRecognizer(FindClick)
+        CartBar.addGestureRecognizer(CartClick)
         
         CakePastries.addGestureRecognizer(CakeClick)
         ProcessFood.addGestureRecognizer(ProcessClick)
@@ -323,6 +331,34 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ShockingSale()
         CartCount(UserID: tabbar.value)
         
+    }
+    
+    @objc func onCartBarClick(sender: Any){
+        let tabbar = tabBarController as! BaseTabBarController
+        let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
+        click.UserID = tabbar.value
+        click.URL_READ = URL_READ_VIEWALL
+        click.URL_SEARCH = URL_SEARCH_VIEWALL
+        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
+        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
+        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
+        if let navigator = self.navigationController {
+            navigator.pushViewController(click, animated: true)
+        }
+    }
+    
+    @objc func onFindBarClick(sender: Any){
+        let tabbar = tabBarController as! BaseTabBarController
+        let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
+        click.UserID = tabbar.value
+        click.URL_READ = URL_READ_VIEWALL
+        click.URL_SEARCH = URL_SEARCH_VIEWALL
+        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
+        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
+        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
+        if let navigator = self.navigationController {
+            navigator.pushViewController(click, animated: true)
+        }
     }
     
     @objc func onCake(sender: Any){

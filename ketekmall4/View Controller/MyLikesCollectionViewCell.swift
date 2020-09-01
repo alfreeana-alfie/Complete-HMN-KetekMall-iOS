@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AARatingBar
 
 protocol MyLikesDelegate: class {
     func btnRemove(cell: MyLikesCollectionViewCell)
@@ -24,6 +25,7 @@ class MyLikesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ItemLocation: UILabel!
     @IBOutlet weak var BtnRemove: UIButton!
     @IBOutlet weak var BtnView: UIButton!
+    @IBOutlet weak var RatingBar: AARatingBar!
     
     @IBAction func someButton(sender: Any){
         self.delegate?.btnRemove(cell: self)

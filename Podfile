@@ -10,6 +10,7 @@ pod 'DropDown'
 pod 'SDWebImage', '~> 5.0'
 pod 'AlamofireImage', '~> 3.1'
 pod 'EasyNotificationBadge'
+pod 'AARatingBar'
 
   # Pods for ketekmall4
 
