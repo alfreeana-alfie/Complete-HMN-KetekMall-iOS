@@ -11,7 +11,10 @@ pod 'SDWebImage', '~> 5.0'
 pod 'AlamofireImage', '~> 3.1'
 pod 'EasyNotificationBadge'
 pod 'AARatingBar'
-
+pod 'M13Checkbox'
+pod 'UICheckbox'
+pod 'SimpleCheckbox'
+ 
   # Pods for ketekmall4
 
   target 'ketekmall4Tests' do

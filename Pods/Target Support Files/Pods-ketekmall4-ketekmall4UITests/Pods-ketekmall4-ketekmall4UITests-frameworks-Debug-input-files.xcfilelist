@@ -5,4 +5,7 @@ ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
 ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
 ${BUILT_PRODUCTS_DIR}/EasyNotificationBadge/EasyNotificationBadge.framework
+${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SimpleCheckbox/SimpleCheckbox.framework
+${BUILT_PRODUCTS_DIR}/UICheckbox/UICheckbox.framework

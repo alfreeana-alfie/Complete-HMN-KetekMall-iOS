@@ -17,13 +17,32 @@ class EditProductViewController: UIViewController {
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var UploadImage: UIButton!
     @IBOutlet weak var Category: UITextField!
-    @IBOutlet weak var AdDetail: UITextField!
+    
+    @IBAction func AdDetail(_ sender: Any) {
+        let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
+        AdDetail.USERID = USERID
+        AdDetail.ITEMID = ITEMID
+        AdDetail.ADDETAIL = ADDETAIL
+        AdDetail.MAINCATE = MAINCATE
+        AdDetail.SUBCATE = SUBCATE
+        AdDetail.PRICE = PRICE
+        AdDetail.BRAND = BRAND
+        AdDetail.INNER = INNER
+        AdDetail.STOCK = STOCK
+        AdDetail.DESC = DESC
+        AdDetail.DIVISION = DIVISION
+        AdDetail.DISTRICT = DISTRICT
+        AdDetail.PHOTO = PHOTO
+        AdDetail.MAXORDER = MAXORDER
+        if let navigator = self.navigationController {
+            navigator.pushViewController(AdDetail, animated: true)
+        }
+    }
     @IBOutlet weak var Price: UITextField!
     @IBOutlet weak var Division: UITextField!
     @IBOutlet weak var District: UITextField!
     @IBOutlet weak var Max_Order: UITextField!
     
-//    var SELLERID: [String] = []
     var MAINCATE: String = ""
     var SUBCATE: String = ""
     var BRAND: String = ""
@@ -32,7 +51,6 @@ class EditProductViewController: UIViewController {
     var DESC: String = ""
     var MAXORDER: String = ""
     var DIVISION: String = ""
-//    var RATING: [String] = []
     var ITEMID: String = ""
     var ADDETAIL: String = ""
     var PRICE: String = ""
@@ -41,18 +59,44 @@ class EditProductViewController: UIViewController {
     var USERID: String = ""
     
     @IBAction func SetupDelivery(_ sender: Any) {
+        let myBuying = self.storyboard!.instantiateViewController(identifier: "DeliveryViewController") as! DeliveryViewController
+        myBuying.userID = USERID
+        myBuying.itemID = ITEMID
+        myBuying.Addetail = ADDETAIL
+        if let navigator = self.navigationController {
+            navigator.pushViewController(myBuying, animated: true)
+        }
     }
     
     
     @IBAction func Uploading(_ sender: Any) {
+        let parameters: Parameters=[
+            "ad_detail":ADDETAIL,
+            "photo":PHOTO,
+        ]
+        
+        print(ADDETAIL)
+        //Sending http post request
+        Alamofire.request(URL_IMG, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                //printing response
+                print(response)
+                
+                //getting the json value from the server
+                if let result = response.result.value {
+                    
+                    //converting it as NSDictionary
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    
+                }
+        }
     }
     
     @IBAction func Accpt(_ sender: Any) {
-//        let imageData: Data = UploadPhoto.image!.pngData()!
-//        let imageStr: String = imageData.base64EncodedString()
-//
         let parameters: Parameters=[
-            "user_id": USERID,
+            "id": ITEMID,
             "main_category":Category.text!,
             "sub_category":Category.text!,
             "ad_detail":ADDETAIL,
@@ -66,6 +110,7 @@ class EditProductViewController: UIViewController {
             "district": District.text!,
         ]
         
+        print(ADDETAIL)
         //Sending http post request
         Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
             {
@@ -87,6 +132,54 @@ class EditProductViewController: UIViewController {
     @IBAction func Cancel(_ sender: Any) {
     }
     
+    @objc private func uploadToServer(sender: UITapGestureRecognizer) {
+            let imageData: Data = ItemImage.image!.pngData()!
+            let imageStr: String = imageData.base64EncodedString()
+        
+    //           let alert = UIAlertController(title: "Loading", message: "Please wait...", preferredStyle: .alert)
+    //           present(alert, animated: true, completion: nil)
+            
+            let parameters: Parameters=[
+                "ad_detail": ADDETAIL,
+                "photo": imageStr,
+            ]
+            
+            //Sending http post request
+            Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                //printing response
+                print(response)
+                
+    //            let alert = UIAlertController(title: "Success", message: "Ok", preferredStyle: .alert)
+    //            self.present(alert, animated: true, completion: nil)
+                
+                //getting the json value from the server
+                if let result = response.result.value {
+                    
+                    //converting it as NSDictionary
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    
+                    
+                }
+            }
+           }
+        
+        @objc private func selectImage(sender: UITapGestureRecognizer) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
+        }
+         
+        @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+            let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as! UIImage
+            ItemImage.image = chosenImage
+            dismiss(animated: true, completion: nil)
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,5 +189,10 @@ class EditProductViewController: UIViewController {
         District.text! = DISTRICT
         Max_Order.text! = MAXORDER
         
+        ItemImage.isUserInteractionEnabled = true
+        let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
+        
+        ItemImage.addGestureRecognizer(FindClick)
+//        print(ADDETAIL)
     }
 }

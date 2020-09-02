@@ -15,12 +15,50 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         guard let indexPath = self.HotView.indexPath(for: cell) else{
             return
         }
+        
+        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+        viewProduct.USERID = userID
+//        viewProduct.ItemID = self.ITEMID[indexPath.row]
+//        viewProduct.SELLERID = self.SELLERID[indexPath.row]
+//        viewProduct.MAINCATE = self.MAINCATE[indexPath.row]
+//        viewProduct.SUBCATE = self.SUBCATE[indexPath.row]
+//        viewProduct.ADDETAIL = self.ADDETAIL[indexPath.row]
+//        viewProduct.BRAND = self.BRAND[indexPath.row]
+//        viewProduct.INNER = self.INNER[indexPath.row]
+//        viewProduct.STOCK = self.STOCK[indexPath.row]
+//        viewProduct.DESC = self.DESC[indexPath.row]
+//        viewProduct.PRICE = self.PRICE[indexPath.row]
+//        viewProduct.PHOTO = self.PHOTO[indexPath.row]
+//        viewProduct.DIVISION = self.DIVISION[indexPath.row]
+//        viewProduct.DISTRICT = self.DISTRICT[indexPath.row]
+        if let navigator = self.navigationController {
+            navigator.pushViewController(viewProduct, animated: true)
+        }
     }
     
     
     func onViewClick(cell: HotCollectionViewCell) {
         guard let indexPath = self.HotView.indexPath(for: cell) else{
             return
+        }
+        
+        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+        viewProduct.USERID = userID
+//        viewProduct.ItemID = self.ITEMID[indexPath.row]
+//        viewProduct.SELLERID = self.SELLERID[indexPath.row]
+//        viewProduct.MAINCATE = self.MAINCATE[indexPath.row]
+//        viewProduct.SUBCATE = self.SUBCATE[indexPath.row]
+//        viewProduct.ADDETAIL = self.ADDETAIL[indexPath.row]
+//        viewProduct.BRAND = self.BRAND[indexPath.row]
+//        viewProduct.INNER = self.INNER[indexPath.row]
+//        viewProduct.STOCK = self.STOCK[indexPath.row]
+//        viewProduct.DESC = self.DESC[indexPath.row]
+//        viewProduct.PRICE = self.PRICE[indexPath.row]
+//        viewProduct.PHOTO = self.PHOTO[indexPath.row]
+//        viewProduct.DIVISION = self.DIVISION[indexPath.row]
+//        viewProduct.DISTRICT = self.DISTRICT[indexPath.row]
+        if let navigator = self.navigationController {
+            navigator.pushViewController(viewProduct, animated: true)
         }
     }
     
@@ -264,6 +302,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var ADDETAILSHOCKING: [String] = []
     var PRICESHOCKING: [String] = []
     var PHOTOSHOCKING: [String] = []
+    var userID: String = ""
     
     var Cart_count: Int = 0
     
@@ -341,13 +380,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @objc func onCartBarClick(sender: Any){
         let tabbar = tabBarController as! BaseTabBarController
-        let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
-        click.URL_READ = URL_READ_VIEWALL
-        click.URL_SEARCH = URL_SEARCH_VIEWALL
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
+        let click = self.storyboard!.instantiateViewController(identifier: "CartViewController") as! CartViewController
+        click.userID = tabbar.value
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }

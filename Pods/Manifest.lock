@@ -20,9 +20,12 @@ PODS:
     - Alamofire (~> 4.9)
   - DropDown (2.3.13)
   - EasyNotificationBadge (1.2.0)
+  - M13Checkbox (3.4.0)
   - SDWebImage (5.9.0):
     - SDWebImage/Core (= 5.9.0)
   - SDWebImage/Core (5.9.0)
+  - SimpleCheckbox (2.1.0)
+  - UICheckbox (0.0.2)
 
 DEPENDENCIES:
   - AARatingBar
@@ -31,7 +34,10 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.1)
   - DropDown
   - EasyNotificationBadge
+  - M13Checkbox
   - SDWebImage (~> 5.0)
+  - SimpleCheckbox
+  - UICheckbox
 
 SPEC REPOS:
   trunk:
@@ -41,7 +47,10 @@ SPEC REPOS:
     - AlamofireImage
     - DropDown
     - EasyNotificationBadge
+    - M13Checkbox
     - SDWebImage
+    - SimpleCheckbox
+    - UICheckbox
 
 SPEC CHECKSUMS:
   AARatingBar: 62f56244aaa436c0379dc54e398e90d337f097b8
@@ -50,8 +59,11 @@ SPEC CHECKSUMS:
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   EasyNotificationBadge: afeb15ed6f9a4262d626a2b745297e96afa26c2e
+  M13Checkbox: 6f59404540ac98ba83a3d1afac335895a40c6a5d
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
+  UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
 
-PODFILE CHECKSUM: a65c758c1d2043fade8266b9a12c2200d0dffabe
+PODFILE CHECKSUM: 2d4a922519d3d75dbc30ec7d7ddeb56e322ff47f
 
 COCOAPODS: 1.9.3

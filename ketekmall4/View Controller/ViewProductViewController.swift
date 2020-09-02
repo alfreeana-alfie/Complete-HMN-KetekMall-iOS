@@ -255,8 +255,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         let review = user.value(forKey: "review") as! [String]
                         //                        let rating = user.value(forKey: "rating") as! [String]
                         
-                        self.ReviewName.text = name[0]
-                        self.Review.text! = review[0]
+                        self.ReviewName.text? = name[0]
+                        self.Review.text? = review[0]
                         self.ReviewImage.setImageWith(URL(string: self.MAIN_PHOTO)!)
                     }
                 }else{
