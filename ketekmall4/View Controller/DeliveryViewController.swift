@@ -10,6 +10,66 @@ import UIKit
 import Alamofire
 
 class DeliveryViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, DeliveryDelegate {
+    
+    @IBOutlet weak var DeliveryView: UICollectionView!
+    @IBOutlet weak var ButtonAdd: UIButton!
+    @IBOutlet weak var ButtonAccept: UIButton!
+    @IBOutlet weak var ButtonCancel: UIButton!
+    
+    var userID: String = ""
+    var itemID: String = ""
+    var Addetail: String = ""
+    
+    var ID: [String] = []
+    var DIVISION: [String] = []
+    var PRICE: [String] = []
+    var DAYS: [String] = []
+    
+    let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single.php"
+    let URL_DELETE_DELIVERY = "https://ketekmall.com/ketekmall/delete_delivery_two.php"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        DeliveryView.delegate = self
+        DeliveryView.dataSource = self
+        
+        ButtonAdd.layer.cornerRadius = 5
+        ButtonAccept.layer.cornerRadius = 5
+        ButtonCancel.layer.cornerRadius = 5
+        
+        let parameters: Parameters=[
+            "item_id": itemID
+        ]
+        
+        Alamofire.request(URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let id = user.value(forKey: "id") as! [String]
+                        let division = user.value(forKey: "division") as! [String]
+                        let price = user.value(forKey: "price") as! [String]
+                        let days = user.value(forKey: "days") as! [String]
+                        
+                        self.ID = id
+                        self.DIVISION = division
+                        self.PRICE = price
+                        self.DAYS = days
+                        
+                        self.DeliveryView.reloadData()
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ID.count
     }
@@ -21,6 +81,10 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         cell.Days.text! = self.DAYS[indexPath.row]
         cell.Price.text! = self.PRICE[indexPath.row]
         
+        cell.EditButton.layer.cornerRadius = 5
+        cell.DeleteButton.layer.cornerRadius = 5
+        
+        cell.delegate = self
         return cell
     }
     
@@ -83,59 +147,6 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
     }
     
     @IBAction func Cancel(_ sender: Any) {
-    }
-    
-    
-    
-    @IBOutlet weak var DeliveryView: UICollectionView!
-    
-    var userID: String = ""
-    var itemID: String = ""
-    var Addetail: String = ""
-    
-    var ID: [String] = []
-    var DIVISION: [String] = []
-    var PRICE: [String] = []
-    var DAYS: [String] = []
-    
-    let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single.php"
-    let URL_DELETE_DELIVERY = "https://ketekmall.com/ketekmall/delete_delivery_two.php"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        DeliveryView.delegate = self
-        DeliveryView.dataSource = self
-        
-        let parameters: Parameters=[
-            "item_id": itemID
-        ]
-        
-        Alamofire.request(URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
-                        
-                        let id = user.value(forKey: "id") as! [String]
-                        let division = user.value(forKey: "division") as! [String]
-                        let price = user.value(forKey: "price") as! [String]
-                        let days = user.value(forKey: "days") as! [String]
-                        
-                        self.ID = id
-                        self.DIVISION = division
-                        self.PRICE = price
-                        self.DAYS = days
-                        
-                        self.DeliveryView.reloadData()
-                    }
-                }else{
-                    print("FAILED")
-                }
-                
-        }
+         _ = navigationController?.popViewController(animated: true)
     }
 }

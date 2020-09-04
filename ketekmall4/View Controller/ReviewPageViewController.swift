@@ -12,7 +12,9 @@ import Alamofire
 class ReviewPageViewController: UIViewController {
     
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_remarks_done.php"
-
+    let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_received.php"
+    let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
+    
     var itemID = ""
     var USERID = ""
     var ORDERID: String = ""
@@ -40,6 +42,7 @@ class ReviewPageViewController: UIViewController {
     @IBOutlet weak var SubTotal: UILabel!
     @IBOutlet weak var ShippingTotal: UILabel!
     @IBOutlet weak var GrandTotal: UILabel!
+    @IBOutlet weak var ButtonReceived: UIButton!
     
     @IBAction func Received(_ sender: Any) {
         let parameters: Parameters=[
@@ -54,6 +57,8 @@ class ReviewPageViewController: UIViewController {
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         print("SUCCESS")
                         
+                        self.getSellerDetails(SellerID: self.SELLERID, OrderID: self.ORDERID)
+                        
                         let ReviewProduct = self.storyboard!.instantiateViewController(identifier: "AddReviewViewController") as! AddReviewViewController                        
                         ReviewProduct.USERID = self.USERID
                         ReviewProduct.ITEMID = self.itemID
@@ -64,7 +69,50 @@ class ReviewPageViewController: UIViewController {
                     }
                 }
         }
-    }    
+    }
+    
+    func getSellerDetails(SellerID: String, OrderID: String){
+        let parameters: Parameters=[
+            "id": SELLERID,
+        ]
+        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        let SellerEmail = user.value(forKey: "email") as! [String]
+                        
+//                        self.SellerEmail = SellerEmail[0]
+                        
+                        self.sendEmail(Email: SellerEmail[0], OrderID: OrderID)
+                    }
+                }
+        }
+    }
+    
+    func sendEmail(Email: String, OrderID: String){
+        let parameters: Parameters=[
+            "email": Email,
+            "order_id": OrderID
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_SEND, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+//                        let user = jsonData.value(forKey: "read") as! NSArray
+                        print("SENT")
+                    }
+                }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,5 +131,8 @@ class ReviewPageViewController: UIViewController {
         SubTotal.text! = PRICE
         ShippingTotal.text! = SHIPPINGTOTAL
         GrandTotal.text! = PRICE
+        
+        ButtonReceived.layer.cornerRadius = 5
+        
     }
 }

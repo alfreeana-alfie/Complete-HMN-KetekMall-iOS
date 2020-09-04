@@ -14,8 +14,13 @@ class LoginViewController: UIViewController {
     let URL_LOGIN = "https://ketekmall.com/ketekmall/login.php";
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php";
 
+    @IBOutlet weak var Border: UIView!
     @IBOutlet weak var EmailField: UITextField!
     @IBOutlet weak var PasswordField: UITextField!
+    @IBOutlet weak var LoginStyle: UIButton!
+    @IBOutlet weak var EmailImage: UIImageView!
+    @IBOutlet weak var PasswordImage: UIImageView!
+    
     
     @IBAction func Login(_ sender: Any) {
         let parameters: Parameters=[
@@ -68,5 +73,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        EmailImage.layer.cornerRadius = 5
+        PasswordImage.layer.cornerRadius = 5
+        Border.layer.cornerRadius = 2
+        LoginStyle.layer.cornerRadius = 20
     }
 }

@@ -17,6 +17,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done.php";
     let URL_CANCEL = "https://ketekmall.com/ketekmall/edit_order.php";
+    let URL_SEND = "https://ketekmall.com/ketekmall/edit_order.php";
     let Main_Photo = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
     
     var userID: String = ""
@@ -33,6 +34,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var delivery_price: String = ""
     var delivery_date: String = ""
     var Seller_ID: String = ""
+    
+    var SellerEmail:String = ""
     
     var OrderID: [String] = []
     var ad_Detail: [String] = []
@@ -122,16 +125,60 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.OrderPlaced.text! = "Order Placed on " + ItemOrderPlaced[indexPath.row]
         cell.ShipPlaced.text! = "Shipped out to " + ItemShipPlaced[indexPath.row]
         cell.Status.text! = ItemStatus[indexPath.row]
-        
+        cell.ButtonView.layer.cornerRadius = 5
+        cell.ButtonReject.layer.cornerRadius = 5
         cell.delegate = self
         return cell
     }
+    
+    func getSellerDetails(SellerID: String, OrderID: String){
+            let parameters: Parameters=[
+                "id": SellerID,
+            ]
+            Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value{
+                        let jsonData = result as! NSDictionary
+                        
+                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            let user = jsonData.value(forKey: "read") as! NSArray
+                            let SellerEmail = user.value(forKey: "email") as! [String]
+                            
+                            self.SellerEmail = SellerEmail[0]
+                            
+                            self.sendEmail(Email: self.SellerEmail, OrderID: OrderID)
+                        }
+                    }
+            }
+        }
+        
+        func sendEmail(Email: String, OrderID: String){
+            let parameters: Parameters=[
+                "email": Email,
+                "order_id": OrderID
+            ]
+            
+            //Sending http post request
+            Alamofire.request(URL_SEND, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value{
+                        let jsonData = result as! NSDictionary
+                        
+                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            let user = jsonData.value(forKey: "read") as! NSArray
+                        }
+                    }
+            }
+        }
     
     func btnREJECT(cell: MyBuyingCollectionViewCell) {
         guard let indexPath = self.MyBuyingView.indexPath(for: cell) else{
             return
         }
-        
+        let Seller_ID = self.seller_id[indexPath.row]
+        let Order_ID = self.OrderID[indexPath.row]
         let Order_Date = self.OrderDate[indexPath.row]
         let Remarks = "Cancel"
         
@@ -141,20 +188,15 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                     "remarks": Remarks,
                     "status": Remarks
                 ]
-                
-                //Sending http post request
                 Alamofire.request(URL_CANCEL, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-                        //printing response
-        //                print(response)
-                        
-                        //getting the json value from the server
                         if let result = response.result.value{
                             let jsonData = result as! NSDictionary
                             
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 print("SUCCESS")
+                                self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)
                             }
                         }
                 }

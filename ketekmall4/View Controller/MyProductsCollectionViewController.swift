@@ -11,7 +11,7 @@ import Alamofire
 import SDWebImage
 
 class MyProductsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyProductDelegate{
-
+    
     var userID: String = ""
     let URL_READ = "https://ketekmall.com/ketekmall/readuser.php";
     let URL_REMOVE = "https://ketekmall.com/ketekmall/delete_item.php";
@@ -27,20 +27,20 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     var ItemPhoto: [String] = []
     var ItemID: [String] = []
     
-        var MAINCATE: [String] = []
-        var SUBCATE: [String] = []
-        var BRAND: [String] = []
-        var INNER: [String] = []
-        var STOCK: [String] = []
-        var DESC: [String] = []
-        var MAXORDER: [String] = []
-        var DIVISION: [String] = []
+    var MAINCATE: [String] = []
+    var SUBCATE: [String] = []
+    var BRAND: [String] = []
+    var INNER: [String] = []
+    var STOCK: [String] = []
+    var DESC: [String] = []
+    var MAXORDER: [String] = []
+    var DIVISION: [String] = []
     //    var RATING: [String] = []
-//        var ITEMID: String = ""
-//        var ADDETAIL: String = ""
-//        var PRICE: String = ""
-//        var PHOTO: String = ""
-//        var DISTRICT: [String] = []
+    //        var ITEMID: String = ""
+    //        var ADDETAIL: String = ""
+    //        var PRICE: String = ""
+    //        var PHOTO: String = ""
+    //        var DISTRICT: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,17 +75,17 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         
                         let Main_Cate = user.value(forKey: "main_category") as! [String]
                         let Sub_Cate = user.value(forKey: "sub_category") as! [String]
-//                        let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
+                        //                        let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
                         let brand_mat = user.value(forKey: "brand_material") as! [String]
                         let inner_mat = user.value(forKey: "inner_material") as! [String]
                         let stock = user.value(forKey: "stock") as! [String]
                         let description = user.value(forKey: "description") as! [String]
                         let max_order = user.value(forKey: "max_order") as! [String]
-//                        let rating = user.value(forKey: "rating") as! [String]
-//                        let Price = user.value(forKey: "price") as! [String]
-//                        let Photo = user.value(forKey: "photo") as! [String]
+                        //                        let rating = user.value(forKey: "rating") as! [String]
+                        //                        let Price = user.value(forKey: "price") as! [String]
+                        //                        let Photo = user.value(forKey: "photo") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
-//                        let District = user.value(forKey: "district") as! [String]
+                        //                        let District = user.value(forKey: "district") as! [String]
                         
                         self.ItemID = ID
                         self.ad_Detail = AdDetail
@@ -101,7 +101,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         self.DESC = description
                         self.DIVISION = Division
                         
-//                        print(Photo)
+
                         self.productView.reloadData()
                         
                     }
@@ -124,7 +124,12 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
         cell.ItemPrice.text! = "MYR" + self.price[indexPath.row]
         cell.ItemLocation.text! = self.location[indexPath.row]
-        print(self.ItemPhoto[indexPath.row])
+        cell.Btn_Edit.layer.cornerRadius = 5
+        cell.Btn_Edit.layer.borderWidth = 1
+        cell.Btn_Boost.layer.cornerRadius = 5
+        cell.Btn_Boost.layer.borderWidth = 1
+        cell.Btn_Cancel.layer.cornerRadius = 5
+        cell.Btn_Cancel.layer.borderWidth = 1
         
         cell.delegate = self
         return cell
@@ -164,7 +169,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         }
         
         let ProductView = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController
-//        let ID = self.ItemID[indexPath.row]
+        //        let ID = self.ItemID[indexPath.row]
         ProductView.USERID = userID
         ProductView.ITEMID = self.ItemID[indexPath.row]
         ProductView.ADDETAIL = self.ad_Detail[indexPath.row]

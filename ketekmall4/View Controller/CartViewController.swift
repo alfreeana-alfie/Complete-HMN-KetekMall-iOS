@@ -11,6 +11,86 @@ import Alamofire
 import SimpleCheckbox
 
 class CartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartDelegate {
+    
+    let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
+    let URL_DELETE_CART = "https://ketekmall.com/ketekmall/delete_cart.php"
+    let URL_ADD_CART_TEMP = "https://ketekmall.com/ketekmall/add_to_cart_temp.php"
+    let URL_READ_CART_TEMP = "https://ketekmall.com/ketekmall/readcart_temp.php"
+    let URL_DELETE_CART_TEMP = "https://ketekmall.com/ketekmall/delete_cart_temp.php"
+    
+    var ID: [String] = []
+    var MAINCATE: [String] = []
+    var SUBCATE: [String] = []
+    var ADDETAIL: [String] = []
+    var PRICE: [String] = []
+    var DIVISION: [String] = []
+    var DISTRICT: [String] = []
+    var PHOTO: [String] = []
+    var SELLERID: [String] = []
+    var ITEMID: [String] = []
+    var QUANTITY: [String] = []
+    var SUB: [Double] = []
+    var Quan: String = ""
+    var userID: String = ""
+    var sub: Double = 0.00
+    
+    @IBOutlet weak var CartView: UICollectionView!
+    @IBOutlet weak var GrandTotal: UILabel!
+    @IBOutlet weak var ButtonCheckout: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        CartView.delegate = self
+        CartView.dataSource = self
+        
+        ButtonCheckout.layer.cornerRadius = 5
+        
+        ViewList()
+    }
+    
+    func ViewList(){
+        let parameters: Parameters=[
+            "customer_id": userID,
+        ]
+        Alamofire.request(URL_READ_CART, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let ID = user.value(forKey: "id") as! [String]
+                        let maincate = user.value(forKey: "main_category") as! [String]
+                        let subcate = user.value(forKey: "sub_category") as! [String]
+                        let AdDetail = user.value(forKey: "ad_detail") as! [String]
+                        let Price = user.value(forKey: "price") as! [String]
+                        let division = user.value(forKey: "division") as! [String]
+                        let district = user.value(forKey: "district") as! [String]
+                        let Photo = user.value(forKey: "photo") as! [String]
+                        let seller_id = user.value(forKey: "seller_id") as! [String]
+                        let item_id = user.value(forKey: "item_id") as! [String]
+                        
+                        
+                        self.ID = ID
+                        self.MAINCATE = maincate
+                        self.SUBCATE = subcate
+                        self.ADDETAIL = AdDetail
+                        self.PRICE = Price
+                        self.DIVISION = division
+                        self.DISTRICT = district
+                        self.PHOTO = Photo
+                        self.SELLERID = seller_id
+                        self.ITEMID = item_id
+                        
+                        self.CartView.reloadData()
+                    }
+                }
+        }
+    }
+    
     func onDeleteClick(cell: CartCollectionViewCell) {
         guard let indexPath = self.CartView.indexPath(for: cell) else{
             return
@@ -20,18 +100,10 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             "cart_id": self.ID[indexPath.row],
             
         ]
-        
-        //Sending http post request
         Alamofire.request(URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-//                print(response)
-                
-                //getting the json value from the server
                 if let result = response.result.value {
-                    
-                    //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
@@ -54,6 +126,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.CheckBOx.checkmarkStyle = .tick
         cell.CheckBOx.borderStyle = .circle
+        cell.CheckBOx.layer.cornerRadius = 5
         cell.SubTotal.text! = self.PRICE[indexPath.row]
         
         cell.CheckBOx.valueChanged = { (isChecked) in
@@ -64,20 +137,10 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 Alamofire.request(self.URL_DELETE_CART_TEMP, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-//                        print(response)
-                        
-                        //getting the json value from the server
                         if let result = response.result.value {
-                            
-                            //converting it as NSDictionary
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
-//                            self.SUB.remove(at: in)
-//                            print("%.2f" , self.SUB)
-//                            for pair in self.SUB.enumerated() {
-//                                self.sub -= pair.element//listPrice[pair.index]
-//                            }
-//                            self.GrandTotal.text! = String(format: "%.2f" , self.sub)
+                            
                         }
                 }
             }else{
@@ -101,23 +164,9 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 Alamofire.request(self.URL_ADD_CART_TEMP, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-                        //printing response
-//                        print(response)
-                        
-                        //getting the json value from the server
                         if let result = response.result.value {
-                            
-                            //converting it as NSDictionary
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
-
-//                            self.SUB.append(Double(self.PRICE[indexPath.row])! * Double(cell.Quantity.text!)!)
-//                            print("%.2f" , self.SUB)
-//                            
-//                            for pair in self.SUB.enumerated() {
-//                                self.sub += pair.element//listPrice[pair.index]
-//                            }
-//                            self.GrandTotal.text! = String(format: "%.2f" , self.sub)
                         }
                 }
             }
@@ -125,7 +174,6 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         cell.delegate = self
-        
         cell.callback = { stepper in
             self.Quan = stepper
             
@@ -133,91 +181,19 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             sub = Double(self.PRICE[indexPath.row])! * Double(stepper)!
             cell.SubTotal.text! = String(sub)
         }
+        cell.Stepper.transform = CGAffineTransform(scaleX: 1.75, y: 1.0);
+        cell.Stepper.layer.cornerRadius = 5
         return cell
     }
     
     func OnAddClick(cell: CartCollectionViewCell) {}
     
-    @IBOutlet weak var GrandTotal: UILabel!
+    
     @IBAction func Checkout(_ sender: Any) {
         let boostAd = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
         boostAd.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(boostAd, animated: true)
         }
-    }
-    
-    let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
-    let URL_DELETE_CART = "https://ketekmall.com/ketekmall/delete_cart.php"
-    let URL_ADD_CART_TEMP = "https://ketekmall.com/ketekmall/add_to_cart_temp.php"
-    let URL_READ_CART_TEMP = "https://ketekmall.com/ketekmall/readcart_temp.php"
-    let URL_DELETE_CART_TEMP = "https://ketekmall.com/ketekmall/delete_cart_temp.php"
-
-    var ID: [String] = []
-    var MAINCATE: [String] = []
-    var SUBCATE: [String] = []
-    var ADDETAIL: [String] = []
-    var PRICE: [String] = []
-    var DIVISION: [String] = []
-    var DISTRICT: [String] = []
-    var PHOTO: [String] = []
-    var SELLERID: [String] = []
-    var ITEMID: [String] = []
-    var QUANTITY: [String] = []
-    var SUB: [Double] = []
-    var Quan: String = ""
-    var userID: String = ""
-    var sub: Double = 0.00
-    
-    @IBOutlet weak var CartView: UICollectionView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        CartView.delegate = self
-        CartView.dataSource = self
-        
-        let parameters: Parameters=[
-                    "customer_id": userID,
-                ]
-                
-                //Sending http post request
-                Alamofire.request(URL_READ_CART, method: .post, parameters: parameters).responseJSON
-                    {
-                        response in
-                        if let result = response.result.value{
-                            let jsonData = result as! NSDictionary
-                            
-                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                                let user = jsonData.value(forKey: "read") as! NSArray
-                                
-                                let ID = user.value(forKey: "id") as! [String]
-                                let maincate = user.value(forKey: "main_category") as! [String]
-                                let subcate = user.value(forKey: "sub_category") as! [String]
-                                let AdDetail = user.value(forKey: "ad_detail") as! [String]
-                                let Price = user.value(forKey: "price") as! [String]
-                                let division = user.value(forKey: "division") as! [String]
-                                let district = user.value(forKey: "district") as! [String]
-                                let Photo = user.value(forKey: "photo") as! [String]
-                                let seller_id = user.value(forKey: "seller_id") as! [String]
-                                let item_id = user.value(forKey: "item_id") as! [String]
-                                
-                                
-                                self.ID = ID
-                                self.MAINCATE = maincate
-                                self.SUBCATE = subcate
-                                self.ADDETAIL = AdDetail
-                                self.PRICE = Price
-                                self.DIVISION = division
-                                self.DISTRICT = district
-                                self.PHOTO = Photo
-                                self.SELLERID = seller_id
-                                self.ITEMID = item_id
-
-                                self.CartView.reloadData()
-                                
-                            }
-                        }
-                }
     }
 }

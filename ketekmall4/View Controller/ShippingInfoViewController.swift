@@ -9,32 +9,16 @@
 import UIKit
 import Alamofire
 class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DEL_ID.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShippingInfoCollectionViewCell", for: indexPath) as! ShippingInfoCollectionViewCell
-        
-        cell.Division.text! = self.DIVISION[indexPath.row]
-        cell.Days.text! = "Delivered in " + self.DAYS[indexPath.row] + " Days"
-        cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
-        
-        return cell
-    }
-    
-    
+
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single.php"
     
     var ITEMID: String = ""
-    
     var DEL_ID: [String] = []
     var DIVISION: [String] = []
     var DAYS: [String] = []
     var PRICE: [String] = []
     
     @IBOutlet weak var DeliveryView: UICollectionView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,5 +59,19 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
                 }
                 
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return DEL_ID.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShippingInfoCollectionViewCell", for: indexPath) as! ShippingInfoCollectionViewCell
+        cell.layer.cornerRadius = 5
+        cell.Division.text! = self.DIVISION[indexPath.row]
+        cell.Days.text! = "Delivered in " + self.DAYS[indexPath.row] + " Days"
+        cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
+        
+        return cell
     }
 }

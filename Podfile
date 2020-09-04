@@ -14,6 +14,7 @@ pod 'AARatingBar'
 pod 'M13Checkbox'
 pod 'UICheckbox'
 pod 'SimpleCheckbox'
+pod 'GoogleSignIn'
  
   # Pods for ketekmall4
 

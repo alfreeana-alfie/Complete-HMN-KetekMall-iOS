@@ -78,7 +78,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
         let NEWIm = self.Item_Photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-        
+        cell.ButtonCancel.layer.cornerRadius = 5
         cell.AdDetail.text! = ad_Detail[indexPath.row]
         cell.Price.text! = item_price[indexPath.row]
         let shockingStat = item_shocking[indexPath.row]

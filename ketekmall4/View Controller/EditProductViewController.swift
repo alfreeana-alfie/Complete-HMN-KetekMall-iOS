@@ -18,6 +18,49 @@ class EditProductViewController: UIViewController {
     @IBOutlet weak var UploadImage: UIButton!
     @IBOutlet weak var Category: UITextField!
     
+    
+    @IBOutlet weak var Price: UITextField!
+    @IBOutlet weak var Division: UITextField!
+    @IBOutlet weak var District: UITextField!
+    @IBOutlet weak var Max_Order: UITextField!
+    @IBOutlet weak var ButtonAccept: UIButton!
+    @IBOutlet weak var ButtonCancel: UIButton!
+    
+    var MAINCATE: String = ""
+    var SUBCATE: String = ""
+    var BRAND: String = ""
+    var INNER: String = ""
+    var STOCK: String = ""
+    var DESC: String = ""
+    var MAXORDER: String = ""
+    var DIVISION: String = ""
+    var ITEMID: String = ""
+    var ADDETAIL: String = ""
+    var PRICE: String = ""
+    var PHOTO: String = ""
+    var DISTRICT: String = ""
+    var USERID: String = ""
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Category.text! = MAINCATE
+        Price.text! = PRICE
+        Division.text! = DIVISION
+        District.text! = DISTRICT
+        Max_Order.text! = MAXORDER
+        
+        ButtonAccept.layer.cornerRadius = 5
+        ButtonCancel.layer.cornerRadius = 5
+        UploadImage.layer.cornerRadius = 5
+        
+        ItemImage.isUserInteractionEnabled = true
+        let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
+        
+        ItemImage.addGestureRecognizer(FindClick)
+    }
+    
     @IBAction func AdDetail(_ sender: Any) {
         let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
         AdDetail.USERID = USERID
@@ -38,25 +81,6 @@ class EditProductViewController: UIViewController {
             navigator.pushViewController(AdDetail, animated: true)
         }
     }
-    @IBOutlet weak var Price: UITextField!
-    @IBOutlet weak var Division: UITextField!
-    @IBOutlet weak var District: UITextField!
-    @IBOutlet weak var Max_Order: UITextField!
-    
-    var MAINCATE: String = ""
-    var SUBCATE: String = ""
-    var BRAND: String = ""
-    var INNER: String = ""
-    var STOCK: String = ""
-    var DESC: String = ""
-    var MAXORDER: String = ""
-    var DIVISION: String = ""
-    var ITEMID: String = ""
-    var ADDETAIL: String = ""
-    var PRICE: String = ""
-    var PHOTO: String = ""
-    var DISTRICT: String = ""
-    var USERID: String = ""
     
     @IBAction func SetupDelivery(_ sender: Any) {
         let myBuying = self.storyboard!.instantiateViewController(identifier: "DeliveryViewController") as! DeliveryViewController
@@ -130,6 +154,7 @@ class EditProductViewController: UIViewController {
     }
     
     @IBAction func Cancel(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @objc private func uploadToServer(sender: UITapGestureRecognizer) {
@@ -180,19 +205,4 @@ class EditProductViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        Category.text! = MAINCATE
-        Price.text! = PRICE
-        Division.text! = DIVISION
-        District.text! = DISTRICT
-        Max_Order.text! = MAXORDER
-        
-        ItemImage.isUserInteractionEnabled = true
-        let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
-        
-        ItemImage.addGestureRecognizer(FindClick)
-//        print(ADDETAIL)
-    }
 }

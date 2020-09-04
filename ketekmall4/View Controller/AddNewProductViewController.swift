@@ -25,6 +25,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var UploadPhoto: UIImageView!
     
     @IBOutlet weak var UploadImage: UIButton!
+    @IBOutlet weak var ButtonAccept: UIButton!
+    @IBOutlet weak var ButtonCancel: UIButton!
     
     let URL_ADD = "https://ketekmall.com/ketekmall/products/uploadimg.php";
     
@@ -49,6 +51,36 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     var DivisionPicker = UIPickerView()
     var DistrictPicker = UIPickerView()
     var userID: String = ""
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        CategoryPicker.dataSource = self
+        CategoryPicker.delegate = self
+        
+        DivisionPicker.dataSource = self
+        DivisionPicker.delegate = self
+        
+        DistrictPicker.dataSource = self
+        DistrictPicker.delegate = self
+        
+        Category.inputView = CategoryPicker
+        Division.inputView = DivisionPicker
+        District.inputView = DistrictPicker
+        
+        CreateCategoryPicker()
+        CreateDivisionPicker()
+        CreateDistrictPicker()
+        
+        ButtonAccept.layer.cornerRadius = 5
+        ButtonCancel.layer.cornerRadius = 5
+        UploadImage.layer.cornerRadius = 5
+        
+        UploadImage.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
+        
+        navigationItem.title = "Add New Product"
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -167,6 +199,40 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
     }
     
+    func CreateCategoryPicker(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneBtn], animated: true)
+        Category.inputAccessoryView = toolbar
+        Category.inputView = CategoryPicker
+    }
+    
+    func CreateDivisionPicker(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneBtn], animated: true)
+        Division.inputAccessoryView = toolbar
+        Division.inputView = DivisionPicker
+    }
+    
+    func CreateDistrictPicker(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneBtn], animated: true)
+        District.inputAccessoryView = toolbar
+        District.inputView = DistrictPicker
+    }
+    
+    @objc func donePressed(){
+        self.view.endEditing(true)
+    }
+    
     @objc private func selectImage(sender: UITapGestureRecognizer) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -221,25 +287,5 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     @IBAction func Cancel(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        CategoryPicker.dataSource = self
-        CategoryPicker.delegate = self
-        
-        DivisionPicker.dataSource = self
-        DivisionPicker.delegate = self
-        
-        DistrictPicker.dataSource = self
-        DistrictPicker.delegate = self
-        
-        Category.inputView = CategoryPicker
-        Division.inputView = DivisionPicker
-        District.inputView = DistrictPicker
-        
-        UploadImage.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
-        
-        navigationItem.title = "Add New Product"
     }
 }

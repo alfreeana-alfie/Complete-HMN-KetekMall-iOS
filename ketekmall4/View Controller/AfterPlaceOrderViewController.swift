@@ -15,6 +15,8 @@ class AfterPlaceOrderViewController: UIViewController {
     
     var userID: String = ""
     
+    @IBOutlet weak var ButtonShopping: UIButton!
+    
     @IBAction func ContinueShopping(_ sender: Any) {
         let parameters: Parameters=[
             "customer_id": userID
@@ -45,6 +47,7 @@ class AfterPlaceOrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ButtonShopping.layer.cornerRadius = 5
     }
 
 }

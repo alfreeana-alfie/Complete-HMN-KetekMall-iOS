@@ -13,8 +13,10 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet var MySellingView: UICollectionView!
     
-    let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done_two.php";
-    let URL_REJECT = "https://ketekmall.com/ketekmall/edit_order.php";
+    let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done_two.php"
+    let URL_REJECT = "https://ketekmall.com/ketekmall/edit_order.php"
+    let URL_READ_CUSTOMER = "https://ketekmall.com/ketekmall/read_detail.php"
+    let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_reject.php"
     
     var item_photo: [String] = []
     var ad_Detail: [String] = []
@@ -29,6 +31,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     var tracking_no: [String] = []
     
     var userID: String = ""
+    var CustEmail: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +92,49 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     
+    func getCustomerDetails(CustomerID: String, OrderID: String){
+        let parameters: Parameters=[
+            "id": CustomerID,
+        ]
+        Alamofire.request(URL_READ_CUSTOMER, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        let CustomerEmail = user.value(forKey: "email") as! [String]
+                        
+                        self.CustEmail = CustomerEmail[0]
+                        
+                        self.sendEmail(Email: self.CustEmail, OrderID: OrderID)
+                    }
+                }
+        }
+    }
+    
+    func sendEmail(Email: String, OrderID: String){
+        let parameters: Parameters=[
+            "email": Email,
+            "order_id": OrderID
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_SEND, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+//                if let result = response.result.value{
+//                    let jsonData = result as! NSDictionary
+//
+//                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+//                        let user = jsonData.value(forKey: "read") as! NSArray
+//                    }
+//                }
+        }
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return item_orderID.count
     }
@@ -106,6 +152,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        cell.ButtonView.layer.cornerRadius = 5
+        cell.ButtonReject.layer.cornerRadius = 5
         
         cell.delegate = self
         return cell
@@ -116,6 +164,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             return
         }
         
+        let CustEmail = self.customer_id[indexPath.row]
+        let Order_ID = self.item_orderID[indexPath.row]
         let Order_Date = self.order_date[indexPath.row]
         let Remarks = "Reject"
         
@@ -130,14 +180,11 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         Alamofire.request(URL_REJECT, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                //                print(response)
-                
-                //getting the json value from the server
                 if let result = response.result.value{
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.getCustomerDetails(CustomerID: CustEmail, OrderID: Order_ID)
                         print("SUCCESS")
                     }
                 }
@@ -168,4 +215,6 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             navigator.pushViewController(MySelling, animated: true)
         }
     }
+    
+    
 }

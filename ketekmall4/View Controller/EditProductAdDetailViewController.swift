@@ -16,6 +16,8 @@ class EditProductAdDetailViewController: UIViewController {
     @IBOutlet weak var InnerMaterial: UITextField!
     @IBOutlet weak var Stock: UITextField!
     @IBOutlet weak var Description: UITextField!
+    @IBOutlet weak var ButtonAccept: UIButton!
+    @IBOutlet weak var ButtonCancel: UIButton!
     
     var MAINCATE: String = ""
         var SUBCATE: String = ""
@@ -31,6 +33,21 @@ class EditProductAdDetailViewController: UIViewController {
         var PHOTO: String = ""
         var DISTRICT: String = ""
         var USERID: String = ""
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.AdDetail.text! = ADDETAIL
+        self.BrandMaterial.text! = BRAND
+        self.InnerMaterial.text! = INNER
+        self.Stock.text! = STOCK
+        self.Description.text! = DESC
+        
+        ButtonAccept.layer.cornerRadius = 5
+        ButtonCancel.layer.cornerRadius = 5
+    }
     
     @IBAction func Accept(_ sender: Any) {
         let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController
@@ -54,16 +71,7 @@ class EditProductAdDetailViewController: UIViewController {
     }
     
     @IBAction func Cancel(_ sender: Any) {
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.AdDetail.text! = ADDETAIL
-        self.BrandMaterial.text! = BRAND
-        self.InnerMaterial.text! = INNER
-        self.Stock.text! = STOCK
-        self.Description.text! = DESC
+         _ = navigationController?.popViewController(animated: true)
     }
 
 }

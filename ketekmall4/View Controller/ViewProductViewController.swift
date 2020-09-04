@@ -34,77 +34,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var ViewSameShop: UILabel!
     @IBOutlet weak var SameShopView: UICollectionView!
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ITEMNAME.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FromSameShopCollectionViewCell", for: indexPath) as! FromSameShopCollectionViewCell
-        
-        cell.ItemName.text! = self.ITEMNAME[indexPath.row]
-        cell.ItemPrice.text! = self.ITEMPRICE[indexPath.row]
-        
-        return cell
-    }
-    
-    func onViewClick(cell: FromSameShopCollectionViewCell) {
-        guard let indexPath = self.SameShopView.indexPath(for: cell) else{
-            return
-        }
-        
-        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
-        viewProduct.USERID = USERID
-        viewProduct.ItemID = self.ITEMID_SAMESHOP[indexPath.row]
-        viewProduct.SELLERID = self.SELLERID
-        viewProduct.MAINCATE = self.MAINCATE_SAMESHOP[indexPath.row]
-        viewProduct.SUBCATE = self.SUBCATE_SAMESHOP[indexPath.row]
-        viewProduct.ADDETAIL = self.ADDETAIL_SAMESHOP[indexPath.row]
-        viewProduct.BRAND = self.BRAND_SAMESHOP[indexPath.row]
-        viewProduct.INNER = self.INNER_SAMESHOP[indexPath.row]
-        viewProduct.STOCK = self.STOCK_SAMESHOP[indexPath.row]
-        viewProduct.DESC = self.DESC_SAMESHOP[indexPath.row]
-        viewProduct.PRICE = self.PRICE_SAMESHOP[indexPath.row]
-        viewProduct.PHOTO = self.PHOTO_SAMESHOP[indexPath.row]
-        viewProduct.DIVISION = self.DIVISION_SAMESHOP[indexPath.row]
-        viewProduct.DISTRICT = self.DISTRICT_SAMESHOP[indexPath.row]
-        if let navigator = self.navigationController {
-            navigator.pushViewController(viewProduct, animated: true)
-        }
-    }
-    
-    @IBAction func AddToCart(_ sender: Any) {
-        
-        let parameters: Parameters=[
-            "seller_id": SELLERID,
-            "item_id": ItemID,
-            "customer_id": USERID,
-            "main_category": MAINCATE,
-            "sub_category": SUBCATE,
-            "ad_detail": ADDETAIL,
-            "price": PRICE,
-            "quantity": "1",
-            "division": DIVISION,
-            "district": DISTRICT,
-            "photo": PHOTO
-        ]
-        
-        //Sending http post request
-        Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                //printing response
-                //                print(response)
-                
-                //getting the json value from the server
-                if let result = response.result.value {
-                    
-                    //converting it as NSDictionary
-                    let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
-                    
-                }
-        }
-    }
     
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
     let URL_READ_SELLER = "https://ketekmall.com/ketekmall/read_order_done_seller.php"
@@ -169,6 +99,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         
         SameShopView.delegate = self
         SameShopView.dataSource = self
+        
+        ViewButton.layer.cornerRadius = 5
         
         let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
@@ -440,6 +372,78 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     print("Install Whatsapp")
                 }
             }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ITEMNAME.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FromSameShopCollectionViewCell", for: indexPath) as! FromSameShopCollectionViewCell
+        
+        cell.ItemName.text! = self.ITEMNAME[indexPath.row]
+        cell.ItemPrice.text! = self.ITEMPRICE[indexPath.row]
+        cell.ButtonView.layer.cornerRadius = 5
+        return cell
+    }
+    
+    func onViewClick(cell: FromSameShopCollectionViewCell) {
+        guard let indexPath = self.SameShopView.indexPath(for: cell) else{
+            return
+        }
+        
+        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+        viewProduct.USERID = USERID
+        viewProduct.ItemID = self.ITEMID_SAMESHOP[indexPath.row]
+        viewProduct.SELLERID = self.SELLERID
+        viewProduct.MAINCATE = self.MAINCATE_SAMESHOP[indexPath.row]
+        viewProduct.SUBCATE = self.SUBCATE_SAMESHOP[indexPath.row]
+        viewProduct.ADDETAIL = self.ADDETAIL_SAMESHOP[indexPath.row]
+        viewProduct.BRAND = self.BRAND_SAMESHOP[indexPath.row]
+        viewProduct.INNER = self.INNER_SAMESHOP[indexPath.row]
+        viewProduct.STOCK = self.STOCK_SAMESHOP[indexPath.row]
+        viewProduct.DESC = self.DESC_SAMESHOP[indexPath.row]
+        viewProduct.PRICE = self.PRICE_SAMESHOP[indexPath.row]
+        viewProduct.PHOTO = self.PHOTO_SAMESHOP[indexPath.row]
+        viewProduct.DIVISION = self.DIVISION_SAMESHOP[indexPath.row]
+        viewProduct.DISTRICT = self.DISTRICT_SAMESHOP[indexPath.row]
+        if let navigator = self.navigationController {
+            navigator.pushViewController(viewProduct, animated: true)
+        }
+    }
+    
+    @IBAction func AddToCart(_ sender: Any) {
+        
+        let parameters: Parameters=[
+            "seller_id": SELLERID,
+            "item_id": ItemID,
+            "customer_id": USERID,
+            "main_category": MAINCATE,
+            "sub_category": SUBCATE,
+            "ad_detail": ADDETAIL,
+            "price": PRICE,
+            "quantity": "1",
+            "division": DIVISION,
+            "district": DISTRICT,
+            "photo": PHOTO
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                //printing response
+                //                print(response)
+                
+                //getting the json value from the server
+                if let result = response.result.value {
+                    
+                    //converting it as NSDictionary
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    
+                }
         }
     }
     

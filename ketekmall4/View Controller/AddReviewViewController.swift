@@ -15,6 +15,51 @@ class AddReviewViewController: UIViewController {
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     
     @IBOutlet weak var Review: UITextView!
+    @IBOutlet weak var ButtonSubmit: UIButton!
+    @IBOutlet weak var ButtonCancel: UIButton!
+    
+    
+    var USERNAME: String = ""
+    var USERID: String = ""
+    var SELLERID: String = ""
+    var ITEMID: String = ""
+    var RATING: String = "3"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        getUserDetails()
+        
+        ButtonSubmit.layer.cornerRadius = 5
+        ButtonCancel.layer.cornerRadius = 5
+        
+    }
+    
+    func getUserDetails(){
+        let parameters: Parameters=[
+            "id": USERID
+        ]
+        
+        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let name = user.value(forKey: "name") as! [String]
+                        
+                        self.USERNAME = name[0]
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
     @IBAction func Submit(_ sender: Any) {
         let parameters: Parameters=[
             "seller_id": SELLERID,
@@ -46,42 +91,6 @@ class AddReviewViewController: UIViewController {
     }
     
     @IBAction func Cancel(_ sender: Any) {
-    }
-    
-    var USERNAME: String = ""
-    var USERID: String = ""
-    var SELLERID: String = ""
-    var ITEMID: String = ""
-    var RATING: String = "3"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        getUserDetails()
-    }
-    
-    func getUserDetails(){
-        let parameters: Parameters=[
-            "id": USERID
-        ]
-        
-        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
-                        
-                        let name = user.value(forKey: "name") as! [String]
-                        
-                        self.USERNAME = name[0]
-                    }
-                }else{
-                    print("FAILED")
-                }
-                
-        }
+         _ = navigationController?.popViewController(animated: true)
     }
 }

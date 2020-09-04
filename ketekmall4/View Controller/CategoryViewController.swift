@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate {
+class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate, UISearchBarDelegate {
     func onAddToFav(cell: CategoryCollectionViewCell) {
         guard let indexPath = self.CategoryView.indexPath(for: cell) else{
             return
@@ -33,17 +33,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             "photo": self.PHOTO[indexPath.row]
         ]
         
-        //Sending http post request
         Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-//                print(response)
-                
-                //getting the json value from the server
                 if let result = response.result.value {
-                    
-                    //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
@@ -70,17 +63,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             "photo": self.PHOTO[indexPath.row]
         ]
         
-        //Sending http post request
         Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-//                print(response)
-                
-                //getting the json value from the server
                 if let result = response.result.value {
-                    
-                    //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
@@ -100,8 +86,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
-        cell.Price.text! = self.PRICE[indexPath.row]
+        cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
         cell.District.text! = self.DISTRICT[indexPath.row]
+        cell.ButtonView.layer.cornerRadius = 5
         
         cell.delegate = self
         return cell
@@ -132,7 +119,36 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    @IBAction func PriceUp(_ sender: Any) {
+        ButtonPriceDown.isHidden = false
+        ButtonPriceUp.isHidden = true
+        ITEMID.sort()
+        PRICE.sort()
+        
+    }
+    
+    @IBAction func PriceDown(_ sender: Any) {
+        ButtonPriceDown.isHidden = true
+        ButtonPriceUp.isHidden = false
+    }
+    
+    
+    @IBOutlet weak var ButtonPriceUp: UIButton!
+    @IBOutlet weak var ButtonPriceDown: UIButton!
     @IBOutlet weak var CategoryView: UICollectionView!
+    @IBAction func Filter(_ sender: Any) {
+        let filter = self.storyboard!.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
+        filter.DivisionFilter = DivisionFilter
+        filter.DistricFilter = DistricFilter
+        filter.URL_READ = URL_READ
+        filter.URL_FILTER_DIVISION = URL_FILTER_DIVISION
+        filter.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT
+        filter.URL_SEARCH = URL_SEARCH
+        filter.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION
+        if let navigator = self.navigationController {
+            navigator.pushViewController(filter, animated: true)
+        }
+    }
     
     var UserID: String = ""
     var URL_READ: String = ""
@@ -140,6 +156,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var URL_FILTER_DISTRICT: String = ""
     var URL_FILTER_DIVISION: String = ""
     var URL_FILTER_SEARCH_DIVISION: String = ""
+    
+    var DivisionFilter: String = ""
+    var DistricFilter: String = ""
     
     let URL_ADD_FAV = "https://ketekmall.com/ketekmall/add_to_fav.php"
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
@@ -159,14 +178,242 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PRICE: [String] = []
     var PHOTO: [String] = []
     var DISTRICT: [String] = []
-
+    
+    @IBOutlet weak var SearchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SearchBar.delegate = self
         
         CategoryView.delegate = self
         CategoryView.dataSource = self
         
-        ViewList()
+        if(DivisionFilter.isEmpty && DistricFilter.isEmpty){
+            ViewList()
+        }else if(!DivisionFilter.isEmpty && DistricFilter.isEmpty){
+            Filter_Division()
+        }else if(!DivisionFilter.isEmpty && !DistricFilter.isEmpty){
+            Filter_District()
+        }
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(DivisionFilter.isEmpty){
+            Search(SearchValue: searchText)
+            
+        }else{
+            Search(SearchValue: searchText, Division: DivisionFilter)
+        }
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text! = ""
+    }
+    
+    func Search(SearchValue: String, Division: String){
+        let parameters: Parameters=[
+            "ad_detail": SearchValue,
+            "division": Division
+        ]
+        
+        Alamofire.request(URL_FILTER_SEARCH_DIVISION, method: .post, parameters: parameters).responseJSON
+                   {
+                       response in
+                       if let result = response.result.value{
+                           let jsonData = result as! NSDictionary
+                           
+                           if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                               let user = jsonData.value(forKey: "read") as! NSArray
+                               
+                               let ItemID = user.value(forKey: "id") as! [String]
+                               let Seller_ID = user.value(forKey: "user_id") as! [String]
+                               let Main_Cate = user.value(forKey: "main_category") as! [String]
+                               let Sub_Cate = user.value(forKey: "sub_category") as! [String]
+                               let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
+                               let brand_mat = user.value(forKey: "brand_material") as! [String]
+                               let inner_mat = user.value(forKey: "inner_material") as! [String]
+                               let stock = user.value(forKey: "stock") as! [String]
+                               let description = user.value(forKey: "description") as! [String]
+                               let rating = user.value(forKey: "rating") as! [String]
+                               let Price = user.value(forKey: "price") as! [String]
+                               let Photo = user.value(forKey: "photo") as! [String]
+                               let Division = user.value(forKey: "division") as! [String]
+                               let District = user.value(forKey: "district") as! [String]
+                               
+                               self.ITEMID = ItemID
+                               self.SELLERID = Seller_ID
+                               self.MAINCATE = Main_Cate
+                               self.SUBCATE = Sub_Cate
+                               self.ADDETAIL = Ad_Detail
+                               self.BRAND = brand_mat
+                               self.INNER = inner_mat
+                               self.STOCK = stock
+                               self.DESC = description
+                               self.PRICE = Price
+                               self.PHOTO = Photo
+                               self.RATING = rating
+                               self.DIVISION = Division
+                               self.DISTRICT = District
+                               
+                               self.CategoryView.reloadData()
+                           }
+                       }
+               }
+    }
+    
+    func Search(SearchValue: String){
+        let parameters: Parameters=[
+            "ad_detail": SearchValue
+        ]
+        
+        Alamofire.request(URL_SEARCH, method: .post, parameters: parameters).responseJSON
+                   {
+                       response in
+                       if let result = response.result.value{
+                           let jsonData = result as! NSDictionary
+                           
+                           if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                               let user = jsonData.value(forKey: "read") as! NSArray
+                               
+                               let ItemID = user.value(forKey: "id") as! [String]
+                               let Seller_ID = user.value(forKey: "user_id") as! [String]
+                               let Main_Cate = user.value(forKey: "main_category") as! [String]
+                               let Sub_Cate = user.value(forKey: "sub_category") as! [String]
+                               let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
+                               let brand_mat = user.value(forKey: "brand_material") as! [String]
+                               let inner_mat = user.value(forKey: "inner_material") as! [String]
+                               let stock = user.value(forKey: "stock") as! [String]
+                               let description = user.value(forKey: "description") as! [String]
+                               let rating = user.value(forKey: "rating") as! [String]
+                               let Price = user.value(forKey: "price") as! [String]
+                               let Photo = user.value(forKey: "photo") as! [String]
+                               let Division = user.value(forKey: "division") as! [String]
+                               let District = user.value(forKey: "district") as! [String]
+                               
+                               self.ITEMID = ItemID
+                               self.SELLERID = Seller_ID
+                               self.MAINCATE = Main_Cate
+                               self.SUBCATE = Sub_Cate
+                               self.ADDETAIL = Ad_Detail
+                               self.BRAND = brand_mat
+                               self.INNER = inner_mat
+                               self.STOCK = stock
+                               self.DESC = description
+                               self.PRICE = Price
+                               self.PHOTO = Photo
+                               self.RATING = rating
+                               self.DIVISION = Division
+                               self.DISTRICT = District
+                               
+                               self.CategoryView.reloadData()
+                            
+                           }
+                       }
+               }
+    }
+    
+    func Filter_Division(){
+        let parameters: Parameters=[
+            "division": DivisionFilter
+        ]
+        
+        Alamofire.request(URL_FILTER_DIVISION, method: .post, parameters: parameters).responseJSON
+                   {
+                       response in
+                       if let result = response.result.value{
+                           let jsonData = result as! NSDictionary
+                           
+                           if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                               let user = jsonData.value(forKey: "read") as! NSArray
+                               
+                               let ItemID = user.value(forKey: "id") as! [String]
+                               let Seller_ID = user.value(forKey: "user_id") as! [String]
+                               let Main_Cate = user.value(forKey: "main_category") as! [String]
+                               let Sub_Cate = user.value(forKey: "sub_category") as! [String]
+                               let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
+                               let brand_mat = user.value(forKey: "brand_material") as! [String]
+                               let inner_mat = user.value(forKey: "inner_material") as! [String]
+                               let stock = user.value(forKey: "stock") as! [String]
+                               let description = user.value(forKey: "description") as! [String]
+                               let rating = user.value(forKey: "rating") as! [String]
+                               let Price = user.value(forKey: "price") as! [String]
+                               let Photo = user.value(forKey: "photo") as! [String]
+                               let Division = user.value(forKey: "division") as! [String]
+                               let District = user.value(forKey: "district") as! [String]
+                               
+                               self.ITEMID = ItemID
+                               self.SELLERID = Seller_ID
+                               self.MAINCATE = Main_Cate
+                               self.SUBCATE = Sub_Cate
+                               self.ADDETAIL = Ad_Detail
+                               self.BRAND = brand_mat
+                               self.INNER = inner_mat
+                               self.STOCK = stock
+                               self.DESC = description
+                               self.PRICE = Price
+                               self.PHOTO = Photo
+                               self.RATING = rating
+                               self.DIVISION = Division
+                               self.DISTRICT = District
+                               
+                               self.CategoryView.reloadData()
+                           }
+                       }
+               }
+    }
+    
+    func Filter_District(){
+        let parameters: Parameters=[
+            "division": DivisionFilter,
+            "district": DistricFilter
+        ]
+        
+        Alamofire.request(URL_FILTER_DISTRICT, method: .post, parameters: parameters).responseJSON
+                   {
+                       response in
+                       if let result = response.result.value{
+                           let jsonData = result as! NSDictionary
+                           
+                           if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                               let user = jsonData.value(forKey: "read") as! NSArray
+                               
+                               let ItemID = user.value(forKey: "id") as! [String]
+                               let Seller_ID = user.value(forKey: "user_id") as! [String]
+                               let Main_Cate = user.value(forKey: "main_category") as! [String]
+                               let Sub_Cate = user.value(forKey: "sub_category") as! [String]
+                               let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
+                               let brand_mat = user.value(forKey: "brand_material") as! [String]
+                               let inner_mat = user.value(forKey: "inner_material") as! [String]
+                               let stock = user.value(forKey: "stock") as! [String]
+                               let description = user.value(forKey: "description") as! [String]
+                               let rating = user.value(forKey: "rating") as! [String]
+                               let Price = user.value(forKey: "price") as! [String]
+                               let Photo = user.value(forKey: "photo") as! [String]
+                               let Division = user.value(forKey: "division") as! [String]
+                               let District = user.value(forKey: "district") as! [String]
+                               
+                               self.ITEMID = ItemID
+                               self.SELLERID = Seller_ID
+                               self.MAINCATE = Main_Cate
+                               self.SUBCATE = Sub_Cate
+                               self.ADDETAIL = Ad_Detail
+                               self.BRAND = brand_mat
+                               self.INNER = inner_mat
+                               self.STOCK = stock
+                               self.DESC = description
+                               self.PRICE = Price
+                               self.PHOTO = Photo
+                               self.RATING = rating
+                               self.DIVISION = Division
+                               self.DISTRICT = District
+                               
+                               self.CategoryView.reloadData()
+                           }
+                       }
+               }
     }
     
     func ViewList(){
@@ -188,7 +435,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let inner_mat = user.value(forKey: "inner_material") as! [String]
                         let stock = user.value(forKey: "stock") as! [String]
                         let description = user.value(forKey: "description") as! [String]
-//                        let max_order = user.value(forKey: "max_order") as! [String]
                         let rating = user.value(forKey: "rating") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
@@ -205,17 +451,15 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.STOCK = stock
                         self.DESC = description
                         self.PRICE = Price
-//                        self.MAXORDER = max_order
                         self.PHOTO = Photo
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
                         
                         self.CategoryView.reloadData()
-                        
                     }
                 }
         }
     }
-
+    
 }

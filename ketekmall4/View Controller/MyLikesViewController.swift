@@ -88,8 +88,8 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.ItemPrice.text! = "MYR" + self.price[indexPath.row]
         cell.ItemLocation.text! = self.location[indexPath.row]
         
-        
-//        print(self.ItemPhoto[indexPath.row])
+        cell.BtnView.layer.cornerRadius = 5
+        cell.BtnRemove.layer.cornerRadius = 5
         
         cell.delegate = self
         

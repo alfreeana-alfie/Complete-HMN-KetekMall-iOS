@@ -10,6 +10,7 @@ import UIKit
 
 class GotoRegisterSellerViewController: UIViewController {
 
+    @IBOutlet weak var ButtonSeller: UIButton!
     var userID: String = ""
     @IBAction func GotoRegisterPage(_ sender: Any) {
 
@@ -23,6 +24,6 @@ class GotoRegisterSellerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        ButtonSeller.layer.cornerRadius = 15
     }
 }

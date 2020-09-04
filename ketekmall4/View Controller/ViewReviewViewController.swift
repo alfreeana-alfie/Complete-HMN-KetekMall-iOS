@@ -10,21 +10,11 @@ import UIKit
 import Alamofire
 
 class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return REVIEWID.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewCollectionViewCell", for: indexPath) as! ReviewCollectionViewCell
-        
-        cell.UserImage.setImageWith(URL(string: MAIN_PHOTO)!)
-        cell.UserName.text! = self.USERNAME[indexPath.row]
-        cell.Review.text! = self.REVIEW[indexPath.row]
-        return cell
-    }
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_review.php"
     let MAIN_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
+    
     var ITEMID: String = ""
     
     var REVIEWID: [String] = []
@@ -68,5 +58,19 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
                 
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return REVIEWID.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewCollectionViewCell", for: indexPath) as! ReviewCollectionViewCell
+        
+        cell.UserImage.setImageWith(URL(string: MAIN_PHOTO)!)
+        cell.UserImage.layer.cornerRadius = cell.UserImage.frame.width / 2
+        cell.UserName.text! = self.USERNAME[indexPath.row]
+        cell.Review.text! = self.REVIEW[indexPath.row]
+        return cell
     }
 }
