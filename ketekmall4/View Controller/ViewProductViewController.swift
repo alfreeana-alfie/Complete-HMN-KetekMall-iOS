@@ -91,7 +91,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var DAYS_DEL: [String] = []
     var PRICE_DEL: [String] = []
     var DEL_ID: [String] = []
-    
+    var RATINGCOUNT: [String] = []
     
     var SELLERIMAGE: String = ""
     var SELLERNAME: String = ""
@@ -198,6 +198,24 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         self.ReviewName.text? = name[0]
                         self.Review.text? = review[0]
                         self.ReviewImage.setImageWith(URL(string: self.MAIN_PHOTO)!)
+                        
+                        self.RATINGCOUNT = rating
+                        var Rate: Double = 0.00
+                        var NewRate: Double = 0.00
+                        
+                        for i in rating {
+                            Rate += Double(i) ?? .nan
+                            
+                        }
+                        NewRate = Rate / Double(user.count)
+                        
+                        if let n = NumberFormatter().number(from: String(format: "%.2f",NewRate)) {
+                            let f = CGFloat(truncating: n)
+                            self.BaseRating.value = f
+                        }
+//                        print("rate: " + String(format: "%.2f",NewRate))
+                        
+                        self.EditRating(ItemID: self.ItemID, RatingCount: String(format: "%.2f",NewRate))
                     }
                 }else{
                     print("REVIEW FAILED")
