@@ -134,7 +134,7 @@ class EditProductViewController: UIViewController {
             "district": District.text!,
         ]
         
-        print(ADDETAIL)
+//        print(ADDETAIL)
         //Sending http post request
         Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
             {

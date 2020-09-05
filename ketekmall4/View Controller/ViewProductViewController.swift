@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AFNetworking
 import SDWebImage
+import AARatingBar
 
 class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate {
     
@@ -25,6 +26,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var SellerDivision: UILabel!
     @IBOutlet weak var WhatsappButton: UIImageView!
     @IBOutlet weak var ViewButton: UIButton!
+    @IBOutlet weak var Rating: AARatingBar!
+    @IBOutlet weak var BaseRating: AARatingBar!
     
     @IBOutlet weak var ReviewImage: UIImageView!
     @IBOutlet weak var ReviewName: UILabel!
@@ -88,6 +91,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var DAYS_DEL: [String] = []
     var PRICE_DEL: [String] = []
     var DEL_ID: [String] = []
+    
     
     var SELLERIMAGE: String = ""
     var SELLERNAME: String = ""
@@ -185,8 +189,12 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         
                         let name = user.value(forKey: "customer_name") as! [String]
                         let review = user.value(forKey: "review") as! [String]
-                        //                        let rating = user.value(forKey: "rating") as! [String]
+                        let rating = user.value(forKey: "rating") as! [String]
                         
+                        if let n = NumberFormatter().number(from: rating[0]) {
+                            let f = CGFloat(truncating: n)
+                            self.Rating.value = f
+                        }
                         self.ReviewName.text? = name[0]
                         self.Review.text? = review[0]
                         self.ReviewImage.setImageWith(URL(string: self.MAIN_PHOTO)!)
@@ -230,11 +238,30 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func EditSold(ItemID: String, SoldCount: String){
         let parameters: Parameters=[
-            "item_id": ItemID,
+            "id": ItemID,
             "sold": SoldCount,
         ]
         
         Alamofire.request(URL_EDIT_SOLD, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    print("SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func EditRating(ItemID: String, RatingCount: String){
+        let parameters: Parameters=[
+            "id": ItemID,
+            "rating": RatingCount,
+        ]
+        
+        Alamofire.request(URL_EDIT_RATING, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value{
@@ -294,7 +321,6 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         self.DISTRICT_SAMESHOP = District
                         
                         self.SameShopView.reloadData()
-                        
                     }
                 }
         }
@@ -376,14 +402,22 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ITEMNAME.count
+        return ITEMID_SAMESHOP.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FromSameShopCollectionViewCell", for: indexPath) as! FromSameShopCollectionViewCell
         
-        cell.ItemName.text! = self.ITEMNAME[indexPath.row]
-        cell.ItemPrice.text! = self.ITEMPRICE[indexPath.row]
+        if let n = NumberFormatter().number(from: self.RATING_SAMESHOP[indexPath.row]) {
+                    let f = CGFloat(truncating: n)
+                    cell.Rating.value = f
+                }
+
+        let NEWIm = self.PHOTO_SAMESHOP[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        cell.ItemName.text! = self.ADDETAIL_SAMESHOP[indexPath.row]
+        cell.ItemPrice.text! = self.PRICE_SAMESHOP[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 5
         return cell
     }

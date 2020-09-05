@@ -11,8 +11,7 @@ import Alamofire
 
 class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyBuyingDelegate {
     
-    
-    
+
     @IBOutlet weak var MyBuyingView: UICollectionView!
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done.php";

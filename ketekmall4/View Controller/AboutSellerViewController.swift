@@ -170,6 +170,13 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AboutSellerCollectionViewCell", for: indexPath) as! AboutSellerCollectionViewCell
         
+        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
+            let f = CGFloat(truncating: n)
+            cell.Rating.value = f
+        }
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.ItemLocation.text! = self.DISTRICT[indexPath.row]

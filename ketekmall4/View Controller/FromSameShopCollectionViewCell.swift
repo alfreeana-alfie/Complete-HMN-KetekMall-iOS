@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AARatingBar
 
 protocol FromSameShopDelegate: class {
     func onViewClick(cell: FromSameShopCollectionViewCell)
@@ -20,6 +21,7 @@ class FromSameShopCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ItemName: UILabel!
     @IBOutlet weak var ItemPrice: UILabel!
     @IBOutlet weak var ButtonView: UIButton!
+    @IBOutlet weak var Rating: AARatingBar!
     
     @IBAction func ViewClick(_ sender: Any) {
         self.delegate?.onViewClick(cell: self)

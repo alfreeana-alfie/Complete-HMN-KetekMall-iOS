@@ -69,6 +69,9 @@
 		FB7D2119250015530043A286 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D2118250015530043A286 /* DeliveryViewController.swift */; };
 		FB7D211B250016CC0043A286 /* DeliveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D211A250016CC0043A286 /* DeliveryCollectionViewCell.swift */; };
 		FB7D211D25001C500043A286 /* DeliveryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D211C25001C500043A286 /* DeliveryAddViewController.swift */; };
+		FB9A9286250368B2001DD96C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A9285250368B2001DD96C /* ViewController.swift */; };
+		FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928725037A51001DD96C /* BuyerViewController.swift */; };
+		FB9A928A25037A75001DD96C /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928925037A75001DD96C /* SellerViewController.swift */; };
 		FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +168,9 @@
 		FB7D2118250015530043A286 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		FB7D211A250016CC0043A286 /* DeliveryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB7D211C25001C500043A286 /* DeliveryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddViewController.swift; sourceTree = "<group>"; };
+		FB9A9285250368B2001DD96C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB9A928725037A51001DD96C /* BuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerViewController.swift; sourceTree = "<group>"; };
+		FB9A928925037A75001DD96C /* SellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +342,9 @@
 				FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */,
 				FB7787BC24FE0FCA00AB01F4 /* ViewReviewViewController.swift */,
 				FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */,
+				FB9A9285250368B2001DD96C /* ViewController.swift */,
+				FB9A928725037A51001DD96C /* BuyerViewController.swift */,
+				FB9A928925037A75001DD96C /* SellerViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -632,6 +641,7 @@
 				FB7D211724FFE5A90043A286 /* CheckoutCollectionViewCell.swift in Sources */,
 				FB77A15324FCD3D70005EB39 /* HotCollectionViewCell.swift in Sources */,
 				FB5490C924FD1ECF004E6D73 /* RegisterSellerViewController.swift in Sources */,
+				FB9A928A25037A75001DD96C /* SellerViewController.swift in Sources */,
 				FB5490D124FD7019004E6D73 /* FromSameShopCollectionViewCell.swift in Sources */,
 				FB3E830724FEC1C100F1CE3C /* EditProductViewController.swift in Sources */,
 				FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */,
@@ -654,6 +664,7 @@
 				FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */,
 				FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */,
 				FB7787C124FE35CA00AB01F4 /* ReviewCollectionViewCell.swift in Sources */,
+				FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */,
 				FB5490CB24FD209B004E6D73 /* GotoRegisterSellerViewController.swift in Sources */,
 				FB5490CF24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift in Sources */,
 				FB4B72CD24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift in Sources */,
@@ -661,6 +672,7 @@
 				FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */,
 				FB7D211D25001C500043A286 /* DeliveryAddViewController.swift in Sources */,
 				FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */,
+				FB9A9286250368B2001DD96C /* ViewController.swift in Sources */,
 				FB7787B924FE0F5500AB01F4 /* MoreDetailsViewController.swift in Sources */,
 				FB7787B724FE0F0500AB01F4 /* ShippingInfoViewController.swift in Sources */,
 				FB528AD324FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift in Sources */,

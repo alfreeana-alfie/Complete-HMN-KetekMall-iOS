@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AARatingBar
 
 class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate, UISearchBarDelegate {
     func onAddToFav(cell: CategoryCollectionViewCell) {
@@ -82,9 +83,12 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
         
         let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        
+
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-        
+        if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
+            let f = CGFloat(truncating: n)
+            cell.Rating.value = f
+        }
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
         cell.District.text! = self.DISTRICT[indexPath.row]
@@ -136,6 +140,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var ButtonPriceUp: UIButton!
     @IBOutlet weak var ButtonPriceDown: UIButton!
     @IBOutlet weak var CategoryView: UICollectionView!
+    
     @IBAction func Filter(_ sender: Any) {
         let filter = self.storyboard!.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
         filter.DivisionFilter = DivisionFilter

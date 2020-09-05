@@ -18,6 +18,7 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     var ITEMID: String = ""
     
     var REVIEWID: [String] = []
+    var RATING: [String] = []
     var USERNAME: [String] = []
     var REVIEW: [String] = []
 
@@ -46,10 +47,12 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
                         let review_id = user.value(forKey: "id") as! [String]
                         let username = user.value(forKey: "customer_name") as! [String]
                         let review = user.value(forKey: "review") as! [String]
+                        let rating = user.value(forKey: "rating") as! [String]
                         
                         self.REVIEWID = review_id
                         self.USERNAME = username
                         self.REVIEW = review
+                        self.RATING = rating
                         
                         self.ReviewView.reloadData()
                     }
@@ -67,6 +70,10 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewCollectionViewCell", for: indexPath) as! ReviewCollectionViewCell
         
+        if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
+            let f = CGFloat(truncating: n)
+            cell.Rating.value = f
+        }
         cell.UserImage.setImageWith(URL(string: MAIN_PHOTO)!)
         cell.UserImage.layer.cornerRadius = cell.UserImage.frame.width / 2
         cell.UserName.text! = self.USERNAME[indexPath.row]

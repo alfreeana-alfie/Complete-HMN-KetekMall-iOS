@@ -35,7 +35,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     var DESC: [String] = []
     var MAXORDER: [String] = []
     var DIVISION: [String] = []
-    //    var RATING: [String] = []
+    var RATING: [String] = []
     //        var ITEMID: String = ""
     //        var ADDETAIL: String = ""
     //        var PRICE: String = ""
@@ -81,7 +81,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         let stock = user.value(forKey: "stock") as! [String]
                         let description = user.value(forKey: "description") as! [String]
                         let max_order = user.value(forKey: "max_order") as! [String]
-                        //                        let rating = user.value(forKey: "rating") as! [String]
+                        let rating = user.value(forKey: "rating") as! [String]
                         //                        let Price = user.value(forKey: "price") as! [String]
                         //                        let Photo = user.value(forKey: "photo") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
@@ -100,7 +100,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         self.STOCK = stock
                         self.DESC = description
                         self.DIVISION = Division
-                        
+                        self.RATING = rating
 
                         self.productView.reloadData()
                         
@@ -130,7 +130,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         cell.Btn_Boost.layer.borderWidth = 1
         cell.Btn_Cancel.layer.cornerRadius = 5
         cell.Btn_Cancel.layer.borderWidth = 1
-        
+        if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
+            let f = CGFloat(truncating: n)
+            cell.Rating.value = f
+        }
         cell.delegate = self
         return cell
     }

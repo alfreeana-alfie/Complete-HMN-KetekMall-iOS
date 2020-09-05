@@ -36,6 +36,7 @@ class ViewSellingViewController: UIViewController {
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_reject.php"
     
     var ItemID = ""
+    var USERID: String = ""
     var CUSTOMERID: String = ""
     var ORDERID: String = ""
     var ITEMIMAGE: String = ""
@@ -126,7 +127,11 @@ class ViewSellingViewController: UIViewController {
                                 if let result = response.result.value {
                                     let jsonData = result as! NSDictionary
                                     print(jsonData.value(forKey: "message")!)
-                                    
+                                    let boostAd = self.storyboard!.instantiateViewController(identifier: "MySellingViewController") as! MySellingViewController
+                                    boostAd.userID = self.USERID
+                                    if let navigator = self.navigationController {
+                                        navigator.pushViewController(boostAd, animated: true)
+                                    }
                                 }else{
                                     print("FAILED")
                                 }

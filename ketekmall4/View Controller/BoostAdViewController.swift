@@ -107,10 +107,6 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                 Alamofire.request(URL_CANCEL, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-                        //printing response
-        //                print(response)
-                        
-                        //getting the json value from the server
                         if let result = response.result.value{
                             let jsonData = result as! NSDictionary
                             

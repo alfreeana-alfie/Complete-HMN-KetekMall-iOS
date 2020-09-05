@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AARatingBar
 
 class MyRatingCollectionViewCell: UICollectionViewCell {
     
@@ -15,4 +16,6 @@ class MyRatingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserName: UILabel!
     @IBOutlet weak var UserReview: UILabel!
+    @IBOutlet weak var Rating: AARatingBar!
+    
 }

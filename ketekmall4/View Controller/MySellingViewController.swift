@@ -200,6 +200,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         let MySelling = self.storyboard!.instantiateViewController(identifier: "ViewSellingViewController") as! ViewSellingViewController
         let ID = self.item_orderID[indexPath.row]
         MySelling.ItemID = ID
+        MySelling.USERID = self.userID
         MySelling.ITEMIMAGE = self.item_photo[indexPath.row]
         MySelling.ITEMNAME = self.ad_Detail[indexPath.row]
         MySelling.ORDERID = self.item_orderID[indexPath.row]

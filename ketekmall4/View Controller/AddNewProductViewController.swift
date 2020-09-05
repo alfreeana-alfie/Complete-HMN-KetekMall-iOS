@@ -280,12 +280,16 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
-                    
+                    let MeView = self.storyboard!.instantiateViewController(identifier: "MeViewController") as! MeViewController
+                    MeView.userID = self.userID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(MeView, animated: true)
+                    }
                 }
         }
     }
     
     @IBAction func Cancel(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
+        _ = navigationController?.popViewController(animated: true)
     }
 }

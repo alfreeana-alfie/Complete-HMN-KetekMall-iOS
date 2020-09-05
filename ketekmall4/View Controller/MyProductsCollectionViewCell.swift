@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AARatingBar
 
 protocol MyProductDelegate: class {
     func btnRemove(cell: MyProductsCollectionViewCell)
@@ -22,6 +23,7 @@ class MyProductsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var ItemPrice: UILabel!
     @IBOutlet weak var ItemLocation: UILabel!
+    @IBOutlet weak var Rating: AARatingBar!
     
     @IBOutlet weak var Btn_Edit: UIButton!
     @IBOutlet weak var Btn_Cancel: UIButton!

@@ -38,6 +38,12 @@ class RegisterSellerViewController: UIViewController {
             {
                 response in
                 print(response)
+                
+                let boostAd = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
+                boostAd.userID = self.UserID
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(boostAd, animated: true)
+                }
                 //                if let result = response.result.value{
                 //                    let jsonData = result as! NSDictionary
                 //

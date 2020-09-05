@@ -6,7 +6,7 @@ target 'ketekmall4' do
   use_frameworks!
 pod 'Alamofire', '~> 4.3'
 pod 'AFNetworking' 
-pod 'DropDown' 
+pod 'DropDown'
 pod 'SDWebImage', '~> 5.0'
 pod 'AlamofireImage', '~> 3.1'
 pod 'EasyNotificationBadge'

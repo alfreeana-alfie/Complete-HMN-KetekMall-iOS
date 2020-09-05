@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import EasyNotificationBadge
+import DropDown
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate{
 
@@ -119,6 +120,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var STOCKHOT: [String] = []
     var DESCHOT: [String] = []
     var PRICEHOT: [String] = []
+    var RATINGHOT: [String] = []
     var PHOTOHOT: [String] = []
     var DIVISIONHOT: [String] = []
     var DISTRICTHOT: [String] = []
@@ -133,17 +135,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var STOCKSHOCKING: [String] = []
     var DESCSHOCKING: [String] = []
     var PRICESHOCKING: [String] = []
+    var RATINGSHOCKING: [String] = []
     var PHOTOSHOCKING: [String] = []
     var DIVISIONSHOCKING: [String] = []
     var DISTRICTSHOCKING: [String] = []
     
     var userID: String = ""
     var Cart_count: Int = 0
-    
-    
+    let dropDown = DropDown()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dropDown.anchorView = ListBar
+        dropDown.dataSource = ["Logout"]
+        
         HotView.delegate = self
         HotView.dataSource = self
         
@@ -219,9 +225,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Fashion.isUserInteractionEnabled = true
         FindBar.isUserInteractionEnabled = true
         CartBar.isUserInteractionEnabled = true
+        ListBar.isUserInteractionEnabled = true
         
         let FindClick = UITapGestureRecognizer(target: self, action: #selector(onFindBarClick(sender:)))
         let CartClick = UITapGestureRecognizer(target: self, action: #selector(onCartBarClick(sender:)))
+        let ListClick = UITapGestureRecognizer(target: self, action: #selector(onListClick(sender:)))
 
         let CakeClick = UITapGestureRecognizer(target: self, action: #selector(onCake(sender:)))
         let ProcessClick = UITapGestureRecognizer(target: self, action: #selector(onProcess(sender:)))
@@ -236,6 +244,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         FindBar.addGestureRecognizer(FindClick)
         CartBar.addGestureRecognizer(CartClick)
+        ListBar.addGestureRecognizer(ListClick)
         CakePastries.addGestureRecognizer(CakeClick)
         ProcessFood.addGestureRecognizer(ProcessClick)
         HealthBeauty.addGestureRecognizer(HealthClick)
@@ -253,6 +262,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ShockingSale()
         CartCount(UserID: tabbar.value)
         
+    }
+    
+    @objc func onListClick(sender: Any){
+        dropDown.show()
+        dropDown.direction = .bottom
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            if(index == 0){
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+
+        dropDown.width = 200
     }
     
     @objc func onCartBarClick(sender: Any){
@@ -583,6 +605,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         let description = user.value(forKey: "description") as! [String]
                         let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
+                        let rating = user.value(forKey: "rating") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
                         let division = user.value(forKey: "division") as! [String]
                         let district = user.value(forKey: "district") as! [String]
@@ -597,6 +620,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.STOCKHOT = stock
                         self.DESCHOT = description
                         self.PRICEHOT = Price
+                        self.RATINGHOT = rating
                         self.PHOTOHOT = Photo
                         self.DIVISIONHOT = division
                         self.DISTRICTHOT = district
@@ -632,6 +656,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             let description = user.value(forKey: "description") as! [String]
                             let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
                             let Price = user.value(forKey: "price") as! [String]
+                            let rating = user.value(forKey: "rating") as! [String]
                             let Photo = user.value(forKey: "photo") as! [String]
                             let division = user.value(forKey: "division") as! [String]
                             let district = user.value(forKey: "district") as! [String]
@@ -646,6 +671,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             self.STOCKSHOCKING = stock
                             self.DESCSHOCKING = description
                             self.PRICESHOCKING = Price
+                            self.RATINGSHOCKING = rating
                             self.PHOTOSHOCKING = Photo
                             self.DIVISIONSHOCKING = division
                             self.DISTRICTSHOCKING = district
@@ -714,6 +740,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.STOCK = self.STOCKHOT[indexPath.row]
         viewProduct.DESC = self.DESCHOT[indexPath.row]
         viewProduct.PRICE = self.PRICEHOT[indexPath.row]
+//        viewProduct.RATING = self.RATINGHOT[indexPath.row]
         viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
@@ -740,6 +767,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.STOCK = self.STOCKSHOCKING[indexPath.row]
         viewProduct.DESC = self.DESCSHOCKING[indexPath.row]
         viewProduct.PRICE = self.PRICESHOCKING[indexPath.row]
+//        viewProduct.RATING = self.RATINGSHOCKING[indexPath.row]
         viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
@@ -766,7 +794,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let NEWIm = self.PHOTOHOT[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-            
+            if let n = NumberFormatter().number(from: self.RATINGHOT[indexPath.row]) {
+                let f = CGFloat(truncating: n)
+                cell.Rating.value = f
+            }
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
             cell.ItemPrice.text! = self.PRICEHOT[indexPath.row]
             cell.ButtonView.layer.cornerRadius = 2
@@ -778,6 +809,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "ShockingSaleCollectionViewCell", for: indexPath) as! ShockingSaleCollectionViewCell
             let NEWIm = self.PHOTOSHOCKING[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             cell1.ItemImage.setImageWith(URL(string: NEWIm!)!)
+            if let n = NumberFormatter().number(from: self.RATINGSHOCKING[indexPath.row]) {
+                let f = CGFloat(truncating: n)
+                cell1.Rating.value = f
+            }
             cell1.ItemName.text! = self.ADDETAILSHOCKING[indexPath.row]
             cell1.ItemPrice.text! = self.PRICESHOCKING[indexPath.row]
             cell1.ButtonView.layer.cornerRadius = 2

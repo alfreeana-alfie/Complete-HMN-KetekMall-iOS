@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AARatingBar
 
 class AddReviewViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class AddReviewViewController: UIViewController {
     @IBOutlet weak var Review: UITextView!
     @IBOutlet weak var ButtonSubmit: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
-    
+    @IBOutlet weak var Rating: AARatingBar!
     
     var USERNAME: String = ""
     var USERID: String = ""
@@ -32,6 +33,10 @@ class AddReviewViewController: UIViewController {
         
         ButtonSubmit.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
+        
+        Rating.ratingDidChange = { ratingValue in
+            self.RATING = String(format: "%.2f", ratingValue)
+        }
         
     }
     
@@ -83,7 +88,11 @@ class AddReviewViewController: UIViewController {
                     //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
-                    
+                    let MeView = self.storyboard!.instantiateViewController(identifier: "MyBuyingViewController") as! MyBuyingViewController
+                    MeView.userID = self.USERID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(MeView, animated: true)
+                    }
                 }else{
                     print("FAILED")
                 }

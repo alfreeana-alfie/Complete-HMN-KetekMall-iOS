@@ -25,6 +25,10 @@ class ProductRatingViewController: UIViewController, UICollectionViewDelegate, U
         cell.UserName.text! = self.customer_name[indexPath.row]
         cell.UserImage.setImageWith(URL(string: Customer_Image)!)
         cell.Description.text! = self.customer_review[indexPath.row]
+        if let n = NumberFormatter().number(from: self.customer_rating[indexPath.row]) {
+            let f = CGFloat(truncating: n)
+            cell.Rating.value = f
+        }
         return cell
     }
     
@@ -36,6 +40,7 @@ class ProductRatingViewController: UIViewController, UICollectionViewDelegate, U
     var CustomerImage: String = ""
     var CustomerName: String = ""
     var CustomerReview: String = ""
+    var CustomerRating: String = ""
     
     let URL_READ_PRODUCT = "https://ketekmall.com/ketekmall/read_products_review.php"
     let URL_READ_REVIEW = "https://ketekmall.com/ketekmall/read_review_seller.php"
@@ -46,6 +51,7 @@ class ProductRatingViewController: UIViewController, UICollectionViewDelegate, U
     var item_image: [String] = []
     var customer_name: [String] = []
     var customer_review: [String] = []
+    var customer_rating: [String] = []
     
     let Customer_Image = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
     
@@ -71,10 +77,12 @@ class ProductRatingViewController: UIViewController, UICollectionViewDelegate, U
                             self.ItemID = i["item_id"] as! String
                             self.CustomerName = i["customer_name"] as! String
                             self.CustomerReview = i["review"] as! String
+                            self.CustomerRating = i["rating"] as! String
                             
                             self.item_id.append(self.ItemID)
                             self.customer_name.append(self.CustomerName)
                             self.customer_review.append(self.CustomerReview)
+                            self.customer_rating.append(self.CustomerRating)
                             
                             let parameters1: Parameters=[
                                 "id": self.ItemID,
