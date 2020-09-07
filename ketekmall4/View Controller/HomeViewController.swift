@@ -10,6 +10,10 @@ import UIKit
 import Alamofire
 import EasyNotificationBadge
 import DropDown
+import Firebase
+import GoogleSignIn
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate{
 
@@ -276,14 +280,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
           print("Selected item: \(item) at index: \(index)")
             if(index == 0){
                 _ = self.navigationController?.popToRootViewController(animated: true)
+                GIDSignIn.sharedInstance()?.signOut()
+                LoginManager().logOut()
             }
         }
-
         dropDown.width = 200
     }
     
     @objc func onCartBarClick(sender: Any){
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CartViewController") as! CartViewController
         click.userID = String(user)
         if let navigator = self.navigationController {
@@ -292,7 +297,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func ViewAllCate(_ sender: Any) {
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_VIEWALL
@@ -306,7 +311,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func ViewAllHot(_ sender: Any) {
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_HOT
@@ -320,7 +325,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func ViewAllShockingSale(_ sender: Any) {
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_SHOCKING_SALE
@@ -344,7 +349,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func Sell(_ sender: Any) {
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let parameters: Parameters=[
             "id": String(user)
         ]
@@ -389,7 +394,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     @IBAction func Find(_ sender: Any) {
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_VIEWALL
@@ -403,7 +408,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @objc func onFindBarClick(sender: Any){
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_VIEWALL
@@ -417,7 +422,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @objc func onCake(sender: Any){
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_CAKE
@@ -431,7 +436,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }    
     @objc func onProcess(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_PROCESS
@@ -445,7 +450,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onHealth(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_HEALTH
@@ -459,7 +464,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onHandicraft(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_HANDICRAFT
@@ -473,7 +478,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onHomeLiving(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_HOMELIVING
@@ -487,7 +492,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onRetail(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_RETAIL
@@ -501,7 +506,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onAgriculture(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_AGRICULTURE
@@ -515,7 +520,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onSarawakBased(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_SARAWAKBASED
@@ -529,7 +534,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onService(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_SERVICE
@@ -543,7 +548,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     @objc func onFashion(sender: Any){
         print("Success")
-        let tabbar = tabBarController as! BaseTabBarController
+//        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
         click.URL_READ = URL_READ_FASHION

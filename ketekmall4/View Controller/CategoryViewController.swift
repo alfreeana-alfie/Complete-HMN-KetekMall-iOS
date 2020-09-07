@@ -129,13 +129,22 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         ButtonPriceDown.isHidden = false
         ButtonPriceUp.isHidden = true
         
-        let arr2 = (id: self.ITEMID1, seller_id: self.SELLERID1)
+        self.ITEMID.removeAll()
+        self.SELLERID.removeAll()
+        self.ADDETAIL.removeAll()
+        self.MAINCATE.removeAll()
+        self.SUBCATE.removeAll()
+        self.BRAND.removeAll()
+        self.INNER.removeAll()
+        self.STOCK.removeAll()
+        self.DESC.removeAll()
+        self.PRICE.removeAll()
+        self.PHOTO.removeAll()
+        self.DIVISION.removeAll()
+        self.DISTRICT.removeAll()
         
-        let arr3 = [arr2.id]
-        
-        self.arr.append(arr2)
-        
-        print(arr2.self)
+        print(self.ADDETAIL.count)
+//        self.CategoryView.reloadData()
     }
     
     @IBAction func PriceDown(_ sender: Any) {
