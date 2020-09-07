@@ -91,6 +91,37 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_FILTER_SEARCH_DIVISION_HOT = "https://ketekmall.com/ketekmall/filter_search_division/readall_sold.php"
     let URL_FILTER_SEARCH_DIVISION_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_search_division/readall_shocking.php"
     
+    let URL_PRICE_UP_READALL = "https://ketekmall.com/ketekmall/price_up/readall.php"
+    let URL_PRICE_UP_CAKE = "https://ketekmall.com/ketekmall/price_up/read_cake.php"
+    let URL_PRICE_UP_PROCESS = "https://ketekmall.com/ketekmall/price_up/read_process.php"
+    let URL_PRICE_UP_HEALTH = "https://ketekmall.com/ketekmall/price_up/read_health.php"
+    let URL_PRICE_UP_HANDICRAFT = "https://ketekmall.com/ketekmall/price_up/read_handicraft.php"
+    let URL_PRICE_UP_HOMELIVING = "https://ketekmall.com/ketekmall/price_up/read_home.php"
+    let URL_PRICE_UP_RETAIL = "https://ketekmall.com/ketekmall/price_up/read_retail.php"
+    let URL_PRICE_UP_AGRICULTURE = "https://ketekmall.com/ketekmall/price_up/read_agri.php"
+    let URL_PRICE_UP_SARAWAKBASED = "https://ketekmall.com/ketekmall/price_up/read_pepper.php"
+    let URL_PRICE_UP_SERVICE = "https://ketekmall.com/ketekmall/price_up/read_service.php"
+    let URL_PRICE_UP_FASHION = "https://ketekmall.com/ketekmall/price_up/read_fashion.php"
+    let URL_PRICE_UP_VIEWALL = "https://ketekmall.com/ketekmall/price_up/readall.php"
+    let URL_PRICE_UP_HOT = "https://ketekmall.com/ketekmall/price_up/readall_sold.php"
+    let URL_PRICE_UP_SHOCKING_SALE = "https://ketekmall.com/ketekmall/price_up/readall_shocking.php"
+    
+    let URL_PRICE_DOWN_READALL = "https://ketekmall.com/ketekmall/price_down/readall.php"
+    let URL_PRICE_DOWN_CAKE = "https://ketekmall.com/ketekmall/price_down/read_cake.php"
+    let URL_PRICE_DOWN_PROCESS = "https://ketekmall.com/ketekmall/price_down/read_process.php"
+    let URL_PRICE_DOWN_HEALTH = "https://ketekmall.com/ketekmall/price_down/read_health.php"
+    let URL_PRICE_DOWN_HANDICRAFT = "https://ketekmall.com/ketekmall/price_down/read_handicraft.php"
+    let URL_PRICE_DOWN_HOMELIVING = "https://ketekmall.com/ketekmall/price_down/read_home.php"
+    let URL_PRICE_DOWN_RETAIL = "https://ketekmall.com/ketekmall/price_down/read_retail.php"
+    let URL_PRICE_DOWN_AGRICULTURE = "https://ketekmall.com/ketekmall/price_down/read_agri.php"
+    let URL_PRICE_DOWN_SARAWAKBASED = "https://ketekmall.com/ketekmall/price_down/read_pepper.php"
+    let URL_PRICE_DOWN_SERVICE = "https://ketekmall.com/ketekmall/price_down/read_service.php"
+    let URL_PRICE_DOWN_FASHION = "https://ketekmall.com/ketekmall/price_down/read_fashion.php"
+    let URL_PRICE_DOWN_VIEWALL = "https://ketekmall.com/ketekmall/price_down/readall.php"
+    let URL_PRICE_DOWN_HOT = "https://ketekmall.com/ketekmall/price_down/readall_sold.php"
+    let URL_PRICE_DOWN_SHOCKING_SALE = "https://ketekmall.com/ketekmall/price_down/readall_shocking.php"
+    
+    
     @IBOutlet weak var CakePastries: UIView!
     @IBOutlet weak var ProcessFood: UIView!
     @IBOutlet weak var HealthBeauty: UIView!
@@ -305,6 +336,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -319,6 +352,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HOT
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HOT
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HOT
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HOT
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HOT
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -333,6 +368,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SHOCKING_SALE
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_SHOCKING_SALE
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_SHOCKING_SALE
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_SHOCKING_SALE
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_SHOCKING_SALE
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -402,6 +439,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -416,6 +455,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -430,6 +471,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_CAKE
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_CAKE
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_CAKE
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_CAKE
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_CAKE
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -444,6 +487,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_PROCESS
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_PROCESS
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_PROCESS
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_PROCESS
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_PROCESS
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -458,6 +503,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HEALTH
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HEALTH
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HEALTH
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HEALTH
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HEALTH
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -472,6 +519,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HANDICRAFT
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HANDICRAFT
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HANDICRAFT
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HANDICRAFT
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HANDICRAFT
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -486,6 +535,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HOMELIVING
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HOMELIVING
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HOMELIVING
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HOMELIVING
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HOMELIVING
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -500,6 +551,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_RETAIL
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_RETAIL
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_RETAIL
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_RETAIL
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_RETAIL
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -514,6 +567,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_AGRICULTURE
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_AGRICULTURE
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_AGRICULTURE
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_AGRICULTURE
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_AGRICULTURE
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -528,6 +583,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SARAWAKBASED
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_SARAWAKBASED
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_SARAWAKBASED
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_SARAWAKBASED
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_SARAWAKBASED
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -542,6 +599,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SERVICE
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_SERVICE
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_SERVICE
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_SERVICE
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_SERVICE
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -556,6 +615,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_FASHION
         click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_CAKE
         click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_FASHION
+        click.URL_PRICE_UP_READALL = URL_PRICE_UP_FASHION
+        click.URL_PRICE_DOWN = URL_PRICE_DOWN_FASHION
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }

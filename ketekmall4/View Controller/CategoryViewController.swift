@@ -143,13 +143,112 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.DIVISION.removeAll()
         self.DISTRICT.removeAll()
         
-        print(self.ADDETAIL.count)
-//        self.CategoryView.reloadData()
+//        print(self.ADDETAIL.count)
+        Alamofire.request(URL_PRICE_UP_READALL, method: .post).responseJSON
+            {
+                response in
+                if let result = response.result.value as? Dictionary<String,Any>{
+                    if let list = result["read"] as? [Dictionary<String,Any>]{
+                        for i in list{
+                            self.ITEMID1 = i["id"] as! String
+                            self.ADDETAIL1 = i["ad_detail"] as! String
+                            self.PHOTO1 = i["photo"] as! String
+                            self.PRICE1 = i["price"] as! String
+                            self.MAINCATE1 = i["main_category"] as! String
+                            self.SUBCATE1 = i["sub_category"] as! String
+                            self.DIVISION1 = i["division"] as! String
+                            self.DISTRICT1 = i["district"] as! String
+                            self.BRAND1 = i["brand_material"] as! String
+                            self.INNER1 = i["inner_material"] as! String
+                            self.STOCK1 = i["stock"] as! String
+                            self.DESC1 = i["description"] as! String
+                            self.SELLERID1 = i["user_id"] as! String
+                            self.RATING1 = i["rating"] as! String
+                            
+                            self.SELLERID.append(self.SELLERID1)
+                            self.ITEMID.append(self.ITEMID1)
+                            self.ADDETAIL.append(self.ADDETAIL1)
+                            self.MAINCATE.append(self.MAINCATE1)
+                            self.SUBCATE.append(self.SUBCATE1)
+                            self.BRAND.append(self.BRAND1)
+                            self.INNER.append(self.INNER1)
+                            self.STOCK.append(self.STOCK1)
+                            self.DESC.append(self.DESC1)
+                            self.DIVISION.append(self.DIVISION1)
+                            self.DISTRICT.append(self.DISTRICT1)
+                            self.RATING.append(self.RATING1)
+                            self.PHOTO.append(self.PHOTO1)
+                            self.PRICE.append(self.PRICE1)
+                            
+                            self.CategoryView.reloadData()
+                        }
+                    }
+                    
+                }
+        }
     }
     
     @IBAction func PriceDown(_ sender: Any) {
         ButtonPriceDown.isHidden = true
         ButtonPriceUp.isHidden = false
+        
+        self.ITEMID.removeAll()
+                self.SELLERID.removeAll()
+                self.ADDETAIL.removeAll()
+                self.MAINCATE.removeAll()
+                self.SUBCATE.removeAll()
+                self.BRAND.removeAll()
+                self.INNER.removeAll()
+                self.STOCK.removeAll()
+                self.DESC.removeAll()
+                self.PRICE.removeAll()
+                self.PHOTO.removeAll()
+                self.DIVISION.removeAll()
+                self.DISTRICT.removeAll()
+                
+        //        print(self.ADDETAIL.count)
+                Alamofire.request(URL_PRICE_DOWN, method: .post).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value as? Dictionary<String,Any>{
+                            if let list = result["read"] as? [Dictionary<String,Any>]{
+                                for i in list{
+                                    self.ITEMID1 = i["id"] as! String
+                                    self.ADDETAIL1 = i["ad_detail"] as! String
+                                    self.PHOTO1 = i["photo"] as! String
+                                    self.PRICE1 = i["price"] as! String
+                                    self.MAINCATE1 = i["main_category"] as! String
+                                    self.SUBCATE1 = i["sub_category"] as! String
+                                    self.DIVISION1 = i["division"] as! String
+                                    self.DISTRICT1 = i["district"] as! String
+                                    self.BRAND1 = i["brand_material"] as! String
+                                    self.INNER1 = i["inner_material"] as! String
+                                    self.STOCK1 = i["stock"] as! String
+                                    self.DESC1 = i["description"] as! String
+                                    self.SELLERID1 = i["user_id"] as! String
+                                    self.RATING1 = i["rating"] as! String
+                                    
+                                    self.SELLERID.append(self.SELLERID1)
+                                    self.ITEMID.append(self.ITEMID1)
+                                    self.ADDETAIL.append(self.ADDETAIL1)
+                                    self.MAINCATE.append(self.MAINCATE1)
+                                    self.SUBCATE.append(self.SUBCATE1)
+                                    self.BRAND.append(self.BRAND1)
+                                    self.INNER.append(self.INNER1)
+                                    self.STOCK.append(self.STOCK1)
+                                    self.DESC.append(self.DESC1)
+                                    self.DIVISION.append(self.DIVISION1)
+                                    self.DISTRICT.append(self.DISTRICT1)
+                                    self.RATING.append(self.RATING1)
+                                    self.PHOTO.append(self.PHOTO1)
+                                    self.PRICE.append(self.PRICE1)
+                                    
+                                    self.CategoryView.reloadData()
+                                }
+                            }
+                            
+                        }
+                }
     }
     
     
@@ -177,6 +276,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var URL_FILTER_DISTRICT: String = ""
     var URL_FILTER_DIVISION: String = ""
     var URL_FILTER_SEARCH_DIVISION: String = ""
+    var URL_PRICE_UP_READALL: String = ""
+    var URL_PRICE_DOWN: String = ""
     
     var DivisionFilter: String = ""
     var DistricFilter: String = ""
@@ -515,10 +616,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             
 //                            let prod1 = Products(id: self.ITEMID)
 //                            let bas = base.init(user: [Products])
-                            let arr2 = (id: self.ITEMID1, seller_id: self.SELLERID1)
-                            
-                            let arr3 = arr2
-                            self.arr.append(arr3)
+//                            let arr2 = (id: self.ITEMID1, seller_id: self.SELLERID1)
+//
+//                            let arr3 = arr2
+//                            self.arr.append(arr3)
                             
 //                            print(arr3)
                             self.CategoryView.reloadData()
@@ -526,11 +627,11 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                     }
                     
                 }
-
-                var arr3: [Any] = []
-                arr3.append(self.arr)
-                
-                print(arr3)
+//
+//                var arr3: [Any] = []
+//                arr3.append(self.arr)
+//
+//                print(arr3)
         }
     }
     
