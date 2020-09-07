@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		72E2A15FF930A0C732FF6F67 /* Pods_ketekmall4_ketekmall4UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221CB3058260853602BB06FC /* Pods_ketekmall4_ketekmall4UITests.framework */; };
-		B28902A5740A152C000EBE86 /* Pods_ketekmall4Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEE3CB972ACB70C4B0F64C5 /* Pods_ketekmall4Tests.framework */; };
 		FB3E830324FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830224FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift */; };
 		FB3E830524FEBE2400F1CE3C /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830424FEBE2400F1CE3C /* AddReviewViewController.swift */; };
 		FB3E830724FEC1C100F1CE3C /* EditProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830624FEC1C100F1CE3C /* EditProductViewController.swift */; };
@@ -28,6 +26,7 @@
 		FB4B72D924FBE00800293B81 /* ViewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */; };
 		FB4B72DB24FBE24A00293B81 /* ReviewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */; };
 		FB4B72DD24FBEF1A00293B81 /* ViewSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */; };
+		FB5049EC250609B50009DA8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB5049EB250609B50009DA8D /* GoogleService-Info.plist */; };
 		FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */; };
 		FB528AC624FA616800A968E8 /* MySellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AC524FA616800A968E8 /* MySellingViewController.swift */; };
 		FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */; };
@@ -93,15 +92,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DEE3CB972ACB70C4B0F64C5 /* Pods_ketekmall4Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
-		12D9B3AC60B3CABD62417754 /* Pods-ketekmall4Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4Tests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4Tests/Pods-ketekmall4Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		19DCAF0CB17AA8AC61942354 /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; sourceTree = "<group>"; };
-		221CB3058260853602BB06FC /* Pods_ketekmall4_ketekmall4UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4_ketekmall4UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
 		533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63A03EFF8EB142E13EA49DAB /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		73C0293737E512367AF07977 /* Pods-ketekmall4Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4Tests.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4Tests/Pods-ketekmall4Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FB3E830224FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSellerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB3E830424FEBE2400F1CE3C /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		FB3E830624FEC1C100F1CE3C /* EditProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +114,7 @@
 		FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProductViewController.swift; sourceTree = "<group>"; };
 		FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPageViewController.swift; sourceTree = "<group>"; };
 		FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSellingViewController.swift; sourceTree = "<group>"; };
+		FB5049EB250609B50009DA8D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB528AC524FA616800A968E8 /* MySellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellingViewController.swift; sourceTree = "<group>"; };
 		FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -186,7 +180,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B28902A5740A152C000EBE86 /* Pods_ketekmall4Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +187,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72E2A15FF930A0C732FF6F67 /* Pods_ketekmall4_ketekmall4UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,10 +198,6 @@
 			children = (
 				2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */,
 				1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */,
-				63A03EFF8EB142E13EA49DAB /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */,
-				19DCAF0CB17AA8AC61942354 /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */,
-				12D9B3AC60B3CABD62417754 /* Pods-ketekmall4Tests.debug.xcconfig */,
-				73C0293737E512367AF07977 /* Pods-ketekmall4Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -218,8 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */,
-				221CB3058260853602BB06FC /* Pods_ketekmall4_ketekmall4UITests.framework */,
-				0DEE3CB972ACB70C4B0F64C5 /* Pods_ketekmall4Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,6 +235,7 @@
 		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXGroup;
 			children = (
+				FB5049EB250609B50009DA8D /* GoogleService-Info.plist */,
 				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
 				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
 				FB5A48E624F7F06B00F5464C /* Main.storyboard */,
@@ -361,7 +348,7 @@
 				FB5A48DA24F7F06B00F5464C /* Frameworks */,
 				FB5A48DB24F7F06B00F5464C /* Resources */,
 				FCBC7E2B4C37AE0E64EBCE53 /* [CP] Embed Pods Frameworks */,
-				D6F595483E85C126D7C46F7B /* [CP] Copy Pods Resources */,
+				EA82811EC18B95F3BB966660 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -376,7 +363,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB5A490A24F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4Tests" */;
 			buildPhases = (
-				8AEBEBF831D71393A062F7C2 /* [CP] Check Pods Manifest.lock */,
 				FB5A48EF24F7F07B00F5464C /* Sources */,
 				FB5A48F024F7F07B00F5464C /* Frameworks */,
 				FB5A48F124F7F07B00F5464C /* Resources */,
@@ -395,12 +381,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB5A490D24F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4UITests" */;
 			buildPhases = (
-				30D687661CF72E24A11F64C3 /* [CP] Check Pods Manifest.lock */,
 				FB5A48FA24F7F07B00F5464C /* Sources */,
 				FB5A48FB24F7F07B00F5464C /* Frameworks */,
 				FB5A48FC24F7F07B00F5464C /* Resources */,
-				8C6C37C3D03067B51BAD2D0B /* [CP] Embed Pods Frameworks */,
-				74278DF98A41F4A27E4CFD88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -461,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */,
+				FB5049EC250609B50009DA8D /* GoogleService-Info.plist in Resources */,
 				FB5A48EA24F7F07B00F5464C /* Assets.xcassets in Resources */,
 				FB5A48E824F7F06B00F5464C /* Main.storyboard in Resources */,
 			);
@@ -505,85 +489,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		30D687661CF72E24A11F64C3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ketekmall4-ketekmall4UITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		74278DF98A41F4A27E4CFD88 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8AEBEBF831D71393A062F7C2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ketekmall4Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8C6C37C3D03067B51BAD2D0B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6F595483E85C126D7C46F7B /* [CP] Copy Pods Resources */ = {
+		EA82811EC18B95F3BB966660 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -724,6 +630,7 @@
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -888,7 +795,6 @@
 		};
 		FB5A490B24F7F07B00F5464C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12D9B3AC60B3CABD62417754 /* Pods-ketekmall4Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -910,7 +816,6 @@
 		};
 		FB5A490C24F7F07B00F5464C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73C0293737E512367AF07977 /* Pods-ketekmall4Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -932,7 +837,6 @@
 		};
 		FB5A490E24F7F07B00F5464C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63A03EFF8EB142E13EA49DAB /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -952,7 +856,6 @@
 		};
 		FB5A490F24F7F07B00F5464C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19DCAF0CB17AA8AC61942354 /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -21,11 +21,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var verify: UILabel!
     var userID: String = ""
     
+    let sharedPref = UserDefaults.standard
+    var user: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tabbar = tabBarController as! BaseTabBarController
-        userID = tabbar.value
+        user = sharedPref.string(forKey: "USERID") ?? "0"
+//        print(String(user))
+//        let tabbar = tabBarController as! BaseTabBarController
+        userID = String(user)
         
         let parameters: Parameters=[
             "id": userID

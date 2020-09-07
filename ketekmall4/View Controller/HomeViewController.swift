@@ -143,9 +143,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var userID: String = ""
     var Cart_count: Int = 0
     let dropDown = DropDown()
+    let sharedPref = UserDefaults.standard
+    var user: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        user = sharedPref.string(forKey: "USERID") ?? "0"
+        print(user)
         
         dropDown.anchorView = ListBar
         dropDown.dataSource = ["Logout"]
@@ -256,11 +261,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Service.addGestureRecognizer(ServiceClick)
         Fashion.addGestureRecognizer(FashionClick)
           
-        let tabbar = tabBarController as! BaseTabBarController
-        getUserDetails(userID: tabbar.value)
+
+        getUserDetails(userID: String(user))
         HotSelling()
         ShockingSale()
-        CartCount(UserID: tabbar.value)
+        CartCount(UserID: String(user))
         
     }
     
@@ -280,7 +285,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @objc func onCartBarClick(sender: Any){
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CartViewController") as! CartViewController
-        click.userID = tabbar.value
+        click.userID = String(user)
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -289,7 +294,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBAction func ViewAllCate(_ sender: Any) {
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_VIEWALL
         click.URL_SEARCH = URL_SEARCH_VIEWALL
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
@@ -303,7 +308,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBAction func ViewAllHot(_ sender: Any) {
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_HOT
         click.URL_SEARCH = URL_SEARCH_HOT
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HOT
@@ -317,7 +322,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBAction func ViewAllShockingSale(_ sender: Any) {
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_SHOCKING_SALE
         click.URL_SEARCH = URL_SEARCH_SHOCKING_SALE
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SHOCKING_SALE
@@ -341,7 +346,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBAction func Sell(_ sender: Any) {
         let tabbar = tabBarController as! BaseTabBarController
         let parameters: Parameters=[
-            "id": tabbar.value
+            "id": String(user)
         ]
         
         Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
@@ -361,13 +366,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         if verify[0] == "0" {
                             
                             let gotoRegister = self.storyboard!.instantiateViewController(identifier: "GotoRegisterSellerViewController") as! GotoRegisterSellerViewController
-                            gotoRegister.userID = tabbar.value
+                            gotoRegister.userID = self.user
                             if let navigator = self.navigationController {
                                 navigator.pushViewController(gotoRegister, animated: true)
                             }
                         }else{
                             let addProduct = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
-                            addProduct.userID = tabbar.value
+                            addProduct.userID = self.user
                             if let navigator = self.navigationController {
                                 navigator.pushViewController(addProduct, animated: true)
                             }
@@ -386,7 +391,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBAction func Find(_ sender: Any) {
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_VIEWALL
         click.URL_SEARCH = URL_SEARCH_VIEWALL
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
@@ -400,7 +405,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @objc func onFindBarClick(sender: Any){
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_VIEWALL
         click.URL_SEARCH = URL_SEARCH_VIEWALL
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
@@ -414,7 +419,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @objc func onCake(sender: Any){
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_CAKE
         click.URL_SEARCH = URL_SEARCH_CAKE
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_CAKE
@@ -428,7 +433,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_PROCESS
         click.URL_SEARCH = URL_SEARCH_PROCESS
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_PROCESS
@@ -442,7 +447,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_HEALTH
         click.URL_SEARCH = URL_SEARCH_HEALTH
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HEALTH
@@ -456,7 +461,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_HANDICRAFT
         click.URL_SEARCH = URL_SEARCH_HANDICRAFT
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HANDICRAFT
@@ -470,7 +475,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_HOMELIVING
         click.URL_SEARCH = URL_SEARCH_HOMELIVING
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HOMELIVING
@@ -484,7 +489,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_RETAIL
         click.URL_SEARCH = URL_SEARCH_RETAIL
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_RETAIL
@@ -498,7 +503,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_AGRICULTURE
         click.URL_SEARCH = URL_SEARCH_AGRICULTURE
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_AGRICULTURE
@@ -512,7 +517,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_SARAWAKBASED
         click.URL_SEARCH = URL_SEARCH_SARAWAKBASED
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SARAWAKBASED
@@ -526,7 +531,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_SERVICE
         click.URL_SEARCH = URL_SEARCH_SERVICE
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SERVICE
@@ -540,7 +545,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         print("Success")
         let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = tabbar.value
+        click.UserID = String(user)
         click.URL_READ = URL_READ_FASHION
         click.URL_SEARCH = URL_SEARCH_FASHION
         click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_FASHION
@@ -723,7 +728,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
     }
     
-    func onViewClick(cell: ShockingSaleCollectionViewCell) {
+    func onViewClick(cell: HotCollectionViewCell) {
         guard let indexPath = self.HotView.indexPath(for: cell) else{
             return
         }
@@ -750,8 +755,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     
-    func onViewClick(cell: HotCollectionViewCell) {
-        guard let indexPath = self.HotView.indexPath(for: cell) else{
+    func onViewClick(cell: ShockingSaleCollectionViewCell) {
+        guard let indexPath = self.ShockingView.indexPath(for: cell) else{
             return
         }
         

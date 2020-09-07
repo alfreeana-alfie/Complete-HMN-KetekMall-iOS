@@ -14,17 +14,14 @@ pod 'AARatingBar'
 pod 'M13Checkbox'
 pod 'UICheckbox'
 pod 'SimpleCheckbox'
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Firebase/Messaging'
+pod 'Firebase/Database'
 pod 'GoogleSignIn'
- 
-  # Pods for ketekmall4
-
-  target 'ketekmall4Tests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'ketekmall4UITests' do
-    # Pods for testing
-  end
-
+pod 'Firebase/Analytics'
+pod 'FBSDKLoginKit'
+    
+    
 end

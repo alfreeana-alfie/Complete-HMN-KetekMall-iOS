@@ -71,6 +71,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var DISTRICTU: [String] = []
     var POSTCODE: [String] = []
     
+    var GRANDTOTAL: [String] = []
+    
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single_delivery.php"
     let URL_CART = "https://ketekmall.com/ketekmall/readcart_temp.php"
@@ -80,6 +82,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(userID)
         
         CartView.delegate = self
         CartView.dataSource = self
@@ -138,7 +142,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                 self.addr01 = i["address_01"] as! String
                                                 self.addr02 = i["address_02"] as! String
                                                 self.divsionu = i["division"] as! String
-                                                self.districtu = i["district"] as! String
+//                                                self.districtu = i["district"] as! String
                                                 self.postcode = i["postcode"] as! String
                                                 
                                                 self.NAME.append(self.name)
@@ -146,7 +150,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                 self.ADDR01.append(self.addr01)
                                                 self.ADDR02.append(self.addr02)
                                                 self.DIVISIONU.append(self.divsionu)
-                                                self.DISTRICTU.append(self.districtu)
+//                                                self.DISTRICTU.append(self.districtu)
                                                 self.POSTCODE.append(self.postcode)
                                                 
                                                 self.NamePhone.text! = self.name + " | " + self.phone_no
@@ -168,7 +172,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                     
                                                                     self.DeliveryID = i["id"] as! String
                                                                     self.DeliveryDivision = i["division"] as! String
-                                                                    self.DeliveryDistrict = i["district"] as! String
+//                                                                    self.DeliveryDistrict = i["district"] as! String
                                                                     self.DeliveryDays = i["days"] as! String
                                                                     self.DeliveryPrice = i["price"] as! String
                                                                     
@@ -176,7 +180,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                     self.DELIVERYPRICE.append(self.DeliveryPrice)
                                                                     self.DELIVERYDAYS.append(self.DeliveryDays)
                                                                     self.DELIVERYDIVISION.append(self.DeliveryDivision)
-                                                                    self.DELIVERYDISTRICT.append(self.DeliveryDistrict)
+//                                                                    self.DELIVERYDISTRICT.append(self.DeliveryDistrict)
                                                                     
                                                                     let date = Date()
                                                                     let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
@@ -190,29 +194,29 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                     formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
                                                                     
                                                                     let datetime = formatter.string(from: later!)
-                                                                    print(datetime)
-                                                                    self.DELIVERYDATE.append(datetime)
-                                                                    print(self.DELIVERYPRICE)
                                                                     
+                                                                    self.DELIVERYDATE.append(datetime)
+                                                                    
+
                                                                     self.CartView.reloadData()
                                                                 }
                                                                 
                                                             }else{
-                                                                print("FAILED")
+                                                                print("FAILED 1")
                                                             }
                                                             
                                                         }else{
-                                                            print("FAILED")
+                                                            print("FAILED 2")
                                                         }
                                                 }
                                             }
                                             
                                         }else{
-                                            print("FAILED")
+                                            print("FAILED 3")
                                         }
                                         
                                     }else{
-                                        print("FAILED")
+                                        print("FAILED 4")
                                     }
                             }
                         }
@@ -231,6 +235,21 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CheckoutCollectionViewCell", for: indexPath) as! CheckoutCollectionViewCell
+
+        var SubTotal1: Double = 0.00
+        var SubTotal2: Double = 0.00
+        var SubTotal3 = 0.00
+        SubTotal1 = Double(self.PRICE[indexPath.row])! * Double(Int(self.QUANTITY[indexPath.row])!)
+        SubTotal2 = SubTotal1 + Double(self.DELIVERYPRICE[indexPath.row])!
+        
+        self.GRANDTOTAL.append(String(format: "%.2f", SubTotal2))
+        print(String(self.GRANDTOTAL.count))
+        for i in self.GRANDTOTAL{
+            SubTotal3 += Double(i)!
+            
+            self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal3)
+        }
+        
         cell.OrderID.text! = self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = self.PRICE[indexPath.row]

@@ -187,35 +187,45 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
-                        let name = user.value(forKey: "customer_name") as! [String]
-                        let review = user.value(forKey: "review") as! [String]
-                        let rating = user.value(forKey: "rating") as! [String]
-                        
-                        if let n = NumberFormatter().number(from: rating[0]) {
-                            let f = CGFloat(truncating: n)
-                            self.Rating.value = f
-                        }
-                        self.ReviewName.text? = name[0]
-                        self.Review.text? = review[0]
-                        self.ReviewImage.setImageWith(URL(string: self.MAIN_PHOTO)!)
-                        
-                        self.RATINGCOUNT = rating
-                        var Rate: Double = 0.00
-                        var NewRate: Double = 0.00
-                        
-                        for i in rating {
-                            Rate += Double(i) ?? .nan
+                        if(user.count == 0 ){
+                            self.ReviewName.text? = "Customer Name"
+                            self.Review.text? = "Review"
+                            self.ReviewImage.setImageWith(URL(string: self.MAIN_PHOTO)!)
                             
+                            self.Rating.value = 0
+                            
+                            self.BaseRating.value = 0
+                        }else{
+                            let name = user.value(forKey: "customer_name") as! [String]
+                            let review = user.value(forKey: "review") as! [String]
+                            let rating = user.value(forKey: "rating") as! [String]
+                            
+                            if let n = NumberFormatter().number(from: rating[0]) {
+                                let f = CGFloat(truncating: n)
+                                self.Rating.value = f
+                            }
+                            self.ReviewName.text? = name[0]
+                            self.Review.text? = review[0]
+                            self.ReviewImage.setImageWith(URL(string: self.MAIN_PHOTO)!)
+                            
+                            self.RATINGCOUNT = rating
+                            var Rate: Double = 0.00
+                            var NewRate: Double = 0.00
+                            
+                            for i in rating {
+                                Rate += Double(i) ?? .nan
+                                
+                            }
+                            NewRate = Rate / Double(user.count)
+                            
+                            if let n = NumberFormatter().number(from: String(format: "%.2f",NewRate)) {
+                                let f = CGFloat(truncating: n)
+                                self.BaseRating.value = f
+                            }
+                            //                        print("rate: " + String(format: "%.2f",NewRate))
+                            
+                            self.EditRating(ItemID: self.ItemID, RatingCount: String(format: "%.2f",NewRate))
                         }
-                        NewRate = Rate / Double(user.count)
-                        
-                        if let n = NumberFormatter().number(from: String(format: "%.2f",NewRate)) {
-                            let f = CGFloat(truncating: n)
-                            self.BaseRating.value = f
-                        }
-//                        print("rate: " + String(format: "%.2f",NewRate))
-                        
-                        self.EditRating(ItemID: self.ItemID, RatingCount: String(format: "%.2f",NewRate))
                     }
                 }else{
                     print("REVIEW FAILED")

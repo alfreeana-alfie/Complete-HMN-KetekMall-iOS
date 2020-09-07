@@ -30,9 +30,12 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var ITEMID: [String] = []
     var QUANTITY: [String] = []
     var SUB: [Double] = []
+    var PRICENEW: [String] = []
+    var QUANTITYNEW: [String] = []
     var Quan: String = ""
     var userID: String = ""
     var sub: Double = 0.00
+    var SubTotal: Double = 0.00
     
     @IBOutlet weak var CartView: UICollectionView!
     @IBOutlet weak var GrandTotal: UILabel!
@@ -141,6 +144,20 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
                             
+                            var SubTotal1: Double = 0.00
+                            SubTotal1 = Double(self.PRICE[indexPath.row])! * Double(Int(cell.Quantity.text!)!)
+                            if let index = self.PRICENEW.firstIndex(of: String(format: "%.2f", SubTotal1)) {
+                                self.PRICENEW.remove(at: index)
+                                if(self.PRICENEW.count == 0){
+                                    self.GrandTotal.text! = "MYR0.00"
+                                }
+                                var SubTotal2 = 0.00
+                                for i in self.PRICENEW{
+                                    SubTotal2 += Double(i)!
+                                    self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
+                                    
+                                }
+                            }
                         }
                 }
             }else{
@@ -159,15 +176,21 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     "cart_id": self.ID[indexPath.row],
                     
                 ]
-                
-                //Sending http post request
+                var SubTotal1: Double = 0.00
+                SubTotal1 = Double(self.PRICE[indexPath.row])! * Double(Int(cell.Quantity.text!)!)
+                self.PRICENEW.append(String(format: "%.2f", SubTotal1))
+            
                 Alamofire.request(self.URL_ADD_CART_TEMP, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-                        if let result = response.result.value {
-                            let jsonData = result as! NSDictionary
-                            print(jsonData.value(forKey: "message")!)
-                        }
+//                        if let result = response.result.value {
+//                            let jsonData = result as! NSDictionary
+                            var SubTotal2 = 0.00
+                            for i in self.PRICENEW{
+                                SubTotal2 += Double(i)!
+                                self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
+                            }
+//                        }
                 }
             }
             

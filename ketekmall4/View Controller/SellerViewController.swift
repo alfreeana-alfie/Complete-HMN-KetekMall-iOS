@@ -9,13 +9,17 @@
 import UIKit
 
 class SellerViewController: UIViewController {
-
+    
     var userID: String = ""
+    let sharedPref = UserDefaults.standard
+    var user: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tabbar = tabBarController as! BaseTabBarController
-        userID = tabbar.value
+        
+        user = sharedPref.string(forKey: "USERID") ?? "0"
+        userID = String(user)
+        
     }
     
     @IBAction func MySelling(_ sender: Any) {
@@ -28,10 +32,10 @@ class SellerViewController: UIViewController {
     
     @IBAction func AddProduct(_ sender: Any) {
         let addproduct = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
-               addproduct.userID = userID
-               if let navigator = self.navigationController {
-                   navigator.pushViewController(addproduct, animated: true)
-               }
+        addproduct.userID = userID
+        if let navigator = self.navigationController {
+            navigator.pushViewController(addproduct, animated: true)
+        }
     }
     
     
@@ -67,5 +71,5 @@ class SellerViewController: UIViewController {
             navigator.pushViewController(boostAd, animated: true)
         }
     }
-
+    
 }

@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import AARatingBar
 
+
+
 class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate, UISearchBarDelegate {
     func onAddToFav(cell: CategoryCollectionViewCell) {
         guard let indexPath = self.CategoryView.indexPath(for: cell) else{
@@ -126,9 +128,14 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBAction func PriceUp(_ sender: Any) {
         ButtonPriceDown.isHidden = false
         ButtonPriceUp.isHidden = true
-        ITEMID.sort()
-        PRICE.sort()
         
+        let arr2 = (id: self.ITEMID1, seller_id: self.SELLERID1)
+        
+        let arr3 = [arr2.id]
+        
+        self.arr.append(arr2)
+        
+        print(arr2.self)
     }
     
     @IBAction func PriceDown(_ sender: Any) {
@@ -183,8 +190,46 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PRICE: [String] = []
     var PHOTO: [String] = []
     var DISTRICT: [String] = []
+    var arr = [Any]()
+    
+    var SELLERID1: String = ""
+    var MAINCATE1: String = ""
+    var SUBCATE1: String = ""
+    var BRAND1: String = ""
+    var INNER1: String = ""
+    var STOCK1: String = ""
+    var DESC1: String = ""
+    var MAXORDER1: String = ""
+    var DIVISION1: String = ""
+    var RATING1: String = ""
+    var ITEMID1: String = ""
+    var ADDETAIL1: String = ""
+    var PRICE1: String = ""
+    var PHOTO1: String = ""
+    var DISTRICT1: String = ""
     
     @IBOutlet weak var SearchBar: UISearchBar!
+    
+    struct base {
+        var user: [Products]
+    }
+
+    struct Products{
+        var id: String
+        let seller_id: String
+    //    let main_category: String
+    //    let sub_category: String
+    //    let ad_detail: String
+    //    let brand_material: String
+    //    let inner_material: String
+    //    let stock: String
+    //    let description: String
+    //    let rating: String
+    //    let price: String
+    //    let photo: String
+    //    let division: String
+    //    let district: String
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -425,45 +470,58 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         Alamofire.request(URL_READ, method: .post).responseJSON
             {
                 response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
-                        
-                        let ItemID = user.value(forKey: "id") as! [String]
-                        let Seller_ID = user.value(forKey: "user_id") as! [String]
-                        let Main_Cate = user.value(forKey: "main_category") as! [String]
-                        let Sub_Cate = user.value(forKey: "sub_category") as! [String]
-                        let Ad_Detail = user.value(forKey: "ad_detail") as! [String]
-                        let brand_mat = user.value(forKey: "brand_material") as! [String]
-                        let inner_mat = user.value(forKey: "inner_material") as! [String]
-                        let stock = user.value(forKey: "stock") as! [String]
-                        let description = user.value(forKey: "description") as! [String]
-                        let rating = user.value(forKey: "rating") as! [String]
-                        let Price = user.value(forKey: "price") as! [String]
-                        let Photo = user.value(forKey: "photo") as! [String]
-                        let Division = user.value(forKey: "division") as! [String]
-                        let District = user.value(forKey: "district") as! [String]
-                        
-                        self.ITEMID = ItemID
-                        self.SELLERID = Seller_ID
-                        self.MAINCATE = Main_Cate
-                        self.SUBCATE = Sub_Cate
-                        self.ADDETAIL = Ad_Detail
-                        self.BRAND = brand_mat
-                        self.INNER = inner_mat
-                        self.STOCK = stock
-                        self.DESC = description
-                        self.PRICE = Price
-                        self.PHOTO = Photo
-                        self.RATING = rating
-                        self.DIVISION = Division
-                        self.DISTRICT = District
-                        
-                        self.CategoryView.reloadData()
+                if let result = response.result.value as? Dictionary<String,Any>{
+                    if let list = result["read"] as? [Dictionary<String,Any>]{
+                        for i in list{
+                            self.ITEMID1 = i["id"] as! String
+                            self.ADDETAIL1 = i["ad_detail"] as! String
+                            self.PHOTO1 = i["photo"] as! String
+                            self.PRICE1 = i["price"] as! String
+                            self.MAINCATE1 = i["main_category"] as! String
+                            self.SUBCATE1 = i["sub_category"] as! String
+                            self.DIVISION1 = i["division"] as! String
+                            self.DISTRICT1 = i["district"] as! String
+                            self.BRAND1 = i["brand_material"] as! String
+                            self.INNER1 = i["inner_material"] as! String
+                            self.STOCK1 = i["stock"] as! String
+                            self.DESC1 = i["description"] as! String
+                            self.SELLERID1 = i["user_id"] as! String
+                            self.RATING1 = i["rating"] as! String
+                            
+                            self.SELLERID.append(self.SELLERID1)
+                            self.ITEMID.append(self.ITEMID1)
+                            self.ADDETAIL.append(self.ADDETAIL1)
+                            self.MAINCATE.append(self.MAINCATE1)
+                            self.SUBCATE.append(self.SUBCATE1)
+                            self.BRAND.append(self.BRAND1)
+                            self.INNER.append(self.INNER1)
+                            self.STOCK.append(self.STOCK1)
+                            self.DESC.append(self.DESC1)
+                            self.DIVISION.append(self.DIVISION1)
+                            self.DISTRICT.append(self.DISTRICT1)
+                            self.RATING.append(self.RATING1)
+                            self.PHOTO.append(self.PHOTO1)
+                            self.PRICE.append(self.PRICE1)
+                            
+                            
+//                            let prod1 = Products(id: self.ITEMID)
+//                            let bas = base.init(user: [Products])
+                            let arr2 = (id: self.ITEMID1, seller_id: self.SELLERID1)
+                            
+                            let arr3 = arr2
+                            self.arr.append(arr3)
+                            
+//                            print(arr3)
+                            self.CategoryView.reloadData()
+                        }
                     }
+                    
                 }
+
+                var arr3: [Any] = []
+                arr3.append(self.arr)
+                
+                print(arr3)
         }
     }
     
