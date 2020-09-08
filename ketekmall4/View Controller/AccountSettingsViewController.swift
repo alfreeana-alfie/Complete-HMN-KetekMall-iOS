@@ -29,7 +29,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var BankName: UITextField!
     @IBOutlet weak var BankAcc: UITextField!
     @IBOutlet weak var Gender: UITextField!
-    @IBOutlet weak var GenderLabel: UILabel!
+//    @IBOutlet weak var GenderLabel: UILabel!
     @IBOutlet weak var Btn_EditProfile: UIButton!
     @IBOutlet weak var Btn_Accept: UIButton!
     @IBOutlet weak var btnUpload: UIButton!

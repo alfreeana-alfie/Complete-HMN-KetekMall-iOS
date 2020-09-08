@@ -11,8 +11,6 @@ import Alamofire
 
 class BoostAdViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, BoostAdDelegate {
     
-    
-    
     @IBOutlet var BoostView: UICollectionView!
     
     var userID: String = ""
