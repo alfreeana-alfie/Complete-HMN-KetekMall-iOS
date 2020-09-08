@@ -28,8 +28,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
-//        print(String(user))
-//        let tabbar = tabBarController as! BaseTabBarController
         userID = String(user)
         
         let parameters: Parameters=[
@@ -70,7 +68,6 @@ class ViewController: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             BuyerView.alpha = 1
-            
             SellerView.alpha = 0
             break
             

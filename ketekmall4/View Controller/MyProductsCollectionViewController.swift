@@ -47,6 +47,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         self.productView.delegate = self
         self.productView.dataSource = self
         
+        
         navigationItem.title = "My Products"
         let parameters: Parameters=[
             "user_id": userID,
