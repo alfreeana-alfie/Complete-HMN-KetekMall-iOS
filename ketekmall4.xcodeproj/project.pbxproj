@@ -71,6 +71,9 @@
 		FB9A9286250368B2001DD96C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A9285250368B2001DD96C /* ViewController.swift */; };
 		FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928725037A51001DD96C /* BuyerViewController.swift */; };
 		FB9A928A25037A75001DD96C /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928925037A75001DD96C /* SellerViewController.swift */; };
+		FBC293B72507DEF20057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293B62507DEF20057961A /* ChatInboxViewController.swift */; };
+		FBC293B92507DF560057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293B82507DF560057961A /* ChatViewController.swift */; };
+		FBC293BB2507E2A90057961A /* ChatInboxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293BA2507E2A90057961A /* ChatInboxCollectionViewCell.swift */; };
 		FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +168,9 @@
 		FB9A9285250368B2001DD96C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB9A928725037A51001DD96C /* BuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerViewController.swift; sourceTree = "<group>"; };
 		FB9A928925037A75001DD96C /* SellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
+		FBC293B62507DEF20057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
+		FBC293B82507DF560057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		FBC293BA2507E2A90057961A /* ChatInboxCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +338,9 @@
 				FB9A9285250368B2001DD96C /* ViewController.swift */,
 				FB9A928725037A51001DD96C /* BuyerViewController.swift */,
 				FB9A928925037A75001DD96C /* SellerViewController.swift */,
+				FBC293B62507DEF20057961A /* ChatInboxViewController.swift */,
+				FBC293B82507DF560057961A /* ChatViewController.swift */,
+				FBC293BA2507E2A90057961A /* ChatInboxCollectionViewCell.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -554,6 +563,7 @@
 				FB43BFD824FF7766002D36E0 /* CartCollectionViewCell.swift in Sources */,
 				FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */,
 				FB7787BF24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift in Sources */,
+				FBC293B72507DEF20057961A /* ChatInboxViewController.swift in Sources */,
 				FB5A491324F7F47000F5464C /* LoginViewController.swift in Sources */,
 				FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */,
 				FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */,
@@ -575,6 +585,7 @@
 				FB5490CF24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift in Sources */,
 				FB4B72CD24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift in Sources */,
 				FB4557B124F90EDA00FC502B /* AccountSettingsViewController.swift in Sources */,
+				FBC293BB2507E2A90057961A /* ChatInboxCollectionViewCell.swift in Sources */,
 				FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */,
 				FB7D211D25001C500043A286 /* DeliveryAddViewController.swift in Sources */,
 				FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */,
@@ -587,6 +598,7 @@
 				FB43BFD224FF74EB002D36E0 /* CartViewController.swift in Sources */,
 				FB7787BD24FE0FCA00AB01F4 /* ViewReviewViewController.swift in Sources */,
 				FB4B72D924FBE00800293B81 /* ViewProductViewController.swift in Sources */,
+				FBC293B92507DF560057961A /* ChatViewController.swift in Sources */,
 				FB528ACF24FA84E700A968E8 /* BoostAdViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
