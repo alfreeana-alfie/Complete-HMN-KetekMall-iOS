@@ -18,6 +18,10 @@ class MeViewController: UIViewController {
     @IBOutlet weak var verify: UILabel!
     
     var userID: String = ""
+    let sharedPref = UserDefaults.standard
+    var user: String = ""
+    var email: String = ""
+    var name: String = ""
     
     @IBAction func MyBuying(_ sender: Any) {
         let myBuying = self.storyboard!.instantiateViewController(identifier: "MyBuyingViewController") as! MyBuyingViewController
@@ -107,6 +111,9 @@ class MeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user = sharedPref.string(forKey: "USERID") ?? "0"
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
         
         let tabbar = tabBarController as! BaseTabBarController
         //        Value.text = tabbar.value

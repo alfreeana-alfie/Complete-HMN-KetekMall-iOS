@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     let sharedPref = UserDefaults.standard
     var tokenUser: String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let loginButton = FBLoginButton()
@@ -208,8 +209,12 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         let user = jsonData.value(forKey: "login") as! NSArray
                         
                         let userID = user.value(forKey: "id") as! [String]
+                        let Name = user.value(forKey: "name") as! [String]
+                        let Email = user.value(forKey: "email") as! [String]
                         
                         self.sharedPref.setValue(userID[0], forKey: "USERID")
+                        self.sharedPref.setValue(Name[0], forKey: "EMAIL")
+                        self.sharedPref.setValue(Email[0], forKey: "NAME")
                         
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
                         tabbar.value = userID[0]
@@ -241,9 +246,12 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         let user = jsonData.value(forKey: "login") as! NSArray
                         
                         let userID = user.value(forKey: "id") as! [String]
+                        let Name = user.value(forKey: "name") as! [String]
+                        let Email = user.value(forKey: "email") as! [String]
                         
                         self.sharedPref.setValue(userID[0], forKey: "USERID")
-                        
+                        self.sharedPref.setValue(Name[0], forKey: "NAME")
+                        self.sharedPref.setValue(Email[0], forKey: "EMAIL")
                         
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
                         tabbar.value = userID[0]

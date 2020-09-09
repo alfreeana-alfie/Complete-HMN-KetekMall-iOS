@@ -26,17 +26,17 @@ class AfterPlaceOrderViewController: UIViewController {
             {
                 response in
                 if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
+//                    let jsonData = result as! NSDictionary
                     
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
+//                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+//                        _ = jsonData.value(forKey: "read") as! NSArray
                         
                         let boostAd = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
                         boostAd.userID = self.userID
                         if let navigator = self.navigationController {
                             navigator.pushViewController(boostAd, animated: true)
                         }
-                    }
+//                    }
                 }else{
                     print("FAILED")
                 }

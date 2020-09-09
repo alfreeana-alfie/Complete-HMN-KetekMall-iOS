@@ -162,13 +162,13 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
             Alamofire.request(URL_SEND, method: .post, parameters: parameters).responseJSON
                 {
                     response in
-                    if let result = response.result.value{
-                        let jsonData = result as! NSDictionary
-                        
-                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                            let user = jsonData.value(forKey: "read") as! NSArray
-                        }
-                    }
+//                    if let result = response.result.value{
+//                        let jsonData = result as! NSDictionary
+//                        
+//                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+//                            let user = jsonData.value(forKey: "read") as! NSArray
+//                        }
+//                    }
             }
         }
     

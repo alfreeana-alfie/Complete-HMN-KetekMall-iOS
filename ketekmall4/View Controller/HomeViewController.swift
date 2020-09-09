@@ -180,12 +180,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let dropDown = DropDown()
     let sharedPref = UserDefaults.standard
     var user: String = ""
+    var email: String = ""
+    var name: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         user = sharedPref.string(forKey: "USERID") ?? "0"
-        print(user)
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
+        
+//        print(user)
         
         dropDown.anchorView = ListBar
         dropDown.dataSource = ["Logout"]

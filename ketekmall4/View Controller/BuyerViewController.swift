@@ -13,11 +13,15 @@ class BuyerViewController: UIViewController {
     var userID: String = ""
     let sharedPref = UserDefaults.standard
     var user: String = ""
+    var email: String = ""
+    var name: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
 //        let tabbar = tabBarController as! BaseTabBarController
         userID = String(user)
     }
@@ -53,6 +57,14 @@ class BuyerViewController: UIViewController {
     @IBAction func AccountSettings(_ sender: Any) {
         let accountsettings = self.storyboard!.instantiateViewController(identifier: "AccountSettingsViewController") as! AccountSettingsViewController
         accountsettings.userID = userID
+        if let navigator = self.navigationController {
+            navigator.pushViewController(accountsettings, animated: true)
+        }
+    }
+    
+    @IBAction func ChatInbox(_ sender: Any) {
+        let accountsettings = self.storyboard!.instantiateViewController(identifier: "ChatInboxViewController") as! ChatInboxViewController
+        
         if let navigator = self.navigationController {
             navigator.pushViewController(accountsettings, animated: true)
         }
