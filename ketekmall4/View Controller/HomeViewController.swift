@@ -14,9 +14,14 @@ import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
 import FBSDKCoreKit
+import JGProgressHUD
+import ImageSlideshow
+import LanguageManager_iOS
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate{
 
+    private let spinner = JGProgressHUD(style: .dark)
+    
     let MAIN_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
     let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
@@ -137,6 +142,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var Username: UILabel!
     @IBOutlet weak var Verify: UILabel!
+    @IBOutlet weak var Carousel: ImageSlideshow!
     
     @IBOutlet weak var ListBar: UIImageView!
     @IBOutlet weak var CartBar: UIImageView!
@@ -180,20 +186,24 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let dropDown = DropDown()
     let sharedPref = UserDefaults.standard
     var user: String = ""
-    var email: String = ""
-    var name: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        user = sharedPref.string(forKey: "USERID") ?? "0"
-        name = sharedPref.string(forKey: "NAME") ?? "0"
-        email = sharedPref.string(forKey: "EMAIL") ?? "0"
         
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
+        Carousel.setImageInputs([
+            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/23-Best-Sales-Promotion-Ideas.png")!),
+            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/download.png")!),
+            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/promotional-analysis.jpg")!)])
+        Carousel.slideshowInterval = 3.0
+        Carousel.contentScaleMode = .scaleAspectFill
+        
+        user = sharedPref.string(forKey: "USERID") ?? "0"
 //        print(user)
         
         dropDown.anchorView = ListBar
-        dropDown.dataSource = ["Logout"]
+        dropDown.dataSource = ["Edit Profile","Change to BM","Change to BI","Contact Us", "Logout"]
         
         HotView.delegate = self
         HotView.dataSource = self
@@ -313,11 +323,70 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         dropDown.show()
         dropDown.direction = .bottom
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-          print("Selected item: \(item) at index: \(index)")
-            if(index == 0){
+//          print("Selected item: \(item) at index: \(index)")
+            
+            switch index{
+            case 0:
+                let accountsettings = self.storyboard!.instantiateViewController(identifier: "AccountSettingsViewController") as! AccountSettingsViewController
+                accountsettings.userID = self.user
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(accountsettings, animated: true)
+                }
+                break
+                
+            case 1:
+                let selectedLanguage: Languages = (sender as AnyObject).tag == 1 ? .en : .ms
+                      
+                // change the language.
+                LanguageManager.shared.setLanguage(language: selectedLanguage,
+                                                   viewControllerFactory: { title -> UIViewController in
+                  // you can check the title to set a specific for specific scene.
+                  print("LANG" + title! ?? "")
+                  // get the storyboard.
+                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                  // instantiate the view controller that you want to show after changing the language.
+                  return storyboard.instantiateInitialViewController()!
+                }) { view in
+                  // do custom animation
+                  view.transform = CGAffineTransform(scaleX: 2, y: 2)
+                  view.alpha = 0
+                }
+                break
+                
+            case 2:
+                let selectedLanguage: Languages = (sender as AnyObject).tag == 1 ? .en : .ms
+                      
+                // change the language.
+                LanguageManager.shared.setLanguage(language: selectedLanguage,
+                                                   viewControllerFactory: { title -> UIViewController in
+                  // you can check the title to set a specific for specific scene.
+                  print("LANG" + title! ?? "")
+                  // get the storyboard.
+                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                  // instantiate the view controller that you want to show after changing the language.
+                  return storyboard.instantiateInitialViewController()!
+                }) { view in
+                  // do custom animation
+                  view.transform = CGAffineTransform(scaleX: 2, y: 2)
+                  view.alpha = 0
+                }
+                break
+                
+            case 3:
+                let accountsettings = self.storyboard!.instantiateViewController(identifier: "ContactUsViewController") as! ContactUsViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(accountsettings, animated: true)
+                }
+                break
+                
+            case 4:
                 _ = self.navigationController?.popToRootViewController(animated: true)
                 GIDSignIn.sharedInstance()?.signOut()
                 LoginManager().logOut()
+                break
+                
+            default:
+                break
             }
         }
         dropDown.width = 200
@@ -628,6 +697,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func getUserDetails(userID: String){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "id": userID
         ]
@@ -639,6 +709,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let name = user.value(forKey: "name") as! [String]
@@ -655,6 +726,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.UserImage.setImageWith(URL(string: Photo[0])!)
                     }
                 }else{
+                    self.spinner.dismiss(afterDelay: 3.0)
                     print("FAILED")
                 }
                 
@@ -662,10 +734,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func HotSelling(){
+        spinner.show(in: self.HotView)
         Alamofire.request(URL_READ_HOT, method: .post).responseJSON
             {
                 response in
                 if let result = response.result.value{
+                    self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
@@ -709,13 +783,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func ShockingSale(){
+        spinner.show(in: self.ShockingView)
             Alamofire.request(URL_READ_SHOCKING_SALE, method: .post).responseJSON
                 {
                     response in
-                    //printing response
-    //                print(response)
-                    
-                    //getting the json value from the server
+                    self.spinner.dismiss(afterDelay: 3.0)
                     if let result = response.result.value{
                         let jsonData = result as! NSDictionary
                         
@@ -768,10 +840,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Alamofire.request(URL_READ_CART, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-                        //printing response
-        //                print(response)
-                        
-                        //getting the json value from the server
                         if let result = response.result.value{
                             let jsonData = result as! NSDictionary
                             
@@ -788,9 +856,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                                 badgeAppearance.textColor = UIColor.white // default is white
                                 badgeAppearance.textAlignment = .center //default is center
                                 badgeAppearance.textSize = 10 //default is 12
-                                badgeAppearance.distanceFromCenterX = -0.001 //default is 0
-                                badgeAppearance.distanceFromCenterY = -7 //default is 0
-                                badgeAppearance.allowShadow = true
+                                badgeAppearance.distanceFromCenterX = 1 //default is 0
+                                badgeAppearance.distanceFromCenterY = -3 //default is 0
+                                badgeAppearance.allowShadow = false
                                 badgeAppearance.borderColor = .red
                                 badgeAppearance.borderWidth = 0
                                 self.CartBar.badge(text: String(self.Cart_count), appearance: badgeAppearance)

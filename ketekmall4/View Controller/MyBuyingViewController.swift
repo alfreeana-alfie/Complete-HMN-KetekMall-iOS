@@ -8,11 +8,14 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyBuyingDelegate {
     
 
     @IBOutlet weak var MyBuyingView: UICollectionView!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done.php";
     let URL_CANCEL = "https://ketekmall.com/ketekmall/edit_order.php";
@@ -57,6 +60,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         MyBuyingView.dataSource = self
         
         navigationItem.title = "My Buying"
+        
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "customer_id": userID,
         ]
@@ -67,6 +72,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                 response in
                 if let result = response.result.value as? Dictionary<String,Any>{
                     if let list = result["read"] as? [Dictionary<String,Any>]{
+                        self.spinner.dismiss(afterDelay: 3.0)
                         for i in list{
                             self.order_id = i["id"] as! String
                             self.ad_detail = i["ad_detail"] as! String
@@ -162,13 +168,13 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
             Alamofire.request(URL_SEND, method: .post, parameters: parameters).responseJSON
                 {
                     response in
-//                    if let result = response.result.value{
-//                        let jsonData = result as! NSDictionary
-//                        
-//                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
-//                            let user = jsonData.value(forKey: "read") as! NSArray
-//                        }
-//                    }
+                    if let result = response.result.value{
+                        let jsonData = result as! NSDictionary
+                        
+                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            let user = jsonData.value(forKey: "read") as! NSArray
+                        }
+                    }
             }
         }
     
@@ -176,6 +182,9 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         guard let indexPath = self.MyBuyingView.indexPath(for: cell) else{
             return
         }
+        
+        spinner.show(in: self.view)
+        
         let Seller_ID = self.seller_id[indexPath.row]
         let Order_ID = self.OrderID[indexPath.row]
         let Order_Date = self.OrderDate[indexPath.row]
@@ -195,6 +204,10 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 print("SUCCESS")
+                                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                                self.spinner.textLabel.text = "Successfully Reject"
+                                self.spinner.show(in: self.view)
+                                self.spinner.dismiss(afterDelay: 4.0)
                                 self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)
                             }
                         }

@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate {
     
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_review.php"
@@ -24,10 +24,14 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
 
     
     @IBOutlet weak var ReviewView: UICollectionView!
+    @IBOutlet weak var Tabbar: UITabBar!
+    var viewController1: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Tabbar.delegate = self
+        
         ReviewView.delegate = self
         ReviewView.dataSource = self
         
@@ -62,6 +66,34 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
                 
         }
     }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return REVIEWID.count

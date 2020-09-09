@@ -11,8 +11,11 @@ import Alamofire
 import AFNetworking
 import SDWebImage
 import AARatingBar
+import JGProgressHUD
 
-class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate {
+class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate, UITabBarDelegate {
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var ItemName: UILabel!
@@ -36,7 +39,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var ViewSameShop: UILabel!
     @IBOutlet weak var SameShopView: UICollectionView!
-    
+    @IBOutlet weak var Tabbar: UITabBar!
+    var viewController1: UIViewController?
     
     
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
@@ -101,6 +105,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Tabbar.delegate = self
+        
         SameShopView.delegate = self
         SameShopView.dataSource = self
         
@@ -136,6 +142,33 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         getReview()
         getSold()
         SameShopList()
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
     }
     
     func getSellerDetails(){
@@ -235,6 +268,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func getSold(){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "seller_id": SELLERID,
             "ad_detail": ADDETAIL,
@@ -247,6 +281,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let ID = user.value(forKey: "id") as! [String]

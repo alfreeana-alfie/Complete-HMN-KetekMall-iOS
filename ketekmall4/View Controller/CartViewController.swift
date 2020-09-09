@@ -9,8 +9,11 @@
 import UIKit
 import Alamofire
 import SimpleCheckbox
+import JGProgressHUD
 
-class CartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartDelegate {
+class CartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartDelegate, UITabBarDelegate {
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
     let URL_DELETE_CART = "https://ketekmall.com/ketekmall/delete_cart.php"
@@ -40,9 +43,14 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var CartView: UICollectionView!
     @IBOutlet weak var GrandTotal: UILabel!
     @IBOutlet weak var ButtonCheckout: UIButton!
+    @IBOutlet weak var Tabbar: UITabBar!
+    
+    var viewController1: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Tabbar.delegate = self
         
         CartView.delegate = self
         CartView.dataSource = self
@@ -52,7 +60,36 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ViewList()
     }
     
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
+    }
+
+    
     func ViewList(){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "customer_id": userID,
         ]
@@ -63,6 +100,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let ID = user.value(forKey: "id") as! [String]

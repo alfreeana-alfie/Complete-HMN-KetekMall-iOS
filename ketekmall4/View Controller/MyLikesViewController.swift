@@ -9,11 +9,14 @@
 import UIKit
 import Alamofire
 import AFNetworking
+import JGProgressHUD
 
 class MyLikesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyLikesDelegate {
     @IBOutlet weak var MyLikesView: UICollectionView!
     
     var userID: String = ""
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ = "https://ketekmall.com/ketekmall/readfav.php"
     let URL_DELETE = "https://ketekmall.com/ketekmall/delete_fav.php"
@@ -33,6 +36,8 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         MyLikesView.dataSource = self
         
         navigationItem.title = "My Likes"
+        
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "customer_id": userID,
         ]
@@ -45,6 +50,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         let ID = user.value(forKey: "id") as! [String]
                         let AdDetail = user.value(forKey: "ad_detail") as! [String]

@@ -8,16 +8,19 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class ForgotPasswordViewController: UIViewController {
     let URL_SEND_EMAIL = "https://ketekmall.com/ketekmall/sendEmail_getPassword.php";
     
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var Border: UIView!
     @IBOutlet weak var ButtonSend: UIButton!
     
     @IBAction func sendEmail(_ sender: Any) {
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "email":Email.text!,
         ]
@@ -27,6 +30,12 @@ class ForgotPasswordViewController: UIViewController {
             if let result = response.result.value {
                 let jsonData = result as! NSDictionary
                 print(jsonData.value(forKey: "message")!)
+                self.spinner.dismiss(afterDelay: 3.0)
+            }else{
+                self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                self.spinner.textLabel.text = "Failed"
+                self.spinner.show(in: self.view)
+                self.spinner.dismiss(afterDelay: 4.0)
             }
         }
     }

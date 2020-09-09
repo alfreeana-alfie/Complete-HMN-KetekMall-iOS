@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITabBarDelegate {
     
     
     
@@ -41,12 +41,16 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var District: UITextField!
     @IBOutlet weak var ButtonApply: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
+    @IBOutlet weak var Tabbar: UITabBar!
     
+    var viewController1: UIViewController?
     var DivisionPicker = UIPickerView()
     var DistrictPicker = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Tabbar.delegate = self
         
         DivisionPicker.dataSource = self
         DivisionPicker.delegate = self
@@ -66,6 +70,34 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         
         navigationItem.title = "Filter"
+    }
+    
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

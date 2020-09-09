@@ -8,12 +8,15 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class ReviewPageViewController: UIViewController {
     
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_remarks_done.php"
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_received.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     var itemID = ""
     var USERID = ""
@@ -45,6 +48,7 @@ class ReviewPageViewController: UIViewController {
     @IBOutlet weak var ButtonReceived: UIButton!
     
     @IBAction func Received(_ sender: Any) {
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "order_date": DATEORDER,
         ]
@@ -55,7 +59,10 @@ class ReviewPageViewController: UIViewController {
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        print("SUCCESS")
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        self.spinner.textLabel.text = "Success"
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
                         
                         self.getSellerDetails(SellerID: self.SELLERID, OrderID: self.ORDERID)
                         
@@ -66,6 +73,11 @@ class ReviewPageViewController: UIViewController {
                         if let navigator = self.navigationController {
                             navigator.pushViewController(ReviewProduct, animated: true)
                         }
+                    }else{
+                        self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                        self.spinner.textLabel.text = "Failed"
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
                     }
                 }
         }

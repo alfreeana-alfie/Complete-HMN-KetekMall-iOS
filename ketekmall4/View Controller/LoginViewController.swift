@@ -15,10 +15,9 @@ import FirebaseMessaging
 import FirebaseInstanceID
 import FBSDKLoginKit
 import FBSDKCoreKit
+import JGProgressHUD
 
 class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
-    
-    
     
     let URL_LOGIN = "https://ketekmall.com/ketekmall/login.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
@@ -32,21 +31,40 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     @IBOutlet weak var EmailImage: UIImageView!
     @IBOutlet weak var PasswordImage: UIImageView!
     @IBOutlet weak var GoogleSignInBtn: GIDSignInButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    private let loginButton = FBLoginButton()
+    
+    let hud = JGProgressHUD(style: .dark)
     
     let sharedPref = UserDefaults.standard
     var tokenUser: String = ""
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loginButton = FBLoginButton()
-        loginButton.permissions = ["public_profile", "email"]
-        view.addSubview(loginButton)
         
-        loginButton.removeConstraints(loginButton.constraints)
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: -75).isActive = true
+        let boolValue = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        if(boolValue == true){
+            hud.textLabel.text = "Loading"
+            hud.show(in: self.view)
+            UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+            UserDefaults.standard.synchronize()
+            let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(tabbar, animated: true)
+            }
+        }
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.clientID = "918843433379-sttk0oa9ea0htiqt3j3ncakoi2vrma2i.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.delegate = self
+        
+        loginButton.permissions = ["public_profile", "email"]
+        scrollView.addSubview(loginButton)
+        
+        loginButton.frame = CGRect(x: 59, y: 608 - 60, width: 300, height: 50)
         
         if let token = AccessToken.current,
             !token.isExpired {
@@ -61,49 +79,47 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                 print("Result: \(result ?? "No Data")")
                 
                 if error != nil {
+                    self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.hud.show(in: self.view)
+                    self.hud.dismiss(afterDelay: 3.0)
                     print("FAILED FACEBOOK LOGIN")
                 }
-                else if let userData = result as? [String:AnyObject] {
-                    let username = userData["name"] as? String
-                    let email = userData["email"] as? String
-                    let userID = userData["id"] as? String
-                    let facebookProfileUrl = "http://graph.facebook.com/\(userID ?? "no data")/picture?type=large"
-                    
-                    print("username: \(facebookProfileUrl)")
-                    
-                    let parameters: Parameters=[
-                        "name": username!,
-                        "email": email!,
-                        "phone_no": "000000000000",
-                        "password": username! + email!,
-                        "birthday": "00/00/2020",
-                        "gender": "Female",
-                        "photo": facebookProfileUrl,
-                        "verification": "0",
-                    ]
-                    Alamofire.request(self.URL_REGISTER, method: .post, parameters: parameters).responseJSON
-                        {
-                            response in
-                            if let result = response.result.value {
-                                let jsonData = result as! NSDictionary
-                                print(jsonData.value(forKey: "message")!)
-                                self.login(email: email!, password: username! + email!)
-                            }else{
-                                print("FAILED")
-                                self.login(email: email!, password: username! + email!)
-                            }
+                else{
+                    self.hud.show(in: self.view)
+                    if let userData = result as? [String:AnyObject] {
+                        let username = userData["name"] as? String
+                        let email = userData["email"] as? String
+                        let userID = userData["id"] as? String
+                        let facebookProfileUrl = "http://graph.facebook.com/\(userID ?? "no data")/picture?type=large"
+                        
+                        let parameters: Parameters=[
+                            "name": username!,
+                            "email": email!,
+                            "phone_no": "000000000000",
+                            "password": username! + email!,
+                            "birthday": "00/00/2020",
+                            "gender": "Female",
+                            "photo": facebookProfileUrl,
+                            "verification": "0",
+                        ]
+                        Alamofire.request(self.URL_REGISTER, method: .post, parameters: parameters).responseJSON
+                            {
+                                response in
+                                self.hud.dismiss(afterDelay: 3.0)
+                                if let result = response.result.value {
+                                    let jsonData = result as! NSDictionary
+                                    print(jsonData.value(forKey: "message")!)
+                                    self.login(email: email!, password: username! + email!)
+                                }else{
+                                    self.hud.dismiss(afterDelay: 3.0)
+                                    self.login(email: email!, password: username! + email!)
+                                }
+                        }
                     }
                 }
             })
-        }else{
-
-            
         }
 
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.clientID = "918843433379-sttk0oa9ea0htiqt3j3ncakoi2vrma2i.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance()?.delegate = self
-        
         GIDSignIn.sharedInstance()?.shouldFetchBasicProfile = true
         if (GIDSignIn.sharedInstance()?.hasPreviousSignIn())! {
             GIDSignIn.sharedInstance()?.restorePreviousSignIn()
@@ -125,21 +141,13 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                 }
             }
         }
-        
-        let boolValue = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
-        if(boolValue == true){
-            UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
-            UserDefaults.standard.synchronize()
-            let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(tabbar, animated: true)
-            }
-        }
-        
+
         EmailImage.layer.cornerRadius = 5
         PasswordImage.layer.cornerRadius = 5
         Border.layer.cornerRadius = 2
-        LoginStyle.layer.cornerRadius = 20
+        LoginStyle.layer.cornerRadius = 10
+        GoogleSignInBtn.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = 10
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
@@ -192,11 +200,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     func login(email: String, password: String){
+        hud.show(in: self.view)
         let parameters: Parameters=[
             "email":email,
             "password":password,
         ]
-        
         
         Alamofire.request(URL_LOGIN, method: .post, parameters: parameters).responseJSON
             {
@@ -206,15 +214,19 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.hud.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "login") as! NSArray
                         
                         let userID = user.value(forKey: "id") as! [String]
-                        let Name = user.value(forKey: "name") as! [String]
-                        let Email = user.value(forKey: "email") as! [String]
+                        let NAME = user.value(forKey: "name") as! [String]
+                        let EMAIL = user.value(forKey: "email") as! [String]
+                        
+                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                        UserDefaults.standard.synchronize()
                         
                         self.sharedPref.setValue(userID[0], forKey: "USERID")
-                        self.sharedPref.setValue(Name[0], forKey: "EMAIL")
-                        self.sharedPref.setValue(Email[0], forKey: "NAME")
+                        self.sharedPref.setValue(NAME[0], forKey: "NAME")
+                        self.sharedPref.setValue(EMAIL[0], forKey: "EMAIL")
                         
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
                         tabbar.value = userID[0]
@@ -222,6 +234,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                             navigator.pushViewController(tabbar, animated: true)
                         }
                     }else{
+                        self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                        self.hud.textLabel.text = "Invalid email or password"
+                        self.hud.show(in: self.view)
+                        self.hud.dismiss(afterDelay: 4.0)
                         print("Invalid email or password")
                     }
                 }
@@ -229,6 +245,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     @IBAction func Login(_ sender: Any) {
+        hud.show(in: self.view)
         let parameters: Parameters=[
             "email":EmailField.text!,
             "password":PasswordField.text!,
@@ -243,15 +260,19 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.hud.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "login") as! NSArray
                         
                         let userID = user.value(forKey: "id") as! [String]
-                        let Name = user.value(forKey: "name") as! [String]
-                        let Email = user.value(forKey: "email") as! [String]
+                        let NAME = user.value(forKey: "name") as! [String]
+                        let EMAIL = user.value(forKey: "email") as! [String]
                         
                         self.sharedPref.setValue(userID[0], forKey: "USERID")
-                        self.sharedPref.setValue(Name[0], forKey: "NAME")
-                        self.sharedPref.setValue(Email[0], forKey: "EMAIL")
+                        self.sharedPref.setValue(NAME[0], forKey: "NAME")
+                        self.sharedPref.setValue(EMAIL[0], forKey: "EMAIL")
+                        
+                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                        UserDefaults.standard.synchronize()
                         
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
                         tabbar.value = userID[0]
@@ -259,6 +280,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                             navigator.pushViewController(tabbar, animated: true)
                         }
                     }else{
+                        self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                        self.hud.textLabel.text = "Invalid email or password"
+                        self.hud.show(in: self.view)
+                        self.hud.dismiss(afterDelay: 4.0)
                         print("Invalid email or password")
                     }
                 }
@@ -267,9 +292,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     @IBAction func GotoReset(_ sender: Any) {
         let forgotViewController = self.storyboard!.instantiateViewController(identifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
-        
         self.navigationController?.pushViewController(forgotViewController, animated: true)
-        
         self.dismiss(animated: false, completion: nil)
     }
     

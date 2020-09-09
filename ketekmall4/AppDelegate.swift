@@ -11,6 +11,7 @@ import Firebase
 import GoogleSignIn
 import Alamofire
 import FBSDKCoreKit
+import LanguageManager_iOS
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate  {
@@ -31,6 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate  {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        LanguageManager.shared.defaultLanguage = .ms
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UINavigationController(rootViewController: UIViewController())
+        
+        let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        if(isUserLoggedIn) {
+            let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
+            let protectedPage = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            window!.rootViewController = protectedPage
+            window!.makeKeyAndVisible()
+        }
         
         ApplicationDelegate.shared.application(
             application,
@@ -40,17 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate  {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance()?.clientID = "918843433379-sttk0oa9ea0htiqt3j3ncakoi2vrma2i.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
 
-        window?.rootViewController = UINavigationController(rootViewController: UIViewController())
-        let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
-        if(isUserLoggedIn) {
-            let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-            let protectedPage = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            window!.rootViewController = protectedPage
-            window!.makeKeyAndVisible()
-        }
         return true
     }
 

@@ -8,9 +8,11 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var Category: UITextField!
     @IBOutlet weak var AdDetail: UITextField!
@@ -248,6 +250,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func Accept(_ sender: Any) {
+        spinner.show(in: self.view)
         let imageData: Data = UploadPhoto.image!.pngData()!
         let imageStr: String = imageData.base64EncodedString()
         
@@ -271,20 +274,22 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         Alamofire.request(URL_ADD, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                print(response)
                 
-                //getting the json value from the server
                 if let result = response.result.value {
                     
-                    //converting it as NSDictionary
+                    self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
-                    let MeView = self.storyboard!.instantiateViewController(identifier: "MeViewController") as! MeViewController
+                    let MeView = self.storyboard!.instantiateViewController(identifier: "ViewController") as! ViewController
                     MeView.userID = self.userID
                     if let navigator = self.navigationController {
                         navigator.pushViewController(MeView, animated: true)
                     }
+                }else{
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed to Save"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                 }
         }
     }

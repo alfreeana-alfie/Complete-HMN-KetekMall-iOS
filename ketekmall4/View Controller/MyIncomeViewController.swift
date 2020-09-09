@@ -8,11 +8,14 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done_profile.php";
     let URL_READ_TWO = "https://ketekmall.com/ketekmall/read_order_two.php";
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     var userID: String = ""
     var ad_Detail: [String] = []
@@ -53,6 +56,8 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         MyIncomeView.dataSource = self
         
         navigationItem.title = "My Income"
+        
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "seller_id": userID,
         ]
@@ -61,12 +66,9 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         Alamofire.request(URL_READ_TWO, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                //                print(response)
-                
-                //getting the json value from the server
                 if let result = response.result.value as? Dictionary<String,Any>{
                     if let list = result["read"] as? [Dictionary<String,Any>]{
+                        
                         for i in list{
                             
                             self.item_price_income = i["price"] as! String
@@ -88,12 +90,10 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
             {
                 response in
-//                printing response
-//                print(response)
                 
-//                getting the json value from the server
                 if let result = response.result.value as? Dictionary<String,Any>{
                     if let list = result["read"] as? [Dictionary<String,Any>]{
+                        self.spinner.dismiss(afterDelay: 3.0)
                         for i in list{
                             var STRGrand_Total: Double = 0.00
                             var STRGrand_Total2: Double = 0.00

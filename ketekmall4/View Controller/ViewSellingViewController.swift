@@ -8,9 +8,11 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class ViewSellingViewController: UIViewController {
 
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var OrderID: UILabel!
     @IBOutlet weak var ItemImage: UIImageView!
@@ -71,6 +73,7 @@ class ViewSellingViewController: UIViewController {
     }
     
     func getUserDetails(){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "id": CUSTOMERID
         ]
@@ -82,6 +85,7 @@ class ViewSellingViewController: UIViewController {
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let name = user.value(forKey: "name") as! [String]
@@ -116,6 +120,7 @@ class ViewSellingViewController: UIViewController {
     }
 
     @IBAction func Submit(_ sender: Any) {
+        spinner.show(in: self.view)
         let parameters: Parameters=[
                             "order_date": ORDER_DATE,
                             "tracking_no": Tracking_No.text!
@@ -126,14 +131,17 @@ class ViewSellingViewController: UIViewController {
                                 response in
                                 if let result = response.result.value {
                                     let jsonData = result as! NSDictionary
-                                    print(jsonData.value(forKey: "message")!)
+                                    self.spinner.dismiss(afterDelay: 3.0)
                                     let boostAd = self.storyboard!.instantiateViewController(identifier: "MySellingViewController") as! MySellingViewController
                                     boostAd.userID = self.USERID
                                     if let navigator = self.navigationController {
                                         navigator.pushViewController(boostAd, animated: true)
                                     }
                                 }else{
-                                    print("FAILED")
+                                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                                    self.spinner.textLabel.text = "Failed"
+                                    self.spinner.show(in: self.view)
+                                    self.spinner.dismiss(afterDelay: 4.0)
                                 }
                                 
                         }

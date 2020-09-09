@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AboutSellerDelegate {
+class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AboutSellerDelegate, UITabBarDelegate {
     
     let URL_READ_SELLER = "https://ketekmall.com/ketekmall/read_order_done_seller_shop.php"
     let URL_READALL_SELLER = "https://ketekmall.com/ketekmall/readall_seller.php"
@@ -23,7 +23,9 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var SellerLocation: UILabel!
     @IBOutlet weak var Products: UILabel!
     @IBOutlet weak var Sold: UILabel!
-
+    @IBOutlet weak var Tabbar: UITabBar!
+    
+    var viewController1: UIViewController?
     var UserID: String = ""
     var SELLERID1: String = ""
     var SELLLERNAME: String = ""
@@ -50,6 +52,8 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Tabbar.delegate = self
 
         AboutSellerView.delegate = self
         AboutSellerView.dataSource = self
@@ -63,6 +67,34 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         ViewList()
         getSold()
     }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
+    }
+
     
     @IBAction func ButtonWhatsapp(_ sender: Any) {
         let urlWhats = "whatsapp://send?phone=" + "+6" + SELLERPHONE

@@ -9,267 +9,12 @@
 import UIKit
 import Alamofire
 import AARatingBar
+import JGProgressHUD
 
+class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate, UISearchBarDelegate, UITabBarDelegate {
+    
+    private let spinner = JGProgressHUD(style: .dark)
 
-
-class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate, UISearchBarDelegate {
-    func onAddToFav(cell: CategoryCollectionViewCell) {
-        guard let indexPath = self.CategoryView.indexPath(for: cell) else{
-            return
-        }
-        
-        let parameters: Parameters=[
-            "seller_id": self.SELLERID[indexPath.row],
-            "item_id": self.ITEMID[indexPath.row],
-            "customer_id": UserID,
-            "main_category": self.MAINCATE[indexPath.row],
-            "sub_category": self.SUBCATE[indexPath.row],
-            "ad_detail": self.ADDETAIL[indexPath.row],
-            "brand_material":self.BRAND[indexPath.row],
-            "inner_material": self.INNER[indexPath.row],
-            "stock": self.STOCK[indexPath.row],
-            "description": self.DESC[indexPath.row],
-            "price": self.PRICE[indexPath.row],
-            "rating": self.RATING[indexPath.row],
-            "division": self.DIVISION[indexPath.row],
-            "district": self.DISTRICT[indexPath.row],
-            "photo": self.PHOTO[indexPath.row]
-        ]
-        
-        Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value {
-                    let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
-                    
-                }
-        }
-    }
-    
-    func onAddToCart(cell: CategoryCollectionViewCell) {
-        guard let indexPath = self.CategoryView.indexPath(for: cell) else{
-            return
-        }
-        
-        let parameters: Parameters=[
-            "seller_id": self.SELLERID[indexPath.row],
-            "item_id": self.ITEMID[indexPath.row],
-            "customer_id": UserID,
-            "main_category": self.MAINCATE[indexPath.row],
-            "sub_category": self.SUBCATE[indexPath.row],
-            "ad_detail": self.ADDETAIL[indexPath.row],
-            "price": self.PRICE[indexPath.row],
-            "quantity": "1",
-            "division": self.DIVISION[indexPath.row],
-            "district": self.DISTRICT[indexPath.row],
-            "photo": self.PHOTO[indexPath.row]
-        ]
-        
-        Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value {
-                    let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
-                    
-                }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ITEMID.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
-        
-        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-        if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
-            let f = CGFloat(truncating: n)
-            cell.Rating.value = f
-        }
-        cell.ItemName.text! = self.ADDETAIL[indexPath.row]
-        cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
-        cell.District.text! = self.DISTRICT[indexPath.row]
-        cell.ButtonView.layer.cornerRadius = 5
-        
-        cell.delegate = self
-        return cell
-    }
-    
-    func onViewClick(cell: CategoryCollectionViewCell) {
-        guard let indexPath = self.CategoryView.indexPath(for: cell) else{
-            return
-        }
-        
-        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
-        viewProduct.USERID = UserID
-        viewProduct.ItemID = self.ITEMID[indexPath.row]
-        viewProduct.SELLERID = self.SELLERID[indexPath.row]
-        viewProduct.MAINCATE = self.MAINCATE[indexPath.row]
-        viewProduct.SUBCATE = self.SUBCATE[indexPath.row]
-        viewProduct.ADDETAIL = self.ADDETAIL[indexPath.row]
-        viewProduct.BRAND = self.BRAND[indexPath.row]
-        viewProduct.INNER = self.INNER[indexPath.row]
-        viewProduct.STOCK = self.STOCK[indexPath.row]
-        viewProduct.DESC = self.DESC[indexPath.row]
-        viewProduct.PRICE = self.PRICE[indexPath.row]
-        viewProduct.PHOTO = self.PHOTO[indexPath.row]
-        viewProduct.DIVISION = self.DIVISION[indexPath.row]
-        viewProduct.DISTRICT = self.DISTRICT[indexPath.row]
-        if let navigator = self.navigationController {
-            navigator.pushViewController(viewProduct, animated: true)
-        }
-    }
-    
-    @IBAction func PriceUp(_ sender: Any) {
-        ButtonPriceDown.isHidden = false
-        ButtonPriceUp.isHidden = true
-        
-        self.ITEMID.removeAll()
-        self.SELLERID.removeAll()
-        self.ADDETAIL.removeAll()
-        self.MAINCATE.removeAll()
-        self.SUBCATE.removeAll()
-        self.BRAND.removeAll()
-        self.INNER.removeAll()
-        self.STOCK.removeAll()
-        self.DESC.removeAll()
-        self.PRICE.removeAll()
-        self.PHOTO.removeAll()
-        self.DIVISION.removeAll()
-        self.DISTRICT.removeAll()
-        
-//        print(self.ADDETAIL.count)
-        Alamofire.request(URL_PRICE_UP_READALL, method: .post).responseJSON
-            {
-                response in
-                if let result = response.result.value as? Dictionary<String,Any>{
-                    if let list = result["read"] as? [Dictionary<String,Any>]{
-                        for i in list{
-                            self.ITEMID1 = i["id"] as! String
-                            self.ADDETAIL1 = i["ad_detail"] as! String
-                            self.PHOTO1 = i["photo"] as! String
-                            self.PRICE1 = i["price"] as! String
-                            self.MAINCATE1 = i["main_category"] as! String
-                            self.SUBCATE1 = i["sub_category"] as! String
-                            self.DIVISION1 = i["division"] as! String
-                            self.DISTRICT1 = i["district"] as! String
-                            self.BRAND1 = i["brand_material"] as! String
-                            self.INNER1 = i["inner_material"] as! String
-                            self.STOCK1 = i["stock"] as! String
-                            self.DESC1 = i["description"] as! String
-                            self.SELLERID1 = i["user_id"] as! String
-                            self.RATING1 = i["rating"] as! String
-                            
-                            self.SELLERID.append(self.SELLERID1)
-                            self.ITEMID.append(self.ITEMID1)
-                            self.ADDETAIL.append(self.ADDETAIL1)
-                            self.MAINCATE.append(self.MAINCATE1)
-                            self.SUBCATE.append(self.SUBCATE1)
-                            self.BRAND.append(self.BRAND1)
-                            self.INNER.append(self.INNER1)
-                            self.STOCK.append(self.STOCK1)
-                            self.DESC.append(self.DESC1)
-                            self.DIVISION.append(self.DIVISION1)
-                            self.DISTRICT.append(self.DISTRICT1)
-                            self.RATING.append(self.RATING1)
-                            self.PHOTO.append(self.PHOTO1)
-                            self.PRICE.append(self.PRICE1)
-                            
-                            self.CategoryView.reloadData()
-                        }
-                    }
-                    
-                }
-        }
-    }
-    
-    @IBAction func PriceDown(_ sender: Any) {
-        ButtonPriceDown.isHidden = true
-        ButtonPriceUp.isHidden = false
-        
-        self.ITEMID.removeAll()
-                self.SELLERID.removeAll()
-                self.ADDETAIL.removeAll()
-                self.MAINCATE.removeAll()
-                self.SUBCATE.removeAll()
-                self.BRAND.removeAll()
-                self.INNER.removeAll()
-                self.STOCK.removeAll()
-                self.DESC.removeAll()
-                self.PRICE.removeAll()
-                self.PHOTO.removeAll()
-                self.DIVISION.removeAll()
-                self.DISTRICT.removeAll()
-                
-        //        print(self.ADDETAIL.count)
-                Alamofire.request(URL_PRICE_DOWN, method: .post).responseJSON
-                    {
-                        response in
-                        if let result = response.result.value as? Dictionary<String,Any>{
-                            if let list = result["read"] as? [Dictionary<String,Any>]{
-                                for i in list{
-                                    self.ITEMID1 = i["id"] as! String
-                                    self.ADDETAIL1 = i["ad_detail"] as! String
-                                    self.PHOTO1 = i["photo"] as! String
-                                    self.PRICE1 = i["price"] as! String
-                                    self.MAINCATE1 = i["main_category"] as! String
-                                    self.SUBCATE1 = i["sub_category"] as! String
-                                    self.DIVISION1 = i["division"] as! String
-                                    self.DISTRICT1 = i["district"] as! String
-                                    self.BRAND1 = i["brand_material"] as! String
-                                    self.INNER1 = i["inner_material"] as! String
-                                    self.STOCK1 = i["stock"] as! String
-                                    self.DESC1 = i["description"] as! String
-                                    self.SELLERID1 = i["user_id"] as! String
-                                    self.RATING1 = i["rating"] as! String
-                                    
-                                    self.SELLERID.append(self.SELLERID1)
-                                    self.ITEMID.append(self.ITEMID1)
-                                    self.ADDETAIL.append(self.ADDETAIL1)
-                                    self.MAINCATE.append(self.MAINCATE1)
-                                    self.SUBCATE.append(self.SUBCATE1)
-                                    self.BRAND.append(self.BRAND1)
-                                    self.INNER.append(self.INNER1)
-                                    self.STOCK.append(self.STOCK1)
-                                    self.DESC.append(self.DESC1)
-                                    self.DIVISION.append(self.DIVISION1)
-                                    self.DISTRICT.append(self.DISTRICT1)
-                                    self.RATING.append(self.RATING1)
-                                    self.PHOTO.append(self.PHOTO1)
-                                    self.PRICE.append(self.PRICE1)
-                                    
-                                    self.CategoryView.reloadData()
-                                }
-                            }
-                            
-                        }
-                }
-    }
-    
-    
-    @IBOutlet weak var ButtonPriceUp: UIButton!
-    @IBOutlet weak var ButtonPriceDown: UIButton!
-    @IBOutlet weak var CategoryView: UICollectionView!
-    
-    @IBAction func Filter(_ sender: Any) {
-        let filter = self.storyboard!.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
-        filter.DivisionFilter = DivisionFilter
-        filter.DistricFilter = DistricFilter
-        filter.URL_READ = URL_READ
-        filter.URL_FILTER_DIVISION = URL_FILTER_DIVISION
-        filter.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT
-        filter.URL_SEARCH = URL_SEARCH
-        filter.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION
-        if let navigator = self.navigationController {
-            navigator.pushViewController(filter, animated: true)
-        }
-    }
-    
     var UserID: String = ""
     var URL_READ: String = ""
     var URL_SEARCH: String = ""
@@ -318,27 +63,37 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PHOTO1: String = ""
     var DISTRICT1: String = ""
     
-    @IBOutlet weak var SearchBar: UISearchBar!
     
-    struct base {
-        var user: [Products]
-    }
+    @IBOutlet weak var SearchBar: UISearchBar!
 
-    struct Products{
-        var id: String
-        let seller_id: String
-    //    let main_category: String
-    //    let sub_category: String
-    //    let ad_detail: String
-    //    let brand_material: String
-    //    let inner_material: String
-    //    let stock: String
-    //    let description: String
-    //    let rating: String
-    //    let price: String
-    //    let photo: String
-    //    let division: String
-    //    let district: String
+    @IBOutlet weak var Tabbar: UITabBar!
+    var viewController1: UIViewController?
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
     }
     
     override func viewDidLoad() {
@@ -349,6 +104,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         CategoryView.delegate = self
         CategoryView.dataSource = self
         
+        Tabbar.delegate = self
+        
+        
         if(DivisionFilter.isEmpty && DistricFilter.isEmpty){
             ViewList()
         }else if(!DivisionFilter.isEmpty && DistricFilter.isEmpty){
@@ -358,6 +116,277 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
     }
+    
+        func onAddToFav(cell: CategoryCollectionViewCell) {
+            guard let indexPath = self.CategoryView.indexPath(for: cell) else{
+                return
+            }
+            spinner.show(in: self.view)
+            
+            let parameters: Parameters=[
+                "seller_id": self.SELLERID[indexPath.row],
+                "item_id": self.ITEMID[indexPath.row],
+                "customer_id": UserID,
+                "main_category": self.MAINCATE[indexPath.row],
+                "sub_category": self.SUBCATE[indexPath.row],
+                "ad_detail": self.ADDETAIL[indexPath.row],
+                "brand_material":self.BRAND[indexPath.row],
+                "inner_material": self.INNER[indexPath.row],
+                "stock": self.STOCK[indexPath.row],
+                "description": self.DESC[indexPath.row],
+                "price": self.PRICE[indexPath.row],
+                "rating": self.RATING[indexPath.row],
+                "division": self.DIVISION[indexPath.row],
+                "district": self.DISTRICT[indexPath.row],
+                "photo": self.PHOTO[indexPath.row]
+            ]
+            
+            Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        self.spinner.textLabel.text = "Added to My Likes"
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
+                        
+                    }
+            }
+        }
+        
+        func onAddToCart(cell: CategoryCollectionViewCell) {
+            guard let indexPath = self.CategoryView.indexPath(for: cell) else{
+                return
+            }
+            
+            spinner.show(in: self.view)
+            
+            let parameters: Parameters=[
+                "seller_id": self.SELLERID[indexPath.row],
+                "item_id": self.ITEMID[indexPath.row],
+                "customer_id": UserID,
+                "main_category": self.MAINCATE[indexPath.row],
+                "sub_category": self.SUBCATE[indexPath.row],
+                "ad_detail": self.ADDETAIL[indexPath.row],
+                "price": self.PRICE[indexPath.row],
+                "quantity": "1",
+                "division": self.DIVISION[indexPath.row],
+                "district": self.DISTRICT[indexPath.row],
+                "photo": self.PHOTO[indexPath.row]
+            ]
+            
+            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+//                        print(jsonData.value(forKey: "message")!)
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        self.spinner.textLabel.text = "Added to Cart"
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
+                        
+                    }
+            }
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return ITEMID.count
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
+            
+            let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+            if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
+                let f = CGFloat(truncating: n)
+                cell.Rating.value = f
+            }
+            cell.ItemName.text! = self.ADDETAIL[indexPath.row]
+            cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
+            cell.District.text! = self.DISTRICT[indexPath.row]
+            cell.ButtonView.layer.cornerRadius = 5
+            
+            cell.delegate = self
+            return cell
+        }
+        
+        func onViewClick(cell: CategoryCollectionViewCell) {
+            guard let indexPath = self.CategoryView.indexPath(for: cell) else{
+                return
+            }
+            
+            let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+            viewProduct.USERID = UserID
+            viewProduct.ItemID = self.ITEMID[indexPath.row]
+            viewProduct.SELLERID = self.SELLERID[indexPath.row]
+            viewProduct.MAINCATE = self.MAINCATE[indexPath.row]
+            viewProduct.SUBCATE = self.SUBCATE[indexPath.row]
+            viewProduct.ADDETAIL = self.ADDETAIL[indexPath.row]
+            viewProduct.BRAND = self.BRAND[indexPath.row]
+            viewProduct.INNER = self.INNER[indexPath.row]
+            viewProduct.STOCK = self.STOCK[indexPath.row]
+            viewProduct.DESC = self.DESC[indexPath.row]
+            viewProduct.PRICE = self.PRICE[indexPath.row]
+            viewProduct.PHOTO = self.PHOTO[indexPath.row]
+            viewProduct.DIVISION = self.DIVISION[indexPath.row]
+            viewProduct.DISTRICT = self.DISTRICT[indexPath.row]
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewProduct, animated: true)
+            }
+        }
+        
+        @IBAction func PriceUp(_ sender: Any) {
+            ButtonPriceDown.isHidden = false
+            ButtonPriceUp.isHidden = true
+            
+            spinner.show(in: self.view)
+            self.ITEMID.removeAll()
+            self.SELLERID.removeAll()
+            self.ADDETAIL.removeAll()
+            self.MAINCATE.removeAll()
+            self.SUBCATE.removeAll()
+            self.BRAND.removeAll()
+            self.INNER.removeAll()
+            self.STOCK.removeAll()
+            self.DESC.removeAll()
+            self.PRICE.removeAll()
+            self.PHOTO.removeAll()
+            self.DIVISION.removeAll()
+            self.DISTRICT.removeAll()
+
+            Alamofire.request(URL_PRICE_UP_READALL, method: .post).responseJSON
+                {
+                    response in
+                    if let result = response.result.value as? Dictionary<String,Any>{
+                        if let list = result["read"] as? [Dictionary<String,Any>]{
+                            self.spinner.dismiss(afterDelay: 3.0)
+                            for i in list{
+                                self.ITEMID1 = i["id"] as! String
+                                self.ADDETAIL1 = i["ad_detail"] as! String
+                                self.PHOTO1 = i["photo"] as! String
+                                self.PRICE1 = i["price"] as! String
+                                self.MAINCATE1 = i["main_category"] as! String
+                                self.SUBCATE1 = i["sub_category"] as! String
+                                self.DIVISION1 = i["division"] as! String
+                                self.DISTRICT1 = i["district"] as! String
+                                self.BRAND1 = i["brand_material"] as! String
+                                self.INNER1 = i["inner_material"] as! String
+                                self.STOCK1 = i["stock"] as! String
+                                self.DESC1 = i["description"] as! String
+                                self.SELLERID1 = i["user_id"] as! String
+                                self.RATING1 = i["rating"] as! String
+                                
+                                self.SELLERID.append(self.SELLERID1)
+                                self.ITEMID.append(self.ITEMID1)
+                                self.ADDETAIL.append(self.ADDETAIL1)
+                                self.MAINCATE.append(self.MAINCATE1)
+                                self.SUBCATE.append(self.SUBCATE1)
+                                self.BRAND.append(self.BRAND1)
+                                self.INNER.append(self.INNER1)
+                                self.STOCK.append(self.STOCK1)
+                                self.DESC.append(self.DESC1)
+                                self.DIVISION.append(self.DIVISION1)
+                                self.DISTRICT.append(self.DISTRICT1)
+                                self.RATING.append(self.RATING1)
+                                self.PHOTO.append(self.PHOTO1)
+                                self.PRICE.append(self.PRICE1)
+                                
+                                self.CategoryView.reloadData()
+                            }
+                        }
+                        
+                    }
+            }
+        }
+        
+        @IBAction func PriceDown(_ sender: Any) {
+            spinner.show(in: self.view)
+            ButtonPriceDown.isHidden = true
+            ButtonPriceUp.isHidden = false
+            
+            self.ITEMID.removeAll()
+                    self.SELLERID.removeAll()
+                    self.ADDETAIL.removeAll()
+                    self.MAINCATE.removeAll()
+                    self.SUBCATE.removeAll()
+                    self.BRAND.removeAll()
+                    self.INNER.removeAll()
+                    self.STOCK.removeAll()
+                    self.DESC.removeAll()
+                    self.PRICE.removeAll()
+                    self.PHOTO.removeAll()
+                    self.DIVISION.removeAll()
+                    self.DISTRICT.removeAll()
+                    
+            //        print(self.ADDETAIL.count)
+                    Alamofire.request(URL_PRICE_DOWN, method: .post).responseJSON
+                        {
+                            response in
+                            if let result = response.result.value as? Dictionary<String,Any>{
+                                if let list = result["read"] as? [Dictionary<String,Any>]{
+                                    self.spinner.dismiss(afterDelay: 3.0)
+                                    for i in list{
+                                        self.ITEMID1 = i["id"] as! String
+                                        self.ADDETAIL1 = i["ad_detail"] as! String
+                                        self.PHOTO1 = i["photo"] as! String
+                                        self.PRICE1 = i["price"] as! String
+                                        self.MAINCATE1 = i["main_category"] as! String
+                                        self.SUBCATE1 = i["sub_category"] as! String
+                                        self.DIVISION1 = i["division"] as! String
+                                        self.DISTRICT1 = i["district"] as! String
+                                        self.BRAND1 = i["brand_material"] as! String
+                                        self.INNER1 = i["inner_material"] as! String
+                                        self.STOCK1 = i["stock"] as! String
+                                        self.DESC1 = i["description"] as! String
+                                        self.SELLERID1 = i["user_id"] as! String
+                                        self.RATING1 = i["rating"] as! String
+                                        
+                                        self.SELLERID.append(self.SELLERID1)
+                                        self.ITEMID.append(self.ITEMID1)
+                                        self.ADDETAIL.append(self.ADDETAIL1)
+                                        self.MAINCATE.append(self.MAINCATE1)
+                                        self.SUBCATE.append(self.SUBCATE1)
+                                        self.BRAND.append(self.BRAND1)
+                                        self.INNER.append(self.INNER1)
+                                        self.STOCK.append(self.STOCK1)
+                                        self.DESC.append(self.DESC1)
+                                        self.DIVISION.append(self.DIVISION1)
+                                        self.DISTRICT.append(self.DISTRICT1)
+                                        self.RATING.append(self.RATING1)
+                                        self.PHOTO.append(self.PHOTO1)
+                                        self.PRICE.append(self.PRICE1)
+                                        
+                                        self.CategoryView.reloadData()
+                                    }
+                                }
+                                
+                            }
+                    }
+        }
+        
+        
+        @IBOutlet weak var ButtonPriceUp: UIButton!
+        @IBOutlet weak var ButtonPriceDown: UIButton!
+        @IBOutlet weak var CategoryView: UICollectionView!
+        
+        @IBAction func Filter(_ sender: Any) {
+            let filter = self.storyboard!.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
+            filter.DivisionFilter = DivisionFilter
+            filter.DistricFilter = DistricFilter
+            filter.URL_READ = URL_READ
+            filter.URL_FILTER_DIVISION = URL_FILTER_DIVISION
+            filter.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT
+            filter.URL_SEARCH = URL_SEARCH
+            filter.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION
+            if let navigator = self.navigationController {
+                navigator.pushViewController(filter, animated: true)
+            }
+        }
+        
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(DivisionFilter.isEmpty){
@@ -374,6 +403,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func Search(SearchValue: String, Division: String){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "ad_detail": SearchValue,
             "division": Division
@@ -386,6 +416,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                            let jsonData = result as! NSDictionary
                            
                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            self.spinner.dismiss(afterDelay: 3.0)
                                let user = jsonData.value(forKey: "read") as! NSArray
                                
                                let ItemID = user.value(forKey: "id") as! [String]
@@ -425,6 +456,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func Search(SearchValue: String){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "ad_detail": SearchValue
         ]
@@ -436,6 +468,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                            let jsonData = result as! NSDictionary
                            
                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            self.spinner.dismiss(afterDelay: 3.0)
                                let user = jsonData.value(forKey: "read") as! NSArray
                                
                                let ItemID = user.value(forKey: "id") as! [String]
@@ -476,6 +509,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func Filter_Division(){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "division": DivisionFilter
         ]
@@ -487,6 +521,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                            let jsonData = result as! NSDictionary
                            
                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            self.spinner.dismiss(afterDelay: 3.0)
                                let user = jsonData.value(forKey: "read") as! NSArray
                                
                                let ItemID = user.value(forKey: "id") as! [String]
@@ -526,6 +561,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func Filter_District(){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "division": DivisionFilter,
             "district": DistricFilter
@@ -538,6 +574,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                            let jsonData = result as! NSDictionary
                            
                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            self.spinner.dismiss(afterDelay: 3.0)
                                let user = jsonData.value(forKey: "read") as! NSArray
                                
                                let ItemID = user.value(forKey: "id") as! [String]
@@ -577,11 +614,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func ViewList(){
+        spinner.show(in: self.view)
         Alamofire.request(URL_READ, method: .post).responseJSON
             {
                 response in
                 if let result = response.result.value as? Dictionary<String,Any>{
                     if let list = result["read"] as? [Dictionary<String,Any>]{
+                        self.spinner.dismiss(afterDelay: 3.0)
                         for i in list{
                             self.ITEMID1 = i["id"] as! String
                             self.ADDETAIL1 = i["ad_detail"] as! String
@@ -612,26 +651,12 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.RATING.append(self.RATING1)
                             self.PHOTO.append(self.PHOTO1)
                             self.PRICE.append(self.PRICE1)
-                            
-                            
-//                            let prod1 = Products(id: self.ITEMID)
-//                            let bas = base.init(user: [Products])
-//                            let arr2 = (id: self.ITEMID1, seller_id: self.SELLERID1)
-//
-//                            let arr3 = arr2
-//                            self.arr.append(arr3)
-                            
-//                            print(arr3)
+
                             self.CategoryView.reloadData()
                         }
                     }
                     
                 }
-//
-//                var arr3: [Any] = []
-//                arr3.append(self.arr)
-//
-//                print(arr3)
         }
     }
     

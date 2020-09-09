@@ -8,9 +8,12 @@
 
 import UIKit
 import Alamofire
-class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+import JGProgressHUD
+class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate {
 
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single.php"
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     var ITEMID: String = ""
     var DEL_ID: [String] = []
@@ -19,16 +22,49 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
     var PRICE: [String] = []
     
     @IBOutlet weak var DeliveryView: UICollectionView!
-
+    @IBOutlet weak var Tabbar: UITabBar!
+    var viewController1: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DeliveryView.delegate = self
         DeliveryView.dataSource = self
         
+        Tabbar.delegate = self
+        
         DeliveryList()
     }
     
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
+    }
+
+    
     func DeliveryList(){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "item_id": ITEMID
         ]
@@ -40,6 +76,7 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let id = user.value(forKey: "id") as! [String]

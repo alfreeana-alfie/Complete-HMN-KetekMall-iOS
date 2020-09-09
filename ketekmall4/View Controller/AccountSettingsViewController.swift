@@ -9,8 +9,11 @@
 import UIKit
 import Alamofire
 import AFNetworking
+import JGProgressHUD
 
 class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate   {
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php";
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_detail.php";
@@ -60,6 +63,8 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         btnUploadServer.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
         
         Btn_Accept.isHidden = true
+    
+        spinner.show(in: self.view)
         navigationItem.title = "Account Settings"
         let parameters: Parameters=[
             "id": userID,
@@ -74,6 +79,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         let name = user.value(forKey: "name") as! [String]
                         let email = user.value(forKey: "email") as! [String]
@@ -134,6 +140,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBAction func Accept(_ sender: Any) {
         Btn_EditProfile.isHidden = true
         Btn_Accept.isHidden = false
+        self.spinner.show(in: self.view)
         let parameters: Parameters=[
             "id": userID,
             "name":Name.text!,
@@ -154,15 +161,21 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
             {
                 response in
                    if let result = response.result.value {
+                    self.spinner.dismiss(afterDelay: 3.0)
                      let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
-                    let MeView = self.storyboard!.instantiateViewController(identifier: "MeViewController") as! MeViewController
+                    let MeView = self.storyboard!.instantiateViewController(identifier: "ViewController") as! ViewController
                     MeView.userID = self.userID
                     if let navigator = self.navigationController {
                         navigator.pushViewController(MeView, animated: true)
                     }
                     
+                   }else{
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed to Save"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                 }
         }
     }
@@ -181,6 +194,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @objc private func uploadToServer(sender: UITapGestureRecognizer) {
+        spinner.show(in: self.view)
         let imageData: Data = UploadPhoto.image!.pngData()!
         let imageStr: String = imageData.base64EncodedString()
 
@@ -188,13 +202,13 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
             "id": userID,
             "photo": imageStr,
         ]
-        
-        //Sending http post request
+
         Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value {
                     let jsonData = result as! NSDictionary
+                    self.spinner.dismiss(afterDelay: 3.0)
                     print(jsonData.value(forKey: "message")!)
                     
                     

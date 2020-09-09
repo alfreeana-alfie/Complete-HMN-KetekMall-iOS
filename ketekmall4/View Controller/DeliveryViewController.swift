@@ -8,8 +8,11 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class DeliveryViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, DeliveryDelegate {
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var DeliveryView: UICollectionView!
     @IBOutlet weak var ButtonAdd: UIButton!
@@ -38,6 +41,7 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
         
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "item_id": itemID
         ]
@@ -49,6 +53,7 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let id = user.value(forKey: "id") as! [String]
@@ -64,6 +69,10 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
                         self.DeliveryView.reloadData()
                     }
                 }else{
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                     print("FAILED")
                 }
                 
@@ -120,8 +129,13 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
                 if let result = response.result.value{
                     let jsonData = result as! NSDictionary
                     print("SUCCESS")
+                    self.DeliveryView.deleteItems(at: [indexPath])
                     }else{
-                    print("FAILED")
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
+                    
                 }
             }
                 

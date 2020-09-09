@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreDetailsViewController: UIViewController {
+class MoreDetailsViewController: UIViewController, UITabBarDelegate {
 
     var BRAND: String = ""
     var INNER: String = ""
@@ -22,14 +22,46 @@ class MoreDetailsViewController: UIViewController {
     @IBOutlet weak var Stock: UILabel!
     @IBOutlet weak var ShipsFrom: UILabel!
     @IBOutlet weak var Description: UITextView!
-        
+    @IBOutlet weak var Tabbar: UITabBar!
+    
+    var viewController1: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Tabbar.delegate = self
         
         BrandMaterial.text! = BRAND
         InnerMaterial.text! = INNER
         Stock.text! = STOCK
         ShipsFrom.text! = DIVISION + "," + DISTRICT
         Description.text! = DESC
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
     }
 }

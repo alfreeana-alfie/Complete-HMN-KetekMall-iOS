@@ -8,8 +8,11 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class ViewController: UIViewController {
+    
+    private let spinner = JGProgressHUD(style: .dark)
 
     @IBOutlet weak var Segment: UISegmentedControl!
     @IBOutlet weak var BuyerView: UIView!
@@ -23,13 +26,18 @@ class ViewController: UIViewController {
     
     let sharedPref = UserDefaults.standard
     var user: String = ""
+    var name: String = ""
+    var email: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
         userID = String(user)
         
+        spinner.show(in: self.userImage)
         let parameters: Parameters=[
             "id": userID
         ]
@@ -41,6 +49,7 @@ class ViewController: UIViewController {
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let name = user.value(forKey: "name") as! [String]

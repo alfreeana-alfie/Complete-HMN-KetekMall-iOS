@@ -8,14 +8,19 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
-class CheckoutViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class CheckoutViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate {
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var NamePhone: UILabel!
     @IBOutlet weak var Address: UITextView!
     @IBOutlet weak var GrandTotal: UILabel!
     @IBOutlet weak var CartView: UICollectionView!
+    @IBOutlet weak var Tabbar: UITabBar!
     
+    var viewController1: UIViewController?
     var userID: String = ""
     var NEWADDR: String = ""
     var DeliveryID: String = ""
@@ -83,11 +88,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(userID)
+        Tabbar.delegate = self
         
         CartView.delegate = self
         CartView.dataSource = self
         
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "customer_id": userID,
         ]
@@ -97,6 +103,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             {
                 response in
                 if let result = response.result.value as? Dictionary<String,Any>{
+                    
                     if let list = result["read"] as? [Dictionary<String,Any>]{
                         for i in list{
                             
@@ -169,7 +176,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         if let result = response.result.value as? Dictionary<String,Any>{
                                                             if let list = result["read"] as? [Dictionary<String,Any>]{
                                                                 for i in list{
-                                                                    
+                                                                    self.spinner.dismiss(afterDelay: 3.0)
                                                                     self.DeliveryID = i["id"] as! String
                                                                     self.DeliveryDivision = i["division"] as! String
 //                                                                    self.DeliveryDistrict = i["district"] as! String
@@ -229,6 +236,34 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            break
+            
+        default:
+            break
+        }
+    }
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DELIVERYPRICE.count
     }
@@ -270,6 +305,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     @IBAction func PlaceOrder(_ sender: Any) {
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "seller_id": self.SELLERID,
             "customer_id": userID,
@@ -292,6 +328,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             {
                 response in
                 if let result = response.result.value {
+                    self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     

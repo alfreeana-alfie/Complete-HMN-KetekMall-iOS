@@ -8,11 +8,14 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class EditProductViewController: UIViewController {
     
     let URL_UPLOAD = "https://ketekmall.com/ketekmall/edituser.php"
-    let URL_IMG = "https://ketekmall.com/ketekmall/uploadimg02.php"    
+    let URL_IMG = "https://ketekmall.com/ketekmall/uploadimg02.php"
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var UploadImage: UIButton!
@@ -94,6 +97,7 @@ class EditProductViewController: UIViewController {
     
     
     @IBAction func Uploading(_ sender: Any) {
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "ad_detail":ADDETAIL,
             "photo":PHOTO,
@@ -104,21 +108,24 @@ class EditProductViewController: UIViewController {
         Alamofire.request(URL_IMG, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                print(response)
-                
-                //getting the json value from the server
+               
                 if let result = response.result.value {
                     
-                    //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
+                    self.spinner.dismiss(afterDelay: 3.0)
+                }else{
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                 }
         }
     }
     
     @IBAction func Accpt(_ sender: Any) {
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "id": ITEMID,
             "main_category":Category.text!,
@@ -133,22 +140,22 @@ class EditProductViewController: UIViewController {
             "division": Division.text!,
             "district": District.text!,
         ]
-        
-//        print(ADDETAIL)
-        //Sending http post request
+
         Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                print(response)
                 
-                //getting the json value from the server
                 if let result = response.result.value {
                     
-                    //converting it as NSDictionary
+                    self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
+                }else{
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                 }
         }
     }
@@ -161,9 +168,7 @@ class EditProductViewController: UIViewController {
             let imageData: Data = ItemImage.image!.pngData()!
             let imageStr: String = imageData.base64EncodedString()
         
-    //           let alert = UIAlertController(title: "Loading", message: "Please wait...", preferredStyle: .alert)
-    //           present(alert, animated: true, completion: nil)
-            
+        spinner.show(in: self.view)
             let parameters: Parameters=[
                 "ad_detail": ADDETAIL,
                 "photo": imageStr,
@@ -173,20 +178,16 @@ class EditProductViewController: UIViewController {
             Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                print(response)
-                
-    //            let alert = UIAlertController(title: "Success", message: "Ok", preferredStyle: .alert)
-    //            self.present(alert, animated: true, completion: nil)
-                
-                //getting the json value from the server
                 if let result = response.result.value {
-                    
-                    //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
-                    
+                    self.spinner.dismiss(afterDelay: 3.0)
+                }else{
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                 }
             }
            }

@@ -8,10 +8,13 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class MySellingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MySellingDelegate {
     
     @IBOutlet var MySellingView: UICollectionView!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_order_buyer_done_two.php"
     let URL_REJECT = "https://ketekmall.com/ketekmall/edit_order.php"
@@ -39,6 +42,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         MySellingView.dataSource = self
         
         navigationItem.title = "My Selling"
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "seller_id": userID,
         ]
@@ -55,6 +59,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         //                                let userID = user.value(forKey: "user_id") as! [String]
@@ -185,7 +190,10 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         self.getCustomerDetails(CustomerID: CustEmail, OrderID: Order_ID)
-                        print("SUCCESS")
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        self.spinner.textLabel.text = "Successfully Rejected"
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
                     }
                 }
         }

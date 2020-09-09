@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class RegisterViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class RegisterViewController: UIViewController {
     let URL_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png";
     let VERIFY = "0";
     let GENDER = "Female";
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var Name: UITextField!
     @IBOutlet weak var Email: UITextField!
@@ -32,7 +35,8 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func Register(_ sender: Any) {
-        
+    
+        spinner.show(in: self.view)
         if(isValidPassword(testStr: Password.text!)){
             let parameters: Parameters=[
                         "name":Name.text!,
@@ -47,9 +51,16 @@ class RegisterViewController: UIViewController {
                     Alamofire.request(URL_REGISTER, method: .post, parameters: parameters).responseJSON
                     {
                         response in
+                        self.spinner.dismiss(afterDelay: 3.0)
                         if let result = response.result.value {
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
+                            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            self.spinner.show(in: self.view)
+                            let tabbar = self.storyboard!.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+                                       if let navigator = self.navigationController {
+                                           navigator.pushViewController(tabbar, animated: true)
+                                    }
                         }
                     }
         }

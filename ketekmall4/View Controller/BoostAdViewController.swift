@@ -8,11 +8,13 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class BoostAdViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, BoostAdDelegate {
     
     @IBOutlet var BoostView: UICollectionView!
     
+    private let spinner = JGProgressHUD(style: .dark)
     var userID: String = ""
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_products_boost.php";
@@ -34,6 +36,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
             "user_id": userID,
         ]
         
+        spinner.show(in: self.view)
         //Sending http post request
         Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
             {
@@ -46,6 +49,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let ID = user.value(forKey: "id") as! [String]
@@ -92,6 +96,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func btnCANCEL(cell: BoostAdCollectionViewCell) {
+        spinner.show(in: self.view)
         guard let indexPath = self.BoostView.indexPath(for: cell) else{
             return
         }
@@ -109,8 +114,16 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                             let jsonData = result as! NSDictionary
                             
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                                print("SUCCESS")
+                                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                                self.spinner.textLabel.text = "Success"
+                                self.spinner.show(in: self.view)
+                                self.spinner.dismiss(afterDelay: 4.0)
                             }
+                        }else{
+                            self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                            self.spinner.textLabel.text = "Failed"
+                            self.spinner.show(in: self.view)
+                            self.spinner.dismiss(afterDelay: 4.0)
                         }
                 }
     }

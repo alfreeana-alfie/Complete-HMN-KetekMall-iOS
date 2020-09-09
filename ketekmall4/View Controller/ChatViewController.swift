@@ -2,110 +2,73 @@
 //  ChatViewController.swift
 //  ketekmall4
 //
-//  Created by Alfreeana Alfie on 08/09/2020.
+//  Created by Alfreeana Alfie on 09/09/2020.
 //  Copyright © 2020 Alfreeana Alfie. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
+import MessageKit
+import MessageInputBar
+import InputBarAccessoryView
 
-class ChatViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+struct Message: MessageType {
+    var sender: SenderType
+    var messageId: String
+    var sentDate: Date
+    var kind: MessageKind
+}
 
-    var UserID: String = ""
-    var ChatWith: String = ""
-    var ChatWith1: String = ""
-    var EmailUser: String = ""
-    var NAME: String = ""
+struct Sender: SenderType {
+    var senderId: String
+    var displayName: String
+}
+
+
+
+class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate {
     
-    var ChatWithContent: [String] = []
-    var ChatWithContentUSER: [String] = []
-    var ChatUser: [String] = []
+    let sharedPref = UserDefaults.standard
+    var user: String = ""
+    var name: String = ""
+    var email: String = ""
     
-    @IBOutlet var ChatView: UICollectionView!
-    @IBOutlet weak var Message: UITextField!
-    @IBOutlet weak var ButtonSend: UIButton!
+    private var messages = [Message]()
     
-    enum ItemType : Int {
-        case items = 0,
-             items2 = 1
-    }
-    
-    var itemType : ItemType = .items
-    
-    @IBAction func Send(_ sender: Any) {
-        
-    }
-    
-    
-    let URL_USER = "https://click-1595830894120.firebaseio.com/users.json"
-    let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
-    
+    private let selfSender = Sender(senderId: "2", displayName: "Admin")
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChatView.dataSource = self
-        ChatView.delegate = self
         
-        let ref = FirebaseDatabase.Database.database().reference().child("messages").child(ChatWith1 + "_" + EmailUser)
-        
-//        let ref1 = FirebaseDatabase.Database.database().reference().child("messages").child(EmailUser + "_" + ChatWith1)
-        
-        ref.observe(.childAdded, with: {(DataSnapshot) in
-            if let userDict = DataSnapshot.value as? [String:Any] {
-                    let user = userDict["user"] as! String
-                    let message = userDict["message"] as! String
-//                    let time = userDict["time"] as! String
-                    
-//                print(user)
-                if(user.elementsEqual(self.NAME)){
-                    self.ChatWithContentUSER.append(message)
-                    self.itemType = .items
-                }
-                self.ChatView.reloadData()
-                    
-                }
-        })
-        
-        ref.observe(.childAdded, with: {(DataSnapshot) in
-            if let userDict = DataSnapshot.value as? [String:Any] {
-                let user = userDict["user"] as! String
-                let message = userDict["message"] as! String
-//                let time = userDict["time"] as! String
-                
-//                print(user)
-                if(user.elementsEqual(self.ChatWith)){
-                    self.itemType = .items2
-                    self.ChatWithContent.append(message)
-                }
-                self.ChatView.reloadData()
-                
-            }
-        })
-        
+        messages.append(Message(sender: selfSender, messageId: "2", sentDate: Date(), kind: .text("Hellow World")))
+        view.backgroundColor = .red
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch itemType {
-        case .items:
-            return ChatWithContentUSER.count
-        case .items2:
-            return ChatWithContent.count
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String){
+        guard !text.replacingOccurrences(of: " ", with: "").isEmpty else{
+            return
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatCollectionViewCell", for: indexPath) as! ChatCollectionViewCell
         
-        switch itemType {
-        case .items:
-            cell.Message.text! = self.ChatWithContentUSER[indexPath.row]
-            cell.Message.backgroundColor = UIColor.orange
-            print("CH1A" + String(self.ChatWithContentUSER.count))
-        case .items2:
-           cell.Message.text! = self.ChatWithContent[indexPath.row]
-           cell.Message.backgroundColor = UIColor.green
-           print("CHA" + String(self.ChatWithContentUSER.count))
-        }
-        return cell
+        print("SENDING: \(text)")
     }
+}
 
+
+extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate{
+    func currentSender() -> SenderType {
+        return selfSender
+    }
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages[indexPath.section]
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages.count
+    }
+    
+    
 }

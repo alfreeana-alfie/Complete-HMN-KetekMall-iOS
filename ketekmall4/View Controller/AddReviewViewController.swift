@@ -9,11 +9,14 @@
 import UIKit
 import Alamofire
 import AARatingBar
+import JGProgressHUD
 
 class AddReviewViewController: UIViewController {
     
     let URL_ADD = "https://ketekmall.com/ketekmall/add_review.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var Review: UITextView!
     @IBOutlet weak var ButtonSubmit: UIButton!
@@ -24,7 +27,7 @@ class AddReviewViewController: UIViewController {
     var USERID: String = ""
     var SELLERID: String = ""
     var ITEMID: String = ""
-    var RATING: String = "3"
+    var RATING: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,7 @@ class AddReviewViewController: UIViewController {
     }
     
     func getUserDetails(){
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "id": USERID
         ]
@@ -49,6 +53,7 @@ class AddReviewViewController: UIViewController {
             {
                 response in
                 if let result = response.result.value{
+                    self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
@@ -59,13 +64,17 @@ class AddReviewViewController: UIViewController {
                         self.USERNAME = name[0]
                     }
                 }else{
-                    print("FAILED")
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                 }
                 
         }
     }
     
     @IBAction func Submit(_ sender: Any) {
+        spinner.show(in: self.view)
         let parameters: Parameters=[
             "seller_id": SELLERID,
             "customer_id": USERID,
@@ -79,10 +88,7 @@ class AddReviewViewController: UIViewController {
         Alamofire.request(URL_ADD, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                print(response)
-                
-                //getting the json value from the server
+                self.spinner.dismiss(afterDelay: 3.0)
                 if let result = response.result.value {
                     
                     //converting it as NSDictionary
@@ -94,7 +100,10 @@ class AddReviewViewController: UIViewController {
                         navigator.pushViewController(MeView, animated: true)
                     }
                 }else{
-                    print("FAILED")
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                 }
         }
     }

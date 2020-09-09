@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RegisterSellerViewController: UIViewController {
+class RegisterSellerViewController: UIViewController, UITabBarDelegate {
     
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_detail_seller.php"
     
@@ -21,8 +21,50 @@ class RegisterSellerViewController: UIViewController {
     @IBOutlet weak var BankAccView: UIView!
     @IBOutlet weak var ButtonAccept: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
+    @IBOutlet weak var Tabbar: UITabBar!
     
     var UserID: String = ""
+    var viewController1: UIViewController?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Tabbar.delegate = self
+        
+        ICView.layer.cornerRadius = 5
+        BankNameView.layer.cornerRadius = 5
+        BankAccView.layer.cornerRadius = 5
+        ButtonAccept.layer.cornerRadius = 5
+        ButtonCancel.layer.cornerRadius = 5
+    }
+
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+            switch item.tag {
+            case 1:
+                navigationController?.setNavigationBarHidden(true, animated: false)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+                break
+                
+            case 2:
+                navigationController?.setNavigationBarHidden(true, animated: false)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+                self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+                break
+                
+            case 3:
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+                break
+                
+            default:
+                break
+            }
+        }
+
     
     @IBAction func Accept(_ sender: Any) {
         let parameters: Parameters=[
@@ -44,28 +86,11 @@ class RegisterSellerViewController: UIViewController {
                 if let navigator = self.navigationController {
                     navigator.pushViewController(boostAd, animated: true)
                 }
-                //                if let result = response.result.value{
-                //                    let jsonData = result as! NSDictionary
-                //
-                //                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                //                        let user = jsonData.value(forKey: "read") as! NSArray
-                //                    }
-                //                }
         }
     }
     
     @IBAction func Cancel(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        ICView.layer.cornerRadius = 5
-        BankNameView.layer.cornerRadius = 5
-        BankAccView.layer.cornerRadius = 5
-        ButtonAccept.layer.cornerRadius = 5
-        ButtonCancel.layer.cornerRadius = 5
     }
     
 }

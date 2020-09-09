@@ -13,11 +13,15 @@ class SellerViewController: UIViewController {
     var userID: String = ""
     let sharedPref = UserDefaults.standard
     var user: String = ""
+    var name: String = ""
+    var email: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
         userID = String(user)
         
     }

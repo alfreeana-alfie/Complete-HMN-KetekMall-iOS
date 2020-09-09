@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -16,6 +17,8 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var Days: UITextField!
     @IBOutlet weak var ButtonAdd: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     var USERID: String = ""
     var ITEMID: String = ""
@@ -46,6 +49,7 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func Add(_ sender: Any) {
+        spinner.show(in: self.view)
             let parameters: Parameters=[
                 "user_id": USERID,
                 "division": Division.text!,
@@ -59,9 +63,9 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 {
                     response in
                     if let result = response.result.value{
-    //                    let jsonData = result as! NSDictionary
                         
-                         print("SUCCESS")
+                
+                         self.spinner.dismiss(afterDelay: 3.0)
                         let parameters: Parameters=[
                             "id": self.ITEMID
                         ]

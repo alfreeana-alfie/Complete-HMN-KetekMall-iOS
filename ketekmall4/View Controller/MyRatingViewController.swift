@@ -8,10 +8,13 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class MyRatingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     @IBOutlet weak var MyRatingView: UICollectionView!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     var userID: String = ""
 
@@ -42,6 +45,7 @@ class MyRatingViewController: UIViewController, UICollectionViewDelegate, UIColl
         MyRatingView.dataSource = self
         
         navigationItem.title = "My Rating"
+        spinner.show(in: self.view)
                 let parameters: Parameters=[
                     "customer_id": userID,
                 ]
@@ -52,6 +56,7 @@ class MyRatingViewController: UIViewController, UICollectionViewDelegate, UIColl
 
                         if let result = response.result.value as? Dictionary<String,Any>{
                             if let list = result["read"] as? [Dictionary<String,Any>]{
+                                self.spinner.dismiss(afterDelay: 3.0)
                                 for i in list{
                                     self.ItemID = i["item_id"] as! String
                                     self.CustomerName = i["customer_name"] as! String
