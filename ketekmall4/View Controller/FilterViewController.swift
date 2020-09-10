@@ -10,8 +10,6 @@ import UIKit
 
 class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITabBarDelegate {
     
-    
-    
     var DivisionFilter: String = ""
     var DistricFilter: String = ""
     
@@ -42,10 +40,15 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var ButtonApply: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     @IBOutlet weak var Tabbar: UITabBar!
+    @IBOutlet weak var DivisionLabel: UILabel!
+    @IBOutlet weak var DistrictLabel: UILabel!
     
     var viewController1: UIViewController?
     var DivisionPicker = UIPickerView()
     var DistrictPicker = UIPickerView()
+    
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +71,26 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         ButtonApply.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
         
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            navigationItem.title = "Filter".localized(lang: "ms")
+        }else{
+            changeLanguage(str: "en")
+            navigationItem.title = "Filter".localized(lang: "en")
+        }
         
-        navigationItem.title = "Filter"
     }
     
-    
+    func changeLanguage(str: String){
+        Division.placeholder = "Division".localized1(lang: str)
+        District.placeholder = "District".localized1(lang: str)
+        DivisionLabel.text = "Division".localized1(lang: str)
+        DistrictLabel.text = "District".localized1(lang: str)
+        ButtonApply.titleLabel?.text = "Apply".localized1(lang: str)
+        ButtonCancel.titleLabel?.text = "Cancel".localized1(lang: str)
+    }
+
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
@@ -251,4 +269,14 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func Cancel(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
+    
 }
+
+extension String {
+func localized1(lang:String) ->String {
+
+    let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+    let bundle = Bundle(path: path!)
+
+    return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+}}

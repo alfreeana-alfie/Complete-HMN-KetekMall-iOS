@@ -1,0 +1,116 @@
+/* 
+  Localizable.strings
+  ketekmall4
+
+  Created by Alfreeana Alfie on 10/09/2020.
+  Copyright © 2020 Alfreeana Alfie. All rights reserved.
+*/
+"SELL" = "Sell";
+"FIND" = "Find";
+"SELLER" = "SELLER";
+"BUYER" = "BUYER";
+"Welcome!" = "Welcome!";
+"VERIFICATION" = "VERIFICATION";
+"BUY. SELL. FIND. ALMOST EVERYTHING" = "BUY. SELL. FIND. ALMOST EVERYTHING";
+"BROWSE CATEGORIES" = "BROWSE CATEGORIES";
+"HOT SELLING" = "HOT SELLING";
+"SHOCKING SALE" = "SHOCKING SALE";
+"VIEW ALL" = "VIEW ALL";
+
+"Promotion" = "Promotion";
+"Social Updates" = "Social Updates";
+"Order Updates" = "Order Updates";
+
+"Division" = "Division";
+"District" = "District";
+"Apply" = "Apply";
+"Cancel" = "Cancel";
+
+"Home" = "Home";
+"Notification" = "Notification";
+"Me" = "Me";
+
+"Search Here" = "Search Here";
+"FILTER" = "FILTER";
+"PRICE" = "PRICE";
+
+"BECOME A SELLER TODAY!" = "BECOME A SELLER TODAY!";
+"You need to register as KetekMall Seller" = "You need to register as KetekMall Seller";
+"Before you can start selling your product, " = "Before you can start selling your product, ";
+
+"Bank Name" = "Bank Name";
+"Bank Account" = "Bank Account";
+"IC No." = "IC No.";
+"ACCEPT" = "ACCEPT";
+
+"BRAND MATERIAL" = "BRAND MATERIAL";
+"INNER MATERIAL" = "INNER MATERIAL";
+"STOCK" = "STOCK";
+"SHIPS FROM" = "SHIPS FROM";
+"DESCRIPTION" = "DESCRIPTION";
+
+"CHAT" = "CHAT";
+"Products" = "Products";
+"Sold" = "Sold";
+
+"View" = "View";
+"Shipping Information" = "Shipping Information";
+"More Details" = "More Details";
+"From the Same Shop" = "From the Same Shop";
+
+"Checkout" = "Checkout";
+"Total" = "Total";
+
+"Continue Shopping" = "Continue Shopping";
+
+"My Buying" = "My Buying";
+"My Likes" = "My Likes";
+"My Rating" = "My Rating";
+"Account Settings" = "Account Settings";
+"Help Centre" = "Help Centre";
+"Chat Inbox" = "Chat Inbox";
+
+"My Selling" = "My Selling";
+"Add New Product" = "Add New Product";
+"My Products" = "My Products";
+"My Income" = "My Income";
+"Product Rating" = "Product Rating";
+"Boost Ad" = "Boost Ad";
+
+"Edit Profile" = "Edit Profile";
+"Upload to Server" = "Upload to Server";
+"Upload Image" = "Upload Image";
+"Name" = "Name";
+"Email" = "Email";
+"Phone Number" = "Phone Number";
+"Address" = "Address";
+"City" = "City";
+"PostCode" = "PostCode";
+"Birthday" = "Birthday";
+"Gender" = "Gender";
+
+"Category" = "Category";
+"Ad Detail" = "Ad Detail";
+"Price" = "Price";
+"Max Order" = "Max Order";
+"Brand Material" = "Brand Material";
+"Inner Material" = "Inner Material";
+"Stock" = "Stock";
+"Description" = "Description";
+"Setup Delivery" = "Setup Delivery";
+
+"SUBMIT" = "SUBMIT";
+"Notification" = "Notification";
+"Me" = "Me";
+
+"Cake and pastries" = "Cake and pastries";
+"Process Food" = "Process Food";
+"Handicraft" = "Handicraft";
+"Service" = "Service";
+"Health and Beauty" = "Health and Beauty";
+"Home and living" = "Home and living";
+"Retail and Wholesale" = "Retail and Wholesale";
+"Agriculture" = "Agriculture";
+"Fashion Accessories" = "Fashion Accessories";
+"Sarawak - Based" = "Sarawak - Based";
+

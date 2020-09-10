@@ -63,10 +63,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PHOTO1: String = ""
     var DISTRICT1: String = ""
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
     
     @IBOutlet weak var SearchBar: UISearchBar!
 
     @IBOutlet weak var Tabbar: UITabBar!
+    @IBOutlet weak var ButtonFilter: UIButton!
     var viewController1: UIViewController?
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -99,6 +102,15 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        print(lang)
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+        }
+        
         SearchBar.delegate = self
         
         CategoryView.delegate = self
@@ -115,7 +127,16 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             Filter_District()
         }
         
+        
     }
+    
+    func changeLanguage(str: String){
+        SearchBar.placeholder = "Search Here".localized(lang: str)
+        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
+        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
+        ButtonFilter.titleLabel?.text = "FILTER".localized(lang: str)
+    }
+
     
         func onAddToFav(cell: CategoryCollectionViewCell) {
             guard let indexPath = self.CategoryView.indexPath(for: cell) else{
@@ -659,5 +680,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
         }
     }
-    
 }
+
+

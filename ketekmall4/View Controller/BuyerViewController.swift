@@ -15,15 +15,40 @@ class BuyerViewController: UIViewController {
     var user: String = ""
     var name: String = ""
     var email: String = ""
+    var lang: String = ""
+    
+    @IBOutlet weak var ButtonMyBuying: UIButton!
+    @IBOutlet weak var ButtonMyLikes: UIButton!
+    @IBOutlet weak var ButtonMyRating: UIButton!
+    @IBOutlet weak var ButtonAccountSettings: UIButton!
+    @IBOutlet weak var ButtonHelpCentre: UIButton!
+    @IBOutlet weak var ButtonChatInbox: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
         
         userID = String(user)
+    }
+    
+    func changeLanguage(str: String){
+        ButtonMyBuying.titleLabel?.text = "My Buying".localized(lang: str)
+        ButtonMyLikes.titleLabel?.text = "My Likes".localized(lang: str)
+        ButtonMyRating.titleLabel?.text = "My Rating".localized(lang: str)
+        ButtonAccountSettings.titleLabel?.text = "Account Settings".localized(lang: str)
+        ButtonHelpCentre.titleLabel?.text = "Help Centre".localized(lang: str)
+        ButtonChatInbox.titleLabel?.text = "Chat Inbox".localized(lang: str)
     }
     
     @IBAction func didTapGoogle(sender: AnyObject) {

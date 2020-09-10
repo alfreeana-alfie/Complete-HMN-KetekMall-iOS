@@ -17,6 +17,13 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
     
 
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
+    @IBOutlet weak var ProductLabel: UILabel!
+    @IBOutlet weak var SoldLabel: UILabel!
+    @IBOutlet weak var ButtonChat: UIButton!
+    
     @IBOutlet weak var AboutSellerView: UICollectionView!
     @IBOutlet weak var SellerImage: UIImageView!
     @IBOutlet weak var SellerName: UILabel!
@@ -52,7 +59,14 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         Tabbar.delegate = self
 
         AboutSellerView.delegate = self
@@ -66,6 +80,13 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         
         ViewList()
         getSold()
+    }
+    
+    func changeLanguage(str: String){
+        ButtonChat.titleLabel?.text = "SELL".localized(lang: str)
+    
+        ProductLabel.text = "Products".localized(lang: str)
+        SoldLabel.text = "Sold".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

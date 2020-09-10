@@ -144,6 +144,27 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var Verify: UILabel!
     @IBOutlet weak var Carousel: ImageSlideshow!
     
+    @IBOutlet weak var ButtonCake: UIButton!
+    @IBOutlet weak var ButtonProcess: UIButton!
+    @IBOutlet weak var ButtonHealth: UIButton!
+    @IBOutlet weak var ButtonHandicraft: UIButton!
+    @IBOutlet weak var ButtonHome: UIButton!
+    @IBOutlet weak var ButtonRetail: UIButton!
+    @IBOutlet weak var ButtonAgri: UIButton!
+    @IBOutlet weak var ButtonSarawak: UIButton!
+    @IBOutlet weak var ButtonSarawak2: UIButton!
+    @IBOutlet weak var ButtonService: UIButton!
+    @IBOutlet weak var ButtonFashion: UIButton!
+    
+    @IBOutlet weak var BrowseCate: UILabel!
+    @IBOutlet weak var ShockingLabel: UILabel!
+    @IBOutlet weak var HotLabel: UILabel!
+    @IBOutlet weak var ViewAllButton: UIButton!
+    @IBOutlet weak var ViewAllHot: UIButton!
+    @IBOutlet weak var ViewAllShocking: UIButton!
+    @IBOutlet weak var WelcomeLabel: UILabel!
+    @IBOutlet weak var BuyLabel: UILabel!
+    
     @IBOutlet weak var ListBar: UIImageView!
     @IBOutlet weak var CartBar: UIImageView!
     @IBOutlet weak var FindBar: UIImageView!
@@ -216,7 +237,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         UserImage.layer.cornerRadius = UserImage.frame.width / 2
         UserImage.layer.masksToBounds = true
-        Verify.layer.cornerRadius = 2
+        Verify.layer.cornerRadius = 5
         
         CakePastries.layer.cornerRadius = 10
         CakePastries.layer.shadowOpacity = 1
@@ -335,41 +356,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 break
                 
             case 1:
-                let selectedLanguage: Languages = (sender as AnyObject).tag == 1 ? .en : .ms
-                      
-                // change the language.
-                LanguageManager.shared.setLanguage(language: selectedLanguage,
-                                                   viewControllerFactory: { title -> UIViewController in
-                  // you can check the title to set a specific for specific scene.
-                  print("LANG" + title! ?? "")
-                  // get the storyboard.
-                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                  // instantiate the view controller that you want to show after changing the language.
-                  return storyboard.instantiateInitialViewController()!
-                }) { view in
-                  // do custom animation
-                  view.transform = CGAffineTransform(scaleX: 2, y: 2)
-                  view.alpha = 0
-                }
+                self.changeLanguage(str: "ms")
+                self.sharedPref.setValue("ms", forKey: "LANG")
                 break
                 
             case 2:
-                let selectedLanguage: Languages = (sender as AnyObject).tag == 1 ? .en : .ms
-                      
-                // change the language.
-                LanguageManager.shared.setLanguage(language: selectedLanguage,
-                                                   viewControllerFactory: { title -> UIViewController in
-                  // you can check the title to set a specific for specific scene.
-                  print("LANG" + title! ?? "")
-                  // get the storyboard.
-                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                  // instantiate the view controller that you want to show after changing the language.
-                  return storyboard.instantiateInitialViewController()!
-                }) { view in
-                  // do custom animation
-                  view.transform = CGAffineTransform(scaleX: 2, y: 2)
-                  view.alpha = 0
-                }
+                self.changeLanguage(str: "en")
+                self.sharedPref.setValue("en", forKey: "LANG")
                 break
                 
             case 3:
@@ -390,6 +383,40 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
         }
         dropDown.width = 200
+    }
+    
+    func changeLanguage(str: String){
+        SellButton.titleLabel?.text = "SELL".localized(lang: str)
+        FindButton.titleLabel?.text = "FIND".localized(lang: str)
+        WelcomeLabel.text = "Welcome!".localized(lang: str)
+        BuyLabel.text = "BUY. SELL. FIND. ALMOST EVERYTHING".localized(lang: str)
+        Verify.text = "VERIFICATION".localized(lang: str)
+        if(Verify.text == "SELLER"){
+            Verify.text = "SELLER".localized(lang: str)
+        }else{
+            Verify.text = "BUYER".localized(lang: str)
+        }
+        
+        BrowseCate.text = "BROWSE CATEGORIES".localized(lang: str)
+        HotLabel.text = "HOT SELLING".localized(lang: str)
+        ShockingLabel.text = "SHOCKING SALE".localized(lang: str)
+        
+        ViewAllHot.titleLabel?.text = "VIEW ALL".localized(lang: str)
+        ViewAllButton.titleLabel?.text = "VIEW ALL".localized(lang: str)
+        ViewAllShocking.titleLabel?.text = "VIEW ALL".localized(lang: str)
+        
+        ButtonCake.titleLabel?.text = "Cake and pastries".localized(lang: str)
+        ButtonAgri.titleLabel?.text = "Agriculture".localized(lang: str)
+        ButtonHome.titleLabel?.text = "Home and living".localized(lang: str)
+        ButtonHealth.titleLabel?.text = "Health and Beauty".localized(lang: str)
+        ButtonRetail.titleLabel?.text = "Retail and Wholesale".localized(lang: str)
+        ButtonFashion.titleLabel?.text = "Fashion Accessories".localized(lang: str)
+        ButtonProcess.titleLabel?.text = "Process Food".localized(lang: str)
+        ButtonSarawak.titleLabel?.text = "Sarawak - Based".localized(lang: str)
+        ButtonSarawak2.titleLabel?.text = "Products".localized(lang: str)
+        ButtonService.titleLabel?.text = "Service".localized(lang: str)
+        ButtonHandicraft.titleLabel?.text = "Handicraft".localized(lang: str)
+        
     }
     
     @objc func onCartBarClick(sender: Any){
@@ -719,6 +746,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.Username.text = name[0]
                         if verify[0] == "1" {
                             self.Verify.text = "SELLER"
+                            
                         }else{
                             self.Verify.text = "BUYER"
                         }
@@ -968,3 +996,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     }
 }
+
+extension String {
+func localized(lang:String) ->String {
+
+    let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+    let bundle = Bundle(path: path!)
+
+    return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+}}

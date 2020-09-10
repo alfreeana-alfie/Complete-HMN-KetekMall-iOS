@@ -14,6 +14,17 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     private let spinner = JGProgressHUD(style: .dark)
     
+    @IBOutlet weak var CategoryLabel: UILabel!
+    @IBOutlet weak var AdDetailLabel: UILabel!
+    @IBOutlet weak var DistrictLabel: UILabel!
+    @IBOutlet weak var PriceLabel: UILabel!
+    @IBOutlet weak var InnerLabel: UILabel!
+    @IBOutlet weak var BrandLabel: UILabel!
+    @IBOutlet weak var MaxOrderLabel: UILabel!
+    @IBOutlet weak var DivisionLabel: UILabel!
+    @IBOutlet weak var StockLabel: UILabel!
+    @IBOutlet weak var UploadedPhotoLabel: UILabel!
+    
     @IBOutlet weak var Category: UITextField!
     @IBOutlet weak var AdDetail: UITextField!
     @IBOutlet weak var BrandMaterial: UITextField!
@@ -54,10 +65,21 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     var DistrictPicker = UIPickerView()
     var userID: String = ""
     
-    
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
+        
         CategoryPicker.dataSource = self
         CategoryPicker.delegate = self
         
@@ -83,6 +105,21 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         navigationItem.title = "Add New Product"
     }
+    
+    func changeLanguage(str: String){
+        CategoryLabel.text = "Category".localized(lang: str)
+        AdDetailLabel.text = "Ad Detail".localized(lang: str)
+        BrandLabel.text = "Brand Material".localized(lang: str)
+        InnerLabel.text = "Inner Material".localized(lang: str)
+        StockLabel.text = "Stock".localized(lang: str)
+        PriceLabel.text = "Price".localized(lang: str)
+        DivisionLabel.text = "Division".localized(lang: str)
+        DistrictLabel.text = "District".localized(lang: str)
+        MaxOrderLabel.text = "Max Order".localized(lang: str)
+        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
+    }
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

@@ -19,6 +19,9 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_detail.php";
     let URL_UPLOAD = "https://ketekmall.com/ketekmall/profile_image/upload.php"
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+    
     @IBOutlet weak var UploadPhoto: UIImageView!
     @IBOutlet weak var Name: UITextField!
     @IBOutlet weak var Email: UITextField!
@@ -37,6 +40,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var Btn_Accept: UIButton!
     @IBOutlet weak var btnUpload: UIButton!
     @IBOutlet weak var btnUploadServer: UIButton!
+    @IBOutlet weak var EditProfileLabel: UILabel!
     
     var userID = ""
     var testing = ""
@@ -48,6 +52,15 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
+        
         pickerView.delegate = self
         pickerView.dataSource = self
         
@@ -115,6 +128,27 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         
         
     }
+    
+    func changeLanguage(str: String){
+        EditProfileLabel.text = "Edit Profile".localized(lang: str)
+        btnUploadServer.titleLabel?.text = "Upload to Server".localized(lang: str)
+        btnUpload.titleLabel?.text = "Upload Image".localized(lang: str)
+        
+        Name.placeholder = "Name".localized(lang: str)
+        Email.placeholder = "Email".localized(lang: str)
+        PhoneNo.placeholder = "Phone Number".localized(lang: str)
+        Address01.placeholder = "Address".localized(lang: str)
+        Address02.placeholder = "Address".localized(lang: str)
+        City.placeholder = "City".localized(lang: str)
+        PostCode.placeholder = "PostCode".localized(lang: str)
+        Birthday.placeholder = "Birthday".localized(lang: str)
+        Gender.placeholder = "Gender".localized(lang: str)
+        BankName.placeholder = "Bank Name".localized(lang: str)
+        BankAcc.placeholder = "Bank Account".localized(lang: str)
+        Btn_Accept.titleLabel?.text = "ACCEPT".localized(lang: str)
+        Btn_EditProfile.titleLabel?.text = "Edit Profile".localized(lang: str)
+    }
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

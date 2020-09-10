@@ -24,10 +24,27 @@ class MoreDetailsViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var Description: UITextView!
     @IBOutlet weak var Tabbar: UITabBar!
     
+    @IBOutlet weak var BrandLabel: UILabel!
+    @IBOutlet weak var InnerLabel: UILabel!
+    @IBOutlet weak var StockLabel: UILabel!
+    @IBOutlet weak var ShipFromLabel: UILabel!
+    @IBOutlet weak var DescriptionLabel: UILabel!
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     var viewController1: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         Tabbar.delegate = self
         
@@ -36,6 +53,16 @@ class MoreDetailsViewController: UIViewController, UITabBarDelegate {
         Stock.text! = STOCK
         ShipsFrom.text! = DIVISION + "," + DISTRICT
         Description.text! = DESC
+    }
+    
+    func changeLanguage(str: String){
+        BrandLabel.text = "BRAND MATERIAL".localized(lang: str)
+        InnerLabel.text = "INNER MATERIAL".localized(lang: str)
+
+        StockLabel.text = "STOCK".localized(lang: str)
+        
+        ShipFromLabel.text = "SHIPS FROM".localized(lang: str)
+        DescriptionLabel.text = "DESCRIPTION".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

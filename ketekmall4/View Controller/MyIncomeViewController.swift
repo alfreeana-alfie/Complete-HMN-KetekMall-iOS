@@ -42,16 +42,27 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
     var STRGrandTotal: String = ""
     var STRitem_status: String = ""
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+    
     var newSold: Double = 0.00
     var newSold2: Double = 0.00
     
-    
-    
+    @IBOutlet weak var MyIncomeLabel: UILabel!
     @IBOutlet weak var IncomeTotal: UILabel!
     @IBOutlet weak var MyIncomeView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
+        
         MyIncomeView.delegate = self
         MyIncomeView.dataSource = self
         
@@ -133,6 +144,12 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         
     }
+    
+    func changeLanguage(str: String){
+        MyIncomeLabel.text = "My Income".localized(lang: str)
+    }
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ad_Detail.count
     }

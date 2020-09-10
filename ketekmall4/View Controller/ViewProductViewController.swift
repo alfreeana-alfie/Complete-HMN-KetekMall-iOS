@@ -14,7 +14,10 @@ import AARatingBar
 import JGProgressHUD
 
 class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate, UITabBarDelegate {
-    
+
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var ItemImage: UIImageView!
@@ -23,6 +26,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var Sold: UILabel!
     @IBOutlet weak var ShippingInfo: UILabel!
     @IBOutlet weak var MoreDetails: UILabel!
+    @IBOutlet weak var FromSameShopLabel: UILabel!
+    @IBOutlet weak var SoldLabel: UILabel!
     
     @IBOutlet weak var SellerImage: UIImageView!
     @IBOutlet weak var SellerName: UILabel!
@@ -104,7 +109,14 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         Tabbar.delegate = self
         
         SameShopView.delegate = self
@@ -142,6 +154,15 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         getReview()
         getSold()
         SameShopList()
+    }
+    
+    func changeLanguage(str: String){
+        SoldLabel.text = "Sold".localized(lang: str)
+        ShippingInfo.text = "Shipping Information".localized(lang: str)
+        MoreDetails.text = "More Details".localized(lang: str)
+        ViewReview.text = "View".localized(lang: str)
+        FromSameShopLabel.text = "From the Same Shop".localized(lang: str)
+        ViewSameShop.text = "View".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

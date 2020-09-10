@@ -1,0 +1,117 @@
+/* 
+  Localizable.strings
+  ketekmall4
+
+  Created by Alfreeana Alfie on 10/09/2020.
+  Copyright © 2020 Alfreeana Alfie. All rights reserved.
+*/
+
+//HomePage
+"SELL" = "Jual";
+"FIND" = "Cari";
+"SELLER" = "PENJUAL";
+"BUYER" = "PEMBELI";
+"Welcome!" = "SELAMAT DATANG!";
+"VERIFICATION" = "Verifikasi";
+"BUY. SELL. FIND. ALMOST EVERYTHING" = "BELI. JUAL. CARI. HAMPIR KESEMUANYA";
+"BROWSE CATEGORIES" = "PILIH KATEGORI";
+"HOT SELLING" = "JUALAN HANGAT";
+"SHOCKING SALE" = "JUALAN RUNTUH";
+"VIEW ALL" = "Lihat Semua";
+
+"Promotion" = "Promosi";
+"Social Updates" = "Sosial Terkini";
+"Order Updates" = "Tempahan Terkini";
+
+"Division" = "Bahagian";
+"District" = "Daerah";
+"Apply" = "Terima";
+"Cancel" = "Balik";
+
+"Home" = "Rumah";
+"Notification" = "Notifikasi";
+"Me" = "Saya";
+
+"Search Here" = "Cari Sini";
+"FILTER" = "TAPIS";
+"PRICE" = "HARGA";
+
+"BECOME A SELLER TODAY!" = "JADILAH PENJUAL SEKARANG!";
+"You need to register as KetekMall Seller" = "Anda perlu mendaftar sebagai penjual KetekMall";
+"Before you can start selling your product, " = "Sebelum anda mula menjual produk anda, ";
+
+"Bank Name" = "Nama Bank";
+"Bank Account" = "Bank Akaun";
+"IC No." = "No. IC";
+"ACCEPT" = "TERIMA";
+
+"BRAND MATERIAL" = "JENAMA BAHAN";
+"INNER MATERIAL" = "BAHAN DALAMAN";
+"STOCK" = "STOK";
+"SHIPS FROM" = "DIHANTAR DARI";
+"DESCRIPTION" = "KETERANGAN";
+
+"CHAT" = "Mesej";
+"Products" = "Produk";
+"Sold" = "Dijual";
+
+"View" = "Lihat";
+"Shipping Information" = "Maklumat Penghantaran";
+"More Details" = "Lebih Lanjut";
+"From the Same Shop" = "Dari Kedai yang Sama";
+
+"Checkout" = "Keluar";
+"Total" = "Jumlah";
+
+"Continue Shopping" = "Terus Membeli-Belah";
+
+"My Buying" = "Pembelian Saya";
+"My Likes" = "Kesukaan Saya";
+"My Rating" = "Rating Saya";
+"Account Settings" = "Seting Akaun";
+"Help Centre" = "Pusat Bantuan";
+"Chat Inbox" = "Pesanan";
+
+"My Selling" = "Penjualan Saya";
+"Add New Product" = "Tambah Produk Baru";
+"My Products" = "Produk Saya";
+"My Income" = "Pendapatan Saya";
+"Product Rating" = "Rating Produk";
+"Boost Ad" = "Boost Ad";
+
+"Edit Profile" = "Ubah Profil";
+"Upload to Server" = "Muat Turun ke Server";
+"Upload Image" = "Muat Turun Gambar";
+"Name" = "Nama";
+"Email" = "E-mel";
+"Phone Number" = "No. Telefon";
+"Address" = "Alamat";
+"City" = "Bandar";
+"PostCode" = "Poskod";
+"Birthday" = "Tarikh Lahir";
+"Gender" = "Jantina";
+
+"Category" = "Kategori";
+"Ad Detail" = "Tentang Produk";
+"Price" = "Harga";
+"Max Order" = "Tempahan Maksima";
+"Brand Material" = "Jename Bahan";
+"Inner Material" = "Bahan Dalaman";
+"Stock" = "Stok";
+"Description" = "Keterangan";
+"Setup Delivery" = "Penghantaran";
+
+"SUBMIT" = "HANTAR";
+"Notification" = "Notifikasi";
+"Me" = "Saya";
+
+"Cake and pastries" = "Kek dan Pastri";
+"Process Food" = "Makanan Proses";
+"Handicraft" = "Kraftangan";
+"Service" = "Perkhidmatan";
+"Health and Beauty" = "Kesihatan dan Kecantikan";
+"Home and living" = "Kediaman dan Tempat Tinggal";
+"Retail and Wholesale" = "Barang Borong dan Runcit";
+"Agriculture" = "Pertanian";
+"Fashion Accessories" = "Perhiasan Fesyen";
+"Sarawak - Based" = "Sarawak - Berasas";

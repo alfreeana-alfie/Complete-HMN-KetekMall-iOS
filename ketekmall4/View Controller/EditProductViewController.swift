@@ -21,6 +21,16 @@ class EditProductViewController: UIViewController {
     @IBOutlet weak var UploadImage: UIButton!
     @IBOutlet weak var Category: UITextField!
     
+    @IBOutlet weak var UploadedPhotoLabel: UILabel!
+    @IBOutlet weak var CategoryLabel: UILabel!
+    @IBOutlet weak var AdDetailLabel: UILabel!
+    @IBOutlet weak var ButtonSetupDelivery: UIButton!
+    @IBOutlet weak var PriceLabel: UILabel!
+    @IBOutlet weak var DivisionLabel: UILabel!
+    @IBOutlet weak var DistrictLabel: UILabel!
+    @IBOutlet weak var MaxOrderLabel: UILabel!
+    @IBOutlet weak var ButtonAdDetail: UIButton!
+    @IBOutlet weak var SetupDeliveryLabel: UILabel!
     
     @IBOutlet weak var Price: UITextField!
     @IBOutlet weak var Division: UITextField!
@@ -44,9 +54,19 @@ class EditProductViewController: UIViewController {
     var DISTRICT: String = ""
     var USERID: String = ""
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         Category.text! = MAINCATE
         Price.text! = PRICE
@@ -62,6 +82,28 @@ class EditProductViewController: UIViewController {
         let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
         
         ItemImage.addGestureRecognizer(FindClick)
+    }
+    
+    func changeLanguage(str: String){
+        UploadedPhotoLabel.text = "Upload Image".localized(lang: str)
+        CategoryLabel.text = "Category".localized(lang: str)
+        PriceLabel.text = "Price".localized(lang: str)
+        DivisionLabel.text = "Division".localized(lang: str)
+        DistrictLabel.text = "District".localized(lang: str)
+        MaxOrderLabel.text = "Max Order".localized(lang: str)
+        SetupDeliveryLabel.text = "Setup Delivery".localized(lang: str)
+        UploadImage.titleLabel?.text = "Upload Image".localized(lang: str)
+        
+        Category.placeholder = "Category".localized(lang: str)
+        ButtonAdDetail.titleLabel?.text = "Ad Detail".localized(lang: str)
+        Price.placeholder = "Price".localized(lang: str)
+        Division.placeholder = "Division".localized(lang: str)
+        District.placeholder = "District".localized(lang: str)
+        Max_Order.placeholder = "Max Order".localized(lang: str)
+        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
+        
+        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
     }
     
     @IBAction func AdDetail(_ sender: Any) {

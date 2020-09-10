@@ -23,11 +23,22 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var ButtonCancel: UIButton!
     @IBOutlet weak var Tabbar: UITabBar!
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
     var UserID: String = ""
     var viewController1: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         Tabbar.delegate = self
         
@@ -36,6 +47,15 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
         BankAccView.layer.cornerRadius = 5
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
+    }
+    
+    func changeLanguage(str: String){
+        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
+        BankNameField.placeholder = "Bank Name".localized(lang: str)
+        BankAccField.placeholder = "Bank Account".localized(lang: str)
+        
+        ICNOField.placeholder = "IC No. ".localized(lang: str)
     }
 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

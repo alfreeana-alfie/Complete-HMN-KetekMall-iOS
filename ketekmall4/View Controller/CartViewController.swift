@@ -40,8 +40,12 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var sub: Double = 0.00
     var SubTotal: Double = 0.00
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+    
     @IBOutlet weak var CartView: UICollectionView!
     @IBOutlet weak var GrandTotal: UILabel!
+    @IBOutlet weak var Total: UILabel!
     @IBOutlet weak var ButtonCheckout: UIButton!
     @IBOutlet weak var Tabbar: UITabBar!
     
@@ -49,6 +53,14 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         Tabbar.delegate = self
         
@@ -58,6 +70,11 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ButtonCheckout.layer.cornerRadius = 5
         
         ViewList()
+    }
+    
+    func changeLanguage(str: String){
+        ButtonCheckout.titleLabel?.text = "Checkout".localized(lang: str)
+        Total.text = "Total".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

@@ -51,9 +51,22 @@ class ViewSellingViewController: UIViewController {
     var ORDER_DATE: String = ""
     var TRACKINGNO: String = ""
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(ItemID)
+//        print(ItemID)
+        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         OrderID.text! = ORDERID
         Item_Name.text! = ITEMNAME
@@ -70,6 +83,11 @@ class ViewSellingViewController: UIViewController {
         getUserDetails()
         
         
+    }
+    
+    func changeLanguage(str: String){
+        ButtonSubmit.titleLabel?.text = "SUBMIT".localized(lang: str)
+        ButtonCancel.titleLabel?.text = "HANTAR".localized(lang: str)
     }
     
     func getUserDetails(){

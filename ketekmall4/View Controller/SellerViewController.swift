@@ -15,15 +15,41 @@ class SellerViewController: UIViewController {
     var user: String = ""
     var name: String = ""
     var email: String = ""
+    var lang: String = ""
+    
+    
+    @IBOutlet weak var ButtonMySelling: UIButton!
+    @IBOutlet weak var ButtonAddNewProduct: UIButton!
+    @IBOutlet weak var ButtonMyProduct: UIButton!
+    @IBOutlet weak var ButtonMyIncome: UIButton!
+    @IBOutlet weak var ButtonProductRating: UIButton!
+    @IBOutlet weak var ButtonBoostAd: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        print(lang)
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
         userID = String(user)
         
+    }
+    
+    func changeLanguage(str: String){
+        ButtonMySelling.titleLabel?.text = "My Selling".localized(lang: str)
+        ButtonAddNewProduct.titleLabel?.text = "Add New Product".localized(lang: str)
+        ButtonMyProduct.titleLabel?.text = "My Products".localized(lang: str)
+        ButtonMyIncome.titleLabel?.text = "My Income".localized(lang: str)
+        ButtonProductRating.titleLabel?.text = "Product Rating".localized(lang: str)
+        ButtonBoostAd.titleLabel?.text = "Boost Ad".localized(lang: str)
     }
     
     @IBAction func MySelling(_ sender: Any) {

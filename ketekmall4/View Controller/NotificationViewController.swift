@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class NotificationViewController: UIViewController {
 
     let URL_SEARCH_SHOCKING_SALE = "https://ketekmall.com/ketekmall/search/readall_shocking.php"
@@ -19,13 +21,33 @@ class NotificationViewController: UIViewController {
     let URL_READ_SHOCKING_SALE = "https://ketekmall.com/ketekmall/category/readall_shocking.php"
     
     let sharedPref = UserDefaults.standard
+    var lang: String = ""
     var user: String = ""
+    
+    
+    @IBOutlet weak var OrderUpdateBtn: UIButton!
+    @IBOutlet weak var SocialUpdatesBtn: UIButton!
+    @IBOutlet weak var PromotionBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         user = sharedPref.string(forKey: "USERID") ?? "0"
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+        }else{
+            changeLanguage(str: "en")
+        }
         
     }
+    
+    func changeLanguage(str: String){
+        
+        OrderUpdateBtn.titleLabel?.text = "Order Updates".localized(lang: str)
+        SocialUpdatesBtn.titleLabel?.text = "Social Updates".localized(lang: str)
+        PromotionBtn.titleLabel?.text = "Promotion".localized(lang: str)
+    }
+
     
     @IBAction func OrderUpdates(_ sender: Any) {
         let myBuying = self.storyboard!.instantiateViewController(identifier: "MyBuyingViewController") as! MyBuyingViewController
@@ -57,3 +79,11 @@ class NotificationViewController: UIViewController {
                }
     }
 }
+extension String {
+func localized2(lang:String) ->String {
+
+    let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+    let bundle = Bundle(path: path!)
+
+    return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+}}

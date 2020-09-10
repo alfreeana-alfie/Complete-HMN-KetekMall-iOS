@@ -28,7 +28,6 @@
 		FB4B72D924FBE00800293B81 /* ViewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */; };
 		FB4B72DB24FBE24A00293B81 /* ReviewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */; };
 		FB4B72DD24FBEF1A00293B81 /* ViewSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */; };
-		FB5049EC250609B50009DA8D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB5049EB250609B50009DA8D /* GoogleService-Info.plist */; };
 		FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */; };
 		FB528AC624FA616800A968E8 /* MySellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AC524FA616800A968E8 /* MySellingViewController.swift */; };
 		FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */; };
@@ -76,6 +75,8 @@
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
 		FBC293C92508A6230057961A /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C82508A6230057961A /* NewChatViewController.swift */; };
+		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
+		FBDDBB89250A832D0027BC90 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB88250A832D0027BC90 /* GoogleService-Info.plist */; };
 		FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +176,11 @@
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FBC293C82508A6230057961A /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
+		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FBDDBB87250A1C770027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ketekmall4/ms.lproj/Main.strings; sourceTree = "<group>"; };
+		FBDDBB88250A832D0027BC90 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ketekmall4/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +229,7 @@
 		FB5A48D424F7F06B00F5464C = {
 			isa = PBXGroup;
 			children = (
+				FBDDBB88250A832D0027BC90 /* GoogleService-Info.plist */,
 				FB5A48DF24F7F06B00F5464C /* ketekmall4 */,
 				FB5A48F624F7F07B00F5464C /* ketekmall4Tests */,
 				FB5A490124F7F07B00F5464C /* ketekmall4UITests */,
@@ -253,6 +260,7 @@
 				FB5A491124F7F0F900F5464C /* View Controller */,
 				FB5A491024F7F0E200F5464C /* Models */,
 				FB5A48EE24F7F07B00F5464C /* Info.plist */,
+				FBDDBB84250A1C1B0027BC90 /* Localizable.strings */,
 			);
 			path = ketekmall4;
 			sourceTree = "<group>";
@@ -440,6 +448,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ms,
 			);
 			mainGroup = FB5A48D424F7F06B00F5464C;
 			productRefGroup = FB5A48DE24F7F06B00F5464C /* Products */;
@@ -458,9 +467,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBDDBB89250A832D0027BC90 /* GoogleService-Info.plist in Resources */,
+				FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */,
 				FB288356250994C3008B18BB /* Main.storyboard in Resources */,
 				FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */,
-				FB5049EC250609B50009DA8D /* GoogleService-Info.plist in Resources */,
 				FB5A48EA24F7F07B00F5464C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +657,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FB288355250994C2008B18BB /* Base */,
+				FBDDBB87250A1C770027BC90 /* ms */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -655,8 +666,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				FB28834F25097FE6008B18BB /* Base */,
+				FBDDBB85250A1C750027BC90 /* ms */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FBDDBB84250A1C1B0027BC90 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBDDBB83250A1C1B0027BC90 /* en */,
+				FBDDBB86250A1C760027BC90 /* ms */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

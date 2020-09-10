@@ -25,12 +25,21 @@ class ViewController: UIViewController {
     var userID: String = ""
     
     let sharedPref = UserDefaults.standard
+    var lang: String = ""
     var user: String = ""
     var name: String = ""
     var email: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
@@ -69,6 +78,15 @@ class ViewController: UIViewController {
                     print("FAILED")
                 }
                 
+        }
+    }
+    
+    func changeLanguage(str: String){
+        verify.text = "VERIFICATION".localized(lang: str)
+        if(verify.text == "SELLER"){
+            verify.text = "SELLER".localized(lang: str)
+        }else{
+            verify.text = "BUYER".localized(lang: str)
         }
     }
     

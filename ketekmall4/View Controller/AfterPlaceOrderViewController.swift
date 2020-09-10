@@ -13,19 +13,36 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     
     let URL_DELETE = "https://ketekmall.com/ketekmall/delete_order_buyer.php"
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
     var userID: String = ""
     
     @IBOutlet weak var ButtonShopping: UIButton!
+    @IBOutlet weak var ContinueLabel: UILabel!
     @IBOutlet weak var Tabbar: UITabBar!
 
     var viewController1: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         Tabbar.delegate = self
         ButtonShopping.layer.cornerRadius = 5
     }
+    
+    func changeLanguage(str: String){
+        ButtonShopping.titleLabel?.text = "Continue Shopping".localized(lang: str)
+        ContinueLabel.text = "Continue Shopping".localized(lang: str)
+    }
+
 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
             switch item.tag {
