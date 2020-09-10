@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2883462509759E008B18BB /* ContactUsViewController.swift */; };
+		FB288356250994C3008B18BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB288354250994C2008B18BB /* Main.storyboard */; };
 		FB3E830324FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830224FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift */; };
 		FB3E830524FEBE2400F1CE3C /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830424FEBE2400F1CE3C /* AddReviewViewController.swift */; };
 		FB3E830724FEC1C100F1CE3C /* EditProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830624FEC1C100F1CE3C /* EditProductViewController.swift */; };
@@ -44,7 +45,6 @@
 		FB5490D124FD7019004E6D73 /* FromSameShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5490D024FD7019004E6D73 /* FromSameShopCollectionViewCell.swift */; };
 		FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48E024F7F06B00F5464C /* AppDelegate.swift */; };
 		FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */; };
-		FB5A48E824F7F06B00F5464C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5A48E624F7F06B00F5464C /* Main.storyboard */; };
 		FB5A48EA24F7F07B00F5464C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB5A48E924F7F07B00F5464C /* Assets.xcassets */; };
 		FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */; };
 		FB5A48F824F7F07B00F5464C /* ketekmall4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A48F724F7F07B00F5464C /* ketekmall4Tests.swift */; };
@@ -101,10 +101,8 @@
 		2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
 		533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2883462509759E008B18BB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
-		FB28834E25097FE4008B18BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB28834F25097FE6008B18BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FB288350250980BE008B18BB /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Main.strings; sourceTree = "<group>"; };
-		FB288351250980BF008B18BB /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FB288355250994C2008B18BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ketekmall4/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB3E830224FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSellerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB3E830424FEBE2400F1CE3C /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		FB3E830624FEC1C100F1CE3C /* EditProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +248,7 @@
 				FB5049EB250609B50009DA8D /* GoogleService-Info.plist */,
 				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
 				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
-				FB5A48E624F7F06B00F5464C /* Main.storyboard */,
+				FB288354250994C2008B18BB /* Main.storyboard */,
 				FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */,
 				FB5A491124F7F0F900F5464C /* View Controller */,
 				FB5A491024F7F0E200F5464C /* Models */,
@@ -442,7 +440,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ms,
 			);
 			mainGroup = FB5A48D424F7F06B00F5464C;
 			productRefGroup = FB5A48DE24F7F06B00F5464C /* Products */;
@@ -461,10 +458,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB288356250994C3008B18BB /* Main.storyboard in Resources */,
 				FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */,
 				FB5049EC250609B50009DA8D /* GoogleService-Info.plist in Resources */,
 				FB5A48EA24F7F07B00F5464C /* Assets.xcassets in Resources */,
-				FB5A48E824F7F06B00F5464C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,21 +643,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FB5A48E624F7F06B00F5464C /* Main.storyboard */ = {
+		FB288354250994C2008B18BB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FB28834E25097FE4008B18BB /* Base */,
-				FB288350250980BE008B18BB /* ms */,
+				FB288355250994C2008B18BB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
 		FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FB28834F25097FE6008B18BB /* Base */,
-				FB288351250980BF008B18BB /* ms */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
