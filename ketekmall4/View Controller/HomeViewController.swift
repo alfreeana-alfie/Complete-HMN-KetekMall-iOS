@@ -213,12 +213,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        Carousel.setImageInputs([
-            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/23-Best-Sales-Promotion-Ideas.png")!),
-            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/download.png")!),
-            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/promotional-analysis.jpg")!)])
-        Carousel.slideshowInterval = 3.0
-        Carousel.contentScaleMode = .scaleAspectFill
+//        Carousel.setImageInputs([
+//            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/23-Best-Sales-Promotion-Ideas.png")!),
+//            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/download.png")!),
+//            KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/promotional-analysis.jpg")!)])
+//        Carousel.slideshowInterval = 3.0
+//        Carousel.contentScaleMode = .scaleAspectFill
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
 //        print(user)

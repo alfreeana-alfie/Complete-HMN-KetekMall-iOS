@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB0B5B55250BDA84006B1BCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB5049EB250609B50009DA8D /* GoogleService-Info.plist */; };
 		FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2883462509759E008B18BB /* ContactUsViewController.swift */; };
 		FB288356250994C3008B18BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB288354250994C2008B18BB /* Main.storyboard */; };
 		FB3E830324FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830224FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift */; };
@@ -76,7 +77,6 @@
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
 		FBC293C92508A6230057961A /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C82508A6230057961A /* NewChatViewController.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
-		FBDDBB89250A832D0027BC90 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB88250A832D0027BC90 /* GoogleService-Info.plist */; };
 		FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,7 +180,6 @@
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB87250A1C770027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ketekmall4/ms.lproj/Main.strings; sourceTree = "<group>"; };
-		FBDDBB88250A832D0027BC90 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ketekmall4/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +228,6 @@
 		FB5A48D424F7F06B00F5464C = {
 			isa = PBXGroup;
 			children = (
-				FBDDBB88250A832D0027BC90 /* GoogleService-Info.plist */,
 				FB5A48DF24F7F06B00F5464C /* ketekmall4 */,
 				FB5A48F624F7F07B00F5464C /* ketekmall4Tests */,
 				FB5A490124F7F07B00F5464C /* ketekmall4UITests */,
@@ -371,7 +369,7 @@
 				FB5A48DA24F7F06B00F5464C /* Frameworks */,
 				FB5A48DB24F7F06B00F5464C /* Resources */,
 				FCBC7E2B4C37AE0E64EBCE53 /* [CP] Embed Pods Frameworks */,
-				5D2641AA6B46B85A326D86BB /* [CP] Copy Pods Resources */,
+				3FBF62E7106C01E908F915A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -467,7 +465,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBDDBB89250A832D0027BC90 /* GoogleService-Info.plist in Resources */,
+				FB0B5B55250BDA84006B1BCC /* GoogleService-Info.plist in Resources */,
 				FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */,
 				FB288356250994C3008B18BB /* Main.storyboard in Resources */,
 				FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */,
@@ -514,7 +512,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5D2641AA6B46B85A326D86BB /* [CP] Copy Pods Resources */ = {
+		3FBF62E7106C01E908F915A8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

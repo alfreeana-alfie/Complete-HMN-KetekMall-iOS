@@ -70,6 +70,11 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     @IBOutlet weak var Tabbar: UITabBar!
     @IBOutlet weak var ButtonFilter: UIButton!
+    @IBOutlet weak var CateViewFlow: UICollectionViewFlowLayout!{
+        didSet{
+            CateViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     var viewController1: UIViewController?
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -78,20 +83,21 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+//            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            self.view.addSubview(viewController1!.view!)
             break
             
         case 2:
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            self.view.addSubview(viewController1!.view!)
             break
             
         case 3:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            self.view.addSubview(viewController1!.view!)
             break
             
         default:

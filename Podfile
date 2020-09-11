@@ -21,9 +21,8 @@ pod 'FBSDKLoginKit'
 pod 'MessageKit'
 pod 'MessageInputBar'
 pod 'JGProgressHUD'
+pod 'Kingfisher', '~> 4.0'
 pod 'ImageSlideshow', '~> 1.9.0'
-pod 'ImageSlideshow/SDWebImage'
-pod 'ImageSlideshow/Kingfisher'
 pod 'LanguageManager-iOS'
 
 end
