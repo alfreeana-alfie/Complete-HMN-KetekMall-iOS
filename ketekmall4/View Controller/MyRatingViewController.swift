@@ -13,6 +13,11 @@ import JGProgressHUD
 class MyRatingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
     @IBOutlet weak var MyRatingView: UICollectionView!
+    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
+        didSet{
+            FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     
     private let spinner = JGProgressHUD(style: .dark)
     

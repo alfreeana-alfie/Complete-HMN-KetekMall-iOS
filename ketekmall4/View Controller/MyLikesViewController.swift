@@ -13,6 +13,11 @@ import JGProgressHUD
 
 class MyLikesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyLikesDelegate {
     @IBOutlet weak var MyLikesView: UICollectionView!
+    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
+    didSet{
+        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     
     var userID: String = ""
     

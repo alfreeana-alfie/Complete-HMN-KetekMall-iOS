@@ -14,6 +14,11 @@ import JGProgressHUD
 class MyProductsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyProductDelegate{
     
     private let spinner = JGProgressHUD(style: .dark)
+    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
+    didSet{
+        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+    }
+    }
     
     var userID: String = ""
     let URL_READ = "https://ketekmall.com/ketekmall/readuser.php";

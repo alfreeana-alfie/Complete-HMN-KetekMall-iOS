@@ -14,6 +14,11 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     
 
     @IBOutlet weak var MyBuyingView: UICollectionView!
+    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
+    didSet{
+        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+    }
+    }
     
     private let spinner = JGProgressHUD(style: .dark)
     

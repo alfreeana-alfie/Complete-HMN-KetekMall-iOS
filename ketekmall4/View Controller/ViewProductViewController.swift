@@ -171,20 +171,26 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         case 2:
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         case 3:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         default:

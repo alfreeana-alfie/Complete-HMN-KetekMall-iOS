@@ -13,6 +13,11 @@ import JGProgressHUD
 class BoostAdViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, BoostAdDelegate {
     
     @IBOutlet var BoostView: UICollectionView!
+    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
+    didSet{
+        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+    }
+    }
     
     private let spinner = JGProgressHUD(style: .dark)
     var userID: String = ""

@@ -35,6 +35,11 @@ class ProductRatingViewController: UIViewController, UICollectionViewDelegate, U
     
     @IBOutlet var ProductRatingView: UICollectionView!
     private let spinner = JGProgressHUD(style: .dark)
+    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
+    didSet{
+        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+    }
+    }
     
     var userID: String = ""
     var ItemID: String = ""

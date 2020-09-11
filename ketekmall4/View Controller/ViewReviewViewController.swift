@@ -23,6 +23,11 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     var REVIEW: [String] = []
 
     
+    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout! {
+        didSet{
+            FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
+    }
     @IBOutlet weak var ReviewView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
     var viewController1: UIViewController?
