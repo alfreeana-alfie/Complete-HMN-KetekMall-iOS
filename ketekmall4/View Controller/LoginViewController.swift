@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     @IBOutlet weak var EmailImage: UIImageView!
     @IBOutlet weak var PasswordImage: UIImageView!
     @IBOutlet weak var GoogleSignInBtn: GIDSignInButton!
-    @IBOutlet weak var scrollView: UIScrollView!
+//    @IBOutlet weak var scrollView: UIScrollView!
     private let loginButton = FBLoginButton()
     
     let hud = JGProgressHUD(style: .dark)
@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         GIDSignIn.sharedInstance()?.delegate = self
         
         loginButton.permissions = ["public_profile", "email"]
-        scrollView.addSubview(loginButton)
+//        scrollView.addSubview(loginButton)
         
         loginButton.frame = CGRect(x: 59, y: 608 - 60, width: 300, height: 50)
         
