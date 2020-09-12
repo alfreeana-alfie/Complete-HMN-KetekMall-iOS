@@ -168,34 +168,27 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
-            navigationController?.setNavigationBarHidden(true, animated: false)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewController1!, animated: true)
-            }
+            presentMethod(storyBoardName: "Main", storyBoardID: "HomeViewController")
             break
             
         case 2:
-            navigationController?.setNavigationBarHidden(true, animated: false)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewController1!, animated: true)
-            }
+            presentMethod(storyBoardName: "Main", storyBoardID: "NotificationViewController")
             break
             
         case 3:
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewController1!, animated: true)
-            }
+            presentMethod(storyBoardName: "Main", storyBoardID: "ViewController")
             break
             
         default:
             break
         }
+    }
+    
+    func presentMethod(storyBoardName: String, storyBoardID: String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
+        self.definesPresentationContext = true
+        self.present(newViewController, animated: true, completion: nil)
     }
     
     func getSellerDetails(){

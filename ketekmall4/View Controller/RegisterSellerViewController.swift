@@ -59,31 +59,30 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
     }
 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
-            switch item.tag {
-            case 1:
-                navigationController?.setNavigationBarHidden(true, animated: false)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
-                break
-                
-            case 2:
-                navigationController?.setNavigationBarHidden(true, animated: false)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-                self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
-                break
-                
-            case 3:
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-                self.view.insertSubview(viewController1!.view!, belowSubview: self.Tabbar)
-                break
-                
-            default:
-                break
-            }
+        switch item.tag {
+        case 1:
+            presentMethod(storyBoardName: "Main", storyBoardID: "HomeViewController")
+            break
+            
+        case 2:
+            presentMethod(storyBoardName: "Main", storyBoardID: "NotificationViewController")
+            break
+            
+        case 3:
+            presentMethod(storyBoardName: "Main", storyBoardID: "ViewController")
+            break
+            
+        default:
+            break
         }
+    }
+    
+    func presentMethod(storyBoardName: String, storyBoardID: String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
+        self.definesPresentationContext = true
+        self.present(newViewController, animated: true, completion: nil)
+    }
 
     
     @IBAction func Accept(_ sender: Any) {
