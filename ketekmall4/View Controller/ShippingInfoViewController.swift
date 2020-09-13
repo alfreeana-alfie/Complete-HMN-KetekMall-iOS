@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
-class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate {
+class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate{
 
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single.php"
     
