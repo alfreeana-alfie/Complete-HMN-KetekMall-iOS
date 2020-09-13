@@ -231,12 +231,14 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.District.text! = self.DISTRICT[indexPath.row]
             cell.ButtonView.layer.cornerRadius = 5
             
+            cell.layer.cornerRadius = 5
+            cell.layer.borderWidth = 0.2
             cell.delegate = self
             return cell
         }
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenSize = UIScreen.main.bounds
+        let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
         let cellSquareSize: CGFloat = screenWidth / 2.0
         return CGSize(width: cellSquareSize, height: 274);
