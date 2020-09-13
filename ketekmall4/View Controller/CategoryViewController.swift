@@ -243,6 +243,19 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cellSquareSize: CGFloat = screenWidth / 2.0
         return CGSize(width: cellSquareSize, height: 274);
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
+    }
+    
         func onViewClick(cell: CategoryCollectionViewCell) {
             guard let indexPath = self.CategoryView.indexPath(for: cell) else{
                 return
