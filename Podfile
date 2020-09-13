@@ -11,8 +11,6 @@ pod 'DropDown'
 pod 'SDWebImage', '~> 5.0'
 pod 'EasyNotificationBadge'
 pod 'AARatingBar'
-pod 'M13Checkbox'
-pod 'UICheckbox'
 pod 'SimpleCheckbox'
 pod 'Firebase/Database'
 pod 'Firebase/Messaging'
@@ -22,8 +20,6 @@ pod 'MessageKit'
 pod 'MessageInputBar'
 pod 'JGProgressHUD'
 pod 'ImageSlideshow', '~> 1.9.0’
-pod 'ImageSlideshow/SDWebImage'
-pod 'ImageSlideshow/Kingfisher’
 pod 'LanguageManager-iOS'
 
  

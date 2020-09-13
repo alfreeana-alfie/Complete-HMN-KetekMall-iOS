@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */; };
 		FB0B5B55250BDA84006B1BCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB5049EB250609B50009DA8D /* GoogleService-Info.plist */; };
 		FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2883462509759E008B18BB /* ContactUsViewController.swift */; };
 		FB288356250994C3008B18BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB288354250994C2008B18BB /* Main.storyboard */; };
@@ -77,7 +78,6 @@
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
 		FBC293C92508A6230057961A /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C82508A6230057961A /* NewChatViewController.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
-		FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,9 +98,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
-		2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
-		533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB7F0E03E474A0A5BC70F344 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
+		E98FF399E68D56229FABBE72 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
 		FB2883462509759E008B18BB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		FB28834F25097FE6008B18BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB288355250994C2008B18BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ketekmall4/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE39EDED023F3990E305BE63 /* Pods_ketekmall4.framework in Frameworks */,
+				1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,16 +211,16 @@
 		9744CE111CB0B2C47541132C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */,
-				1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */,
+				E98FF399E68D56229FABBE72 /* Pods-ketekmall4.debug.xcconfig */,
+				AB7F0E03E474A0A5BC70F344 /* Pods-ketekmall4.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DA31A870D06CDB1C895BF9A6 /* Frameworks */ = {
+		DD0B1AF328BAB6338770F315 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				533644D75A1A685BD0E4A179 /* Pods_ketekmall4.framework */,
+				49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 				FB5A490124F7F07B00F5464C /* ketekmall4UITests */,
 				FB5A48DE24F7F06B00F5464C /* Products */,
 				9744CE111CB0B2C47541132C /* Pods */,
-				DA31A870D06CDB1C895BF9A6 /* Frameworks */,
+				DD0B1AF328BAB6338770F315 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -364,12 +364,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB5A490724F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4" */;
 			buildPhases = (
-				1B474829E49B43BC23315B64 /* [CP] Check Pods Manifest.lock */,
+				46250FABF8BE6F869F5AB642 /* [CP] Check Pods Manifest.lock */,
 				FB5A48D924F7F06B00F5464C /* Sources */,
 				FB5A48DA24F7F06B00F5464C /* Frameworks */,
 				FB5A48DB24F7F06B00F5464C /* Resources */,
-				FCBC7E2B4C37AE0E64EBCE53 /* [CP] Embed Pods Frameworks */,
-				FB276D8D9C930D9DCD45AEED /* [CP] Copy Pods Resources */,
+				A461F97B2E390C7E6D93F21C /* [CP] Embed Pods Frameworks */,
+				AAB1A0EE66E12C82AF2D2458 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -490,7 +490,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1B474829E49B43BC23315B64 /* [CP] Check Pods Manifest.lock */ = {
+		46250FABF8BE6F869F5AB642 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -512,24 +512,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FB276D8D9C930D9DCD45AEED /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FCBC7E2B4C37AE0E64EBCE53 /* [CP] Embed Pods Frameworks */ = {
+		A461F97B2E390C7E6D93F21C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -544,6 +527,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAB1A0EE66E12C82AF2D2458 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -799,7 +799,7 @@
 		};
 		FB5A490824F7F07B00F5464C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F7009F8ADE205E58D8108C9 /* Pods-ketekmall4.debug.xcconfig */;
+			baseConfigurationReference = E98FF399E68D56229FABBE72 /* Pods-ketekmall4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -818,7 +818,7 @@
 		};
 		FB5A490924F7F07B00F5464C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1204B56D65FE13E49ECC9197 /* Pods-ketekmall4.release.xcconfig */;
+			baseConfigurationReference = AB7F0E03E474A0A5BC70F344 /* Pods-ketekmall4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -105,22 +105,12 @@ PODS:
   - ImageSlideshow (1.9.1):
     - ImageSlideshow/Core (= 1.9.1)
   - ImageSlideshow/Core (1.9.1)
-  - ImageSlideshow/Kingfisher (1.9.1):
-    - ImageSlideshow/Core
-    - Kingfisher (> 3.0)
-  - ImageSlideshow/SDWebImage (1.9.1):
-    - ImageSlideshow/Core
-    - SDWebImage (>= 3.7)
   - InputBarAccessoryView (5.1.0):
     - InputBarAccessoryView/Core (= 5.1.0)
   - InputBarAccessoryView/Core (5.1.0)
   - JGProgressHUD (2.1)
-  - Kingfisher (5.15.0):
-    - Kingfisher/Core (= 5.15.0)
-  - Kingfisher/Core (5.15.0)
   - LanguageManager-iOS (1.2.0)
   - leveldb-library (1.22)
-  - M13Checkbox (3.4.0)
   - MessageInputBar (0.4.1):
     - MessageInputBar/Core (= 0.4.1)
   - MessageInputBar/Core (0.4.1)
@@ -133,11 +123,10 @@ PODS:
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
-  - SDWebImage (5.9.0):
-    - SDWebImage/Core (= 5.9.0)
-  - SDWebImage/Core (5.9.0)
+  - SDWebImage (5.9.1):
+    - SDWebImage/Core (= 5.9.1)
+  - SDWebImage/Core (5.9.1)
   - SimpleCheckbox (2.1.0)
-  - UICheckbox (0.0.2)
 
 DEPENDENCIES:
   - AARatingBar
@@ -150,16 +139,12 @@ DEPENDENCIES:
   - Firebase/Messaging
   - GoogleSignIn
   - ImageSlideshow (~> 1.9.0)
-  - ImageSlideshow/Kingfisher
-  - ImageSlideshow/SDWebImage
   - JGProgressHUD
   - LanguageManager-iOS
-  - M13Checkbox
   - MessageInputBar
   - MessageKit
   - SDWebImage (~> 5.0)
   - SimpleCheckbox
-  - UICheckbox
 
 SPEC REPOS:
   trunk:
@@ -186,10 +171,8 @@ SPEC REPOS:
     - ImageSlideshow
     - InputBarAccessoryView
     - JGProgressHUD
-    - Kingfisher
     - LanguageManager-iOS
     - leveldb-library
-    - M13Checkbox
     - MessageInputBar
     - MessageKit
     - nanopb
@@ -197,7 +180,6 @@ SPEC REPOS:
     - Protobuf
     - SDWebImage
     - SimpleCheckbox
-    - UICheckbox
 
 SPEC CHECKSUMS:
   AARatingBar: 62f56244aaa436c0379dc54e398e90d337f097b8
@@ -223,19 +205,16 @@ SPEC CHECKSUMS:
   ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
-  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   LanguageManager-iOS: 516c4f088435c83cbdbddfc5179f88e4e0d39eb4
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  M13Checkbox: 6f59404540ac98ba83a3d1afac335895a40c6a5d
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
-  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
-  UICheckbox: 54af9bc308c8c2b18404f4c360172115c0daea36
 
-PODFILE CHECKSUM: 6cae8106fdf9a9c2dc73abb3c27e944e5839a174
+PODFILE CHECKSUM: c5283254934531396e3d766c498284eb66f0a4be
 
 COCOAPODS: 1.9.3
