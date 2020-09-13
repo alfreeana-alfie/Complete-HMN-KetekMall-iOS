@@ -2718,12 +2718,14 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S95-ZY-8kY">
                                                                 <rect key="frame" x="8" y="8" width="94" height="95"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cake and Pastries" id="dMw-fO-dvQ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="95" height="70"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cake and Pastries" translatesAutoresizingMaskIntoConstraints="NO" id="dMw-fO-dvQ">
+                                                                        <rect key="frame" x="22.5" y="8" width="49" height="50"/>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-Vr-TIO">
                                                                         <rect key="frame" x="8" y="72" width="78" height="23"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="23" id="Ejf-7E-lBP"/>
+                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Cake and pastries">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2732,10 +2734,13 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
+                                                                    <constraint firstItem="dMw-fO-dvQ" firstAttribute="top" secondItem="S95-ZY-8kY" secondAttribute="top" constant="8" id="Blp-UI-Cao"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="dMw-fO-dvQ" secondAttribute="trailing" constant="22.5" id="HXI-8U-jnA"/>
                                                                     <constraint firstAttribute="bottom" secondItem="JJt-Vr-TIO" secondAttribute="bottom" id="YeF-U5-kl2"/>
+                                                                    <constraint firstItem="JJt-Vr-TIO" firstAttribute="top" secondItem="dMw-fO-dvQ" secondAttribute="bottom" constant="14" id="ZDs-qy-fhn"/>
                                                                     <constraint firstItem="JJt-Vr-TIO" firstAttribute="leading" secondItem="S95-ZY-8kY" secondAttribute="leading" constant="8" id="m7O-7d-Uvw"/>
-                                                                    <constraint firstItem="JJt-Vr-TIO" firstAttribute="top" secondItem="dMw-fO-dvQ" secondAttribute="bottom" constant="2" id="nTc-Os-jlw"/>
                                                                     <constraint firstAttribute="trailing" secondItem="JJt-Vr-TIO" secondAttribute="trailing" constant="8" id="pbR-XX-W6W"/>
+                                                                    <constraint firstItem="dMw-fO-dvQ" firstAttribute="leading" secondItem="S95-ZY-8kY" secondAttribute="leading" constant="22.5" id="waQ-Ll-8m7"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-LJ-cbE" userLabel="Process Food">
@@ -3038,6 +3043,7 @@
                                                             <constraint firstItem="8hP-LJ-cbE" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="WSH-4X-KIb"/>
                                                             <constraint firstItem="OzE-bR-ZO0" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="XyB-SM-YtZ"/>
                                                             <constraint firstAttribute="bottom" secondItem="KSg-lE-Ckd" secondAttribute="bottom" constant="4" id="aOO-2H-bGw"/>
+                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="leading" secondItem="3sF-VV-xHB" secondAttribute="leading" id="dlE-m9-Xtw"/>
                                                             <constraint firstItem="KSg-lE-Ckd" firstAttribute="leading" secondItem="RxX-zc-gyp" secondAttribute="trailing" constant="8" id="mFQ-vI-MS8"/>
                                                             <constraint firstItem="3sF-VV-xHB" firstAttribute="top" secondItem="8hP-LJ-cbE" secondAttribute="bottom" constant="7" id="mWe-Si-O55"/>
                                                             <constraint firstItem="S95-ZY-8kY" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="opI-hC-roP"/>
@@ -3133,7 +3139,6 @@
                                                             <constraints>
                                                                 <constraint firstItem="eQa-6V-Jui" firstAttribute="top" secondItem="jyn-eb-2hd" secondAttribute="bottom" constant="5" id="5LP-kd-1fF"/>
                                                                 <constraint firstItem="Iua-BR-TPC" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" constant="10" id="6K1-DU-edj"/>
-                                                                <constraint firstItem="eQa-6V-Jui" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" constant="46" id="7pD-SJ-cGf"/>
                                                                 <constraint firstItem="7Ag-9w-FkK" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" id="9DV-px-h3B"/>
                                                                 <constraint firstItem="AZn-Kz-e1j" firstAttribute="top" secondItem="7Ag-9w-FkK" secondAttribute="bottom" constant="8" id="Hea-bj-irB"/>
                                                                 <constraint firstAttribute="trailing" secondItem="jyn-eb-2hd" secondAttribute="trailing" constant="17" id="HgA-0h-qED"/>
@@ -3141,7 +3146,8 @@
                                                                 <constraint firstAttribute="trailing" secondItem="AZn-Kz-e1j" secondAttribute="trailing" constant="17" id="PsW-Dr-tvk"/>
                                                                 <constraint firstItem="7Ag-9w-FkK" firstAttribute="top" secondItem="FPB-P6-1Eb" secondAttribute="top" id="UD7-Dz-Ime"/>
                                                                 <constraint firstItem="jyn-eb-2hd" firstAttribute="top" secondItem="AZn-Kz-e1j" secondAttribute="bottom" id="cPi-Oz-1g7"/>
-                                                                <constraint firstAttribute="trailing" secondItem="eQa-6V-Jui" secondAttribute="trailing" constant="46" id="cmI-QK-P80"/>
+                                                                <constraint firstItem="eQa-6V-Jui" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" constant="46" id="f7i-CO-jUQ"/>
+                                                                <constraint firstItem="eQa-6V-Jui" firstAttribute="centerX" secondItem="FPB-P6-1Eb" secondAttribute="centerX" id="jFw-aR-bI3"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Iua-BR-TPC" secondAttribute="bottom" constant="1" id="uEF-iE-w05"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Iua-BR-TPC" secondAttribute="trailing" constant="10" id="wBr-PN-1rR"/>
                                                                 <constraint firstItem="AZn-Kz-e1j" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" constant="17" id="ylG-fE-VIP"/>
@@ -3395,6 +3401,7 @@
                         <outlet property="UserImage" destination="Oyv-U8-Ixk" id="kUH-HA-QV9"/>
                         <outlet property="Username" destination="KlD-3e-Wu9" id="JMM-cb-wvx"/>
                         <outlet property="Verify" destination="7pb-UG-P1o" id="wXV-zf-ob5"/>
+                        <outlet property="VerifyView" destination="Ca3-0y-ad9" id="rqe-fm-zYW"/>
                         <outlet property="ViewAllButton" destination="veE-lF-5ky" id="mJ7-zb-s9o"/>
                         <outlet property="ViewAllHot" destination="Wzf-h4-rRL" id="uMU-fU-Lfb"/>
                         <outlet property="ViewAllShocking" destination="yD6-tk-hnF" id="WeQ-NW-QHV"/>

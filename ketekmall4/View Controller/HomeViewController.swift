@@ -144,6 +144,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var Verify: UILabel!
     @IBOutlet weak var Carousel: ImageSlideshow!
     
+    @IBOutlet weak var VerifyView: UIView!
     @IBOutlet weak var ButtonCake: UIButton!
     @IBOutlet weak var ButtonProcess: UIButton!
     @IBOutlet weak var ButtonHealth: UIButton!
@@ -237,7 +238,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         UserImage.layer.cornerRadius = UserImage.frame.width / 2
         UserImage.layer.masksToBounds = true
-        Verify.layer.cornerRadius = 15
+        VerifyView.layer.cornerRadius = 15
         
         CakePastries.layer.cornerRadius = 10
         CakePastries.layer.shadowOpacity = 1
