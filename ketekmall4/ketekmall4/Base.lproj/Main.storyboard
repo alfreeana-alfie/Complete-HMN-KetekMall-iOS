@@ -776,7 +776,7 @@
                                 <viewLayoutGuide key="safeArea" id="b4j-ne-VzS"/>
                             </stackView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCP-7f-PPn">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="4et-58-wCJ"/>
@@ -1551,7 +1551,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWU-e2-9yN">
-                                <rect key="frame" x="0.0" y="847" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="4ZY-dP-ndl"/>
@@ -1846,7 +1846,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-kT-YKq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SN8-ky-bjb">
                                     <size key="itemSize" width="413" height="94"/>
@@ -1855,7 +1855,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="ShippingInfoCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="1oE-p5-Xaf" customClass="ShippingInfoCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="ShippingInfoCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="1oE-p5-Xaf" customClass="ShippingInfoCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
                                         <rect key="frame" x="19.5" y="0.0" width="375" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jEj-Hn-dSe">
@@ -1909,7 +1909,7 @@
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fW2-Ks-uXx">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Axj-KI-d72"/>
@@ -2064,7 +2064,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-cz-hi7">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="b52-gL-Sy1"/>
@@ -2208,7 +2208,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aS7-Rk-eyv">
-                                <rect key="frame" x="0.0" y="278.5" width="414" height="534.5"/>
+                                <rect key="frame" x="0.0" y="278.5" width="414" height="500.5"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R6R-zK-faN">
                                     <size key="itemSize" width="202" height="286"/>
@@ -2343,7 +2343,7 @@
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-Q6-bca">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="XEU-VO-Zlj"/>
@@ -2398,7 +2398,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Uk-hB-D8w">
-                                <rect key="frame" x="0.0" y="90" width="414" height="723"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="689"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IhH-FC-IUq">
                                     <size key="itemSize" width="375" height="109"/>
@@ -2482,7 +2482,7 @@
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ryd-Hq-eUg">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="A46-J3-ciE"/>
@@ -3078,6 +3078,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="107.5" height="106"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="106" id="3Nb-Er-gyp"/>
+                                                                        <constraint firstAttribute="width" constant="107.5" id="xGM-15-02a"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cake and Pastries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZn-Kz-e1j">
@@ -3181,6 +3182,7 @@
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hRI-YI-adn">
                                                                     <rect key="frame" x="0.0" y="0.0" width="107.5" height="106"/>
                                                                     <constraints>
+                                                                        <constraint firstAttribute="width" constant="107.5" id="LwL-OH-LuG"/>
                                                                         <constraint firstAttribute="height" constant="106" id="naT-Kr-Dxj"/>
                                                                     </constraints>
                                                                 </imageView>
@@ -3476,7 +3478,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5B0-wF-KEX">
-                                <rect key="frame" x="0.0" y="847" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="yBZ-Yw-dDl"/>
@@ -3578,7 +3580,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8j1-qH-y47">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="00g-Mj-OpT"/>
@@ -5419,7 +5421,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="MySellingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="cly-GC-nve" customClass="MySellingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="MySellingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="cly-GC-nve" customClass="MySellingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="234"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3fR-fH-TYL">
@@ -5909,7 +5911,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="MyBuyingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="QIA-vH-ISe" customClass="MyBuyingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="MyBuyingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="QIA-vH-ISe" customClass="MyBuyingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="0.0" width="413" height="254"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HXL-lY-QA3">
@@ -7191,7 +7193,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="A1V-cU-Dhg"/>
                             </scrollView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhm-uI-SWB">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="tpq-JJ-OJX"/>
@@ -7584,7 +7586,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="MyRatingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="f17-Re-pjD" customClass="MyRatingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="MyRatingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="f17-Re-pjD" customClass="MyRatingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yIS-2U-Iu5">
