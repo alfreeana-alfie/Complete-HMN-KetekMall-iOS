@@ -11,7 +11,7 @@ import Alamofire
 import AARatingBar
 import JGProgressHUD
 
-class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate, UISearchBarDelegate, UITabBarDelegate {
+class CategoryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CategoryDelegate, UISearchBarDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
     
     private let spinner = JGProgressHUD(style: .dark)
 
@@ -70,11 +70,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     @IBOutlet weak var Tabbar: UITabBar!
     @IBOutlet weak var ButtonFilter: UIButton!
-    @IBOutlet weak var CateViewFlow: UICollectionViewFlowLayout!{
-        didSet{
-            CateViewFlow.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
-    }
+    
     var viewController1: UIViewController?
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -239,6 +235,12 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             return cell
         }
         
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let cellSquareSize: CGFloat = screenWidth / 2.0
+        return CGSize(width: cellSquareSize, height: 274);
+    }
         func onViewClick(cell: CategoryCollectionViewCell) {
             guard let indexPath = self.CategoryView.indexPath(for: cell) else{
                 return

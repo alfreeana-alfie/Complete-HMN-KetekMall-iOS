@@ -238,7 +238,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         UserImage.layer.cornerRadius = UserImage.frame.width / 2
         UserImage.layer.masksToBounds = true
-        VerifyView.layer.cornerRadius = 15
+        VerifyView.layer.cornerRadius = 7
         
         CakePastries.layer.cornerRadius = 10
         CakePastries.layer.shadowOpacity = 1
