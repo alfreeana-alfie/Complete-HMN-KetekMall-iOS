@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AboutSellerDelegate, UITabBarDelegate {
+class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AboutSellerDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
     
     let URL_READ_SELLER = "https://ketekmall.com/ketekmall/read_order_done_seller_shop.php"
     let URL_READALL_SELLER = "https://ketekmall.com/ketekmall/readall_seller.php"
@@ -233,7 +233,28 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.ItemLocation.text! = self.DISTRICT[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 5
+        cell.layer.borderWidth = 0.2
+        cell.layer.cornerRadius = 5
         return cell
+    }
+    
+    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+      let screenWidth = screenSize.width
+      let cellSquareSize: CGFloat = screenWidth / 2.0
+        return CGSize(width: cellSquareSize, height: 286);
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
     }
     
     func onViewClick(cell: AboutSellerCollectionViewCell) {
