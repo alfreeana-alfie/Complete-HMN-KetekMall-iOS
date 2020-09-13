@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Segment: UISegmentedControl!
     @IBOutlet weak var BuyerView: UIView!
     @IBOutlet weak var SellerView: UIView!
+    @IBOutlet weak var VerifyView: UIView!
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php";
     @IBOutlet weak var userImage: UIImageView!
@@ -42,7 +43,7 @@ class ViewController: UIViewController {
             
         }
         
-        verify.layer.cornerRadius = 15
+        VerifyView.layer.cornerRadius = 15
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
