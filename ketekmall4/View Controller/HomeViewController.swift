@@ -412,6 +412,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
             case 4:
                 _ = self.navigationController?.popToRootViewController(animated: true)
+                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                UserDefaults.standard.synchronize()
                 GIDSignIn.sharedInstance()?.signOut()
                 LoginManager().logOut()
                 break

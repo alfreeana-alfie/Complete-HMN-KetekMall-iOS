@@ -228,8 +228,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         self.sharedPref.setValue(NAME[0], forKey: "NAME")
                         self.sharedPref.setValue(EMAIL[0], forKey: "EMAIL")
                         
-                        let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
-                        tabbar.value = userID[0]
+                        let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+                        tabbar.userID = userID[0]
                         if let navigator = self.navigationController {
                             navigator.pushViewController(tabbar, animated: true)
                         }
@@ -274,8 +274,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                         UserDefaults.standard.synchronize()
                         
-                        let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
-                        tabbar.value = userID[0]
+                        let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+                        tabbar.userID = userID[0]
                         if let navigator = self.navigationController {
                             navigator.pushViewController(tabbar, animated: true)
                         }
