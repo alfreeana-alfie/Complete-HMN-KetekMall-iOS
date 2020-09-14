@@ -11,7 +11,7 @@ import Alamofire
 import SimpleCheckbox
 import JGProgressHUD
 
-class CartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartDelegate, UITabBarDelegate {
+class CartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -170,6 +170,25 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ID.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+        let screenWidth = screenSize.width
+        let cellSquareSize: CGFloat = screenWidth
+        return CGSize(width: cellSquareSize, height: 198);
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       return 2.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+       return 2.0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
