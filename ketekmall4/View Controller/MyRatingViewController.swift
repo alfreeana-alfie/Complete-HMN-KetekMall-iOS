@@ -10,14 +10,10 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class MyRatingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class MyRatingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var MyRatingView: UICollectionView!
-    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
-        didSet{
-            FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
-    }
+    
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -112,6 +108,27 @@ class MyRatingViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ad_detail.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let screenSize = collectionView.bounds
+            let screenWidth = screenSize.width
+    //        let screenHeight = screenSize.height
+            let cellSquareSize: CGFloat = screenWidth
+            let cellSquareHeight: CGFloat = 172
+            return CGSize(width: cellSquareSize, height: cellSquareHeight);
+        }
+           
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 0.0
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 0.0
+        }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyRatingCollectionViewCell", for: indexPath) as! MyRatingCollectionViewCell

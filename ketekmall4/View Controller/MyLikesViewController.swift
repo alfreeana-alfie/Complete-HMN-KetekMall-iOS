@@ -81,9 +81,9 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
+//        let screenHeight = screenSize.height
         let cellSquareSize: CGFloat = screenWidth / 2.0
-        let cellSquareHeight: CGFloat = 170
+        let cellSquareHeight: CGFloat = 286
         return CGSize(width: cellSquareSize, height: cellSquareHeight);
     }
        

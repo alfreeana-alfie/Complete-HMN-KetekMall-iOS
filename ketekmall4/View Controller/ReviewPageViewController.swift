@@ -130,19 +130,19 @@ class ReviewPageViewController: UIViewController {
         super.viewDidLoad()
         print(itemID)
         
-        OrderID.text! = ORDERID
+        OrderID.text! = "KM" + ORDERID
         TrackingNo.text! = TRACKINGNO
         ShippedTo.text! = SHIPPEDTO
         DateOrder.text! = DATEORDER
         DateReceived.text! = DATERECEIVED
         
         ItemName.text! = ADDETAIL
-        ItemPrice.text! = PRICE
-        ItemQuantity.text! = QUANTITY
+        ItemPrice.text! = "MYR" + PRICE
+        ItemQuantity.text! = "x" + QUANTITY
         
-        SubTotal.text! = PRICE
-        ShippingTotal.text! = SHIPPINGTOTAL
-        GrandTotal.text! = PRICE
+        SubTotal.text! = "MYR" + PRICE
+        ShippingTotal.text! = "MYR" + SHIPPINGTOTAL
+        GrandTotal.text! = "MYR" + PRICE
         
         ButtonReceived.layer.cornerRadius = 5
         
