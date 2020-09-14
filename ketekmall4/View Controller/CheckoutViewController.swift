@@ -19,6 +19,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var GrandTotal: UILabel!
     @IBOutlet weak var CartView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
+    var added = Set<String>()
     
     var viewController1: UIViewController?
     var userID: String = ""
@@ -80,6 +81,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single_delivery.php"
+    let URL_READ_DELIVERY2 = "https://ketekmall.com/ketekmall/read_detail_delivery_single.php"
     let URL_CART = "https://ketekmall.com/ketekmall/readcart_temp.php"
     let URL_CHECKOUT = "https://ketekmall.com/ketekmall/add_to_checkout.php"
     let URL_SEND_EMAILBUYER = "https://ketekmall.com/ketekmall/sendEmail_buyer.php"
@@ -91,6 +93,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         
         userID = sharedPref.string(forKey: "USERID") ?? "0"
+        
+        print("userid" + userID)
         Tabbar.delegate = self
         
         CartView.delegate = self
@@ -101,144 +105,310 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             "customer_id": userID,
         ]
         
-        //Sending http post request
-        Alamofire.request(URL_CART, method: .post, parameters: parameters).responseJSON
+        Alamofire.request(self.URL_CART, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                if let result = response.result.value as? Dictionary<String,Any>{
+                
+                var strGrand: Double = 0.00
+                var strGrand2: Double = 0.00
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
                     
-                    if let list = result["read"] as? [Dictionary<String,Any>]{
-                        for i in list{
-                            
-                            self.id = i["id"] as! String
-                            self.maincate = i["main_category"] as! String
-                            self.subcate = i["sub_category"] as! String
-                            self.addetail = i["ad_detail"] as! String
-                            self.price = i["price"] as! String
-                            self.division = i["division"] as! String
-                            self.district = i["district"] as! String
-                            self.photo = i["photo"] as! String
-                            self.sellerid = i["seller_id"] as! String
-                            self.itemid = i["item_id"] as! String
-                            self.quantity = i["quantity"] as! String
-                            
-                            
-                            self.ID.append(self.id)
-                            self.MAINCATE.append(self.maincate)
-                            self.SUBCATE.append(self.subcate)
-                            
-                            self.ADDETAIL.append(self.addetail)
-                            self.PRICE.append(self.price)
-                            self.DIVISION.append(self.division)
-                            self.DISTRICT.append(self.district)
-                            self.PHOTO.append(self.photo)
-                            self.SELLERID.append(self.sellerid)
-                            self.ITEMID.append(self.itemid)
-                            self.QUANTITY.append(self.quantity)
-                            
-                            let parameters: Parameters=[
-                                "id": self.userID,
-                            ]
-                            
-                            Alamofire.request(self.URL_READ, method: .post, parameters: parameters).responseJSON
-                                {
-                                    response in
-                                    if let result = response.result.value as? Dictionary<String,Any>{
-                                        if let list = result["read"] as? [Dictionary<String,Any>]{
-                                            for i in list{
-                                                
-                                                self.name = i["name"] as! String
-                                                self.phone_no = i["phone_no"] as! String
-                                                self.addr01 = i["address_01"] as! String
-                                                self.addr02 = i["address_02"] as! String
-                                                self.divsionu = i["division"] as! String
-//                                                self.districtu = i["district"] as! String
-                                                self.postcode = i["postcode"] as! String
-                                                
-                                                self.NAME.append(self.name)
-                                                self.PHONE_NO.append(self.phone_no)
-                                                self.ADDR01.append(self.addr01)
-                                                self.ADDR02.append(self.addr02)
-                                                self.DIVISIONU.append(self.divsionu)
-//                                                self.DISTRICTU.append(self.districtu)
-                                                self.POSTCODE.append(self.postcode)
-                                                
-                                                self.NamePhone.text! = self.name + " | " + self.phone_no
-                                                
-                                                self.NEWADDR =  self.addr01 + " " + self.addr02 + "\n" + self.divsionu + " " + self.postcode
-                                                self.Address.text! = self.NEWADDR
-                                                
-                                                let parameters: Parameters=[
-                                                    "item_id": self.itemid,
-                                                    "division": self.divsionu
-                                                ]
-                                                
-                                                Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
-                                                    {
-                                                        response in
-                                                        if let result = response.result.value as? Dictionary<String,Any>{
-                                                            if let list = result["read"] as? [Dictionary<String,Any>]{
-                                                                for i in list{
-                                                                    self.spinner.dismiss(afterDelay: 3.0)
-                                                                    self.DeliveryID = i["id"] as! String
-                                                                    self.DeliveryDivision = i["division"] as! String
-//                                                                    self.DeliveryDistrict = i["district"] as! String
-                                                                    self.DeliveryDays = i["days"] as! String
-                                                                    self.DeliveryPrice = i["price"] as! String
-                                                                    
-                                                                    self.DELIVERYID.append(self.DeliveryID)
-                                                                    self.DELIVERYPRICE.append(self.DeliveryPrice)
-                                                                    self.DELIVERYDAYS.append(self.DeliveryDays)
-                                                                    self.DELIVERYDIVISION.append(self.DeliveryDivision)
-//                                                                    self.DELIVERYDISTRICT.append(self.DeliveryDistrict)
-                                                                    
-                                                                    let date = Date()
-                                                                    let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
-                                                                    
-                                                                    let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
-                                                                    let duration = DateComponents(calendar: Calendar.current, day: Int(self.DeliveryDays))
-                                                                    let later = Calendar.current.date(byAdding: duration, to: now.date!)
-                                                                    
-                                                                    let formatter = DateFormatter()
-                                                                    formatter.locale = Locale(identifier: "nl_NL")
-                                                                    formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
-                                                                    
-                                                                    let datetime = formatter.string(from: later!)
-                                                                    
-                                                                    self.DELIVERYDATE.append(datetime)
-                                                                    
-
-                                                                    self.CartView.reloadData()
-                                                                }
-                                                                
-                                                            }else{
-                                                                print("FAILED 1")
-                                                            }
-                                                            
-                                                        }else{
-                                                            print("FAILED 2")
-                                                        }
-                                                }
-                                            }
-                                            
-                                        }else{
-                                            print("FAILED 3")
-                                        }
-                                        
-                                    }else{
-                                        print("FAILED 4")
-                                    }
-                            }
-                        }
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         
-                    }else{
-                        print("FAILED")
+                        let user = jsonData.value(forKey: "read") as! NSArray
+
+                        self.ID = user.value(forKey: "id") as! [String]
+                        self.MAINCATE = user.value(forKey: "main_category") as! [String]
+                        self.SUBCATE = user.value(forKey: "sub_category") as! [String]
+                        self.ADDETAIL = user.value(forKey: "ad_detail") as! [String]
+                        self.PRICE = user.value(forKey: "price") as! [String]
+                        self.DIVISION = user.value(forKey: "division") as! [String]
+                        self.DISTRICT = user.value(forKey: "district") as! [String]
+                        self.ITEMID = user.value(forKey: "item_id") as! [String]
+                        self.QUANTITY = user.value(forKey: "quantity") as! [String]
+                        self.PHOTO = user.value(forKey: "photo") as! [String]
+                        self.SELLERID = user.value(forKey: "seller_id") as! [String]
+                        
+                        let parameters: Parameters=[
+                            "id": self.userID,
+                        ]
+                        Alamofire.request(self.URL_READ, method: .post, parameters: parameters).responseJSON
+                            {
+                                response in
+                                
+                                
+                                if let result = response.result.value{
+                                    let jsonData = result as! NSDictionary
+                                    
+                                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                                        
+                                        let user = jsonData.value(forKey: "read") as! NSArray
+                                        self.NAME = user.value(forKey: "name") as! [String]
+                                        self.PHONE_NO = user.value(forKey: "phone_no") as! [String]
+                                        self.ADDR01 = user.value(forKey: "address_01") as! [String]
+                                        self.ADDR02 = user.value(forKey: "address_02") as! [String]
+                                        self.DIVISIONU = user.value(forKey: "division") as! [String]
+                                        self.POSTCODE = user.value(forKey: "postcode") as! [String]
+
+                                        self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
+                                        self.NEWADDR =  self.ADDR01[0] + " " + self.ADDR02[0] + "\n" + self.DIVISIONU[0] + " " + self.POSTCODE[0]
+                                        
+                                        self.Address.text! = self.NEWADDR
+                                        
+                                        for i in 0..<self.ITEMID.count{
+                                            
+                                            let parameters: Parameters=[
+                                                "item_id": self.ITEMID[i],
+                                                "division": self.DIVISIONU[0]
+                                            ]
+                                            
+                                            Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
+                                                {
+                                                    response in
+                                                    self.spinner.dismiss(afterDelay: 3.0)
+                                                    
+                                                    if let result = response.result.value{
+                                                        let jsonData = result as! NSDictionary
+                                                        
+                                                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                                                            let user = jsonData.value(forKey: "read") as! NSArray
+                                                            
+                                                            self.DELIVERYID = user.value(forKey: "id") as! [String]
+                                                            self.DELIVERYDIVISION = user.value(forKey: "division") as! [String]
+                                                            let deliveryDays = user.value(forKey: "id") as! [String]
+                                                            self.DELIVERYID = user.value(forKey: "id") as! [String]
+                                                            let deliveryprice = user.value(forKey: "price") as! [String]
+                                                            
+                                                            self.DELIVERYPRICE.append(contentsOf: deliveryprice)
+                                                            self.DELIVERYDAYS.append(contentsOf: deliveryDays)
+                                                            
+                                                            var strDays: Int = Int(self.DELIVERYDAYS[i]) ?? 0
+                                                            let date = Date()
+                                                            let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
+                                                            
+                                                            let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
+                                                            let duration = DateComponents(calendar: Calendar.current, day: strDays)
+                                                            let later = Calendar.current.date(byAdding: duration, to: now.date!)
+                                                            
+                                                            let formatter = DateFormatter()
+                                                            formatter.locale = Locale(identifier: "nl_NL")
+                                                            formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
+                                                            
+                                                            let datetime = formatter.string(from: later!)
+                                                            
+                                                            self.DELIVERYDATE.append(datetime)
+                                                            strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
+                                                            
+                                                            var strDel: Double = Double(self.DELIVERYPRICE[i])!
+                                                            var strGrandTotal: Double = 0.00
+                                                            strGrand2 += strDel
+                                                            strGrandTotal = strGrand + strGrand2
+                                                            print(String(format: "%.2f", strGrandTotal))
+                                                            
+                                                            self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
+                                                            
+                                                            self.CartView.reloadData()
+                                                        }else{
+                                                            
+                                                            print("Invalid email or password")
+                                                        }
+                                                    }
+                                            }
+                                        }
+                                    }else{
+                                        
+                                        print("Invalid email or password")
+                                    }
+                                }
+                        }
                     }
-                    
                 }
         }
         
-        DeliveryPriceFunc()
+//        //Sending http post request
+//        Alamofire.request(URL_CART, method: .post, parameters: parameters).responseJSON
+//            {
+//                response in
+//                if let result = response.result.value as? Dictionary<String,Any>{
+//
+//                    if let list = result["read"] as? [Dictionary<String,Any>]{
+//                        for i in list{
+//
+//                            self.id = i["id"] as! String
+//                            self.maincate = i["main_category"] as! String
+//                            self.subcate = i["sub_category"] as! String
+//                            self.addetail = i["ad_detail"] as! String
+//                            self.price = i["price"] as! String
+//                            self.division = i["division"] as! String
+//                            self.district = i["district"] as! String
+//                            self.photo = i["photo"] as! String
+//                            self.sellerid = i["seller_id"] as! String
+//                            self.itemid = i["item_id"] as! String
+//                            self.quantity = i["quantity"] as! String
+//
+//
+//                            self.ID.append(self.id)
+//                            self.MAINCATE.append(self.maincate)
+//                            self.SUBCATE.append(self.subcate)
+//
+//                            self.ADDETAIL.append(self.addetail)
+//                            self.PRICE.append(self.price)
+//                            self.DIVISION.append(self.division)
+//                            self.DISTRICT.append(self.district)
+//                            self.PHOTO.append(self.photo)
+//                            self.SELLERID.append(self.sellerid)
+//                            self.ITEMID.append(self.itemid)
+//                            self.QUANTITY.append(self.quantity)
+//
+//                            self.DeliveryPriceFunc(ItemID: self.ITEMID, Division: "Kuching")
+//
+//                            let parameters: Parameters=[
+//                                "id": self.userID,
+//                            ]
+//
+//                            Alamofire.request(self.URL_READ, method: .post, parameters: parameters).responseJSON
+//                                {
+//                                    response in
+//                                    Alamofire.request(self.URL_READ, method: .post, parameters: parameters).responseJSON
+//                                        {
+//                                            response in
+//
+//
+//                                            if let result = response.result.value{
+//                                                let jsonData = result as! NSDictionary
+//
+//                                                if((jsonData.value(forKey: "success") as! NSString).boolValue){
+//
+//                                                    let user = jsonData.value(forKey: "read") as! NSArray
+//                                                    let deliveryprice = user.value(forKey: "name") as! [String]
+//
+//                                                    print("DELIVERY" + "\(deliveryprice[0])")
+//
+//                                                }else{
+//
+//                                                    print("Invalid email or password")
+//                                                }
+//                                            }
+//                                    }
+////                                    if let result = response.result.value as? Dictionary<String,Any>{
+////                                        if let list = result["read"] as? [Dictionary<String,Any>]{
+////                                            for i in list{
+////
+////                                                self.name = i["name"] as! String
+////                                                self.phone_no = i["phone_no"] as! String
+////                                                self.addr01 = i["address_01"] as! String
+////                                                self.addr02 = i["address_02"] as! String
+////                                                self.divsionu = i["division"] as! String
+//////                                                self.districtu = i["district"] as! String
+////                                                self.postcode = i["postcode"] as! String
+////
+////                                                self.NAME.append(self.name)
+////                                                self.PHONE_NO.append(self.phone_no)
+////                                                self.ADDR01.append(self.addr01)
+////                                                self.ADDR02.append(self.addr02)
+////                                                self.DIVISIONU.append(self.divsionu)
+//////                                                self.DISTRICTU.append(self.districtu)
+////                                                self.POSTCODE.append(self.postcode)
+////
+////                                                self.NamePhone.text! = self.name + " | " + self.phone_no
+////
+////                                                self.NEWADDR =  self.addr01 + " " + self.addr02 + "\n" + self.divsionu + " " + self.postcode
+////                                                self.Address.text! = self.NEWADDR
+////
+////
+////
+////                                                let parameters: Parameters=[
+////                                                    "item_id": self.itemid,
+////                                                    "division": self.divsionu
+////                                                ]
+//
+////                                                Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
+////                                                    {
+////                                                        response in
+////                                                        if let result = response.result.value{
+////                                                            let jsonData = result as! NSDictionary
+////
+////                                                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
+////
+////                                                                let user = jsonData.value(forKey: "read") as! NSArray
+////
+////
+////                                                                let deliveryprice = user.value(forKey: "price") as! [String]
+////
+////
+//////                                                                print("DELIVERY2" + "\(deliveryprice)")
+////                                                            }else{
+////
+////                                                                print("Invalid email or password")
+////                                                            }
+////                                                        }
+////                                                }
+////                                                Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
+////                                                    {
+////                                                        response in
+////                                                        if let result = response.result.value as? Dictionary<String,Any>{
+////                                                            if let list = result["read"] as? [Dictionary<String,Any>]{
+////                                                                for i in list{
+////                                                                    self.spinner.dismiss(afterDelay: 3.0)
+////                                                                    self.DeliveryID = i["id"] as! String
+////                                                                    self.DeliveryDivision = i["division"] as! String
+//////                                                                    self.DeliveryDistrict = i["district"] as! String
+////                                                                    self.DeliveryDays = i["days"] as! String
+////                                                                    self.DeliveryPrice = i["price"] as! String
+////
+////                                                                    self.DELIVERYID.append(self.DeliveryID)
+////                                                                    self.DELIVERYPRICE.append(self.DeliveryPrice)
+////                                                                    self.DELIVERYDAYS.append(self.DeliveryDays)
+////                                                                    self.DELIVERYDIVISION.append(self.DeliveryDivision)
+//////                                                                    self.DELIVERYDISTRICT.append(self.DeliveryDistrict)
+////
+////                                                                    let date = Date()
+////                                                                    let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
+////
+////                                                                    let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
+////                                                                    let duration = DateComponents(calendar: Calendar.current, day: Int(self.DeliveryDays))
+////                                                                    let later = Calendar.current.date(byAdding: duration, to: now.date!)
+////
+////                                                                    let formatter = DateFormatter()
+////                                                                    formatter.locale = Locale(identifier: "nl_NL")
+////                                                                    formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
+////
+////                                                                    let datetime = formatter.string(from: later!)
+////
+////                                                                    self.DELIVERYDATE.append(datetime)
+////
+////
+////                                                                    self.CartView.reloadData()
+////                                                                }
+////
+////                                                            }else{
+////                                                                print("FAILED 1")
+////                                                            }
+////
+////                                                        }else{
+////                                                            print("FAILED 2")
+////                                                        }
+////                                                }
+////                                            }
+////
+////                                        }else{
+////                                            print("FAILED 3")
+////                                        }
+////
+////                                    }else{
+////                                        print("FAILED 4")
+////                                    }
+//                            }
+//                        }
+//
+//                    }else{
+//                        print("FAILED")
+//                    }
+//
+//                }
+//        }
+        
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -274,50 +444,40 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    func DeliveryPriceFunc(){
-        for i in ITEMID{
+    func DeliveryPriceFunc(ItemID: [String], Division: String){
+        print(ItemID)
+        for i in 0..<ItemID.count{
+            print(String(i))
+        }
+        
+        
+        for i in 0..<ItemID.count{
             let parameters: Parameters=[
-                "item_id": i,
-                "division": divsionu
-            ]
-            
-            Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value as? Dictionary<String,Any>{
-                        if let list = result["read"] as? [Dictionary<String,Any>]{
-                            for i in list{
-                                self.spinner.dismiss(afterDelay: 3.0)
-                                self.DeliveryID = i["id"] as! String
-                                self.DeliveryDivision = i["division"] as! String
-                            
-                                self.DeliveryDays = i["days"] as! String
-                                self.DeliveryPrice = i["price"] as! String
-                                
-                                let date = Date()
-                                let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
-                                
-                                let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
-                                let duration = DateComponents(calendar: Calendar.current, day: Int(self.DeliveryDays))
-                                let later = Calendar.current.date(byAdding: duration, to: now.date!)
-                                
-                                let formatter = DateFormatter()
-                                formatter.locale = Locale(identifier: "nl_NL")
-                                formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
-                                
-                                let datetime = formatter.string(from: later!)
-                                
-                                print(self.DeliveryPrice)
-                            }
-                            
-                        }else{
-                            print("FAILED 1")
+                            "item_id": ItemID[i],
+                            "division": Division
+                        ]
+
+                        Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
+                            {
+                                response in
+
+
+                                if let result = response.result.value{
+                                    let jsonData = result as! NSDictionary
+
+                                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+
+                                        let user = jsonData.value(forKey: "read") as! NSArray
+                                        let deliveryprice = user.value(forKey: "price") as! [String]
+
+                                        print("DELIVERY" + "\(deliveryprice)")
+
+                                    }else{
+
+                                        print("Invalid email or password")
+                                    }
+                                }
                         }
-                        
-                    }else{
-                        print("FAILED 2")
-                    }
-            }
         }
     }
     
@@ -354,8 +514,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CheckoutCollectionViewCell", for: indexPath) as! CheckoutCollectionViewCell
+        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
-        self.GrandTotal.text! = "MYR0.00"
+        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
         cell.OrderID.text! = self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = self.PRICE[indexPath.row]
