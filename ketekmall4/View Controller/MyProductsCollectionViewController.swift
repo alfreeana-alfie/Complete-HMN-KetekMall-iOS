@@ -120,7 +120,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             let screenSize = collectionView.bounds
             let screenWidth = screenSize.width
     //        let screenHeight = screenSize.height
-            let cellSquareSize: CGFloat = screenWidth
+            let cellSquareSize: CGFloat = screenWidth / 2
             let cellSquareHeight: CGFloat = 370
             return CGSize(width: cellSquareSize, height: cellSquareHeight);
         }
@@ -158,7 +158,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             cell.Rating.value = f
         }
         cell.layer.cornerRadius = 5
-        cell.layer.borderWidth = 0.5
+        cell.layer.borderWidth = 0.3
         cell.delegate = self
         return cell
     }
