@@ -6078,7 +6078,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8z-Ha-LhB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6z-Md-lMY">
                                                 <rect key="frame" x="8" y="8" width="398" height="382"/>
@@ -6337,11 +6337,11 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="6Ox-25-Ph1" secondAttribute="bottom" constant="183" id="3Md-gf-xkW"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Ox-25-Ph1" secondAttribute="bottom" constant="31" id="0wk-WT-cur"/>
                                             <constraint firstItem="6Ox-25-Ph1" firstAttribute="top" secondItem="JJM-10-etJ" secondAttribute="bottom" constant="24" id="4tA-au-r14"/>
                                             <constraint firstItem="6Ox-25-Ph1" firstAttribute="leading" secondItem="n8z-Ha-LhB" secondAttribute="leading" constant="8" id="5n8-PM-3m5"/>
                                             <constraint firstItem="JJM-10-etJ" firstAttribute="top" secondItem="n8z-Ha-LhB" secondAttribute="top" constant="398" id="7xR-yn-WMt"/>
-                                            <constraint firstAttribute="height" constant="852" id="HC8-s1-acV"/>
+                                            <constraint firstAttribute="height" constant="700" id="HC8-s1-acV"/>
                                             <constraint firstAttribute="trailing" secondItem="JJM-10-etJ" secondAttribute="trailing" constant="8" id="YVf-V6-wbM"/>
                                             <constraint firstItem="JJM-10-etJ" firstAttribute="top" secondItem="a6z-Md-lMY" secondAttribute="bottom" constant="8" id="aiz-XV-jdR"/>
                                             <constraint firstAttribute="trailing" secondItem="a6z-Md-lMY" secondAttribute="trailing" constant="8" id="hyM-gA-iVd"/>
@@ -7741,7 +7741,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0y1-E8-PVR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="816"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="680"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIq-tw-wmh">
                                                 <rect key="frame" x="0.0" y="-8" width="414" height="185"/>
@@ -7904,7 +7904,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7RX-Ir-3Ev">
-                                                <rect key="frame" x="0.0" y="482" width="414" height="334"/>
+                                                <rect key="frame" x="0.0" y="482" width="414" height="198"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PosLaju Tracking No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kly-C2-abB">
                                                         <rect key="frame" x="8" y="15" width="161" height="21"/>
@@ -7969,7 +7969,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="816" id="1Ic-jX-47p"/>
+                                            <constraint firstAttribute="height" constant="680" id="1Ic-jX-47p"/>
                                             <constraint firstAttribute="bottom" secondItem="7RX-Ir-3Ev" secondAttribute="bottom" id="1Zv-ao-hgB"/>
                                             <constraint firstItem="7RX-Ir-3Ev" firstAttribute="trailing" secondItem="aIq-tw-wmh" secondAttribute="trailing" id="Beg-jf-g0e"/>
                                             <constraint firstItem="7RX-Ir-3Ev" firstAttribute="top" secondItem="yGL-bD-N4S" secondAttribute="bottom" constant="8" id="GBg-hn-4G8"/>
