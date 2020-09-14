@@ -56,6 +56,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             if let navigator = self.navigationController {
                 navigator.pushViewController(tabbar, animated: true)
             }
+        }else{
+            hud.dismiss(afterDelay: 3.0)
         }
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.clientID = "918843433379-sttk0oa9ea0htiqt3j3ncakoi2vrma2i.apps.googleusercontent.com"
