@@ -18,19 +18,19 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var AdDetailLabel: UILabel!
     @IBOutlet weak var DistrictLabel: UILabel!
     @IBOutlet weak var PriceLabel: UILabel!
-    @IBOutlet weak var InnerLabel: UILabel!
-    @IBOutlet weak var BrandLabel: UILabel!
+//    @IBOutlet weak var InnerLabel: UILabel!
+//    @IBOutlet weak var BrandLabel: UILabel!
     @IBOutlet weak var MaxOrderLabel: UILabel!
     @IBOutlet weak var DivisionLabel: UILabel!
-    @IBOutlet weak var StockLabel: UILabel!
+//    @IBOutlet weak var StockLabel: UILabel!
     @IBOutlet weak var UploadedPhotoLabel: UILabel!
     
     @IBOutlet weak var Category: UITextField!
-    @IBOutlet weak var AdDetail: UITextField!
-    @IBOutlet weak var BrandMaterial: UITextField!
-    @IBOutlet weak var InnerMaterial: UITextField!
-    @IBOutlet weak var Stock: UITextField!
-    @IBOutlet weak var Description: UITextField!
+//    @IBOutlet weak var AdDetail: UITextField!
+//    @IBOutlet weak var BrandMaterial: UITextField!
+//    @IBOutlet weak var InnerMaterial: UITextField!
+//    @IBOutlet weak var Stock: UITextField!
+//    @IBOutlet weak var Description: UITextField!
     @IBOutlet weak var Price: UITextField!
     @IBOutlet weak var Division: UITextField!
     @IBOutlet weak var District: UITextField!
@@ -64,6 +64,11 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     var DivisionPicker = UIPickerView()
     var DistrictPicker = UIPickerView()
     var userID: String = ""
+    var BrandMaterial: String = ""
+    var InnerMaterial: String = ""
+    var Stock: String = ""
+    var Description: String = ""
+    var Addetail: String = ""
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -109,9 +114,9 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     func changeLanguage(str: String){
         CategoryLabel.text = "Category".localized(lang: str)
         AdDetailLabel.text = "Ad Detail".localized(lang: str)
-        BrandLabel.text = "Brand Material".localized(lang: str)
-        InnerLabel.text = "Inner Material".localized(lang: str)
-        StockLabel.text = "Stock".localized(lang: str)
+//        BrandLabel.text = "Brand Material".localized(lang: str)
+//        InnerLabel.text = "Inner Material".localized(lang: str)
+//        StockLabel.text = "Stock".localized(lang: str)
         PriceLabel.text = "Price".localized(lang: str)
         DivisionLabel.text = "Division".localized(lang: str)
         DistrictLabel.text = "District".localized(lang: str)
@@ -197,6 +202,27 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
         
         return ""
+    }
+    
+    @IBAction func AdDetail(_ sender: Any) {
+        let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
+        AdDetail.USERID = userID
+        AdDetail.ITEMID = ""
+        AdDetail.ADDETAIL = Addetail
+        AdDetail.MAINCATE = Category.text!
+        AdDetail.SUBCATE = Category.text!
+        AdDetail.PRICE = Price.text!
+        AdDetail.BRAND = BrandMaterial
+        AdDetail.INNER = InnerMaterial
+        AdDetail.STOCK = Stock
+        AdDetail.DESC = Description
+        AdDetail.DIVISION = Division.text!
+        AdDetail.DISTRICT = District.text!
+        AdDetail.PHOTO = ""
+        AdDetail.MAXORDER = MaxOrder.text!
+        if let navigator = self.navigationController {
+            navigator.pushViewController(AdDetail, animated: true)
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -295,11 +321,11 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             "user_id": userID,
             "main_category":Category.text!,
             "sub_category":Category.text!,
-            "ad_detail":AdDetail.text!,
-            "brand_material":BrandMaterial.text!,
-            "inner_material": InnerMaterial.text!,
-            "stock": Stock.text!,
-            "description": Description.text!,
+            "ad_detail":Addetail,
+            "brand_material":BrandMaterial,
+            "inner_material": InnerMaterial,
+            "stock": Stock,
+            "description": Description,
             "price": Price.text!,
             "max_order": MaxOrder.text!,
             "division": Division.text!,
