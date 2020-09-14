@@ -214,13 +214,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-ME-jFX">
-                                <rect key="frame" x="0.0" y="194" width="414" height="619"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="OYT-hA-KkS" kind="embed" id="z3u-lg-KnN"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c18-e5-vkT">
-                                <rect key="frame" x="0.0" y="194" width="414" height="619"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="NYb-Qg-Vgc" kind="embed" id="BF5-o4-KeI"/>
                                 </connections>
@@ -269,29 +269,41 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83.5" id="mNC-R0-jJR"/>
                                 </constraints>
                             </view>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRX-RP-FXh">
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Dgz-t3-Bg4"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="P4m-MH-dol"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="Uit-Sr-Ru2"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PZI-4q-txo" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" constant="25" id="1N4-K1-tsg"/>
-                            <constraint firstItem="c18-e5-vkT" firstAttribute="trailing" secondItem="E6d-Ej-b40" secondAttribute="trailing" id="LU4-uj-52c"/>
+                            <constraint firstItem="9rx-ME-jFX" firstAttribute="trailing" secondItem="E6d-Ej-b40" secondAttribute="trailing" id="6CP-fU-9gU"/>
+                            <constraint firstItem="c18-e5-vkT" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" id="9tg-mH-re8"/>
+                            <constraint firstItem="HRX-RP-FXh" firstAttribute="top" secondItem="9rx-ME-jFX" secondAttribute="bottom" id="FY8-3o-RLX"/>
+                            <constraint firstItem="9rx-ME-jFX" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" id="GRL-2Z-deH"/>
+                            <constraint firstItem="c18-e5-vkT" firstAttribute="trailing" secondItem="E6d-Ej-b40" secondAttribute="trailing" id="JFl-fy-gy2"/>
                             <constraint firstItem="cYW-uq-A9F" firstAttribute="top" secondItem="PZI-4q-txo" secondAttribute="bottom" constant="12.5" id="LYf-zB-UJ1"/>
                             <constraint firstItem="E6d-Ej-b40" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="N3S-6Q-a5u" secondAttribute="trailing" constant="247.5" id="MG2-WY-XYY"/>
                             <constraint firstItem="aeh-cC-Xzj" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" constant="25" id="OnG-ae-b5Y"/>
-                            <constraint firstItem="c18-e5-vkT" firstAttribute="top" secondItem="cYW-uq-A9F" secondAttribute="bottom" constant="8" id="PLo-Aq-zUl"/>
                             <constraint firstItem="N3S-6Q-a5u" firstAttribute="leading" secondItem="aeh-cC-Xzj" secondAttribute="trailing" constant="8" id="Sil-C0-HyL"/>
                             <constraint firstItem="cYW-uq-A9F" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" constant="7" id="Sqp-Hf-Izp"/>
                             <constraint firstItem="E6d-Ej-b40" firstAttribute="trailing" secondItem="PZI-4q-txo" secondAttribute="trailing" constant="100" id="Sw4-d3-7fk"/>
+                            <constraint firstAttribute="trailing" secondItem="HRX-RP-FXh" secondAttribute="trailing" id="VAe-rw-buf"/>
                             <constraint firstItem="aeh-cC-Xzj" firstAttribute="top" secondItem="E6d-Ej-b40" secondAttribute="top" constant="26" id="Xjb-eY-uT6"/>
                             <constraint firstItem="E6d-Ej-b40" firstAttribute="trailing" secondItem="cYW-uq-A9F" secondAttribute="trailing" constant="7" id="Yfj-8f-fvI"/>
-                            <constraint firstItem="c18-e5-vkT" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" id="Zz4-OO-vmK"/>
-                            <constraint firstItem="9rx-ME-jFX" firstAttribute="top" secondItem="cYW-uq-A9F" secondAttribute="bottom" constant="8" id="bni-a3-p5V"/>
+                            <constraint firstItem="9rx-ME-jFX" firstAttribute="top" secondItem="cYW-uq-A9F" secondAttribute="bottom" constant="8" id="aJT-er-SFP"/>
                             <constraint firstItem="PZI-4q-txo" firstAttribute="top" secondItem="N3S-6Q-a5u" secondAttribute="bottom" constant="6" id="cCz-VH-BHQ"/>
                             <constraint firstItem="N3S-6Q-a5u" firstAttribute="top" secondItem="E6d-Ej-b40" secondAttribute="top" constant="52" id="d8t-Wh-Bei"/>
-                            <constraint firstItem="9rx-ME-jFX" firstAttribute="bottom" secondItem="E6d-Ej-b40" secondAttribute="bottom" id="fQj-5s-ImI"/>
-                            <constraint firstItem="9rx-ME-jFX" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" id="hIi-AF-snV"/>
-                            <constraint firstItem="c18-e5-vkT" firstAttribute="bottom" secondItem="E6d-Ej-b40" secondAttribute="bottom" id="mAE-AH-UbG"/>
                             <constraint firstItem="PZI-4q-txo" firstAttribute="top" secondItem="aeh-cC-Xzj" secondAttribute="bottom" constant="6" id="oCT-3G-sem"/>
-                            <constraint firstItem="9rx-ME-jFX" firstAttribute="trailing" secondItem="E6d-Ej-b40" secondAttribute="trailing" id="ry7-Sb-7tm"/>
+                            <constraint firstItem="HRX-RP-FXh" firstAttribute="top" secondItem="c18-e5-vkT" secondAttribute="bottom" id="q5t-k9-4RQ"/>
+                            <constraint firstItem="HRX-RP-FXh" firstAttribute="leading" secondItem="E6d-Ej-b40" secondAttribute="leading" id="rnl-Lx-5oe"/>
+                            <constraint firstItem="c18-e5-vkT" firstAttribute="top" secondItem="cYW-uq-A9F" secondAttribute="bottom" constant="8" id="sQw-m0-c12"/>
+                            <constraint firstItem="E6d-Ej-b40" firstAttribute="bottom" secondItem="HRX-RP-FXh" secondAttribute="bottom" id="xtE-eQ-gB8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E6d-Ej-b40"/>
                     </view>
@@ -301,6 +313,7 @@
                         <outlet property="BuyerView" destination="c18-e5-vkT" id="8li-1e-CC3"/>
                         <outlet property="Segment" destination="cYW-uq-A9F" id="rPI-fl-TOb"/>
                         <outlet property="SellerView" destination="9rx-ME-jFX" id="lew-3C-jCn"/>
+                        <outlet property="Tabbar" destination="HRX-RP-FXh" id="r40-nG-3vf"/>
                         <outlet property="VerifyView" destination="N3S-6Q-a5u" id="Rua-zg-kjr"/>
                         <outlet property="userImage" destination="aeh-cC-Xzj" id="UMa-Rp-Puz"/>
                         <outlet property="username" destination="PZI-4q-txo" id="9kV-zh-f6b"/>
@@ -902,6 +915,15 @@
                                     <constraint firstAttribute="height" constant="1" id="keP-kg-RUW"/>
                                 </constraints>
                             </view>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPq-y4-lnB">
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="QdI-X0-oAq"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="9ZV-sx-MS1"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="DmI-qb-3o9"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -916,6 +938,7 @@
                             <constraint firstItem="yO1-1c-Id9" firstAttribute="leading" secondItem="2V4-zP-fKS" secondAttribute="leading" constant="20" id="EaY-1o-IWv"/>
                             <constraint firstItem="G8V-i7-pjJ" firstAttribute="centerX" secondItem="LDV-Ov-aKH" secondAttribute="centerX" id="NPG-Qh-a7G"/>
                             <constraint firstAttribute="trailing" secondItem="mGm-kx-E50" secondAttribute="trailing" id="Qfc-Dd-7J7"/>
+                            <constraint firstItem="NPq-y4-lnB" firstAttribute="leading" secondItem="2V4-zP-fKS" secondAttribute="leading" id="SgI-k0-aAS"/>
                             <constraint firstItem="G8V-i7-pjJ" firstAttribute="top" secondItem="mGm-kx-E50" secondAttribute="bottom" constant="2" id="XaU-G8-rm8"/>
                             <constraint firstItem="yO1-1c-Id9" firstAttribute="top" secondItem="2V4-zP-fKS" secondAttribute="top" constant="8" id="Yhe-jp-Yz2"/>
                             <constraint firstItem="LnY-Hj-0gv" firstAttribute="centerX" secondItem="LDV-Ov-aKH" secondAttribute="centerX" id="Zto-RP-NHa"/>
@@ -924,10 +947,12 @@
                             <constraint firstItem="2V4-zP-fKS" firstAttribute="trailing" secondItem="G8V-i7-pjJ" secondAttribute="trailing" constant="20" id="dvu-Tz-k8o"/>
                             <constraint firstItem="kBL-ky-rhx" firstAttribute="top" secondItem="LnY-Hj-0gv" secondAttribute="bottom" constant="2" id="eeB-Zd-mvc"/>
                             <constraint firstItem="2V4-zP-fKS" firstAttribute="trailing" secondItem="yO1-1c-Id9" secondAttribute="trailing" constant="20" id="hoA-ql-9Ud"/>
+                            <constraint firstItem="2V4-zP-fKS" firstAttribute="bottom" secondItem="NPq-y4-lnB" secondAttribute="bottom" id="nUq-ep-BaN"/>
                             <constraint firstItem="qsz-ed-fYM" firstAttribute="top" secondItem="G8V-i7-pjJ" secondAttribute="bottom" constant="2" id="ndR-iX-6uz"/>
                             <constraint firstItem="qsz-ed-fYM" firstAttribute="leading" secondItem="LDV-Ov-aKH" secondAttribute="leading" id="qYa-Z4-bwO"/>
                             <constraint firstItem="LnY-Hj-0gv" firstAttribute="top" secondItem="qsz-ed-fYM" secondAttribute="bottom" constant="2" id="sJP-MX-Nnq"/>
                             <constraint firstItem="mGm-kx-E50" firstAttribute="top" secondItem="yO1-1c-Id9" secondAttribute="bottom" constant="2" id="vfn-P5-S1T"/>
+                            <constraint firstAttribute="trailing" secondItem="NPq-y4-lnB" secondAttribute="trailing" id="y1G-lp-r3c"/>
                             <constraint firstItem="mGm-kx-E50" firstAttribute="centerX" secondItem="LDV-Ov-aKH" secondAttribute="centerX" id="yIe-KD-6Oc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2V4-zP-fKS"/>
@@ -937,6 +962,7 @@
                         <outlet property="OrderUpdateBtn" destination="tAL-2Y-zB8" id="yAT-sS-kJ0"/>
                         <outlet property="PromotionBtn" destination="fO9-Cu-XA3" id="gXs-rZ-z5U"/>
                         <outlet property="SocialUpdatesBtn" destination="OWH-cu-9ON" id="C6a-cv-Mv0"/>
+                        <outlet property="Tabbar" destination="NPq-y4-lnB" id="90A-DU-lub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGE-Wx-W4X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2681,7 +2707,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-jF-ICD">
-                                <rect key="frame" x="0.0" y="263" width="414" height="550"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="418"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP9-CD-EMd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="919"/>
@@ -3363,14 +3389,26 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="P1L-g4-KvP"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="KLQ-aM-B1k"/>
                             </scrollView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-uF-d9x">
+                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="rnh-As-6pA"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="uXI-c4-9h5"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="0NN-Yd-EoE"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FcP-jF-ICD" firstAttribute="top" secondItem="bk0-V9-OEE" secondAttribute="bottom" id="0rl-80-lHH"/>
                             <constraint firstItem="FcP-jF-ICD" firstAttribute="trailing" secondItem="8bl-1t-ziZ" secondAttribute="trailing" id="6jX-Oe-i10"/>
+                            <constraint firstItem="8bl-1t-ziZ" firstAttribute="bottom" secondItem="VvD-uF-d9x" secondAttribute="bottom" id="7wM-fH-AGB"/>
                             <constraint firstItem="bk0-V9-OEE" firstAttribute="leading" secondItem="8bl-1t-ziZ" secondAttribute="leading" id="AYf-Kb-9Hv"/>
                             <constraint firstItem="FcP-jF-ICD" firstAttribute="leading" secondItem="8bl-1t-ziZ" secondAttribute="leading" id="CVC-7y-APv"/>
-                            <constraint firstItem="FcP-jF-ICD" firstAttribute="bottom" secondItem="8bl-1t-ziZ" secondAttribute="bottom" id="OJg-H3-wib"/>
+                            <constraint firstItem="VvD-uF-d9x" firstAttribute="leading" secondItem="8bl-1t-ziZ" secondAttribute="leading" id="GKu-Mw-TAi"/>
+                            <constraint firstItem="VvD-uF-d9x" firstAttribute="top" secondItem="FcP-jF-ICD" secondAttribute="bottom" id="HmF-j7-yr1"/>
+                            <constraint firstItem="VvD-uF-d9x" firstAttribute="trailing" secondItem="8bl-1t-ziZ" secondAttribute="trailing" id="V5G-O1-ll3"/>
                             <constraint firstItem="FcP-jF-ICD" firstAttribute="top" secondItem="bk0-V9-OEE" secondAttribute="bottom" id="WEO-4f-Yss"/>
                             <constraint firstItem="bk0-V9-OEE" firstAttribute="top" secondItem="8bl-1t-ziZ" secondAttribute="top" id="Xd6-v6-2r6"/>
                             <constraint firstItem="bk0-V9-OEE" firstAttribute="trailing" secondItem="8bl-1t-ziZ" secondAttribute="trailing" id="dTn-gZ-Z7z"/>
@@ -3412,6 +3450,7 @@
                         <outlet property="Service" destination="OzE-bR-ZO0" id="UgO-SN-pRL"/>
                         <outlet property="ShockingLabel" destination="aie-uG-mtn" id="Yxy-zD-Qsn"/>
                         <outlet property="ShockingView" destination="oty-th-mtQ" id="YLy-jD-jNi"/>
+                        <outlet property="Tabbar" destination="VvD-uF-d9x" id="m17-Oy-iwM"/>
                         <outlet property="UserImage" destination="Oyv-U8-Ixk" id="kUH-HA-QV9"/>
                         <outlet property="Username" destination="KlD-3e-Wu9" id="JMM-cb-wvx"/>
                         <outlet property="Verify" destination="7pb-UG-P1o" id="wXV-zf-ob5"/>
@@ -8140,7 +8179,7 @@
             <objects>
                 <viewController storyboardIdentifier="BuyerViewController" id="8Jq-av-GqR" customClass="BuyerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l1L-Se-ab4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ld-Uj-BrC" userLabel="My Likes">
@@ -8380,7 +8419,7 @@
             <objects>
                 <viewController storyboardIdentifier="SellerViewController" id="kbR-Lc-sXr" customClass="SellerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tbf-gN-Jb4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-7D-YuY">

@@ -18,7 +18,7 @@ import JGProgressHUD
 import ImageSlideshow
 import LanguageManager_iOS
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate{
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate , UITabBarDelegate {
 
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -208,10 +208,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let dropDown = DropDown()
     let sharedPref = UserDefaults.standard
     var user: String = ""
+    var viewController1: UIViewController?
+    
+    @IBOutlet weak var Tabbar: UITabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Tabbar.delegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
 
 //        Carousel.setImageInputs([
@@ -339,6 +343,39 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ShockingSale()
         CartCount(UserID: String(user))
         
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        default:
+            break
+        }
     }
     
     @objc func onListClick(sender: Any){

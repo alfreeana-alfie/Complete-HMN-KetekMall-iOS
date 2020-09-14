@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITabBarDelegate {
     
     private let spinner = JGProgressHUD(style: .dark)
 
@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var verify: UILabel!
     var userID: String = ""
     
+    @IBOutlet weak var Tabbar: UITabBar!
+    var viewController1: UIViewController?
+    
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     var user: String = ""
@@ -37,6 +40,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Tabbar.delegate = self
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -86,6 +90,39 @@ class ViewController: UIViewController {
                     print("FAILED")
                 }
                 
+        }
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        default:
+            break
         }
     }
     

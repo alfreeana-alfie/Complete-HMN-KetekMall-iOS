@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class NotificationViewController: UIViewController {
+class NotificationViewController: UIViewController, UITabBarDelegate {
 
     let URL_SEARCH_SHOCKING_SALE = "https://ketekmall.com/ketekmall/search/readall_shocking.php"
     let URL_FILTER_DIVISION_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_division/readall_shocking.php"
@@ -23,14 +23,16 @@ class NotificationViewController: UIViewController {
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     var user: String = ""
+    var viewController1: UIViewController?
     
-    
+    @IBOutlet weak var Tabbar: UITabBar!
     @IBOutlet weak var OrderUpdateBtn: UIButton!
     @IBOutlet weak var SocialUpdatesBtn: UIButton!
     @IBOutlet weak var PromotionBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Tabbar.delegate = self
         user = sharedPref.string(forKey: "USERID") ?? "0"
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
@@ -39,6 +41,39 @@ class NotificationViewController: UIViewController {
             changeLanguage(str: "en")
         }
         
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        default:
+            break
+        }
     }
     
     func changeLanguage(str: String){
