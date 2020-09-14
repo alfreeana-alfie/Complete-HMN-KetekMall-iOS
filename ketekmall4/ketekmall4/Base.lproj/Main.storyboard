@@ -6810,20 +6810,20 @@
                                                 <rect key="frame" x="0.0" y="637" width="414" height="121"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KetekMall" translatesAutoresizingMaskIntoConstraints="NO" id="Py4-w1-S4C">
-                                                        <rect key="frame" x="8" y="17" width="84" height="84"/>
+                                                        <rect key="frame" x="8" y="25" width="61" height="61"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="84" id="Otl-X5-8ol"/>
-                                                            <constraint firstAttribute="width" constant="84" id="pWH-De-rWD"/>
+                                                            <constraint firstAttribute="height" constant="61" id="Otl-X5-8ol"/>
+                                                            <constraint firstAttribute="width" constant="61" id="pWH-De-rWD"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgm-Ht-zDP">
-                                                        <rect key="frame" x="100" y="66" width="93.5" height="16.5"/>
+                                                        <rect key="frame" x="77" y="66" width="93.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMa-09-9iM">
-                                                        <rect key="frame" x="100" y="38.5" width="181" height="16.5"/>
+                                                        <rect key="frame" x="77" y="38.5" width="204" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -6852,13 +6852,13 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="Py4-w1-S4C" firstAttribute="top" secondItem="ZbK-0H-BRO" secondAttribute="top" constant="25" id="Ejk-y7-d7g"/>
                                                     <constraint firstItem="Xgm-Ht-zDP" firstAttribute="leading" secondItem="Py4-w1-S4C" secondAttribute="trailing" constant="8" id="Eod-bu-MtP"/>
                                                     <constraint firstItem="aGB-a6-Rse" firstAttribute="leading" secondItem="CMa-09-9iM" secondAttribute="trailing" constant="10" id="GVi-aH-GRt"/>
                                                     <constraint firstAttribute="bottom" secondItem="8dO-KO-b20" secondAttribute="bottom" constant="47" id="LCV-r6-ei7"/>
                                                     <constraint firstItem="Py4-w1-S4C" firstAttribute="leading" secondItem="ZbK-0H-BRO" secondAttribute="leading" constant="8" id="LRD-6p-u8L"/>
                                                     <constraint firstItem="8dO-KO-b20" firstAttribute="top" secondItem="ZbK-0H-BRO" secondAttribute="top" constant="36" id="Lf3-xc-b53"/>
-                                                    <constraint firstItem="Py4-w1-S4C" firstAttribute="top" secondItem="ZbK-0H-BRO" secondAttribute="top" constant="17" id="WwX-vY-1Ao"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Py4-w1-S4C" secondAttribute="bottom" constant="20" id="Xca-KA-Hxp"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Py4-w1-S4C" secondAttribute="bottom" constant="35" id="Xca-KA-Hxp"/>
                                                     <constraint firstItem="aGB-a6-Rse" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xgm-Ht-zDP" secondAttribute="trailing" constant="8" symbolic="YES" id="ajw-zV-unp"/>
                                                     <constraint firstAttribute="trailing" secondItem="8dO-KO-b20" secondAttribute="trailing" constant="15" id="c3x-uw-WyS"/>
                                                     <constraint firstItem="aGB-a6-Rse" firstAttribute="top" secondItem="ZbK-0H-BRO" secondAttribute="top" constant="31" id="cdq-sV-e5P"/>
