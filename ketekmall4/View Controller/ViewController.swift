@@ -44,6 +44,8 @@ class ViewController: UIViewController {
         }
         
         VerifyView.layer.cornerRadius = 7
+        userImage.layer.cornerRadius = userImage.frame.width / 2
+        userImage.layer.masksToBounds = true
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"

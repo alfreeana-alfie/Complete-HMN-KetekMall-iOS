@@ -11,13 +11,8 @@ import Alamofire
 import AFNetworking
 import JGProgressHUD
 
-class MyLikesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyLikesDelegate {
+class MyLikesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyLikesDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var MyLikesView: UICollectionView!
-    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
-    didSet{
-        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
-    }
     
     var userID: String = ""
     
@@ -83,6 +78,27 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         return ad_Detail.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        let cellSquareSize: CGFloat = screenWidth / 2.0
+        let cellSquareHeight: CGFloat = 170
+        return CGSize(width: cellSquareSize, height: cellSquareHeight);
+    }
+       
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyLikesCollectionViewCell", for: indexPath) as! MyLikesCollectionViewCell
         let NEWIm = self.ItemPhoto[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -99,6 +115,8 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
             let f = CGFloat(truncating: n)
             cell.RatingBar.value = f
         }
+        
+        cell.layer.borderWidth = 0.2
         cell.delegate = self
         
         return cell

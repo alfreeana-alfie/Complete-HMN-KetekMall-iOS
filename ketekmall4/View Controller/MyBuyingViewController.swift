@@ -10,15 +10,10 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyBuyingDelegate {
+class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyBuyingDelegate, UICollectionViewDelegateFlowLayout {
     
 
     @IBOutlet weak var MyBuyingView: UICollectionView!
-    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
-    didSet{
-        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-    }
-    }
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -118,6 +113,29 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return OrderID.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        let cellSquareSize: CGFloat = screenWidth
+        let cellSquareHeight: CGFloat = screenHeight / 2
+    
+        return CGSize(width: cellSquareSize, height: 254);
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       return 2.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+       return 2.0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
