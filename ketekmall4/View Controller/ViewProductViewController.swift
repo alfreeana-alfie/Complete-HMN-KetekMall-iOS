@@ -13,7 +13,7 @@ import SDWebImage
 import AARatingBar
 import JGProgressHUD
 
-class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate, UITabBarDelegate {
+class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
 
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -41,6 +41,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var ReviewName: UILabel!
     @IBOutlet weak var Review: UILabel!
     @IBOutlet weak var ViewReview: UILabel!
+    @IBOutlet weak var ButtonAddCart: UIButton!
     
     @IBOutlet weak var ViewSameShop: UILabel!
     @IBOutlet weak var SameShopView: UICollectionView!
@@ -123,7 +124,10 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         SameShopView.dataSource = self
         
         ViewButton.layer.cornerRadius = 5
-        
+        SellerImage.layer.cornerRadius = SellerImage.frame.width / 2
+        SellerImage.layer.masksToBounds = true
+        ButtonAddCart.layer.cornerRadius = 20
+        ButtonAddCart.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         ItemImage.setImageWith(URL(string: NEWIm!)!)
@@ -329,7 +333,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             {
                 response in
                 if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
+                    _ = result as! NSDictionary
                     print("SUCCESS")
                 }else{
                     print("FAILED")
@@ -348,7 +352,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             {
                 response in
                 if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
+                    _ = result as! NSDictionary
                     print("SUCCESS")
                 }else{
                     print("FAILED")
@@ -488,6 +492,24 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         return ITEMID_SAMESHOP.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+        let screenHeight = screenSize.height
+        return CGSize(width: 146, height: screenHeight);
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FromSameShopCollectionViewCell", for: indexPath) as! FromSameShopCollectionViewCell
         
@@ -550,14 +572,12 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                //printing response
-                //                print(response)
-                
-                //getting the json value from the server
                 if let result = response.result.value {
-                    
-                    //converting it as NSDictionary
                     let jsonData = result as! NSDictionary
+                    self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                    self.spinner.textLabel.text = "Added to Cart"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
                     print(jsonData.value(forKey: "message")!)
                     
                 }

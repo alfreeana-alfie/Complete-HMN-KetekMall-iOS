@@ -8,9 +8,11 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
-class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate {
+class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
     
+    private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_review.php"
     let MAIN_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
@@ -22,12 +24,6 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     var USERNAME: [String] = []
     var REVIEW: [String] = []
 
-    
-    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout! {
-        didSet{
-            FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
-    }
     @IBOutlet weak var ReviewView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
     var viewController1: UIViewController?
@@ -40,6 +36,7 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
         ReviewView.delegate = self
         ReviewView.dataSource = self
         
+        self.spinner.show(in: self.view)
         let parameters: Parameters=[
             "item_id": ITEMID
         ]
@@ -51,6 +48,7 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let review_id = user.value(forKey: "id") as! [String]
@@ -101,6 +99,24 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return REVIEWID.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        return CGSize(width: screenWidth, height: 109);
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+       return 0.0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
