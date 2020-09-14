@@ -132,12 +132,20 @@
                                     <constraint firstAttribute="height" constant="50" id="c5Q-hI-71d"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24F-tb-Pmu">
+                                <rect key="frame" x="52" y="734" width="310" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2ck-9O-ZrN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.95294117649999999" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="v0Y-Jk-cwD" firstAttribute="trailing" secondItem="Fdr-8j-SQE" secondAttribute="trailing" constant="52" id="075-64-wsP"/>
                             <constraint firstItem="pnQ-ZG-Hvb" firstAttribute="leading" secondItem="v0Y-Jk-cwD" secondAttribute="leading" constant="52" id="212-Sd-g61"/>
                             <constraint firstItem="LGE-s4-NLk" firstAttribute="top" secondItem="rIQ-Rb-d3w" secondAttribute="bottom" constant="7.5" id="2KR-V1-DfQ"/>
+                            <constraint firstItem="Fdr-8j-SQE" firstAttribute="top" secondItem="24F-tb-Pmu" secondAttribute="bottom" constant="8" id="2Yd-ak-oQF"/>
                             <constraint firstItem="wuN-Pc-A2S" firstAttribute="centerX" secondItem="KcI-rR-jEm" secondAttribute="centerX" id="3vF-p7-YnM"/>
                             <constraint firstItem="v0Y-Jk-cwD" firstAttribute="trailing" secondItem="TNg-D7-hk3" secondAttribute="trailing" constant="50" id="4pl-X3-ZZe"/>
                             <constraint firstItem="v0Y-Jk-cwD" firstAttribute="trailing" secondItem="IO0-QP-s8c" secondAttribute="trailing" constant="81" id="63o-Vm-wvZ"/>
@@ -146,6 +154,7 @@
                             <constraint firstItem="n32-eh-PDW" firstAttribute="leading" secondItem="v0Y-Jk-cwD" secondAttribute="leading" constant="50" id="7rb-Ps-Wbi"/>
                             <constraint firstItem="Cot-om-m9M" firstAttribute="top" secondItem="v0Y-Jk-cwD" secondAttribute="top" constant="70" id="9ni-eo-owA"/>
                             <constraint firstItem="IO0-QP-s8c" firstAttribute="leading" secondItem="v0Y-Jk-cwD" secondAttribute="leading" constant="81" id="APy-AF-XHl"/>
+                            <constraint firstItem="24F-tb-Pmu" firstAttribute="leading" secondItem="v0Y-Jk-cwD" secondAttribute="leading" constant="52" id="E9U-I6-bdk"/>
                             <constraint firstItem="rIQ-Rb-d3w" firstAttribute="leading" secondItem="7QX-SS-Okj" secondAttribute="trailing" constant="8" id="HHB-Nx-7hO"/>
                             <constraint firstItem="TNg-D7-hk3" firstAttribute="top" secondItem="Roa-Ra-ZR2" secondAttribute="bottom" constant="74" id="K0v-ly-f50"/>
                             <constraint firstItem="wJR-p7-Tnk" firstAttribute="leading" secondItem="n32-eh-PDW" secondAttribute="trailing" constant="26" id="Kjg-4w-cdZ"/>
@@ -162,6 +171,7 @@
                             <constraint firstItem="Cot-om-m9M" firstAttribute="leading" secondItem="v0Y-Jk-cwD" secondAttribute="leading" constant="106" id="gsv-ol-TZn"/>
                             <constraint firstItem="IO0-QP-s8c" firstAttribute="top" secondItem="Cot-om-m9M" secondAttribute="bottom" constant="8" id="hfJ-ol-rJI"/>
                             <constraint firstItem="rIQ-Rb-d3w" firstAttribute="top" secondItem="pnQ-ZG-Hvb" secondAttribute="bottom" constant="10.5" id="hsc-aA-GC8"/>
+                            <constraint firstItem="v0Y-Jk-cwD" firstAttribute="trailing" secondItem="24F-tb-Pmu" secondAttribute="trailing" constant="52" id="kpq-nc-GGb"/>
                             <constraint firstItem="7QX-SS-Okj" firstAttribute="top" secondItem="pnQ-ZG-Hvb" secondAttribute="bottom" constant="10.5" id="lMH-Pv-WHj"/>
                             <constraint firstItem="v0Y-Jk-cwD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Roa-Ra-ZR2" secondAttribute="trailing" symbolic="YES" id="m3H-1t-932"/>
                             <constraint firstItem="Roa-Ra-ZR2" firstAttribute="leading" secondItem="v0Y-Jk-cwD" secondAttribute="leading" constant="52" id="qoS-wK-Hiq"/>
@@ -177,6 +187,7 @@
                         <outlet property="Border" destination="wuN-Pc-A2S" id="dm2-sp-sBJ"/>
                         <outlet property="EmailField" destination="rIQ-Rb-d3w" id="1W7-9b-6gg"/>
                         <outlet property="EmailImage" destination="7QX-SS-Okj" id="Oq7-sl-7fQ"/>
+                        <outlet property="FBView" destination="24F-tb-Pmu" id="igf-Qb-weo"/>
                         <outlet property="GoogleSignInBtn" destination="Fdr-8j-SQE" id="9rk-cn-eif"/>
                         <outlet property="LoginStyle" destination="TNg-D7-hk3" id="B1k-5H-O0g"/>
                         <outlet property="PasswordField" destination="LGE-s4-NLk" id="TgN-8B-PWH"/>

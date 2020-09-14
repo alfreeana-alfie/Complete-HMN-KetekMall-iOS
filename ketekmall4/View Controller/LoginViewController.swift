@@ -33,6 +33,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     @IBOutlet weak var GoogleSignInBtn: GIDSignInButton!
 //    @IBOutlet weak var scrollView: UIScrollView!
     private let loginButton = FBLoginButton()
+    @IBOutlet weak var FBView: UIView!
     
     let hud = JGProgressHUD(style: .dark)
     
@@ -50,9 +51,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         if(boolValue == true){
             hud.textLabel.text = "Loading"
             hud.show(in: self.view)
+            
             UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
             UserDefaults.standard.synchronize()
-            let tabbar = self.storyboard!.instantiateViewController(identifier: "myTab") as! BaseTabBarController
+            let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+//            tabbar.userID = userID[0]
             if let navigator = self.navigationController {
                 navigator.pushViewController(tabbar, animated: true)
             }
@@ -64,9 +67,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         GIDSignIn.sharedInstance()?.delegate = self
         
         loginButton.permissions = ["public_profile", "email"]
-//        scrollView.addSubview(loginButton)
+        FBView.addSubview(loginButton)
         
-        loginButton.frame = CGRect(x: 59, y: 608 - 60, width: 300, height: 50)
+        loginButton.frame = CGRect(x: 0, y: 0, width: 300, height: FBView.bounds.height)
         
         if let token = AccessToken.current,
             !token.isExpired {

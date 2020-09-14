@@ -92,15 +92,29 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
-            presentMethod(storyBoardName: "Main", storyBoardID: "HomeViewController")
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         case 2:
-            presentMethod(storyBoardName: "Main", storyBoardID: "NotificationViewController")
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         case 3:
-            presentMethod(storyBoardName: "Main", storyBoardID: "ViewController")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         default:

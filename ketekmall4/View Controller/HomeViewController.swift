@@ -411,7 +411,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 break
                 
             case 4:
-                _ = self.navigationController?.popToRootViewController(animated: true)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                self.viewController1 = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(self.viewController1!, animated: true)
+                }
                 UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
                 UserDefaults.standard.synchronize()
                 GIDSignIn.sharedInstance()?.signOut()
