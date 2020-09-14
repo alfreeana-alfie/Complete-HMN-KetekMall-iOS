@@ -106,7 +106,7 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
                     if let list = result["read"] as? [Dictionary<String,Any>]{
                         self.spinner.dismiss(afterDelay: 3.0)
                         for i in list{
-                            var STRGrand_Total: Double = 0.00
+                            var STRGrand_Total1: Double = 0.00
                             var STRGrand_Total2: Double = 0.00
                             
                             self.STRad_Detail = i["ad_detail"] as! String
@@ -118,8 +118,8 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.STRdelivery_price = i["delivery_price"] as! String
                             self.STRitem_status = i["status"] as! String
                             
-                            STRGrand_Total = Double(self.STRitem_price)! * Double(self.STRitem_quantity)!
-                            STRGrand_Total2 += STRGrand_Total + Double(self.STRdelivery_price)!
+                            STRGrand_Total1 = Double(self.STRitem_price)! * Double(self.STRitem_quantity)!
+                            STRGrand_Total2 += STRGrand_Total1 + Double(self.STRdelivery_price)!
                             
                             self.STRGrandTotal = String(format: "%.2f", STRGrand_Total2)
                             
@@ -132,8 +132,6 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.delivery_price.append(self.STRdelivery_price)
                             self.item_status.append(self.STRitem_status)
                             self.grand_total.append(self.STRGrandTotal)
-                            
-                            
 //                            print(self.grand_total)
                         }
                         self.MyIncomeView.reloadData()

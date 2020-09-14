@@ -84,10 +84,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_CHECKOUT = "https://ketekmall.com/ketekmall/add_to_checkout.php"
     let URL_SEND_EMAILBUYER = "https://ketekmall.com/ketekmall/sendEmail_buyer.php"
     let URL_SEND_EMAILSELLER = "https://ketekmall.com/ketekmall/sendEmail_seller.php"
+    
+    let sharedPref = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userID = sharedPref.string(forKey: "USERID") ?? "0"
         Tabbar.delegate = self
         
         CartView.delegate = self
@@ -234,6 +237,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                 }
         }
+        
+        DeliveryPriceFunc()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -266,6 +271,53 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             
         default:
             break
+        }
+    }
+    
+    func DeliveryPriceFunc(){
+        for i in ITEMID{
+            let parameters: Parameters=[
+                "item_id": i,
+                "division": divsionu
+            ]
+            
+            Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value as? Dictionary<String,Any>{
+                        if let list = result["read"] as? [Dictionary<String,Any>]{
+                            for i in list{
+                                self.spinner.dismiss(afterDelay: 3.0)
+                                self.DeliveryID = i["id"] as! String
+                                self.DeliveryDivision = i["division"] as! String
+                            
+                                self.DeliveryDays = i["days"] as! String
+                                self.DeliveryPrice = i["price"] as! String
+                                
+                                let date = Date()
+                                let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
+                                
+                                let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
+                                let duration = DateComponents(calendar: Calendar.current, day: Int(self.DeliveryDays))
+                                let later = Calendar.current.date(byAdding: duration, to: now.date!)
+                                
+                                let formatter = DateFormatter()
+                                formatter.locale = Locale(identifier: "nl_NL")
+                                formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
+                                
+                                let datetime = formatter.string(from: later!)
+                                
+                                print(self.DeliveryPrice)
+                            }
+                            
+                        }else{
+                            print("FAILED 1")
+                        }
+                        
+                    }else{
+                        print("FAILED 2")
+                    }
+            }
         }
     }
     
@@ -302,21 +354,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CheckoutCollectionViewCell", for: indexPath) as! CheckoutCollectionViewCell
-
-        var SubTotal1: Double = 0.00
-        var SubTotal2: Double = 0.00
-        var SubTotal3 = 0.00
-        SubTotal1 = Double(self.PRICE[indexPath.row])! * Double(Int(self.QUANTITY[indexPath.row])!)
-        SubTotal2 = SubTotal1 + Double(self.DELIVERYPRICE[indexPath.row])!
         
-        self.GRANDTOTAL.append(String(format: "%.2f", SubTotal2))
-        print(String(self.GRANDTOTAL.count))
-        for i in self.GRANDTOTAL{
-            SubTotal3 += Double(i)!
-            
-            self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal3)
-        }
-        
+        self.GrandTotal.text! = "MYR0.00"
         cell.OrderID.text! = self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = self.PRICE[indexPath.row]

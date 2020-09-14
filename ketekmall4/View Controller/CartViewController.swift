@@ -54,6 +54,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
+        userID = sharedPref.string(forKey: "USERID") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
