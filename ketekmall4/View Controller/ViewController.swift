@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             
         }
         
-        VerifyView.layer.cornerRadius = 15
+        VerifyView.layer.cornerRadius = 7
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
