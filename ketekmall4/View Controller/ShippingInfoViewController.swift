@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
-class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate{
+class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
 
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single.php"
     
@@ -101,6 +101,25 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
         return DEL_ID.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+        let screenWidth = screenSize.width
+        let cellSquareSize: CGFloat = screenWidth
+        return CGSize(width: cellSquareSize, height: 94);
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+       return 2.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+       return 2.0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShippingInfoCollectionViewCell", for: indexPath) as! ShippingInfoCollectionViewCell
         cell.layer.cornerRadius = 5
@@ -110,4 +129,6 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
         
         return cell
     }
+    
+    
 }

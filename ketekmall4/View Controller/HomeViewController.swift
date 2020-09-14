@@ -975,9 +975,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
             cell.ItemPrice.text! = self.PRICEHOT[indexPath.row]
-            cell.ButtonView.layer.cornerRadius = 2
-            cell.ButtonView.layer.borderWidth = 1
+            cell.ButtonView.layer.cornerRadius = 5
             
+            cell.layer.cornerRadius = 5
             cell.delegate = self
             return cell
         }else{
@@ -990,8 +990,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             cell1.ItemName.text! = self.ADDETAILSHOCKING[indexPath.row]
             cell1.ItemPrice.text! = self.PRICESHOCKING[indexPath.row]
-            cell1.ButtonView.layer.cornerRadius = 2
-            cell1.ButtonView.layer.borderWidth = 1
+            cell1.ButtonView.layer.cornerRadius = 5
+            cell1.layer.cornerRadius = 5
             
             cell1.delegate = self
             return cell1
