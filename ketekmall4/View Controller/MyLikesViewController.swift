@@ -116,7 +116,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.RatingBar.value = f
         }
         
-        cell.layer.borderWidth = 0.2
+        cell.layer.borderWidth = 0.3
         cell.delegate = self
         
         return cell
