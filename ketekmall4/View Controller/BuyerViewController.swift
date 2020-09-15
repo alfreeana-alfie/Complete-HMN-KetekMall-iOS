@@ -58,6 +58,7 @@ class BuyerViewController: UIViewController {
   @IBAction func MyBuying(_ sender: Any) {
         let myBuying = self.storyboard!.instantiateViewController(identifier: "MyBuyingViewController") as! MyBuyingViewController
         myBuying.userID = userID
+        myBuying.BarHidden = true
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)
         }
@@ -65,6 +66,7 @@ class BuyerViewController: UIViewController {
 
     @IBAction func ChatInbox(_ sender: Any) {
         let myBuying = self.storyboard!.instantiateViewController(identifier: "ChatInboxViewController") as! ChatInboxViewController
+        myBuying.BarHidden = true
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)
         }

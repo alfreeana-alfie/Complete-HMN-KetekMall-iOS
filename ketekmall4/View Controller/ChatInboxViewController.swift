@@ -9,9 +9,11 @@
 import UIKit
 import Alamofire
 
-class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
     
     @IBOutlet weak var ChatView: UITableView!
+    @IBOutlet weak var Tabbar: UITabBar!
+    var viewController1: UIViewController?
     
     let sharedPref = UserDefaults.standard
     var user: String = ""
@@ -29,10 +31,22 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
     var EMAILUSER: String = ""
     var CHATWITH: [String] = []
     
+    var BarHidden: Bool = false
+    @IBOutlet weak var BarHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ChatView.delegate = self
         ChatView.dataSource = self
+        
+        Tabbar.delegate = self
+        
+        if(BarHidden == true){
+            Tabbar.isHidden = true
+            BarHeight.constant = 0
+        }else{
+            Tabbar.isHidden = false
+        }
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"

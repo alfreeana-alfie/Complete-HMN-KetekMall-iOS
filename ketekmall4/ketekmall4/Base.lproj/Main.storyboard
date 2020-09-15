@@ -5868,13 +5868,13 @@
         <!--My Buying-->
         <scene sceneID="qRg-bx-6eD">
             <objects>
-                <viewController storyboardIdentifier="MyBuyingViewController" id="52k-uX-60S" customClass="MyBuyingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyBuyingViewController" hidesBottomBarWhenPushed="YES" id="52k-uX-60S" customClass="MyBuyingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bsr-qf-Y64">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bjT-w8-ymn">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="720"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="LaM-l0-cOJ">
                                     <size key="itemSize" width="413" height="254"/>
@@ -6020,21 +6020,37 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAz-E3-ymN">
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="P1s-jU-vzi"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="gYP-un-Puz"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="g0z-Z3-Nrx"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="FwJ-qI-REv"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bjT-w8-ymn" firstAttribute="bottom" secondItem="4Ol-rP-gLK" secondAttribute="bottom" id="MF8-8X-O0E"/>
+                            <constraint firstItem="LAz-E3-ymN" firstAttribute="trailing" secondItem="4Ol-rP-gLK" secondAttribute="trailing" id="904-6t-ljK"/>
+                            <constraint firstItem="LAz-E3-ymN" firstAttribute="leading" secondItem="4Ol-rP-gLK" secondAttribute="leading" id="aeo-EF-phU"/>
+                            <constraint firstItem="4Ol-rP-gLK" firstAttribute="bottom" secondItem="LAz-E3-ymN" secondAttribute="bottom" id="bbd-ER-A43"/>
                             <constraint firstItem="bjT-w8-ymn" firstAttribute="trailing" secondItem="4Ol-rP-gLK" secondAttribute="trailing" id="r7K-Bi-2Ni"/>
                             <constraint firstItem="bjT-w8-ymn" firstAttribute="leading" secondItem="4Ol-rP-gLK" secondAttribute="leading" id="smN-wd-tEb"/>
+                            <constraint firstItem="LAz-E3-ymN" firstAttribute="top" secondItem="bjT-w8-ymn" secondAttribute="bottom" id="v2k-Sa-hgP"/>
                             <constraint firstItem="bjT-w8-ymn" firstAttribute="top" secondItem="4Ol-rP-gLK" secondAttribute="top" id="xfo-F2-J2f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Ol-rP-gLK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="person.fill" catalog="system" id="AQX-1e-vmd"/>
                     <navigationItem key="navigationItem" title="My Buying" id="O9o-9K-jXD"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="BarHeight" destination="P1s-jU-vzi" id="QJo-Pc-7QA"/>
                         <outlet property="MyBuyingView" destination="bjT-w8-ymn" id="NQG-wB-e0P"/>
+                        <outlet property="Tabbar" destination="LAz-E3-ymN" id="DwT-Gf-Fbq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuY-Rd-9hZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -6660,7 +6676,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DLy-s2-tJc">
-                                <rect key="frame" x="0.0" y="83" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="632"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatTableViewCell" rowHeight="50" id="m5X-Cy-Lz7" customClass="ChatTableViewCell" customModule="ketekmall4" customModuleProvider="target">
@@ -6700,25 +6716,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIe-Ea-WHT">
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="42u-hR-84f"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="WR9-e7-CHo"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="liQ-tJ-8l4"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="IFo-5d-jd8"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="DLy-s2-tJc" firstAttribute="bottom" secondItem="17n-ng-i7L" secondAttribute="bottom" id="4w3-qz-za2"/>
+                            <constraint firstItem="BIe-Ea-WHT" firstAttribute="top" secondItem="DLy-s2-tJc" secondAttribute="bottom" id="AFL-Gk-UsZ"/>
+                            <constraint firstItem="17n-ng-i7L" firstAttribute="bottom" secondItem="BIe-Ea-WHT" secondAttribute="bottom" id="H6G-3w-roH"/>
                             <constraint firstItem="DLy-s2-tJc" firstAttribute="leading" secondItem="17n-ng-i7L" secondAttribute="leading" id="J70-K1-HXN"/>
                             <constraint firstItem="DLy-s2-tJc" firstAttribute="centerX" secondItem="uB7-h9-TZu" secondAttribute="centerX" id="XsP-oH-vz2"/>
                             <constraint firstItem="DLy-s2-tJc" firstAttribute="centerY" secondItem="uB7-h9-TZu" secondAttribute="centerY" id="fef-AH-xwk"/>
+                            <constraint firstAttribute="trailing" secondItem="BIe-Ea-WHT" secondAttribute="trailing" id="sKe-TS-Tq4"/>
+                            <constraint firstItem="BIe-Ea-WHT" firstAttribute="leading" secondItem="17n-ng-i7L" secondAttribute="leading" id="t1P-K3-7SH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="17n-ng-i7L"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="person.fill" catalog="system" id="1qI-q9-dCb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="BarHeight" destination="42u-hR-84f" id="gfy-yZ-tEQ"/>
                         <outlet property="ChatView" destination="DLy-s2-tJc" id="bwZ-oc-JpZ"/>
+                        <outlet property="Tabbar" destination="BIe-Ea-WHT" id="87K-lh-l6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0u6-a1-bsc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="364" y="2784"/>
+            <point key="canvasLocation" x="363.768115942029" y="2783.7053571428569"/>
         </scene>
         <!--View Product View Controller-->
         <scene sceneID="PyU-4E-xSQ">

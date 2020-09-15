@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyBuyingDelegate, UICollectionViewDelegateFlowLayout {
+class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyBuyingDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
 
     @IBOutlet weak var MyBuyingView: UICollectionView!
@@ -38,7 +38,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var Seller_ID: String = ""
     
     var SellerEmail:String = ""
-    
+    var viewController1: UIViewController?
+    @IBOutlet weak var Tabbar: UITabBar!
     var OrderID: [String] = []
     var ad_Detail: [String] = []
     var ItemImage: [String] = []
@@ -54,10 +55,21 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var DeliveryPrice: [String] = []
     var DeliveryDate: [String] = []
     
+    var BarHidden: Bool = false
+    @IBOutlet weak var BarHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         MyBuyingView.delegate = self
         MyBuyingView.dataSource = self
+        Tabbar.delegate = self
+        
+        if(BarHidden == true){
+            Tabbar.isHidden = true
+            BarHeight.constant = 0
+        }else{
+            Tabbar.isHidden = false
+        }
         
         navigationItem.title = "My Buying"
         
@@ -108,6 +120,39 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                     }
                     
                 }
+        }
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        default:
+            break
         }
     }
     
