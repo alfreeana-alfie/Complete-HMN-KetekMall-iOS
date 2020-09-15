@@ -43,12 +43,19 @@ class BuyerViewController: UIViewController {
     }
     
     func changeLanguage(str: String){
-        ButtonMyBuying.titleLabel?.text = "My Buying".localized(lang: str)
-        ButtonMyLikes.titleLabel?.text = "My Likes".localized(lang: str)
-        ButtonMyRating.titleLabel?.text = "My Rating".localized(lang: str)
-        ButtonAccountSettings.titleLabel?.text = "Account Settings".localized(lang: str)
-        ButtonHelpCentre.titleLabel?.text = "Help Centre".localized(lang: str)
-        ButtonChatInbox.titleLabel?.text = "Chat Inbox".localized(lang: str)
+        ButtonMyBuying.setTitle("My Buying".localized(lang: str), for: .normal)
+        ButtonMyLikes.setTitle("My Likes".localized(lang: str), for: .normal)
+        ButtonMyRating.setTitle("My Rating".localized(lang: str), for: .normal)
+        ButtonAccountSettings.setTitle("Account Settings".localized(lang: str), for: .normal)
+        ButtonHelpCentre.setTitle("Help Centre".localized(lang: str), for: .normal)
+        ButtonChatInbox.setTitle("Chat Inbox".localized(lang: str), for: .normal)
+        
+//        ButtonMyBuying.titleLabel?.text = "My Buying".localized(lang: str)
+//        ButtonMyLikes.titleLabel?.text = "My Likes".localized(lang: str)
+//        ButtonMyRating.titleLabel?.text = "My Rating".localized(lang: str)
+//        ButtonAccountSettings.titleLabel?.text = "Account Settings".localized(lang: str)
+//        ButtonHelpCentre.titleLabel?.text = "Help Centre".localized(lang: str)
+//        ButtonChatInbox.titleLabel?.text = "Chat Inbox".localized(lang: str)
     }
     
     @IBAction func didTapGoogle(sender: AnyObject) {

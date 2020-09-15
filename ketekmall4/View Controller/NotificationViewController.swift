@@ -78,9 +78,13 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
     
     func changeLanguage(str: String){
         
-        OrderUpdateBtn.titleLabel?.text = "Order Updates".localized(lang: str)
-        SocialUpdatesBtn.titleLabel?.text = "Social Updates".localized(lang: str)
-        PromotionBtn.titleLabel?.text = "Promotion".localized(lang: str)
+//        OrderUpdateBtn.titleLabel?.text = "Order Updates".localized(lang: str)
+//        SocialUpdatesBtn.titleLabel?.text = "Social Updates".localized(lang: str)
+//        PromotionBtn.titleLabel?.text = "Promotion".localized(lang: str)
+//        
+        OrderUpdateBtn.setTitle("Order Updates".localized(lang: str), for: .normal)
+        SocialUpdatesBtn.setTitle("Social Updates".localized(lang: str), for: .normal)
+        PromotionBtn.setTitle("Promotion".localized(lang: str), for: .normal)
     }
 
     

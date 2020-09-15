@@ -131,8 +131,8 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     
     func changeLanguage(str: String){
         EditProfileLabel.text = "Edit Profile".localized(lang: str)
-        btnUploadServer.titleLabel?.text = "Upload to Server".localized(lang: str)
-        btnUpload.titleLabel?.text = "Upload Image".localized(lang: str)
+//        btnUploadServer.titleLabel?.text = "Upload to Server".localized(lang: str)
+//        btnUpload.titleLabel?.text = "Upload Image".localized(lang: str)
         
         Name.placeholder = "Name".localized(lang: str)
         Email.placeholder = "Email".localized(lang: str)
@@ -145,8 +145,13 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         Gender.placeholder = "Gender".localized(lang: str)
         BankName.placeholder = "Bank Name".localized(lang: str)
         BankAcc.placeholder = "Bank Account".localized(lang: str)
-        Btn_Accept.titleLabel?.text = "ACCEPT".localized(lang: str)
-        Btn_EditProfile.titleLabel?.text = "Edit Profile".localized(lang: str)
+//        Btn_Accept.titleLabel?.text = "ACCEPT".localized(lang: str)
+//        Btn_EditProfile.titleLabel?.text = "Edit Profile".localized(lang: str)
+        
+        btnUploadServer.setTitle("Upload to Server".localized(lang: str), for: .normal)
+        btnUpload.setTitle("Upload Image".localized(lang: str), for: .normal)
+        Btn_Accept.setTitle("ACCEPT".localized(lang: str), for: .normal)
+        Btn_EditProfile.setTitle("Edit Profile".localized(lang: str), for: .normal)
     }
 
     

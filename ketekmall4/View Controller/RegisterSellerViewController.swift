@@ -50,8 +50,10 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
     }
     
     func changeLanguage(str: String){
-        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
-        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
+        ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
+        ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
+//        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+//        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
         BankNameField.placeholder = "Bank Name".localized(lang: str)
         BankAccField.placeholder = "Bank Account".localized(lang: str)
         

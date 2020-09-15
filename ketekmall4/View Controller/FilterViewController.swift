@@ -87,8 +87,11 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         District.placeholder = "District".localized1(lang: str)
         DivisionLabel.text = "Division".localized1(lang: str)
         DistrictLabel.text = "District".localized1(lang: str)
-        ButtonApply.titleLabel?.text = "Apply".localized1(lang: str)
-        ButtonCancel.titleLabel?.text = "Cancel".localized1(lang: str)
+//        ButtonApply.titleLabel?.text = "Apply".localized1(lang: str)
+//        ButtonCancel.titleLabel?.text = "Cancel".localized1(lang: str)
+        
+        ButtonApply.setTitle("Apply".localized(lang: str), for: .normal)
+        ButtonCancel.setTitle("Cancel".localized(lang: str), for: .normal)
     }
 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

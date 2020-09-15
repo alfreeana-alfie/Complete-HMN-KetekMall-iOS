@@ -44,12 +44,19 @@ class SellerViewController: UIViewController {
     }
     
     func changeLanguage(str: String){
-        ButtonMySelling.titleLabel?.text = "My Selling".localized(lang: str)
-        ButtonAddNewProduct.titleLabel?.text = "Add New Product".localized(lang: str)
-        ButtonMyProduct.titleLabel?.text = "My Products".localized(lang: str)
-        ButtonMyIncome.titleLabel?.text = "My Income".localized(lang: str)
-        ButtonProductRating.titleLabel?.text = "Product Rating".localized(lang: str)
-        ButtonBoostAd.titleLabel?.text = "Boost Ad".localized(lang: str)
+        ButtonMySelling.setTitle("My Selling".localized(lang: str), for: .normal)
+        ButtonAddNewProduct.setTitle("Add New Product".localized(lang: str), for: .normal)
+        ButtonMyProduct.setTitle("My Products".localized(lang: str), for: .normal)
+        ButtonMyIncome.setTitle("My Income".localized(lang: str), for: .normal)
+        ButtonProductRating.setTitle("Product Rating".localized(lang: str), for: .normal)
+        ButtonBoostAd.setTitle("Boost Ad".localized(lang: str), for: .normal)
+        
+//        ButtonMySelling.titleLabel?.text = "My Selling".localized(lang: str)
+//        ButtonAddNewProduct.titleLabel?.text = "Add New Product".localized(lang: str)
+//        ButtonMyProduct.titleLabel?.text = "My Products".localized(lang: str)
+//        ButtonMyIncome.titleLabel?.text = "My Income".localized(lang: str)
+//        ButtonProductRating.titleLabel?.text = "Product Rating".localized(lang: str)
+//        ButtonBoostAd.titleLabel?.text = "Boost Ad".localized(lang: str)
     }
     
     @IBAction func MySelling(_ sender: Any) {

@@ -133,6 +133,9 @@ class ViewController: UIViewController, UITabBarDelegate {
         }else{
             verify.text = "BUYER".localized(lang: str)
         }
+        
+        Segment.setTitle("My Buying".localized(lang: str), forSegmentAt: 0)
+        Segment.setTitle("My Selling".localized(lang: str), forSegmentAt: 1)
     }
     
     @IBAction func SegmentClick(_ sender: UISegmentedControl) {

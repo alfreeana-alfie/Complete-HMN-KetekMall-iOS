@@ -74,7 +74,8 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func changeLanguage(str: String){
-        ButtonCheckout.titleLabel?.text = "Checkout".localized(lang: str)
+        ButtonCheckout.setTitle("Checkout".localized(lang: str), for: .normal)
+//        ButtonCheckout.titleLabel?.text = "Checkout".localized(lang: str)
         Total.text = "Total".localized(lang: str)
     }
     

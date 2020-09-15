@@ -2755,10 +2755,10 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S95-ZY-8kY">
                                                                 <rect key="frame" x="8" y="8" width="94" height="95"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cake and Pastries" translatesAutoresizingMaskIntoConstraints="NO" id="dMw-fO-dvQ">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cake-and-pastries" translatesAutoresizingMaskIntoConstraints="NO" id="dMw-fO-dvQ">
                                                                         <rect key="frame" x="22.5" y="8" width="49" height="50"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-Vr-TIO">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-Vr-TIO">
                                                                         <rect key="frame" x="8" y="72" width="78" height="23"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="23" id="Ejf-7E-lBP"/>
@@ -2786,7 +2786,7 @@
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Process Food" translatesAutoresizingMaskIntoConstraints="NO" id="k68-tM-B9Z">
                                                                         <rect key="frame" x="22.5" y="8" width="50" height="50"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOB-qK-uhI">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOB-qK-uhI">
                                                                         <rect key="frame" x="8" y="72" width="79" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Process Food">
@@ -2808,21 +2808,15 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sF-VV-xHB" userLabel="Health Beauty">
                                                                 <rect key="frame" x="110" y="110" width="95" height="95"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-jy-YcG">
-                                                                        <rect key="frame" x="8" y="74" width="79" height="21"/>
-                                                                        <state key="normal">
-                                                                            <attributedString key="attributedTitle">
-                                                                                <fragment content="Health and Beauty">
-                                                                                    <attributes>
-                                                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                        <font key="NSFont" size="7" name="HelveticaNeue-Bold"/>
-                                                                                    </attributes>
-                                                                                </fragment>
-                                                                            </attributedString>
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-jy-YcG">
+                                                                        <rect key="frame" x="8" y="72" width="79" height="23"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
+                                                                        <state key="normal" title="Health and Beauty">
+                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Health and Beauty" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-51-iLq">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="52"/>
+                                                                        <rect key="frame" x="22.5" y="8" width="50" height="50"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2842,7 +2836,7 @@
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Handicraft" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-mU-Ujb">
                                                                         <rect key="frame" x="22.5" y="8" width="50" height="50"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLR-U8-wSz">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLR-U8-wSz">
                                                                         <rect key="frame" x="8" y="72" width="79" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Handicraft">
@@ -2864,7 +2858,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-zc-gyp" userLabel="Home living">
                                                                 <rect key="frame" x="213" y="110" width="95" height="95"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNY-yH-vzw">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNY-yH-vzw">
                                                                         <rect key="frame" x="8" y="74" width="79" height="21"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="7"/>
                                                                         <state key="normal" title="Home and living">
@@ -2890,20 +2884,13 @@
                                                                 <rect key="frame" x="316" y="8" width="95" height="95"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Retail and Wholesales" translatesAutoresizingMaskIntoConstraints="NO" id="FMW-1F-K59">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="52"/>
+                                                                        <rect key="frame" x="22.5" y="8" width="50" height="51"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lU6-kF-pfF">
-                                                                        <rect key="frame" x="0.0" y="74" width="95" height="21"/>
-                                                                        <state key="normal">
-                                                                            <attributedString key="attributedTitle">
-                                                                                <fragment content="Retail and Wholesale">
-                                                                                    <attributes>
-                                                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                        <font key="NSFont" size="7" name="HelveticaNeue-Bold"/>
-                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                                    </attributes>
-                                                                                </fragment>
-                                                                            </attributedString>
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lU6-kF-pfF">
+                                                                        <rect key="frame" x="0.0" y="73" width="95" height="22"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="8"/>
+                                                                        <state key="normal" title="Retail and Wholesale">
+                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
                                                                 </subviews>
@@ -2924,7 +2911,7 @@
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Agriculture" translatesAutoresizingMaskIntoConstraints="NO" id="WcB-3e-Hy0">
                                                                         <rect key="frame" x="22.5" y="8" width="51" height="50"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-gZ-Tua">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-gZ-Tua">
                                                                         <rect key="frame" x="8" y="72" width="80" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Agriculture">
@@ -2946,7 +2933,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-Jd-TEj" userLabel="Sarawak Based">
                                                                 <rect key="frame" x="419" y="110" width="96" height="95"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok8-MC-hwM">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok8-MC-hwM">
                                                                         <rect key="frame" x="0.0" y="75" width="96" height="10"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="10" id="qNl-aO-yeX"/>
@@ -2956,7 +2943,7 @@
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-c6-O2j">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-c6-O2j">
                                                                         <rect key="frame" x="0.0" y="85" width="96" height="10"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="10" id="XQg-1o-ZZR"/>
@@ -2989,7 +2976,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzE-bR-ZO0" userLabel="Service">
                                                                 <rect key="frame" x="8" y="110" width="94" height="95"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j21-Xu-3WK">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j21-Xu-3WK">
                                                                         <rect key="frame" x="8" y="72" width="78" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Service">
@@ -3018,20 +3005,13 @@
                                                                 <rect key="frame" x="316" y="110" width="95" height="95"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Fashion and Accessories" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-fr-m6b">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="52.5"/>
+                                                                        <rect key="frame" x="22.5" y="8" width="50" height="51"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0s-Gw-bRS">
-                                                                        <rect key="frame" x="0.0" y="74.5" width="95" height="20.5"/>
-                                                                        <state key="normal">
-                                                                            <attributedString key="attributedTitle">
-                                                                                <fragment content="Fashion Accessories">
-                                                                                    <attributes>
-                                                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                        <font key="NSFont" size="7" name="HelveticaNeue-Bold"/>
-                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                                    </attributes>
-                                                                                </fragment>
-                                                                            </attributedString>
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0s-Gw-bRS">
+                                                                        <rect key="frame" x="0.0" y="73" width="95" height="22"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="8"/>
+                                                                        <state key="normal" title="Fashion Accessories">
+                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
                                                                 </subviews>
@@ -9088,7 +9068,6 @@
     <resources>
         <image name="580b57fcd9996e24bc43c543" width="1000" height="1000"/>
         <image name="Agriculture" width="670" height="700"/>
-        <image name="Cake and Pastries" width="1122" height="1122"/>
         <image name="Fashion and Accessories" width="649" height="649"/>
         <image name="Handicraft" width="649" height="679"/>
         <image name="Health and Beauty" width="649" height="649"/>
@@ -9103,6 +9082,7 @@
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
+        <image name="cake-and-pastries" width="50" height="50"/>
         <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
         <image name="camera.fill" catalog="system" width="128" height="96"/>
         <image name="cart.badge.plus" catalog="system" width="128" height="98"/>

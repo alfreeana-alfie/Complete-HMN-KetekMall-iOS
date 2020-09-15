@@ -146,9 +146,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func changeLanguage(str: String){
         SearchBar.placeholder = "Search Here".localized(lang: str)
-        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
-        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
-        ButtonFilter.titleLabel?.text = "FILTER".localized(lang: str)
+//        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
+//        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
+//        ButtonFilter.titleLabel?.text = "FILTER".localized(lang: str)
+        
+        ButtonPriceUp.setTitle("PRICE".localized(lang: str), for: .normal)
+        ButtonPriceDown.setTitle("PRICE".localized(lang: str), for: .normal)
+        ButtonFilter.setTitle("FILTER".localized(lang: str), for: .normal)
     }
 
     
