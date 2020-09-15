@@ -3834,7 +3834,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbL-RC-zPS">
-                                                            <rect key="frame" x="7.5" y="278" width="81" height="35"/>
+                                                            <rect key="frame" x="6.5" y="278" width="81" height="35"/>
                                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="MTM-0h-yPf"/>
@@ -3849,7 +3849,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRG-QF-jgH">
-                                                            <rect key="frame" x="96.5" y="278" width="80" height="35"/>
+                                                            <rect key="frame" x="95.5" y="278" width="80" height="35"/>
                                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Fjc-L0-tLX"/>
@@ -3890,7 +3890,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCE-hl-bHI">
-                                                            <rect key="frame" x="7.5" y="316" width="167" height="45"/>
+                                                            <rect key="frame" x="6.5" y="316" width="169" height="45"/>
                                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="45" id="Ga0-nY-hHv"/>
@@ -3904,10 +3904,18 @@
                                                                 <action selector="Boost:" destination="auU-Ec-Kd4" eventType="touchUpInside" id="O4M-dF-4QD"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO DELIVERY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-3g-keD">
+                                                            <rect key="frame" x="8" y="316" width="167" height="45"/>
+                                                            <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="P0w-Jz-0OD" firstAttribute="centerX" secondItem="U68-Va-MAO" secondAttribute="centerX" constant="3" id="4Vh-Xb-f47"/>
+                                                        <constraint firstItem="JzL-3g-keD" firstAttribute="leading" secondItem="f14-a0-Mn0" secondAttribute="leading" constant="8" id="6oi-q5-rdt"/>
                                                         <constraint firstItem="xLL-aI-tfT" firstAttribute="leading" secondItem="f14-a0-Mn0" secondAttribute="leading" constant="59" id="9OX-ie-5QP"/>
                                                         <constraint firstItem="6yG-cg-dMv" firstAttribute="top" secondItem="f14-a0-Mn0" secondAttribute="top" id="C9e-Sk-NzK"/>
                                                         <constraint firstItem="Kg6-b7-Abi" firstAttribute="top" secondItem="U68-Va-MAO" secondAttribute="bottom" constant="-1" id="L1S-6f-iFk"/>
@@ -3921,10 +3929,13 @@
                                                         <constraint firstItem="U68-Va-MAO" firstAttribute="top" secondItem="xLL-aI-tfT" secondAttribute="bottom" constant="3" id="WFd-eD-C0Z"/>
                                                         <constraint firstItem="dbL-RC-zPS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zCE-hl-bHI" secondAttribute="leading" id="XeJ-X1-S4R"/>
                                                         <constraint firstItem="Kg6-b7-Abi" firstAttribute="centerX" secondItem="zCE-hl-bHI" secondAttribute="centerX" id="Yqu-40-DXF"/>
-                                                        <constraint firstItem="kRG-QF-jgH" firstAttribute="trailing" secondItem="zCE-hl-bHI" secondAttribute="trailing" constant="2" id="cZj-bV-hmY"/>
+                                                        <constraint firstItem="kRG-QF-jgH" firstAttribute="trailing" secondItem="zCE-hl-bHI" secondAttribute="trailing" id="cZj-bV-hmY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="JzL-3g-keD" secondAttribute="trailing" constant="8" id="g3J-Nz-4jr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="JzL-3g-keD" secondAttribute="bottom" constant="9" id="jMH-IB-weP"/>
                                                         <constraint firstItem="kRG-QF-jgH" firstAttribute="leading" secondItem="dbL-RC-zPS" secondAttribute="trailing" constant="8" id="oOn-ku-Y5J"/>
                                                         <constraint firstItem="xLL-aI-tfT" firstAttribute="top" secondItem="6yG-cg-dMv" secondAttribute="bottom" constant="30" id="pqT-Yw-q5b"/>
                                                         <constraint firstItem="P0w-Jz-0OD" firstAttribute="top" secondItem="6yG-cg-dMv" secondAttribute="bottom" constant="8" symbolic="YES" id="q2O-Nc-tRm"/>
+                                                        <constraint firstItem="JzL-3g-keD" firstAttribute="top" secondItem="dbL-RC-zPS" secondAttribute="bottom" constant="3" id="rqZ-0d-GHs"/>
                                                         <constraint firstItem="zCE-hl-bHI" firstAttribute="top" secondItem="dbL-RC-zPS" secondAttribute="bottom" constant="3" id="tfh-YE-hw2"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
@@ -3937,6 +3948,7 @@
                                                     <outlet property="ItemLocation" destination="Kg6-b7-Abi" id="Vbp-fe-xQQ"/>
                                                     <outlet property="ItemName" destination="P0w-Jz-0OD" id="51d-BX-L1f"/>
                                                     <outlet property="ItemPrice" destination="U68-Va-MAO" id="ERf-88-jKS"/>
+                                                    <outlet property="NoDeliveryLabel" destination="JzL-3g-keD" id="P0N-tG-ZQh"/>
                                                     <outlet property="Rating" destination="xLL-aI-tfT" id="rxI-Xj-Yo3"/>
                                                 </connections>
                                             </collectionViewCell>
@@ -3970,7 +3982,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhP-1x-7l1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2268" y="3476"/>
+            <point key="canvasLocation" x="2266.666666666667" y="3475.4464285714284"/>
         </scene>
         <!--Edit Product-->
         <scene sceneID="e7V-TR-rf8">
@@ -4119,7 +4131,7 @@
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                                         <state key="normal" title="     Ad Detail     ">
-                                                            <color key="titleColor" red="0.73959772099447507" green="0.73959772099447507" blue="0.73959772099447507" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="AdDetail:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="a09-AH-4ng"/>

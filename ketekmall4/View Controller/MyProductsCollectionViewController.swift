@@ -39,7 +39,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     var MAXORDER: [String] = []
     var DIVISION: [String] = []
     var RATING: [String] = []
-    //        var ITEMID: String = ""
+    var DELIVERY_STATUS: [String] = []
     //        var ADDETAIL: String = ""
     //        var PRICE: String = ""
     //        var PHOTO: String = ""
@@ -84,7 +84,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         let description = user.value(forKey: "description") as! [String]
                         let max_order = user.value(forKey: "max_order") as! [String]
                         let rating = user.value(forKey: "rating") as! [String]
-                        //                        let Price = user.value(forKey: "price") as! [String]
+                        let delivery_status = user.value(forKey: "delivery_status") as! [String]
                         //                        let Photo = user.value(forKey: "photo") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         //                        let District = user.value(forKey: "district") as! [String]
@@ -103,6 +103,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         self.DESC = description
                         self.DIVISION = Division
                         self.RATING = rating
+                        self.DELIVERY_STATUS = delivery_status
 
                         self.productView.reloadData()
                         
@@ -147,6 +148,14 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
         cell.ItemPrice.text! = "MYR" + self.price[indexPath.row]
         cell.ItemLocation.text! = self.location[indexPath.row]
+        
+        if(self.DELIVERY_STATUS[indexPath.row] == "0"){
+            cell.Btn_Boost.isHidden = true
+            cell.NoDeliveryLabel.isHidden = false
+        }else{
+            cell.Btn_Boost.isHidden = false
+            cell.NoDeliveryLabel.isHidden = true
+        }
         cell.Btn_Edit.layer.cornerRadius = 5
         cell.Btn_Edit.layer.borderWidth = 1
         cell.Btn_Boost.layer.cornerRadius = 5

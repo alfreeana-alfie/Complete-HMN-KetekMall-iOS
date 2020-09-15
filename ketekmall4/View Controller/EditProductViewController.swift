@@ -83,7 +83,7 @@ class EditProductViewController: UIViewController {
         
         ButtonSetupDelivery.layer.cornerRadius = 5
         ButtonSetupDelivery.layer.borderWidth = 0.1
-        ButtonAdDetail.titleLabel!.text = ADDETAIL
+        ButtonAdDetail.setTitle(ADDETAIL, for: .normal)
         
         ItemImage.isUserInteractionEnabled = true
         let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
@@ -99,18 +99,25 @@ class EditProductViewController: UIViewController {
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
         SetupDeliveryLabel.text = "Setup Delivery".localized(lang: str)
-        UploadImage.titleLabel?.text = "Upload Image".localized(lang: str)
+//        UploadImage.titleLabel?.text = "Upload Image".localized(lang: str)
+        
+        UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
         
         Category.placeholder = "Category".localized(lang: str)
-        ButtonAdDetail.titleLabel?.text = "Ad Detail".localized(lang: str)
+//        ButtonAdDetail.titleLabel?.text = "Ad Detail".localized(lang: str)
         Price.placeholder = "Price".localized(lang: str)
         Division.placeholder = "Division".localized(lang: str)
         District.placeholder = "District".localized(lang: str)
         Max_Order.placeholder = "Max Order".localized(lang: str)
-        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
+//        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
         
-        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
-        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
+        ButtonSetupDelivery.setTitle("Setup Delivery".localized(lang: str), for: .normal)
+        
+//        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+//        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
+        
+        ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
+        ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
     }
     
     @IBAction func AdDetail(_ sender: Any) {
