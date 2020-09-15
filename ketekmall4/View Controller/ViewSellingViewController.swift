@@ -31,6 +31,7 @@ class ViewSellingViewController: UIViewController {
     @IBOutlet weak var ButtonSubmit: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     
+    @IBOutlet weak var PosLabel: UILabel!
     
     
     let URL_READ_CUSTOMER = "https://ketekmall.com/ketekmall/read_detail.php"
@@ -54,6 +55,28 @@ class ViewSellingViewController: UIViewController {
     let sharedPref = UserDefaults.standard
     var lang: String = ""
 
+    @IBOutlet weak var Ordered: UILabel!
+    @IBOutlet weak var Pending: UILabel!
+    @IBOutlet weak var Shipped: UILabel!
+    @IBOutlet weak var Received: UILabel!
+    
+    @IBOutlet weak var Ordered_Black: UIImageView!
+    @IBOutlet weak var Pending_Black: UIImageView!
+    @IBOutlet weak var Shipped_Black: UIImageView!
+    @IBOutlet weak var Received_Black: UIImageView!
+    
+    @IBOutlet weak var Ordered_Green: UIImageView!
+    @IBOutlet weak var Pending_Green: UIImageView!
+    @IBOutlet weak var Shipped_Green: UIImageView!
+    @IBOutlet weak var Received_Green: UIImageView!
+    
+    @IBOutlet weak var Finished: UILabel!
+    @IBOutlet weak var FinishedHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var PosLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var TrackingHeight: NSLayoutConstraint!
+    @IBOutlet weak var SubmitHeight: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,17 +91,133 @@ class ViewSellingViewController: UIViewController {
             
         }
         
-        OrderID.text! = ORDERID
+        OrderID.text! = "KM" + ORDERID
         Item_Name.text! = ITEMNAME
-        Item_Price.text! = ITEMPRICE
-        Date_Order.text! = DATEORDER
-        Ship_Place.text! = SHIPPLACED
+        Item_Price.text! = "MYR" + ITEMPRICE
+        Date_Order.text! = "Order Placed on" + DATEORDER
+        Ship_Place.text! = "Shipped out to" + SHIPPLACED
         Status.text! = STATUS
-        Quantity.text! = QUANTITY
+        Quantity.text! = "x" + QUANTITY
         Tracking_No.text! = TRACKINGNO
         
         ButtonSubmit.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
+        
+        if(STATUS == "Ordered"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending_Green.isHidden = true
+            Shipped_Green.isHidden = true
+            Received_Green.isHidden = true
+            
+            Finished.isHidden = true
+            FinishedHeight.constant = 0
+        }else if(STATUS == "Pending"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending.textColor = .green
+            Pending_Black.isHidden = true
+            Pending_Green.isHidden = false
+            
+            Shipped_Green.isHidden = true
+            Received_Green.isHidden = true
+            
+            Finished.isHidden = true
+            FinishedHeight.constant = 0
+        }else if(STATUS == "Shipped"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending.textColor = .green
+            Pending_Black.isHidden = true
+            Pending_Green.isHidden = false
+            
+            Shipped.textColor = .green
+            Shipped_Black.isHidden = true
+            Shipped_Green.isHidden = false
+            
+            Received_Green.isHidden = true
+            
+            Finished.isHidden = true
+            FinishedHeight.constant = 0
+        }else if(STATUS == "Received"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending.textColor = .green
+            Pending_Black.isHidden = true
+            Pending_Green.isHidden = false
+            
+            Shipped.textColor = .green
+            Shipped_Black.isHidden = true
+            Shipped_Green.isHidden = false
+            
+            Received.textColor = .green
+            Received_Black.isHidden = true
+            Received_Green.isHidden = false
+            
+            Finished.isHidden = false
+        }else if(STATUS == "Reject"){
+            
+            Ordered_Black.isHidden = false
+            Ordered_Green.isHidden = true
+            
+            
+            Pending_Black.isHidden = false
+            Pending_Green.isHidden = true
+            
+            
+            Shipped_Black.isHidden = false
+            Shipped_Green.isHidden = true
+            
+            
+            Received_Black.isHidden = false
+            Received_Green.isHidden = true
+            
+            Finished.backgroundColor = .red
+            Finished.text = "REJECT"
+            
+            PosLabel.isHidden = true
+            PosLabelHeight.constant = 0
+            Tracking_No.isHidden = true
+            TrackingHeight.constant = 0
+            ButtonSubmit.isHidden = true
+            SubmitHeight.constant = 0
+            
+        }else if(STATUS == "Cancel"){
+            
+            Ordered_Black.isHidden = false
+            Ordered_Green.isHidden = true
+            
+            
+            Pending_Black.isHidden = false
+            Pending_Green.isHidden = true
+            
+            
+            Shipped_Black.isHidden = false
+            Shipped_Green.isHidden = true
+            
+            
+            Received_Black.isHidden = false
+            Received_Green.isHidden = true
+            
+            Finished.backgroundColor = .red
+            Finished.text = "CANCEL"
+            
+            PosLabel.isHidden = true
+            PosLabelHeight.constant = 0
+            Tracking_No.isHidden = true
+            TrackingHeight.constant = 0
+            ButtonSubmit.isHidden = true
+            SubmitHeight.constant = 0
+        }
+        
         
         getUserDetails()
         
