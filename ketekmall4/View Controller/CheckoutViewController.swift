@@ -183,30 +183,47 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                             self.DELIVERYPRICE.append(contentsOf: deliveryprice)
                                                             self.DELIVERYDAYS.append(contentsOf: deliveryDays)
                                                             
-                                                            var strDays: Int = Int(self.DELIVERYDAYS[i]) ?? 0
-                                                            let date = Date()
-                                                            let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
                                                             
-                                                            let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
-                                                            let duration = DateComponents(calendar: Calendar.current, day: strDays)
-                                                            let later = Calendar.current.date(byAdding: duration, to: now.date!)
+                                                            var index = i
                                                             
-                                                            let formatter = DateFormatter()
-                                                            formatter.locale = Locale(identifier: "nl_NL")
-                                                            formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
+                                                            if index < self.DELIVERYPRICE.count{
+                                                                print("SUCCESS" + self.DELIVERYPRICE[index])
+                                                                var strDays: Int = Int(self.DELIVERYDAYS[index])!
+                                                                let date = Date()
+                                                                let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
+                                                                
+                                                                let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
+                                                                let duration = DateComponents(calendar: Calendar.current, day: strDays)
+                                                                let later = Calendar.current.date(byAdding: duration, to: now.date!)
+                                                                
+                                                                let formatter = DateFormatter()
+                                                                formatter.locale = Locale(identifier: "nl_NL")
+                                                                formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
+                                                                
+                                                                let datetime = formatter.string(from: later!)
+                                                                
+                                                                index += 1
+                                                                
+                                                                self.DELIVERYDATE.append(datetime)
+                                                            }else{
+                                                                print("FAILED")
+                                                            }
                                                             
-                                                            let datetime = formatter.string(from: later!)
                                                             
-                                                            self.DELIVERYDATE.append(datetime)
                                                             strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
                                                             
-                                                            var strDel: Double = Double(self.DELIVERYPRICE[i])!
-                                                            var strGrandTotal: Double = 0.00
-                                                            strGrand2 += strDel
-                                                            strGrandTotal = strGrand + strGrand2
-                                                            print(String(format: "%.2f", strGrandTotal))
+                                                            var indexPrice = i
                                                             
-                                                            self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
+                                                            if indexPrice < self.DELIVERYPRICE.count{
+                                                                var strDel: Double = Double(self.DELIVERYPRICE[i])!
+                                                                var strGrandTotal: Double = 0.00
+                                                                strGrand2 += strDel
+                                                                strGrandTotal = strGrand + strGrand2
+                                                                print(String(format: "%.2f", strGrandTotal))
+                                                                
+                                                                self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
+                                                            }
+                                                           
                                                             
                                                             self.CartView.reloadData()
                                                         }else{
@@ -225,190 +242,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     }
                 }
         }
-        
-//        //Sending http post request
-//        Alamofire.request(URL_CART, method: .post, parameters: parameters).responseJSON
-//            {
-//                response in
-//                if let result = response.result.value as? Dictionary<String,Any>{
-//
-//                    if let list = result["read"] as? [Dictionary<String,Any>]{
-//                        for i in list{
-//
-//                            self.id = i["id"] as! String
-//                            self.maincate = i["main_category"] as! String
-//                            self.subcate = i["sub_category"] as! String
-//                            self.addetail = i["ad_detail"] as! String
-//                            self.price = i["price"] as! String
-//                            self.division = i["division"] as! String
-//                            self.district = i["district"] as! String
-//                            self.photo = i["photo"] as! String
-//                            self.sellerid = i["seller_id"] as! String
-//                            self.itemid = i["item_id"] as! String
-//                            self.quantity = i["quantity"] as! String
-//
-//
-//                            self.ID.append(self.id)
-//                            self.MAINCATE.append(self.maincate)
-//                            self.SUBCATE.append(self.subcate)
-//
-//                            self.ADDETAIL.append(self.addetail)
-//                            self.PRICE.append(self.price)
-//                            self.DIVISION.append(self.division)
-//                            self.DISTRICT.append(self.district)
-//                            self.PHOTO.append(self.photo)
-//                            self.SELLERID.append(self.sellerid)
-//                            self.ITEMID.append(self.itemid)
-//                            self.QUANTITY.append(self.quantity)
-//
-//                            self.DeliveryPriceFunc(ItemID: self.ITEMID, Division: "Kuching")
-//
-//                            let parameters: Parameters=[
-//                                "id": self.userID,
-//                            ]
-//
-//                            Alamofire.request(self.URL_READ, method: .post, parameters: parameters).responseJSON
-//                                {
-//                                    response in
-//                                    Alamofire.request(self.URL_READ, method: .post, parameters: parameters).responseJSON
-//                                        {
-//                                            response in
-//
-//
-//                                            if let result = response.result.value{
-//                                                let jsonData = result as! NSDictionary
-//
-//                                                if((jsonData.value(forKey: "success") as! NSString).boolValue){
-//
-//                                                    let user = jsonData.value(forKey: "read") as! NSArray
-//                                                    let deliveryprice = user.value(forKey: "name") as! [String]
-//
-//                                                    print("DELIVERY" + "\(deliveryprice[0])")
-//
-//                                                }else{
-//
-//                                                    print("Invalid email or password")
-//                                                }
-//                                            }
-//                                    }
-////                                    if let result = response.result.value as? Dictionary<String,Any>{
-////                                        if let list = result["read"] as? [Dictionary<String,Any>]{
-////                                            for i in list{
-////
-////                                                self.name = i["name"] as! String
-////                                                self.phone_no = i["phone_no"] as! String
-////                                                self.addr01 = i["address_01"] as! String
-////                                                self.addr02 = i["address_02"] as! String
-////                                                self.divsionu = i["division"] as! String
-//////                                                self.districtu = i["district"] as! String
-////                                                self.postcode = i["postcode"] as! String
-////
-////                                                self.NAME.append(self.name)
-////                                                self.PHONE_NO.append(self.phone_no)
-////                                                self.ADDR01.append(self.addr01)
-////                                                self.ADDR02.append(self.addr02)
-////                                                self.DIVISIONU.append(self.divsionu)
-//////                                                self.DISTRICTU.append(self.districtu)
-////                                                self.POSTCODE.append(self.postcode)
-////
-////                                                self.NamePhone.text! = self.name + " | " + self.phone_no
-////
-////                                                self.NEWADDR =  self.addr01 + " " + self.addr02 + "\n" + self.divsionu + " " + self.postcode
-////                                                self.Address.text! = self.NEWADDR
-////
-////
-////
-////                                                let parameters: Parameters=[
-////                                                    "item_id": self.itemid,
-////                                                    "division": self.divsionu
-////                                                ]
-//
-////                                                Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
-////                                                    {
-////                                                        response in
-////                                                        if let result = response.result.value{
-////                                                            let jsonData = result as! NSDictionary
-////
-////                                                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
-////
-////                                                                let user = jsonData.value(forKey: "read") as! NSArray
-////
-////
-////                                                                let deliveryprice = user.value(forKey: "price") as! [String]
-////
-////
-//////                                                                print("DELIVERY2" + "\(deliveryprice)")
-////                                                            }else{
-////
-////                                                                print("Invalid email or password")
-////                                                            }
-////                                                        }
-////                                                }
-////                                                Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
-////                                                    {
-////                                                        response in
-////                                                        if let result = response.result.value as? Dictionary<String,Any>{
-////                                                            if let list = result["read"] as? [Dictionary<String,Any>]{
-////                                                                for i in list{
-////                                                                    self.spinner.dismiss(afterDelay: 3.0)
-////                                                                    self.DeliveryID = i["id"] as! String
-////                                                                    self.DeliveryDivision = i["division"] as! String
-//////                                                                    self.DeliveryDistrict = i["district"] as! String
-////                                                                    self.DeliveryDays = i["days"] as! String
-////                                                                    self.DeliveryPrice = i["price"] as! String
-////
-////                                                                    self.DELIVERYID.append(self.DeliveryID)
-////                                                                    self.DELIVERYPRICE.append(self.DeliveryPrice)
-////                                                                    self.DELIVERYDAYS.append(self.DeliveryDays)
-////                                                                    self.DELIVERYDIVISION.append(self.DeliveryDivision)
-//////                                                                    self.DELIVERYDISTRICT.append(self.DeliveryDistrict)
-////
-////                                                                    let date = Date()
-////                                                                    let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
-////
-////                                                                    let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
-////                                                                    let duration = DateComponents(calendar: Calendar.current, day: Int(self.DeliveryDays))
-////                                                                    let later = Calendar.current.date(byAdding: duration, to: now.date!)
-////
-////                                                                    let formatter = DateFormatter()
-////                                                                    formatter.locale = Locale(identifier: "nl_NL")
-////                                                                    formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
-////
-////                                                                    let datetime = formatter.string(from: later!)
-////
-////                                                                    self.DELIVERYDATE.append(datetime)
-////
-////
-////                                                                    self.CartView.reloadData()
-////                                                                }
-////
-////                                                            }else{
-////                                                                print("FAILED 1")
-////                                                            }
-////
-////                                                        }else{
-////                                                            print("FAILED 2")
-////                                                        }
-////                                                }
-////                                            }
-////
-////                                        }else{
-////                                            print("FAILED 3")
-////                                        }
-////
-////                                    }else{
-////                                        print("FAILED 4")
-////                                    }
-//                            }
-//                        }
-//
-//                    }else{
-//                        print("FAILED")
-//                    }
-//
-//                }
-//        }
-        
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -441,43 +274,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             
         default:
             break
-        }
-    }
-    
-    func DeliveryPriceFunc(ItemID: [String], Division: String){
-        print(ItemID)
-        for i in 0..<ItemID.count{
-            print(String(i))
-        }
-        
-        
-        for i in 0..<ItemID.count{
-            let parameters: Parameters=[
-                            "item_id": ItemID[i],
-                            "division": Division
-                        ]
-
-                        Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
-                            {
-                                response in
-
-
-                                if let result = response.result.value{
-                                    let jsonData = result as! NSDictionary
-
-                                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-
-                                        let user = jsonData.value(forKey: "read") as! NSArray
-                                        let deliveryprice = user.value(forKey: "price") as! [String]
-
-                                        print("DELIVERY" + "\(deliveryprice)")
-
-                                    }else{
-
-                                        print("Invalid email or password")
-                                    }
-                                }
-                        }
         }
     }
     
@@ -523,7 +319,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ItemPrice.text! = self.PRICE[indexPath.row]
         cell.Quantity.text! = self.QUANTITY[indexPath.row]
         cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
-        cell.Division.text! = self.DELIVERYDATE[indexPath.row]
+        cell.Division.text! = self.DIVISION[indexPath.row] + " to " + self.DIVISIONU[0]
         return cell
     }
     
