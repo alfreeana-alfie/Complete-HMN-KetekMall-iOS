@@ -244,7 +244,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
             cell.District.text! = self.DISTRICT[indexPath.row]
             cell.ButtonView.layer.cornerRadius = 5
-            
+            cell.ButtonView.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.2
             cell.delegate = self
