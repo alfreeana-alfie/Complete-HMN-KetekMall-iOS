@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class ReviewPageViewController: UIViewController {
+class ReviewPageViewController: UIViewController, UITabBarDelegate {
     
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_remarks_done.php"
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_received.php"
@@ -31,6 +31,7 @@ class ReviewPageViewController: UIViewController {
     var PHOTO: String = ""
     var SHIPPINGTOTAL: String = ""
     var SELLERID: String = ""
+    var viewController1: UIViewController?
     
     @IBOutlet weak var OrderID: UILabel!
     @IBOutlet weak var TrackingNo: UILabel!
@@ -46,6 +47,9 @@ class ReviewPageViewController: UIViewController {
     @IBOutlet weak var ShippingTotal: UILabel!
     @IBOutlet weak var GrandTotal: UILabel!
     @IBOutlet weak var ButtonReceived: UIButton!
+    @IBOutlet weak var Tabbar: UITabBar!
+    @IBOutlet weak var BarHeight: NSLayoutConstraint!
+    var BarHidden: Bool = false
     
     @IBAction func Received(_ sender: Any) {
         spinner.show(in: self.view)
@@ -128,7 +132,14 @@ class ReviewPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(itemID)
+        Tabbar.delegate = self
+        
+        if(BarHidden == true){
+            Tabbar.isHidden = true
+            BarHeight.constant = 0
+        }else{
+            Tabbar.isHidden = false
+        }
         
         OrderID.text! = "KM" + ORDERID
         TrackingNo.text! = TRACKINGNO
@@ -146,5 +157,38 @@ class ReviewPageViewController: UIViewController {
         
         ButtonReceived.layer.cornerRadius = 5
         
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        default:
+            break
+        }
     }
 }

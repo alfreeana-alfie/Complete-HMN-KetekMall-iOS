@@ -303,6 +303,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         ReviewProduct.SHIPPEDTO = self.ItemShipPlaced[indexPath.row]
         ReviewProduct.USERID = userID
         ReviewProduct.SELLERID = self.seller_id[indexPath.row]
+        ReviewProduct.BarHidden = true
         if let navigator = self.navigationController {
             navigator.pushViewController(ReviewProduct, animated: true)
         }
