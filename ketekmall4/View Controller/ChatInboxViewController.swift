@@ -111,7 +111,6 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                                             self.USERNAME.removeDuplicates()
                                                             
                                                             self.USERIMAGE.append(photo)
-//                                                            self.USERIMAGE.removeDuplicates()
                                                             self.CHATWITH.append(String(newEmail2))
                                                             
                                                             
@@ -148,6 +147,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         let vc = ChatViewController()
         vc.title = self.strings[indexPath.row]
         vc.navigationItem.largeTitleDisplayMode = .never
+        vc.chatWith = self.CHATWITH[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -27,19 +27,29 @@ struct Sender: SenderType {
 
 class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate {
     
+    let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
+    
     let sharedPref = UserDefaults.standard
     var user: String = ""
     var name: String = ""
     var email: String = ""
+    var chatWith: String = ""
     
     private var messages = [Message]()
     
-    private let selfSender = Sender(senderId: "2", displayName: "Admin")
+    var sender: SenderType = Sender(senderId: "", displayName: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messages.append(Message(sender: selfSender, messageId: "2", sentDate: Date(), kind: .text("Hellow World")))
+        user = sharedPref.string(forKey: "USERID") ?? "0"
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
+        
+        print(chatWith)
+        sender = Sender(senderId: user, displayName: name)
+        
+        messages.append(Message(sender: sender, messageId: "2", sentDate: Date(), kind: .text("Hellow World")))
         view.backgroundColor = .red
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -59,7 +69,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
 
 extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate{
     func currentSender() -> SenderType {
-        return selfSender
+        return sender
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
