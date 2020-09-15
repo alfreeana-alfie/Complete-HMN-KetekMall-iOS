@@ -13,14 +13,6 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var ChatView: UITableView!
     
-//    private let noChat: UILabel = {
-//        let label = UILabel()
-//        label.text! = "no chat"
-//        label.textAlignment = .center
-//        label.textColor = .gray
-//       return label
-//    }()
-    
     let sharedPref = UserDefaults.standard
     var user: String = ""
     var name: String = ""
@@ -31,6 +23,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
     
     var USERNAME: [String] = []
     var USERIMAGE: [String] = []
+    var strings: [String] = []
     
     var NAME: String = ""
     var EMAILUSER: String = ""
@@ -49,6 +42,43 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         let newEmail = email[..<index]
         
         ChatList()
+        ChatList2()
+    }
+    
+    func ChatList2(){
+        Alamofire.request(URL_MESSAGE, method: .get).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
+                    let newEmail = self.email[..<index]
+                    
+                    if let jsonUser = result as? [String: Any]{
+                        for i in jsonUser.keys{
+                            if(i.contains(String(newEmail) + "_")){
+                                if let User = jsonUser[i] as? [String: Any]{
+                                    for j in User.keys{
+                                        if let User1 = User[j] as? [String: Any] {
+                                            let name = User1["user"] as? String
+                                            if(name != self.NAME){
+                                                self.strings.append(name!)
+                                                self.strings.removeAll { $0 == self.name }
+                                                
+                                                self.strings.removeDuplicates()
+                                                
+                                                print(self.strings)
+                                            }
+                                            
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+        }
     }
     
     func ChatList(){
@@ -67,6 +97,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                 Alamofire.request(self.URL_USER, method: .get).responseJSON{
                                     response1 in
                                     if let resultUser = response1.result.value{
+                                        
                                         if let jsonUser = resultUser as? [String: Any] {
                                             for j in jsonUser.keys{
                                                 if let User1 = jsonUser[j] as? [String: Any]{
@@ -98,12 +129,12 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return USERNAME.count
+        return strings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
-        cell.UserName.text! = self.USERNAME[indexPath.row]
+        cell.UserName.text! = self.strings[indexPath.row]
         cell.accessoryType = .detailDisclosureButton
         return cell
     }
@@ -112,8 +143,22 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.deselectRow(at: indexPath, animated: true)
         
         let vc = ChatViewController()
-        vc.title = self.USERNAME[indexPath.row]
+        vc.title = self.strings[indexPath.row]
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
     }
 }
