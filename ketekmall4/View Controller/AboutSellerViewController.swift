@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import JGProgressHUD
 
 class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AboutSellerDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -16,7 +17,8 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     let URL_ADD_FAV = "https://ketekmall.com/ketekmall/add_to_fav.php"
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
     
-
+    private let spinner = JGProgressHUD(style: .dark)
+    
     let sharedPref = UserDefaults.standard
     var lang: String = ""
 
@@ -324,16 +326,13 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                 Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-                        //printing response
-        //                print(response)
-                        
-                        //getting the json value from the server
                         if let result = response.result.value {
-                            
-                            //converting it as NSDictionary
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
-                            
+                            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            self.spinner.textLabel.text = "Added to My Likes"
+                            self.spinner.show(in: self.view)
+                            self.spinner.dismiss(afterDelay: 2.0)
                         }
                 }
     }
@@ -370,7 +369,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                             //converting it as NSDictionary
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
-                            
+                            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            self.spinner.textLabel.text = "Added to Cart"
+                            self.spinner.show(in: self.view)
+                            self.spinner.dismiss(afterDelay: 2.0)
                         }
                 }
     }
