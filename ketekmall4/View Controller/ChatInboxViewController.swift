@@ -37,12 +37,9 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
-        
-        let index = email.firstIndex(of: "@") ?? email.endIndex
-        let newEmail = email[..<index]
-        
-        ChatList()
+
         ChatList2()
+        ChatList()
     }
     
     func ChatList2(){
@@ -102,7 +99,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                             for j in jsonUser.keys{
                                                 if let User1 = jsonUser[j] as? [String: Any]{
                                                     let email = User1["email"] as! String
-//                                                    let photo = User1["photo"] as! String
+                                                    let photo = User1["photo"] as! String
                                                     
                                                     let index2 = email.firstIndex(of: "@") ?? email.endIndex
                                                     let newEmail2 = email[..<index2]
@@ -111,8 +108,14 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                                         if(i.contains(String(newEmail2))){
                                                         
                                                             self.USERNAME.append(j)
+                                                            self.USERNAME.removeDuplicates()
+                                                            
+                                                            self.USERIMAGE.append(photo)
+//                                                            self.USERIMAGE.removeDuplicates()
                                                             self.CHATWITH.append(String(newEmail2))
                                                             
+                                                            
+                                                            print(self.USERIMAGE)
                                                             self.ChatView.reloadData()
                                                         }
                                                     }
@@ -135,7 +138,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
         cell.UserName.text! = self.strings[indexPath.row]
-        cell.accessoryType = .detailDisclosureButton
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 

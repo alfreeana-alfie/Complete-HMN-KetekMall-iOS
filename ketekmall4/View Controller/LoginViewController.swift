@@ -16,8 +16,12 @@ import FirebaseInstanceID
 import FBSDKLoginKit
 import FBSDKCoreKit
 import JGProgressHUD
+import FirebaseDatabase
+import FirebaseCore
 
 class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
+    
+    let ref = Database.database().reference(withPath: "users")
     
     let URL_LOGIN = "https://ketekmall.com/ketekmall/login.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
@@ -39,6 +43,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     let sharedPref = UserDefaults.standard
     var tokenUser: String = ""
+    var name: String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -47,6 +52,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        
         let boolValue = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         if(boolValue == true){
             hud.textLabel.text = "Loading"
@@ -54,8 +61,27 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             
             UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
             UserDefaults.standard.synchronize()
+            
+            let token_firebase = self.ref.child(name).child("token")
+            InstanceID.instanceID().instanceID { (result, error) in
+                if let error = error {
+                    print("Error fetching remote instange ID: \(error)")
+                } else if let result = result {
+                    print("Remote instance ID token: \(result.token)")
+                    self.tokenUser = result.token
+
+                    token_firebase.setValue(result.token) {
+                      (error:Error?, ref:DatabaseReference) in
+                      if let error = error {
+                        print("Data could not be saved: \(error).")
+                      } else {
+                        print("Data saved successfully!")
+                      }
+                    }
+                }
+            }
+            
             let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
-//            tabbar.userID = userID[0]
             if let navigator = self.navigationController {
                 navigator.pushViewController(tabbar, animated: true)
             }
@@ -226,6 +252,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         
                         let userID = user.value(forKey: "id") as! [String]
                         let NAME = user.value(forKey: "name") as! [String]
+                        let PHOTO = user.value(forKey: "photo") as! [String]
                         let EMAIL = user.value(forKey: "email") as! [String]
                         
                         UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
@@ -234,6 +261,46 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         self.sharedPref.setValue(userID[0], forKey: "USERID")
                         self.sharedPref.setValue(NAME[0], forKey: "NAME")
                         self.sharedPref.setValue(EMAIL[0], forKey: "EMAIL")
+                        
+                        let email_firebase = self.ref.child(NAME[0]).child("email")
+                        let photo_firebase = self.ref.child(NAME[0]).child("photo")
+                        let token_firebase = self.ref.child(NAME[0]).child("token")
+                        
+                        email_firebase.setValue(EMAIL[0]) {
+                          (error:Error?, ref:DatabaseReference) in
+                          if let error = error {
+                            print("Data could not be saved: \(error).")
+                          } else {
+                            print("Data saved successfully!")
+                          }
+                        }
+                        
+                        photo_firebase.setValue(PHOTO[0]) {
+                          (error:Error?, ref:DatabaseReference) in
+                          if let error = error {
+                            print("Data could not be saved: \(error).")
+                          } else {
+                            print("Data saved successfully!")
+                          }
+                        }
+                        
+                        InstanceID.instanceID().instanceID { (result, error) in
+                            if let error = error {
+                                print("Error fetching remote instange ID: \(error)")
+                            } else if let result = result {
+                                print("Remote instance ID token: \(result.token)")
+                                self.tokenUser = result.token
+                                
+                                token_firebase.setValue(result.token) {
+                                  (error:Error?, ref:DatabaseReference) in
+                                  if let error = error {
+                                    print("Data could not be saved: \(error).")
+                                  } else {
+                                    print("Data saved successfully!")
+                                  }
+                                }
+                            }
+                        }
                         
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
                         tabbar.userID = userID[0]
@@ -273,6 +340,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         let userID = user.value(forKey: "id") as! [String]
                         let NAME = user.value(forKey: "name") as! [String]
                         let EMAIL = user.value(forKey: "email") as! [String]
+                        let PHOTO = user.value(forKey: "photo") as! [String]
                         
                         self.sharedPref.setValue(userID[0], forKey: "USERID")
                         self.sharedPref.setValue(NAME[0], forKey: "NAME")
@@ -280,6 +348,47 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         
                         UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                         UserDefaults.standard.synchronize()
+                        
+                        let email_firebase = self.ref.child(NAME[0]).child("email")
+                        let photo_firebase = self.ref.child(NAME[0]).child("photo")
+                        let token_firebase = self.ref.child(NAME[0]).child("token")
+                        
+                        email_firebase.setValue(EMAIL[0]) {
+                          (error:Error?, ref:DatabaseReference) in
+                          if let error = error {
+                            print("Data could not be saved: \(error).")
+                          } else {
+                            print("Data saved successfully!")
+                          }
+                        }
+                        
+                        photo_firebase.setValue(PHOTO[0]) {
+                          (error:Error?, ref:DatabaseReference) in
+                          if let error = error {
+                            print("Data could not be saved: \(error).")
+                          } else {
+                            print("Data saved successfully!")
+                          }
+                        }
+                        
+                        InstanceID.instanceID().instanceID { (result, error) in
+                            if let error = error {
+                                print("Error fetching remote instange ID: \(error)")
+                            } else if let result = result {
+                                print("Remote instance ID token: \(result.token)")
+                                self.tokenUser = result.token
+                                
+                                token_firebase.setValue(result.token) {
+                                  (error:Error?, ref:DatabaseReference) in
+                                  if let error = error {
+                                    print("Data could not be saved: \(error).")
+                                  } else {
+                                    print("Data saved successfully!")
+                                  }
+                                }
+                            }
+                        }
+                        
                         
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
                         tabbar.userID = userID[0]
