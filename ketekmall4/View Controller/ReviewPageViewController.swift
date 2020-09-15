@@ -31,7 +31,26 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     var PHOTO: String = ""
     var SHIPPINGTOTAL: String = ""
     var SELLERID: String = ""
+    var STATUS: String = ""
     var viewController1: UIViewController?
+    
+    @IBOutlet weak var Ordered: UILabel!
+    @IBOutlet weak var Pending: UILabel!
+    @IBOutlet weak var Shipped: UILabel!
+    @IBOutlet weak var Received: UILabel!
+    
+    @IBOutlet weak var Ordered_Black: UIImageView!
+    @IBOutlet weak var Pending_Black: UIImageView!
+    @IBOutlet weak var Shipped_Black: UIImageView!
+    @IBOutlet weak var Received_Black: UIImageView!
+    
+    @IBOutlet weak var Ordered_Green: UIImageView!
+    @IBOutlet weak var Pending_Green: UIImageView!
+    @IBOutlet weak var Shipped_Green: UIImageView!
+    @IBOutlet weak var Received_Green: UIImageView!
+    
+    @IBOutlet weak var Finished: UILabel!
+    @IBOutlet weak var FinishedHeight: NSLayoutConstraint!
     
     @IBOutlet weak var OrderID: UILabel!
     @IBOutlet weak var TrackingNo: UILabel!
@@ -156,6 +175,106 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         GrandTotal.text! = "MYR" + PRICE
         
         ButtonReceived.layer.cornerRadius = 5
+        
+        if(STATUS == "Ordered"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending_Green.isHidden = true
+            Shipped_Green.isHidden = true
+            Received_Green.isHidden = true
+            
+            Finished.isHidden = true
+            FinishedHeight.constant = 0
+        }else if(STATUS == "Pending"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending.textColor = .green
+            Pending_Black.isHidden = true
+            Pending_Green.isHidden = false
+            
+            Shipped_Green.isHidden = true
+            Received_Green.isHidden = true
+            
+            Finished.isHidden = true
+            FinishedHeight.constant = 0
+        }else if(STATUS == "Shipped"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending.textColor = .green
+            Pending_Black.isHidden = true
+            Pending_Green.isHidden = false
+            
+            Shipped.textColor = .green
+            Shipped_Black.isHidden = true
+            Shipped_Green.isHidden = false
+            
+            Received_Green.isHidden = true
+            
+            Finished.isHidden = true
+            FinishedHeight.constant = 0
+        }else if(STATUS == "Received"){
+            Ordered.textColor = .green
+            Ordered_Black.isHidden = true
+            Ordered_Green.isHidden = false
+            
+            Pending.textColor = .green
+            Pending_Black.isHidden = true
+            Pending_Green.isHidden = false
+            
+            Shipped.textColor = .green
+            Shipped_Black.isHidden = true
+            Shipped_Green.isHidden = false
+            
+            Received.textColor = .green
+            Received_Black.isHidden = true
+            Received_Green.isHidden = false
+            
+            Finished.isHidden = false
+        }else if(STATUS == "Reject"){
+            
+            Ordered_Black.isHidden = false
+            Ordered_Green.isHidden = true
+            
+            
+            Pending_Black.isHidden = false
+            Pending_Green.isHidden = true
+            
+            
+            Shipped_Black.isHidden = false
+            Shipped_Green.isHidden = true
+            
+            
+            Received_Black.isHidden = false
+            Received_Green.isHidden = true
+            
+            Finished.backgroundColor = .red
+            Finished.text = "REJECT"
+        }else if(STATUS == "Cancel"){
+            
+            Ordered_Black.isHidden = false
+            Ordered_Green.isHidden = true
+            
+            
+            Pending_Black.isHidden = false
+            Pending_Green.isHidden = true
+            
+            
+            Shipped_Black.isHidden = false
+            Shipped_Green.isHidden = true
+            
+            
+            Received_Black.isHidden = false
+            Received_Green.isHidden = true
+            
+            Finished.backgroundColor = .red
+            Finished.text = "CANCEL"
+        }
         
     }
     
