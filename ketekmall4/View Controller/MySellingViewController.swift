@@ -178,8 +178,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-        cell.ButtonView.layer.cornerRadius = 5
-        cell.ButtonReject.layer.cornerRadius = 5
+        cell.ButtonView.layer.cornerRadius = 7
+        cell.ButtonReject.layer.cornerRadius = 7
         
         cell.delegate = self
         return cell

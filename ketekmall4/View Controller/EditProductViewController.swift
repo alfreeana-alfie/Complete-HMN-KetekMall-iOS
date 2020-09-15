@@ -78,6 +78,13 @@ class EditProductViewController: UIViewController {
         ButtonCancel.layer.cornerRadius = 5
         UploadImage.layer.cornerRadius = 5
         
+        ButtonAdDetail.layer.cornerRadius = 5
+        ButtonAdDetail.layer.borderWidth = 0.1
+        
+        ButtonSetupDelivery.layer.cornerRadius = 5
+        ButtonSetupDelivery.layer.borderWidth = 0.1
+        ButtonAdDetail.titleLabel!.text = ADDETAIL
+        
         ItemImage.isUserInteractionEnabled = true
         let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
         

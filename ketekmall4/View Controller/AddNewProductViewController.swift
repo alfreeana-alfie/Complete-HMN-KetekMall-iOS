@@ -40,6 +40,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var UploadImage: UIButton!
     @IBOutlet weak var ButtonAccept: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
+    @IBOutlet weak var ButtonAdDetail: UIButton!
     
     let URL_ADD = "https://ketekmall.com/ketekmall/products/uploadimg.php";
     
@@ -105,6 +106,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
         UploadImage.layer.cornerRadius = 5
+        ButtonAdDetail.layer.cornerRadius = 7
+        ButtonAdDetail.layer.borderWidth = 0.5
         
         UploadImage.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
         
