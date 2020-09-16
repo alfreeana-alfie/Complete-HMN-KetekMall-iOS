@@ -113,7 +113,9 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.ItemLocation.text! = self.location[indexPath.row]
         
         cell.BtnView.layer.cornerRadius = 5
+        cell.BtnView.layer.borderWidth = 0.5
         cell.BtnRemove.layer.cornerRadius = 5
+        cell.BtnRemove.layer.borderWidth = 0.5
         
         if(self.lang == "ms"){
             cell.BtnView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
@@ -130,6 +132,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         cell.layer.borderWidth = 0.3
+        cell.layer.cornerRadius = 5
         cell.delegate = self
         
         return cell
