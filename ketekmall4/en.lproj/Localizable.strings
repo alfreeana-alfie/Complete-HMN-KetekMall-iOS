@@ -114,3 +114,27 @@
 "Fashion Accessories" = "Fashion Accessories";
 "Sarawak - Based" = "Sarawak - Based";
 
+"Edit" = "EDIT";
+"Delete" = "DELETE";
+"Add to Cart" = "Add to Cart";
+"Added to Cart" = "Added to Cart";
+"Added to My Likes" = "Added to My Likes";
+
+"SubTotal" = "SubTotal";
+"Quantity" = "Quantity";
+"Place" = "Place";
+
+"Delivery Address" = "Delivery Address";
+"Delivery Time" = "Delivery Time";
+"Remove" = "Remove";
+"Successfully Remove" = "Successfully Remove";
+"Successfully Reject" = "Successfully Reject";
+
+"Order" = "Order";
+"Click" = "Sila Tekan No Penjejakan untuk lihat";
+"Shipped to" = "Shipped to";
+"Tracking No" = "Tracking No";
+"Date Order" = "Date Order";
+"Date Received" = "Date Received";
+"Shipping Total" = "Shipping Total";
+"Grand Total" = "Grand Total";
