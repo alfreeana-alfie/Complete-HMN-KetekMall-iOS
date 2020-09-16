@@ -90,7 +90,9 @@ class ViewSellingViewController: UIViewController {
             changeLanguage(str: "en")
             
         }
+        let NEWIm = ITEMIMAGE.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
+        ItemImage.setImageWith(URL(string: NEWIm!)!)
         OrderID.text! = "KM" + ORDERID
         Item_Name.text! = ITEMNAME
         Item_Price.text! = "MYR" + ITEMPRICE

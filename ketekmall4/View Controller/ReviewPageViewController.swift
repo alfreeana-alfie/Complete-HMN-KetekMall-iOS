@@ -36,6 +36,9 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     var STATUS: String = ""
     var viewController1: UIViewController?
     
+    var Total1: Double = 0.00
+    var Total2: Double = 0.00
+    
     @IBOutlet weak var OrderLable: UILabel!
     @IBOutlet weak var TrackingLabel: UILabel!
     @IBOutlet weak var ClickLabel: UILabel!
@@ -182,9 +185,12 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         ItemPrice.text! = "MYR" + PRICE
         ItemQuantity.text! = "x" + QUANTITY
         
+        Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
+        Total2 = Total1 + Double(SHIPPINGTOTAL)!
+        
         SubTotal.text! = "MYR" + PRICE
         ShippingTotal.text! = "MYR" + SHIPPINGTOTAL
-        GrandTotal.text! = "MYR" + PRICE
+        GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
         
         ButtonReceived.layer.cornerRadius = 5
         

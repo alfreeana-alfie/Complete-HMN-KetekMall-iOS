@@ -3134,7 +3134,7 @@
                                                         <rect key="frame" x="0.0" y="3" width="107.5" height="187"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FPB-P6-1Eb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="108" height="187"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="107.5" height="187"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tys-y0-A2q">
@@ -3239,7 +3239,7 @@
                                                         <rect key="frame" x="0.0" y="1.5" width="107.5" height="187"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="108" height="187"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="107.5" height="187"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hRI-YI-adn">

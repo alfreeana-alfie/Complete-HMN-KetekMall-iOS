@@ -170,6 +170,9 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
                             
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 print("SUCCESS")
+                                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            
+                                
                                 if(self.lang == "ms"){
                                     self.spinner.textLabel.text = "Successfully Remove".localized(lang: "ms")
                                     
@@ -177,9 +180,9 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
                                     self.spinner.textLabel.text = "Successfully Remove".localized(lang: "en")
                                    
                                 }
-
                                 self.spinner.show(in: self.view)
                                 self.spinner.dismiss(afterDelay: 4.0)
+                                self.MyLikesView.deleteItems(at: [indexPath])
                             }
                         }
                 }
