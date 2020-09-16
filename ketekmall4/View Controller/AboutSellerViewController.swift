@@ -26,6 +26,9 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var SoldLabel: UILabel!
     @IBOutlet weak var ButtonChat: UIButton!
     
+    @IBOutlet weak var ListLabel: UILabel!
+    @IBOutlet weak var SellerView: UIView!
+    @IBOutlet weak var DetailView: UIView!
     @IBOutlet weak var AboutSellerView: UICollectionView!
     @IBOutlet weak var SellerImage: UIImageView!
     @IBOutlet weak var SellerName: UILabel!
@@ -79,6 +82,9 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         SellerImage.layer.cornerRadius = SellerImage.frame.width / 2
         SellerImage.layer.masksToBounds = true
         SellerImage.setImageWith(URL(string: SELLERIMAGE)!)
+        
+        SellerView.layer.cornerRadius = 10
+        DetailView.layer.cornerRadius = 10
         
         ViewList()
         getSold()
@@ -250,7 +256,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.ItemLocation.text! = self.DISTRICT[indexPath.row]
-        cell.ButtonView.layer.cornerRadius = 5
+        cell.ButtonView.layer.cornerRadius = 10
         cell.ButtonView.layer.borderWidth = 0.5
         cell.layer.borderWidth = 0.2
         cell.layer.cornerRadius = 5
