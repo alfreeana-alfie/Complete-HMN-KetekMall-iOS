@@ -131,6 +131,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         SameShopView.delegate = self
         SameShopView.dataSource = self
         
+        
         ViewButton.layer.cornerRadius = 10
         ViewButton.layer.borderWidth = 1
         ViewButton.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
