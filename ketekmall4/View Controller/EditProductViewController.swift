@@ -68,6 +68,9 @@ class EditProductViewController: UIViewController {
             
         }
         
+        let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        ItemImage.setImageWith(URL(string: NEWIm!)!)
         Category.text! = MAINCATE
         Price.text! = PRICE
         Division.text! = DIVISION
@@ -77,13 +80,14 @@ class EditProductViewController: UIViewController {
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
         UploadImage.layer.cornerRadius = 5
+        UploadImage.layer.borderWidth = 0.5
         
         ButtonAdDetail.layer.cornerRadius = 5
         ButtonAdDetail.layer.borderWidth = 0.1
         
         ButtonSetupDelivery.layer.cornerRadius = 5
         ButtonSetupDelivery.layer.borderWidth = 0.1
-        ButtonAdDetail.setTitle(ADDETAIL, for: .normal)
+//        ButtonAdDetail.setTitle(ADDETAIL, for: .normal)
         
         ItemImage.isUserInteractionEnabled = true
         let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
@@ -111,7 +115,7 @@ class EditProductViewController: UIViewController {
         Max_Order.placeholder = "Max Order".localized(lang: str)
 //        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
         
-        ButtonSetupDelivery.setTitle("Setup Delivery".localized(lang: str), for: .normal)
+        ButtonSetupDelivery.setTitle("Click to Edit Setup Delivery".localized(lang: str), for: .normal)
         
 //        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
 //        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
