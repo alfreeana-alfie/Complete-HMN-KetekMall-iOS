@@ -143,6 +143,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var Username: UILabel!
     @IBOutlet weak var Verify: UILabel!
     @IBOutlet weak var Carousel: ImageSlideshow!
+    @IBOutlet weak var CartViewNav: UIView!
     
     @IBOutlet weak var VerifyView: UIView!
     @IBOutlet weak var ButtonCake: UIButton!
@@ -932,13 +933,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                                 badgeAppearance.backgroundColor = UIColor.red //default is red
                                 badgeAppearance.textColor = UIColor.white // default is white
                                 badgeAppearance.textAlignment = .center //default is center
-                                badgeAppearance.textSize = 10 //default is 12
-                                badgeAppearance.distanceFromCenterX = 1 //default is 0
-                                badgeAppearance.distanceFromCenterY = -3 //default is 0
+                                badgeAppearance.textSize = 9 //default is 12
+                                badgeAppearance.distanceFromCenterX = 10 //default is 0
+                                badgeAppearance.distanceFromCenterY = 1 //default is 0
                                 badgeAppearance.allowShadow = false
                                 badgeAppearance.borderColor = .red
                                 badgeAppearance.borderWidth = 0
-                                self.CartBar.badge(text: String(self.Cart_count), appearance: badgeAppearance)
+                                self.CartViewNav.badge(text: String(self.Cart_count), appearance: badgeAppearance)
                             }
                         }
                 }
