@@ -50,6 +50,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var ShippingRight: UIImageView!
     @IBOutlet weak var MoreRight: UIImageView!
+    @IBOutlet weak var ReviewView: UIView!
+    @IBOutlet weak var NoReviewLabel: UILabel!
     
     var viewController1: UIViewController?
     
@@ -115,6 +117,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NoReviewLabel.isHidden = true
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -128,10 +131,12 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         SameShopView.delegate = self
         SameShopView.dataSource = self
         
-        ViewButton.layer.cornerRadius = 5
+        ViewButton.layer.cornerRadius = 10
+        ViewButton.layer.borderWidth = 1
+        ViewButton.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
         SellerImage.layer.cornerRadius = SellerImage.frame.width / 2
         SellerImage.layer.masksToBounds = true
-        ButtonAddCart.layer.cornerRadius = 20
+        ButtonAddCart.layer.cornerRadius = 40
         ButtonAddCart.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
@@ -277,6 +282,13 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                             self.Rating.value = 0
                             
                             self.BaseRating.value = 0
+                            
+                            self.ReviewName.isHidden = true
+                            self.Review.isHidden = true
+                            self.ReviewImage.isHidden = true
+                            self.Rating.isHidden = true
+                            self.ViewReview.isHidden = true
+                            self.NoReviewLabel.isHidden = false
                         }else{
                             let name = user.value(forKey: "customer_name") as! [String]
                             let review = user.value(forKey: "review") as! [String]
@@ -517,24 +529,6 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         return ITEMID_SAMESHOP.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenSize = collectionView.bounds
-        let screenHeight = screenSize.height
-        return CGSize(width: 146, height: screenHeight);
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-       return 0.0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-       return 0.0
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FromSameShopCollectionViewCell", for: indexPath) as! FromSameShopCollectionViewCell
         
@@ -556,6 +550,10 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ItemName.text! = self.ADDETAIL_SAMESHOP[indexPath.row]
         cell.ItemPrice.text! = self.PRICE_SAMESHOP[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 5
+        cell.ButtonView.layer.borderWidth = 0.5
+        cell.layer.cornerRadius = 5
+        
+        cell.delegate = self
         return cell
     }
     
