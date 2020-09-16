@@ -46,6 +46,11 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var ViewSameShop: UILabel!
     @IBOutlet weak var SameShopView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
+    
+    
+    @IBOutlet weak var ShippingRight: UIImageView!
+    @IBOutlet weak var MoreRight: UIImageView!
+    
     var viewController1: UIViewController?
     
     
@@ -136,13 +141,18 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         
         
         ShippingInfo.isUserInteractionEnabled = true
+        ShippingRight.isUserInteractionEnabled = true
         MoreDetails.isUserInteractionEnabled = true
+        MoreRight.isUserInteractionEnabled = true
         ViewReview.isUserInteractionEnabled = true
         ViewSameShop.isUserInteractionEnabled = true
         WhatsappButton.isUserInteractionEnabled = true
         
+        
+        
         let ShippingInfo_Click = UITapGestureRecognizer(target: self, action: #selector(onShippingInfoClick(sender:)))
         let MoreDetails_Click = UITapGestureRecognizer(target: self, action: #selector(onMoreDetailsClick(sender:)))
+        
         let ViewReview_Click = UITapGestureRecognizer(target: self, action: #selector(onViewReview(sender:)))
         let ViewSameShop_Click = UITapGestureRecognizer(target: self, action: #selector(onFromSameShopClick(sender:)))
         
@@ -150,6 +160,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         
         ShippingInfo.addGestureRecognizer(ShippingInfo_Click)
         MoreDetails.addGestureRecognizer(MoreDetails_Click)
+        ShippingRight.addGestureRecognizer(ShippingInfo_Click)
+        MoreRight.addGestureRecognizer(MoreDetails_Click)
         ViewReview.addGestureRecognizer(ViewReview_Click)
         ViewSameShop.addGestureRecognizer(ViewSameShop_Click)
         WhatsappButton.addGestureRecognizer(Whatsapp_Click)
