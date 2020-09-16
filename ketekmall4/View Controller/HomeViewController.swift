@@ -230,7 +230,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        print(user)
         
         dropDown.anchorView = ListBar
-        dropDown.dataSource = ["Edit Profile","Change to BM","Change to BI","Contact Us", "Logout"]
+        dropDown.dataSource = ["Edit Profile","Change to BM","Change to ENG","About KetekMall", "Logout"]
         
         HotView.delegate = self
         HotView.dataSource = self
@@ -405,7 +405,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 break
                 
             case 3:
-                let accountsettings = self.storyboard!.instantiateViewController(identifier: "ContactUsViewController") as! ContactUsViewController
+                let accountsettings = self.storyboard!.instantiateViewController(identifier: "AboutKetekMallViewController") as! AboutKetekMallViewController
                 if let navigator = self.navigationController {
                     navigator.pushViewController(accountsettings, animated: true)
                 }

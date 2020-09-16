@@ -684,6 +684,289 @@
             </objects>
             <point key="canvasLocation" x="1704.3478260869567" y="665.625"/>
         </scene>
+        <!--Return and Refund Policy-->
+        <scene sceneID="0QY-dE-0GW">
+            <objects>
+                <viewController storyboardIdentifier="ReturnRefundPolicyViewController" title="Return and Refund Policy" id="h28-YG-w49" customClass="ReturnRefundPolicyViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BPS-B4-rAi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCh-xg-5Tv">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="iFX-OR-5HF"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="HS9-n2-7Se"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="tKA-qm-eDb"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="Ida-vZ-gnR"/>
+                                </items>
+                            </tabBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="opT-en-VPs">
+                                <rect key="frame" x="10" y="54" width="394" height="749"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">1. Application for Returns/Refunds
+
+Subject to the terms and conditions in this Refunds and Return Policy, buyer may apply for return of the purchased items and/or refund prior to the expiry of the Ketek’s Money-Back Guarantee.
+
+Ketek’s Money-Back Guarantee is a service provided by Ketekmall.com, on button “About Ketek” (in progress of developing) to assist Users in dealing with certain conflicts which may arise during the course of a transaction. Users may communicate with each other privately to resolve their inquiry or approach their relevant local authorities to assist them in overcoming any dispute prior, during or after using Ketek’s Money-Back Guarantee.
+
+2. Application for the Return of an Item
+
+Buyer may only apply for the refund and/or return of the Item in the following circumstances:
+• The Item has not been received by Buyer;
+• The Item was defective and/or damaged on delivery;
+• Seller has delivered an Item that does not match the agreed specification (e.g. wrong size, colour, etc.) to Buyer;
+• The Item delivered to Buyer is materially different from the description provided by Seller in the listing of the Item; or 
+• By way of private agreement with Seller and Seller must click his/her confirmation in ketekmall.com confirming such agreement.
+
+Buyer’s application must be submitted via the Ketekmall mobile app (in progress of developing)
+
+3. Rights of Seller
+
+When Ketekmall.com receives an application from Buyer for the return of the Item and/or refund, Ketekmall.com will notify Seller through email and waiting for refund confirmation of returned item. If failure to do so, Ketekmall.com will assume that Seller has no response to Buyer’s order and will proceed to refund without further notice to Seller.
+	•	Application can be done after 14 days the payment has been made to Ketekmall for the item purchased. 
+	•	The buyer will received refund within 30 days after application for the Return of an Item. 
+* The application of the WILL NOT applicable when the status of buying shifted to “shipped” in the application Ketekmall.com
+
+4. Condition of Returning Item
+
+To enjoy a hassle-free experience when returning the Item, Buyer should ensure that the Item, including any complimentary items such as accessories that come with the Item, must be returned to Seller in the condition received by Buyer on delivery. We will recommend Buyer to take a photo of the Item upon receipt.
+
+5. Refunds
+
+Buyer will only be refunded after Ketekmall has received the confirmation from Seller that Seller has received the returned Item. In the event where Ketekmall does not hear from Seller within a 30 days received the item, Ketekmall will be at liberty to refund the applicable sum to Buyer without further notice to Seller. 
+</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zR4-a6-VUR" firstAttribute="trailing" secondItem="fCh-xg-5Tv" secondAttribute="trailing" id="DzF-bV-TGb"/>
+                            <constraint firstItem="zR4-a6-VUR" firstAttribute="bottom" secondItem="fCh-xg-5Tv" secondAttribute="bottom" id="Eyp-0t-8vo"/>
+                            <constraint firstItem="fCh-xg-5Tv" firstAttribute="leading" secondItem="BPS-B4-rAi" secondAttribute="leading" id="Tri-o1-zTs"/>
+                            <constraint firstItem="opT-en-VPs" firstAttribute="leading" secondItem="zR4-a6-VUR" secondAttribute="leading" constant="10" id="XJe-4L-Cf8"/>
+                            <constraint firstItem="fCh-xg-5Tv" firstAttribute="top" secondItem="opT-en-VPs" secondAttribute="bottom" constant="10" id="cef-Q6-3iM"/>
+                            <constraint firstItem="opT-en-VPs" firstAttribute="top" secondItem="zR4-a6-VUR" secondAttribute="top" constant="10" id="e3a-Hm-fzV"/>
+                            <constraint firstItem="zR4-a6-VUR" firstAttribute="trailing" secondItem="opT-en-VPs" secondAttribute="trailing" constant="10" id="oDu-xO-19E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zR4-a6-VUR"/>
+                    </view>
+                    <connections>
+                        <outlet property="Tabbar" destination="fCh-xg-5Tv" id="Ben-Tf-K6A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7te-8r-2DH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3" y="-666"/>
+        </scene>
+        <!--Delivery Policy-->
+        <scene sceneID="9eQ-dm-XAF">
+            <objects>
+                <viewController storyboardIdentifier="DeliveryPolicyViewController" title="Delivery Policy" id="YSY-ob-xRB" customClass="DeliveryPolicyViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pDe-Fu-9ro">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsd-VX-pAb">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="IEy-Ro-tiz"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Yd0-5i-WC9"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="Chj-46-Ce2"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="XgH-zZ-f9v"/>
+                                </items>
+                            </tabBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NRT-pc-AxX">
+                                <rect key="frame" x="10" y="54" width="394" height="749"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">•	For the time being, KetekMall is only doing deliveries within Malaysia. Street name and Poscode must be accurate. 
+*No P.O Box is allowed
+
+•	DO NOT accept and receive if the packaging seal is opened or damaged. 
+
+•	Shipping and Delivery Method: 
+
+•	Peninsular Malaysia	: 3 – 5 business days with exceptions on weekends and public holidays 
+•	Sabah / Sarawak	: 3 – 7 business days with exceptions on weekends and public holidays.
+
+•	It’s up to your choice/convenience either to your home or office address. But please ensure there is someone who would be able to standby at that address by the moment Courier Service delivers the parcel. In the event of no one is physically able to collect your parcel on delivery after two attempts, your parcel will either be held at the nearest Courier Service office.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fsd-VX-pAb" firstAttribute="leading" secondItem="pDe-Fu-9ro" secondAttribute="leading" id="2X6-nu-eXL"/>
+                            <constraint firstItem="UfB-DX-dy0" firstAttribute="trailing" secondItem="NRT-pc-AxX" secondAttribute="trailing" constant="10" id="40w-Ay-Ynk"/>
+                            <constraint firstItem="NRT-pc-AxX" firstAttribute="leading" secondItem="UfB-DX-dy0" secondAttribute="leading" constant="10" id="6Zd-VN-Q9Z"/>
+                            <constraint firstItem="fsd-VX-pAb" firstAttribute="top" secondItem="NRT-pc-AxX" secondAttribute="bottom" constant="10" id="AMt-j9-Oxv"/>
+                            <constraint firstItem="UfB-DX-dy0" firstAttribute="trailing" secondItem="fsd-VX-pAb" secondAttribute="trailing" id="R42-xn-dRA"/>
+                            <constraint firstItem="UfB-DX-dy0" firstAttribute="bottom" secondItem="fsd-VX-pAb" secondAttribute="bottom" id="kiS-Wf-A4V"/>
+                            <constraint firstItem="NRT-pc-AxX" firstAttribute="top" secondItem="UfB-DX-dy0" secondAttribute="top" constant="10" id="tmj-io-Nbz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UfB-DX-dy0"/>
+                    </view>
+                    <connections>
+                        <outlet property="Tabbar" destination="fsd-VX-pAb" id="FT8-Tr-IvS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nc6-QC-lhP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904" y="-666"/>
+        </scene>
+        <!--About KetekMall-->
+        <scene sceneID="0wU-g0-1wd">
+            <objects>
+                <viewController storyboardIdentifier="AboutKetekMallViewController" title="About KetekMall" id="ilI-ig-0fQ" customClass="AboutKetekMallViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xW1-nb-frF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Upy-Cg-Kfr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-6U-Bpi">
+                                        <rect key="frame" x="20" y="182" width="374" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GN9-0K-Pkz">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="Contact Us"/>
+                                                <connections>
+                                                    <action selector="ButtonContact:" destination="ilI-ig-0fQ" eventType="touchUpInside" id="5qg-f4-0d9"/>
+                                                    <action selector="OrderUpdates:" destination="O5a-pN-aIE" eventType="touchUpInside" id="onW-Nl-2Cf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="JeY-TW-c0r"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxg-Rp-Fni" userLabel="2">
+                                        <rect key="frame" x="0.0" y="179" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="cKf-Pj-DTb"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2N-yd-M5n">
+                                        <rect key="frame" x="20" y="117" width="374" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFG-Jr-fUx">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="Delivery Policy"/>
+                                                <connections>
+                                                    <action selector="ButtonDelivery:" destination="ilI-ig-0fQ" eventType="touchUpInside" id="x5K-13-jKS"/>
+                                                    <action selector="SocialUpdates:" destination="O5a-pN-aIE" eventType="touchUpInside" id="coH-Qh-G15"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Dba-F7-wax"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMO-nK-M6p">
+                                        <rect key="frame" x="20" y="52" width="374" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P63-fr-Om8">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="Return and Refund Policy"/>
+                                                <connections>
+                                                    <action selector="GotoRefund:" destination="ilI-ig-0fQ" eventType="touchUpInside" id="ecH-J7-CRN"/>
+                                                    <action selector="Promotion:" destination="O5a-pN-aIE" eventType="touchUpInside" id="RJ1-EA-sGH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="4p3-ko-Xcf"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXD-Vg-wsw" userLabel="1">
+                                        <rect key="frame" x="0.0" y="114" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="G9B-EX-8zi"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7x-Gk-Vej" userLabel="3">
+                                        <rect key="frame" x="0.0" y="244" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Ddb-uI-Tmp"/>
+                                        </constraints>
+                                    </view>
+                                    <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRN-Pr-tq7">
+                                        <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <items>
+                                            <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Xp3-By-F9u"/>
+                                            <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="kVL-rm-Uo5"/>
+                                            <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="lCb-0P-7QT"/>
+                                        </items>
+                                    </tabBar>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Gvt-fX-usW" firstAttribute="bottom" secondItem="nRN-Pr-tq7" secondAttribute="bottom" id="2xH-sh-3d9"/>
+                                    <constraint firstItem="M7x-Gk-Vej" firstAttribute="top" secondItem="AfM-6U-Bpi" secondAttribute="bottom" constant="2" id="5Qw-lF-neZ"/>
+                                    <constraint firstItem="M7x-Gk-Vej" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="AOb-Cz-jWV"/>
+                                    <constraint firstItem="Gvt-fX-usW" firstAttribute="trailing" secondItem="s2N-yd-M5n" secondAttribute="trailing" constant="20" id="Cam-VN-O8f"/>
+                                    <constraint firstItem="PXD-Vg-wsw" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="FcW-D6-XK0"/>
+                                    <constraint firstItem="PXD-Vg-wsw" firstAttribute="top" secondItem="LMO-nK-M6p" secondAttribute="bottom" constant="2" id="FnU-VK-Sjl"/>
+                                    <constraint firstItem="M7x-Gk-Vej" firstAttribute="leading" secondItem="Upy-Cg-Kfr" secondAttribute="leading" id="HWK-KV-ijb"/>
+                                    <constraint firstItem="AfM-6U-Bpi" firstAttribute="top" secondItem="fxg-Rp-Fni" secondAttribute="bottom" constant="2" id="JMB-XX-eGE"/>
+                                    <constraint firstItem="fxg-Rp-Fni" firstAttribute="top" secondItem="s2N-yd-M5n" secondAttribute="bottom" constant="2" id="KRa-J6-6bY"/>
+                                    <constraint firstItem="fxg-Rp-Fni" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="M5y-gL-zNl"/>
+                                    <constraint firstItem="fxg-Rp-Fni" firstAttribute="leading" secondItem="Upy-Cg-Kfr" secondAttribute="leading" id="Moi-tA-6BS"/>
+                                    <constraint firstItem="s2N-yd-M5n" firstAttribute="top" secondItem="PXD-Vg-wsw" secondAttribute="bottom" constant="2" id="Nwj-JJ-zG7"/>
+                                    <constraint firstAttribute="trailing" secondItem="nRN-Pr-tq7" secondAttribute="trailing" id="TJE-iR-tMC"/>
+                                    <constraint firstAttribute="trailing" secondItem="fxg-Rp-Fni" secondAttribute="trailing" id="U1R-a9-Ac7"/>
+                                    <constraint firstAttribute="trailing" secondItem="M7x-Gk-Vej" secondAttribute="trailing" id="UFK-NZ-hTX"/>
+                                    <constraint firstItem="s2N-yd-M5n" firstAttribute="leading" secondItem="Gvt-fX-usW" secondAttribute="leading" constant="20" id="ZqB-IJ-Vfo"/>
+                                    <constraint firstAttribute="trailing" secondItem="PXD-Vg-wsw" secondAttribute="trailing" id="c3r-if-57d"/>
+                                    <constraint firstItem="AfM-6U-Bpi" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="cyJ-KA-4tS"/>
+                                    <constraint firstItem="PXD-Vg-wsw" firstAttribute="leading" secondItem="Upy-Cg-Kfr" secondAttribute="leading" id="fdE-4h-Gcr"/>
+                                    <constraint firstItem="LMO-nK-M6p" firstAttribute="leading" secondItem="Gvt-fX-usW" secondAttribute="leading" constant="20" id="foo-UU-wGe"/>
+                                    <constraint firstItem="s2N-yd-M5n" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="mMH-wv-LVN"/>
+                                    <constraint firstItem="LMO-nK-M6p" firstAttribute="top" secondItem="Gvt-fX-usW" secondAttribute="top" constant="8" id="ntb-Mm-IS4"/>
+                                    <constraint firstItem="LMO-nK-M6p" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="sPW-0R-ciq"/>
+                                    <constraint firstItem="Gvt-fX-usW" firstAttribute="trailing" secondItem="AfM-6U-Bpi" secondAttribute="trailing" constant="20" id="tbc-sj-UA3"/>
+                                    <constraint firstItem="nRN-Pr-tq7" firstAttribute="leading" secondItem="Gvt-fX-usW" secondAttribute="leading" id="yIm-q2-Vmm"/>
+                                    <constraint firstItem="AfM-6U-Bpi" firstAttribute="leading" secondItem="Gvt-fX-usW" secondAttribute="leading" constant="20" id="yow-n3-ubk"/>
+                                    <constraint firstItem="Gvt-fX-usW" firstAttribute="trailing" secondItem="LMO-nK-M6p" secondAttribute="trailing" constant="20" id="zEy-Lo-6MZ"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Gvt-fX-usW"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="l3s-Ly-q0y"/>
+                    </view>
+                    <connections>
+                        <outlet property="ButtonContact" destination="GN9-0K-Pkz" id="7WG-LI-SQW"/>
+                        <outlet property="ButtonDelivery" destination="mFG-Jr-fUx" id="ySd-5r-WXh"/>
+                        <outlet property="ButtonRefung" destination="LMO-nK-M6p" id="BgS-mq-py4"/>
+                        <outlet property="Tabbar" destination="nRN-Pr-tq7" id="v2F-8s-jj6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVu-cM-V9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1704" y="-664"/>
+        </scene>
         <!--Contact Us View Controller-->
         <scene sceneID="WZ2-6M-Mj1">
             <objects>
@@ -986,7 +1269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGE-Wx-W4X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="-663"/>
+            <point key="canvasLocation" x="3206" y="-665"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="KX5-cx-QLr">
@@ -3134,7 +3417,7 @@
                                                         <rect key="frame" x="0.0" y="3" width="107.5" height="187"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FPB-P6-1Eb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="107.5" height="187"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="108" height="187"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tys-y0-A2q">
@@ -3239,7 +3522,7 @@
                                                         <rect key="frame" x="0.0" y="1.5" width="107.5" height="187"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="107.5" height="187"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="108" height="187"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hRI-YI-adn">
@@ -6508,7 +6791,7 @@
                                     <constraint firstItem="n8z-Ha-LhB" firstAttribute="leading" secondItem="AK5-tT-SDa" secondAttribute="leading" id="adH-OI-Kuy"/>
                                     <constraint firstItem="n8z-Ha-LhB" firstAttribute="top" secondItem="AK5-tT-SDa" secondAttribute="top" id="bM4-Ak-4HD"/>
                                     <constraint firstAttribute="trailing" secondItem="n8z-Ha-LhB" secondAttribute="trailing" id="gzx-of-9ld"/>
-                                    <constraint firstAttribute="bottom" secondItem="n8z-Ha-LhB" secondAttribute="bottom" constant="69" id="scO-6m-7de"/>
+                                    <constraint firstAttribute="bottom" secondItem="n8z-Ha-LhB" secondAttribute="bottom" id="scO-6m-7de"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="klz-bb-Cfw"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="9Mo-KY-Wsb"/>
