@@ -85,8 +85,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func changeLanguage(str: String){
-        ButtonChat.titleLabel?.text = "SELL".localized(lang: str)
-    
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
+
         ProductLabel.text = "Products".localized(lang: str)
         SoldLabel.text = "Sold".localized(lang: str)
     }
@@ -252,6 +254,13 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ButtonView.layer.borderWidth = 0.5
         cell.layer.borderWidth = 0.2
         cell.layer.cornerRadius = 5
+        
+        if(lang == "ms"){
+                   cell.ButtonView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
+               }else{
+                   cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
+               }
+
         return cell
     }
     
@@ -330,7 +339,13 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
                             self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                            self.spinner.textLabel.text = "Added to My Likes"
+                            if(self.lang == "ms"){
+                                self.spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
+                                
+                            }else{
+                                self.spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
+                               
+                            }
                             self.spinner.show(in: self.view)
                             self.spinner.dismiss(afterDelay: 2.0)
                         }
@@ -370,7 +385,14 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                             let jsonData = result as! NSDictionary
                             print(jsonData.value(forKey: "message")!)
                             self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                            self.spinner.textLabel.text = "Added to Cart"
+                            if(self.lang == "ms"){
+                                self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                                
+                            }else{
+                                self.spinner.textLabel.text = "Added to Cart".localized(lang: "en")
+                               
+                            }
+
                             self.spinner.show(in: self.view)
                             self.spinner.dismiss(afterDelay: 2.0)
                         }

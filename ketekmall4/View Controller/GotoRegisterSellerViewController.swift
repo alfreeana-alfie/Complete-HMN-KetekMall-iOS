@@ -38,9 +38,11 @@ class GotoRegisterSellerViewController: UIViewController, UITabBarDelegate {
     
     func changeLanguage(str: String){
         ButtonSeller.setTitle("BECOME A SELLER TODAY!".localized(lang: str), for: .normal)
-//        ButtonSeller.titleLabel?.text = "BECOME A SELLER TODAY!".localized(lang: str)
         BeforeLabel.text = "You need to register as KetekMall Seller".localized(lang: str)
         YouNeedLabel.text = "Before you can start selling your product, ".localized(lang: str)
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
     }
 
     

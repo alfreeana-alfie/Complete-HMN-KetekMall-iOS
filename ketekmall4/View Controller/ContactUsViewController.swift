@@ -13,6 +13,10 @@ class ContactUsViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var Tabbar: UITabBar!
     var viewController1: UIViewController?
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
@@ -46,16 +50,24 @@ class ContactUsViewController: UIViewController, UITabBarDelegate {
         }
     }
     
-    func presentMethod(storyBoardName: String, storyBoardID: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
-        self.definesPresentationContext = true
-        self.present(newViewController, animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
 
         Tabbar.delegate = self
     }
+    
+    func changeLanguage(str: String){
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
+    }
+
 }

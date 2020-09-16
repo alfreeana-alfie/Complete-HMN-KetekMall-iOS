@@ -40,10 +40,9 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     var DIVISION: [String] = []
     var RATING: [String] = []
     var DELIVERY_STATUS: [String] = []
-    //        var ADDETAIL: String = ""
-    //        var PRICE: String = ""
-    //        var PHOTO: String = ""
-    //        var DISTRICT: [String] = []
+    
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,6 +165,16 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             let f = CGFloat(truncating: n)
             cell.Rating.value = f
         }
+        
+        if(lang == "ms"){
+            cell.Btn_Edit.setTitle("Edit".localized(lang: "ms"), for: .normal)
+            cell.Btn_Cancel.setTitle("Delete".localized(lang: "ms"), for: .normal)
+            
+        }else{
+            cell.Btn_Edit.setTitle("Edit".localized(lang: "en"), for: .normal)
+            cell.Btn_Cancel.setTitle("Delete".localized(lang: "en"), for: .normal)
+        }
+
         cell.layer.cornerRadius = 5
         cell.layer.borderWidth = 0.3
         cell.delegate = self

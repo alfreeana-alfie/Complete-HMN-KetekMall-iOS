@@ -21,12 +21,25 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
     var DAYS: [String] = []
     var PRICE: [String] = []
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
+
     @IBOutlet weak var DeliveryView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
     var viewController1: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
+
         DeliveryView.delegate = self
         DeliveryView.dataSource = self
         
@@ -34,6 +47,13 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
         
         DeliveryList()
     }
+    
+    func changeLanguage(str: String){
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
+    }
+
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {

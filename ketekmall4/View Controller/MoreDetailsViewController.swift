@@ -63,6 +63,10 @@ class MoreDetailsViewController: UIViewController, UITabBarDelegate {
         
         ShipFromLabel.text = "SHIPS FROM".localized(lang: str)
         DescriptionLabel.text = "DESCRIPTION".localized(lang: str)
+        
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

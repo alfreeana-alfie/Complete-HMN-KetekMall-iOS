@@ -75,8 +75,11 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func changeLanguage(str: String){
         ButtonCheckout.setTitle("Checkout".localized(lang: str), for: .normal)
-//        ButtonCheckout.titleLabel?.text = "Checkout".localized(lang: str)
         Total.text = "Total".localized(lang: str)
+        
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -110,13 +113,6 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         default:
             break
         }
-    }
-    
-    func presentMethod(storyBoardName: String, storyBoardID: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
-        self.definesPresentationContext = true
-        self.present(newViewController, animated: true, completion: nil)
     }
 
     
@@ -220,6 +216,16 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.CheckBOx.borderStyle = .circle
         cell.CheckBOx.layer.cornerRadius = 5
         cell.SubTotal.text! = self.PRICE[indexPath.row]
+        
+        if(lang == "ms"){
+            cell.SubLabel.text = "SubTotal".localized(lang: "ms")
+            cell.QuantityLabel.text = "Quantity".localized(lang: "ms")
+        }else{
+            cell.SubLabel.text = "SubTotal".localized(lang: "en")
+            cell.QuantityLabel.text = "Quantity".localized(lang: "en")
+        }
+
+
         
         cell.CheckBOx.valueChanged = { (isChecked) in
             if(isChecked == false){

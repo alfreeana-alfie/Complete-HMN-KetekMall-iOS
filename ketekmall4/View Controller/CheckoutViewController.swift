@@ -19,6 +19,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var GrandTotal: UILabel!
     @IBOutlet weak var CartView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
+    @IBOutlet weak var ButtonPlaceOrder: UIButton!
+    @IBOutlet weak var TotalLabel: UILabel!
+    @IBOutlet weak var DeliveryAddressLabel: UILabel!
     var added = Set<String>()
     
     var viewController1: UIViewController?
@@ -88,10 +91,18 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_SEND_EMAILSELLER = "https://ketekmall.com/ketekmall/sendEmail_seller.php"
     
     let sharedPref = UserDefaults.standard
+    var lang: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         userID = sharedPref.string(forKey: "USERID") ?? "0"
         
         print("userid" + userID)
@@ -244,6 +255,15 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    func changeLanguage(str: String){
+        TotalLabel.text = "Total".localized(lang: str)
+        DeliveryAddressLabel.text = "Delivery Address".localized(lang: str)
+        ButtonPlaceOrder.setTitle("Place".localized(lang: str), for: .normal)
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
+    }
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
@@ -275,13 +295,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         default:
             break
         }
-    }
-    
-    func presentMethod(storyBoardName: String, storyBoardID: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
-        self.definesPresentationContext = true
-        self.present(newViewController, animated: true, completion: nil)
     }
 
     

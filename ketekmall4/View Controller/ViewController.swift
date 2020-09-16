@@ -134,6 +134,10 @@ class ViewController: UIViewController, UITabBarDelegate {
             verify.text = "BUYER".localized(lang: str)
         }
         
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
+        
         Segment.setTitle("My Buying".localized(lang: str), forSegmentAt: 0)
         Segment.setTitle("My Selling".localized(lang: str), forSegmentAt: 1)
     }

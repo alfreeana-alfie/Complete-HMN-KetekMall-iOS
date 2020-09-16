@@ -58,11 +58,24 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var BarHidden: Bool = false
     @IBOutlet weak var BarHeight: NSLayoutConstraint!
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         MyBuyingView.delegate = self
         MyBuyingView.dataSource = self
         Tabbar.delegate = self
+        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
+
         
         if(BarHidden == true){
             Tabbar.isHidden = true
@@ -155,6 +168,13 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
             break
         }
     }
+    
+    func changeLanguage(str: String){
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return OrderID.count
@@ -273,7 +293,14 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 print("SUCCESS")
                                 self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                                self.spinner.textLabel.text = "Successfully Reject"
+                                if(self.lang == "ms"){
+                                    self.spinner.textLabel.text = "Successfully Reject".localized(lang: "ms")
+                                    
+                                }else{
+                                    self.spinner.textLabel.text = "Successfully Reject".localized(lang: "en")
+                                   
+                                }
+
                                 self.spinner.show(in: self.view)
                                 self.spinner.dismiss(afterDelay: 4.0)
                                 self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)

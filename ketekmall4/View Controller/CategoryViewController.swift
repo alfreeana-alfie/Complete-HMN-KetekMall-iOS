@@ -146,9 +146,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func changeLanguage(str: String){
         SearchBar.placeholder = "Search Here".localized(lang: str)
-//        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
-//        ButtonPriceUp.titleLabel?.text = "PRICE".localized(lang: str)
-//        ButtonFilter.titleLabel?.text = "FILTER".localized(lang: str)
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
         
         ButtonPriceUp.setTitle("PRICE".localized(lang: str), for: .normal)
         ButtonPriceDown.setTitle("PRICE".localized(lang: str), for: .normal)
@@ -186,7 +186,14 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                     if let result = response.result.value {
                         let jsonData = result as! NSDictionary
                         self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        self.spinner.textLabel.text = "Added to My Likes"
+                        if(self.lang == "ms"){
+                            self.spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
+                            
+                        }else{
+                            self.spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
+                           
+                        }
+
                         self.spinner.show(in: self.view)
                         self.spinner.dismiss(afterDelay: 4.0)
                         
@@ -222,7 +229,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let jsonData = result as! NSDictionary
 //                        print(jsonData.value(forKey: "message")!)
                         self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        self.spinner.textLabel.text = "Added to Cart"
+                        if(self.lang == "ms"){
+                            self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                            
+                        }else{
+                            self.spinner.textLabel.text = "Added to Cart".localized(lang: "en")
+                           
+                        }
                         self.spinner.show(in: self.view)
                         self.spinner.dismiss(afterDelay: 4.0)
                         
@@ -251,6 +264,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.ButtonView.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 0.2
+            
+            if(lang == "ms"){
+                cell.ButtonView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
+            }else{
+                cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
+            }
+
             cell.delegate = self
             return cell
         }

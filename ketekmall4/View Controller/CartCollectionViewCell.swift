@@ -27,6 +27,8 @@ class CartCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var SubTotal: UILabel!
     @IBOutlet weak var ButtonDelete: UIButton!
     
+    @IBOutlet weak var SubLabel: UILabel!
+    @IBOutlet weak var QuantityLabel: UILabel!
     
     @IBAction func Delete(_ sender: Any) {
         self.delegate?.onDeleteClick(cell: self)

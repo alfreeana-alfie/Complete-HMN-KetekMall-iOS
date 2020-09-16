@@ -39,7 +39,7 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     }
     
     func changeLanguage(str: String){
-        ButtonShopping.titleLabel?.text = "Continue Shopping".localized(lang: str)
+        ButtonShopping.setTitle("Continue Shopping".localized(lang: str), for: .normal)
         ContinueLabel.text = "Continue Shopping".localized(lang: str)
     }
 

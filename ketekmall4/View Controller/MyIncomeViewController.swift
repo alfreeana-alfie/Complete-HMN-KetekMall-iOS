@@ -190,7 +190,17 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         print(self.grand_total[indexPath.row])
         cell.GrandTotal.text! = self.grand_total[indexPath.row]
         cell.Status.text! = self.item_status[indexPath.row]
-        
+        if(lang == "ms"){
+            cell.DeliveryAddresslabel.text = "Delivery Address".localized(lang: "ms")
+            cell.DeliveryTimeLabel.text = "Delivery Time".localized(lang: "ms")
+            cell.ShippingTotalLabel.text = "Shipping Total".localized(lang: "ms")
+            cell.GrandTotalLabel.text = "Grand Total".localized(lang: "ms")
+        }else{
+            cell.DeliveryAddresslabel.text = "Delivery Address".localized(lang: "en")
+            cell.DeliveryTimeLabel.text = "Delivery Time".localized(lang: "en")
+            cell.ShippingTotalLabel.text = "Shipping Total".localized(lang: "en")
+            cell.GrandTotalLabel.text = "Grand Total".localized(lang: "en")
+        }
         return cell
     }
 }

@@ -226,7 +226,7 @@ class ViewSellingViewController: UIViewController {
     
     func changeLanguage(str: String){
         ButtonSubmit.titleLabel?.text = "SUBMIT".localized(lang: str)
-        ButtonCancel.titleLabel?.text = "HANTAR".localized(lang: str)
+        ButtonCancel.titleLabel?.text = "Cancel".localized(lang: str)
     }
     
     func getUserDetails(){

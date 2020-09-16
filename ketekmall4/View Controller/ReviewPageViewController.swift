@@ -17,7 +17,9 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     
     private let spinner = JGProgressHUD(style: .dark)
-    
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     var itemID = ""
     var USERID = ""
     var ORDERID: String = ""
@@ -33,6 +35,17 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     var SELLERID: String = ""
     var STATUS: String = ""
     var viewController1: UIViewController?
+    
+    @IBOutlet weak var OrderLable: UILabel!
+    @IBOutlet weak var TrackingLabel: UILabel!
+    @IBOutlet weak var ClickLabel: UILabel!
+    @IBOutlet weak var ShippedLabel: UILabel!
+    @IBOutlet weak var DateLabel: UILabel!
+    @IBOutlet weak var DateReceivedLabel: UILabel!
+    @IBOutlet weak var SubTotalLabel: UILabel!
+    @IBOutlet weak var ShippingTotalLabel: UILabel!
+    @IBOutlet weak var GrandTotalLabel: UILabel!
+    
     
     @IBOutlet weak var Ordered: UILabel!
     @IBOutlet weak var Pending: UILabel!
@@ -142,7 +155,6 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-//                        let user = jsonData.value(forKey: "read") as! NSArray
                         print("SENT")
                     }
                 }
@@ -277,6 +289,24 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         }
         
     }
+    
+    func changeLanguage(str: String){
+        OrderLable.text = "Order".localized(lang: str)
+        TrackingLabel.text = "Tracking No".localized(lang: str)
+        ClickLabel.text = "Click".localized(lang: str)
+        ShippedLabel.text = "Shipped to".localized(lang: str)
+        DateLabel.text = "Date Order".localized(lang: str)
+        DateReceivedLabel.text = "Date Received".localized(lang: str)
+        ButtonReceived.setTitle("Received".localized(lang: str), for: .normal)
+        SubTotalLabel.text = "SubTotal".localized(lang: str)
+        ShippingTotalLabel.text = "Shipping Total".localized(lang: str)
+        GrandTotalLabel.text = "Grand Total".localized(lang: str)
+        
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
+    }
+
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {

@@ -29,9 +29,13 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     var ItemPhoto: [String] = []
     var RATING: [String] = []
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+
         MyLikesView.delegate = self
         MyLikesView.dataSource = self
         
@@ -111,6 +115,15 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.BtnView.layer.cornerRadius = 5
         cell.BtnRemove.layer.cornerRadius = 5
         
+        if(self.lang == "ms"){
+            cell.BtnView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
+            cell.BtnRemove.setTitle("REMOVE".localized(lang: "ms"), for: .normal)
+
+        }else{
+            cell.BtnView.setTitle("VIEW".localized(lang: "en"), for: .normal)
+            cell.BtnRemove.setTitle("REMOVE".localized(lang: "en"), for: .normal)
+        }
+        
         if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
             let f = CGFloat(truncating: n)
             cell.RatingBar.value = f
@@ -149,15 +162,21 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
                 Alamofire.request(URL_DELETE, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-                        //printing response
-        //                print(response)
-                        
-                        //getting the json value from the server
                         if let result = response.result.value{
                             let jsonData = result as! NSDictionary
                             
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 print("SUCCESS")
+                                if(self.lang == "ms"){
+                                    self.spinner.textLabel.text = "Successfully Remove".localized(lang: "ms")
+                                    
+                                }else{
+                                    self.spinner.textLabel.text = "Successfully Remove".localized(lang: "en")
+                                   
+                                }
+
+                                self.spinner.show(in: self.view)
+                                self.spinner.dismiss(afterDelay: 4.0)
                             }
                         }
                 }

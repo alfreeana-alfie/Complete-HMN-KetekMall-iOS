@@ -23,6 +23,10 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     var RATING: [String] = []
     var USERNAME: [String] = []
     var REVIEW: [String] = []
+    
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
 
     @IBOutlet weak var ReviewView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
@@ -30,6 +34,14 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
 
         Tabbar.delegate = self
         
@@ -68,6 +80,12 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
                 
         }
+    }
+    
+    func changeLanguage(str: String){
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

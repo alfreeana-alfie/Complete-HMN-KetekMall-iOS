@@ -433,9 +433,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func changeLanguage(str: String){
         SellButton.setTitle("SELL".localized(lang: str), for: .normal)
-//        SellButton.titleLabel?.text = "SELL".localized(lang: str)
         FindButton.setTitle("FIND".localized(lang: str), for: .normal)
-//        FindButton.titleLabel?.text = "FIND".localized(lang: str)
         WelcomeLabel.text = "Welcome!".localized(lang: str)
         BuyLabel.text = "BUY. SELL. FIND. ALMOST EVERYTHING".localized(lang: str)
         Verify.text = "VERIFICATION".localized(lang: str)
@@ -452,10 +450,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ViewAllHot.setTitle("VIEW ALL".localized(lang: str), for: .normal)
         ViewAllButton.setTitle("VIEW ALL".localized(lang: str), for: .normal)
         ViewAllShocking.setTitle("VIEW ALL".localized(lang: str), for: .normal)
-//        ViewAllHot.titleLabel?.text = "VIEW ALL".localized(lang: str)
-//        ViewAllButton.titleLabel?.text = "VIEW ALL".localized(lang: str)
-//        ViewAllShocking.titleLabel?.text = "VIEW ALL".localized(lang: str)
-//
+
         ButtonCake.setTitle("Cake and pastries".localized(lang: str), for: .normal)
         ButtonAgri.setTitle("Agriculture".localized(lang: str), for: .normal)
         ButtonHome.setTitle("Home and living".localized(lang: str), for: .normal)
@@ -467,19 +462,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ButtonSarawak2.setTitle("Products".localized(lang: str), for: .normal)
         ButtonService.setTitle("Service".localized(lang: str), for: .normal)
         ButtonHandicraft.setTitle("Handicraft".localized(lang: str), for: .normal)
-        
-//        ButtonCake.titleLabel?.text = "Cake and pastries".localized(lang: str)
-//        ButtonAgri.titleLabel?.text = "Agriculture".localized(lang: str)
-//        ButtonHome.titleLabel?.text = "Home and living".localized(lang: str)
-//        ButtonHealth.titleLabel?.text = "Health and Beauty".localized(lang: str)
-//        ButtonRetail.titleLabel?.text = "Retail and Wholesale".localized(lang: str)
-//        ButtonFashion.titleLabel?.text = "Fashion Accessories".localized(lang: str)
-//        ButtonProcess.titleLabel?.text = "Process Food".localized(lang: str)
-//        ButtonSarawak.titleLabel?.text = "Sarawak - Based".localized(lang: str)
-//        ButtonSarawak2.titleLabel?.text = "Products".localized(lang: str)
-//        ButtonService.titleLabel?.text = "Service".localized(lang: str)
-//        ButtonHandicraft.titleLabel?.text = "Handicraft".localized(lang: str)
-        
+    
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
     }
     
     @objc func onCartBarClick(sender: Any){

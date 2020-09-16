@@ -226,13 +226,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-ME-jFX">
-                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
                                 <connections>
                                     <segue destination="OYT-hA-KkS" kind="embed" id="z3u-lg-KnN"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c18-e5-vkT">
-                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
                                 <connections>
                                     <segue destination="NYb-Qg-Vgc" kind="embed" id="BF5-o4-KeI"/>
                                 </connections>
@@ -284,7 +284,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRX-RP-FXh">
-                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Dgz-t3-Bg4"/>
@@ -804,7 +804,7 @@
                                 <viewLayoutGuide key="safeArea" id="b4j-ne-VzS"/>
                             </stackView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCP-7f-PPn">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="4et-58-wCJ"/>
@@ -935,7 +935,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPq-y4-lnB">
-                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="QdI-X0-oAq"/>
@@ -997,10 +997,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRp-ni-rd5" userLabel="Checkout">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="691"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-hp-6ha">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zXJ-fq-8ca">
                                             <size key="itemSize" width="412" height="198"/>
@@ -1162,26 +1162,28 @@
                                                     <outlet property="ItemImage" destination="OOV-Zx-uNl" id="HXA-fZ-seb"/>
                                                     <outlet property="ItemPrice" destination="Qu1-Id-oDu" id="FdW-2z-thd"/>
                                                     <outlet property="Quantity" destination="3c5-OZ-RzJ" id="zoQ-G2-l0l"/>
+                                                    <outlet property="QuantityLabel" destination="Flu-R3-ZX9" id="7hP-No-p0O"/>
                                                     <outlet property="Stepper" destination="UWb-0d-GXK" id="BDv-9h-CZi"/>
+                                                    <outlet property="SubLabel" destination="aXw-jK-0U6" id="Pq9-WT-vYF"/>
                                                     <outlet property="SubTotal" destination="UjP-TO-pyT" id="Ahz-Cr-67U"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-6h-LJD">
-                                        <rect key="frame" x="45" y="667" width="27" height="15"/>
+                                        <rect key="frame" x="45" y="633" width="27" height="15"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MYR0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp0-f1-jOn">
-                                        <rect key="frame" x="45" y="690" width="71.5" height="21"/>
+                                        <rect key="frame" x="45" y="656" width="71.5" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-5i-LTX">
-                                        <rect key="frame" x="281" y="673" width="89" height="44"/>
+                                        <rect key="frame" x="281" y="639" width="89" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="CHECKOUT">
@@ -1211,7 +1213,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-L0-Wzt">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="3Gr-ft-J9K"/>
@@ -1565,10 +1567,13 @@
                     </view>
                     <connections>
                         <outlet property="Address" destination="pKL-yo-54C" id="Vmb-GD-VEs"/>
+                        <outlet property="ButtonPlaceOrder" destination="0hq-YF-M14" id="QzT-gn-ahf"/>
                         <outlet property="CartView" destination="j5s-3c-7WC" id="e0t-rf-p3D"/>
+                        <outlet property="DeliveryAddressLabel" destination="CTg-AU-T4b" id="YrP-HT-YCF"/>
                         <outlet property="GrandTotal" destination="jGi-3Y-uKc" id="hHz-7h-eQI"/>
                         <outlet property="NamePhone" destination="ckT-Ay-0Tg" id="4Wv-ZW-tas"/>
                         <outlet property="Tabbar" destination="zgN-J6-OSW" id="7GH-lS-jEW"/>
+                        <outlet property="TotalLabel" destination="Xs3-Cz-EkT" id="cxU-Rh-me7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbz-N2-TSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1910,7 +1915,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-kT-YKq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SN8-ky-bjb">
                                     <size key="itemSize" width="414" height="94"/>
@@ -1972,7 +1977,7 @@
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fW2-Ks-uXx">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Axj-KI-d72"/>
@@ -2011,7 +2016,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azU-ub-kF6">
-                                <rect key="frame" x="0.0" y="64" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="749"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAND MATERIAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXP-Hl-dkI">
                                         <rect key="frame" x="31" y="43" width="143" height="20"/>
@@ -2080,7 +2085,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSv-3A-5g8">
-                                        <rect key="frame" x="31" y="206" width="352" height="507"/>
+                                        <rect key="frame" x="31" y="206" width="352" height="541"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2125,7 +2130,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-cz-hi7">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="b52-gL-Sy1"/>
@@ -2454,7 +2459,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Uk-hB-D8w">
-                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IhH-FC-IUq">
                                     <size key="itemSize" width="375" height="109"/>
@@ -2534,7 +2539,7 @@
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ryd-Hq-eUg">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="A46-J3-ciE"/>
@@ -2726,7 +2731,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-jF-ICD">
-                                <rect key="frame" x="0.0" y="263" width="414" height="418"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="501"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP9-CD-EMd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="919"/>
@@ -3098,7 +3103,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShockingSaleCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-vR-JQH" customClass="ShockingSaleCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="ShockingSaleCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-vR-JQH" customClass="ShockingSaleCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="3" width="107.5" height="187"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FPB-P6-1Eb">
@@ -3203,7 +3208,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1.5" width="107.5" height="187"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
@@ -3389,7 +3394,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="KLQ-aM-B1k"/>
                             </scrollView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-uF-d9x">
-                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="rnh-As-6pA"/>
@@ -3624,7 +3629,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8j1-qH-y47">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="00g-Mj-OpT"/>
@@ -5375,13 +5380,17 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="DeliveryAddress" destination="hdU-Yp-qSV" id="G8w-nE-3Tf"/>
+                                            <outlet property="DeliveryAddresslabel" destination="27o-Sx-fQi" id="Md7-ef-cPA"/>
                                             <outlet property="DeliveryPrice" destination="VSh-Tw-h32" id="jQc-KU-jXd"/>
                                             <outlet property="DeliveryTime" destination="pKy-i1-5pB" id="AJp-Fq-LGn"/>
+                                            <outlet property="DeliveryTimeLabel" destination="OTO-2E-m2b" id="MgS-ZW-1VL"/>
                                             <outlet property="GrandTotal" destination="ZJ9-JN-itr" id="Kqt-4F-jGr"/>
+                                            <outlet property="GrandTotalLabel" destination="etw-X5-mjz" id="gGq-St-gEP"/>
                                             <outlet property="ItemImage" destination="wRP-qq-UtL" id="doe-2x-55T"/>
                                             <outlet property="ItemName" destination="vrl-xW-iNo" id="1Cw-H3-Trb"/>
                                             <outlet property="Price" destination="Yap-1a-It2" id="3Cj-5i-IKH"/>
                                             <outlet property="Quantity" destination="9a8-gs-vZn" id="XDi-KR-6wl"/>
+                                            <outlet property="ShippingTotalLabel" destination="Xo0-eV-wAM" id="hiU-Mj-0hI"/>
                                             <outlet property="Status" destination="dEs-9g-neX" id="5fJ-oj-e41"/>
                                         </connections>
                                     </collectionViewCell>
@@ -5902,7 +5911,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="BoostView" destination="7Qe-FH-cSr" id="4Vx-MP-43G"/>
-                        <outlet property="FlowLayout" destination="NWQ-dG-bpK" id="c8Z-DW-GC2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLA-Rz-ZcK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -6520,16 +6528,21 @@
                     <connections>
                         <outlet property="BarHeight" destination="qSn-po-RXI" id="1RM-ye-YR8"/>
                         <outlet property="ButtonReceived" destination="6Ox-25-Ph1" id="yU9-zM-3tD"/>
+                        <outlet property="ClickLabel" destination="H2e-EI-3Ix" id="9Is-Sn-w9a"/>
+                        <outlet property="DateLabel" destination="EVn-aU-f8y" id="fQI-WU-rSH"/>
                         <outlet property="DateOrder" destination="w3X-lS-Pdl" id="fd6-hf-zpp"/>
                         <outlet property="DateReceived" destination="vIE-oa-6wZ" id="pvf-Xm-HSL"/>
+                        <outlet property="DateReceivedLabel" destination="YEn-d7-5W0" id="Box-26-Z9N"/>
                         <outlet property="Finished" destination="1tb-e6-IHD" id="CsY-F0-NrS"/>
                         <outlet property="FinishedHeight" destination="cei-2R-xQ4" id="soH-XN-eGR"/>
                         <outlet property="GrandTotal" destination="qal-vo-uyW" id="yij-r8-IJT"/>
+                        <outlet property="GrandTotalLabel" destination="mvN-QO-xjs" id="lwb-y7-5Yn"/>
                         <outlet property="ItemImage" destination="dzW-eG-Ohd" id="7cm-V5-bAZ"/>
                         <outlet property="ItemName" destination="XWV-HA-osd" id="FeB-Fw-zqb"/>
                         <outlet property="ItemPrice" destination="dxc-Tb-C0X" id="qbm-jY-bbY"/>
                         <outlet property="ItemQuantity" destination="l7Q-94-V16" id="QcJ-oW-sHM"/>
                         <outlet property="OrderID" destination="g0d-ev-gtx" id="hWw-fP-5qu"/>
+                        <outlet property="OrderLable" destination="bvj-2S-7yc" id="5H6-3m-9U8"/>
                         <outlet property="Ordered" destination="YfG-cy-iub" id="i4Z-9Z-hJi"/>
                         <outlet property="Ordered_Black" destination="nvx-nX-QPQ" id="4pK-Du-fBB"/>
                         <outlet property="Ordered_Green" destination="6mT-gG-x1k" id="AuG-t6-9mw"/>
@@ -6540,12 +6553,16 @@
                         <outlet property="Received_Black" destination="XbF-y3-mTI" id="hns-Cu-psF"/>
                         <outlet property="Received_Green" destination="2yI-Lv-gZg" id="QdZ-DM-nsl"/>
                         <outlet property="Shipped" destination="y7N-5H-0uy" id="Ibj-Cl-ZNO"/>
+                        <outlet property="ShippedLabel" destination="hwQ-OT-i4V" id="7QP-yO-udh"/>
                         <outlet property="ShippedTo" destination="OsF-lL-9dc" id="VcW-bc-qdg"/>
                         <outlet property="Shipped_Black" destination="Qwp-JP-ben" id="NHQ-jT-VEI"/>
                         <outlet property="Shipped_Green" destination="Tuy-jf-Sb7" id="udX-zH-VQC"/>
                         <outlet property="ShippingTotal" destination="kWd-NC-un2" id="cUw-F2-aAW"/>
+                        <outlet property="ShippingTotalLabel" destination="qHQ-Zx-U4e" id="GOi-Eq-Ib2"/>
                         <outlet property="SubTotal" destination="DWy-kg-G1K" id="81f-xV-tzt"/>
+                        <outlet property="SubTotalLabel" destination="7fq-ke-jVq" id="VEw-Hh-ydQ"/>
                         <outlet property="Tabbar" destination="KNZ-39-bJP" id="F4L-o6-87I"/>
+                        <outlet property="TrackingLabel" destination="AUD-4s-zRL" id="pze-cY-3ef"/>
                         <outlet property="TrackingNo" destination="2qX-tz-e7W" id="wDt-M0-3bJ"/>
                     </connections>
                 </viewController>
@@ -7763,7 +7780,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyRatingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="f17-Re-pjD" customClass="MyRatingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="MyRatingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="f17-Re-pjD" customClass="MyRatingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
                                         <rect key="frame" x="19" y="0.0" width="376" height="172"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yIS-2U-Iu5">
@@ -8509,7 +8526,7 @@
             <objects>
                 <viewController storyboardIdentifier="BuyerViewController" id="8Jq-av-GqR" customClass="BuyerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l1L-Se-ab4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ld-Uj-BrC" userLabel="My Likes">
@@ -8749,7 +8766,7 @@
             <objects>
                 <viewController storyboardIdentifier="SellerViewController" id="kbR-Lc-sXr" customClass="SellerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tbf-gN-Jb4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-7D-YuY">

@@ -33,11 +33,17 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     var customer_id: [String] = []
     var tracking_no: [String] = []
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     var userID: String = ""
     var CustEmail: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        
+
         MySellingView.delegate = self
         MySellingView.dataSource = self
         
@@ -180,7 +186,13 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.ButtonView.layer.cornerRadius = 7
         cell.ButtonReject.layer.cornerRadius = 7
-        
+        if(lang == "ms"){
+            cell.ButtonView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
+            cell.ButtonReject.setTitle("REJECT".localized(lang: "ms"), for: .normal)
+        }else{
+            cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
+            cell.ButtonReject.setTitle("REJECT".localized(lang: "en"), for: .normal)
+        }
         cell.delegate = self
         return cell
     }

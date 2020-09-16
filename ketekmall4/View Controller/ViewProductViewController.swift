@@ -167,6 +167,12 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         ViewReview.text = "View".localized(lang: str)
         FromSameShopLabel.text = "From the Same Shop".localized(lang: str)
         ViewSameShop.text = "View".localized(lang: str)
+        ButtonAddCart.setTitle("Add to Cart".localized(lang: str), for: .normal)
+        
+        
+        Tabbar.items?[0].title = "Home".localized(lang: str)
+        Tabbar.items?[1].title = "Notification".localized(lang: str)
+        Tabbar.items?[2].title = "Me".localized(lang: str)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -200,13 +206,6 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         default:
             break
         }
-    }
-    
-    func presentMethod(storyBoardName: String, storyBoardID: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
-        self.definesPresentationContext = true
-        self.present(newViewController, animated: true, completion: nil)
     }
     
     func getSellerDetails(){
@@ -527,6 +526,13 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FromSameShopCollectionViewCell", for: indexPath) as! FromSameShopCollectionViewCell
         
+        if(lang == "ms"){
+            cell.ButtonView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
+        }else{
+            cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
+        }
+
+        
         if let n = NumberFormatter().number(from: self.RATING_SAMESHOP[indexPath.row]) {
                     let f = CGFloat(truncating: n)
                     cell.Rating.value = f
@@ -590,6 +596,14 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     let jsonData = result as! NSDictionary
                     self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                     self.spinner.textLabel.text = "Added to Cart"
+                    if(self.lang == "ms"){
+                        self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                        
+                    }else{
+                        self.spinner.textLabel.text = "Added to Cart"
+                       
+                    }
+
                     self.spinner.show(in: self.view)
                     self.spinner.dismiss(afterDelay: 4.0)
                     print(jsonData.value(forKey: "message")!)

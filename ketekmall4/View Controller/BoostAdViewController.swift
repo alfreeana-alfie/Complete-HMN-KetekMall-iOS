@@ -13,11 +13,7 @@ import JGProgressHUD
 class BoostAdViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, BoostAdDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var BoostView: UICollectionView!
-    @IBOutlet weak var FlowLayout: UICollectionViewFlowLayout!{
-    didSet{
-        FlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-    }
-    }
+    
     
     private let spinner = JGProgressHUD(style: .dark)
     var userID: String = ""
@@ -30,6 +26,9 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
     var item_price: [String] = []
     var item_shocking: [String] = []
     var item_id: [String] = []
+    
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +117,12 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.ShockingSale.textColor = .red
         }
         
+        if(lang == "ms"){
+            cell.ButtonCancel.setTitle("Cancel".localized(lang: "ms"), for: .normal)
+        }else{
+            cell.ButtonCancel.setTitle("Cancel".localized(lang: "en"), for: .normal)
+        }
+        
         return cell
     }
     
@@ -144,6 +149,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                                 self.spinner.textLabel.text = "Success"
                                 self.spinner.show(in: self.view)
                                 self.spinner.dismiss(afterDelay: 4.0)
+                                self.BoostView.deleteItems(at: [indexPath])
                             }
                         }else{
                             self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()

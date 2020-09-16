@@ -31,9 +31,20 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single.php"
     let URL_DELETE_DELIVERY = "https://ketekmall.com/ketekmall/delete_delivery_two.php"
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
+
         DeliveryView.delegate = self
         DeliveryView.dataSource = self
         
@@ -79,6 +90,13 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         }
     }
     
+    func changeLanguage(str: String){
+        ButtonAdd.setTitle("ADD".localized(lang: str), for: .normal)
+        ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
+        ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
+    }
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ID.count
     }
@@ -114,6 +132,13 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         cell.EditButton.layer.cornerRadius = 5
         cell.DeleteButton.layer.cornerRadius = 5
         
+        if(lang == "ms"){
+            cell.EditButton.setTitle("Edit".localized(lang: "ms"), for: .normal)
+            cell.DeleteButton.setTitle("Delete".localized(lang: "ms"), for: .normal)
+        }else{
+            cell.EditButton.setTitle("Edit".localized(lang: "en"), for: .normal)
+            cell.DeleteButton.setTitle("Delete".localized(lang: "en"), for: .normal)
+        }
         cell.delegate = self
         return cell
     }

@@ -117,15 +117,23 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     func changeLanguage(str: String){
         CategoryLabel.text = "Category".localized(lang: str)
         AdDetailLabel.text = "Ad Detail".localized(lang: str)
-//        BrandLabel.text = "Brand Material".localized(lang: str)
-//        InnerLabel.text = "Inner Material".localized(lang: str)
-//        StockLabel.text = "Stock".localized(lang: str)
         PriceLabel.text = "Price".localized(lang: str)
         DivisionLabel.text = "Division".localized(lang: str)
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
-        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
-        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
+        UploadedPhotoLabel.text = "Upload Image".localized(lang: str)
+        Category.placeholder = "Category".localized(lang: str)
+        ButtonAdDetail.setTitle("Ad Detail".localized(lang: str), for: .normal)
+        UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
+        Price.placeholder = "Price".localized(lang: str)
+        Division.placeholder = "Division".localized(lang: str)
+        District.placeholder = "District".localized(lang: str)
+        MaxOrder.placeholder = "Max Order".localized(lang: str)
+        
+        ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
+        ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
+//        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+//        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
     }
 
     

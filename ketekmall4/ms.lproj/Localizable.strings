@@ -26,7 +26,8 @@
 "Division" = "Bahagian";
 "District" = "Daerah";
 "Apply" = "Terima";
-"Cancel" = "Balik";
+"Cancel" = "Batal";
+"CANCEL" = "Batal";
 
 "Home" = "Rumah";
 "Notification" = "Notifikasi";
@@ -62,7 +63,9 @@
 
 "Checkout" = "Keluar";
 "Total" = "Jumlah";
-
+"ADD" = "Tambah";
+"Edit" = "Ubah";
+"Delete" = "Buang";
 "Continue Shopping" = "Terus Membeli-Belah";
 
 "My Buying" = "Pembelian Saya";
@@ -115,3 +118,26 @@
 "Agriculture" = "Pertanian";
 "Fashion Accessories" = "Perhiasan Fesyen";
 "Sarawak - Based" = "Sarawak - Berasas";
+
+"Add to Cart" = "Masukkan ke Troli";
+"Added to Cart" = "Masukkan ke Troli";
+"Added to My Likes" = "Masukkan ke Kesukaan Saya";
+
+"SubTotal" = "Jumlah Sub";
+"Quantity" = "Kuantiti";
+"Place" = "Letak";
+
+"Delivery Address" = "Alamat Penghantaran";
+"Delivery Time" = "Tarikh Penghantaran";
+"Remove" = "Buang";
+"Successfully Remove" = "Berjaya Dibuang";
+"Successfully Reject" = "Berjaya Ditolak";
+
+"Order" = "Tempah";
+"Click" = "Sila Tekan No Penjejakan untuk lihat";
+"Shipped to" = "Dihantar ke";
+"Tracking No" = "No Penjejakan";
+"Date Order" = "Tarikh Tempahan";
+"Date Received" = "Tarikh Penerimaan";
+"Shipping Total" = "Kos Penghantaran";
+"Grand Total" = "Jumlah Semua";

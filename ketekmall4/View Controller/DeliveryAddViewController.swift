@@ -33,8 +33,19 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     var DivisionPicker = UIPickerView()
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         
         Division.text! = DIVISION
         Days.text! = DAYS
@@ -65,7 +76,21 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     if let result = response.result.value{
                         
                 
-                         self.spinner.dismiss(afterDelay: 3.0)
+                         if(self.lang == "ms"){
+                             self.spinner.textLabel.text = "Successfully Added".localized(lang: "ms")
+                             
+                         }else{
+                             self.spinner.textLabel.text = "Successfully Added".localized(lang: "en")
+                            
+                         }
+
+                         self.spinner.show(in: self.view)
+                         self.spinner.dismiss(afterDelay: 4.0)
+                        
+                        self.Division.text = ""
+                        self.Price.text = ""
+                        self.Days.text = ""
+                        
                         let parameters: Parameters=[
                             "id": self.ITEMID
                         ]
@@ -87,6 +112,13 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     
             }
         }
+    
+    func changeLanguage(str: String){
+        ButtonAdd.setTitle("Add to Cart".localized(lang: str), for: .normal)
+        
+        ButtonCancel.setTitle("Add to Cart".localized(lang: str), for: .normal)
+        
+    }
         
         @IBAction func Cancel(_ sender: Any) {
              _ = navigationController?.popViewController(animated: true)

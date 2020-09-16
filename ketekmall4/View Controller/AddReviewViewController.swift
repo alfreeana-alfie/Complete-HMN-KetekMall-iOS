@@ -29,9 +29,21 @@ class AddReviewViewController: UIViewController {
     var ITEMID: String = ""
     var RATING: String = ""
     
+    let sharedPref = UserDefaults.standard
+    var lang: String = ""
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
+
         getUserDetails()
         
         ButtonSubmit.layer.cornerRadius = 5
@@ -42,6 +54,12 @@ class AddReviewViewController: UIViewController {
         }
         
     }
+    
+    func changeLanguage(str: String){
+        ButtonSubmit.setTitle("SUBMIT".localized(lang: str), for: .normal)
+        ButtonCancel.setTitle("Cancel".localized(lang: str), for: .normal)
+    }
+
     
     func getUserDetails(){
         spinner.show(in: self.view)
