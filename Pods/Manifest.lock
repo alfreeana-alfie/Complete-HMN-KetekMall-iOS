@@ -33,12 +33,12 @@ PODS:
     - FBSDKLoginKit/Login (= 7.1.1)
   - FBSDKLoginKit/Login (7.1.1):
     - FBSDKCoreKit (~> 7.1.1)
-  - Firebase/CoreOnly (6.32.0):
+  - Firebase/CoreOnly (6.32.2):
     - FirebaseCore (= 6.10.2)
-  - Firebase/Database (6.32.0):
+  - Firebase/Database (6.32.2):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 6.6.0)
-  - Firebase/Messaging (6.32.0):
+  - Firebase/Messaging (6.32.2):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 4.6.2)
   - FirebaseCore (6.10.2):
@@ -105,10 +105,16 @@ PODS:
   - ImageSlideshow (1.9.1):
     - ImageSlideshow/Core (= 1.9.1)
   - ImageSlideshow/Core (1.9.1)
+  - ImageSlideshow/Kingfisher (1.9.1):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - InputBarAccessoryView (5.1.0):
     - InputBarAccessoryView/Core (= 5.1.0)
   - InputBarAccessoryView/Core (5.1.0)
   - JGProgressHUD (2.1)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
   - LanguageManager-iOS (1.2.0)
   - leveldb-library (1.22)
   - MessageInputBar (0.4.1):
@@ -138,7 +144,8 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Messaging
   - GoogleSignIn
-  - ImageSlideshow (~> 1.9.0)
+  - ImageSlideshow (~> 1.9.1)
+  - ImageSlideshow/Kingfisher
   - JGProgressHUD
   - LanguageManager-iOS
   - MessageInputBar
@@ -171,6 +178,7 @@ SPEC REPOS:
     - ImageSlideshow
     - InputBarAccessoryView
     - JGProgressHUD
+    - Kingfisher
     - LanguageManager-iOS
     - leveldb-library
     - MessageInputBar
@@ -190,7 +198,7 @@ SPEC CHECKSUMS:
   EasyNotificationBadge: afeb15ed6f9a4262d626a2b745297e96afa26c2e
   FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
   FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
-  Firebase: afa030f17f5421810f379a42b0e5d3302d27eb26
+  Firebase: 47176280bfba198e531f909cfb1612dad216cb96
   FirebaseCore: 1d697bb944bf2af5fc248f1a66e165c9dd88bf97
   FirebaseCoreDiagnostics: 7415bfb3883b3500c5a95c42b6ba66baae78f600
   FirebaseDatabase: 13a865a4b85897462b930eb683bda8f52583713f
@@ -205,6 +213,7 @@ SPEC CHECKSUMS:
   ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   LanguageManager-iOS: 516c4f088435c83cbdbddfc5179f88e4e0d39eb4
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
@@ -215,6 +224,6 @@ SPEC CHECKSUMS:
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: c5283254934531396e3d766c498284eb66f0a4be
+PODFILE CHECKSUM: 183b3aa83fac4eec04a3b6eb0bc5340814d9343c
 
 COCOAPODS: 1.9.3

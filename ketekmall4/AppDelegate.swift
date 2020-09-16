@@ -30,17 +30,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate  {
     }
     
     var window: UIWindow?
+    var indicator = UIActivityIndicatorView()
+    
+    func addIndicator(){
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50)) as UIActivityIndicatorView
+         //  indicator.hidesWhenStopped = true
+        indicator.style = UIActivityIndicatorView.Style.large
+        indicator.backgroundColor = .black
+        indicator.alpha = 1.00
+     }
+    
+     func showIndicator(){
+        //show the Indicator
+         indicator.startAnimating()
+         window?.addSubview(indicator)
 
+     }
+     
+     func hideIndicator(){
+         //Hide the Indicator
+         indicator.stopAnimating()
+         indicator.removeFromSuperview()
+     }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        LanguageManager.shared.defaultLanguage = .ms
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
+        
         window?.rootViewController = UINavigationController(rootViewController: UIViewController())
+
         
         let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         if(isUserLoggedIn) {
             let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
             let protectedPage = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+//            showIndicator()
             window!.rootViewController = protectedPage
             window!.makeKeyAndVisible()
         }

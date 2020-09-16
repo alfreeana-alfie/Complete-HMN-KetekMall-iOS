@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */; };
+		FB08436D25122196003C200E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08436C25122196003C200E /* LaunchScreenViewController.swift */; };
 		FB0B5B55250BDA84006B1BCC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB5049EB250609B50009DA8D /* GoogleService-Info.plist */; };
 		FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2883462509759E008B18BB /* ContactUsViewController.swift */; };
 		FB288356250994C3008B18BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB288354250994C2008B18BB /* Main.storyboard */; };
@@ -101,6 +102,7 @@
 		49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F0E03E474A0A5BC70F344 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
 		E98FF399E68D56229FABBE72 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
+		FB08436C25122196003C200E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		FB2883462509759E008B18BB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		FB28834F25097FE6008B18BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB288355250994C2008B18BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ketekmall4/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				FB5A491024F7F0E200F5464C /* Models */,
 				FB5A48EE24F7F07B00F5464C /* Info.plist */,
 				FBDDBB84250A1C1B0027BC90 /* Localizable.strings */,
+				FB08436C25122196003C200E /* LaunchScreenViewController.swift */,
 			);
 			path = ketekmall4;
 			sourceTree = "<group>";
@@ -368,8 +371,8 @@
 				FB5A48D924F7F06B00F5464C /* Sources */,
 				FB5A48DA24F7F06B00F5464C /* Frameworks */,
 				FB5A48DB24F7F06B00F5464C /* Resources */,
-				A461F97B2E390C7E6D93F21C /* [CP] Embed Pods Frameworks */,
-				AAB1A0EE66E12C82AF2D2458 /* [CP] Copy Pods Resources */,
+				387AB5F31DA005B16108775D /* [CP] Embed Pods Frameworks */,
+				C8E104915A42C73BD89AE8E2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -490,6 +493,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		387AB5F31DA005B16108775D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		46250FABF8BE6F869F5AB642 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,24 +532,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A461F97B2E390C7E6D93F21C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AAB1A0EE66E12C82AF2D2458 /* [CP] Copy Pods Resources */ = {
+		C8E104915A42C73BD89AE8E2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -595,6 +598,7 @@
 				FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */,
 				FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */,
 				FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */,
+				FB08436D25122196003C200E /* LaunchScreenViewController.swift in Sources */,
 				FB7787C124FE35CA00AB01F4 /* ReviewCollectionViewCell.swift in Sources */,
 				FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */,
 				FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */,
