@@ -46,13 +46,12 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
-        
-//        print(chatWith)
+
         sender = Sender(senderId: user, displayName: name)
         other_user = Sender(senderId: "4", displayName: "Nana")
         
-        messages.append(Message(sender: sender, messageId: "2", sentDate: Date(), kind: .text("Hellow World")))
-        messages.append(Message(sender: other_user, messageId: "3", sentDate: Date(), kind: .text("Hello World")))
+        messages.append(Message(sender: sender, messageId: randomString, sentDate: Date(), kind: .text("Hellow World")))
+        messages.append(Message(sender: other_user, messageId: randomString, sentDate: Date(), kind: .text("Hello World")))
         view.backgroundColor = .red
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -64,7 +63,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         guard !text.replacingOccurrences(of: " ", with: "").isEmpty else{
             return
         }
-        
+        messages.append(Message(sender: sender, messageId: randomString, sentDate: Date(), kind: .text(text)))
+        messagesCollectionView.reloadDataAndKeepOffset()
         print("SENDING: \(text)")
     }
 }
