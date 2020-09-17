@@ -127,7 +127,6 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                                             self.USERIMAGE.append(photo)
                                                             self.CHATWITH.append(String(newEmail2))
                                                             
-                                                            
                                                             print(self.USERIMAGE)
                                                             self.ChatView.reloadData()
                                                         }
@@ -145,12 +144,12 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return strings.count
+        return USERNAME.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
-        cell.UserName.text! = self.strings[indexPath.row]
+        cell.UserName.text! = self.USERNAME[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -159,9 +158,10 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.deselectRow(at: indexPath, animated: true)
         
         let vc = ChatViewController()
-        vc.title = self.strings[indexPath.row]
+        vc.title = self.USERNAME[indexPath.row]
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.chatWith = self.CHATWITH[indexPath.row]
+        vc.chatName = self.USERNAME[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }
