@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var BuyerView: UIView!
     @IBOutlet weak var SellerView: UIView!
     @IBOutlet weak var VerifyView: UIView!
+    @IBOutlet weak var CheckSellerView: UIView!
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php";
     @IBOutlet weak var userImage: UIImageView!
@@ -80,6 +81,7 @@ class ViewController: UIViewController, UITabBarDelegate {
                         self.username.text = name[0]
                         if verify[0] == "1" {
                             self.verify.text = "SELLER"
+                            
                         }else{
                             self.verify.text = "BUYER"
                         }
@@ -151,8 +153,15 @@ class ViewController: UIViewController, UITabBarDelegate {
             break
             
         case 1:
-            SellerView.alpha = 1
-            BuyerView.alpha = 0
+            if(self.verify.text == "BUYER"){
+                CheckSellerView.alpha = 1
+                SellerView.alpha = 0
+                BuyerView.alpha = 0
+            }else{
+                CheckSellerView.alpha = 0
+                SellerView.alpha = 1
+                BuyerView.alpha = 0
+            }
             break
             
         default:

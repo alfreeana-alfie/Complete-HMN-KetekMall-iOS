@@ -94,10 +94,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         
         loginButton.permissions = ["public_profile", "email"]
         FBView.addSubview(loginButton)
-        
-        
 
-        loginButton.frame = CGRect(x: 1, y: 0, width: FBView.bounds.width - 50, height: FBView.bounds.height - 10)
+        NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: FBView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: FBView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
+        loginButton.frame = CGRect(x: 0, y: 0, width: FBView.bounds.width - 50, height: FBView.bounds.height)
         
         if let token = AccessToken.current,
             !token.isExpired {

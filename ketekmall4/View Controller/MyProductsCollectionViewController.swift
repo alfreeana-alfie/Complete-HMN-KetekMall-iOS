@@ -13,6 +13,7 @@ import JGProgressHUD
 
 class MyProductsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyProductDelegate, UICollectionViewDelegateFlowLayout {
     
+    let refreshAlert = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
     private let spinner = JGProgressHUD(style: .dark)
     
     var userID: String = ""
@@ -199,7 +200,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        print("SUCCESS")
+//                        print("SUCCESS")
                         self.productView.deleteItems(at: [indexPath])
                     }
                 }

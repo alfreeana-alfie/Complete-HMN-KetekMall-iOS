@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
+import Alamofire
 class SellerViewController: UIViewController {
     
+    
+    let URL_READ = ""
     var userID: String = ""
     let sharedPref = UserDefaults.standard
     var user: String = ""
@@ -27,6 +29,7 @@ class SellerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         print(lang)
         if(lang == "ms"){
