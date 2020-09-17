@@ -10,7 +10,8 @@ import UIKit
 
 class AboutKetekMallViewController: UIViewController, UITabBarDelegate {
     
-    @IBOutlet weak var ButtonRefung: UIStackView!
+    @IBOutlet weak var ButtonRefund: UIButton!
+    @IBOutlet weak var ButtonTerms: UIButton!
     @IBOutlet weak var ButtonDelivery: UIButton!
     @IBOutlet weak var ButtonContact: UIButton!
     @IBOutlet weak var Tabbar: UITabBar!
@@ -80,4 +81,10 @@ class AboutKetekMallViewController: UIViewController, UITabBarDelegate {
         }
     }
     
+    @IBAction func ButtonTerms(_ sender: Any) {
+        let accountsettings = self.storyboard!.instantiateViewController(identifier: "TermsConditionsViewController") as! TermsConditionsViewController
+        if let navigator = self.navigationController {
+            navigator.pushViewController(accountsettings, animated: true)
+        }
+    }
 }
