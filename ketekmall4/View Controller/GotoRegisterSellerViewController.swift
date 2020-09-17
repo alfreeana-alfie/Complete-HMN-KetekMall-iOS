@@ -81,17 +81,10 @@ class GotoRegisterSellerViewController: UIViewController, UITabBarDelegate {
         }
     }
     
-    func presentMethod(storyBoardName: String, storyBoardID: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
-        self.definesPresentationContext = true
-        self.present(newViewController, animated: true, completion: nil)
-    }
-    
     @IBAction func GotoRegisterPage(_ sender: Any) {
 
-        let RegisterSeller = self.storyboard!.instantiateViewController(identifier: "RegisterSellerViewController") as! RegisterSellerViewController
-        RegisterSeller.UserID = userID
+        let RegisterSeller = self.storyboard!.instantiateViewController(identifier: "BeforeRegisterViewController") as! BeforeRegisterViewController
+//        RegisterSeller.UserID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(RegisterSeller, animated: true)
         }

@@ -723,22 +723,136 @@
                                     <constraint firstAttribute="height" constant="50" id="wEh-Tx-YjM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="I AGREE">
+                                <state key="normal" title="ACCEPT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="GotoRegister:" destination="bWE-eM-NMf" eventType="touchUpInside" id="Q5u-xd-3HI"/>
+                                </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nd2-MN-yko" customClass="Checkbox" customModule="SimpleCheckbox">
+                                <rect key="frame" x="10" y="715" width="30" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="FNP-6Y-joh"/>
+                                    <constraint firstAttribute="height" constant="30" id="WxH-Wz-3zX"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the Terms and Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="L4L-aN-Tmm">
+                                <rect key="frame" x="48" y="725" width="356" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3sN-6t-lCG">
+                                <rect key="frame" x="10" y="54" width="394" height="661"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">By entering into this Marketplace Agreement (“Agreement”) you (“Seller”, “You”, “Your”) represent that you are an adult of at least 18 years of age, capable of validity entering into agreement and performing your obligations hereunder.
+BY REGISTERING FOR AND USING THE SERVICES, YOU AGREE TO BE BOUND BY ALL TERMS AND CONDITIONS OF THIS AGREEMENT, AND ALL POLICIES OF THE PLATFORM ARE INCORPORATED BY REFERENCE. 
+KetekMall reserves the right to notify you from time to time of changes to the terms and conditions of this Agreement. 
+1. Acceptance
+A. Any person who wants to access the Platform and use the Services to sell Goods must accept the
+terms and conditions of this Agreement (“Terms”) without change.
+B. KetekMall reserves the right to change at any time and in its sole discretion any of the terms and
+conditions contained in these Terms, any any fee and procedures. Policies governing the Services, the Platform or Seller Center. These changes will take effect seven (7) days from notification by notice to Seller of posting on the Platform, seller Center or otherwise. Changes to fees and Policies may be posted without notice. Seller is responsible for reviewing notices and Policies. Seller’s continued use of the Services, the Platform and/or Seller Center following the changes taking effect will constitute Seller’s acceptance of such changes and if Seller does not agree to any changes to these Terms or to the Policies, Seller must discontinue the use of the Services, the Platform and Seller Center and the Agreement will be terminated.
+C. Use of The Service,s the Platform and Seller Center is limited to parties that can enter into and form contracts under applicable law. Your represent and warrant that:
+	i. you are an adult of at least 18 years of age capable of validity entering into the Agreement and performing your obligations hereunder;
+	ii. where you are a business that you will remain at all times, duly organized, registered, validly existing and in good standing under the laws of the country in which the business is registered;
+D. In KetekMall Platform are strongly restricted to HALAL products only. 
+2. Services - Fees
+A. KetekMall provides a platform for thirs-party sellers and buyers to complete transactions. Except as
+set out in the Agreement, KetekMall is not involved in the actual transaction between Seller and Clients. As owner of provider of the Goods and vendor thereof, it is up to Seller to, among others, ensure the sales is legally authorised, accurately describe the Goods, package, ship, insure, warrant and fulfil all other sale and after sale obligations applicable by law or by trade. Seller uses the Services, the Platform and Seller Center, at its own risk.
+B. KetekMall will charge 5% or RM0.50 from total amount of the product’s price.
+C. Seller authorizes KetekMall to act as its exclusive payment processing agent for the purpose of:
+i. collecting the Sales Proceeds and in general any sums due or owing under Agreement and holding
+the same;
+ii. processing customer payment and refunds;
+iii. remitting the Payment and;
+iv. paying to KetekMall, to third parties (including Clients) any amounts Seller owes to them.
+D. Seller agrees that Customers satisfy their obligations to Seller as regards the Customer Agreement
+when KetekMall receives the Sales Proceeds. KetekMall’s obligation to remit funds received by it
+on Seller’s behalf is limited to the Payment.
+E. KetekMall will provide to Seller information in relation to each Order as necessary under the
+Agreement.
+F. KetekMall will provide support services to Seller by way of coordinating and answering Customers
+enquiries and processing returns as provided in the Policies.
+G. Sellers agrees that KetekMall may provide Seller with electronic documents such as tax invoice, receipt, or any other document KetekMall may isuue in compliance with the laws. 
+3. Terms of Payment
+A) The Customer shall be entitled to make payment for the Products using the payment methods made available on the Platform. All Payments shall be made to KetekMall.
+B) The terms and conditions applicable to each type of payment, as prescribed by KetekMall on the Platform, shall be applicable to the Contract. The payment methods may also be subject to the following terms:
+i) Cash on Delivery
+*Cash on Delivery (Pay Cash Upon Delivery) is available within the service area.
+ii) Payment Gateway
+*By choosing this payment method, the Customer shall pay through the gateway the amount of the total purchase price for the Products purchased by Customer (including any applicable taxes, fees and delivery costs). The transaction must be payable in Ringgit Malaysia. KetekMall, in its sole discretion, may refuse this payment option service to anyone or any user without notice for any reason at any time.
+C) Payment will be made by KetekMall to Seller after Buyes received the products.
+D) KetekMall may delay, suspend or cancel any Payment in case Seller breaches any term of the
+Agreement or Customer Agreement and any Payment made to Seller will not in any way be
+considered as a waiver of KetekMall’s rights.
+E) KetekMall reserves the right to impose limits on Order or transaction values, on Customers or on
+Seller and will not be liable if;
+i) KetekMall does not proceed with an Order that would exceed said limit; or
+ii) KetekMall allows a Customer to cancel an Order because the Platform of the Goods are unavailable
+following the commencement of a transaction.
+F) Any enquiry or dispute about any Payment will be made by in compliance with the claims/dispute
+process/policy of KetekMall, which may be changed from time to time. Notwithstanding which any such enquiry or dispute will be received by KetekMall on or before the expiration of one hundred of twenty (120) days after the Order date, failing which, Seller waives the right to dispute such Payment. 
+4. Seller Undertakings
+A) General Undertakings: By using the Services, Seller undertakes, represents and warrants that it will: i) comply with all applicable laws, treaties, ordinances, codes and regulations;
+ii) comply with all Policies;
+iii) be responsible and pay all fees, taxes, duties and others charges arising out of of associated with the
+order, the Payment or in any other way owed by Seller under the Agreement or the Customer
+Agreement.
+iv) will issue a valid invoice to the Customer, if required by the laws.
+v) ensure that any information provided under this Agreement, including for the listing of the Goods, is
+accurate, current and complete and is not misleading or otherwise deceptive;
+vi) fulfil all Orders for Goods at their stated quantity and price to Customers who meet KetekMall’s
+eligibility conditions;
+vii) provide, in the format and at such times as KetekMall may require, accurate, updated and complete
+information about the availability status, stock level and Price of the Goods;
+
+5. Undertakings In Relations to Goods
+A) Seller undertakes, represents and warrants that:
+i) the Goods are of merchantable quality, fit for their purpose, free from detects and strictly conform to
+their listed specifications;
+ii) the Goods and their offer for sale are not prohibited and comply with the Laws (including marking
+and labelling requirement, product warranties, specifications and performance criteria and conform
+with Policies, including prohibited and restricted items;
+iii) it has full unencumbered title in the Goods and in any materials incorporated in the Goods and all the
+Goods are supplied free of all liens, charges or other security interests;
+iv) it will provide KetekMall and/or Customer any document pertaining to the sale of the Goods or
+Customer Agreement (including sales invoice and tax invoice) as may be requested by KetekMall
+and/or Customer;
+v) it will not, directly or indirectly, sell expired or soon to be expired products; and vi) it will not, directly or indirectly, sell defect product or products violating.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="3sN-6t-lCG" firstAttribute="leading" secondItem="a5o-0b-heA" secondAttribute="leading" constant="10" id="1Dc-Qh-iC5"/>
+                            <constraint firstItem="L4L-aN-Tmm" firstAttribute="top" secondItem="3sN-6t-lCG" secondAttribute="bottom" constant="10" id="1xH-SR-B4L"/>
                             <constraint firstItem="JpZ-nJ-7Rk" firstAttribute="leading" secondItem="a5o-0b-heA" secondAttribute="leading" constant="10" id="6WT-Ri-BUv"/>
+                            <constraint firstItem="JpZ-nJ-7Rk" firstAttribute="top" secondItem="L4L-aN-Tmm" secondAttribute="bottom" constant="8" id="8h1-sT-EUu"/>
                             <constraint firstItem="Y7v-CW-YNY" firstAttribute="leading" secondItem="3Jb-jN-1ej" secondAttribute="leading" id="AG2-bl-zbr"/>
+                            <constraint firstItem="L4L-aN-Tmm" firstAttribute="leading" secondItem="Nd2-MN-yko" secondAttribute="trailing" constant="8" id="Hdx-DI-JM9"/>
+                            <constraint firstItem="a5o-0b-heA" firstAttribute="trailing" secondItem="3sN-6t-lCG" secondAttribute="trailing" constant="10" id="JTV-Vf-YSF"/>
                             <constraint firstItem="a5o-0b-heA" firstAttribute="bottom" secondItem="Y7v-CW-YNY" secondAttribute="bottom" id="OcC-ZA-oNa"/>
                             <constraint firstItem="Y7v-CW-YNY" firstAttribute="top" secondItem="JpZ-nJ-7Rk" secondAttribute="bottom" constant="10" id="Poc-aT-pME"/>
+                            <constraint firstItem="3sN-6t-lCG" firstAttribute="top" secondItem="a5o-0b-heA" secondAttribute="top" constant="10" id="Qrd-35-GzB"/>
+                            <constraint firstItem="Nd2-MN-yko" firstAttribute="leading" secondItem="a5o-0b-heA" secondAttribute="leading" constant="10" id="VeG-4B-OTp"/>
                             <constraint firstItem="a5o-0b-heA" firstAttribute="trailing" secondItem="JpZ-nJ-7Rk" secondAttribute="trailing" constant="10" id="WfX-BV-LgR"/>
                             <constraint firstItem="a5o-0b-heA" firstAttribute="trailing" secondItem="Y7v-CW-YNY" secondAttribute="trailing" id="nJw-6q-lcd"/>
+                            <constraint firstItem="JpZ-nJ-7Rk" firstAttribute="top" secondItem="Nd2-MN-yko" secondAttribute="bottom" constant="8" id="nVU-h9-2cs"/>
+                            <constraint firstItem="a5o-0b-heA" firstAttribute="trailing" secondItem="L4L-aN-Tmm" secondAttribute="trailing" constant="10" id="sq4-9j-hly"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a5o-0b-heA"/>
                     </view>
+                    <connections>
+                        <outlet property="ButtonAgree" destination="JpZ-nJ-7Rk" id="oUI-UG-Yna"/>
+                        <outlet property="ButtonAgreeHeight" destination="wEh-Tx-YjM" id="TBP-6C-ksr"/>
+                        <outlet property="CheckTerms" destination="Nd2-MN-yko" id="p9A-wz-3Yf"/>
+                        <outlet property="Tabbar" destination="Y7v-CW-YNY" id="E7F-gh-2cc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pys-qk-xlu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

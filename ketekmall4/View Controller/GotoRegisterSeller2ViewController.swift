@@ -44,8 +44,8 @@ class GotoRegisterSeller2ViewController: UIViewController {
     
     @IBAction func GotoRegisterPage(_ sender: Any) {
 
-        let RegisterSeller = self.storyboard!.instantiateViewController(identifier: "RegisterSellerViewController") as! RegisterSellerViewController
-        RegisterSeller.UserID = userID
+        let RegisterSeller = self.storyboard!.instantiateViewController(identifier: "BeforeRegisterViewController") as! BeforeRegisterViewController
+//        RegisterSeller.UserID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(RegisterSeller, animated: true)
         }
