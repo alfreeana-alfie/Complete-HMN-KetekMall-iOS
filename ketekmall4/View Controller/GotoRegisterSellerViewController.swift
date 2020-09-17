@@ -21,6 +21,8 @@ class GotoRegisterSellerViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var Tabbar: UITabBar!
     var viewController1: UIViewController?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Tabbar.delegate = self

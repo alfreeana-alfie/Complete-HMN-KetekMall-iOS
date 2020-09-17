@@ -148,21 +148,26 @@ class ViewController: UIViewController, UITabBarDelegate {
         
         switch sender.selectedSegmentIndex {
         case 0:
-            BuyerView.alpha = 1
-            SellerView.alpha = 0
-            break
+            if(self.verify.text == "BUYER"){
+                CheckSellerView.alpha = 0
+                SellerView.alpha = 0
+                BuyerView.alpha = 1
+                break
+            }
             
         case 1:
             if(self.verify.text == "BUYER"){
                 CheckSellerView.alpha = 1
                 SellerView.alpha = 0
                 BuyerView.alpha = 0
+                break
             }else{
                 CheckSellerView.alpha = 0
                 SellerView.alpha = 1
                 BuyerView.alpha = 0
+                break
             }
-            break
+            
             
         default:
             break

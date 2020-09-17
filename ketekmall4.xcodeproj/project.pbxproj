@@ -76,6 +76,7 @@
 		FB9A9286250368B2001DD96C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A9285250368B2001DD96C /* ViewController.swift */; };
 		FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928725037A51001DD96C /* BuyerViewController.swift */; };
 		FB9A928A25037A75001DD96C /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928925037A75001DD96C /* SellerViewController.swift */; };
+		FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */; };
 		FBBA2D74250918E500F55FE2 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */; };
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
@@ -179,6 +180,7 @@
 		FB9A9285250368B2001DD96C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB9A928725037A51001DD96C /* BuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerViewController.swift; sourceTree = "<group>"; };
 		FB9A928925037A75001DD96C /* SellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
+		FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoRegisterSeller2ViewController.swift; sourceTree = "<group>"; };
 		FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */,
 				FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */,
 				FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */,
+				FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */,
 				FB4557B324F91EE700FC502B /* MyProductsCollectionViewController.swift in Sources */,
 				FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */,
 				FB7D2119250015530043A286 /* DeliveryViewController.swift in Sources */,
