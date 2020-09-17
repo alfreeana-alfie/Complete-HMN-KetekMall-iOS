@@ -1466,11 +1466,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-5i-LTX">
-                                        <rect key="frame" x="240" y="639" width="130" height="44"/>
+                                        <rect key="frame" x="281" y="639" width="89" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="tQB-58-tc2"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="CHECKOUT">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1485,11 +1482,11 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <constraint firstItem="mn0-hp-6ha" firstAttribute="leading" secondItem="CRp-ni-rd5" secondAttribute="leading" id="0SN-1h-6pQ"/>
                                     <constraint firstItem="dp0-f1-jOn" firstAttribute="top" secondItem="Bcm-6h-LJD" secondAttribute="bottom" constant="8" id="30J-dE-rxu"/>
                                     <constraint firstItem="dp0-f1-jOn" firstAttribute="top" secondItem="Bcm-6h-LJD" secondAttribute="bottom" constant="8" id="Hi2-N2-kl4"/>
-                                    <constraint firstItem="4eY-5i-LTX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dp0-f1-jOn" secondAttribute="trailing" constant="8" symbolic="YES" id="KtK-cK-YMl"/>
+                                    <constraint firstItem="4eY-5i-LTX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bcm-6h-LJD" secondAttribute="trailing" constant="8" symbolic="YES" id="Mn1-ya-3c1"/>
                                     <constraint firstAttribute="trailing" secondItem="mn0-hp-6ha" secondAttribute="trailing" id="Pqu-nA-7H9"/>
-                                    <constraint firstItem="4eY-5i-LTX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bcm-6h-LJD" secondAttribute="trailing" constant="8" symbolic="YES" id="SGr-ky-BWU"/>
                                     <constraint firstItem="Bcm-6h-LJD" firstAttribute="leading" secondItem="CRp-ni-rd5" secondAttribute="leading" constant="45" id="e7k-MO-78v"/>
                                     <constraint firstItem="mn0-hp-6ha" firstAttribute="top" secondItem="CRp-ni-rd5" secondAttribute="top" id="gwr-Ck-HDr"/>
+                                    <constraint firstItem="4eY-5i-LTX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dp0-f1-jOn" secondAttribute="trailing" constant="8" symbolic="YES" id="hOD-tY-UV6"/>
                                     <constraint firstAttribute="trailing" secondItem="4eY-5i-LTX" secondAttribute="trailing" constant="44" id="mcw-2d-Aue"/>
                                     <constraint firstItem="Bcm-6h-LJD" firstAttribute="top" secondItem="mn0-hp-6ha" secondAttribute="bottom" constant="7" id="oPv-G8-ge0"/>
                                     <constraint firstAttribute="bottom" secondItem="4eY-5i-LTX" secondAttribute="bottom" constant="8" id="ptp-uy-bOK"/>
