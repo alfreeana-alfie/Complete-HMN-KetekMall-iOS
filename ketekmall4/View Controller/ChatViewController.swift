@@ -36,20 +36,23 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
     var chatWith: String = ""
     
     private var messages = [Message]()
-    
+    let randomString = String.random()
     var sender: SenderType = Sender(senderId: "", displayName: "")
+    var other_user: SenderType = Sender(senderId: "", displayName: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(randomString)
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
         
-        print(chatWith)
+//        print(chatWith)
         sender = Sender(senderId: user, displayName: name)
+        other_user = Sender(senderId: "4", displayName: "Nana")
         
         messages.append(Message(sender: sender, messageId: "2", sentDate: Date(), kind: .text("Hellow World")))
+        messages.append(Message(sender: other_user, messageId: "3", sentDate: Date(), kind: .text("Hello World")))
         view.backgroundColor = .red
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -79,6 +82,18 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
-    
-    
+}
+
+extension String {
+
+    static func random(length: Int = 20) -> String {
+        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var randomString: String = ""
+
+        for _ in 0..<length {
+            let randomValue = arc4random_uniform(UInt32(base.count))
+            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+        }
+        return randomString
+    }
 }

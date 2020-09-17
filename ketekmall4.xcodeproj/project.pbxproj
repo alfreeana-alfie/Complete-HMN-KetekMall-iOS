@@ -77,6 +77,8 @@
 		FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928725037A51001DD96C /* BuyerViewController.swift */; };
 		FB9A928A25037A75001DD96C /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928925037A75001DD96C /* SellerViewController.swift */; };
 		FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */; };
+		FBB2D5F92513E0E5007BEA53 /* TermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */; };
+		FBB2D5FB2513E20C007BEA53 /* BeforeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */; };
 		FBBA2D74250918E500F55FE2 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */; };
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
@@ -181,6 +183,8 @@
 		FB9A928725037A51001DD96C /* BuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerViewController.swift; sourceTree = "<group>"; };
 		FB9A928925037A75001DD96C /* SellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
 		FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoRegisterSeller2ViewController.swift; sourceTree = "<group>"; };
+		FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionsViewController.swift; sourceTree = "<group>"; };
+		FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeRegisterViewController.swift; sourceTree = "<group>"; };
 		FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +372,8 @@
 				FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */,
 				FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */,
 				FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */,
+				FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */,
+				FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -594,6 +600,7 @@
 				FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */,
 				FB7787BF24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift in Sources */,
 				FB5A491324F7F47000F5464C /* LoginViewController.swift in Sources */,
+				FBB2D5F92513E0E5007BEA53 /* TermsConditionsViewController.swift in Sources */,
 				FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */,
 				FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */,
 				FB7D211B250016CC0043A286 /* DeliveryCollectionViewCell.swift in Sources */,
@@ -621,6 +628,7 @@
 				FB4B72CD24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift in Sources */,
 				FB4557B124F90EDA00FC502B /* AccountSettingsViewController.swift in Sources */,
 				FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */,
+				FBB2D5FB2513E20C007BEA53 /* BeforeRegisterViewController.swift in Sources */,
 				FB7D211D25001C500043A286 /* DeliveryAddViewController.swift in Sources */,
 				FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */,
 				FB9A9286250368B2001DD96C /* ViewController.swift in Sources */,

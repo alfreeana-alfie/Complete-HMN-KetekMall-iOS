@@ -153,6 +153,11 @@ class ViewController: UIViewController, UITabBarDelegate {
                 SellerView.alpha = 0
                 BuyerView.alpha = 1
                 break
+            }else{
+                CheckSellerView.alpha = 0
+                SellerView.alpha = 0
+                BuyerView.alpha = 1
+                break
             }
             
         case 1:

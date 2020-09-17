@@ -696,6 +696,177 @@
             </objects>
             <point key="canvasLocation" x="1704.3478260869567" y="665.625"/>
         </scene>
+        <!--Before Register View Controller-->
+        <scene sceneID="nke-um-G9i">
+            <objects>
+                <viewController storyboardIdentifier="BeforeRegisterViewController" id="bWE-eM-NMf" customClass="BeforeRegisterViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Jb-jN-1ej">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7v-CW-YNY">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="6Ct-Lx-G7W"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="eYH-Qp-FCy"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="y0b-Vr-9tN"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="CV9-xg-drC"/>
+                                </items>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpZ-nJ-7Rk">
+                                <rect key="frame" x="10" y="753" width="394" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wEh-Tx-YjM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="I AGREE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JpZ-nJ-7Rk" firstAttribute="leading" secondItem="a5o-0b-heA" secondAttribute="leading" constant="10" id="6WT-Ri-BUv"/>
+                            <constraint firstItem="Y7v-CW-YNY" firstAttribute="leading" secondItem="3Jb-jN-1ej" secondAttribute="leading" id="AG2-bl-zbr"/>
+                            <constraint firstItem="a5o-0b-heA" firstAttribute="bottom" secondItem="Y7v-CW-YNY" secondAttribute="bottom" id="OcC-ZA-oNa"/>
+                            <constraint firstItem="Y7v-CW-YNY" firstAttribute="top" secondItem="JpZ-nJ-7Rk" secondAttribute="bottom" constant="10" id="Poc-aT-pME"/>
+                            <constraint firstItem="a5o-0b-heA" firstAttribute="trailing" secondItem="JpZ-nJ-7Rk" secondAttribute="trailing" constant="10" id="WfX-BV-LgR"/>
+                            <constraint firstItem="a5o-0b-heA" firstAttribute="trailing" secondItem="Y7v-CW-YNY" secondAttribute="trailing" id="nJw-6q-lcd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a5o-0b-heA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pys-qk-xlu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1622" y="-664"/>
+        </scene>
+        <!--Terms and Conditions-->
+        <scene sceneID="JIt-G7-miO">
+            <objects>
+                <viewController storyboardIdentifier="TermsConditionsViewController" title="Terms and Conditions" id="h4c-PM-VAK" customClass="TermsConditionsViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tgJ-SJ-8DS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sWs-cQ-QCQ">
+                                <rect key="frame" x="10" y="54" width="394" height="749"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">By entering into this Marketplace Agreement (“Agreement”) you (“Seller”, “You”, “Your”) represent that you are an adult of at least 18 years of age, capable of validity entering into agreement and performing your obligations hereunder.
+BY REGISTERING FOR AND USING THE SERVICES, YOU AGREE TO BE BOUND BY ALL TERMS AND CONDITIONS OF THIS AGREEMENT, AND ALL POLICIES OF THE PLATFORM ARE INCORPORATED BY REFERENCE. 
+KetekMall reserves the right to notify you from time to time of changes to the terms and conditions of this Agreement. 
+1. Acceptance
+A. Any person who wants to access the Platform and use the Services to sell Goods must accept the
+terms and conditions of this Agreement (“Terms”) without change.
+B. KetekMall reserves the right to change at any time and in its sole discretion any of the terms and
+conditions contained in these Terms, any any fee and procedures. Policies governing the Services, the Platform or Seller Center. These changes will take effect seven (7) days from notification by notice to Seller of posting on the Platform, seller Center or otherwise. Changes to fees and Policies may be posted without notice. Seller is responsible for reviewing notices and Policies. Seller’s continued use of the Services, the Platform and/or Seller Center following the changes taking effect will constitute Seller’s acceptance of such changes and if Seller does not agree to any changes to these Terms or to the Policies, Seller must discontinue the use of the Services, the Platform and Seller Center and the Agreement will be terminated.
+C. Use of The Service,s the Platform and Seller Center is limited to parties that can enter into and form contracts under applicable law. Your represent and warrant that:
+	i. you are an adult of at least 18 years of age capable of validity entering into the Agreement and performing your obligations hereunder;
+	ii. where you are a business that you will remain at all times, duly organized, registered, validly existing and in good standing under the laws of the country in which the business is registered;
+D. In KetekMall Platform are strongly restricted to HALAL products only. 
+2. Services - Fees
+A. KetekMall provides a platform for thirs-party sellers and buyers to complete transactions. Except as
+set out in the Agreement, KetekMall is not involved in the actual transaction between Seller and Clients. As owner of provider of the Goods and vendor thereof, it is up to Seller to, among others, ensure the sales is legally authorised, accurately describe the Goods, package, ship, insure, warrant and fulfil all other sale and after sale obligations applicable by law or by trade. Seller uses the Services, the Platform and Seller Center, at its own risk.
+B. KetekMall will charge 5% or RM0.50 from total amount of the product’s price.
+C. Seller authorizes KetekMall to act as its exclusive payment processing agent for the purpose of:
+i. collecting the Sales Proceeds and in general any sums due or owing under Agreement and holding
+the same;
+ii. processing customer payment and refunds;
+iii. remitting the Payment and;
+iv. paying to KetekMall, to third parties (including Clients) any amounts Seller owes to them.
+D. Seller agrees that Customers satisfy their obligations to Seller as regards the Customer Agreement
+when KetekMall receives the Sales Proceeds. KetekMall’s obligation to remit funds received by it
+on Seller’s behalf is limited to the Payment.
+E. KetekMall will provide to Seller information in relation to each Order as necessary under the
+Agreement.
+F. KetekMall will provide support services to Seller by way of coordinating and answering Customers
+enquiries and processing returns as provided in the Policies.
+G. Sellers agrees that KetekMall may provide Seller with electronic documents such as tax invoice, receipt, or any other document KetekMall may isuue in compliance with the laws. 
+3. Terms of Payment
+A) The Customer shall be entitled to make payment for the Products using the payment methods made available on the Platform. All Payments shall be made to KetekMall.
+B) The terms and conditions applicable to each type of payment, as prescribed by KetekMall on the Platform, shall be applicable to the Contract. The payment methods may also be subject to the following terms:
+i) Cash on Delivery
+*Cash on Delivery (Pay Cash Upon Delivery) is available within the service area.
+ii) Payment Gateway
+*By choosing this payment method, the Customer shall pay through the gateway the amount of the total purchase price for the Products purchased by Customer (including any applicable taxes, fees and delivery costs). The transaction must be payable in Ringgit Malaysia. KetekMall, in its sole discretion, may refuse this payment option service to anyone or any user without notice for any reason at any time.
+C) Payment will be made by KetekMall to Seller after Buyes received the products.
+D) KetekMall may delay, suspend or cancel any Payment in case Seller breaches any term of the
+Agreement or Customer Agreement and any Payment made to Seller will not in any way be
+considered as a waiver of KetekMall’s rights.
+E) KetekMall reserves the right to impose limits on Order or transaction values, on Customers or on
+Seller and will not be liable if;
+i) KetekMall does not proceed with an Order that would exceed said limit; or
+ii) KetekMall allows a Customer to cancel an Order because the Platform of the Goods are unavailable
+following the commencement of a transaction.
+F) Any enquiry or dispute about any Payment will be made by in compliance with the claims/dispute
+process/policy of KetekMall, which may be changed from time to time. Notwithstanding which any such enquiry or dispute will be received by KetekMall on or before the expiration of one hundred of twenty (120) days after the Order date, failing which, Seller waives the right to dispute such Payment. 
+4. Seller Undertakings
+A) General Undertakings: By using the Services, Seller undertakes, represents and warrants that it will: i) comply with all applicable laws, treaties, ordinances, codes and regulations;
+ii) comply with all Policies;
+iii) be responsible and pay all fees, taxes, duties and others charges arising out of of associated with the
+order, the Payment or in any other way owed by Seller under the Agreement or the Customer
+Agreement.
+iv) will issue a valid invoice to the Customer, if required by the laws.
+v) ensure that any information provided under this Agreement, including for the listing of the Goods, is
+accurate, current and complete and is not misleading or otherwise deceptive;
+vi) fulfil all Orders for Goods at their stated quantity and price to Customers who meet KetekMall’s
+eligibility conditions;
+vii) provide, in the format and at such times as KetekMall may require, accurate, updated and complete
+information about the availability status, stock level and Price of the Goods;
+
+5. Undertakings In Relations to Goods
+A) Seller undertakes, represents and warrants that:
+i) the Goods are of merchantable quality, fit for their purpose, free from detects and strictly conform to
+their listed specifications;
+ii) the Goods and their offer for sale are not prohibited and comply with the Laws (including marking
+and labelling requirement, product warranties, specifications and performance criteria and conform
+with Policies, including prohibited and restricted items;
+iii) it has full unencumbered title in the Goods and in any materials incorporated in the Goods and all the
+Goods are supplied free of all liens, charges or other security interests;
+iv) it will provide KetekMall and/or Customer any document pertaining to the sale of the Goods or
+Customer Agreement (including sales invoice and tax invoice) as may be requested by KetekMall
+and/or Customer;
+v) it will not, directly or indirectly, sell expired or soon to be expired products; and vi) it will not, directly or indirectly, sell defect product or products violating.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-Em-z7Q">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="kV7-8g-ScD"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Vgi-mF-zGj"/>
+                                    <tabBarItem tag="2" title="Notification" image="bell.fill" catalog="system" id="tCU-Zz-N5N"/>
+                                    <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="vUm-wy-SdU"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YKX-Em-z7Q" firstAttribute="top" secondItem="sWs-cQ-QCQ" secondAttribute="bottom" constant="10" id="X10-3o-C63"/>
+                            <constraint firstItem="sWs-cQ-QCQ" firstAttribute="leading" secondItem="kbR-Q1-gOw" secondAttribute="leading" constant="10" id="X9F-Kw-Grz"/>
+                            <constraint firstItem="kbR-Q1-gOw" firstAttribute="trailing" secondItem="sWs-cQ-QCQ" secondAttribute="trailing" constant="10" id="iGO-r9-AUu"/>
+                            <constraint firstItem="kbR-Q1-gOw" firstAttribute="bottom" secondItem="YKX-Em-z7Q" secondAttribute="bottom" id="lIT-eS-PTV"/>
+                            <constraint firstItem="sWs-cQ-QCQ" firstAttribute="top" secondItem="kbR-Q1-gOw" secondAttribute="top" constant="10" id="qh7-VP-SUC"/>
+                            <constraint firstItem="YKX-Em-z7Q" firstAttribute="leading" secondItem="kbR-Q1-gOw" secondAttribute="leading" id="rmA-07-EJ0"/>
+                            <constraint firstAttribute="trailing" secondItem="YKX-Em-z7Q" secondAttribute="trailing" id="txl-9p-MIM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kbR-Q1-gOw"/>
+                    </view>
+                    <connections>
+                        <outlet property="Tabbar" destination="YKX-Em-z7Q" id="YNx-sK-5Fm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MXa-aK-b8f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-713" y="-667"/>
+        </scene>
         <!--Return and Refund Policy-->
         <scene sceneID="0QY-dE-0GW">
             <objects>
@@ -769,7 +940,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <viewLayoutGuide key="safeArea" id="zR4-a6-VUR"/>
                     </view>
                     <connections>
-                        <outlet property="Tabbar" destination="fCh-xg-5Tv" id="Ben-Tf-K6A"/>
+                        <outlet property="Tabbar" destination="fCh-xg-5Tv" id="W3f-jp-1j2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7te-8r-2DH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -847,7 +1018,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-6U-Bpi">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-6U-Bpi" userLabel="Contact Us">
                                         <rect key="frame" x="20" y="182" width="374" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GN9-0K-Pkz">
@@ -856,7 +1027,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <state key="normal" title="Contact Us"/>
                                                 <connections>
                                                     <action selector="ButtonContact:" destination="ilI-ig-0fQ" eventType="touchUpInside" id="5qg-f4-0d9"/>
-                                                    <action selector="OrderUpdates:" destination="O5a-pN-aIE" eventType="touchUpInside" id="onW-Nl-2Cf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -872,7 +1042,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstAttribute="height" constant="1" id="cKf-Pj-DTb"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2N-yd-M5n">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2N-yd-M5n" userLabel="Delivery policy">
                                         <rect key="frame" x="20" y="117" width="374" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFG-Jr-fUx">
@@ -881,7 +1051,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <state key="normal" title="Delivery Policy"/>
                                                 <connections>
                                                     <action selector="ButtonDelivery:" destination="ilI-ig-0fQ" eventType="touchUpInside" id="x5K-13-jKS"/>
-                                                    <action selector="SocialUpdates:" destination="O5a-pN-aIE" eventType="touchUpInside" id="coH-Qh-G15"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -899,7 +1068,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <state key="normal" title="Return and Refund Policy"/>
                                                 <connections>
                                                     <action selector="GotoRefund:" destination="ilI-ig-0fQ" eventType="touchUpInside" id="ecH-J7-CRN"/>
-                                                    <action selector="Promotion:" destination="O5a-pN-aIE" eventType="touchUpInside" id="RJ1-EA-sGH"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -923,7 +1091,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </constraints>
                                     </view>
                                     <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRN-Pr-tq7">
-                                        <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
                                             <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Xp3-By-F9u"/>
@@ -931,25 +1099,56 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <tabBarItem tag="3" title="Me" image="person.fill" catalog="system" id="lCb-0P-7QT"/>
                                         </items>
                                     </tabBar>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iU-oY-rax" userLabel="Terms Conditions">
+                                        <rect key="frame" x="20" y="244" width="374" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksv-M4-4lV">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <state key="normal" title="Terms and Conditions"/>
+                                                <connections>
+                                                    <action selector="ButtonTerms:" destination="ilI-ig-0fQ" eventType="touchUpInside" id="rom-tk-4fw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="SEm-8p-TZV"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8S-0Z-dh1" userLabel="4">
+                                        <rect key="frame" x="0.0" y="306" width="414" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="q5O-DN-TYG"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="D8S-0Z-dh1" firstAttribute="leading" secondItem="Upy-Cg-Kfr" secondAttribute="leading" id="00J-rU-YvY"/>
                                     <constraint firstItem="Gvt-fX-usW" firstAttribute="bottom" secondItem="nRN-Pr-tq7" secondAttribute="bottom" id="2xH-sh-3d9"/>
+                                    <constraint firstItem="Gvt-fX-usW" firstAttribute="trailing" secondItem="8iU-oY-rax" secondAttribute="trailing" constant="20" id="3cb-Iw-Q20"/>
+                                    <constraint firstAttribute="trailing" secondItem="D8S-0Z-dh1" secondAttribute="trailing" id="403-f2-OUW"/>
                                     <constraint firstItem="M7x-Gk-Vej" firstAttribute="top" secondItem="AfM-6U-Bpi" secondAttribute="bottom" constant="2" id="5Qw-lF-neZ"/>
                                     <constraint firstItem="M7x-Gk-Vej" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="AOb-Cz-jWV"/>
                                     <constraint firstItem="Gvt-fX-usW" firstAttribute="trailing" secondItem="s2N-yd-M5n" secondAttribute="trailing" constant="20" id="Cam-VN-O8f"/>
                                     <constraint firstItem="PXD-Vg-wsw" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="FcW-D6-XK0"/>
                                     <constraint firstItem="PXD-Vg-wsw" firstAttribute="top" secondItem="LMO-nK-M6p" secondAttribute="bottom" constant="2" id="FnU-VK-Sjl"/>
                                     <constraint firstItem="M7x-Gk-Vej" firstAttribute="leading" secondItem="Upy-Cg-Kfr" secondAttribute="leading" id="HWK-KV-ijb"/>
+                                    <constraint firstItem="D8S-0Z-dh1" firstAttribute="top" secondItem="8iU-oY-rax" secondAttribute="bottom" constant="2" id="IHP-SY-3Lh"/>
                                     <constraint firstItem="AfM-6U-Bpi" firstAttribute="top" secondItem="fxg-Rp-Fni" secondAttribute="bottom" constant="2" id="JMB-XX-eGE"/>
                                     <constraint firstItem="fxg-Rp-Fni" firstAttribute="top" secondItem="s2N-yd-M5n" secondAttribute="bottom" constant="2" id="KRa-J6-6bY"/>
+                                    <constraint firstItem="8iU-oY-rax" firstAttribute="top" secondItem="AfM-6U-Bpi" secondAttribute="bottom" constant="2" id="KWQ-Nw-GJ8"/>
                                     <constraint firstItem="fxg-Rp-Fni" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="M5y-gL-zNl"/>
                                     <constraint firstItem="fxg-Rp-Fni" firstAttribute="leading" secondItem="Upy-Cg-Kfr" secondAttribute="leading" id="Moi-tA-6BS"/>
                                     <constraint firstItem="s2N-yd-M5n" firstAttribute="top" secondItem="PXD-Vg-wsw" secondAttribute="bottom" constant="2" id="Nwj-JJ-zG7"/>
+                                    <constraint firstItem="8iU-oY-rax" firstAttribute="leading" secondItem="Gvt-fX-usW" secondAttribute="leading" constant="20" id="RDx-0S-mkf"/>
                                     <constraint firstAttribute="trailing" secondItem="nRN-Pr-tq7" secondAttribute="trailing" id="TJE-iR-tMC"/>
                                     <constraint firstAttribute="trailing" secondItem="fxg-Rp-Fni" secondAttribute="trailing" id="U1R-a9-Ac7"/>
                                     <constraint firstAttribute="trailing" secondItem="M7x-Gk-Vej" secondAttribute="trailing" id="UFK-NZ-hTX"/>
                                     <constraint firstItem="s2N-yd-M5n" firstAttribute="leading" secondItem="Gvt-fX-usW" secondAttribute="leading" constant="20" id="ZqB-IJ-Vfo"/>
+                                    <constraint firstItem="D8S-0Z-dh1" firstAttribute="top" secondItem="8iU-oY-rax" secondAttribute="bottom" constant="2" id="aIL-XG-YIQ"/>
                                     <constraint firstAttribute="trailing" secondItem="PXD-Vg-wsw" secondAttribute="trailing" id="c3r-if-57d"/>
                                     <constraint firstItem="AfM-6U-Bpi" firstAttribute="centerX" secondItem="Upy-Cg-Kfr" secondAttribute="centerX" id="cyJ-KA-4tS"/>
                                     <constraint firstItem="PXD-Vg-wsw" firstAttribute="leading" secondItem="Upy-Cg-Kfr" secondAttribute="leading" id="fdE-4h-Gcr"/>
@@ -971,7 +1170,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                     <connections>
                         <outlet property="ButtonContact" destination="GN9-0K-Pkz" id="7WG-LI-SQW"/>
                         <outlet property="ButtonDelivery" destination="mFG-Jr-fUx" id="ySd-5r-WXh"/>
-                        <outlet property="ButtonRefung" destination="LMO-nK-M6p" id="BgS-mq-py4"/>
+                        <outlet property="ButtonRefund" destination="P63-fr-Om8" id="TjC-qs-FZf"/>
+                        <outlet property="ButtonTerms" destination="ksv-M4-4lV" id="E3V-Pp-v8O"/>
                         <outlet property="Tabbar" destination="nRN-Pr-tq7" id="v2F-8s-jj6"/>
                     </connections>
                 </viewController>
