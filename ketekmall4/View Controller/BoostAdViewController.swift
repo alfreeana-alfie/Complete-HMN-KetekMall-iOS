@@ -122,7 +122,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
         }else{
             cell.ButtonCancel.setTitle("Cancel".localized(lang: "en"), for: .normal)
         }
-        
+        cell.delegate = self
         return cell
     }
     
@@ -148,14 +148,14 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                                 self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                                 self.spinner.textLabel.text = "Success"
                                 self.spinner.show(in: self.view)
-                                self.spinner.dismiss(afterDelay: 4.0)
+                                self.spinner.dismiss(afterDelay: 3.0)
                                 self.BoostView.deleteItems(at: [indexPath])
                             }
                         }else{
                             self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
                             self.spinner.textLabel.text = "Failed"
                             self.spinner.show(in: self.view)
-                            self.spinner.dismiss(afterDelay: 4.0)
+                            self.spinner.dismiss(afterDelay: 3.0)
                         }
                 }
     }

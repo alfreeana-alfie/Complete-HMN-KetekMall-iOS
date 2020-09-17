@@ -39,6 +39,6 @@ class MyProductsCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func Boost(_ sender: Any) {
-        self.delegate?.btnRemove(cell: self)
+        self.delegate?.btnBoost(cell: self)
     }
 }

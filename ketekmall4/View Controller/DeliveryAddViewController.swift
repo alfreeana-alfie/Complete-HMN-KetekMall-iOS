@@ -75,7 +75,7 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
                     response in
                     if let result = response.result.value{
                         
-                
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                          if(self.lang == "ms"){
                              self.spinner.textLabel.text = "Successfully Added".localized(lang: "ms")
                              
@@ -83,9 +83,8 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
                              self.spinner.textLabel.text = "Successfully Added".localized(lang: "en")
                             
                          }
-
                          self.spinner.show(in: self.view)
-                         self.spinner.dismiss(afterDelay: 4.0)
+                         self.spinner.dismiss(afterDelay: 3.0)
                         
                         self.Division.text = ""
                         self.Price.text = ""
@@ -108,15 +107,25 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
                         }
                     }else{
                         print("FAILED")
+                        self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                        if(self.lang == "ms"){
+                            self.spinner.textLabel.text = "Failed to Save".localized(lang: "ms")
+                            
+                        }else{
+                            self.spinner.textLabel.text = "Failed to Save".localized(lang: "en")
+                           
+                        }
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 3.0)
                     }
                     
             }
         }
     
     func changeLanguage(str: String){
-        ButtonAdd.setTitle("Add to Cart".localized(lang: str), for: .normal)
+        ButtonAdd.setTitle("ACCEPT".localized(lang: str), for: .normal)
         
-        ButtonCancel.setTitle("Add to Cart".localized(lang: str), for: .normal)
+        ButtonCancel.setTitle("Cancel".localized(lang: str), for: .normal)
         
     }
         

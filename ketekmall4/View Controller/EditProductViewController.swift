@@ -39,6 +39,8 @@ class EditProductViewController: UIViewController {
     @IBOutlet weak var ButtonAccept: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     
+   var viewController1: UIViewController?
+    
     var MAINCATE: String = ""
     var SUBCATE: String = ""
     var BRAND: String = ""
@@ -210,7 +212,11 @@ class EditProductViewController: UIViewController {
                     self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
-                    
+                    self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                    self.spinner.textLabel.text = "Edit Saved"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }else{
                     self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
                     self.spinner.textLabel.text = "Failed"

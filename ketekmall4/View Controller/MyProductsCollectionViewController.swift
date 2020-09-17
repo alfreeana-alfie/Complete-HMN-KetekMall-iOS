@@ -183,28 +183,34 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     }
     
     func btnRemove(cell: MyProductsCollectionViewCell) {
-        guard let indexPath = self.productView.indexPath(for: cell) else{
-            return
-        }
-        
-        let ID = self.ItemID[indexPath.row]
-        let parameters: Parameters=[
-            "id": ID,
-        ]
-        
-        //Sending http post request
-        Alamofire.request(URL_REMOVE, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-//                        print("SUCCESS")
-                        self.productView.deleteItems(at: [indexPath])
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            guard let indexPath = self.productView.indexPath(for: cell) else{
+                return
+            }
+            
+            let ID = self.ItemID[indexPath.row]
+            let parameters: Parameters=[
+                "id": ID,
+            ]
+            
+            //Sending http post request
+            Alamofire.request(self.URL_REMOVE, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value{
+                        let jsonData = result as! NSDictionary
+                        
+                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            self.productView.deleteItems(at: [indexPath])
+                        }
                     }
-                }
-        }
+            }
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     func btnEdit(cell: MyProductsCollectionViewCell) {
