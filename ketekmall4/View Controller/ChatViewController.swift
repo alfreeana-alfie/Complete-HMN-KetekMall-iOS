@@ -33,7 +33,7 @@ struct Saved {
     var user: String
 }
 
-class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate {
+class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
     
     let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
     let ref = Database.database().reference(withPath: "messages")
@@ -70,6 +70,11 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
 
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+        layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+        layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+        }
+        
         ChatList2()
         ChatNew()
         
@@ -162,7 +167,6 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
         randomString = ""
         randomString = randomString2
         inputBar.inputTextView.text.removeAll()
-        print(randomString)
     }
 }
 
@@ -187,7 +191,7 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
                     let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
                     let newEmail = self.email[..<index]
                     
-                    print(String(newEmail) + "_" + self.chatWith)
+                    
                     if let jsonUser = result as? [String: Any]{
                         for i in jsonUser.keys{
                             if(i.elementsEqual(String(newEmail) + "_" + self.chatWith)){
@@ -201,8 +205,6 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
                                             self.saved.append(time!)
                                             let newlist = Saved(messageID: j, message: message!, time: time!, user: name!)
                                             self.list.append(newlist)
-                                            
-                                            
                                         }
                                         
                                     }

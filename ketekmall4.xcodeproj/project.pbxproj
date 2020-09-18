@@ -84,7 +84,6 @@
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
-		FBC293C92508A6230057961A /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C82508A6230057961A /* NewChatViewController.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -192,7 +191,6 @@
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		FBC293C82508A6230057961A /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -371,7 +369,6 @@
 				FBC293C22508A5D00057961A /* ChatTableViewCell.swift */,
 				FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */,
 				FBC293C62508A6120057961A /* ChatViewController.swift */,
-				FBC293C82508A6230057961A /* NewChatViewController.swift */,
 				FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */,
 				FB2883462509759E008B18BB /* ContactUsViewController.swift */,
 				FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */,
@@ -395,8 +392,8 @@
 				FB5A48D924F7F06B00F5464C /* Sources */,
 				FB5A48DA24F7F06B00F5464C /* Frameworks */,
 				FB5A48DB24F7F06B00F5464C /* Resources */,
-				387AB5F31DA005B16108775D /* [CP] Embed Pods Frameworks */,
-				C8E104915A42C73BD89AE8E2 /* [CP] Copy Pods Resources */,
+				6A27E18E2B96FBD10CD67319 /* [CP] Embed Pods Frameworks */,
+				0DFF611670676CA39B724320 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -517,21 +514,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		387AB5F31DA005B16108775D /* [CP] Embed Pods Frameworks */ = {
+		0DFF611670676CA39B724320 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		46250FABF8BE6F869F5AB642 /* [CP] Check Pods Manifest.lock */ = {
@@ -556,21 +553,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C8E104915A42C73BD89AE8E2 /* [CP] Copy Pods Resources */ = {
+		6A27E18E2B96FBD10CD67319 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -620,7 +617,6 @@
 				FB528AC624FA616800A968E8 /* MySellingViewController.swift in Sources */,
 				FB43BFD424FF7502002D36E0 /* CheckoutViewController.swift in Sources */,
 				FB4B72D724FB89FA00293B81 /* MyLikesViewController.swift in Sources */,
-				FBC293C92508A6230057961A /* NewChatViewController.swift in Sources */,
 				FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */,
 				FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */,
 				FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */,

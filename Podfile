@@ -22,6 +22,6 @@ pod 'JGProgressHUD'
 pod 'ImageSlideshow', '~> 1.9.1’
 pod 'ImageSlideshow/Kingfisher’
 pod 'LanguageManager-iOS'
-
+pod 'GMStepper'
  
 end

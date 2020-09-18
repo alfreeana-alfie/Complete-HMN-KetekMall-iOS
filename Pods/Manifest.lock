@@ -71,6 +71,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - Protobuf (>= 3.9.2, ~> 3.9)
+  - GMStepper (2.2)
   - GoogleDataTransport (7.3.0):
     - nanopb (~> 1.30906.0)
   - GoogleSignIn (5.0.2):
@@ -143,6 +144,7 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - Firebase/Database
   - Firebase/Messaging
+  - GMStepper
   - GoogleSignIn
   - ImageSlideshow (~> 1.9.1)
   - ImageSlideshow/Kingfisher
@@ -170,6 +172,7 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
+    - GMStepper
     - GoogleDataTransport
     - GoogleSignIn
     - GoogleUtilities
@@ -205,6 +208,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FirebaseInstanceID: 84f5f5762f1bee94ca2254f693bbf5aec6666504
   FirebaseMessaging: 82d75b3770a78bbce470769a6980429608b4c407
+  GMStepper: 89fb106944dfcc3aa3add7164e3ebd463ea2104b
   GoogleDataTransport: e85fb700c9b027079ce182c3d08e12e0f9618bb4
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -224,6 +228,6 @@ SPEC CHECKSUMS:
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: 183b3aa83fac4eec04a3b6eb0bc5340814d9343c
+PODFILE CHECKSUM: cfde2b854b6cb21c39e0225cce126ad19231323f
 
 COCOAPODS: 1.9.3
