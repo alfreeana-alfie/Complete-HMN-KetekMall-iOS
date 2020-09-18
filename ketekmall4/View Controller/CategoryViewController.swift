@@ -185,6 +185,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                     response in
                     if let result = response.result.value {
                         let jsonData = result as! NSDictionary
+                        print(jsonData.value(forKey: "message")!)
                         self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                         if(self.lang == "ms"){
                             self.spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
@@ -227,7 +228,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                     response in
                     if let result = response.result.value {
                         let jsonData = result as! NSDictionary
-//                        print(jsonData.value(forKey: "message")!)
+                        print(jsonData.value(forKey: "message")!)
                         self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                         if(self.lang == "ms"){
                             self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
