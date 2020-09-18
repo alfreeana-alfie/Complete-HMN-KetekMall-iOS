@@ -72,6 +72,10 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate 
 
         ChatList2()
         ChatNew()
+        
+        let noti = UNMutableNotificationContent()
+        noti.title = "Ketekmall"
+        noti.body = "new messages"
     }
     
     
