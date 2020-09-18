@@ -52,6 +52,10 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
 
+        let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
+        let newEmail = self.email[..<index]
+        
+        EMAILUSER = String(newEmail)
         ChatList2()
         ChatList()
     }
@@ -64,6 +68,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                     let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
                     let newEmail = self.email[..<index]
                     
+                   
                     if let jsonUser = result as? [String: Any]{
                         for i in jsonUser.keys{
                             if(i.contains(String(newEmail) + "_")){
@@ -162,6 +167,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.chatWith = self.CHATWITH[indexPath.row]
         vc.chatName = self.USERNAME[indexPath.row]
+        vc.emailUser = self.EMAILUSER
         navigationController?.pushViewController(vc, animated: true)
     }
 }
