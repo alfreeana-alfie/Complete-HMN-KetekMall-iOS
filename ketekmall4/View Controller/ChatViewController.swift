@@ -94,7 +94,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "nl_NL")
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT 8")
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var randomString2 = String.random()
         
         
