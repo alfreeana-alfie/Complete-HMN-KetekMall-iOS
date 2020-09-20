@@ -1009,7 +1009,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if collectionView == self.HotView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotCollectionViewCell", for: indexPath) as! HotCollectionViewCell
             
@@ -1021,7 +1020,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 cell.Rating.value = f
             }
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
-            cell.ItemPrice.text! = self.PRICEHOT[indexPath.row]
+            cell.ItemPrice.text! = "MYR" + self.PRICEHOT[indexPath.row]
             cell.ButtonView.layer.cornerRadius = 7
             cell.ButtonView.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 5
@@ -1036,7 +1035,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 cell1.Rating.value = f
             }
             cell1.ItemName.text! = self.ADDETAILSHOCKING[indexPath.row]
-            cell1.ItemPrice.text! = self.PRICESHOCKING[indexPath.row]
+            cell1.ItemPrice.text! = "MYR" + self.PRICESHOCKING[indexPath.row]
             cell1.ButtonView.layer.cornerRadius = 5
             cell1.layer.cornerRadius = 5
             cell1.ButtonView.layer.borderWidth = 0.5

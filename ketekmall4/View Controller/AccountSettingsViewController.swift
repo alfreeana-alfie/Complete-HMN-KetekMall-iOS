@@ -39,8 +39,9 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var Btn_EditProfile: UIButton!
     @IBOutlet weak var Btn_Accept: UIButton!
     @IBOutlet weak var btnUpload: UIButton!
-    @IBOutlet weak var btnUploadServer: UIButton!
+//    @IBOutlet weak var btnUploadServer: UIButton!
     @IBOutlet weak var EditProfileLabel: UILabel!
+    @IBOutlet weak var ButtonImage: NSLayoutConstraint!
     
     var userID = ""
     var testing = ""
@@ -66,16 +67,21 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         
         Btn_EditProfile.layer.cornerRadius = 5
         Btn_Accept.layer.cornerRadius = 5
-        btnUploadServer.layer.cornerRadius = 5
         btnUpload.layer.cornerRadius = 5
         
         Gender.inputView = pickerView
         CreateDatePicker()
         
-        btnUpload.addTarget(self, action: #selector(uploadToServer), for: .touchUpInside)
-        btnUploadServer.addTarget(self, action: #selector(selectImage), for: .touchUpInside)
+        UploadPhoto.isUserInteractionEnabled = true
         
+        let UploadClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
+        UploadPhoto.addGestureRecognizer(UploadClick)
+
+        btnUpload.addTarget(self, action: #selector(uploadToServer), for: .touchUpInside)
+
         Btn_Accept.isHidden = true
+        btnUpload.isHidden = true
+        ButtonImage.constant = 0
     
         spinner.show(in: self.view)
         navigationItem.title = "Account Settings"
@@ -142,7 +148,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         Gender.placeholder = "Gender".localized(lang: str)
         BankName.placeholder = "Bank Name".localized(lang: str)
         BankAcc.placeholder = "Bank Account".localized(lang: str)
-        btnUploadServer.setTitle("Upload to Server".localized(lang: str), for: .normal)
+//        btnUploadServer.setTitle("Upload to Server".localized(lang: str), for: .normal)
         btnUpload.setTitle("Upload Image".localized(lang: str), for: .normal)
         Btn_Accept.setTitle("ACCEPT".localized(lang: str), for: .normal)
         Btn_EditProfile.setTitle("Edit Profile".localized(lang: str), for: .normal)
@@ -243,8 +249,6 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
                     let jsonData = result as! NSDictionary
                     self.spinner.dismiss(afterDelay: 3.0)
                     print(jsonData.value(forKey: "message")!)
-                    
-                    
                 }
         }
     }
@@ -255,6 +259,9 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
+        
+        btnUpload.isHidden = false
+        ButtonImage.constant = 40
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

@@ -1929,8 +1929,11 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-5i-LTX">
-                                        <rect key="frame" x="281" y="673" width="89" height="44"/>
+                                        <rect key="frame" x="270" y="673" width="100" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="wHz-PK-8Mo"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="CHECKOUT">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2462,7 +2465,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruo-sU-C0n">
                                                     <rect key="frame" x="8" y="203" width="125" height="28"/>
-                                                    <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="ruo-sU-C0n" secondAttribute="height" multiplier="125:28" id="yzf-Q7-AJK"/>
                                                     </constraints>
@@ -3504,7 +3507,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-jF-ICD">
-                                <rect key="frame" x="0.0" y="263" width="414" height="501"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="418"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP9-CD-EMd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="919"/>
@@ -3516,7 +3519,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHOCKING SALE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aie-uG-mtn">
-                                                <rect key="frame" x="8" y="705" width="125" height="18"/>
+                                                <rect key="frame" x="8" y="703" width="125" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="TSb-Iz-W8z"/>
                                                 </constraints>
@@ -3906,7 +3909,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="11" id="Vpw-08-XTP"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -3980,7 +3983,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </cells>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lJV-Tw-fqq">
-                                                <rect key="frame" x="0.0" y="504" width="414" height="200"/>
+                                                <rect key="frame" x="0.0" y="493" width="414" height="205"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="li0-ie-wes">
                                                     <size key="itemSize" width="134" height="200"/>
@@ -3989,8 +3992,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="3" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
@@ -4049,7 +4052,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="11" id="Ozv-PQ-6yx"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -4087,13 +4090,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOT SELLING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R83-hQ-vPu">
-                                                <rect key="frame" x="8" y="473" width="101" height="23"/>
+                                                <rect key="frame" x="8" y="467" width="101" height="18"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                 <color key="textColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzf-h4-rRL">
-                                                <rect key="frame" x="321" y="473" width="70" height="30"/>
+                                                <rect key="frame" x="321" y="460" width="70" height="32"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                 <state key="normal" title="VIEW ALL">
                                                     <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4117,7 +4120,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yD6-tk-hnF">
-                                                <rect key="frame" x="321" y="705" width="70" height="17"/>
+                                                <rect key="frame" x="321" y="702" width="70" height="20"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                 <state key="normal" title="VIEW ALL">
                                                     <color key="titleColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4135,18 +4138,19 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstItem="jij-bb-Jfp" firstAttribute="leading" secondItem="yP9-CD-EMd" secondAttribute="leading" id="DLa-Fq-1pk"/>
                                             <constraint firstAttribute="bottom" secondItem="jij-bb-Jfp" secondAttribute="bottom" constant="459" id="EN7-40-ziP"/>
                                             <constraint firstAttribute="trailing" secondItem="oty-th-mtQ" secondAttribute="trailing" id="Gp7-xT-uAb"/>
-                                            <constraint firstItem="Wzf-h4-rRL" firstAttribute="top" secondItem="jij-bb-Jfp" secondAttribute="bottom" constant="13" id="H6b-Ee-Sni"/>
                                             <constraint firstItem="lJV-Tw-fqq" firstAttribute="top" secondItem="R83-hQ-vPu" secondAttribute="bottom" constant="8" id="H8k-L1-Rbm"/>
                                             <constraint firstItem="jij-bb-Jfp" firstAttribute="top" secondItem="veE-lF-5ky" secondAttribute="bottom" constant="8" id="KUH-CT-Z4C"/>
                                             <constraint firstAttribute="trailing" secondItem="lJV-Tw-fqq" secondAttribute="trailing" id="OKf-ai-1jP"/>
+                                            <constraint firstItem="Wzf-h4-rRL" firstAttribute="centerY" secondItem="R83-hQ-vPu" secondAttribute="centerY" id="Pil-s6-BWU"/>
                                             <constraint firstItem="jij-bb-Jfp" firstAttribute="top" secondItem="Una-ED-EMa" secondAttribute="bottom" constant="18" id="QbR-bV-SrR"/>
                                             <constraint firstItem="lJV-Tw-fqq" firstAttribute="top" secondItem="Wzf-h4-rRL" secondAttribute="bottom" constant="1" id="QcT-hw-qHx"/>
                                             <constraint firstAttribute="height" constant="919" id="XW0-1S-iTc"/>
                                             <constraint firstItem="veE-lF-5ky" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Una-ED-EMa" secondAttribute="trailing" constant="145" id="Yag-5d-U43"/>
                                             <constraint firstItem="Wzf-h4-rRL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="R83-hQ-vPu" secondAttribute="trailing" constant="8" symbolic="YES" id="aD1-kO-szW"/>
+                                            <constraint firstItem="yD6-tk-hnF" firstAttribute="centerY" secondItem="aie-uG-mtn" secondAttribute="centerY" id="aD7-y7-6BZ"/>
                                             <constraint firstItem="jij-bb-Jfp" firstAttribute="top" secondItem="yP9-CD-EMd" secondAttribute="top" constant="251" id="axD-5F-07H"/>
                                             <constraint firstAttribute="trailing" secondItem="Wzf-h4-rRL" secondAttribute="trailing" constant="23" id="b8G-oU-VQc"/>
-                                            <constraint firstItem="aie-uG-mtn" firstAttribute="top" secondItem="lJV-Tw-fqq" secondAttribute="bottom" constant="1" id="bJr-cO-t4D"/>
+                                            <constraint firstItem="aie-uG-mtn" firstAttribute="top" secondItem="lJV-Tw-fqq" secondAttribute="bottom" constant="5" id="bJr-cO-t4D"/>
                                             <constraint firstItem="veE-lF-5ky" firstAttribute="top" secondItem="l6J-RN-R9l" secondAttribute="bottom" constant="15" id="bVq-Lq-O8b"/>
                                             <constraint firstItem="oty-th-mtQ" firstAttribute="top" secondItem="yD6-tk-hnF" secondAttribute="bottom" constant="4" id="cL6-pc-k4q"/>
                                             <constraint firstAttribute="trailing" secondItem="jij-bb-Jfp" secondAttribute="trailing" id="cul-84-tFN"/>
@@ -4155,14 +4159,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstAttribute="trailing" secondItem="l6J-RN-R9l" secondAttribute="trailing" id="kOB-xB-ClV"/>
                                             <constraint firstItem="l6J-RN-R9l" firstAttribute="leading" secondItem="yP9-CD-EMd" secondAttribute="leading" id="lAF-PP-pfj"/>
                                             <constraint firstAttribute="trailing" secondItem="veE-lF-5ky" secondAttribute="trailing" constant="23" id="lm2-CU-hFf"/>
-                                            <constraint firstItem="R83-hQ-vPu" firstAttribute="top" secondItem="jij-bb-Jfp" secondAttribute="bottom" constant="13" id="nqP-so-dqa"/>
+                                            <constraint firstItem="R83-hQ-vPu" firstAttribute="top" secondItem="jij-bb-Jfp" secondAttribute="bottom" constant="7" id="nqP-so-dqa"/>
                                             <constraint firstItem="oty-th-mtQ" firstAttribute="leading" secondItem="yP9-CD-EMd" secondAttribute="leading" id="pOj-RB-HBb"/>
-                                            <constraint firstItem="oty-th-mtQ" firstAttribute="top" secondItem="aie-uG-mtn" secondAttribute="bottom" constant="3" id="qp0-kU-h7i"/>
+                                            <constraint firstItem="oty-th-mtQ" firstAttribute="top" secondItem="aie-uG-mtn" secondAttribute="bottom" constant="5" id="qp0-kU-h7i"/>
                                             <constraint firstItem="aie-uG-mtn" firstAttribute="leading" secondItem="yP9-CD-EMd" secondAttribute="leading" constant="8" id="t4A-Gr-FNV"/>
                                             <constraint firstItem="lJV-Tw-fqq" firstAttribute="leading" secondItem="yP9-CD-EMd" secondAttribute="leading" id="w3z-QH-z6I"/>
                                             <constraint firstItem="jij-bb-Jfp" firstAttribute="top" secondItem="veE-lF-5ky" secondAttribute="bottom" constant="8" id="wv3-de-WUR"/>
                                             <constraint firstAttribute="trailing" secondItem="yD6-tk-hnF" secondAttribute="trailing" constant="23" id="xUj-8e-4Zq"/>
-                                            <constraint firstItem="yD6-tk-hnF" firstAttribute="top" secondItem="lJV-Tw-fqq" secondAttribute="bottom" constant="1" id="xyS-dF-537"/>
                                             <constraint firstItem="yD6-tk-hnF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aie-uG-mtn" secondAttribute="trailing" constant="8" symbolic="YES" id="zHJ-ol-kIV"/>
                                         </constraints>
                                     </view>
@@ -4178,7 +4181,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <viewLayoutGuide key="frameLayoutGuide" id="KLQ-aM-B1k"/>
                             </scrollView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-uF-d9x">
-                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="rnh-As-6pA"/>
@@ -5259,7 +5262,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iO8-hR-nc3">
-                                                <rect key="frame" x="20" y="690" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="810" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.69803921570000005" green="0.1215686275" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="v9e-eC-VB5"/>
@@ -5272,13 +5275,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <action selector="EditProfile:" destination="3Nx-74-BMH" eventType="touchUpInside" id="40q-rB-B9i"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-GR-AaN">
-                                                <rect key="frame" x="20" y="142" width="374" height="30"/>
-                                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Upload to Server">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSN-f9-IVk">
                                                 <rect key="frame" x="143.5" y="8" width="127" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -5286,14 +5282,17 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSE-2e-th4">
-                                                <rect key="frame" x="20" y="180" width="374" height="30"/>
-                                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="20" y="180" width="374" height="40"/>
+                                                <color key="backgroundColor" red="0.69803921570000005" green="0.1215686275" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="1nf-fM-mDQ"/>
+                                                </constraints>
                                                 <state key="normal" title="Upload Image">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byN-p5-411">
-                                                <rect key="frame" x="20" y="690" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="810" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.69803921570000005" green="0.1215686275" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cG4-6c-YvK"/>
@@ -5305,117 +5304,207 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <action selector="EditProfile:" destination="3Nx-74-BMH" eventType="touchUpInside" id="AzB-l2-v3d"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KetekMall" translatesAutoresizingMaskIntoConstraints="NO" id="B9J-eo-afy">
-                                                <rect key="frame" x="163" y="46" width="88" height="88"/>
-                                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-ji-9nN">
+                                                <rect key="frame" x="20" y="467" width="374" height="50"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeX-vo-oAz" userLabel="Address02 View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="house.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cCA-Wr-TSt">
+                                                                <rect key="frame" x="0.0" y="-0.5" width="50" height="49.5"/>
+                                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="068-Id-ros"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="mM4-15-P2s"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address 02" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZKJ-HV-sTB">
+                                                                <rect key="frame" x="50" y="0.0" width="324" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="ZKJ-HV-sTB" secondAttribute="trailing" id="l22-ua-ZTZ"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="88" id="WRn-uK-AGL"/>
-                                                    <constraint firstAttribute="height" constant="88" id="ZF8-rh-CxN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="AeX-vo-oAz" secondAttribute="bottom" id="Up0-8i-tEs"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AeX-vo-oAz" secondAttribute="trailing" id="akm-yY-mhR"/>
+                                                    <constraint firstItem="AeX-vo-oAz" firstAttribute="top" secondItem="aYW-ji-9nN" secondAttribute="top" id="edV-pL-Khc"/>
+                                                    <constraint firstItem="AeX-vo-oAz" firstAttribute="leading" secondItem="aYW-ji-9nN" secondAttribute="leading" id="p21-a1-Isg"/>
+                                                </constraints>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" ambiguous="YES" image="house.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6gA-on-0ZN">
+                                                <rect key="frame" x="182" y="359" width="50" height="49.5"/>
+                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="8Jj-HA-iiN"/>
+                                                    <constraint firstAttribute="height" constant="50" id="ypa-bJ-3wv"/>
                                                 </constraints>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AeX-vo-oAz" userLabel="Address02 View">
-                                                <rect key="frame" x="20" y="395" width="374" height="34"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8BL-cX-Q7q">
+                                                <rect key="frame" x="20" y="525" width="374" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address 02" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZKJ-HV-sTB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="5ZA-AT-UHV" userLabel="Confirm Password View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-wx-d0R">
+                                                                <rect key="frame" x="0.0" y="0.0" width="186" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dPO-hP-lHM">
+                                                                <rect key="frame" x="188" y="0.0" width="186" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="5ZA-AT-UHV" userLabel="Confirm Password View">
-                                                <rect key="frame" x="20" y="437" width="374" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="2eQ-Sz-jqN"/>
+                                                    <constraint firstItem="5ZA-AT-UHV" firstAttribute="top" secondItem="8BL-cX-Q7q" secondAttribute="top" id="BIq-JF-aL0"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5ZA-AT-UHV" secondAttribute="trailing" id="eYI-OD-w4Q"/>
+                                                    <constraint firstItem="5ZA-AT-UHV" firstAttribute="leading" secondItem="8BL-cX-Q7q" secondAttribute="leading" id="lWC-cE-A1o"/>
+                                                    <constraint firstAttribute="bottom" secondItem="5ZA-AT-UHV" secondAttribute="bottom" id="sDv-Ag-4jY"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wB4-Lv-HKn" userLabel="Name">
+                                                <rect key="frame" x="20" y="235" width="374" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-wx-d0R">
-                                                        <rect key="frame" x="0.0" y="0.0" width="186" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dPO-hP-lHM">
-                                                        <rect key="frame" x="188" y="0.0" width="186" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRw-nP-2Wx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6GF-Pq-rYT">
+                                                                <rect key="frame" x="0.0" y="1.5" width="50" height="47"/>
+                                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="N7m-Ga-4By"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="tVt-bL-kuM"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Cc-rg-spa">
+                                                                <rect key="frame" x="50" y="0.0" width="324" height="50"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRw-nP-2Wx">
-                                                <rect key="frame" x="20" y="225" width="374" height="35"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="0x5-qc-Amp"/>
+                                                    <constraint firstItem="iRw-nP-2Wx" firstAttribute="leading" secondItem="wB4-Lv-HKn" secondAttribute="leading" id="71Y-DW-8Tg"/>
+                                                    <constraint firstAttribute="bottom" secondItem="iRw-nP-2Wx" secondAttribute="bottom" id="KR3-8H-QOB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="iRw-nP-2Wx" secondAttribute="trailing" id="V21-u7-5lP"/>
+                                                    <constraint firstItem="iRw-nP-2Wx" firstAttribute="top" secondItem="wB4-Lv-HKn" secondAttribute="top" id="a3u-ad-Cxd"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3I-3m-YXW">
+                                                <rect key="frame" x="20" y="293" width="374" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6GF-Pq-rYT">
-                                                        <rect key="frame" x="0.0" y="0.5" width="35" height="34"/>
-                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="N7m-Ga-4By"/>
-                                                            <constraint firstAttribute="height" constant="35" id="tVt-bL-kuM"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Cc-rg-spa">
-                                                        <rect key="frame" x="35" y="0.0" width="339" height="35"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSP-MU-d4w">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="envelope.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-fV-TmF">
+                                                                <rect key="frame" x="0.0" y="1.5" width="50" height="46.5"/>
+                                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="6yN-lg-Tdd"/>
+                                                                    <constraint firstAttribute="height" constant="50" id="V2q-QF-1by"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Jh-Dz-9ip">
+                                                                <rect key="frame" x="50" y="0.0" width="324" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSP-MU-d4w">
-                                                <rect key="frame" x="20" y="268" width="374" height="35"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Fy4-wr-6BZ"/>
+                                                    <constraint firstItem="rSP-MU-d4w" firstAttribute="leading" secondItem="F3I-3m-YXW" secondAttribute="leading" id="Phk-qV-dCB"/>
+                                                    <constraint firstItem="rSP-MU-d4w" firstAttribute="top" secondItem="F3I-3m-YXW" secondAttribute="top" id="dYL-hc-GLA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rSP-MU-d4w" secondAttribute="bottom" id="gg6-N4-1Al"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rSP-MU-d4w" secondAttribute="trailing" id="nja-n9-E4v"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvN-bb-als">
+                                                <rect key="frame" x="20" y="351" width="374" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="envelope.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-fV-TmF">
-                                                        <rect key="frame" x="0.0" y="0.5" width="35" height="34"/>
-                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="6yN-lg-Tdd"/>
-                                                            <constraint firstAttribute="height" constant="35" id="V2q-QF-1by"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Jh-Dz-9ip">
-                                                        <rect key="frame" x="35" y="0.0" width="339" height="35"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZO0-b5-YR6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="phone.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FXj-Sw-sqk">
+                                                                <rect key="frame" x="0.0" y="1.5" width="50" height="47.5"/>
+                                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="LxD-1H-OEU"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="Ps4-TC-lOr"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xe2-cS-XGU">
+                                                                <rect key="frame" x="50" y="0.0" width="324" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZO0-b5-YR6">
-                                                <rect key="frame" x="20" y="311" width="374" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="7mN-m4-MmI"/>
+                                                    <constraint firstItem="ZO0-b5-YR6" firstAttribute="top" secondItem="kvN-bb-als" secondAttribute="top" id="FQx-Rs-kZR"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZO0-b5-YR6" secondAttribute="bottom" id="TVf-9l-bDC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZO0-b5-YR6" secondAttribute="trailing" id="itA-eI-7SM"/>
+                                                    <constraint firstItem="ZO0-b5-YR6" firstAttribute="leading" secondItem="kvN-bb-als" secondAttribute="leading" id="rHn-AT-nHZ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbb-Ek-aYj">
+                                                <rect key="frame" x="20" y="583" width="374" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="phone.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FXj-Sw-sqk">
-                                                        <rect key="frame" x="0.0" y="0.5" width="34" height="33"/>
-                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="34" id="FVC-sI-7EG"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xe2-cS-XGU">
-                                                        <rect key="frame" x="34" y="0.0" width="340" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-0D-IE1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5I2-06-Uju">
+                                                                <rect key="frame" x="0.0" y="1" width="50" height="47.5"/>
+                                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="9vB-yd-jAz"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="sBc-bL-ugG"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LO9-5J-mwu">
+                                                                <rect key="frame" x="50" y="0.0" width="324" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-0D-IE1">
-                                                <rect key="frame" x="20" y="479" width="374" height="34"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="calendar.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5I2-06-Uju">
-                                                        <rect key="frame" x="0.0" y="0.5" width="34" height="33"/>
-                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="34" id="jsn-Ar-0af"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LO9-5J-mwu">
-                                                        <rect key="frame" x="34" y="0.0" width="340" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="0b5-Hq-XaO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="f7c-0D-IE1" secondAttribute="trailing" id="86W-X7-9b0"/>
+                                                    <constraint firstItem="f7c-0D-IE1" firstAttribute="leading" secondItem="gbb-Ek-aYj" secondAttribute="leading" id="OBX-Iy-kAi"/>
+                                                    <constraint firstAttribute="bottom" secondItem="f7c-0D-IE1" secondAttribute="bottom" id="d3s-Kv-43a"/>
+                                                    <constraint firstItem="f7c-0D-IE1" firstAttribute="top" secondItem="gbb-Ek-aYj" secondAttribute="top" id="tJM-wm-mDf"/>
+                                                </constraints>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcR-kU-HLD">
-                                                <rect key="frame" x="20" y="521" width="374" height="34"/>
+                                                <rect key="frame" x="20" y="641" width="374" height="34"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OJX-PI-Mk7">
                                                         <rect key="frame" x="0.0" y="0.5" width="34" height="33"/>
@@ -5433,7 +5522,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcL-7z-TyR">
-                                                <rect key="frame" x="20" y="563" width="374" height="34"/>
+                                                <rect key="frame" x="20" y="683" width="374" height="34"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person.crop.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hRI-tl-Xm2">
                                                         <rect key="frame" x="0.0" y="1" width="34" height="31.5"/>
@@ -5455,7 +5544,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-FH-kDy">
-                                                <rect key="frame" x="20" y="634" width="374" height="34"/>
+                                                <rect key="frame" x="20" y="754" width="374" height="34"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="house.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pSS-zF-vsD">
                                                         <rect key="frame" x="0.0" y="-0.5" width="34" height="33.5"/>
@@ -5473,7 +5562,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rH3-Iu-Pkm">
-                                                <rect key="frame" x="20" y="596" width="374" height="34"/>
+                                                <rect key="frame" x="20" y="716" width="374" height="34"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="creditcard.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UVj-O3-jhK">
                                                         <rect key="frame" x="0.0" y="2" width="34" height="30"/>
@@ -5490,77 +5579,96 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </subviews>
                                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BqT-yu-MsM">
-                                                <rect key="frame" x="20" y="353" width="374" height="34"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-m1-8tP">
+                                                <rect key="frame" x="20" y="409" width="374" height="50"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="house.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-k0-FvS">
-                                                        <rect key="frame" x="0.0" y="-0.5" width="34" height="33.5"/>
-                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="34" id="Slh-eU-ON2"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address 01" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Za-se-Puq">
-                                                        <rect key="frame" x="34" y="0.0" width="340" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BqT-yu-MsM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="house.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-k0-FvS">
+                                                                <rect key="frame" x="0.0" y="-0.5" width="50" height="49.5"/>
+                                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="Aop-BD-93o"/>
+                                                                    <constraint firstAttribute="width" constant="50" id="Sxj-9N-K8c"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address 01" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Za-se-Puq">
+                                                                <rect key="frame" x="50" y="0.0" width="324" height="50"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="BqT-yu-MsM" secondAttribute="bottom" id="3UA-Q1-LpM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="BqT-yu-MsM" secondAttribute="trailing" id="4c6-qM-kOR"/>
+                                                    <constraint firstAttribute="height" constant="50" id="Lpe-dk-htP"/>
+                                                    <constraint firstItem="BqT-yu-MsM" firstAttribute="leading" secondItem="WNP-m1-8tP" secondAttribute="leading" id="Umz-PQ-jKj"/>
+                                                    <constraint firstItem="BqT-yu-MsM" firstAttribute="top" secondItem="WNP-m1-8tP" secondAttribute="top" id="nN2-Nf-SDT"/>
+                                                </constraints>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KetekMall" translatesAutoresizingMaskIntoConstraints="NO" id="B9J-eo-afy">
+                                                <rect key="frame" x="146" y="46" width="120" height="120"/>
+                                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="WRn-uK-AGL"/>
+                                                    <constraint firstAttribute="height" constant="120" id="ZF8-rh-CxN"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="f7c-0D-IE1" firstAttribute="top" secondItem="5ZA-AT-UHV" secondAttribute="bottom" constant="8" id="2Xt-03-c00"/>
-                                            <constraint firstItem="IcK-GR-AaN" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="2d3-5V-o0X"/>
+                                            <constraint firstAttribute="trailing" secondItem="gbb-Ek-aYj" secondAttribute="trailing" constant="20" id="2Zp-T0-2om"/>
+                                            <constraint firstAttribute="trailing" secondItem="F3I-3m-YXW" secondAttribute="trailing" constant="20" id="2az-es-uLC"/>
                                             <constraint firstAttribute="trailing" secondItem="EcL-7z-TyR" secondAttribute="trailing" constant="20" id="2sh-E8-5kE"/>
-                                            <constraint firstItem="rSP-MU-d4w" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="4YA-SQ-GnA"/>
+                                            <constraint firstItem="SSE-2e-th4" firstAttribute="top" secondItem="B9J-eo-afy" secondAttribute="bottom" constant="14" id="4uu-ck-6Ij"/>
                                             <constraint firstItem="byN-p5-411" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="5BN-Ti-rTF"/>
+                                            <constraint firstItem="F3I-3m-YXW" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="5Ce-Pl-8ur"/>
                                             <constraint firstAttribute="trailing" secondItem="byN-p5-411" secondAttribute="trailing" constant="20" id="9KN-sA-HWQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="IcK-GR-AaN" secondAttribute="trailing" constant="20" id="9Po-Vh-CcM"/>
                                             <constraint firstItem="eSN-f9-IVk" firstAttribute="centerX" secondItem="eZO-fV-g2Y" secondAttribute="centerX" id="BON-ZZ-gWU"/>
                                             <constraint firstAttribute="height" constant="769" id="D3J-wZ-bfG"/>
                                             <constraint firstItem="EcL-7z-TyR" firstAttribute="top" secondItem="FcR-kU-HLD" secondAttribute="bottom" constant="8" id="EiA-qu-qRN"/>
-                                            <constraint firstItem="AeX-vo-oAz" firstAttribute="top" secondItem="BqT-yu-MsM" secondAttribute="bottom" constant="8" id="K2K-Ji-dCB"/>
-                                            <constraint firstItem="AeX-vo-oAz" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="KKh-i0-0Ql"/>
+                                            <constraint firstItem="WNP-m1-8tP" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="GlP-sA-Cp7"/>
+                                            <constraint firstAttribute="trailing" secondItem="wB4-Lv-HKn" secondAttribute="trailing" constant="20" id="HBO-CN-YAh"/>
+                                            <constraint firstAttribute="trailing" secondItem="kvN-bb-als" secondAttribute="trailing" constant="20" id="JQJ-fx-j0g"/>
+                                            <constraint firstItem="wB4-Lv-HKn" firstAttribute="top" secondItem="SSE-2e-th4" secondAttribute="bottom" constant="15" id="KIr-P7-CTJ"/>
                                             <constraint firstItem="iO8-hR-nc3" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="KWT-jd-sIR"/>
                                             <constraint firstAttribute="trailing" secondItem="rH3-Iu-Pkm" secondAttribute="trailing" constant="20" id="Kpn-bU-pzF"/>
-                                            <constraint firstAttribute="trailing" secondItem="rSP-MU-d4w" secondAttribute="trailing" constant="20" id="Liu-Fg-VVA"/>
-                                            <constraint firstItem="FcR-kU-HLD" firstAttribute="top" secondItem="f7c-0D-IE1" secondAttribute="bottom" constant="8" id="Ms3-m6-2F8"/>
-                                            <constraint firstItem="ZO0-b5-YR6" firstAttribute="top" secondItem="rSP-MU-d4w" secondAttribute="bottom" constant="8" id="Nat-np-enU"/>
-                                            <constraint firstItem="rSP-MU-d4w" firstAttribute="top" secondItem="iRw-nP-2Wx" secondAttribute="bottom" constant="8" id="Pc1-ZL-DkS"/>
+                                            <constraint firstItem="wB4-Lv-HKn" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="Nb5-RF-Cdg"/>
                                             <constraint firstItem="SHb-FH-kDy" firstAttribute="top" secondItem="rH3-Iu-Pkm" secondAttribute="bottom" constant="4" id="Pnv-Zq-zjJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="AeX-vo-oAz" secondAttribute="trailing" constant="20" id="Q5p-g4-Xli"/>
-                                            <constraint firstItem="5ZA-AT-UHV" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="QKv-wb-p6A"/>
                                             <constraint firstItem="SSE-2e-th4" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="QgZ-Nr-vQe"/>
                                             <constraint firstItem="iO8-hR-nc3" firstAttribute="top" secondItem="SHb-FH-kDy" secondAttribute="bottom" constant="22" id="RdL-av-KoZ"/>
-                                            <constraint firstItem="B9J-eo-afy" firstAttribute="centerX" secondItem="eZO-fV-g2Y" secondAttribute="centerX" id="SGQ-Do-raa"/>
+                                            <constraint firstItem="B9J-eo-afy" firstAttribute="centerX" secondItem="eZO-fV-g2Y" secondAttribute="centerX" constant="-1" id="SGQ-Do-raa"/>
                                             <constraint firstItem="byN-p5-411" firstAttribute="top" secondItem="SHb-FH-kDy" secondAttribute="bottom" constant="22" id="SKX-fN-xUQ"/>
                                             <constraint firstAttribute="trailing" secondItem="SHb-FH-kDy" secondAttribute="trailing" constant="20" id="T3h-NK-TsY"/>
                                             <constraint firstItem="B9J-eo-afy" firstAttribute="top" secondItem="eSN-f9-IVk" secondAttribute="bottom" constant="8" id="TDW-ye-aQi"/>
-                                            <constraint firstItem="ZO0-b5-YR6" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="TYb-AR-Slx"/>
                                             <constraint firstItem="rH3-Iu-Pkm" firstAttribute="top" secondItem="FcR-kU-HLD" secondAttribute="bottom" constant="41" id="Tfl-OO-Ikr"/>
-                                            <constraint firstItem="SSE-2e-th4" firstAttribute="top" secondItem="IcK-GR-AaN" secondAttribute="bottom" constant="8" id="UQc-qv-ybs"/>
-                                            <constraint firstAttribute="trailing" secondItem="5ZA-AT-UHV" secondAttribute="trailing" constant="20" id="VXf-Ny-fRV"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZO0-b5-YR6" secondAttribute="trailing" constant="20" id="Wqg-zU-rkI"/>
-                                            <constraint firstItem="BqT-yu-MsM" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="Wtc-04-b6A"/>
-                                            <constraint firstItem="BqT-yu-MsM" firstAttribute="top" secondItem="ZO0-b5-YR6" secondAttribute="bottom" constant="8" id="ZXN-Op-qwE"/>
-                                            <constraint firstItem="iRw-nP-2Wx" firstAttribute="top" secondItem="SSE-2e-th4" secondAttribute="bottom" constant="15" id="bIR-ag-9lU"/>
+                                            <constraint firstItem="F3I-3m-YXW" firstAttribute="top" secondItem="wB4-Lv-HKn" secondAttribute="bottom" constant="8" id="VnU-6k-xwE"/>
                                             <constraint firstAttribute="trailing" secondItem="FcR-kU-HLD" secondAttribute="trailing" constant="20" id="bfj-n8-dIz"/>
-                                            <constraint firstItem="IcK-GR-AaN" firstAttribute="top" secondItem="B9J-eo-afy" secondAttribute="bottom" constant="8" id="c9N-7Y-u0z"/>
-                                            <constraint firstItem="5ZA-AT-UHV" firstAttribute="top" secondItem="AeX-vo-oAz" secondAttribute="bottom" constant="8" id="cI8-h2-Vlx"/>
-                                            <constraint firstItem="f7c-0D-IE1" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="fJ0-cU-U0z"/>
+                                            <constraint firstAttribute="trailing" secondItem="8BL-cX-Q7q" secondAttribute="trailing" constant="20" id="eIt-my-ChP"/>
+                                            <constraint firstItem="gbb-Ek-aYj" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="fI2-J3-JdA"/>
                                             <constraint firstItem="rH3-Iu-Pkm" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="fbt-Ma-EK1"/>
-                                            <constraint firstAttribute="trailing" secondItem="iRw-nP-2Wx" secondAttribute="trailing" constant="20" id="i2v-am-TFf"/>
+                                            <constraint firstItem="kvN-bb-als" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="g0c-6z-4zU"/>
+                                            <constraint firstItem="8BL-cX-Q7q" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="hnr-rM-MV5"/>
+                                            <constraint firstAttribute="trailing" secondItem="WNP-m1-8tP" secondAttribute="trailing" constant="20" id="iCD-Nn-7Lv"/>
                                             <constraint firstItem="EcL-7z-TyR" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="iXf-NK-54M"/>
-                                            <constraint firstItem="iRw-nP-2Wx" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="k61-ga-JFl"/>
                                             <constraint firstAttribute="trailing" secondItem="iO8-hR-nc3" secondAttribute="trailing" constant="20" id="lCQ-xW-dzN"/>
+                                            <constraint firstItem="aYW-ji-9nN" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="lQz-Fg-dcn"/>
+                                            <constraint firstItem="gbb-Ek-aYj" firstAttribute="top" secondItem="8BL-cX-Q7q" secondAttribute="bottom" constant="8" id="oku-2f-nzi"/>
                                             <constraint firstAttribute="trailing" secondItem="SSE-2e-th4" secondAttribute="trailing" constant="20" id="pMh-iN-upH"/>
-                                            <constraint firstAttribute="trailing" secondItem="f7c-0D-IE1" secondAttribute="trailing" constant="20" id="poT-Ep-6gC"/>
+                                            <constraint firstItem="kvN-bb-als" firstAttribute="top" secondItem="F3I-3m-YXW" secondAttribute="bottom" constant="8" id="qxB-VV-bVK"/>
                                             <constraint firstItem="eSN-f9-IVk" firstAttribute="top" secondItem="eZO-fV-g2Y" secondAttribute="top" constant="8" id="sFd-yK-9wx"/>
+                                            <constraint firstItem="8BL-cX-Q7q" firstAttribute="top" secondItem="aYW-ji-9nN" secondAttribute="bottom" constant="8" id="uRj-dV-oHd"/>
                                             <constraint firstItem="SHb-FH-kDy" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="uWq-b0-X0N"/>
-                                            <constraint firstAttribute="trailing" secondItem="BqT-yu-MsM" secondAttribute="trailing" constant="20" id="v6l-tG-rtu"/>
                                             <constraint firstItem="FcR-kU-HLD" firstAttribute="leading" secondItem="eZO-fV-g2Y" secondAttribute="leading" constant="20" id="wo9-k8-SVl"/>
+                                            <constraint firstItem="FcR-kU-HLD" firstAttribute="top" secondItem="gbb-Ek-aYj" secondAttribute="bottom" constant="8" id="wpH-Ld-3vK"/>
+                                            <constraint firstItem="WNP-m1-8tP" firstAttribute="top" secondItem="kvN-bb-als" secondAttribute="bottom" constant="8" id="wtG-65-H8a"/>
+                                            <constraint firstAttribute="trailing" secondItem="aYW-ji-9nN" secondAttribute="trailing" constant="20" id="yRS-hK-w82"/>
+                                            <constraint firstItem="aYW-ji-9nN" firstAttribute="top" secondItem="WNP-m1-8tP" secondAttribute="bottom" constant="8" id="z5l-IM-aSi"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -5598,6 +5706,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <outlet property="Birthday" destination="LO9-5J-mwu" id="d7v-Bv-Txr"/>
                         <outlet property="Btn_Accept" destination="iO8-hR-nc3" id="iCZ-mv-Njd"/>
                         <outlet property="Btn_EditProfile" destination="byN-p5-411" id="Ugi-Tl-Ebe"/>
+                        <outlet property="ButtonImage" destination="1nf-fM-mDQ" id="gYp-gl-ZzT"/>
                         <outlet property="City" destination="cfo-wx-d0R" id="lNv-mk-3vB"/>
                         <outlet property="EditProfileLabel" destination="eSN-f9-IVk" id="yTR-N4-rIM"/>
                         <outlet property="Email" destination="5Jh-Dz-9ip" id="4Zv-zP-xbp"/>
@@ -5608,7 +5717,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <outlet property="PostCode" destination="dPO-hP-lHM" id="aVY-Mk-484"/>
                         <outlet property="UploadPhoto" destination="B9J-eo-afy" id="f5g-yE-Ff4"/>
                         <outlet property="btnUpload" destination="SSE-2e-th4" id="pgz-Sz-xFg"/>
-                        <outlet property="btnUploadServer" destination="IcK-GR-AaN" id="QZB-x7-sRl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tWb-O8-RQK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -6910,7 +7018,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHIPPED TO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="hwQ-OT-i4V">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="SHIPPED TO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="hwQ-OT-i4V">
                                                         <rect key="frame" x="8" y="88" width="85.5" height="17"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                         <nil key="textColor"/>
@@ -6959,7 +7067,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="OsF-lL-9dc">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="OsF-lL-9dc">
                                                         <rect key="frame" x="219" y="84.5" width="159" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="eZH-af-b5d"/>
@@ -7022,16 +7130,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <rect key="frame" x="8" y="240.5" width="382" height="60"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-black" translatesAutoresizingMaskIntoConstraints="NO" id="nvx-nX-QPQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="109" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-black" translatesAutoresizingMaskIntoConstraints="NO" id="7Hs-vh-udg">
-                                                                <rect key="frame" x="95.5" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="109" y="0.0" width="54.5" height="30"/>
                                                             </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-black" translatesAutoresizingMaskIntoConstraints="NO" id="Qwp-JP-ben">
-                                                                <rect key="frame" x="191" y="0.0" width="95.5" height="60"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="shipped-black" translatesAutoresizingMaskIntoConstraints="NO" id="Qwp-JP-ben">
+                                                                <rect key="frame" x="163.5" y="0.0" width="109.5" height="60"/>
                                                             </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-black" translatesAutoresizingMaskIntoConstraints="NO" id="XbF-y3-mTI">
-                                                                <rect key="frame" x="286.5" y="0.0" width="95.5" height="60"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="received-black" translatesAutoresizingMaskIntoConstraints="NO" id="XbF-y3-mTI">
+                                                                <rect key="frame" x="273" y="0.0" width="109" height="60"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -7039,16 +7147,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <rect key="frame" x="8" y="240" width="382" height="60.5"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-green" translatesAutoresizingMaskIntoConstraints="NO" id="6mT-gG-x1k">
-                                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="30"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-green" translatesAutoresizingMaskIntoConstraints="NO" id="qXj-8w-te7">
-                                                                <rect key="frame" x="95.5" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="54.5" y="0.0" width="109" height="60"/>
                                                             </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-green" translatesAutoresizingMaskIntoConstraints="NO" id="Tuy-jf-Sb7">
-                                                                <rect key="frame" x="191" y="0.0" width="95.5" height="60"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="shipped-green" translatesAutoresizingMaskIntoConstraints="NO" id="Tuy-jf-Sb7">
+                                                                <rect key="frame" x="163.5" y="0.0" width="109.5" height="60"/>
                                                             </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-green" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-Lv-gZg">
-                                                                <rect key="frame" x="286.5" y="0.0" width="95.5" height="60"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="received-green" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-Lv-gZg">
+                                                                <rect key="frame" x="273" y="0.0" width="109" height="60"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -8911,16 +9019,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <rect key="frame" x="8" y="74" width="398" height="60"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-green" translatesAutoresizingMaskIntoConstraints="NO" id="Yq4-VY-R6v">
-                                                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-green" translatesAutoresizingMaskIntoConstraints="NO" id="Dnh-tG-AXG">
-                                                                <rect key="frame" x="99.5" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="57" y="0.0" width="113.5" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-green" translatesAutoresizingMaskIntoConstraints="NO" id="wcU-Ap-sGo">
-                                                                <rect key="frame" x="199" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="170.5" y="0.0" width="114" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-green" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-8v-aQ9">
-                                                                <rect key="frame" x="298.5" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="284.5" y="0.0" width="113.5" height="60"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -8928,16 +9036,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <rect key="frame" x="8" y="74" width="398" height="60"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-black" translatesAutoresizingMaskIntoConstraints="NO" id="0UX-6l-9zQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="113.5" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-black" translatesAutoresizingMaskIntoConstraints="NO" id="tEq-x6-VQ0">
-                                                                <rect key="frame" x="99.5" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="113.5" y="0.0" width="57" height="30"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-black" translatesAutoresizingMaskIntoConstraints="NO" id="ZIq-NP-rbj">
-                                                                <rect key="frame" x="199" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="170.5" y="0.0" width="114" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-black" translatesAutoresizingMaskIntoConstraints="NO" id="gkz-vp-IL8">
-                                                                <rect key="frame" x="298.5" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="284.5" y="0.0" width="113.5" height="60"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -9959,14 +10067,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="bin.xmark.fill" catalog="system" width="128" height="93"/>
         <image name="cake-and-pastries" width="50" height="50"/>
-        <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="camera.fill" catalog="system" width="128" height="96"/>
         <image name="cart.badge.plus" catalog="system" width="128" height="98"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="creditcard" catalog="system" width="128" height="91"/>
         <image name="creditcard.fill" catalog="system" width="128" height="91"/>
-        <image name="envelope.circle.fill" catalog="system" width="128" height="121"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="110"/>
@@ -9988,17 +10095,15 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <image name="lock.fill" catalog="system" width="128" height="128"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <image name="ordered-black" width="60" height="60"/>
-        <image name="ordered-green" width="60" height="60"/>
-        <image name="pending-black" width="60" height="60"/>
+        <image name="ordered-green" width="30" height="30"/>
+        <image name="pending-black" width="30" height="30"/>
         <image name="pending-green" width="60" height="60"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="person.crop.square.fill" catalog="system" width="128" height="114"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="received-black" width="60" height="60"/>
         <image name="received-green" width="60" height="60"/>
