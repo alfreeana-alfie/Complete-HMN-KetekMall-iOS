@@ -17,9 +17,11 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
 
     let sharedPref = UserDefaults.standard
     var lang: String = ""
+    var email_user: String = ""
 
     private let spinner = JGProgressHUD(style: .dark)
     
+    @IBOutlet weak var ButtonChat: UIImageView!
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var ItemName: UILabel!
     @IBOutlet weak var ItemPrice: UILabel!
@@ -119,6 +121,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         super.viewDidLoad()
         NoReviewLabel.isHidden = true
         lang = sharedPref.string(forKey: "LANG") ?? "0"
+        email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -145,7 +148,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         ItemName.text! = ADDETAIL
         ItemPrice.text! = "MYR" + PRICE
         
-        
+        ButtonChat.isUserInteractionEnabled = true
         ShippingInfo.isUserInteractionEnabled = true
         ShippingRight.isUserInteractionEnabled = true
         MoreDetails.isUserInteractionEnabled = true
@@ -155,7 +158,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         WhatsappButton.isUserInteractionEnabled = true
         
         
-        
+        let Chat_Click = UITapGestureRecognizer(target: self, action: #selector(onChatClick(sender:)))
         let ShippingInfo_Click = UITapGestureRecognizer(target: self, action: #selector(onShippingInfoClick(sender:)))
         let MoreDetails_Click = UITapGestureRecognizer(target: self, action: #selector(onMoreDetailsClick(sender:)))
         
@@ -171,6 +174,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         ViewReview.addGestureRecognizer(ViewReview_Click)
         ViewSameShop.addGestureRecognizer(ViewSameShop_Click)
         WhatsappButton.addGestureRecognizer(Whatsapp_Click)
+        ButtonChat.addGestureRecognizer(Chat_Click)
         
         getSellerDetails()
         getReview()
@@ -448,6 +452,41 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         self.SameShopView.reloadData()
                     }
                 }
+        }
+    }
+    
+    @objc func onChatClick(sender: Any){
+        let parameters: Parameters=[
+            "id": SELLERID
+        ]
+        
+        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let name = user.value(forKey: "name") as! [String]
+                        let email = user.value(forKey: "email") as! [String]
+                        
+                        let index2 = email[0].firstIndex(of: "@") ?? email[0].endIndex
+                        let newEmail2 = email[0][..<index2]
+                        
+                        let vc = ChatViewController()
+                        vc.title = name[0]
+                        vc.navigationItem.largeTitleDisplayMode = .never
+                        vc.chatWith = String(newEmail2)
+                        vc.chatName = name[0]
+                        vc.emailUser = self.email_user
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
         }
     }
     

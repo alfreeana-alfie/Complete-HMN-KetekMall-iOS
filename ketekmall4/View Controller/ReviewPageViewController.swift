@@ -294,6 +294,29 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
             Finished.text = "CANCEL"
         }
         
+        TrackingNo.isUserInteractionEnabled = true
+        
+        let TrackingClick = UITapGestureRecognizer(target: self, action: #selector(onTrackClick(sender:)))
+        
+        TrackingNo.addGestureRecognizer(TrackingClick)
+    }
+    
+    @objc func onTrackClick(sender: Any){
+        let urlWhats = "https://www.tracking.my/poslaju/" + TRACKINGNO
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            if let whatsappURL = URL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL){
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(whatsappURL)
+                    }
+                }
+                else {
+                    print("Invalid")
+                }
+            }
+        }
     }
     
     func changeLanguage(str: String){

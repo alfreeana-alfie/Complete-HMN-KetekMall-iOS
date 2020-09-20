@@ -14,6 +14,7 @@ import JGProgressHUD
 class CartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
     
     private let spinner = JGProgressHUD(style: .dark)
+    let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
     
     let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
     let URL_DELETE_CART = "https://ketekmall.com/ketekmall/delete_cart.php"
@@ -161,23 +162,34 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func onDeleteClick(cell: CartCollectionViewCell) {
-        guard let indexPath = self.CartView.indexPath(for: cell) else{
-            return
-        }
-        let parameters: Parameters=[
-            "id": self.ID[indexPath.row],
-            "cart_id": self.ID[indexPath.row],
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            guard let indexPath = self.CartView.indexPath(for: cell) else{
+                return
+            }
+            let parameters: Parameters=[
+                "id": self.ID[indexPath.row],
+                "cart_id": self.ID[indexPath.row],
+                
+            ]
+            Alamofire.request(self.URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+                        print(jsonData.value(forKey: "message")!)
+                        self.ID.remove(at: indexPath.row)
+                        self.PHOTO.remove(at: indexPath.row)
+                        self.ADDETAIL.remove(at: indexPath.row)
+                        self.PRICE.remove(at: indexPath.row)
+//                        self.QUANTITY.remove(at: indexPath.row)
+                        self.CartView.deleteItems(at: [indexPath])
+                    }
+            }
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             
-        ]
-        Alamofire.request(URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value {
-                    let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
-                    
-                }
-        }
+        }))
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -224,8 +236,6 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.SubLabel.text = "SubTotal".localized(lang: "en")
             cell.QuantityLabel.text = "Quantity".localized(lang: "en")
         }
-
-
         
         cell.CheckBOx.valueChanged = { (isChecked) in
             if(isChecked == false){

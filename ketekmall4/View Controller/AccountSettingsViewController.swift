@@ -43,6 +43,19 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var EditProfileLabel: UILabel!
     @IBOutlet weak var ButtonImage: NSLayoutConstraint!
     
+    @IBOutlet weak var Addr01View: UIView!
+    @IBOutlet weak var Addr02View: UIView!
+    @IBOutlet weak var Addr03View: UIView!
+    @IBOutlet weak var NameView: UIView!
+    @IBOutlet weak var EmailView: UIView!
+    @IBOutlet weak var PhoneView: UIView!
+    @IBOutlet weak var BirthView: UIView!
+    @IBOutlet weak var GenderView: UIView!
+    @IBOutlet weak var ICView: UIView!
+    @IBOutlet weak var BankNameView: UIView!
+    @IBOutlet weak var BankAccView: UIView!
+    
+    
     var userID = ""
     var testing = ""
     
@@ -65,9 +78,22 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        Btn_EditProfile.layer.cornerRadius = 5
-        Btn_Accept.layer.cornerRadius = 5
-        btnUpload.layer.cornerRadius = 5
+        Btn_EditProfile.layer.cornerRadius = 15
+        Btn_EditProfile.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        Btn_Accept.layer.cornerRadius = 15
+        Btn_Accept.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        btnUpload.layer.cornerRadius = 7
+        
+        NameView.layer.cornerRadius = 5
+        EmailView.layer.cornerRadius = 5
+        PhoneView.layer.cornerRadius = 5
+        Addr01View.layer.cornerRadius = 5
+        Addr02View.layer.cornerRadius = 5
+        BirthView.layer.cornerRadius = 5
+        GenderView.layer.cornerRadius = 5
+        ICView.layer.cornerRadius = 5
+        BankNameView.layer.cornerRadius = 5
+        BankAccView.layer.cornerRadius = 5
         
         Gender.inputView = pickerView
         CreateDatePicker()

@@ -201,6 +201,11 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         let jsonData = result as! NSDictionary
                         
                         if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            self.ItemPhoto.remove(at: indexPath.row)
+                            self.ad_Detail.remove(at: indexPath.row)
+                            self.price.remove(at: indexPath.row)
+                            self.location.remove(at: indexPath.row)
+                            self.RATING.remove(at: indexPath.row)
                             self.productView.deleteItems(at: [indexPath])
                         }
                     }

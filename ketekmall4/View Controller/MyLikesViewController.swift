@@ -16,6 +16,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var userID: String = ""
     
+    let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
     private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ = "https://ketekmall.com/ketekmall/readfav.php"
@@ -152,39 +153,50 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func btnRemove(cell: MyLikesCollectionViewCell) {
-        guard let indexPath = self.MyLikesView.indexPath(for: cell) else{
-            return
-        }
-        
-        let ID = self.ItemID[indexPath.row]
-        let parameters: Parameters=[
-                    "id": ID,
-                ]
-                
-                //Sending http post request
-                Alamofire.request(URL_DELETE, method: .post, parameters: parameters).responseJSON
-                    {
-                        response in
-                        if let result = response.result.value{
-                            let jsonData = result as! NSDictionary
-                            
-                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                                print("SUCCESS")
-                                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                            
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            guard let indexPath = self.MyLikesView.indexPath(for: cell) else{
+                return
+            }
+            
+            let ID = self.ItemID[indexPath.row]
+            let parameters: Parameters=[
+                        "id": ID,
+                    ]
+                    
+                    //Sending http post request
+            Alamofire.request(self.URL_DELETE, method: .post, parameters: parameters).responseJSON
+                        {
+                            response in
+                            if let result = response.result.value{
+                                let jsonData = result as! NSDictionary
                                 
-                                if(self.lang == "ms"){
-                                    self.spinner.textLabel.text = "Successfully Remove".localized(lang: "ms")
+                                if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                                    print("SUCCESS")
+                                    self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                                
                                     
-                                }else{
-                                    self.spinner.textLabel.text = "Successfully Remove".localized(lang: "en")
-                                   
+                                    if(self.lang == "ms"){
+                                        self.spinner.textLabel.text = "Successfully Remove".localized(lang: "ms")
+                                        
+                                    }else{
+                                        self.spinner.textLabel.text = "Successfully Remove".localized(lang: "en")
+                                       
+                                    }
+                                    self.spinner.show(in: self.view)
+                                    self.spinner.dismiss(afterDelay: 4.0)
+                                    self.ad_Detail.remove(at: indexPath.row)
+                                    self.location.remove(at: indexPath.row)
+                                    self.RATING.remove(at: indexPath.row)
+                                    self.ItemPhoto.remove(at: indexPath.row)
+                                    self.MyLikesView.deleteItems(at: [indexPath])
                                 }
-                                self.spinner.show(in: self.view)
-                                self.spinner.dismiss(afterDelay: 4.0)
-                                self.MyLikesView.deleteItems(at: [indexPath])
                             }
-                        }
-                }
+                    }
+        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        present(refreshAlert, animated: true, completion: nil)
     }
 }

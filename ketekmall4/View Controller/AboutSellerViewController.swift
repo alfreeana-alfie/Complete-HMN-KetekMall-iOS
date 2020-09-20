@@ -16,12 +16,15 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     let URL_READALL_SELLER = "https://ketekmall.com/ketekmall/readall_seller.php"
     let URL_ADD_FAV = "https://ketekmall.com/ketekmall/add_to_fav.php"
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
+    let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     
     private let spinner = JGProgressHUD(style: .dark)
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
+    var email_user: String = ""
 
+    @IBOutlet weak var ButtonChatSeller: UIImageView!
     @IBOutlet weak var ProductLabel: UILabel!
     @IBOutlet weak var SoldLabel: UILabel!
     @IBOutlet weak var ButtonChat: UIButton!
@@ -42,6 +45,8 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     var SELLERID1: String = ""
     var SELLLERNAME: String = ""
     var SELLERLOCATION: String = ""
+//    var SELLEREMAIL: String = ""
+//    var SELLERCHATNAME: String = ""
     var SELLERIMAGE: String = ""
     var SELLERPHONE: String = ""
     
@@ -65,6 +70,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
+        email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -88,6 +94,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         
         ViewList()
         getSold()
+        
+        ButtonChatSeller.isUserInteractionEnabled = true
+        let Chat_Click = UITapGestureRecognizer(target: self, action: #selector(onChatClick(sender:)))
+        ButtonChatSeller.addGestureRecognizer(Chat_Click)
     }
     
     func changeLanguage(str: String){
@@ -132,11 +142,39 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
-    func presentMethod(storyBoardName: String, storyBoardID: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
-        self.definesPresentationContext = true
-        self.present(newViewController, animated: true, completion: nil)
+    @objc func onChatClick(sender: Any){
+        let parameters: Parameters=[
+            "id": SELLERID1
+        ]
+        
+        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let name = user.value(forKey: "name") as! [String]
+                        let email = user.value(forKey: "email") as! [String]
+                        
+                        let index2 = email[0].firstIndex(of: "@") ?? email[0].endIndex
+                        let newEmail2 = email[0][..<index2]
+                        
+                        let vc = ChatViewController()
+                        vc.title = name[0]
+                        vc.navigationItem.largeTitleDisplayMode = .never
+                        vc.chatWith = String(newEmail2)
+                        vc.chatName = name[0]
+                        vc.emailUser = self.email_user
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
     }
 
     
