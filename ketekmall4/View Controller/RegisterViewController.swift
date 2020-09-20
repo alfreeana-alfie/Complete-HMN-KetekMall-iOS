@@ -19,6 +19,18 @@ class RegisterViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
+    @IBOutlet weak var NameView: UIView!
+    @IBOutlet weak var EmailView: UIView!
+    @IBOutlet weak var PhoneNumberView: UIView!
+    @IBOutlet weak var PasswordView: UIView!
+    @IBOutlet weak var ConfirmPasswordView: UIView!
+    
+    @IBOutlet weak var NameImage: UIImageView!
+    @IBOutlet weak var EmailImage: UIImageView!
+    @IBOutlet weak var PhoneImage: UIImageView!
+    @IBOutlet weak var PasswordImage: UIImageView!
+    @IBOutlet weak var ConfirmPassImage: UIImageView!
+    
     @IBOutlet weak var Name: UITextField!
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var PhoneNo: UITextField!
@@ -32,12 +44,40 @@ class RegisterViewController: UIViewController {
         
         PasswordStyle.layer.cornerRadius = 20
         Border.layer.cornerRadius = 2
+        
+        NameView.layer.cornerRadius = 5
+        EmailView.layer.cornerRadius = 5
+        PhoneNumberView.layer.cornerRadius = 5
+        PasswordView.layer.cornerRadius = 5
+        ConfirmPasswordView.layer.cornerRadius = 5
+        
+        NameImage.layer.cornerRadius = 5
+        EmailImage.layer.cornerRadius = 5
+        PhoneImage.layer.cornerRadius = 5
+        PasswordImage.layer.cornerRadius = 5
+        ConfirmPassImage.layer.cornerRadius = 5
+        
+        NameImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        EmailImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        PhoneImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        PasswordImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        ConfirmPassImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
     
     @IBAction func Register(_ sender: Any) {
-    
         spinner.show(in: self.view)
-        if(isValidPassword(testStr: Password.text!)){
+        if(Name.text == "" || Email.text == "" || PhoneNo.text == "" || Password.text == "" || ConfirmPassword.text == ""){
+            
+            self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+            self.spinner.textLabel.text = "Incomplete Information"
+            self.spinner.show(in: self.view)
+            self.spinner.dismiss(afterDelay: 3.0)
+        }else if(Password.text != ConfirmPassword.text){
+            self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+            self.spinner.textLabel.text = "Incorrect Password/Confirm Password"
+            self.spinner.show(in: self.view)
+            self.spinner.dismiss(afterDelay: 3.0)
+        }else if(isValidPassword(testStr: Password.text!) && isValidPassword(testStr: ConfirmPassword.text!)){
             let parameters: Parameters=[
                         "name":Name.text!,
                         "email":Email.text!,

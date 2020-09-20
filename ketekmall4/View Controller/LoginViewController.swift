@@ -28,6 +28,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     let URL_REGISTER = "https://ketekmall.com/ketekmall/register.php"
     let URL_FIREBASE = "https://click-1595830894120.firebaseio.com/users.json"
     
+    @IBOutlet weak var NameView: UIView!
+    @IBOutlet weak var PasswordView: UIView!
+    
+    
     @IBOutlet weak var Border: UIView!
     @IBOutlet weak var EmailField: UITextField!
     @IBOutlet weak var PasswordField: UITextField!
@@ -35,7 +39,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     @IBOutlet weak var EmailImage: UIImageView!
     @IBOutlet weak var PasswordImage: UIImageView!
     @IBOutlet weak var GoogleSignInBtn: GIDSignInButton!
-//    @IBOutlet weak var scrollView: UIScrollView!
     private let loginButton = FBLoginButton()
     @IBOutlet weak var FBView: UIView!
     
@@ -86,7 +89,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                 navigator.pushViewController(tabbar, animated: true)
             }
         }else{
-            hud.dismiss(afterDelay: 3.0)
+            hud.dismiss(afterDelay: 2.0)
         }
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.clientID = "918843433379-sttk0oa9ea0htiqt3j3ncakoi2vrma2i.apps.googleusercontent.com"
@@ -97,7 +100,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
 
         NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: FBView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: FBView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
-        loginButton.frame = CGRect(x: 0, y: 0, width: FBView.bounds.width - 50, height: FBView.bounds.height)
+        loginButton.frame = CGRect(x: 0, y: 0, width: FBView.bounds.width, height: FBView.bounds.height)
         
         if let token = AccessToken.current,
             !token.isExpired {
@@ -114,7 +117,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                 if error != nil {
                     self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
                     self.hud.show(in: self.view)
-                    self.hud.dismiss(afterDelay: 3.0)
+                    self.hud.dismiss(afterDelay: 2.0)
                     print("FAILED FACEBOOK LOGIN")
                 }
                 else{
@@ -138,13 +141,13 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         Alamofire.request(self.URL_REGISTER, method: .post, parameters: parameters).responseJSON
                             {
                                 response in
-                                self.hud.dismiss(afterDelay: 3.0)
+                                self.hud.dismiss(afterDelay: 2.0)
                                 if let result = response.result.value {
                                     let jsonData = result as! NSDictionary
                                     print(jsonData.value(forKey: "message")!)
                                     self.login(email: email!, password: username! + email!)
                                 }else{
-                                    self.hud.dismiss(afterDelay: 3.0)
+                                    self.hud.dismiss(afterDelay: 2.0)
                                     self.login(email: email!, password: username! + email!)
                                 }
                         }
@@ -175,10 +178,16 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             }
         }
 
+        NameView.layer.cornerRadius = 5
+        PasswordView.layer.cornerRadius = 5
         EmailImage.layer.cornerRadius = 5
         PasswordImage.layer.cornerRadius = 5
+        
+        EmailImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        PasswordImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        
         Border.layer.cornerRadius = 2
-        LoginStyle.layer.cornerRadius = 10
+        LoginStyle.layer.cornerRadius = 15
         GoogleSignInBtn.layer.cornerRadius = 10
         loginButton.layer.cornerRadius = 10
     }
@@ -247,7 +256,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        self.hud.dismiss(afterDelay: 3.0)
+                        self.hud.dismiss(afterDelay: 2.0)
                         let user = jsonData.value(forKey: "login") as! NSArray
                         
                         let userID = user.value(forKey: "id") as! [String]
@@ -301,7 +310,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                                 }
                             }
                         }
-                        
+                        self.hud.dismiss(afterDelay: 2.0)
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
                         tabbar.userID = userID[0]
                         if let navigator = self.navigationController {
@@ -311,7 +320,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
                         self.hud.textLabel.text = "Invalid email or password"
                         self.hud.show(in: self.view)
-                        self.hud.dismiss(afterDelay: 4.0)
+                        self.hud.dismiss(afterDelay: 2.0)
                         print("Invalid email or password")
                     }
                 }
@@ -334,7 +343,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        self.hud.dismiss(afterDelay: 3.0)
+                        self.hud.dismiss(afterDelay: 2.0)
                         let user = jsonData.value(forKey: "login") as! NSArray
                         
                         let userID = user.value(forKey: "id") as! [String]
@@ -388,7 +397,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                                 }
                             }
                         }
-                        
+                        self.hud.dismiss(afterDelay: 2.0)
                         
                         let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
                         tabbar.userID = userID[0]
@@ -399,7 +408,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
                         self.hud.textLabel.text = "Invalid email or password"
                         self.hud.show(in: self.view)
-                        self.hud.dismiss(afterDelay: 4.0)
+                        self.hud.dismiss(afterDelay: 2.0)
                         print("Invalid email or password")
                     }
                 }

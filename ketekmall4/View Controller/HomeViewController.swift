@@ -1022,7 +1022,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
             cell.ItemPrice.text! = self.PRICEHOT[indexPath.row]
-            cell.ButtonView.layer.cornerRadius = 5
+            cell.ButtonView.layer.cornerRadius = 7
             cell.ButtonView.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 5
             cell.delegate = self

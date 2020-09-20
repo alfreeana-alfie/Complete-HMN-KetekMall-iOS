@@ -15,6 +15,9 @@ class ForgotPasswordViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
+    @IBOutlet weak var EmailView: UIView!
+    @IBOutlet weak var EmailImage: UIImageView!
+    
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var Border: UIView!
     @IBOutlet weak var ButtonSend: UIButton!
@@ -45,5 +48,10 @@ class ForgotPasswordViewController: UIViewController {
         
         Border.layer.cornerRadius = 2
         ButtonSend.layer.cornerRadius = 20
+        
+        EmailView.layer.cornerRadius = 5
+        EmailImage.layer.cornerRadius = 5
+        
+        EmailImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
 }
