@@ -117,6 +117,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         CartView.dataSource = self
         
         ChangeDeliveryLabel.isHidden = true
+        ButtonPlaceOrder.layer.cornerRadius = 7
         
         spinner.show(in: self.view)
         let parameters: Parameters=[
