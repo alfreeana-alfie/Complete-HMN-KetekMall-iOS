@@ -77,7 +77,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        DeleteOrder()
+//        DeleteOrder()
     }
     
     func changeLanguage(str: String){
@@ -282,15 +282,12 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                                 self.PRICENEW.remove(at: index)
                                 if(self.PRICENEW.count == 0){
                                     self.GrandTotal.text! = "MYR0.00"
+                                    self.ButtonCheckout.isHidden = true
                                 }
                                 var SubTotal2 = 0.00
                                 for i in self.PRICENEW{
                                     SubTotal2 += Double(i)!
                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
-                                    
-                                    if(self.GrandTotal.text! == "MYR0.00"){
-                                        self.ButtonCheckout.isHidden = true
-                                    }
                                 }
                             }
                         }

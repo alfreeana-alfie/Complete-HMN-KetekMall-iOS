@@ -10,7 +10,26 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class CheckoutViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
+class CheckoutViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate, UICollectionViewDelegateFlowLayout, CheckoutDelegate {
+    func onSelfClick(cell: CheckoutCollectionViewCell) {
+        guard let indexPath = self.CartView.indexPath(for: cell) else{
+            return
+        }
+        
+        var newPrice: Double = 0.00
+        var newGrandTotal: Double = 0.00
+        
+        
+        newGrandTotal = Double(self.GRANDTOTAL[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
+        newPrice = Double(self.DELIVERYPRICE[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
+        
+        self.GrandTotal.text! = "MYR" + String(format: "$.2f", newGrandTotal)
+        
+        cell.DeliveryPrice.text! = "MYR" + String(format: "%.2f", newPrice)
+        
+        cell.ButtonSelfPickUp.isHidden = true
+    }
+    
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -246,6 +265,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                     print(String(format: "%.2f", strGrandTotal))
                                                                     
                                                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
+                                                                    
+                                                                    self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
                                                                 }
                                                                 self.CartView.reloadData()
                                                                     
@@ -337,7 +358,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
         let cellSquareSize: CGFloat = screenWidth
-        return CGSize(width: cellSquareSize, height: 214);
+        return CGSize(width: cellSquareSize, height: 230);
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -354,6 +375,16 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CheckoutCollectionViewCell", for: indexPath) as! CheckoutCollectionViewCell
+        cell.delegate = self
+        
+        cell.ButtonSelfPickUp.layer.cornerRadius = 7
+        cell.ButtonSelfPickUp.isHidden = true
+        cell.ButtonSelfPickUp.layer.borderWidth = 1
+        cell.ButtonSelfPickUp.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
+        if(DIVISIONU[indexPath.row] == DIVISION[indexPath.row]){
+            cell.ButtonSelfPickUp.isHidden = false
+        }
+        
         let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
