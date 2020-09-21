@@ -254,6 +254,6 @@ extension String {
             let randomValue = arc4random_uniform(UInt32(base.count))
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
         }
-        return randomString
+        return "-" + randomString
     }
 }
