@@ -21,6 +21,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let URL_ADD_CART_TEMP = "https://ketekmall.com/ketekmall/add_to_cart_temp.php"
     let URL_READ_CART_TEMP = "https://ketekmall.com/ketekmall/readcart_temp.php"
     let URL_DELETE_CART_TEMP = "https://ketekmall.com/ketekmall/delete_cart_temp.php"
+    let URL_DELETE = "https://ketekmall.com/ketekmall/delete_cart_temp_user.php"
     
     var ID: [String] = []
     var MAINCATE: [String] = []
@@ -70,8 +71,13 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         CartView.dataSource = self
         
         ButtonCheckout.layer.cornerRadius = 5
+        ButtonCheckout.isHidden = true
         
         ViewList()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        DeleteOrder()
     }
     
     func changeLanguage(str: String){
@@ -83,9 +89,27 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         Tabbar.items?[2].title = "Me".localized(lang: str)
     }
     
+    func DeleteOrder(){
+        let parameters: Parameters=[
+            "customer_id": userID,
+            
+        ]
+        Alamofire.request(URL_DELETE, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
+            DeleteOrder()
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
@@ -95,6 +119,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             break
             
         case 2:
+            DeleteOrder()
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
@@ -104,6 +129,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             break
             
         case 3:
+            DeleteOrder()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             if let navigator = self.navigationController {
@@ -239,6 +265,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.CheckBOx.valueChanged = { (isChecked) in
             if(isChecked == false){
+                
                 let parameters: Parameters=[
                     "cart_id": self.ID[indexPath.row],
                 ]
@@ -261,11 +288,15 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                                     SubTotal2 += Double(i)!
                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
                                     
+                                    if(self.GrandTotal.text! == "MYR0.00"){
+                                        self.ButtonCheckout.isHidden = true
+                                    }
                                 }
                             }
                         }
                 }
             }else{
+                self.ButtonCheckout.isHidden = false
                 let parameters: Parameters=[
                     "customer_id": self.userID,
                     "main_category": self.MAINCATE[indexPath.row],

@@ -266,12 +266,12 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                         self.spinner.textLabel.text = "Added to Boost"
                         self.spinner.show(in: self.view)
-                        self.spinner.dismiss(afterDelay: 4.0)
+                        self.spinner.dismiss(afterDelay: 2.0)
                     }else{
                         self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
                         self.spinner.textLabel.text = "Failed"
                         self.spinner.show(in: self.view)
-                        self.spinner.dismiss(afterDelay: 4.0)
+                        self.spinner.dismiss(afterDelay: 2.0)
                     }
                 }
         }

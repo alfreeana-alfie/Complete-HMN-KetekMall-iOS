@@ -212,7 +212,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        print("\(user.profile.givenName ?? "No Email")")
+//        print("\(user.profile.givenName ?? "No Email")")
         let parameters: Parameters=[
             "name": user.profile.familyName!,
             "email": user.profile.email!,

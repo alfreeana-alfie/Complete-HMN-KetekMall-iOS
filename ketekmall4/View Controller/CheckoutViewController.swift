@@ -22,9 +22,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var ButtonPlaceOrder: UIButton!
     @IBOutlet weak var TotalLabel: UILabel!
     @IBOutlet weak var DeliveryAddressLabel: UILabel!
-    var added = Set<String>()
+    @IBOutlet weak var ChangeDeliveryLabel: UILabel!
+    @IBOutlet weak var GrandTotalView: UIView!
     
     var viewController1: UIViewController?
+    
+    //Delivery Part
     var userID: String = ""
     var NEWADDR: String = ""
     var DeliveryID: String = ""
@@ -79,7 +82,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var DIVISIONU: [String] = []
     var DISTRICTU: [String] = []
     var POSTCODE: [String] = []
-    
     var GRANDTOTAL: [String] = []
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
@@ -89,13 +91,20 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_CHECKOUT = "https://ketekmall.com/ketekmall/add_to_checkout.php"
     let URL_SEND_EMAILBUYER = "https://ketekmall.com/ketekmall/sendEmail_buyer.php"
     let URL_SEND_EMAILSELLER = "https://ketekmall.com/ketekmall/sendEmail_seller.php"
+    let URL_DELETE = "https://ketekmall.com/ketekmall/delete_cart_temp_user.php"
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        DeleteOrder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
+        userID = sharedPref.string(forKey: "USERID") ?? "0"
+        
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -103,13 +112,11 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             changeLanguage(str: "en")
             
         }
-        userID = sharedPref.string(forKey: "USERID") ?? "0"
-        
-        print("userid" + userID)
         Tabbar.delegate = self
-        
         CartView.delegate = self
         CartView.dataSource = self
+        
+        ChangeDeliveryLabel.isHidden = true
         
         spinner.show(in: self.view)
         let parameters: Parameters=[
@@ -119,16 +126,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         Alamofire.request(self.URL_CART, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                
                 var strGrand: Double = 0.00
                 var strGrand2: Double = 0.00
                 if let result = response.result.value{
                     let jsonData = result as! NSDictionary
-                    
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        
                         let user = jsonData.value(forKey: "read") as! NSArray
-
+                        
                         self.ID = user.value(forKey: "id") as! [String]
                         self.MAINCATE = user.value(forKey: "main_category") as! [String]
                         self.SUBCATE = user.value(forKey: "sub_category") as! [String]
@@ -147,11 +151,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         Alamofire.request(self.URL_READ, method: .post, parameters: parameters).responseJSON
                             {
                                 response in
-                                
-                                
                                 if let result = response.result.value{
                                     let jsonData = result as! NSDictionary
-                                    
                                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                         
                                         let user = jsonData.value(forKey: "read") as! NSArray
@@ -161,14 +162,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.ADDR02 = user.value(forKey: "address_02") as! [String]
                                         self.DIVISIONU = user.value(forKey: "division") as! [String]
                                         self.POSTCODE = user.value(forKey: "postcode") as! [String]
-
+                                        
                                         self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
                                         self.NEWADDR =  self.ADDR01[0] + " " + self.ADDR02[0] + "\n" + self.DIVISIONU[0] + " " + self.POSTCODE[0]
-                                        
                                         self.Address.text! = self.NEWADDR
                                         
                                         for i in 0..<self.ITEMID.count{
-                                            
                                             let parameters: Parameters=[
                                                 "item_id": self.ITEMID[i],
                                                 "division": self.DIVISIONU[0]
@@ -185,68 +184,79 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                                             let user = jsonData.value(forKey: "read") as! NSArray
                                                             
-                                                            self.DELIVERYID = user.value(forKey: "id") as! [String]
-                                                            self.DELIVERYDIVISION = user.value(forKey: "division") as! [String]
-                                                            let deliveryDays = user.value(forKey: "id") as! [String]
-                                                            self.DELIVERYID = user.value(forKey: "id") as! [String]
-                                                            let deliveryprice = user.value(forKey: "price") as! [String]
-                                                            
-                                                            self.DELIVERYPRICE.append(contentsOf: deliveryprice)
-                                                            self.DELIVERYDAYS.append(contentsOf: deliveryDays)
-                                                            
-                                                            
-                                                            var index = i
-                                                            
-                                                            if index < self.DELIVERYPRICE.count{
-                                                                print("SUCCESS" + self.DELIVERYPRICE[index])
-                                                                var strDays: Int = Int(self.DELIVERYDAYS[index])!
-                                                                let date = Date()
-                                                                let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
+                                                            if(user.count == 0){
+                                                                self.DELIVERYID = [""]
+                                                                self.DELIVERYDIVISION = [""]
+                                                                let deliveryDays = ["Not Supported for selected area"]
+                                                                let deliveryprice = ["Not Supported for selected area"]
                                                                 
-                                                                let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
-                                                                let duration = DateComponents(calendar: Calendar.current, day: strDays)
-                                                                let later = Calendar.current.date(byAdding: duration, to: now.date!)
+                                                                self.DELIVERYPRICE.append(contentsOf: deliveryprice)
+                                                                self.DELIVERYDAYS.append(contentsOf: deliveryDays)
                                                                 
-                                                                let formatter = DateFormatter()
-                                                                formatter.locale = Locale(identifier: "nl_NL")
-                                                                formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
+                                                                self.ButtonPlaceOrder.isHidden = true
+                                                                self.TotalLabel.isHidden = true
+                                                                self.GrandTotal.isHidden = true
+                                                                self.ChangeDeliveryLabel.isHidden = false
+//                                                                self.GrandTotal.text! = "MYR0.00"
+                                                                self.CartView.reloadData()
+                                                            }else
+                                                                {self.DELIVERYID = user.value(forKey: "id") as! [String]
+                                                                self.DELIVERYDIVISION = user.value(forKey: "division") as! [String]
+                                                                let deliveryDays = user.value(forKey: "days") as! [String]
+                                                                let deliveryprice = user.value(forKey: "price") as! [String]
                                                                 
-                                                                let datetime = formatter.string(from: later!)
+                                                                self.DELIVERYPRICE.append(contentsOf: deliveryprice)
+                                                                self.DELIVERYDAYS.append(contentsOf: deliveryDays)
                                                                 
-                                                                index += 1
+                                                                var index = i
                                                                 
-                                                                self.DELIVERYDATE.append(datetime)
-                                                            }else{
-                                                                print("FAILED")
+                                                                if index < self.DELIVERYPRICE.count{
+                                                                    print("SUCCESS" + self.DELIVERYPRICE[index])
+                                                                    var strDays: Int = Int(self.DELIVERYDAYS[index])!
+                                                                    let date = Date()
+                                                                    let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
+                                                                    
+                                                                    let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
+                                                                    let duration = DateComponents(calendar: Calendar.current, day: strDays)
+                                                                    let later = Calendar.current.date(byAdding: duration, to: now.date!)
+                                                                    
+                                                                    let formatter = DateFormatter()
+                                                                    formatter.locale = Locale(identifier: "nl_NL")
+                                                                    formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
+                                                                    
+                                                                    let datetime = formatter.string(from: later!)
+                                                                    
+                                                                    index += 1
+                                                                    
+                                                                    self.DELIVERYDATE.append(datetime)
+                                                                }else{
+                                                                    print("FAILED")
+                                                                }
+                                                                
+                                                                strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
+                                                                
+                                                                var indexPrice = i
+                                                                
+                                                                if indexPrice < self.DELIVERYPRICE.count{
+                                                                    var strDel: Double = Double(self.DELIVERYPRICE[i])!
+                                                                    var strGrandTotal: Double = 0.00
+                                                                    strGrand2 += strDel
+                                                                    strGrandTotal = strGrand + strGrand2
+                                                                    print(String(format: "%.2f", strGrandTotal))
+                                                                    
+                                                                    self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
+                                                                }
+                                                                self.CartView.reloadData()
+                                                                    
                                                             }
-                                                            
-                                                            
-                                                            strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
-                                                            
-                                                            var indexPrice = i
-                                                            
-                                                            if indexPrice < self.DELIVERYPRICE.count{
-                                                                var strDel: Double = Double(self.DELIVERYPRICE[i])!
-                                                                var strGrandTotal: Double = 0.00
-                                                                strGrand2 += strDel
-                                                                strGrandTotal = strGrand + strGrand2
-                                                                print(String(format: "%.2f", strGrandTotal))
-                                                                
-                                                                self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
-                                                            }
-                                                           
-                                                            
-                                                            self.CartView.reloadData()
                                                         }else{
-                                                            
-                                                            print("Invalid email or password")
+                                                            print("Invalid")
                                                         }
                                                     }
                                             }
                                         }
                                     }else{
-                                        
-                                        print("Invalid email or password")
+                                        print("Invalid")
                                     }
                                 }
                         }
@@ -267,6 +277,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
+            DeleteOrder()
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
@@ -276,6 +287,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             break
             
         case 2:
+            DeleteOrder()
             navigationController?.setNavigationBarHidden(true, animated: false)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
@@ -285,6 +297,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             break
             
         case 3:
+            DeleteOrder()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             if let navigator = self.navigationController {
@@ -296,7 +309,24 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             break
         }
     }
-
+    
+    func DeleteOrder(){
+        let parameters: Parameters=[
+            "customer_id": userID,
+            
+        ]
+        Alamofire.request(URL_DELETE, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DELIVERYPRICE.count
@@ -312,13 +342,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-       return 2.0
+        return 2.0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-       return 2.0
+        return 2.0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -335,8 +365,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.Division.text! = self.DIVISION[indexPath.row] + " to " + self.DIVISIONU[0]
         return cell
     }
-    
-    
     
     @IBAction func GotoEditAddress(_ sender: Any) {
         let boostAd = self.storyboard!.instantiateViewController(identifier: "AccountSettingsViewController") as! AccountSettingsViewController
@@ -409,7 +437,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         let parameters: Parameters=[
             "email": Email,
         ]
-
+        
         Alamofire.request(URL_SEND_EMAILSELLER, method: .post, parameters: parameters).responseJSON
             {
                 response in
@@ -419,6 +447,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         print("SENT")
                     }
+                }else{
+                    print("FAILED")
                 }
         }
     }
@@ -459,8 +489,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         print("SENT")
-                        
                     }
+                }else{
+                    print("FAILED")
                 }
         }
     }
