@@ -4032,7 +4032,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="3" width="134" height="200"/>
+                                                        <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
@@ -7224,37 +7224,32 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yqB-vl-GZD" userLabel="Black View">
-                                                        <rect key="frame" x="8" y="240.5" width="382" height="60"/>
-                                                        <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-black" translatesAutoresizingMaskIntoConstraints="NO" id="nvx-nX-QPQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="60"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-black" translatesAutoresizingMaskIntoConstraints="NO" id="7Hs-vh-udg">
-                                                                <rect key="frame" x="95.5" y="0.0" width="95.5" height="60"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-black" translatesAutoresizingMaskIntoConstraints="NO" id="Qwp-JP-ben">
-                                                                <rect key="frame" x="191" y="0.0" width="95.5" height="60"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-black" translatesAutoresizingMaskIntoConstraints="NO" id="XbF-y3-mTI">
-                                                                <rect key="frame" x="286.5" y="0.0" width="95.5" height="60"/>
-                                                            </imageView>
-                                                        </subviews>
-                                                    </stackView>
                                                     <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mAe-4L-zCk" userLabel="Green View">
                                                         <rect key="frame" x="8" y="240" width="382" height="60.5"/>
                                                         <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-black" translatesAutoresizingMaskIntoConstraints="NO" id="nvx-nX-QPQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="48" height="60"/>
+                                                            </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-green" translatesAutoresizingMaskIntoConstraints="NO" id="6mT-gG-x1k">
-                                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="48" y="0.0" width="47.5" height="60"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-black" translatesAutoresizingMaskIntoConstraints="NO" id="7Hs-vh-udg">
+                                                                <rect key="frame" x="95.5" y="0.0" width="48" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-green" translatesAutoresizingMaskIntoConstraints="NO" id="qXj-8w-te7">
-                                                                <rect key="frame" x="95.5" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="143.5" y="0.0" width="47.5" height="60"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-black" translatesAutoresizingMaskIntoConstraints="NO" id="Qwp-JP-ben">
+                                                                <rect key="frame" x="191" y="0.0" width="48" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-green" translatesAutoresizingMaskIntoConstraints="NO" id="Tuy-jf-Sb7">
-                                                                <rect key="frame" x="191" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="239" y="0.0" width="47.5" height="60"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-black" translatesAutoresizingMaskIntoConstraints="NO" id="XbF-y3-mTI">
+                                                                <rect key="frame" x="286.5" y="0.0" width="48" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-green" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-Lv-gZg">
-                                                                <rect key="frame" x="286.5" y="0.0" width="95.5" height="60"/>
+                                                                <rect key="frame" x="334.5" y="0.0" width="47.5" height="60"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -7274,7 +7269,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <constraint firstItem="bvj-2S-7yc" firstAttribute="top" secondItem="a6z-Md-lMY" secondAttribute="top" constant="8" id="0uo-6r-v3m"/>
                                                     <constraint firstItem="hwQ-OT-i4V" firstAttribute="leading" secondItem="EVn-aU-f8y" secondAttribute="leading" id="0va-bg-mD7"/>
                                                     <constraint firstAttribute="trailing" secondItem="w3X-lS-Pdl" secondAttribute="trailing" constant="20" id="2ea-u5-aLC"/>
-                                                    <constraint firstItem="yqB-vl-GZD" firstAttribute="leading" secondItem="a6z-Md-lMY" secondAttribute="leading" constant="8" id="2ft-B5-w2N"/>
                                                     <constraint firstAttribute="trailing" secondItem="2qX-tz-e7W" secondAttribute="trailing" constant="20" id="2qT-I4-8vQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="vIE-oa-6wZ" secondAttribute="trailing" constant="20" id="4OX-Bb-wqh"/>
                                                     <constraint firstItem="g0d-ev-gtx" firstAttribute="top" secondItem="a6z-Md-lMY" secondAttribute="top" constant="8" id="6Zi-QW-9wl"/>
@@ -7310,9 +7304,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <constraint firstItem="YEn-d7-5W0" firstAttribute="leading" secondItem="ig4-73-Bsa" secondAttribute="leading" id="g6n-6Q-IZM"/>
                                                     <constraint firstItem="AUD-4s-zRL" firstAttribute="leading" secondItem="H2e-EI-3Ix" secondAttribute="leading" id="h8z-So-DSM"/>
                                                     <constraint firstAttribute="trailing" secondItem="g0d-ev-gtx" secondAttribute="trailing" constant="20" id="h9n-ra-SBj"/>
-                                                    <constraint firstItem="1tb-e6-IHD" firstAttribute="top" secondItem="yqB-vl-GZD" secondAttribute="bottom" constant="33.5" id="lGG-dD-OE7"/>
-                                                    <constraint firstItem="yqB-vl-GZD" firstAttribute="top" secondItem="EcE-c4-sJf" secondAttribute="bottom" constant="20" id="nIk-Xp-29S"/>
-                                                    <constraint firstAttribute="trailing" secondItem="yqB-vl-GZD" secondAttribute="trailing" constant="8" id="nbB-Cr-3D1"/>
                                                     <constraint firstItem="EVn-aU-f8y" firstAttribute="top" secondItem="hwQ-OT-i4V" secondAttribute="bottom" constant="12" id="plb-95-NyQ"/>
                                                     <constraint firstItem="hwQ-OT-i4V" firstAttribute="top" secondItem="H2e-EI-3Ix" secondAttribute="bottom" constant="6" id="qap-vz-p5V"/>
                                                     <constraint firstItem="H2e-EI-3Ix" firstAttribute="top" secondItem="AUD-4s-zRL" secondAttribute="bottom" constant="6" id="s1m-2Q-Mc1"/>
@@ -8953,10 +8944,10 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
             </objects>
             <point key="canvasLocation" x="-546.39999999999998" y="3477.2113943028489"/>
         </scene>
-        <!--Me-->
+        <!--View Selling-->
         <scene sceneID="wOy-cE-ZvV">
             <objects>
-                <viewController storyboardIdentifier="ViewSellingViewController" id="AaZ-8i-tCE" customClass="ViewSellingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewSellingViewController" title="View Selling" id="AaZ-8i-tCE" customClass="ViewSellingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nFX-zP-EQQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -9180,34 +9171,29 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2Tg-Yg-8Uc" userLabel="Green View">
                                                         <rect key="frame" x="8" y="74" width="398" height="60"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-green" translatesAutoresizingMaskIntoConstraints="NO" id="Yq4-VY-R6v">
-                                                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="60"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-green" translatesAutoresizingMaskIntoConstraints="NO" id="Dnh-tG-AXG">
-                                                                <rect key="frame" x="99.5" y="0.0" width="99.5" height="60"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-green" translatesAutoresizingMaskIntoConstraints="NO" id="wcU-Ap-sGo">
-                                                                <rect key="frame" x="199" y="0.0" width="99.5" height="60"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-green" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-8v-aQ9">
-                                                                <rect key="frame" x="298.5" y="0.0" width="99.5" height="60"/>
-                                                            </imageView>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-05-d1R" userLabel="Black View">
-                                                        <rect key="frame" x="8" y="74" width="398" height="60"/>
-                                                        <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-black" translatesAutoresizingMaskIntoConstraints="NO" id="0UX-6l-9zQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="60"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ordered-green" translatesAutoresizingMaskIntoConstraints="NO" id="Yq4-VY-R6v">
+                                                                <rect key="frame" x="50" y="0.0" width="49.5" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-black" translatesAutoresizingMaskIntoConstraints="NO" id="tEq-x6-VQ0">
-                                                                <rect key="frame" x="99.5" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="99.5" y="0.0" width="50" height="60"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pending-green" translatesAutoresizingMaskIntoConstraints="NO" id="Dnh-tG-AXG">
+                                                                <rect key="frame" x="149.5" y="0.0" width="49.5" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-black" translatesAutoresizingMaskIntoConstraints="NO" id="ZIq-NP-rbj">
-                                                                <rect key="frame" x="199" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="199" y="0.0" width="50" height="60"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shipped-green" translatesAutoresizingMaskIntoConstraints="NO" id="wcU-Ap-sGo">
+                                                                <rect key="frame" x="249" y="0.0" width="49.5" height="60"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-black" translatesAutoresizingMaskIntoConstraints="NO" id="gkz-vp-IL8">
-                                                                <rect key="frame" x="298.5" y="0.0" width="99.5" height="60"/>
+                                                                <rect key="frame" x="298.5" y="0.0" width="50" height="60"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="received-green" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-8v-aQ9">
+                                                                <rect key="frame" x="348.5" y="0.0" width="49.5" height="60"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -9216,7 +9202,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <constraints>
                                                     <constraint firstItem="2Tg-Yg-8Uc" firstAttribute="top" secondItem="z3p-ih-hnK" secondAttribute="bottom" constant="17.5" id="14u-om-gjD"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="olj-do-CrK" secondAttribute="trailing" constant="20" symbolic="YES" id="26v-Vr-bb4"/>
-                                                    <constraint firstItem="76m-Od-U9c" firstAttribute="top" secondItem="mSk-05-d1R" secondAttribute="bottom" constant="30" id="3dq-bJ-mCv"/>
                                                     <constraint firstItem="76m-Od-U9c" firstAttribute="top" secondItem="2Tg-Yg-8Uc" secondAttribute="bottom" constant="30" id="6DN-J1-5c1"/>
                                                     <constraint firstAttribute="trailing" secondItem="z3p-ih-hnK" secondAttribute="trailing" constant="8" id="7kI-R8-Vk7"/>
                                                     <constraint firstItem="z3p-ih-hnK" firstAttribute="top" secondItem="olj-do-CrK" secondAttribute="bottom" constant="14.5" id="D3E-gY-PnD"/>
@@ -9226,11 +9211,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <constraint firstAttribute="bottom" secondItem="76m-Od-U9c" secondAttribute="bottom" constant="4" id="L9T-iG-Pyz"/>
                                                     <constraint firstItem="olj-do-CrK" firstAttribute="leading" secondItem="yGL-bD-N4S" secondAttribute="leading" constant="8" id="RrI-tj-g73"/>
                                                     <constraint firstAttribute="trailing" secondItem="76m-Od-U9c" secondAttribute="trailing" constant="8" id="cwZ-Gw-jRI"/>
-                                                    <constraint firstItem="mSk-05-d1R" firstAttribute="leading" secondItem="yGL-bD-N4S" secondAttribute="leading" constant="8" id="h0P-kl-8MX"/>
                                                     <constraint firstAttribute="trailing" secondItem="2Tg-Yg-8Uc" secondAttribute="trailing" constant="8" id="iOl-D0-En8"/>
                                                     <constraint firstItem="76m-Od-U9c" firstAttribute="leading" secondItem="yGL-bD-N4S" secondAttribute="leading" constant="8" id="ioZ-F2-GZC"/>
-                                                    <constraint firstAttribute="trailing" secondItem="mSk-05-d1R" secondAttribute="trailing" constant="8" id="kY1-Oh-bVZ"/>
-                                                    <constraint firstItem="mSk-05-d1R" firstAttribute="top" secondItem="z3p-ih-hnK" secondAttribute="bottom" constant="17.5" id="pxc-X2-T6c"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7RX-Ir-3Ev" userLabel="View 4">

@@ -110,8 +110,16 @@ class ViewSellingViewController: UIViewController {
             Ordered_Black.isHidden = true
             Ordered_Green.isHidden = false
             
+//            Pending.textColor = .green
+            Pending_Black.isHidden = false
             Pending_Green.isHidden = true
+            
+//            Shipped.textColor = .green
+            Shipped_Black.isHidden = false
             Shipped_Green.isHidden = true
+            
+//            Received.textColor = .green
+            Received_Black.isHidden = false
             Received_Green.isHidden = true
             
             Finished.isHidden = true
@@ -125,7 +133,12 @@ class ViewSellingViewController: UIViewController {
             Pending_Black.isHidden = true
             Pending_Green.isHidden = false
             
+//            Shipped.textColor = .green
+            Shipped_Black.isHidden = false
             Shipped_Green.isHidden = true
+            
+//            Received.textColor = .green
+            Received_Black.isHidden = false
             Received_Green.isHidden = true
             
             Finished.isHidden = true
@@ -143,6 +156,8 @@ class ViewSellingViewController: UIViewController {
             Shipped_Black.isHidden = true
             Shipped_Green.isHidden = false
             
+//            Received.textColor = .green
+            Received_Black.isHidden = false
             Received_Green.isHidden = true
             
             Finished.isHidden = true
