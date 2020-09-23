@@ -48,7 +48,6 @@ class AddReviewViewController: UIViewController {
         
         ButtonSubmit.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
-        
         Rating.ratingDidChange = { ratingValue in
             self.RATING = String(format: "%.2f", ratingValue)
         }

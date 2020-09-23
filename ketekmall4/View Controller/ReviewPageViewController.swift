@@ -180,7 +180,9 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         ShippedTo.text! = SHIPPEDTO
         DateOrder.text! = DATEORDER
         DateReceived.text! = DATERECEIVED
+        let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
+        ItemImage.setImageWith(URL(string: NEWIm!)!)
         ItemName.text! = ADDETAIL
         ItemPrice.text! = "MYR" + PRICE
         ItemQuantity.text! = "x" + QUANTITY
