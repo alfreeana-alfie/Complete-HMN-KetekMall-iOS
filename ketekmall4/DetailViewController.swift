@@ -38,26 +38,25 @@ class DetailViewController: UIViewController, PaymentResultDelegate {
         super.viewDidLoad()
 
         paymentSDK?.delegate = self
-//        paymentSDK = Ipay.init()
 //        paymentSDK = Ipay()
         
 //        requeryPayment = IpayPayment()
-//        requeryPayment?.paymentId = ""
-//        requeryPayment?.merchantKey = ""
-//        requeryPayment?.merchantCode = ""
-//        requeryPayment?.refNo = ""
-//        requeryPayment?.amount = ""
-//        requeryPayment?.currency = ""
-//        requeryPayment?.prodDesc = ""
-//        requeryPayment?.userName = ""
-//        requeryPayment?.userEmail = ""
-//        requeryPayment?.userContact = ""
-//        requeryPayment?.remark = ""
-//        requeryPayment?.lang = ""
-//        requeryPayment?.country = ""
-//        requeryPayment?.backendPostURL = ""
-//
-//        paymentView = paymentSDK?.checkout(requeryPayment)
+        requeryPayment?.paymentId = ""
+        requeryPayment?.merchantKey = "apple88KEY"
+        requeryPayment?.merchantCode = "M09999"
+        requeryPayment?.refNo = "ORD1188"
+        requeryPayment?.amount = "1.00"
+        requeryPayment?.currency = "MYR"
+        requeryPayment?.prodDesc = "Payment"
+        requeryPayment?.userName = "Nana"
+        requeryPayment?.userEmail = "nana@gmail.com"
+        requeryPayment?.userContact = "1232142341"
+        requeryPayment?.remark = "ORD1188"
+        requeryPayment?.lang = "ISO-8859-1"
+        requeryPayment?.country = "MY"
+        requeryPayment?.backendPostURL = "https://ketekmall.com/ketekmall/backendURL.php"
+
+        paymentView = paymentSDK?.checkout(requeryPayment)
 //        customView.frame = CGRect.init(x: 0, y: 0, width: 100, height: 200)
 //        paymentView.backgroundColor = UIColor.black     //give color to the view
 //        paymentView.center = self.view.center

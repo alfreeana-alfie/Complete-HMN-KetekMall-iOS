@@ -84,13 +84,17 @@
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
-		FBD224A4251BA656004B02F6 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224A3251BA656004B02F6 /* libipay88sdk.a */; };
 		FBD224AC251BA9ED004B02F6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */; };
 		FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */; };
 		FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */; };
 		FBD224B2251BB649004B02F6 /* Ipay.h in Sources */ = {isa = PBXBuildFile; fileRef = FBD224B0251BB5D5004B02F6 /* Ipay.h */; };
 		FBD224B3251BB649004B02F6 /* IpayPayment.h in Sources */ = {isa = PBXBuildFile; fileRef = FBD224B1251BB5D6004B02F6 /* IpayPayment.h */; };
 		FBD224B4251BB6AA004B02F6 /* ketekmall4_Bridging_Header.h in Sources */ = {isa = PBXBuildFile; fileRef = FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */; };
+		FBD224BD251BE96A004B02F6 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
+		FBD224BF251BE98A004B02F6 /* IpayPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = FBD224B1251BB5D6004B02F6 /* IpayPayment.h */; };
+		FBD224C0251BE990004B02F6 /* Ipay.h in Headers */ = {isa = PBXBuildFile; fileRef = FBD224B0251BB5D5004B02F6 /* Ipay.h */; };
+		FBD224C1251BE9AA004B02F6 /* ketekmall4_Bridging_Header.h in Headers */ = {isa = PBXBuildFile; fileRef = FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */; };
+		FBD224C2251BE9EB004B02F6 /* libipay88sdk.a in Resources */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -198,13 +202,13 @@
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		FBD224A3251BA656004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/SDK/libipay88sdk.a; sourceTree = "<group>"; };
 		FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ketekmall4_Bridging_Header.h; sourceTree = "<group>"; };
 		FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FBD224B0251BB5D5004B02F6 /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ipay.h; sourceTree = "<group>"; };
 		FBD224B1251BB5D6004B02F6 /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpayPayment.h; sourceTree = "<group>"; };
+		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -216,7 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBD224A4251BA656004B02F6 /* libipay88sdk.a in Frameworks */,
+				FBD224BD251BE96A004B02F6 /* libipay88sdk.a in Frameworks */,
 				1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */,
 				FBB2D5FE251495B8007BEA53 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -251,7 +255,7 @@
 		DD0B1AF328BAB6338770F315 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FBD224A3251BA656004B02F6 /* libipay88sdk.a */,
+				FBD224BC251BE96A004B02F6 /* libipay88sdk.a */,
 				FBB2D5FD251495B8007BEA53 /* AudioToolbox.framework */,
 				49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */,
 			);
@@ -405,12 +409,26 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		FBD224BE251BE982004B02F6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBD224C1251BE9AA004B02F6 /* ketekmall4_Bridging_Header.h in Headers */,
+				FBD224C0251BE990004B02F6 /* Ipay.h in Headers */,
+				FBD224BF251BE98A004B02F6 /* IpayPayment.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		FB5A48DC24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB5A490724F7F07B00F5464C /* Build configuration list for PBXNativeTarget "ketekmall4" */;
 			buildPhases = (
 				46250FABF8BE6F869F5AB642 /* [CP] Check Pods Manifest.lock */,
+				FBD224BE251BE982004B02F6 /* Headers */,
 				FB5A48D924F7F06B00F5464C /* Sources */,
 				FB5A48DA24F7F06B00F5464C /* Frameworks */,
 				FB5A48DB24F7F06B00F5464C /* Resources */,
@@ -511,6 +529,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD224C2251BE9EB004B02F6 /* libipay88sdk.a in Resources */,
 				FB61D40C251741740087E7C9 /* GoogleService-Info.plist in Resources */,
 				FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */,
 				FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */,
@@ -801,6 +820,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/Library/include/Ipay.h";
 				VALID_ARCHS = "";
@@ -862,6 +882,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "";
@@ -886,11 +907,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4/SDK",
+					"$(PROJECT_DIR)/ketekmall4",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
+				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64e arm64 armv7s armv7";
@@ -915,11 +938,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4/SDK",
+					"$(PROJECT_DIR)/ketekmall4",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
+				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64e arm64 armv7s armv7";
@@ -938,6 +963,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ketekmall4",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -960,6 +989,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ketekmall4",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -979,6 +1012,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ketekmall4",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -997,6 +1034,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ketekmall4",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
