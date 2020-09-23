@@ -49,8 +49,8 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         DeliveryView.dataSource = self
         
         ButtonAdd.layer.cornerRadius = 7
-        ButtonAccept.layer.cornerRadius = 7
-        ButtonCancel.layer.cornerRadius = 7
+        ButtonAccept.layer.cornerRadius = 15
+        ButtonCancel.layer.cornerRadius = 15
         ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
         ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         spinner.show(in: self.view)

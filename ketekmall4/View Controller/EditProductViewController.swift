@@ -79,10 +79,13 @@ class EditProductViewController: UIViewController {
         District.text! = DISTRICT
         Max_Order.text! = MAXORDER
         
-        ButtonAccept.layer.cornerRadius = 5
-        ButtonCancel.layer.cornerRadius = 5
+        ButtonAccept.layer.cornerRadius = 15
+        ButtonCancel.layer.cornerRadius = 15
         UploadImage.layer.cornerRadius = 5
         UploadImage.layer.borderWidth = 0.5
+        
+        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
+        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         
         ButtonAdDetail.layer.cornerRadius = 5
         ButtonAdDetail.layer.borderWidth = 0.1
