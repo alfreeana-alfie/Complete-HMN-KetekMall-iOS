@@ -12,6 +12,10 @@ import SimpleCheckbox
 import JGProgressHUD
 
 class CartViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CartDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
+    func OnAddClick(cell: CartCollectionViewCell) {
+        //TODO
+    }
+    
     
     private let spinner = JGProgressHUD(style: .dark)
     let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
@@ -250,6 +254,8 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.AdDetail.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = self.PRICE[indexPath.row]
         
+        cell.Quantity.isHidden = true
+        cell.Stepper.isHidden = true
         cell.CheckBOx.checkmarkStyle = .tick
         cell.CheckBOx.borderStyle = .circle
         cell.CheckBOx.layer.cornerRadius = 5
@@ -305,7 +311,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     "photo": self.PHOTO[indexPath.row],
                     "seller_id": self.SELLERID[indexPath.row],
                     "item_id": self.ITEMID[indexPath.row],
-                    "quantity": cell.Quantity.text!,
+                    "quantity": cell.StepperNew.value,
                     "cart_id": self.ID[indexPath.row],
                     
                 ]
@@ -342,7 +348,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
-    func OnAddClick(cell: CartCollectionViewCell) {}
+    func OnAddClick2(cell: CartCollectionViewCell) {}
     
     
     @IBAction func Checkout(_ sender: Any) {

@@ -1743,10 +1743,10 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRp-ni-rd5" userLabel="Checkout">
-                                <rect key="frame" x="0.0" y="88" width="414" height="691"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-hp-6ha">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zXJ-fq-8ca">
                                             <size key="itemSize" width="412" height="198"/>
@@ -1856,14 +1856,38 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnY-7o-onZ" customClass="GMStepper" customModule="GMStepper">
+                                                            <rect key="frame" x="20" y="126" width="160" height="40"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="buttonsTextColor">
+                                                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="labelTextColor">
+                                                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                                    <real key="value" value="100"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="AddClick2WithSender:" destination="gS1-EI-HJZ" eventType="valueChanged" id="0hY-qE-bOi"/>
+                                                            </connections>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="Nao-Ix-QSK" firstAttribute="leading" secondItem="tnY-7o-onZ" secondAttribute="trailing" constant="20" id="0tL-b1-xQT"/>
                                                         <constraint firstItem="rH6-ts-q89" firstAttribute="top" secondItem="lfw-fY-Zu9" secondAttribute="top" constant="8" id="2KX-iz-eEj"/>
                                                         <constraint firstItem="rH6-ts-q89" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gmP-m4-m3g" secondAttribute="trailing" constant="8" symbolic="YES" id="52T-dT-eKw"/>
                                                         <constraint firstItem="oJv-yL-6ok" firstAttribute="leading" secondItem="lfw-fY-Zu9" secondAttribute="leading" id="73r-Dt-eey"/>
                                                         <constraint firstItem="UWb-0d-GXK" firstAttribute="top" secondItem="3c5-OZ-RzJ" secondAttribute="bottom" constant="16" id="74d-H1-F9c"/>
                                                         <constraint firstItem="oJv-yL-6ok" firstAttribute="top" secondItem="Qu1-Id-oDu" secondAttribute="bottom" constant="35" id="7sl-Kz-zs0"/>
                                                         <constraint firstItem="Qu1-Id-oDu" firstAttribute="leading" secondItem="OOV-Zx-uNl" secondAttribute="trailing" constant="8" id="7tM-yF-k17"/>
+                                                        <constraint firstItem="tnY-7o-onZ" firstAttribute="top" secondItem="Flu-R3-ZX9" secondAttribute="bottom" constant="8" id="88s-1H-tgf"/>
                                                         <constraint firstItem="Nao-Ix-QSK" firstAttribute="leading" secondItem="lfw-fY-Zu9" secondAttribute="leading" constant="207" id="8Gf-sb-reH"/>
                                                         <constraint firstAttribute="bottom" secondItem="UjP-TO-pyT" secondAttribute="bottom" constant="41" id="9N9-l2-BiL"/>
                                                         <constraint firstItem="UWb-0d-GXK" firstAttribute="leading" secondItem="lfw-fY-Zu9" secondAttribute="leading" constant="56" id="Ajv-Lt-iNa"/>
@@ -1871,6 +1895,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <constraint firstItem="gmP-m4-m3g" firstAttribute="top" secondItem="lfw-fY-Zu9" secondAttribute="top" constant="22" id="Bah-tk-WV6"/>
                                                         <constraint firstItem="Qu1-Id-oDu" firstAttribute="top" secondItem="gmP-m4-m3g" secondAttribute="bottom" constant="8" id="C8f-GO-1Qo"/>
                                                         <constraint firstItem="OOV-Zx-uNl" firstAttribute="top" secondItem="lfw-fY-Zu9" secondAttribute="top" constant="8" id="E6h-6r-jJB"/>
+                                                        <constraint firstAttribute="bottom" secondItem="tnY-7o-onZ" secondAttribute="bottom" constant="30" id="EBj-CM-1Fe"/>
                                                         <constraint firstItem="aXw-jK-0U6" firstAttribute="top" secondItem="oJv-yL-6ok" secondAttribute="bottom" constant="8" id="EUI-zG-IEV"/>
                                                         <constraint firstAttribute="trailing" secondItem="aXw-jK-0U6" secondAttribute="trailing" constant="41" id="Fia-T8-yJV"/>
                                                         <constraint firstItem="UjP-TO-pyT" firstAttribute="top" secondItem="aXw-jK-0U6" secondAttribute="bottom" constant="24" id="G9u-fZ-rBe"/>
@@ -1888,6 +1913,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <constraint firstItem="Nao-Ix-QSK" firstAttribute="top" secondItem="lfw-fY-Zu9" secondAttribute="top" constant="105" id="gDL-Ug-UpC"/>
                                                         <constraint firstItem="Qu1-Id-oDu" firstAttribute="top" secondItem="gmP-m4-m3g" secondAttribute="bottom" constant="8" id="jHR-ZX-lpo"/>
                                                         <constraint firstItem="3c5-OZ-RzJ" firstAttribute="top" secondItem="Flu-R3-ZX9" secondAttribute="bottom" constant="7" id="jSZ-mH-xN4"/>
+                                                        <constraint firstItem="tnY-7o-onZ" firstAttribute="leading" secondItem="lfw-fY-Zu9" secondAttribute="leading" constant="20" id="kEz-AV-l3R"/>
                                                         <constraint firstAttribute="trailing" secondItem="oJv-yL-6ok" secondAttribute="trailing" id="kdq-ME-gt3"/>
                                                         <constraint firstItem="oJv-yL-6ok" firstAttribute="top" secondItem="rH6-ts-q89" secondAttribute="bottom" constant="53" id="mH9-SN-mgE"/>
                                                         <constraint firstItem="UjP-TO-pyT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nao-Ix-QSK" secondAttribute="trailing" constant="8" symbolic="YES" id="mMn-dk-Wlb"/>
@@ -1910,6 +1936,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <outlet property="Quantity" destination="3c5-OZ-RzJ" id="zoQ-G2-l0l"/>
                                                     <outlet property="QuantityLabel" destination="Flu-R3-ZX9" id="7hP-No-p0O"/>
                                                     <outlet property="Stepper" destination="UWb-0d-GXK" id="BDv-9h-CZi"/>
+                                                    <outlet property="StepperNew" destination="tnY-7o-onZ" id="vI5-cH-Z0S"/>
                                                     <outlet property="SubLabel" destination="aXw-jK-0U6" id="Pq9-WT-vYF"/>
                                                     <outlet property="SubTotal" destination="UjP-TO-pyT" id="Ahz-Cr-67U"/>
                                                 </connections>
@@ -1917,19 +1944,19 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-6h-LJD">
-                                        <rect key="frame" x="45" y="633" width="27" height="15"/>
+                                        <rect key="frame" x="45" y="667" width="27" height="15"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MYR0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp0-f1-jOn">
-                                        <rect key="frame" x="45" y="656" width="71.5" height="21"/>
+                                        <rect key="frame" x="45" y="690" width="71.5" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-5i-LTX">
-                                        <rect key="frame" x="270" y="639" width="100" height="44"/>
+                                        <rect key="frame" x="270" y="673" width="100" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="wHz-PK-8Mo"/>
@@ -1962,7 +1989,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-L0-Wzt">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="3Gr-ft-J9K"/>
