@@ -986,7 +986,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     
-    func onViewClick(cell: ShockingSaleCollectionViewCell) {
+    func onViewClick3(cell: ShockingSaleCollectionViewCell) {
         guard let indexPath = self.ShockingView.indexPath(for: cell) else{
             return
         }
