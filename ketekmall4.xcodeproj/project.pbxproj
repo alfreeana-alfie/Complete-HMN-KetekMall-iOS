@@ -88,7 +88,6 @@
 		FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */; };
 		FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */; };
 		FBD224BD251BE96A004B02F6 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
-		FBD224C2251BE9EB004B02F6 /* libipay88sdk.a in Resources */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -509,7 +508,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBD224C2251BE9EB004B02F6 /* libipay88sdk.a in Resources */,
 				FB61D40C251741740087E7C9 /* GoogleService-Info.plist in Resources */,
 				FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */,
 				FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */,
@@ -874,12 +872,12 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ketekmall4/SDK",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ketekmall4/ketekmall4_Bridging_Header.h;
 				"SWIFT_OBJC_BRIDGING_HEADER[sdk=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -905,12 +903,12 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ketekmall4/SDK",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ketekmall4/ketekmall4_Bridging_Header.h;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
