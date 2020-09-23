@@ -389,11 +389,11 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         
-        cell.OrderID.text! = self.ID[indexPath.row]
+        cell.OrderID.text! = "KM" + self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
-        cell.ItemPrice.text! = self.PRICE[indexPath.row]
-        cell.Quantity.text! = self.QUANTITY[indexPath.row]
-        cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
+        cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
+        cell.Quantity.text! = "x" + self.QUANTITY[indexPath.row]
+        cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
         cell.Division.text! = self.DIVISION[indexPath.row] + " to " + self.DIVISIONU[0]
         return cell
     }
