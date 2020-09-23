@@ -85,6 +85,9 @@
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
 		FBD224A4251BA656004B02F6 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224A3251BA656004B02F6 /* libipay88sdk.a */; };
+		FBD224AC251BA9ED004B02F6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */; };
+		FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */; };
+		FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +196,12 @@
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FBD224A3251BA656004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/SDK/libipay88sdk.a; sourceTree = "<group>"; };
+		FBD224A7251BA90E004B02F6 /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ipay.h; path = SDK/Ipay.h; sourceTree = "<group>"; };
+		FBD224A8251BA91D004B02F6 /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IpayPayment.h; path = SDK/IpayPayment.h; sourceTree = "<group>"; };
+		FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ketekmall4_Bridging_Header.h; sourceTree = "<group>"; };
+		FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -272,6 +281,8 @@
 		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXGroup;
 			children = (
+				FBD224A8251BA91D004B02F6 /* IpayPayment.h */,
+				FBD224A7251BA90E004B02F6 /* Ipay.h */,
 				FBB2D5FC251495B2007BEA53 /* ketekmall4.entitlements */,
 				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
 				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
@@ -282,6 +293,10 @@
 				FB5A48EE24F7F07B00F5464C /* Info.plist */,
 				FBDDBB84250A1C1B0027BC90 /* Localizable.strings */,
 				FB08436C25122196003C200E /* LaunchScreenViewController.swift */,
+				FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */,
+				FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */,
+				FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */,
+				FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */,
 			);
 			path = ketekmall4;
 			sourceTree = "<group>";
@@ -494,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB61D40C251741740087E7C9 /* GoogleService-Info.plist in Resources */,
+				FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */,
 				FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */,
 				FB288356250994C3008B18BB /* Main.storyboard in Resources */,
 				FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */,
@@ -608,6 +624,7 @@
 				FB7787BF24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift in Sources */,
 				FB5A491324F7F47000F5464C /* LoginViewController.swift in Sources */,
 				FBB2D5F92513E0E5007BEA53 /* TermsConditionsViewController.swift in Sources */,
+				FBD224AC251BA9ED004B02F6 /* DetailViewController.swift in Sources */,
 				FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */,
 				FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */,
 				FB7D211B250016CC0043A286 /* DeliveryCollectionViewCell.swift in Sources */,
@@ -640,6 +657,7 @@
 				FB9A9286250368B2001DD96C /* ViewController.swift in Sources */,
 				FB7787B924FE0F5500AB01F4 /* MoreDetailsViewController.swift in Sources */,
 				FB08436F2512A371003C200E /* AboutKetekMallViewController.swift in Sources */,
+				FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */,
 				FB7787B724FE0F0500AB01F4 /* ShippingInfoViewController.swift in Sources */,
 				FB528AD324FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift in Sources */,
 				FB7115802500B7B400B19D77 /* FilterViewController.swift in Sources */,
@@ -773,6 +791,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/Library/include/Ipay.h";
 			};
 			name = Debug;
 		};
@@ -850,6 +869,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -874,6 +894,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
