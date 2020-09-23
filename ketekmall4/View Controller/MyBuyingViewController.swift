@@ -24,6 +24,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var userID: String = ""
     var order_id: String = ""
+    var item_id: String = ""
     var ad_detail: String = ""
     var item_img: String = ""
     var item_price: String = ""
@@ -41,6 +42,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var viewController1: UIViewController?
     @IBOutlet weak var Tabbar: UITabBar!
     var OrderID: [String] = []
+    var ItemID: [String] = []
+
     var ad_Detail: [String] = []
     var ItemImage: [String] = []
     var ItemPrice: [String] = []
@@ -100,6 +103,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.spinner.dismiss(afterDelay: 3.0)
                         for i in list{
                             self.order_id = i["id"] as! String
+                            self.item_id = i["item_id"] as! String
                             self.ad_detail = i["ad_detail"] as! String
                             self.item_img = i["photo"] as! String
                             self.item_price = i["price"] as! String
@@ -115,6 +119,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             
                             self.seller_id.append(self.Seller_ID)
                             self.OrderID.append(self.order_id)
+                            self.ItemID.append(self.item_id)
+
                             self.ad_Detail.append(self.ad_detail)
                             self.ItemImage.append(self.item_img)
                             self.ItemPrice.append(self.item_price)
@@ -316,8 +322,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         let ReviewProduct = self.storyboard!.instantiateViewController(identifier: "ReviewPageViewController") as! ReviewPageViewController
-        let ID = self.OrderID[indexPath.row]
-        ReviewProduct.itemID = ID
+        ReviewProduct.itemID = self.ItemID[indexPath.row]
         ReviewProduct.ORDERID = self.OrderID[indexPath.row]
         ReviewProduct.TRACKINGNO = self.TrackingNo[indexPath.row]
         ReviewProduct.DATEORDER = self.OrderDate[indexPath.row]
