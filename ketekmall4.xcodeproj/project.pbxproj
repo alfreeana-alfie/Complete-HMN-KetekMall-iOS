@@ -84,6 +84,7 @@
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
+		FBD224A4251BA656004B02F6 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224A3251BA656004B02F6 /* libipay88sdk.a */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +192,7 @@
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		FBD224A3251BA656004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/SDK/libipay88sdk.a; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD224A4251BA656004B02F6 /* libipay88sdk.a in Frameworks */,
 				1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */,
 				FBB2D5FE251495B8007BEA53 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -236,6 +239,7 @@
 		DD0B1AF328BAB6338770F315 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FBD224A3251BA656004B02F6 /* libipay88sdk.a */,
 				FBB2D5FD251495B8007BEA53 /* AudioToolbox.framework */,
 				49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */,
 			);
@@ -840,6 +844,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ketekmall4/SDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -859,6 +867,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ketekmall4/SDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
