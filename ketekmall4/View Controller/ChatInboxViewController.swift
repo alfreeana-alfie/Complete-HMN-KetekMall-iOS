@@ -82,7 +82,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                                 
                                                 self.strings.removeDuplicates()
                                                 
-                                                print(self.strings)
+//                                                print(self.strings)
                                             }
                                             
                                         }
@@ -118,7 +118,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                             for j in jsonUser.keys{
                                                 if let User1 = jsonUser[j] as? [String: Any]{
                                                     let email = User1["email"] as! String
-                                                    let photo = User1["photo"] as! String
+//                                                    let photo = User1["photo"] as! String
                                                     
                                                     let index2 = email.firstIndex(of: "@") ?? email.endIndex
                                                     let newEmail2 = email[..<index2]
@@ -129,10 +129,10 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                                             self.USERNAME.append(j)
                                                             self.USERNAME.removeDuplicates()
                                                             
-                                                            self.USERIMAGE.append(photo)
+//                                                            self.USERIMAGE.append(photo)
                                                             self.CHATWITH.append(String(newEmail2))
                                                             
-                                                            print(self.USERIMAGE)
+//                                                            print(self.USERIMAGE)
                                                             self.ChatView.reloadData()
                                                         }
                                                     }

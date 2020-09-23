@@ -599,17 +599,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @objc func onFindBarClick(sender: Any){
 //        let tabbar = tabBarController as! BaseTabBarController
-        let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = String(user)
-        click.URL_READ = URL_READ_VIEWALL
-        click.URL_SEARCH = URL_SEARCH_VIEWALL
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
+//        let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
+//        click.UserID = String(user)
+//        click.URL_READ = URL_READ_VIEWALL
+//        click.URL_SEARCH = URL_SEARCH_VIEWALL
+//        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
+//        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
+//        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
+//        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
+//        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
+//        if let navigator = self.navigationController {
+//            navigator.pushViewController(click, animated: true)
+//        }
+        let myBuying = self.storyboard!.instantiateViewController(identifier: "ChatInboxViewController") as! ChatInboxViewController
+        myBuying.BarHidden = true
         if let navigator = self.navigationController {
-            navigator.pushViewController(click, animated: true)
+            navigator.pushViewController(myBuying, animated: true)
         }
     }
     
@@ -924,22 +929,27 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 let user = jsonData.value(forKey: "read") as! NSArray
                                 
-                                let ItemID = user.value(forKey: "id") as! [String]
+                                if(user.count == 0){
+                                    
+                                }else{
+                                    let ItemID = user.value(forKey: "id") as! [String]
+                                    
+                                    self.ID1 = ItemID
+                                    self.Cart_count = ItemID.count
+                                    
+                                    var badgeAppearance = BadgeAppearance()
+                                    badgeAppearance.backgroundColor = UIColor.red //default is red
+                                    badgeAppearance.textColor = UIColor.white // default is white
+                                    badgeAppearance.textAlignment = .center //default is center
+                                    badgeAppearance.textSize = 9 //default is 12
+                                    badgeAppearance.distanceFromCenterX = 10 //default is 0
+                                    badgeAppearance.distanceFromCenterY = 1 //default is 0
+                                    badgeAppearance.allowShadow = false
+                                    badgeAppearance.borderColor = .red
+                                    badgeAppearance.borderWidth = 0
+                                    self.CartViewNav.badge(text: String(self.Cart_count), appearance: badgeAppearance)
+                                }
                                 
-                                self.ID1 = ItemID
-                                self.Cart_count = ItemID.count
-                                
-                                var badgeAppearance = BadgeAppearance()
-                                badgeAppearance.backgroundColor = UIColor.red //default is red
-                                badgeAppearance.textColor = UIColor.white // default is white
-                                badgeAppearance.textAlignment = .center //default is center
-                                badgeAppearance.textSize = 9 //default is 12
-                                badgeAppearance.distanceFromCenterX = 10 //default is 0
-                                badgeAppearance.distanceFromCenterY = 1 //default is 0
-                                badgeAppearance.allowShadow = false
-                                badgeAppearance.borderColor = .red
-                                badgeAppearance.borderWidth = 0
-                                self.CartViewNav.badge(text: String(self.Cart_count), appearance: badgeAppearance)
                             }
                         }
                 }
