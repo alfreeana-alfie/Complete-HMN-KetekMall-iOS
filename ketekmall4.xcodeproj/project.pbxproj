@@ -88,6 +88,9 @@
 		FBD224AC251BA9ED004B02F6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */; };
 		FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */; };
 		FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */; };
+		FBD224B2251BB649004B02F6 /* Ipay.h in Sources */ = {isa = PBXBuildFile; fileRef = FBD224B0251BB5D5004B02F6 /* Ipay.h */; };
+		FBD224B3251BB649004B02F6 /* IpayPayment.h in Sources */ = {isa = PBXBuildFile; fileRef = FBD224B1251BB5D6004B02F6 /* IpayPayment.h */; };
+		FBD224B4251BB6AA004B02F6 /* ketekmall4_Bridging_Header.h in Sources */ = {isa = PBXBuildFile; fileRef = FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -196,12 +199,12 @@
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FBD224A3251BA656004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/SDK/libipay88sdk.a; sourceTree = "<group>"; };
-		FBD224A7251BA90E004B02F6 /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ipay.h; path = SDK/Ipay.h; sourceTree = "<group>"; };
-		FBD224A8251BA91D004B02F6 /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IpayPayment.h; path = SDK/IpayPayment.h; sourceTree = "<group>"; };
 		FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ketekmall4_Bridging_Header.h; sourceTree = "<group>"; };
 		FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		FBD224B0251BB5D5004B02F6 /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ipay.h; sourceTree = "<group>"; };
+		FBD224B1251BB5D6004B02F6 /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpayPayment.h; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -281,8 +284,8 @@
 		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXGroup;
 			children = (
-				FBD224A8251BA91D004B02F6 /* IpayPayment.h */,
-				FBD224A7251BA90E004B02F6 /* Ipay.h */,
+				FBD224B0251BB5D5004B02F6 /* Ipay.h */,
+				FBD224B1251BB5D6004B02F6 /* IpayPayment.h */,
 				FBB2D5FC251495B2007BEA53 /* ketekmall4.entitlements */,
 				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
 				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
@@ -597,6 +600,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD224B4251BB6AA004B02F6 /* ketekmall4_Bridging_Header.h in Sources */,
+				FBD224B2251BB649004B02F6 /* Ipay.h in Sources */,
+				FBD224B3251BB649004B02F6 /* IpayPayment.h in Sources */,
 				FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */,
 				FB4557B324F91EE700FC502B /* MyProductsCollectionViewController.swift in Sources */,
 				FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */,
@@ -854,11 +860,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E98FF399E68D56229FABBE72 /* Pods-ketekmall4.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -867,11 +875,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4/SDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "";
 			};
 			name = Debug;
 		};
@@ -879,11 +889,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB7F0E03E474A0A5BC70F344 /* Pods-ketekmall4.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -892,11 +904,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4/SDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = ketekmall4/ketekmall4_Bridging_Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "";
 			};
 			name = Release;
 		};
