@@ -252,14 +252,15 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.AdDetail.text! = self.ADDETAIL[indexPath.row]
-        cell.ItemPrice.text! = self.PRICE[indexPath.row]
+        cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         
         cell.Quantity.isHidden = true
         cell.Stepper.isHidden = true
         cell.CheckBOx.checkmarkStyle = .tick
         cell.CheckBOx.borderStyle = .circle
         cell.CheckBOx.layer.cornerRadius = 5
-        cell.SubTotal.text! = self.PRICE[indexPath.row]
+        cell.SubTotal.text! = "MYR" + self.PRICE[indexPath.row]
+        
         
         if(lang == "ms"){
             cell.SubLabel.text = "SubTotal".localized(lang: "ms")
@@ -341,7 +342,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             var sub: Double = 0.00
             sub = Double(self.PRICE[indexPath.row])! * Double(stepper)!
-            cell.SubTotal.text! = String(sub)
+            cell.SubTotal.text! = "MYR" + String(sub)
         }
         cell.Stepper.transform = CGAffineTransform(scaleX: 1.75, y: 1.0);
         cell.Stepper.layer.cornerRadius = 5
