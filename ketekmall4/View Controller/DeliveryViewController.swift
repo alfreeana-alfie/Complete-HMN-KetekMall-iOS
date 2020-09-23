@@ -48,10 +48,11 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         DeliveryView.delegate = self
         DeliveryView.dataSource = self
         
-        ButtonAdd.layer.cornerRadius = 5
-        ButtonAccept.layer.cornerRadius = 5
-        ButtonCancel.layer.cornerRadius = 5
-        
+        ButtonAdd.layer.cornerRadius = 7
+        ButtonAccept.layer.cornerRadius = 7
+        ButtonCancel.layer.cornerRadius = 7
+        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
+        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         spinner.show(in: self.view)
         let parameters: Parameters=[
             "item_id": itemID

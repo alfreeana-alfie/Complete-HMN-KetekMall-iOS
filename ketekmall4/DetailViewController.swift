@@ -38,7 +38,7 @@ class DetailViewController: UIViewController, PaymentResultDelegate {
         super.viewDidLoad()
 
         paymentSDK?.delegate = self
-        paymentSDK = Ipay()
+//        paymentSDK = Ipay.init()
 //        paymentSDK = Ipay()
         
 //        requeryPayment = IpayPayment()
