@@ -76,6 +76,7 @@
 		FB9A9286250368B2001DD96C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A9285250368B2001DD96C /* ViewController.swift */; };
 		FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928725037A51001DD96C /* BuyerViewController.swift */; };
 		FB9A928A25037A75001DD96C /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928925037A75001DD96C /* SellerViewController.swift */; };
+		FBA03DF2251DBF4400B1384F /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
 		FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */; };
 		FBB2D5F92513E0E5007BEA53 /* TermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */; };
 		FBB2D5FB2513E20C007BEA53 /* BeforeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */; };
@@ -87,7 +88,6 @@
 		FBD224AC251BA9ED004B02F6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */; };
 		FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */; };
 		FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */; };
-		FBD224BD251BE96A004B02F6 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -186,6 +186,8 @@
 		FB9A9285250368B2001DD96C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB9A928725037A51001DD96C /* BuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerViewController.swift; sourceTree = "<group>"; };
 		FB9A928925037A75001DD96C /* SellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
+		FBA03DF3251DBF6300B1384F /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ipay.h; sourceTree = "<group>"; };
+		FBA03DF4251DBF6400B1384F /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpayPayment.h; sourceTree = "<group>"; };
 		FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoRegisterSeller2ViewController.swift; sourceTree = "<group>"; };
 		FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionsViewController.swift; sourceTree = "<group>"; };
 		FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeRegisterViewController.swift; sourceTree = "<group>"; };
@@ -199,8 +201,6 @@
 		FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		FBD224B0251BB5D5004B02F6 /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ipay.h; sourceTree = "<group>"; };
-		FBD224B1251BB5D6004B02F6 /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpayPayment.h; sourceTree = "<group>"; };
 		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBD224BD251BE96A004B02F6 /* libipay88sdk.a in Frameworks */,
+				FBA03DF2251DBF4400B1384F /* libipay88sdk.a in Frameworks */,
 				1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */,
 				FBB2D5FE251495B8007BEA53 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -281,8 +281,8 @@
 		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXGroup;
 			children = (
-				FBD224B0251BB5D5004B02F6 /* Ipay.h */,
-				FBD224B1251BB5D6004B02F6 /* IpayPayment.h */,
+				FBA03DF3251DBF6300B1384F /* Ipay.h */,
+				FBA03DF4251DBF6400B1384F /* IpayPayment.h */,
 				FBB2D5FC251495B2007BEA53 /* ketekmall4.entitlements */,
 				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
 				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,

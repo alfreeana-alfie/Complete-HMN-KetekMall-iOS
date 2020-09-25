@@ -2,6 +2,7 @@
 //  IpayPayment.h
 //  ipay88sdk
 //
+#import <Foundation/Foundation.h>
 
 @interface IpayPayment : NSObject {
     NSString *merchantKey;

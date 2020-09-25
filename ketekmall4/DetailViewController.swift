@@ -40,7 +40,7 @@ class DetailViewController: UIViewController, PaymentResultDelegate {
         paymentSDK?.delegate = self
         paymentSDK = Ipay()
         
-//        requeryPayment = IpayPayment()
+        requeryPayment = IpayPayment()
         requeryPayment?.paymentId = ""
         requeryPayment?.merchantKey = "apple88KEY"
         requeryPayment?.merchantCode = "M09999"
