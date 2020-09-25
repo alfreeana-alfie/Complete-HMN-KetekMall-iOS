@@ -230,11 +230,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
                      let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                     
-                    let MeView = self.storyboard!.instantiateViewController(identifier: "ViewController") as! ViewController
-                    MeView.userID = self.userID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(MeView, animated: true)
-                    }
+                    
                     
                    }else{
                     self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()

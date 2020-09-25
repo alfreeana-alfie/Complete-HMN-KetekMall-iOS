@@ -23,8 +23,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         newGrandTotal = Double(self.GRANDTOTAL[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
         newPrice = Double(self.DELIVERYPRICE[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
         
-        self.GrandTotal.text! = "MYR" + String(format: "$.2f", newGrandTotal)
-        self.GrandTotal2.text! = String(format: "$.2f", newGrandTotal)
+        print(String(format: "%.2f", newGrandTotal))
+        self.GrandTotal.text! = "MYR" + String(format: "%.2f", newGrandTotal)
+        self.GrandTotal2.text! = String(format: "%.2f", newGrandTotal)
         
         cell.DeliveryPrice.text! = "MYR" + String(format: "%.2f", newPrice)
         
@@ -458,27 +459,30 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func getSellerDetails(){
-        let parameters: Parameters=[
-            "id": SELLERID,
-        ]
-        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
-                        let SellerEmail = user.value(forKey: "email") as! [String]
-                        self.sendEmail(Email: SellerEmail[0])
+        for i in 0..<self.SELLERID.count{
+            let parameters: Parameters=[
+                "id": SELLERID[i],
+            ]
+            Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value{
+                        let jsonData = result as! NSDictionary
+                        
+                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            let user = jsonData.value(forKey: "read") as! NSArray
+                            let SellerEmail = user.value(forKey: "email") as! [String]
+                            self.sendEmail(Email: SellerEmail[0])
+                        }
                     }
-                }
+            }
         }
+        
     }
     
     func sendEmail(Email: String){
         let parameters: Parameters=[
-            "email": Email,
+            "email": Email
         ]
         
         Alamofire.request(URL_SEND_EMAILSELLER, method: .post, parameters: parameters).responseJSON
@@ -486,10 +490,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 response in
                 if let result = response.result.value{
                     let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        print("SENT")
-                    }
+                    print("SENT")
                 }else{
                     print("FAILED")
                 }
@@ -525,17 +526,14 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func sendEmailBuyer(Email: String){
         let parameters: Parameters=[
-            "email": Email,
+            "email": Email
         ]
         Alamofire.request(URL_SEND_EMAILBUYER, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        print("SENT")
-                    }
+                     let jsonData = result as! NSDictionary
+                     print("SENT")
                 }else{
                     print("FAILED")
                 }

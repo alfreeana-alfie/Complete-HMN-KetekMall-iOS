@@ -161,6 +161,8 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         print("SENT")
+                    }else{
+                        print("FAILED")
                     }
                 }
         }
