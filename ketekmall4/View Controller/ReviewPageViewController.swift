@@ -209,8 +209,6 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
             GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
         }
         
-        
-        
         ButtonReceived.layer.cornerRadius = 5
         
         if(STATUS == "Ordered"){
@@ -287,6 +285,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
             Received_Black.isHidden = true
             Received_Green.isHidden = false
             
+            ButtonReceived.isHidden = true
             Finished.isHidden = false
         }else if(STATUS == "Reject"){
             
@@ -305,6 +304,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
             Received_Black.isHidden = false
             Received_Green.isHidden = true
             
+            ButtonReceived.isHidden = true
             Finished.backgroundColor = .red
             Finished.text = "REJECT"
         }else if(STATUS == "Cancel"){
@@ -324,6 +324,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
             Received_Black.isHidden = false
             Received_Green.isHidden = true
             
+            ButtonReceived.isHidden = true
             Finished.backgroundColor = .red
             Finished.text = "CANCEL"
         }
