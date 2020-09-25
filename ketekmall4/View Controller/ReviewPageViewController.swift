@@ -34,6 +34,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     var SHIPPINGTOTAL: String = ""
     var SELLERID: String = ""
     var STATUS: String = ""
+    var SELLER_DIVISION: String = ""
     var viewController1: UIViewController?
     
     var Total1: Double = 0.00
@@ -90,6 +91,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         spinner.show(in: self.view)
         let parameters: Parameters=[
             "order_date": DATEORDER,
+            "delivery_price": SHIPPINGTOTAL
         ]
         Alamofire.request(URL_EDIT, method: .post, parameters: parameters).responseJSON
             {
@@ -187,12 +189,25 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         ItemPrice.text! = "MYR" + PRICE
         ItemQuantity.text! = "x" + QUANTITY
         
-        Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
-        Total2 = Total1 + Double(SHIPPINGTOTAL)!
+        if(SHIPPEDTO == SELLER_DIVISION){
+            SHIPPINGTOTAL = "0.00"
+            
+            Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
+            Total2 = Total1 + Double(SHIPPINGTOTAL)!
+            
+            SubTotal.text! = "MYR" + PRICE
+            ShippingTotal.text! = "MYR" + SHIPPINGTOTAL
+            GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
+        }else{
+            Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
+            Total2 = Total1 + Double(SHIPPINGTOTAL)!
+            
+            SubTotal.text! = "MYR" + PRICE
+            ShippingTotal.text! = "MYR" + SHIPPINGTOTAL
+            GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
+        }
         
-        SubTotal.text! = "MYR" + PRICE
-        ShippingTotal.text! = "MYR" + SHIPPINGTOTAL
-        GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
+        
         
         ButtonReceived.layer.cornerRadius = 5
         

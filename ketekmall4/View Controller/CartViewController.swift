@@ -197,8 +197,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 return
             }
             let parameters: Parameters=[
-                "id": self.ID[indexPath.row],
-//                "cart_id": self.ID[indexPath.row],
+                "id": self.ID[indexPath.row]
                 
             ]
             Alamofire.request(self.URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
@@ -215,7 +214,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
             }
         }))
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
             
         }))
         present(refreshAlert, animated: true, completion: nil)
@@ -322,14 +321,11 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 Alamofire.request(self.URL_ADD_CART_TEMP, method: .post, parameters: parameters).responseJSON
                     {
                         response in
-//                        if let result = response.result.value {
-//                            let jsonData = result as! NSDictionary
                             var SubTotal2 = 0.00
                             for i in self.PRICENEW{
                                 SubTotal2 += Double(i)!
                                 self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
                             }
-//                        }
                 }
             }
             
@@ -343,8 +339,6 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             sub = Double(self.PRICE[indexPath.row])! * Double(stepper)!
             cell.SubTotal.text! = "MYR" + String(sub)
         }
-//        cell.Stepper.transform = CGAffineTransform(scaleX: 1.75, y: 1.0);
-//        cell.Stepper.layer.cornerRadius = 5
         return cell
     }
     

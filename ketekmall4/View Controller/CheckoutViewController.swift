@@ -124,7 +124,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
-        userID = sharedPref.string(forKey: "USERID") ?? "0"
+//        userID = sharedPref.string(forKey: "USERID") ?? "0"
         
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -223,7 +223,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
 //                                                                self.GrandTotal.text! = "MYR0.00"
                                                                 self.CartView.reloadData()
                                                             }else
-                                                                {self.DELIVERYID = user.value(forKey: "id") as! [String]
+                                                                {
+                                                                self.DELIVERYID = user.value(forKey: "id") as! [String]
                                                                 self.DELIVERYDIVISION = user.value(forKey: "division") as! [String]
                                                                 let deliveryDays = user.value(forKey: "days") as! [String]
                                                                 let deliveryprice = user.value(forKey: "price") as! [String]
@@ -234,8 +235,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 var index = i
                                                                 
                                                                 if index < self.DELIVERYPRICE.count{
-                                                                    print("SUCCESS" + self.DELIVERYPRICE[index])
-                                                                    var strDays: Int = Int(self.DELIVERYDAYS[index])!
+//                                                                    print("SUCCESS" + self.DELIVERYPRICE[index])
+                                                                    var strDays: Int = Int(self.DELIVERYDAYS[index]) ?? 0
                                                                     let date = Date()
                                                                     let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
                                                                     
@@ -261,15 +262,15 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 var indexPrice = i
                                                                 
                                                                 if indexPrice < self.DELIVERYPRICE.count{
-                                                                    var strDel: Double = Double(self.DELIVERYPRICE[i])!
+                                                                    var strDel: Double = Double(self.DELIVERYPRICE[i]) ?? 0.00
                                                                     var strGrandTotal: Double = 0.00
                                                                     strGrand2 += strDel
                                                                     strGrandTotal = strGrand + strGrand2
-                                                                    print(String(format: "%.2f", strGrandTotal))
+//                                                                    print(String(format: "%.2f", strGrandTotal))
                                                                     
                                                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
                                                                     
-                                                                                   self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
+                                                                    self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
                                                                     
                                                                     self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
                                                                 }
@@ -386,8 +387,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ButtonSelfPickUp.isHidden = true
         cell.ButtonSelfPickUp.layer.borderWidth = 1
         cell.ButtonSelfPickUp.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
-        if(DIVISIONU[indexPath.row] == DIVISION[indexPath.row]){
+        
+        print("DIVISIONU" + self.DIVISIONU[0])
+        print("DIVISION" + self.DIVISION[indexPath.row])
+        if(self.DIVISIONU[0] == DIVISION[indexPath.row]){
             cell.ButtonSelfPickUp.isHidden = false
+        }else{
+            cell.ButtonSelfPickUp.isHidden = true
         }
         
         let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -396,9 +402,15 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.OrderID.text! = "KM" + self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
+        
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.Quantity.text! = "x" + self.QUANTITY[indexPath.row]
         cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
+        if(self.DELIVERYPRICE[indexPath.row] == "Not Supported for selected area"){
+            cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
+        }else{
+            cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
+        }
         cell.Division.text! = self.DIVISION[indexPath.row] + " to " + self.DIVISIONU[0]
         return cell
     }

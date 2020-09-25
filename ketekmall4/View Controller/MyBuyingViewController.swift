@@ -36,6 +36,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var tracking_no: String = ""
     var delivery_price: String = ""
     var delivery_date: String = ""
+    var seller_division: String = ""
     var Seller_ID: String = ""
     
     var SellerEmail:String = ""
@@ -48,6 +49,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ItemImage: [String] = []
     var ItemPrice: [String] = []
     var ItemQuan: [String] = []
+    var Seller_Division: [String] = []
     var ItemOrderPlaced: [String] = []
     var ItemShipPlaced: [String] = []
     var ItemStatus: [String] = []
@@ -116,8 +118,10 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.delivery_date = i["delivery_date"] as! String
                             self.tracking_no = i["tracking_no"] as! String
                             self.Seller_ID = i["seller_id"] as! String
+                            self.seller_division = i["seller_division"] as! String
                             
                             self.seller_id.append(self.Seller_ID)
+                            self.Seller_Division.append(self.seller_division)
                             self.OrderID.append(self.order_id)
                             self.ItemID.append(self.item_id)
 
@@ -334,6 +338,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         ReviewProduct.SHIPPINGTOTAL = self.DeliveryPrice[indexPath.row]
         ReviewProduct.SHIPPEDTO = self.ItemShipPlaced[indexPath.row]
         ReviewProduct.USERID = userID
+        ReviewProduct.SELLER_DIVISION = self.Seller_Division[indexPath.row]
         ReviewProduct.SELLERID = self.seller_id[indexPath.row]
         ReviewProduct.STATUS = self.ItemStatus[indexPath.row]
         ReviewProduct.BarHidden = true
