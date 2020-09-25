@@ -6169,7 +6169,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-tF-wHO">
-                                        <rect key="frame" x="216" y="71" width="69" height="21"/>
+                                        <rect key="frame" x="195" y="71" width="69" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="6Rz-85-npt"/>
                                         </constraints>
@@ -6178,7 +6178,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MYR" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Qso-WE-RZz">
-                                        <rect key="frame" x="175" y="77" width="26.5" height="14"/>
+                                        <rect key="frame" x="155" y="77" width="26.5" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="26.5" id="nge-U2-Jbo"/>
                                         </constraints>
@@ -6193,11 +6193,11 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <constraint firstItem="EEp-tF-wHO" firstAttribute="top" secondItem="kxW-IU-Vpe" secondAttribute="bottom" constant="9" id="Gdu-Xm-lnF"/>
                                     <constraint firstItem="kxW-IU-Vpe" firstAttribute="top" secondItem="QHT-42-hUS" secondAttribute="top" constant="39" id="Il4-3O-SZL"/>
                                     <constraint firstItem="Qso-WE-RZz" firstAttribute="top" secondItem="kxW-IU-Vpe" secondAttribute="bottom" constant="15" id="M6y-O3-Qd3"/>
-                                    <constraint firstItem="EEp-tF-wHO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qso-WE-RZz" secondAttribute="trailing" constant="8" symbolic="YES" id="VXO-Gx-6fU"/>
-                                    <constraint firstAttribute="trailing" secondItem="EEp-tF-wHO" secondAttribute="trailing" constant="129" id="YRA-aN-52a"/>
+                                    <constraint firstAttribute="trailing" secondItem="EEp-tF-wHO" secondAttribute="trailing" constant="150" id="YRA-aN-52a"/>
                                     <constraint firstAttribute="bottom" secondItem="Qso-WE-RZz" secondAttribute="bottom" constant="41" id="anU-WD-EX0"/>
                                     <constraint firstAttribute="height" constant="132" id="eYB-hf-sjB"/>
-                                    <constraint firstItem="Qso-WE-RZz" firstAttribute="leading" secondItem="QHT-42-hUS" secondAttribute="leading" constant="175" id="hQR-fm-Otb"/>
+                                    <constraint firstItem="EEp-tF-wHO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qso-WE-RZz" secondAttribute="trailing" constant="8" symbolic="YES" id="ewz-B6-uFC"/>
+                                    <constraint firstItem="Qso-WE-RZz" firstAttribute="leading" secondItem="QHT-42-hUS" secondAttribute="leading" constant="155" id="hQR-fm-Otb"/>
                                     <constraint firstItem="kxW-IU-Vpe" firstAttribute="leading" secondItem="QHT-42-hUS" secondAttribute="leading" constant="97" id="rhr-E4-PkR"/>
                                     <constraint firstAttribute="bottom" secondItem="EEp-tF-wHO" secondAttribute="bottom" constant="40" id="xEv-G3-eqh"/>
                                 </constraints>
@@ -7691,7 +7691,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <constraint firstAttribute="height" constant="145" id="wEW-iZ-usn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="lfj-u7-vtf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="lfj-u7-vtf">
                                                     <rect key="frame" x="20" y="153" width="130" height="17"/>
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>

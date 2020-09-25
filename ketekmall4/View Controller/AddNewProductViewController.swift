@@ -357,11 +357,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
-                    let MeView = self.storyboard!.instantiateViewController(identifier: "ViewController") as! ViewController
-                    MeView.userID = self.userID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(MeView, animated: true)
-                    }
+                    _ = self.navigationController?.popToRootViewController(animated: true)
                 }else{
                     self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
                     self.spinner.textLabel.text = "Failed to Save"
