@@ -34,11 +34,6 @@ class ForgotPasswordViewController: UIViewController {
                 let jsonData = result as! NSDictionary
                 print(jsonData.value(forKey: "message")!)
                 self.spinner.dismiss(afterDelay: 3.0)
-            }else{
-                self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
-                self.spinner.textLabel.text = "Failed"
-                self.spinner.show(in: self.view)
-                self.spinner.dismiss(afterDelay: 4.0)
             }
         }
     }

@@ -454,6 +454,11 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     self.getSellerDetails()
                     self.getUserDetails()
+                    
+                    let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(myBuying, animated: true)
+                    }
                 }
         }
     }

@@ -27,6 +27,7 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         userID = sharedPref.string(forKey: "USERID") ?? "0"
+        
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -48,27 +49,34 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
-            presentMethod(storyBoardName: "Main", storyBoardID: "HomeViewController")
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         case 2:
-            presentMethod(storyBoardName: "Main", storyBoardID: "NotificationViewController")
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         case 3:
-            presentMethod(storyBoardName: "Main", storyBoardID: "ViewController")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         default:
             break
         }
-    }
-    
-    func presentMethod(storyBoardName: String, storyBoardID: String) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: storyBoardName, bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: storyBoardID)
-        self.definesPresentationContext = true
-        self.present(newViewController, animated: true, completion: nil)
     }
 
     
