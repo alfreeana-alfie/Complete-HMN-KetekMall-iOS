@@ -21,7 +21,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
     
     let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
-    let URL_DELETE_CART = "https://ketekmall.com/ketekmall/delete_cart.php"
+    let URL_DELETE_CART = "https://ketekmall.com/ketekmall/delete_cart2.php"
     let URL_ADD_CART_TEMP = "https://ketekmall.com/ketekmall/add_to_cart_temp.php"
     let URL_READ_CART_TEMP = "https://ketekmall.com/ketekmall/readcart_temp.php"
     let URL_DELETE_CART_TEMP = "https://ketekmall.com/ketekmall/delete_cart_temp.php"
@@ -198,7 +198,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             let parameters: Parameters=[
                 "id": self.ID[indexPath.row],
-                "cart_id": self.ID[indexPath.row],
+//                "cart_id": self.ID[indexPath.row],
                 
             ]
             Alamofire.request(self.URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
@@ -211,7 +211,6 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self.PHOTO.remove(at: indexPath.row)
                         self.ADDETAIL.remove(at: indexPath.row)
                         self.PRICE.remove(at: indexPath.row)
-//                        self.QUANTITY.remove(at: indexPath.row)
                         self.CartView.deleteItems(at: [indexPath])
                     }
             }
@@ -255,7 +254,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         
         cell.Quantity.isHidden = true
-        cell.Stepper.isHidden = true
+//        cell.Stepper.isHidden = true
         cell.CheckBOx.checkmarkStyle = .tick
         cell.CheckBOx.borderStyle = .circle
         cell.CheckBOx.layer.cornerRadius = 5
@@ -344,8 +343,8 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             sub = Double(self.PRICE[indexPath.row])! * Double(stepper)!
             cell.SubTotal.text! = "MYR" + String(sub)
         }
-        cell.Stepper.transform = CGAffineTransform(scaleX: 1.75, y: 1.0);
-        cell.Stepper.layer.cornerRadius = 5
+//        cell.Stepper.transform = CGAffineTransform(scaleX: 1.75, y: 1.0);
+//        cell.Stepper.layer.cornerRadius = 5
         return cell
     }
     

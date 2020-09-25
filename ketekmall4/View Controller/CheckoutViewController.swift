@@ -24,6 +24,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         newPrice = Double(self.DELIVERYPRICE[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
         
         self.GrandTotal.text! = "MYR" + String(format: "$.2f", newGrandTotal)
+        self.GrandTotal2.text! = String(format: "$.2f", newGrandTotal)
         
         cell.DeliveryPrice.text! = "MYR" + String(format: "%.2f", newPrice)
         
@@ -36,6 +37,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var NamePhone: UILabel!
     @IBOutlet weak var Address: UITextView!
     @IBOutlet weak var GrandTotal: UILabel!
+    @IBOutlet weak var GrandTotal2: UILabel!
     @IBOutlet weak var CartView: UICollectionView!
     @IBOutlet weak var Tabbar: UITabBar!
     @IBOutlet weak var ButtonPlaceOrder: UIButton!
@@ -135,6 +137,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         CartView.delegate = self
         CartView.dataSource = self
         
+        GrandTotal2.isHidden = true
         ChangeDeliveryLabel.isHidden = true
         ButtonPlaceOrder.layer.cornerRadius = 7
         
@@ -266,6 +269,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                     
                                                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
                                                                     
+                                                                                   self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
+                                                                    
                                                                     self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
                                                                 }
                                                                 self.CartView.reloadData()
@@ -290,7 +295,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     func changeLanguage(str: String){
         TotalLabel.text = "Total".localized(lang: str)
         DeliveryAddressLabel.text = "Delivery Address".localized(lang: str)
-        ButtonPlaceOrder.setTitle("Place".localized(lang: str), for: .normal)
+        ButtonPlaceOrder.setTitle("Place Order".localized(lang: str), for: .normal)
         Tabbar.items?[0].title = "Home".localized(lang: str)
         Tabbar.items?[1].title = "Notification".localized(lang: str)
         Tabbar.items?[2].title = "Me".localized(lang: str)
@@ -436,12 +441,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     self.getSellerDetails()
                     self.getUserDetails()
+                    self.getiPay88()
                     
-                    let boostAd = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-                    boostAd.userID = self.userID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(boostAd, animated: true)
-                    }
                 }
         }
     }
@@ -485,6 +486,37 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    func getiPay88(){
+        let parameters: Parameters=[
+            "id": userID
+        ]
+        
+        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        let name = user.value(forKey: "name") as! [String]
+                        let email = user.value(forKey: "email") as! [String]
+                        let phone = user.value(forKey: "phone_no") as! [String]
+                        
+                        let vc = DetailViewController()
+                        vc.UserName = name[0]
+                        vc.UserEmail = email[0]
+                        vc.UserContact = phone[0]
+                        vc.Amount = self.GrandTotal2.text ?? "1.00"
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
     func getUserDetails(){
         let parameters: Parameters=[
             "id": userID
@@ -501,6 +533,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let email = user.value(forKey: "email") as! [String]
                         
                         self.sendEmailBuyer(Email: email[0])
+                        
+                        
                     }
                 }else{
                     print("FAILED")

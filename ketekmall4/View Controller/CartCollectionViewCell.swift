@@ -25,7 +25,7 @@ class CartCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var CheckBOx: Checkbox!
     @IBOutlet weak var Quantity: UILabel!
-    @IBOutlet weak var Stepper: UIStepper!
+//    @IBOutlet weak var Stepper: UIStepper!
     @IBOutlet weak var SubTotal: UILabel!
     @IBOutlet weak var ButtonDelete: UIButton!
     @IBOutlet weak var StepperNew: GMStepper!
@@ -43,9 +43,9 @@ class CartCollectionViewCell: UICollectionViewCell {
         Quantity.text! = String(Int(sender.value))
     }
     
-    @IBAction func AddClick(sender: UIStepper){
-        self.delegate?.OnAddClick(cell: self)
-        callback?(String(Int(sender.value)))
-        Quantity.text! = String(Int(sender.value))
-    }
+//    @IBAction func AddClick(sender: UIStepper){
+//        self.delegate?.OnAddClick(cell: self)
+//        callback?(String(Int(sender.value)))
+//        Quantity.text! = String(Int(sender.value))
+//    }
 }
