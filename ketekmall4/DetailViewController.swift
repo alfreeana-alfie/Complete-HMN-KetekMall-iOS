@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class DetailViewController: UIViewController, PaymentResultDelegate{
     func paymentSuccess(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withAuthCode authCode: String!) {
@@ -57,10 +58,17 @@ class DetailViewController: UIViewController, PaymentResultDelegate{
     var UserEmail: String = ""
     var UserContact: String = ""
     var Amount: String = ""
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let myselling = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+        if let navigator = self.navigationController {
+            navigator.pushViewController(myselling, animated: true)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         RefNo = String.random()
         MerchantKey = "8bgBOjTkij"
         MerchantCode = "M29640"
@@ -86,8 +94,8 @@ class DetailViewController: UIViewController, PaymentResultDelegate{
         requeryPayment?.lang = "ISO-8859-1"
         requeryPayment?.country = "MY"
         requeryPayment?.backendPostURL = BackendURL
-
-        paymentView = paymentSDK?.checkout(requeryPayment)
+        
+        paymentView = paymentSDK!.checkout(requeryPayment)
         self.view.addSubview(paymentView!)
     }
 }

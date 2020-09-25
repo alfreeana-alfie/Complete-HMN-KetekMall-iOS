@@ -548,7 +548,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc func openWhatsapp(sender: Any){
-        let urlWhats = "whatsapp://send?phone=" + "+6" + SELLERPHONE
+        let urlWhats = "whatsapp://send?phone=" + "+60" + SELLERPHONE
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){
@@ -638,28 +638,43 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             "photo": PHOTO
         ]
         
-        //Sending http post request
-        Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value {
-                    let jsonData = result as! NSDictionary
-                    self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                    self.spinner.textLabel.text = "Added to Cart"
-                    if(self.lang == "ms"){
-                        self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
-                        
-                    }else{
-                        self.spinner.textLabel.text = "Added to Cart"
-                       
-                    }
+        if(SELLERID == USERID){
+            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+            if(self.lang == "ms"){
+                self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                
+            }else{
+                self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+               
+            }
 
-                    self.spinner.show(in: self.view)
-                    self.spinner.dismiss(afterDelay: 4.0)
-                    print(jsonData.value(forKey: "message")!)
-                    
-                }
+            self.spinner.show(in: self.view)
+            self.spinner.dismiss(afterDelay: 3.0)
+        }else{
+            //Sending http post request
+            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        self.spinner.textLabel.text = "Added to Cart"
+                        if(self.lang == "ms"){
+                            self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                            
+                        }else{
+                            self.spinner.textLabel.text = "Added to Cart"
+                           
+                        }
+
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 3.0)
+                        print(jsonData.value(forKey: "message")!)
+                        
+                    }
+            }
         }
+        
     }
     
 }

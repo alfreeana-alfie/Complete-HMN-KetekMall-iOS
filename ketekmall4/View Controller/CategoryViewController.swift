@@ -173,26 +173,41 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                 "photo": self.PHOTO[indexPath.row]
             ]
             
-            Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        print(jsonData.value(forKey: "message")!)
-                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        if(self.lang == "ms"){
-                            self.spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
-                            
-                        }else{
-                            self.spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
-                           
-                        }
+            if(self.SELLERID[indexPath.row] == UserID){
+                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                if(self.lang == "ms"){
+                    self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                    
+                }else{
+                    self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+                   
+                }
 
-                        self.spinner.show(in: self.view)
-                        self.spinner.dismiss(afterDelay: 4.0)
-                        
-                    }
+                self.spinner.show(in: self.view)
+                self.spinner.dismiss(afterDelay: 2.0)
+            }else{
+                Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            print(jsonData.value(forKey: "message")!)
+                            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            if(self.lang == "ms"){
+                                self.spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
+                                
+                            }else{
+                                self.spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
+                               
+                            }
+
+                            self.spinner.show(in: self.view)
+                            self.spinner.dismiss(afterDelay: 2.0)
+                            
+                        }
+                }
             }
+            
         }
         
         func onAddToCart(cell: CategoryCollectionViewCell) {
@@ -216,25 +231,40 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                 "photo": self.PHOTO[indexPath.row]
             ]
             
-            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        print(jsonData.value(forKey: "message")!)
-                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        if(self.lang == "ms"){
-                            self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+            if(self.SELLERID[indexPath.row] == UserID){
+                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                if(self.lang == "ms"){
+                    self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                    
+                }else{
+                    self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+                   
+                }
+
+                self.spinner.show(in: self.view)
+                self.spinner.dismiss(afterDelay: 3.0)
+            }else{
+                Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            print(jsonData.value(forKey: "message")!)
+                            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            if(self.lang == "ms"){
+                                self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                                
+                            }else{
+                                self.spinner.textLabel.text = "Added to Cart".localized(lang: "en")
+                               
+                            }
+                            self.spinner.show(in: self.view)
+                            self.spinner.dismiss(afterDelay: 3.0)
                             
-                        }else{
-                            self.spinner.textLabel.text = "Added to Cart".localized(lang: "en")
-                           
                         }
-                        self.spinner.show(in: self.view)
-                        self.spinner.dismiss(afterDelay: 4.0)
-                        
-                    }
+                }
             }
+            
         }
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
