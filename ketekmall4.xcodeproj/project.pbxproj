@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */; };
-		FB08436D25122196003C200E /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08436C25122196003C200E /* LaunchScreenViewController.swift */; };
 		FB08436F2512A371003C200E /* AboutKetekMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */; };
 		FB0843712512A38B003C200E /* ReturnRefundPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */; };
 		FB0843732512A39C003C200E /* DeliveryPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */; };
@@ -76,7 +75,6 @@
 		FB9A9286250368B2001DD96C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A9285250368B2001DD96C /* ViewController.swift */; };
 		FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928725037A51001DD96C /* BuyerViewController.swift */; };
 		FB9A928A25037A75001DD96C /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9A928925037A75001DD96C /* SellerViewController.swift */; };
-		FBA03DF2251DBF4400B1384F /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
 		FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */; };
 		FBB2D5F92513E0E5007BEA53 /* TermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */; };
 		FBB2D5FB2513E20C007BEA53 /* BeforeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */; };
@@ -85,9 +83,6 @@
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
-		FBD224AC251BA9ED004B02F6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */; };
-		FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */; };
-		FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +107,6 @@
 		49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F0E03E474A0A5BC70F344 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
 		E98FF399E68D56229FABBE72 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
-		FB08436C25122196003C200E /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutKetekMallViewController.swift; sourceTree = "<group>"; };
 		FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnRefundPolicyViewController.swift; sourceTree = "<group>"; };
 		FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPolicyViewController.swift; sourceTree = "<group>"; };
@@ -186,8 +180,6 @@
 		FB9A9285250368B2001DD96C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB9A928725037A51001DD96C /* BuyerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerViewController.swift; sourceTree = "<group>"; };
 		FB9A928925037A75001DD96C /* SellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
-		FBA03DF3251DBF6300B1384F /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ipay.h; sourceTree = "<group>"; };
-		FBA03DF4251DBF6400B1384F /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpayPayment.h; sourceTree = "<group>"; };
 		FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoRegisterSeller2ViewController.swift; sourceTree = "<group>"; };
 		FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionsViewController.swift; sourceTree = "<group>"; };
 		FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeRegisterViewController.swift; sourceTree = "<group>"; };
@@ -197,10 +189,6 @@
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ketekmall4_Bridging_Header.h; sourceTree = "<group>"; };
-		FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -213,7 +201,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBA03DF2251DBF4400B1384F /* libipay88sdk.a in Frameworks */,
 				1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */,
 				FBB2D5FE251495B8007BEA53 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -281,8 +268,6 @@
 		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXGroup;
 			children = (
-				FBA03DF3251DBF6300B1384F /* Ipay.h */,
-				FBA03DF4251DBF6400B1384F /* IpayPayment.h */,
 				FBB2D5FC251495B2007BEA53 /* ketekmall4.entitlements */,
 				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
 				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
@@ -292,11 +277,6 @@
 				FB5A491024F7F0E200F5464C /* Models */,
 				FB5A48EE24F7F07B00F5464C /* Info.plist */,
 				FBDDBB84250A1C1B0027BC90 /* Localizable.strings */,
-				FB08436C25122196003C200E /* LaunchScreenViewController.swift */,
-				FBD224A9251BA978004B02F6 /* ketekmall4_Bridging_Header.h */,
-				FBD224AA251BA9ED004B02F6 /* DetailViewController.swift */,
-				FBD224AB251BA9ED004B02F6 /* DetailViewController.xib */,
-				FBD224AE251BADA1004B02F6 /* DetailViewModel.swift */,
 			);
 			path = ketekmall4;
 			sourceTree = "<group>";
@@ -509,7 +489,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB61D40C251741740087E7C9 /* GoogleService-Info.plist in Resources */,
-				FBD224AD251BA9ED004B02F6 /* DetailViewController.xib in Resources */,
 				FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */,
 				FB288356250994C3008B18BB /* Main.storyboard in Resources */,
 				FB5A48ED24F7F07B00F5464C /* LaunchScreen.storyboard in Resources */,
@@ -624,7 +603,6 @@
 				FB7787BF24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift in Sources */,
 				FB5A491324F7F47000F5464C /* LoginViewController.swift in Sources */,
 				FBB2D5F92513E0E5007BEA53 /* TermsConditionsViewController.swift in Sources */,
-				FBD224AC251BA9ED004B02F6 /* DetailViewController.swift in Sources */,
 				FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */,
 				FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */,
 				FB7D211B250016CC0043A286 /* DeliveryCollectionViewCell.swift in Sources */,
@@ -641,7 +619,6 @@
 				FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */,
 				FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */,
 				FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */,
-				FB08436D25122196003C200E /* LaunchScreenViewController.swift in Sources */,
 				FB7787C124FE35CA00AB01F4 /* ReviewCollectionViewCell.swift in Sources */,
 				FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */,
 				FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */,
@@ -657,7 +634,6 @@
 				FB9A9286250368B2001DD96C /* ViewController.swift in Sources */,
 				FB7787B924FE0F5500AB01F4 /* MoreDetailsViewController.swift in Sources */,
 				FB08436F2512A371003C200E /* AboutKetekMallViewController.swift in Sources */,
-				FBD224AF251BADA1004B02F6 /* DetailViewModel.swift in Sources */,
 				FB7787B724FE0F0500AB01F4 /* ShippingInfoViewController.swift in Sources */,
 				FB528AD324FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift in Sources */,
 				FB7115802500B7B400B19D77 /* FilterViewController.swift in Sources */,

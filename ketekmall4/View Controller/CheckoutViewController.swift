@@ -441,8 +441,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     self.getSellerDetails()
                     self.getUserDetails()
-                    self.getiPay88()
-                    
                 }
         }
     }
@@ -486,36 +484,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    func getiPay88(){
-        let parameters: Parameters=[
-            "id": userID
-        ]
-        
-        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
-                        let name = user.value(forKey: "name") as! [String]
-                        let email = user.value(forKey: "email") as! [String]
-                        let phone = user.value(forKey: "phone_no") as! [String]
-                        
-                        let vc = DetailViewController()
-                        vc.UserName = name[0]
-                        vc.UserEmail = email[0]
-                        vc.UserContact = phone[0]
-                        vc.Amount = self.GrandTotal2.text ?? "1.00"
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }else{
-                    print("FAILED")
-                }
-                
-        }
-    }
     
     func getUserDetails(){
         let parameters: Parameters=[
