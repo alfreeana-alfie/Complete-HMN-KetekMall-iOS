@@ -229,7 +229,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
         let cellSquareSize: CGFloat = screenWidth
-        return CGSize(width: cellSquareSize, height: 198);
+        return CGSize(width: cellSquareSize, height: 160);
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
