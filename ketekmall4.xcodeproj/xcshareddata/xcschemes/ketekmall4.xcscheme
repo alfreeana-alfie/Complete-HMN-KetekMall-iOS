@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FB5A48DC24F7F06B00F5464C"
-               BuildableName = "ketekmall4.app"
+               BuildableName = "KetekMall.app"
                BlueprintName = "ketekmall4"
                ReferencedContainer = "container:ketekmall4.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FB5A48DC24F7F06B00F5464C"
-            BuildableName = "ketekmall4.app"
+            BuildableName = "KetekMall.app"
             BlueprintName = "ketekmall4"
             ReferencedContainer = "container:ketekmall4.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FB5A48DC24F7F06B00F5464C"
-            BuildableName = "ketekmall4.app"
+            BuildableName = "KetekMall.app"
             BlueprintName = "ketekmall4"
             ReferencedContainer = "container:ketekmall4.xcodeproj">
          </BuildableReference>
