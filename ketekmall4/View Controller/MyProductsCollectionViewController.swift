@@ -210,10 +210,11 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         }
                     }
             }
+            return
         }))
         
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            return
         }))
         present(refreshAlert, animated: true, completion: nil)
     }

@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="zaB-MU-48T">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="Loh-W2-oGo" customClass="LoginViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="Loh-W2-oGo" customClass="LoginViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KcI-rR-jEm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,25 +263,25 @@
         <!--Me-->
         <scene sceneID="7Ya-70-dt2">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="fCv-yx-6Wx" customClass="ViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="fCv-yx-6Wx" customClass="ViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oDM-zp-Kie">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-ME-jFX">
-                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="OYT-hA-KkS" kind="embed" id="z3u-lg-KnN"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cU6-Zf-5yb">
-                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="BrF-RY-Z7v" kind="embed" id="hEA-pb-C9I"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c18-e5-vkT">
-                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="NYb-Qg-Vgc" kind="embed" id="BF5-o4-KeI"/>
                                 </connections>
@@ -333,7 +333,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRX-RP-FXh">
-                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Dgz-t3-Bg4"/>
@@ -395,7 +395,7 @@
         <!--Register View Controller-->
         <scene sceneID="8nB-BU-FJr">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" id="ZgE-XB-CUR" customClass="RegisterViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="ZgE-XB-CUR" customClass="RegisterViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7k5-72-Jdo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -708,7 +708,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="MvR-Qb-JFC">
             <objects>
-                <viewController storyboardIdentifier="ForgotPasswordViewController" id="cIh-W9-tkx" customClass="ForgotPasswordViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordViewController" id="cIh-W9-tkx" customClass="ForgotPasswordViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WsO-S3-9Wt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -836,7 +836,7 @@
         <!--Before Register View Controller-->
         <scene sceneID="nke-um-G9i">
             <objects>
-                <viewController storyboardIdentifier="BeforeRegisterViewController" id="bWE-eM-NMf" customClass="BeforeRegisterViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BeforeRegisterViewController" id="bWE-eM-NMf" customClass="BeforeRegisterViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Jb-jN-1ej">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -998,7 +998,7 @@ v) it will not, directly or indirectly, sell expired or soon to be expired produ
         <!--Terms and Conditions-->
         <scene sceneID="JIt-G7-miO">
             <objects>
-                <viewController storyboardIdentifier="TermsConditionsViewController" title="Terms and Conditions" id="h4c-PM-VAK" customClass="TermsConditionsViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsConditionsViewController" title="Terms and Conditions" id="h4c-PM-VAK" customClass="TermsConditionsViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tgJ-SJ-8DS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1121,7 +1121,7 @@ v) it will not, directly or indirectly, sell expired or soon to be expired produ
         <!--Return and Refund Policy-->
         <scene sceneID="0QY-dE-0GW">
             <objects>
-                <viewController storyboardIdentifier="ReturnRefundPolicyViewController" title="Return and Refund Policy" id="h28-YG-w49" customClass="ReturnRefundPolicyViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReturnRefundPolicyViewController" title="Return and Refund Policy" id="h28-YG-w49" customClass="ReturnRefundPolicyViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BPS-B4-rAi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1201,7 +1201,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Delivery Policy-->
         <scene sceneID="9eQ-dm-XAF">
             <objects>
-                <viewController storyboardIdentifier="DeliveryPolicyViewController" title="Delivery Policy" id="YSY-ob-xRB" customClass="DeliveryPolicyViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeliveryPolicyViewController" title="Delivery Policy" id="YSY-ob-xRB" customClass="DeliveryPolicyViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pDe-Fu-9ro">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1260,7 +1260,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--About KetekMall-->
         <scene sceneID="0wU-g0-1wd">
             <objects>
-                <viewController storyboardIdentifier="AboutKetekMallViewController" title="About KetekMall" id="ilI-ig-0fQ" customClass="AboutKetekMallViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutKetekMallViewController" title="About KetekMall" id="ilI-ig-0fQ" customClass="AboutKetekMallViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xW1-nb-frF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1342,7 +1342,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </constraints>
                                     </view>
                                     <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRN-Pr-tq7">
-                                        <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
                                             <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Xp3-By-F9u"/>
@@ -1433,7 +1433,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Contact Us View Controller-->
         <scene sceneID="WZ2-6M-Mj1">
             <objects>
-                <viewController storyboardIdentifier="ContactUsViewController" id="75S-Iz-qxo" customClass="ContactUsViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactUsViewController" id="75S-Iz-qxo" customClass="ContactUsViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="puL-cT-b2U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1550,7 +1550,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <viewLayoutGuide key="safeArea" id="b4j-ne-VzS"/>
                             </stackView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCP-7f-PPn">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="4et-58-wCJ"/>
@@ -1585,7 +1585,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Notification-->
         <scene sceneID="4yH-2Q-baZ">
             <objects>
-                <viewController storyboardIdentifier="NotificationViewController" id="O5a-pN-aIE" customClass="NotificationViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationViewController" id="O5a-pN-aIE" customClass="NotificationViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LDV-Ov-aKH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1681,7 +1681,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPq-y4-lnB">
-                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="QdI-X0-oAq"/>
@@ -1737,16 +1737,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Cart View Controller-->
         <scene sceneID="KX5-cx-QLr">
             <objects>
-                <viewController storyboardIdentifier="CartViewController" id="Txb-WO-qZI" customClass="CartViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartViewController" id="Txb-WO-qZI" customClass="CartViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vwy-sR-Ley">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRp-ni-rd5" userLabel="Checkout">
-                                <rect key="frame" x="0.0" y="88" width="414" height="691"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-hp-6ha">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zXJ-fq-8ca">
                                             <size key="itemSize" width="414" height="178"/>
@@ -1755,7 +1755,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CartCollectionViewCell" id="gS1-EI-HJZ" customClass="CartCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CartCollectionViewCell" id="gS1-EI-HJZ" customClass="CartCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lfw-fY-Zu9">
@@ -1818,7 +1818,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnY-7o-onZ" customClass="GMStepper" customModule="GMStepper">
+                                                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="tnY-7o-onZ" customClass="GMStepper" customModule="GMStepper">
                                                             <rect key="frame" x="49" y="119" width="120" height="30"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <color key="tintColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1847,18 +1847,18 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             </connections>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="MYR0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="UjP-TO-pyT">
-                                                            <rect key="frame" x="240" y="125" width="132" height="15"/>
+                                                            <rect key="frame" x="313.5" y="125" width="58.5" height="15"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="SubTotal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXw-jK-0U6">
-                                                            <rect key="frame" x="244" y="101" width="124" height="20"/>
+                                                            <rect key="frame" x="321" y="101" width="47" height="20"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flu-R3-ZX9">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flu-R3-ZX9">
                                                             <rect key="frame" x="86" y="102" width="45.5" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45.5" id="iaP-nT-Qhx"/>
@@ -1928,19 +1928,19 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-6h-LJD">
-                                        <rect key="frame" x="45" y="633" width="27" height="15"/>
+                                        <rect key="frame" x="45" y="667" width="27" height="15"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MYR0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp0-f1-jOn">
-                                        <rect key="frame" x="45" y="656" width="71.5" height="21"/>
+                                        <rect key="frame" x="45" y="690" width="71.5" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-5i-LTX">
-                                        <rect key="frame" x="270" y="639" width="100" height="44"/>
+                                        <rect key="frame" x="270" y="673" width="100" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="wHz-PK-8Mo"/>
@@ -1973,7 +1973,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-L0-Wzt">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="3Gr-ft-J9K"/>
@@ -2010,7 +2010,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Checkout View Controller-->
         <scene sceneID="y8d-4z-Twl">
             <objects>
-                <viewController storyboardIdentifier="CheckoutViewController" id="HrM-ly-d1I" customClass="CheckoutViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckoutViewController" id="HrM-ly-d1I" customClass="CheckoutViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OEb-hi-f0q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2087,7 +2087,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CheckoutCollectionViewCell" id="dcZ-dl-myU" customClass="CheckoutCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CheckoutCollectionViewCell" id="dcZ-dl-myU" customClass="CheckoutCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                         <rect key="frame" x="19.5" y="0.0" width="375" height="230"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bmr-FA-npN">
@@ -2383,7 +2383,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--After Place Order View Controller-->
         <scene sceneID="8No-mj-4Jv">
             <objects>
-                <viewController storyboardIdentifier="AfterPlaceOrderViewController" id="a0m-CX-5sk" customClass="AfterPlaceOrderViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AfterPlaceOrderViewController" id="a0m-CX-5sk" customClass="AfterPlaceOrderViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EUa-J6-2JJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2456,7 +2456,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Category View Controller-->
         <scene sceneID="LbR-23-4ck">
             <objects>
-                <viewController storyboardIdentifier="CategoryViewController" id="thM-Vc-gp9" customClass="CategoryViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategoryViewController" id="thM-Vc-gp9" customClass="CategoryViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CBW-dn-SnU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2471,7 +2471,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="3WV-dc-ubZ" customClass="CategoryCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="3WV-dc-ubZ" customClass="CategoryCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="176" height="238"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uzb-NM-hrL">
@@ -2702,13 +2702,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Shipping Info View Controller-->
         <scene sceneID="SJA-iD-FVf">
             <objects>
-                <viewController storyboardIdentifier="ShippingInfoViewController" id="LU0-v4-c3J" customClass="ShippingInfoViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShippingInfoViewController" id="LU0-v4-c3J" customClass="ShippingInfoViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f53-VU-hrs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-kT-YKq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SN8-ky-bjb">
                                     <size key="itemSize" width="414" height="94"/>
@@ -2717,7 +2717,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShippingInfoCollectionViewCell" id="1oE-p5-Xaf" customClass="ShippingInfoCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShippingInfoCollectionViewCell" id="1oE-p5-Xaf" customClass="ShippingInfoCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jEj-Hn-dSe">
@@ -2770,7 +2770,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fW2-Ks-uXx">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Axj-KI-d72"/>
@@ -2803,13 +2803,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--More Details View Controller-->
         <scene sceneID="Oaa-dF-Mo2">
             <objects>
-                <viewController storyboardIdentifier="MoreDetailsViewController" id="mnj-j0-smv" customClass="MoreDetailsViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoreDetailsViewController" id="mnj-j0-smv" customClass="MoreDetailsViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yhw-GN-7KD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azU-ub-kF6">
-                                <rect key="frame" x="0.0" y="64" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="749"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAND MATERIAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXP-Hl-dkI">
                                         <rect key="frame" x="31" y="43" width="143" height="20"/>
@@ -2878,7 +2878,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSv-3A-5g8">
-                                        <rect key="frame" x="31" y="206" width="352" height="507"/>
+                                        <rect key="frame" x="31" y="206" width="352" height="541"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2923,7 +2923,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-cz-hi7">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="b52-gL-Sy1"/>
@@ -2965,7 +2965,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--About Seller-->
         <scene sceneID="p9F-9W-6Ky">
             <objects>
-                <viewController storyboardIdentifier="AboutSellerViewController" title="About Seller" id="kqs-p7-9xC" customClass="AboutSellerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutSellerViewController" title="About Seller" id="kqs-p7-9xC" customClass="AboutSellerViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cVK-dJ-RuL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3088,7 +3088,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AboutSellerCollectionViewCell" id="rAV-Ek-Ec4" customClass="AboutSellerCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AboutSellerCollectionViewCell" id="rAV-Ek-Ec4" customClass="AboutSellerCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="202" height="286"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6j7-ZG-PlS">
@@ -3279,13 +3279,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--View Review View Controller-->
         <scene sceneID="lJe-PN-gXP">
             <objects>
-                <viewController storyboardIdentifier="ViewReviewViewController" id="gHa-9S-jfw" customClass="ViewReviewViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewReviewViewController" id="gHa-9S-jfw" customClass="ViewReviewViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uCG-Qu-a9i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Uk-hB-D8w">
-                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IhH-FC-IUq">
                                     <size key="itemSize" width="375" height="109"/>
@@ -3294,7 +3294,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReviewCollectionViewCell" id="q5x-O3-e9l" customClass="ReviewCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReviewCollectionViewCell" id="q5x-O3-e9l" customClass="ReviewCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="19.5" y="0.0" width="375" height="109"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7eh-Mh-bFs">
@@ -3365,7 +3365,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ryd-Hq-eUg">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="A46-J3-ciE"/>
@@ -3398,7 +3398,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Home-->
         <scene sceneID="dLw-LF-JIy">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="ama-vi-rrT" customClass="HomeViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="ama-vi-rrT" customClass="HomeViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BCB-54-tQq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3570,7 +3570,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-jF-ICD">
-                                <rect key="frame" x="0.0" y="263" width="414" height="418"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="501"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP9-CD-EMd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="919"/>
@@ -3942,7 +3942,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="ShockingSaleCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-vR-JQH" customClass="ShockingSaleCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="ShockingSaleCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-vR-JQH" customClass="ShockingSaleCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="134" height="193"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FPB-P6-1Eb">
@@ -4055,7 +4055,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
@@ -4244,7 +4244,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <viewLayoutGuide key="frameLayoutGuide" id="KLQ-aM-B1k"/>
                             </scrollView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-uF-d9x">
-                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="rnh-As-6pA"/>
@@ -4323,7 +4323,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Goto Register Seller View Controller-->
         <scene sceneID="bTk-gB-vSP">
             <objects>
-                <viewController storyboardIdentifier="GotoRegisterSellerViewController" id="ewd-yM-UPg" customClass="GotoRegisterSellerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GotoRegisterSellerViewController" id="ewd-yM-UPg" customClass="GotoRegisterSellerViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v3W-Iw-eeb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4414,7 +4414,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Register Seller View Controller-->
         <scene sceneID="z7V-ES-akd">
             <objects>
-                <viewController storyboardIdentifier="RegisterSellerViewController" id="5sJ-2I-Hyl" customClass="RegisterSellerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterSellerViewController" id="5sJ-2I-Hyl" customClass="RegisterSellerViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jyT-P4-iYT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4480,7 +4480,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8j1-qH-y47">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="00g-Mj-OpT"/>
@@ -4596,7 +4596,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Base Tab Bar Controller-->
         <scene sceneID="Psf-ab-j1e">
             <objects>
-                <tabBarController storyboardIdentifier="myTab" id="MJp-Vf-haW" customClass="BaseTabBarController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="myTab" id="MJp-Vf-haW" customClass="BaseTabBarController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qln-bl-nYm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4615,7 +4615,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--My Products-->
         <scene sceneID="hhk-Oj-HZX">
             <objects>
-                <viewController storyboardIdentifier="MyProductsCollectionViewController" id="Ie9-7A-Hhx" customClass="MyProductsCollectionViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyProductsCollectionViewController" id="Ie9-7A-Hhx" customClass="MyProductsCollectionViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CCe-TE-QjG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -4633,7 +4633,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProductsCollectionViewCell" id="auU-Ec-Kd4" customClass="MyProductsCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProductsCollectionViewCell" id="auU-Ec-Kd4" customClass="MyProductsCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="183" height="370"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f14-a0-Mn0">
@@ -4819,7 +4819,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Edit Product-->
         <scene sceneID="e7V-TR-rf8">
             <objects>
-                <viewController storyboardIdentifier="EditProductViewController" id="ixn-Wf-7HM" userLabel="Edit Product" customClass="EditProductViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProductViewController" id="ixn-Wf-7HM" userLabel="Edit Product" customClass="EditProductViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rWO-bq-tRR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5093,7 +5093,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Me-->
         <scene sceneID="1Ik-6Y-EtP">
             <objects>
-                <viewController storyboardIdentifier="EditProductAdDetailViewController" id="kqh-qr-pPc" customClass="EditProductAdDetailViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProductAdDetailViewController" id="kqh-qr-pPc" customClass="EditProductAdDetailViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CZ7-Q9-UH8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5306,7 +5306,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Me-->
         <scene sceneID="4ND-Mq-wMJ">
             <objects>
-                <viewController storyboardIdentifier="AccountSettingsViewController" id="3Nx-74-BMH" customClass="AccountSettingsViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountSettingsViewController" id="3Nx-74-BMH" customClass="AccountSettingsViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8pr-eQ-K3g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5841,7 +5841,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Add New Product-->
         <scene sceneID="72F-mW-Qb9">
             <objects>
-                <viewController storyboardIdentifier="AddNewProductViewController" id="oOO-X6-KEG" customClass="AddNewProductViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNewProductViewController" id="oOO-X6-KEG" customClass="AddNewProductViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h7S-Xh-A3w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6147,7 +6147,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--My Income-->
         <scene sceneID="jFB-90-o1y">
             <objects>
-                <viewController storyboardIdentifier="MyIncomeViewController" id="evd-JG-2l6" customClass="MyIncomeViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyIncomeViewController" id="evd-JG-2l6" customClass="MyIncomeViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ttj-Ug-t0p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6212,7 +6212,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyIncomeCollectionViewCell" id="Vka-0c-ynV" customClass="MyIncomeCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyIncomeCollectionViewCell" id="Vka-0c-ynV" customClass="MyIncomeCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="24.5" y="0.0" width="365" height="259"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Tm-Xi-6o8">
@@ -6424,7 +6424,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--My Selling-->
         <scene sceneID="wxb-Rb-vxs">
             <objects>
-                <viewController storyboardIdentifier="MySellingViewController" id="Kmd-aT-QHn" customClass="MySellingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MySellingViewController" id="Kmd-aT-QHn" customClass="MySellingViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j0g-yE-P4O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -6442,7 +6442,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MySellingCollectionViewCell" id="cly-GC-nve" customClass="MySellingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MySellingCollectionViewCell" id="cly-GC-nve" customClass="MySellingCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                 <rect key="frame" x="19.5" y="0.0" width="375" height="250"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3fR-fH-TYL">
@@ -6623,7 +6623,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Product Rating-->
         <scene sceneID="lrr-HU-kNP">
             <objects>
-                <viewController storyboardIdentifier="ProductRatingViewController" id="wY4-iD-Izg" customClass="ProductRatingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductRatingViewController" id="wY4-iD-Izg" customClass="ProductRatingViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5UR-gR-qU0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -6638,7 +6638,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductRatingCollectionViewCell" id="Oyf-qK-dyd" customClass="ProductRatingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductRatingCollectionViewCell" id="Oyf-qK-dyd" customClass="ProductRatingCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j0G-Er-kFf">
@@ -6780,7 +6780,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Boost Ad-->
         <scene sceneID="z0q-yg-lOM">
             <objects>
-                <viewController storyboardIdentifier="BoostAdViewController" id="n8F-gx-2to" customClass="BoostAdViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BoostAdViewController" id="n8F-gx-2to" customClass="BoostAdViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t1f-Zf-rad">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -6795,7 +6795,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BoostAdCollectionViewCell" id="0Yd-7X-3Dp" customClass="BoostAdCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BoostAdCollectionViewCell" id="0Yd-7X-3Dp" customClass="BoostAdCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="21.5" y="0.0" width="371" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ile-Wd-La9">
@@ -6915,7 +6915,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--My Buying-->
         <scene sceneID="qRg-bx-6eD">
             <objects>
-                <viewController storyboardIdentifier="MyBuyingViewController" hidesBottomBarWhenPushed="YES" id="52k-uX-60S" customClass="MyBuyingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyBuyingViewController" hidesBottomBarWhenPushed="YES" id="52k-uX-60S" customClass="MyBuyingViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bsr-qf-Y64">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6930,7 +6930,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyBuyingCollectionViewCell" id="QIA-vH-ISe" customClass="MyBuyingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyBuyingCollectionViewCell" id="QIA-vH-ISe" customClass="MyBuyingCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="19.5" y="0.0" width="375" height="254"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HXL-lY-QA3">
@@ -7105,7 +7105,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Review Page View Controller-->
         <scene sceneID="YN6-lv-bGz">
             <objects>
-                <viewController storyboardIdentifier="ReviewPageViewController" id="odq-cZ-AZR" customClass="ReviewPageViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviewPageViewController" id="odq-cZ-AZR" customClass="ReviewPageViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QJz-Uy-clD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7558,7 +7558,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Review-->
         <scene sceneID="5KT-yr-B4v">
             <objects>
-                <viewController storyboardIdentifier="AddReviewViewController" title="Review" id="vQL-OC-QnD" customClass="AddReviewViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddReviewViewController" title="Review" id="vQL-OC-QnD" customClass="AddReviewViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8wG-BA-XAq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7656,7 +7656,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--My Likes-->
         <scene sceneID="nZn-Z8-k9l">
             <objects>
-                <viewController storyboardIdentifier="MyLikesViewController" id="OCM-2l-ge3" customClass="MyLikesViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyLikesViewController" id="OCM-2l-ge3" customClass="MyLikesViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDK-W6-UwV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7671,7 +7671,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyLikesCollectionViewCell" id="RjB-Sp-2ol" customClass="MyLikesCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyLikesCollectionViewCell" id="RjB-Sp-2ol" customClass="MyLikesCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="286"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qsn-ph-LRg">
@@ -7819,7 +7819,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Chat Inbox-->
         <scene sceneID="CBF-K3-ugQ">
             <objects>
-                <viewController storyboardIdentifier="ChatInboxViewController" title="Chat Inbox" id="hDE-Sf-h0z" customClass="ChatInboxViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatInboxViewController" title="Chat Inbox" id="hDE-Sf-h0z" customClass="ChatInboxViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uB7-h9-TZu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7828,7 +7828,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <rect key="frame" x="0.0" y="132" width="414" height="632"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatTableViewCell" rowHeight="50" id="m5X-Cy-Lz7" customClass="ChatTableViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatTableViewCell" rowHeight="50" id="m5X-Cy-Lz7" customClass="ChatTableViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m5X-Cy-Lz7" id="079-Xx-vfH">
@@ -7905,7 +7905,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--View-->
         <scene sceneID="PyU-4E-xSQ">
             <objects>
-                <viewController storyboardIdentifier="ViewProductViewController" title="View" id="fw7-01-dgI" customClass="ViewProductViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewProductViewController" title="View" id="fw7-01-dgI" customClass="ViewProductViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="een-B2-9LY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8194,7 +8194,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FromSameShopCollectionViewCell" id="bGm-j6-5I1" customClass="FromSameShopCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FromSameShopCollectionViewCell" id="bGm-j6-5I1" customClass="FromSameShopCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="14" width="146" height="248.5"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kOR-bS-0EV">
@@ -8489,7 +8489,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Me-->
         <scene sceneID="O4b-BS-vGT">
             <objects>
-                <viewController storyboardIdentifier="DeliveryViewController" id="W7N-s8-uZY" customClass="DeliveryViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeliveryViewController" id="W7N-s8-uZY" customClass="DeliveryViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m4s-1k-4Dt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8504,7 +8504,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DeliveryCollectionViewCell" id="BLG-RS-KB4" customClass="DeliveryCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DeliveryCollectionViewCell" id="BLG-RS-KB4" customClass="DeliveryCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="17" y="0.0" width="380" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="B4h-fM-bHT">
@@ -8698,7 +8698,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Me-->
         <scene sceneID="YET-Dw-fvX">
             <objects>
-                <viewController storyboardIdentifier="DeliveryAddViewController" id="KOY-5J-uiJ" customClass="DeliveryAddViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeliveryAddViewController" id="KOY-5J-uiJ" customClass="DeliveryAddViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y66-J7-ciX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8812,7 +8812,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--My Rating-->
         <scene sceneID="ZjO-Sd-cN2">
             <objects>
-                <viewController storyboardIdentifier="MyRatingViewController" id="DIQ-uX-Gkt" customClass="MyRatingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyRatingViewController" id="DIQ-uX-Gkt" customClass="MyRatingViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gZ7-Iu-AYr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8827,7 +8827,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="MyRatingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="f17-Re-pjD" customClass="MyRatingCollectionViewCell" customModule="ketekmall4" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="MyRatingCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="f17-Re-pjD" customClass="MyRatingCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                         <rect key="frame" x="19" y="0.0" width="376" height="172"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yIS-2U-Iu5">
@@ -8966,7 +8966,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--View Selling-->
         <scene sceneID="wOy-cE-ZvV">
             <objects>
-                <viewController storyboardIdentifier="ViewSellingViewController" title="View Selling" id="AaZ-8i-tCE" customClass="ViewSellingViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewSellingViewController" title="View Selling" id="AaZ-8i-tCE" customClass="ViewSellingViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nFX-zP-EQQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -9423,7 +9423,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Filter View Controller-->
         <scene sceneID="jxp-EU-dPW">
             <objects>
-                <viewController storyboardIdentifier="FilterViewController" id="MOf-hM-k40" customClass="FilterViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FilterViewController" id="MOf-hM-k40" customClass="FilterViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sLS-aK-yGI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -9580,9 +9580,9 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Buyer View Controller-->
         <scene sceneID="pWn-Y1-uhz">
             <objects>
-                <viewController storyboardIdentifier="BuyerViewController" id="8Jq-av-GqR" customClass="BuyerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BuyerViewController" id="8Jq-av-GqR" customClass="BuyerViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l1L-Se-ab4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ld-Uj-BrC" userLabel="My Likes">
@@ -9820,9 +9820,9 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Seller View Controller-->
         <scene sceneID="HgM-eM-IJB">
             <objects>
-                <viewController storyboardIdentifier="SellerViewController" id="kbR-Lc-sXr" customClass="SellerViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SellerViewController" id="kbR-Lc-sXr" customClass="SellerViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tbf-gN-Jb4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-7D-YuY">
@@ -10140,9 +10140,9 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <!--Goto Register Seller2 View Controller-->
         <scene sceneID="YF3-IY-0w1">
             <objects>
-                <viewController storyboardIdentifier="GotoRegister2SellerViewController" id="BrF-RY-Z7v" customClass="GotoRegisterSeller2ViewController" customModule="ketekmall4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GotoRegister2SellerViewController" id="BrF-RY-Z7v" customClass="GotoRegisterSeller2ViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vJ7-B5-gqX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOz-oh-17i">

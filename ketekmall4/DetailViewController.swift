@@ -11,24 +11,24 @@ import WebKit
 
 class DetailViewController: UIViewController, PaymentResultDelegate{
     func paymentSuccess(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withAuthCode authCode: String!) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-        if let navigator = self.navigationController {
-            navigator.pushViewController(accountsettings, animated: true)
-        }
+//        let accountsettings = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+//        if let navigator = self.navigationController {
+//            navigator.pushViewController(accountsettings, animated: true)
+//        }
     }
     
     func paymentFailed(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withErrDesc errDesc: String!) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
-        if let navigator = self.navigationController {
-            navigator.pushViewController(accountsettings, animated: true)
-        }
+//        let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
+//        if let navigator = self.navigationController {
+//            navigator.pushViewController(accountsettings, animated: true)
+//        }
     }
     
     func paymentCancelled(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withErrDesc errDesc: String!) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
-        if let navigator = self.navigationController {
-            navigator.pushViewController(accountsettings, animated: true)
-        }
+//        let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
+//        if let navigator = self.navigationController {
+//            navigator.pushViewController(accountsettings, animated: true)
+//        }
     }
     
     func requerySuccess(_ refNo: String!, withMerchantCode merchantCode: String!, withAmount amount: String!, withResult result: String!) {
@@ -58,13 +58,7 @@ class DetailViewController: UIViewController, PaymentResultDelegate{
     var UserEmail: String = ""
     var UserContact: String = ""
     var Amount: String = ""
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        let myselling = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-        if let navigator = self.navigationController {
-            navigator.pushViewController(myselling, animated: true)
-        }
-    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

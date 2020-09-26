@@ -99,6 +99,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var NAME: [String] = []
     var PHONE_NO: [String] = []
+    var EMAIL: [String] = []
     var ADDR01: [String] = []
     var ADDR02: [String] = []
     var DIVISIONU: [String] = []
@@ -182,6 +183,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         let user = jsonData.value(forKey: "read") as! NSArray
                                         self.NAME = user.value(forKey: "name") as! [String]
                                         self.PHONE_NO = user.value(forKey: "phone_no") as! [String]
+                                        self.EMAIL = user.value(forKey: "email") as! [String]
                                         self.ADDR01 = user.value(forKey: "address_01") as! [String]
                                         self.ADDR02 = user.value(forKey: "address_02") as! [String]
                                         self.DIVISIONU = user.value(forKey: "division") as! [String]
@@ -455,13 +457,22 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     self.getSellerDetails()
                     self.getUserDetails()
                     
-                    let vc = DetailViewController()
-                    vc.UserName = ""
-                    vc.UserEmail = ""
-                    vc.UserContact = ""
-                    vc.Amount = ""
+                    let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+                    myBuying.userID = self.userID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(myBuying, animated: true)
+                    }
                     
+                    let vc = DetailViewController()
+                    vc.UserName = self.NAME[0]
+                    vc.UserEmail = self.EMAIL[0]
+                    vc.UserContact = self.PHONE_NO[0]
+                    vc.Amount = self.GrandTotal2.text!
+                    
+
                     self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    
                     
 //                    let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
 //                    if let navigator = self.navigationController {

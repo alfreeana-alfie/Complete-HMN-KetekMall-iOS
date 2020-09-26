@@ -213,9 +213,10 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self.CartView.deleteItems(at: [indexPath])
                     }
             }
+            return
         }))
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            
+            return
         }))
         present(refreshAlert, animated: true, completion: nil)
     }

@@ -26,7 +26,7 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
-        userID = sharedPref.string(forKey: "USERID") ?? "0"
+//        userID = sharedPref.string(forKey: "USERID") ?? "0"
         
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -35,7 +35,21 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
             changeLanguage(str: "en")
             
         }
-        
+        let parameters: Parameters=[
+                   "customer_id": userID
+               ]
+               
+               Alamofire.request(URL_DELETE, method: .post, parameters: parameters).responseJSON
+                   {
+                       response in
+                       if let result = response.result.value{
+                           let jsonData = result as! NSDictionary
+                           
+                       }else{
+                           print("FAILED")
+                       }
+                       
+               }
         Tabbar.delegate = self
         ButtonShopping.layer.cornerRadius = 5
     }
@@ -81,30 +95,12 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
 
     
     @IBAction func ContinueShopping(_ sender: Any) {
-        let parameters: Parameters=[
-            "customer_id": userID
-        ]
-        
-        Alamofire.request(URL_DELETE, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
-                        
-                        let boostAd = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
-                        boostAd.userID = self.userID
-                        if let navigator = self.navigationController {
-                            navigator.pushViewController(boostAd, animated: true)
-                        }
-                    }
-                }else{
-                    print("FAILED")
-                }
-                
-        }
+       navigationController?.setNavigationBarHidden(true, animated: false)
+       let storyboard = UIStoryboard(name: "Main", bundle: nil)
+       viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+       if let navigator = self.navigationController {
+           navigator.pushViewController(viewController1!, animated: true)
+       }
     }
 
 }
