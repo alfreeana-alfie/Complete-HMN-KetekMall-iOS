@@ -103,7 +103,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ADDR01: [String] = []
     var ADDR02: [String] = []
     var DIVISIONU: [String] = []
-//    var DISTRICTU: [String] = []
+    //    var DISTRICTU: [String] = []
     var POSTCODE: [String] = []
     var GRANDTOTAL: [String] = []
     
@@ -126,7 +126,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
-//        userID = sharedPref.string(forKey: "USERID") ?? "0"
+        //        userID = sharedPref.string(forKey: "USERID") ?? "0"
         
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -144,6 +144,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         ButtonPlaceOrder.layer.cornerRadius = 7
         
         spinner.show(in: self.view)
+        
+        ReadCart()
+        
+    }
+    
+    func ReadCart(){
         let parameters: Parameters=[
             "customer_id": userID,
         ]
@@ -224,10 +230,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 self.TotalLabel.isHidden = true
                                                                 self.GrandTotal.isHidden = true
                                                                 self.ChangeDeliveryLabel.isHidden = false
-//                                                                self.GrandTotal.text! = "MYR0.00"
+                                                                //                                                                self.GrandTotal.text! = "MYR0.00"
                                                                 self.CartView.reloadData()
                                                             }else
-                                                                {
+                                                            {
                                                                 self.DELIVERYID = user.value(forKey: "id") as! [String]
                                                                 self.DELIVERYDIVISION = user.value(forKey: "division") as! [String]
                                                                 let deliveryDays = user.value(forKey: "days") as! [String]
@@ -239,7 +245,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 var index = i
                                                                 
                                                                 if index < self.DELIVERYPRICE.count{
-//                                                                    print("SUCCESS" + self.DELIVERYPRICE[index])
+                                                                    //                                                                    print("SUCCESS" + self.DELIVERYPRICE[index])
                                                                     var strDays: Int = Int(self.DELIVERYDAYS[index]) ?? 0
                                                                     let date = Date()
                                                                     let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
@@ -270,7 +276,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                     var strGrandTotal: Double = 0.00
                                                                     strGrand2 += strDel
                                                                     strGrandTotal = strGrand + strGrand2
-//                                                                    print(String(format: "%.2f", strGrandTotal))
+                                                                    //                                                                    print(String(format: "%.2f", strGrandTotal))
                                                                     
                                                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
                                                                     
@@ -279,7 +285,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                     self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
                                                                 }
                                                                 self.CartView.reloadData()
-                                                                    
+                                                                
                                                             }
                                                         }else{
                                                             print("Invalid")
@@ -294,6 +300,42 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         }
                     }
                 }
+        }
+    }
+    
+    func AddCheckout(){
+        spinner.show(in: self.view)
+        for i in 0..<self.SELLERID.count{
+            let parameters: Parameters=[
+                "seller_id": self.SELLERID[i],
+                "customer_id": userID,
+                "ad_detail": self.ADDETAIL[i],
+                "main_category":self.MAINCATE[i],
+                "sub_category": self.SUBCATE[i],
+                "price": self.PRICE[i],
+                "division": self.divsionu,
+                "district": self.divsionu,
+                "seller_division": self.DIVISION[i],
+                "seller_district": self.DISTRICT[i],
+                "photo": self.PHOTO[i],
+                "item_id": self.ITEMID[i],
+                "quantity": self.QUANTITY[i],
+                "delivery_price": self.DELIVERYPRICE[i],
+                "delivery_date": self.DELIVERYDATE[i],
+                "delivery_addr": self.NEWADDR
+            ]
+            Alamofire.request(URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        self.spinner.dismiss(afterDelay: 3.0)
+                        let jsonData = result as! NSDictionary
+                        print(jsonData.value(forKey: "message")!)
+                        
+                        self.getSellerDetails()
+                        self.getUserDetails()
+                    }
+            }
         }
     }
     
@@ -426,53 +468,22 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     @IBAction func PlaceOrder(_ sender: Any) {
-        spinner.show(in: self.view)
-        for i in 0..<self.SELLERID.count{
-            let parameters: Parameters=[
-                        "seller_id": self.SELLERID[i],
-                        "customer_id": userID,
-                        "ad_detail": self.ADDETAIL[i],
-                        "main_category":self.MAINCATE[i],
-                        "sub_category": self.SUBCATE[i],
-                        "price": self.PRICE[i],
-                        "division": self.divsionu,
-                        "district": self.divsionu,
-                        "seller_division": self.DIVISION[i],
-                        "seller_district": self.DISTRICT[i],
-                        "photo": self.PHOTO[i],
-                        "item_id": self.ITEMID[i],
-                        "quantity": self.QUANTITY[i],
-                        "delivery_price": self.DELIVERYPRICE[i],
-                        "delivery_date": self.DELIVERYDATE[i],
-                        "delivery_addr": self.NEWADDR
-                    ]
-                    Alamofire.request(URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
-                        {
-                            response in
-                            if let result = response.result.value {
-                                self.spinner.dismiss(afterDelay: 3.0)
-                                let jsonData = result as! NSDictionary
-                                print(jsonData.value(forKey: "message")!)
-                                
-                                self.getSellerDetails()
-                                self.getUserDetails()
-                            }
-                    }
-        }
-//        let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-//        myBuying.userID = self.userID
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(myBuying, animated: true)
-//        }
         
-//        let vc = DetailViewController()
-//        vc.UserName = self.NAME[0]
-//        vc.UserEmail = self.EMAIL[0]
-//        vc.UserContact = self.PHONE_NO[0]
-//        vc.Amount = self.GrandTotal2.text!
-//
-//
-//        self.navigationController?.pushViewController(vc, animated: true)
+        AddCheckout()
+        let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+        myBuying.userID = self.userID
+        if let navigator = self.navigationController {
+            navigator.pushViewController(myBuying, animated: true)
+        }
+        
+        let vc = DetailViewController()
+        vc.UserName = self.NAME[0]
+        vc.UserEmail = self.EMAIL[0]
+        vc.UserContact = self.PHONE_NO[0]
+        vc.Amount = self.GrandTotal2.text!
+        
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
@@ -550,8 +561,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             {
                 response in
                 if let result = response.result.value{
-                     let jsonData = result as! NSDictionary
-                     print("SENT")
+                    let jsonData = result as! NSDictionary
+                    print("SENT")
                 }else{
                     print("FAILED")
                 }
