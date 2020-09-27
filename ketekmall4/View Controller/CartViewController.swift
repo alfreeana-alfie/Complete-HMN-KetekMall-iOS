@@ -18,7 +18,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     private let spinner = JGProgressHUD(style: .dark)
-    let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
+    
     
     let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
     let URL_DELETE_CART = "https://ketekmall.com/ketekmall/delete_cart2.php"
@@ -192,6 +192,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func onDeleteClick(cell: CartCollectionViewCell) {
+        let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             guard let indexPath = self.CartView.indexPath(for: cell) else{
                 return

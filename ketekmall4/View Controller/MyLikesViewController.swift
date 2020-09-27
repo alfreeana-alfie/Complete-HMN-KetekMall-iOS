@@ -16,7 +16,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var userID: String = ""
     
-    let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
+    
     private let spinner = JGProgressHUD(style: .dark)
     
     let URL_READ = "https://ketekmall.com/ketekmall/readfav.php"
@@ -153,6 +153,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func btnRemove(cell: MyLikesCollectionViewCell) {
+        let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             
             guard let indexPath = self.MyLikesView.indexPath(for: cell) else{

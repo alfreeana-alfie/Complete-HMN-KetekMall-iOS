@@ -103,7 +103,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ADDR01: [String] = []
     var ADDR02: [String] = []
     var DIVISIONU: [String] = []
-    var DISTRICTU: [String] = []
+//    var DISTRICTU: [String] = []
     var POSTCODE: [String] = []
     var GRANDTOTAL: [String] = []
     
@@ -148,7 +148,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             "customer_id": userID,
         ]
         
-        Alamofire.request(self.URL_CART, method: .post, parameters: parameters).responseJSON
+        Alamofire.request(URL_CART, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 var strGrand: Double = 0.00
@@ -189,6 +189,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.DIVISIONU = user.value(forKey: "division") as! [String]
                                         self.POSTCODE = user.value(forKey: "postcode") as! [String]
                                         
+                                        self.divsionu = self.DIVISIONU[0]
                                         self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
                                         self.NEWADDR =  self.ADDR01[0] + " " + self.ADDR02[0] + "\n" + self.DIVISIONU[0] + " " + self.POSTCODE[0]
                                         self.Address.text! = self.NEWADDR
@@ -391,8 +392,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ButtonSelfPickUp.layer.borderWidth = 1
         cell.ButtonSelfPickUp.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
         
-        print("DIVISIONU" + self.DIVISIONU[0])
-        print("DIVISION" + self.DIVISION[indexPath.row])
         if(self.DIVISIONU[0] == DIVISION[indexPath.row]){
             cell.ButtonSelfPickUp.isHidden = false
         }else{
@@ -428,58 +427,53 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBAction func PlaceOrder(_ sender: Any) {
         spinner.show(in: self.view)
-        let parameters: Parameters=[
-            "seller_id": self.SELLERID,
-            "customer_id": userID,
-            "ad_detail": self.ADDETAIL,
-            "main_category":self.MAINCATE,
-            "sub_category":self.SUBCATE,
-            "price": self.PRICE,
-            "division": self.DIVISIONU,
-            "district": self.DISTRICTU,
-            "seller_division": self.DIVISION,
-            "seller_district": self.DISTRICT,
-            "photo": self.PHOTO,
-            "item_id": self.ITEMID,
-            "quantity": self.QUANTITY,
-            "delivery_price": self.DELIVERYPRICE,
-            "delivery_date": self.DELIVERYDATE,
-            "delivery_addr": self.NEWADDR
-        ]
-        Alamofire.request(URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value {
-                    self.spinner.dismiss(afterDelay: 3.0)
-                    let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
-                    
-                    self.getSellerDetails()
-                    self.getUserDetails()
-                    
-                    let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-                    myBuying.userID = self.userID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(myBuying, animated: true)
+        for i in 0..<self.SELLERID.count{
+            let parameters: Parameters=[
+                        "seller_id": self.SELLERID[i],
+                        "customer_id": userID,
+                        "ad_detail": self.ADDETAIL[i],
+                        "main_category":self.MAINCATE[i],
+                        "sub_category": self.SUBCATE[i],
+                        "price": self.PRICE[i],
+                        "division": self.divsionu,
+                        "district": self.divsionu,
+                        "seller_division": self.DIVISION[i],
+                        "seller_district": self.DISTRICT[i],
+                        "photo": self.PHOTO[i],
+                        "item_id": self.ITEMID[i],
+                        "quantity": self.QUANTITY[i],
+                        "delivery_price": self.DELIVERYPRICE[i],
+                        "delivery_date": self.DELIVERYDATE[i],
+                        "delivery_addr": self.NEWADDR
+                    ]
+                    Alamofire.request(URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
+                        {
+                            response in
+                            if let result = response.result.value {
+                                self.spinner.dismiss(afterDelay: 3.0)
+                                let jsonData = result as! NSDictionary
+                                print(jsonData.value(forKey: "message")!)
+                                
+                                self.getSellerDetails()
+                                self.getUserDetails()
+                            }
                     }
-                    
-                    let vc = DetailViewController()
-                    vc.UserName = self.NAME[0]
-                    vc.UserEmail = self.EMAIL[0]
-                    vc.UserContact = self.PHONE_NO[0]
-                    vc.Amount = self.GrandTotal2.text!
-                    
-
-                    self.navigationController?.pushViewController(vc, animated: true)
-                    
-                    
-                    
-//                    let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-//                    if let navigator = self.navigationController {
-//                        navigator.pushViewController(myBuying, animated: true)
-//                    }
-                }
         }
+//        let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+//        myBuying.userID = self.userID
+//        if let navigator = self.navigationController {
+//            navigator.pushViewController(myBuying, animated: true)
+//        }
+        
+//        let vc = DetailViewController()
+//        vc.UserName = self.NAME[0]
+//        vc.UserEmail = self.EMAIL[0]
+//        vc.UserContact = self.PHONE_NO[0]
+//        vc.Amount = self.GrandTotal2.text!
+//
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     func getSellerDetails(){

@@ -13,7 +13,7 @@ import JGProgressHUD
 
 class MyProductsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyProductDelegate, UICollectionViewDelegateFlowLayout {
     
-    let refreshAlert = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
+    
     private let spinner = JGProgressHUD(style: .dark)
     
     var userID: String = ""
@@ -183,6 +183,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     }
     
     func btnRemove(cell: MyProductsCollectionViewCell) {
+        let refreshAlert = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             guard let indexPath = self.productView.indexPath(for: cell) else{
                 return
