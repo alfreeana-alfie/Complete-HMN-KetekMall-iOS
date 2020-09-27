@@ -481,9 +481,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         vc.UserEmail = self.EMAIL[0]
         vc.UserContact = self.PHONE_NO[0]
         vc.Amount = self.GrandTotal2.text!
-        
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+
+
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     

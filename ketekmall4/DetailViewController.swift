@@ -91,5 +91,7 @@ class DetailViewController: UIViewController, PaymentResultDelegate{
         
         paymentView = paymentSDK!.checkout(requeryPayment)
         self.view.addSubview(paymentView!)
+        
+        
     }
 }
