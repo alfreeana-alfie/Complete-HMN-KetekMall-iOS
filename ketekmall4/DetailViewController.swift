@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class DetailViewController: UIViewController, PaymentResultDelegate{
+class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigationDelegate{
     func paymentSuccess(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withAuthCode authCode: String!) {
 //        let accountsettings = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
 //        if let navigator = self.navigationController {
@@ -44,6 +44,7 @@ class DetailViewController: UIViewController, PaymentResultDelegate{
     var paymentSDK: Ipay?
     var requeryPayment: IpayPayment?
     var paymentView: UIView?
+    var webView: WKWebView?
     
     //FROM THIS VIEW CONTROLLER
     var MerchantKey: String = ""
@@ -59,9 +60,15 @@ class DetailViewController: UIViewController, PaymentResultDelegate{
     var UserContact: String = ""
     var Amount: String = ""
 
-
+    override func loadView() {
+        webView = WKWebView()
+        webView?.navigationDelegate = self
+        view = webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     
         RefNo = String.random()
         MerchantKey = "8bgBOjTkij"
@@ -89,8 +96,8 @@ class DetailViewController: UIViewController, PaymentResultDelegate{
         requeryPayment?.country = "MY"
         requeryPayment?.backendPostURL = BackendURL
         
-        paymentView = paymentSDK!.checkout(requeryPayment)
-        self.view.addSubview(paymentView!)
+        webView = paymentSDK!.checkout(requeryPayment) as? WKWebView
+        self.view.addSubview(webView!)
         
         
     }
