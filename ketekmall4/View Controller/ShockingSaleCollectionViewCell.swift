@@ -10,7 +10,7 @@ import UIKit
 import AARatingBar
 
 protocol ShockingDelegate: class {
-    func onViewClick3(cell: ShockingSaleCollectionViewCell)
+    func onViewClick1(cell: ShockingSaleCollectionViewCell)
 }
 
 class ShockingSaleCollectionViewCell: UICollectionViewCell {
@@ -23,7 +23,7 @@ class ShockingSaleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ButtonView: UIButton!
     @IBOutlet weak var Rating: AARatingBar!
     
-    @IBAction func ViewClick3(_ sender: Any) {
-        self.delegate?.onViewClick3(cell: self)
+    @IBAction func ViewClick1(_ sender: Any) {
+        self.delegate?.onViewClick1(cell: self)
     }
 }

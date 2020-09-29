@@ -77,10 +77,6 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         
         ChatList2()
         ChatNew()
-        
-        let noti = UNMutableNotificationContent()
-        noti.title = "Ketekmall"
-        noti.body = "new messages"
     }
     
     
@@ -102,13 +98,13 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         messages.append(Message(sender: sender, messageId: randomString, sentDate: date, kind: .text(text)))
         messagesCollectionView.reloadDataAndKeepOffset()
         
-        let msgSender_firebase = self.ref.child(emailUser + "_" + chatWith).child(randomString).child("message")
-        let timeSender_firebase = self.ref.child(emailUser + "_" + chatWith).child(randomString).child("time")
-        let userSender_firebase = self.ref.child(emailUser + "_" + chatWith).child(randomString).child("user")
+        let msgSender_firebase = self.ref.child(emailUser + "_" + chatWith).child("-" + randomString).child("message")
+        let timeSender_firebase = self.ref.child(emailUser + "_" + chatWith).child("-" + randomString).child("time")
+        let userSender_firebase = self.ref.child(emailUser + "_" + chatWith).child("-" + randomString).child("user")
 
-        let msgReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child(randomString).child("message")
-        let timeReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child(randomString).child("time")
-        let userReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child(randomString).child("user")
+        let msgReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child("-" + randomString).child("message")
+        let timeReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child("-" + randomString).child("time")
+        let userReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child("-" + randomString).child("user")
 
         msgSender_firebase.setValue(text) {
             (error:Error?, ref:DatabaseReference) in
@@ -254,6 +250,6 @@ extension String {
             let randomValue = arc4random_uniform(UInt32(base.count))
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
         }
-        return "-" + randomString
+        return randomString
     }
 }

@@ -18,8 +18,34 @@ import JGProgressHUD
 import ImageSlideshow
 import LanguageManager_iOS
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate , UITabBarDelegate {
-
+class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate, UITabBarDelegate {
+    func onViewClick1(cell: ShockingSaleCollectionViewCell) {
+        guard let indexPath = self.ShockingView.indexPath(for: cell) else{
+                    return
+                }
+                
+                let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+                viewProduct.USERID = userID
+                viewProduct.ItemID = self.ID1[indexPath.row]
+                viewProduct.SELLERID = self.SELLERIDSHOCKING[indexPath.row]
+                viewProduct.MAINCATE = self.MAINCATESHOCKING[indexPath.row]
+                viewProduct.SUBCATE = self.SUBCATESHOCKING[indexPath.row]
+                viewProduct.ADDETAIL = self.ADDETAILSHOCKING[indexPath.row]
+                viewProduct.BRAND = self.BRANDSHOCKING[indexPath.row]
+                viewProduct.INNER = self.INNERSHOCKING[indexPath.row]
+                viewProduct.STOCK = self.STOCKSHOCKING[indexPath.row]
+                viewProduct.DESC = self.DESCSHOCKING[indexPath.row]
+                viewProduct.PRICE = self.PRICESHOCKING[indexPath.row]
+        //        viewProduct.RATING = self.RATINGSHOCKING[indexPath.row]
+                viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
+                viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
+                viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(viewProduct, animated: true)
+                }
+    }
+    
+    
     private let spinner = JGProgressHUD(style: .dark)
     
     let MAIN_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
@@ -980,33 +1006,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
-        if let navigator = self.navigationController {
-            navigator.pushViewController(viewProduct, animated: true)
-        }
-    }
-    
-    
-    func onViewClick3(cell: ShockingSaleCollectionViewCell) {
-        guard let indexPath = self.ShockingView.indexPath(for: cell) else{
-            return
-        }
-        
-        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
-        viewProduct.USERID = userID
-        viewProduct.ItemID = self.ID1[indexPath.row]
-        viewProduct.SELLERID = self.SELLERIDSHOCKING[indexPath.row]
-        viewProduct.MAINCATE = self.MAINCATESHOCKING[indexPath.row]
-        viewProduct.SUBCATE = self.SUBCATESHOCKING[indexPath.row]
-        viewProduct.ADDETAIL = self.ADDETAILSHOCKING[indexPath.row]
-        viewProduct.BRAND = self.BRANDSHOCKING[indexPath.row]
-        viewProduct.INNER = self.INNERSHOCKING[indexPath.row]
-        viewProduct.STOCK = self.STOCKSHOCKING[indexPath.row]
-        viewProduct.DESC = self.DESCSHOCKING[indexPath.row]
-        viewProduct.PRICE = self.PRICESHOCKING[indexPath.row]
-//        viewProduct.RATING = self.RATINGSHOCKING[indexPath.row]
-        viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
-        viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
-        viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(viewProduct, animated: true)
         }
