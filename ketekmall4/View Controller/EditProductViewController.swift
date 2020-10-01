@@ -28,6 +28,12 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var ItemImage4: UIImageView!
     @IBOutlet weak var ItemImage5: UIImageView!
     
+    @IBOutlet weak var ImageView1: UIView!
+    @IBOutlet weak var ImageView2: UIView!
+     @IBOutlet weak var ImageView3: UIView!
+     @IBOutlet weak var ImageView4: UIView!
+     @IBOutlet weak var ImageView5: UIView!
+    
     @IBOutlet weak var Delete_2: UIButton!
     @IBOutlet weak var Delete_3: UIButton!
     @IBOutlet weak var Delete_4: UIButton!
@@ -112,11 +118,6 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         ButtonCancel.layer.cornerRadius = 7
         UploadImage.layer.cornerRadius = 7
         
-        Delete_2.isHidden = true
-        Delete_3.isHidden = true
-        Delete_4.isHidden = true
-        Delete_5.isHidden = true
-        
         //        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
         //        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         
@@ -125,6 +126,11 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         
         //        ButtonSetupDelivery.layer.cornerRadius = 5
         //        ButtonSetupDelivery.layer.borderWidth = 0.1
+        
+        Delete_2.isHidden = true
+        Delete_3.isHidden = true
+        Delete_4.isHidden = true
+        Delete_5.isHidden = true
         
         ItemImage.layer.cornerRadius = 7
         ItemImage2.layer.cornerRadius = 7
@@ -145,11 +151,11 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         MaxOrderView.layer.cornerRadius = 7
         DeliveryView.layer.cornerRadius = 7
         
-        ItemImage.isUserInteractionEnabled = true
-        ItemImage2.isUserInteractionEnabled = true
-        ItemImage3.isUserInteractionEnabled = true
-        ItemImage4.isUserInteractionEnabled = true
-        ItemImage5.isUserInteractionEnabled = true
+        ImageView1.isUserInteractionEnabled = true
+        ImageView2.isUserInteractionEnabled = true
+        ImageView3.isUserInteractionEnabled = true
+        ImageView4.isUserInteractionEnabled = true
+        ImageView5.isUserInteractionEnabled = true
         
         let Image1 = UITapGestureRecognizer(target: self, action: #selector(selectImage1(sender:)))
         let Image2 = UITapGestureRecognizer(target: self, action: #selector(selectImage2(sender:)))
@@ -157,11 +163,11 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         let Image4 = UITapGestureRecognizer(target: self, action: #selector(selectImage4(sender:)))
         let Image5 = UITapGestureRecognizer(target: self, action: #selector(selectImage5(sender:)))
         
-        ItemImage.addGestureRecognizer(Image1)
-        ItemImage2.addGestureRecognizer(Image2)
-        ItemImage3.addGestureRecognizer(Image3)
-        ItemImage4.addGestureRecognizer(Image4)
-        ItemImage5.addGestureRecognizer(Image5)
+        ImageView1.addGestureRecognizer(Image1)
+        ImageView2.addGestureRecognizer(Image2)
+        ImageView3.addGestureRecognizer(Image3)
+        ImageView4.addGestureRecognizer(Image4)
+        ImageView5.addGestureRecognizer(Image5)
     }
     
     func changeLanguage(str: String){
@@ -297,34 +303,33 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func DeletePhoto2(_ sender: Any) {
-        ItemImage2.contentMode = .scaleAspectFill
-        ItemImage2.image = UIImage(named: "Image")
-//        deletePhoto(number: "2")
+        ItemImage2.contentMode = .center
+        ItemImage2.image = UIImage(named: "AddPhoto")
+        deletePhoto(number: "2")
         Delete_2.isHidden = true
     }
     
     @IBAction func DeletePhoto3(_ sender: Any) {
-        ItemImage3.contentMode = .scaleAspectFill
-        ItemImage3.image = UIImage(named: "Image")
-//        deletePhoto(number: "3")
+        ItemImage3.contentMode = .center
+        ItemImage3.image = UIImage(named: "AddPhoto")
+        deletePhoto(number: "3")
         Delete_3.isHidden = true
     }
     
     @IBAction func DeletePhoto4(_ sender: Any) {
-        ItemImage4.contentMode = .scaleAspectFill
-        ItemImage4.image = UIImage(named: "Image")
+        ItemImage4.contentMode = .center
+        ItemImage4.image = UIImage(named: "AddPhoto")
         deletePhoto(number: "4")
         Delete_4.isHidden = true
     }
     
     @IBAction func DeletePhoto5(_ sender: Any) {
-        ItemImage5.contentMode = .scaleAspectFill
-        ItemImage5.image = UIImage(named: "Image")
+        ItemImage5.contentMode = .center
+        ItemImage5.image = UIImage(named: "AddPhoto")
         deletePhoto(number: "5")
         Delete_5.isHidden = true
     }
-    
-    
+
     
     func deletePhoto(number: String){
         let filename = ADDETAIL + number
@@ -368,11 +373,19 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                         
                         if(user?.count == 0 || user?.count == 1){
                             print("1")
+                            self.Delete_2.isHidden = true
+                            self.Delete_3.isHidden = true
+                            self.Delete_4.isHidden = true
+                            self.Delete_5.isHidden = true
                         }else if(user?.count == 2){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
                             
                             self.Delete_2.isHidden = false
+                            self.Delete_3.isHidden = true
+                            self.Delete_4.isHidden = true
+                            self.Delete_5.isHidden = true
+                            
                         }else if(user?.count == 3){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -382,6 +395,8 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             
                             self.Delete_2.isHidden = false
                             self.Delete_3.isHidden = false
+                            self.Delete_4.isHidden = true
+                            self.Delete_5.isHidden = true
                         }else if(user?.count == 4){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -394,7 +409,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             self.Delete_2.isHidden = false
                             self.Delete_3.isHidden = false
                             self.Delete_4.isHidden = false
-                            
+                            self.Delete_5.isHidden = true
                         }else if(user?.count == 5){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -405,12 +420,12 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
                             self.ItemImage4.setImageWith(URL(string: newPhoto3!)!)
                             self.ItemImage5.setImageWith(URL(string: newPhoto4!)!)
+                            
+                            self.Delete_2.isHidden = false
+                            self.Delete_3.isHidden = false
+                            self.Delete_4.isHidden = false
+                            self.Delete_5.isHidden = false
                         }
-                        
-                        self.Delete_2.isHidden = false
-                        self.Delete_3.isHidden = false
-                        self.Delete_4.isHidden = false
-                        self.Delete_5.isHidden = false
                     }
                 }else{
                     print("FAILED")
@@ -501,9 +516,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true){
-            
-        }
+        present(imagePicker, animated: true)
     }
     
     @objc private func selectImage2(sender: UITapGestureRecognizer) {
@@ -512,9 +525,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true){
-            
-        }
+        present(imagePicker, animated: true)
     }
     
     @objc private func selectImage3(sender: UITapGestureRecognizer) {
@@ -523,9 +534,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true){
-            
-        }
+        present(imagePicker, animated: true)
     }
     
     @objc private func selectImage4(sender: UITapGestureRecognizer) {
@@ -534,9 +543,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true){
-            
-        }
+        present(imagePicker, animated: true)
     }
     
     @objc private func selectImage5(sender: UITapGestureRecognizer) {
@@ -545,31 +552,58 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true){
-            
-        }
+        present(imagePicker, animated: true)
     }
     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
             if(flag == 1){
                 ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage.image = chosenImage
+                dismiss(animated: true, completion: nil)
             }else if(flag == 2){
                 ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage2.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    saveImage(number: "2", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
+                dismiss(animated: true, completion: nil)
             }else if(flag == 3){
                 ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage3.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    saveImage(number: "3", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
+                dismiss(animated: true, completion: nil)
             }else if(flag == 4){
                 ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage4.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    saveImage(number: "4", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
+                dismiss(animated: true, completion: nil)
             }else if(flag == 5){
                 ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage5.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    saveImage(number: "5", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
+                dismiss(animated: true, completion: nil)
             }
         }
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
     }
     
 }
