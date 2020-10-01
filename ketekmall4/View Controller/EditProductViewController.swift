@@ -18,6 +18,11 @@ class EditProductViewController: UIViewController {
     private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var ItemImage: UIImageView!
+    @IBOutlet weak var ItemImage2: UIImageView!
+    @IBOutlet weak var ItemImage3: UIImageView!
+    @IBOutlet weak var ItemImage4: UIImageView!
+    @IBOutlet weak var ItemImage5: UIImageView!
+    
     @IBOutlet weak var UploadImage: UIButton!
     @IBOutlet weak var Category: UITextField!
     
@@ -39,7 +44,15 @@ class EditProductViewController: UIViewController {
     @IBOutlet weak var ButtonAccept: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     
-   var viewController1: UIViewController?
+    @IBOutlet weak var CategoryView: UIView!
+    @IBOutlet weak var ProdDetailView: UIView!
+    @IBOutlet weak var PriceView: UIView!
+    @IBOutlet weak var DivisionView: UIView!
+    @IBOutlet weak var DistrictView: UIView!
+    @IBOutlet weak var MaxOrderView: UIView!
+    @IBOutlet weak var DeliveryView: UIView!
+    
+    var viewController1: UIViewController?
     
     var MAINCATE: String = ""
     var SUBCATE: String = ""
@@ -79,20 +92,32 @@ class EditProductViewController: UIViewController {
         District.text! = DISTRICT
         Max_Order.text! = MAXORDER
         
-        ButtonAccept.layer.cornerRadius = 15
-        ButtonCancel.layer.cornerRadius = 15
-        UploadImage.layer.cornerRadius = 5
-        UploadImage.layer.borderWidth = 0.5
+        ButtonAccept.layer.cornerRadius = 7
+        ButtonCancel.layer.cornerRadius = 7
+        UploadImage.layer.cornerRadius = 7
         
-        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
-        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
+//        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
+//        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         
-        ButtonAdDetail.layer.cornerRadius = 5
-        ButtonAdDetail.layer.borderWidth = 0.1
+//        ButtonAdDetail.layer.cornerRadius = 5
+//        ButtonAdDetail.layer.borderWidth = 0.1
         
-        ButtonSetupDelivery.layer.cornerRadius = 5
-        ButtonSetupDelivery.layer.borderWidth = 0.1
-//        ButtonAdDetail.setTitle(ADDETAIL, for: .normal)
+//        ButtonSetupDelivery.layer.cornerRadius = 5
+//        ButtonSetupDelivery.layer.borderWidth = 0.1
+        
+        ItemImage.layer.cornerRadius = 7
+        ItemImage2.layer.cornerRadius = 7
+        ItemImage3.layer.cornerRadius = 7
+        ItemImage4.layer.cornerRadius = 7
+        ItemImage5.layer.cornerRadius = 7
+        
+        CategoryView.layer.cornerRadius = 7
+        ProdDetailView.layer.cornerRadius = 7
+        PriceView.layer.cornerRadius = 7
+        DivisionView.layer.cornerRadius = 7
+        DistrictView.layer.cornerRadius = 7
+        MaxOrderView.layer.cornerRadius = 7
+        DeliveryView.layer.cornerRadius = 7
         
         ItemImage.isUserInteractionEnabled = true
         let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
@@ -271,6 +296,7 @@ class EditProductViewController: UIViewController {
          
         @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
             let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as! UIImage
+//            ItemImage.contentMode = .scaleAspectFill
             ItemImage.image = chosenImage
             dismiss(animated: true, completion: nil)
         }
