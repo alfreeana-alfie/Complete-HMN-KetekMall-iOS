@@ -103,6 +103,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - ImagePicker (3.2.0)
   - ImageSlideshow (1.9.1):
     - ImageSlideshow/Core (= 1.9.1)
   - ImageSlideshow/Core (1.9.1)
@@ -146,6 +147,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - GMStepper
   - GoogleSignIn
+  - ImagePicker
   - ImageSlideshow (~> 1.9.1)
   - ImageSlideshow/Kingfisher
   - JGProgressHUD
@@ -178,6 +180,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - ImagePicker
     - ImageSlideshow
     - InputBarAccessoryView
     - JGProgressHUD
@@ -214,6 +217,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  ImagePicker: 1d950bbb2422548ed58791b4ec7f42fe42920511
   ImageSlideshow: 67184be896a28472bd3b906c33ce4e0734aa3d22
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
@@ -228,6 +232,6 @@ SPEC CHECKSUMS:
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: cfde2b854b6cb21c39e0225cce126ad19231323f
+PODFILE CHECKSUM: e8ad7eb1f1bb715f2e3f7a8c7fc2029645f308cf
 
 COCOAPODS: 1.9.3
