@@ -4845,65 +4845,193 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-TY-1hR">
                                                         <rect key="frame" x="149" y="9" width="100" height="205"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="5E3-bk-XlS">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAI-n1-rzt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="5E3-bk-XlS">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="100" id="aBL-1s-OBS"/>
+                                                                            <constraint firstAttribute="width" constant="100" id="f7H-UT-l0p"/>
+                                                                        </constraints>
+                                                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtW-nT-npt">
+                                                                        <rect key="frame" x="75" y="0.0" width="25" height="25"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="25" id="Ajf-zx-1oT"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="tza-5s-NFf"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" image="Delete">
+                                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="DeletePhoto2:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="XPN-cx-o75"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="100" id="aBL-1s-OBS"/>
-                                                                    <constraint firstAttribute="width" constant="100" id="f7H-UT-l0p"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="NtW-nT-npt" secondAttribute="trailing" id="1NE-aP-eJ2"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="5E3-bk-XlS" secondAttribute="bottom" id="53j-3d-CM4"/>
+                                                                    <constraint firstItem="5E3-bk-XlS" firstAttribute="leading" secondItem="IAI-n1-rzt" secondAttribute="leading" id="Ahj-yl-Mad"/>
+                                                                    <constraint firstItem="NtW-nT-npt" firstAttribute="top" secondItem="IAI-n1-rzt" secondAttribute="top" id="MGX-U3-sPz"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="5E3-bk-XlS" secondAttribute="trailing" id="vdK-l2-8kA"/>
+                                                                    <constraint firstItem="5E3-bk-XlS" firstAttribute="top" secondItem="IAI-n1-rzt" secondAttribute="top" id="zYo-ar-b1n"/>
                                                                 </constraints>
-                                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                                            </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="qSM-ye-OS9">
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idM-Hl-jPA">
                                                                 <rect key="frame" x="0.0" y="105" width="100" height="100"/>
-                                                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="qSM-ye-OS9">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="100" id="82u-mx-LR6"/>
+                                                                            <constraint firstAttribute="height" constant="100" id="gPQ-Xd-7j4"/>
+                                                                        </constraints>
+                                                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-li-Ipe">
+                                                                        <rect key="frame" x="75" y="0.0" width="25" height="25"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="25" id="T0d-9U-6Wi"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="k1v-t7-tol"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" image="Delete">
+                                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="DeletePhoto5:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="orW-jg-G2Q"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="82u-mx-LR6"/>
-                                                                    <constraint firstAttribute="height" constant="100" id="gPQ-Xd-7j4"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="OF5-li-Ipe" secondAttribute="trailing" id="AaY-A7-gk6"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="qSM-ye-OS9" secondAttribute="trailing" id="AhZ-aq-UCQ"/>
+                                                                    <constraint firstItem="qSM-ye-OS9" firstAttribute="top" secondItem="idM-Hl-jPA" secondAttribute="top" id="GJk-CH-w4t"/>
+                                                                    <constraint firstItem="qSM-ye-OS9" firstAttribute="leading" secondItem="idM-Hl-jPA" secondAttribute="leading" id="ULw-ly-aHB"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="qSM-ye-OS9" secondAttribute="bottom" id="VoA-yg-LMf"/>
+                                                                    <constraint firstItem="OF5-li-Ipe" firstAttribute="top" secondItem="idM-Hl-jPA" secondAttribute="top" id="pSX-n1-EQt"/>
                                                                 </constraints>
-                                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                                            </imageView>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2VW-d8-bt4">
                                                         <rect key="frame" x="41" y="9" width="100" height="205"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="XaL-5M-FFe">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ex9-MB-PPJ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="XaL-5M-FFe">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="100" id="4Mn-ri-OX4"/>
+                                                                            <constraint firstAttribute="width" constant="100" id="DiO-yV-bAR"/>
+                                                                        </constraints>
+                                                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="XaL-5M-FFe" firstAttribute="top" secondItem="Ex9-MB-PPJ" secondAttribute="top" id="LeM-kU-gdq"/>
+                                                                    <constraint firstItem="XaL-5M-FFe" firstAttribute="leading" secondItem="Ex9-MB-PPJ" secondAttribute="leading" id="U6s-bT-817"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="XaL-5M-FFe" secondAttribute="trailing" id="XW8-sw-cly"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="XaL-5M-FFe" secondAttribute="bottom" id="z09-In-gNg"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hhs-Yg-rdc">
+                                                                <rect key="frame" x="0.0" y="105" width="100" height="100"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="aa0-YM-eCq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="100" id="IQm-xW-ZuD"/>
+                                                                            <constraint firstAttribute="height" constant="100" id="Sub-jM-2fa"/>
+                                                                        </constraints>
+                                                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urN-Kx-mSB">
+                                                                        <rect key="frame" x="75" y="0.0" width="25" height="25"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="25" id="1k1-Y1-0Nk"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="Vqo-aI-q53"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" image="Delete">
+                                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="DeletePhoto4:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="8i9-dj-iz4"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="urN-Kx-mSB" secondAttribute="trailing" id="CGq-hy-c2G"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="aa0-YM-eCq" secondAttribute="trailing" id="Jjh-bq-6Ed"/>
+                                                                    <constraint firstItem="urN-Kx-mSB" firstAttribute="top" secondItem="Hhs-Yg-rdc" secondAttribute="top" id="MVz-VA-MA3"/>
+                                                                    <constraint firstItem="aa0-YM-eCq" firstAttribute="top" secondItem="Hhs-Yg-rdc" secondAttribute="top" id="OOK-5R-sQ4"/>
+                                                                    <constraint firstItem="aa0-YM-eCq" firstAttribute="leading" secondItem="Hhs-Yg-rdc" secondAttribute="leading" id="QkU-Pt-DCc"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="aa0-YM-eCq" secondAttribute="bottom" id="a04-gp-XDj"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCL-71-BZT">
+                                                        <rect key="frame" x="257" y="9" width="100" height="100"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-YE-ZZ8">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                                 <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="100" id="4Mn-ri-OX4"/>
-                                                                    <constraint firstAttribute="width" constant="100" id="DiO-yV-bAR"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="8f7-aK-8dE"/>
+                                                                    <constraint firstAttribute="height" constant="100" id="hCD-h2-jol"/>
                                                                 </constraints>
                                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                             </imageView>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="aa0-YM-eCq">
-                                                                <rect key="frame" x="0.0" y="105" width="100" height="100"/>
-                                                                <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwT-aI-LdT">
+                                                                <rect key="frame" x="75" y="0.0" width="25" height="25"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="IQm-xW-ZuD"/>
-                                                                    <constraint firstAttribute="height" constant="100" id="Sub-jM-2fa"/>
+                                                                    <constraint firstAttribute="width" constant="25" id="MsU-vD-Z12"/>
+                                                                    <constraint firstAttribute="height" constant="25" id="Zss-Yh-D2Y"/>
                                                                 </constraints>
-                                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                                            </imageView>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="Delete">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="DeletePhoto3:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="VJO-nM-A9E"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
-                                                    </stackView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-YE-ZZ8">
-                                                        <rect key="frame" x="257" y="9" width="100" height="100"/>
-                                                        <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="8f7-aK-8dE"/>
-                                                            <constraint firstAttribute="height" constant="100" id="hCD-h2-jol"/>
+                                                            <constraint firstAttribute="trailing" secondItem="NwT-aI-LdT" secondAttribute="trailing" id="0wV-Lv-w2P"/>
+                                                            <constraint firstItem="NwT-aI-LdT" firstAttribute="top" secondItem="LCL-71-BZT" secondAttribute="top" id="5rz-CK-9kk"/>
+                                                            <constraint firstItem="OIi-YE-ZZ8" firstAttribute="leading" secondItem="LCL-71-BZT" secondAttribute="leading" id="Co1-4J-H3m"/>
+                                                            <constraint firstAttribute="trailing" secondItem="OIi-YE-ZZ8" secondAttribute="trailing" id="aHK-Ai-Njc"/>
+                                                            <constraint firstItem="OIi-YE-ZZ8" firstAttribute="top" secondItem="LCL-71-BZT" secondAttribute="top" id="qiU-B5-svb"/>
+                                                            <constraint firstAttribute="bottom" secondItem="OIi-YE-ZZ8" secondAttribute="bottom" id="r3E-Eb-rt6"/>
                                                         </constraints>
-                                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                                    </imageView>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.95294117649999999" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="OIi-YE-ZZ8" firstAttribute="leading" secondItem="Pe3-TY-1hR" secondAttribute="trailing" constant="8" symbolic="YES" id="PCx-BC-HVf"/>
+                                                    <constraint firstItem="LCL-71-BZT" firstAttribute="top" secondItem="Pe3-TY-1hR" secondAttribute="top" id="1Pc-Rr-S4O"/>
+                                                    <constraint firstItem="LCL-71-BZT" firstAttribute="leading" secondItem="Pe3-TY-1hR" secondAttribute="trailing" constant="8" id="DET-2f-jYU"/>
                                                     <constraint firstItem="Pe3-TY-1hR" firstAttribute="centerX" secondItem="beJ-OF-tHI" secondAttribute="centerX" id="SGP-5p-snj"/>
                                                     <constraint firstItem="2VW-d8-bt4" firstAttribute="top" secondItem="beJ-OF-tHI" secondAttribute="top" constant="9" id="VNP-hb-y3F"/>
-                                                    <constraint firstItem="Pe3-TY-1hR" firstAttribute="top" secondItem="OIi-YE-ZZ8" secondAttribute="top" id="i4h-jo-FaB"/>
                                                     <constraint firstItem="2VW-d8-bt4" firstAttribute="centerY" secondItem="beJ-OF-tHI" secondAttribute="centerY" id="iEo-D0-ICZ"/>
                                                     <constraint firstItem="2VW-d8-bt4" firstAttribute="top" secondItem="Pe3-TY-1hR" secondAttribute="top" id="we8-m0-o7J"/>
                                                     <constraint firstItem="Pe3-TY-1hR" firstAttribute="leading" secondItem="2VW-d8-bt4" secondAttribute="trailing" constant="8" symbolic="YES" id="weV-61-cm2"/>
@@ -5124,6 +5252,9 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opd-3h-eX0">
                                                 <rect key="frame" x="147" y="275.5" width="120" height="32"/>
                                                 <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="D7H-Y8-El1"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                 <state key="normal" title="Upload Image">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -5236,6 +5367,10 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <outlet property="Category" destination="JCB-n7-ZoH" id="HRy-sO-Yzh"/>
                         <outlet property="CategoryLabel" destination="pQd-FQ-PiF" id="65i-tT-kqc"/>
                         <outlet property="CategoryView" destination="g4N-m7-l5R" id="nQg-zh-7VP"/>
+                        <outlet property="Delete_2" destination="NtW-nT-npt" id="fdt-oC-NP2"/>
+                        <outlet property="Delete_3" destination="NwT-aI-LdT" id="2JK-O8-Wn8"/>
+                        <outlet property="Delete_4" destination="urN-Kx-mSB" id="zxq-f5-5sJ"/>
+                        <outlet property="Delete_5" destination="OF5-li-Ipe" id="z9a-9G-18R"/>
                         <outlet property="DeliveryView" destination="0Wn-hQ-aEi" id="Yix-rH-pKi"/>
                         <outlet property="District" destination="rVD-x5-Zqa" id="KF6-hx-CwQ"/>
                         <outlet property="DistrictLabel" destination="laW-oe-v9j" id="qVH-fW-akc"/>
@@ -10394,6 +10529,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <image name="580b57fcd9996e24bc43c543" width="1000" height="1000"/>
         <image name="AddPhoto" width="45" height="45"/>
         <image name="Agriculture" width="670" height="700"/>
+        <image name="Delete" width="15" height="15"/>
         <image name="Fashion and Accessories" width="649" height="649"/>
         <image name="Handicraft" width="649" height="679"/>
         <image name="Health and Beauty" width="649" height="649"/>

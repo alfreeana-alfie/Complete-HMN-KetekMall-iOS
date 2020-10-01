@@ -28,6 +28,12 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var ItemImage4: UIImageView!
     @IBOutlet weak var ItemImage5: UIImageView!
     
+    @IBOutlet weak var Delete_2: UIButton!
+    @IBOutlet weak var Delete_3: UIButton!
+    @IBOutlet weak var Delete_4: UIButton!
+    @IBOutlet weak var Delete_5: UIButton!
+    
+    
     @IBOutlet weak var UploadImage: UIButton!
     @IBOutlet weak var Category: UITextField!
     
@@ -100,10 +106,16 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         Max_Order.text! = MAXORDER
         
         saveItemID()
+        ViewPhoto()
         
         ButtonAccept.layer.cornerRadius = 7
         ButtonCancel.layer.cornerRadius = 7
         UploadImage.layer.cornerRadius = 7
+        
+        Delete_2.isHidden = true
+        Delete_3.isHidden = true
+        Delete_4.isHidden = true
+        Delete_5.isHidden = true
         
         //        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
         //        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
@@ -119,6 +131,11 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         ItemImage3.layer.cornerRadius = 7
         ItemImage4.layer.cornerRadius = 7
         ItemImage5.layer.cornerRadius = 7
+        
+        Delete_2.layer.cornerRadius = 7
+        Delete_3.layer.cornerRadius = 7
+        Delete_4.layer.cornerRadius = 7
+        Delete_5.layer.cornerRadius = 7
         
         CategoryView.layer.cornerRadius = 7
         ProdDetailView.layer.cornerRadius = 7
@@ -279,6 +296,36 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         _ = navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func DeletePhoto2(_ sender: Any) {
+        ItemImage2.contentMode = .scaleAspectFill
+        ItemImage2.image = UIImage(named: "Image")
+//        deletePhoto(number: "2")
+        Delete_2.isHidden = true
+    }
+    
+    @IBAction func DeletePhoto3(_ sender: Any) {
+        ItemImage3.contentMode = .scaleAspectFill
+        ItemImage3.image = UIImage(named: "Image")
+//        deletePhoto(number: "3")
+        Delete_3.isHidden = true
+    }
+    
+    @IBAction func DeletePhoto4(_ sender: Any) {
+        ItemImage4.contentMode = .scaleAspectFill
+        ItemImage4.image = UIImage(named: "Image")
+        deletePhoto(number: "4")
+        Delete_4.isHidden = true
+    }
+    
+    @IBAction func DeletePhoto5(_ sender: Any) {
+        ItemImage5.contentMode = .scaleAspectFill
+        ItemImage5.image = UIImage(named: "Image")
+        deletePhoto(number: "5")
+        Delete_5.isHidden = true
+    }
+    
+    
+    
     func deletePhoto(number: String){
         let filename = ADDETAIL + number
         let parameters: Parameters=[
@@ -290,7 +337,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                 response in
                 
                 if let result = response.result.value {
-                    print("SUCCESS")
+                    print("SUCCESS DELETE")
                     
                 }else{
                     print("FAILED")
@@ -324,13 +371,18 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                         }else if(user?.count == 2){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
+                            
+                            self.Delete_2.isHidden = false
                         }else if(user?.count == 3){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             
                             self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
                             self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
-                        }else if(user?.count == 2){
+                            
+                            self.Delete_2.isHidden = false
+                            self.Delete_3.isHidden = false
+                        }else if(user?.count == 4){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto3 = image[3].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -338,7 +390,12 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
                             self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
                             self.ItemImage4.setImageWith(URL(string: newPhoto3!)!)
-                        }else if(user?.count == 2){
+                            
+                            self.Delete_2.isHidden = false
+                            self.Delete_3.isHidden = false
+                            self.Delete_4.isHidden = false
+                            
+                        }else if(user?.count == 5){
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             let newPhoto3 = image[3].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -350,8 +407,10 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             self.ItemImage5.setImageWith(URL(string: newPhoto4!)!)
                         }
                         
-                        
-                        
+                        self.Delete_2.isHidden = false
+                        self.Delete_3.isHidden = false
+                        self.Delete_4.isHidden = false
+                        self.Delete_5.isHidden = false
                     }
                 }else{
                     print("FAILED")
@@ -400,7 +459,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                 response in
                 
                 if let result = response.result.value {
-                    print("SUCCESS")
+                    print("SUCCESS ITEM ID")
                     
                 }else{
                     print("FAILED")
