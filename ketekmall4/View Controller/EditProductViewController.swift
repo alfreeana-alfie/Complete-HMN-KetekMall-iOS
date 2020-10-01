@@ -9,11 +9,16 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import ImagePicker
 
-class EditProductViewController: UIViewController {
+class EditProductViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let URL_UPLOAD = "https://ketekmall.com/ketekmall/edituser.php"
     let URL_IMG = "https://ketekmall.com/ketekmall/uploadimg02.php"
+    let URL_UPLOAD_EXTRA = "https://ketekmall.com/ketekmall/products_img/uploadimg03.php"
+    let URL_READ_PHOTO = "https://ketekmall.com/ketekmall/products_img/read_photo.php"
+    let URL_EDIT_PROD = "https://ketekmall.com/ketekmall/edit_product_detail.php"
+    let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -69,9 +74,11 @@ class EditProductViewController: UIViewController {
     var DISTRICT: String = ""
     var USERID: String = ""
     
+    var flag = 0
+    
     let sharedPref = UserDefaults.standard
     var lang: String = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
@@ -92,18 +99,20 @@ class EditProductViewController: UIViewController {
         District.text! = DISTRICT
         Max_Order.text! = MAXORDER
         
+        saveItemID()
+        
         ButtonAccept.layer.cornerRadius = 7
         ButtonCancel.layer.cornerRadius = 7
         UploadImage.layer.cornerRadius = 7
         
-//        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
-//        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
+        //        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
+        //        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         
-//        ButtonAdDetail.layer.cornerRadius = 5
-//        ButtonAdDetail.layer.borderWidth = 0.1
+        //        ButtonAdDetail.layer.cornerRadius = 5
+        //        ButtonAdDetail.layer.borderWidth = 0.1
         
-//        ButtonSetupDelivery.layer.cornerRadius = 5
-//        ButtonSetupDelivery.layer.borderWidth = 0.1
+        //        ButtonSetupDelivery.layer.cornerRadius = 5
+        //        ButtonSetupDelivery.layer.borderWidth = 0.1
         
         ItemImage.layer.cornerRadius = 7
         ItemImage2.layer.cornerRadius = 7
@@ -120,9 +129,22 @@ class EditProductViewController: UIViewController {
         DeliveryView.layer.cornerRadius = 7
         
         ItemImage.isUserInteractionEnabled = true
-        let FindClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
+        ItemImage2.isUserInteractionEnabled = true
+        ItemImage3.isUserInteractionEnabled = true
+        ItemImage4.isUserInteractionEnabled = true
+        ItemImage5.isUserInteractionEnabled = true
         
-        ItemImage.addGestureRecognizer(FindClick)
+        let Image1 = UITapGestureRecognizer(target: self, action: #selector(selectImage1(sender:)))
+        let Image2 = UITapGestureRecognizer(target: self, action: #selector(selectImage2(sender:)))
+        let Image3 = UITapGestureRecognizer(target: self, action: #selector(selectImage3(sender:)))
+        let Image4 = UITapGestureRecognizer(target: self, action: #selector(selectImage4(sender:)))
+        let Image5 = UITapGestureRecognizer(target: self, action: #selector(selectImage5(sender:)))
+        
+        ItemImage.addGestureRecognizer(Image1)
+        ItemImage2.addGestureRecognizer(Image2)
+        ItemImage3.addGestureRecognizer(Image3)
+        ItemImage4.addGestureRecognizer(Image4)
+        ItemImage5.addGestureRecognizer(Image5)
     }
     
     func changeLanguage(str: String){
@@ -133,22 +155,22 @@ class EditProductViewController: UIViewController {
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
         SetupDeliveryLabel.text = "Setup Delivery".localized(lang: str)
-//        UploadImage.titleLabel?.text = "Upload Image".localized(lang: str)
+        //        UploadImage.titleLabel?.text = "Upload Image".localized(lang: str)
         
         UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
         
         Category.placeholder = "Category".localized(lang: str)
-//        ButtonAdDetail.titleLabel?.text = "Ad Detail".localized(lang: str)
+        //        ButtonAdDetail.titleLabel?.text = "Ad Detail".localized(lang: str)
         Price.placeholder = "Price".localized(lang: str)
         Division.placeholder = "Division".localized(lang: str)
         District.placeholder = "District".localized(lang: str)
         Max_Order.placeholder = "Max Order".localized(lang: str)
-//        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
+        //        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
         
         ButtonSetupDelivery.setTitle("Click to Edit Setup Delivery".localized(lang: str), for: .normal)
         
-//        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
-//        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
+        //        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+        //        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
         
         ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
         ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
@@ -185,7 +207,6 @@ class EditProductViewController: UIViewController {
         }
     }
     
-    
     @IBAction func Uploading(_ sender: Any) {
         spinner.show(in: self.view)
         let parameters: Parameters=[
@@ -198,7 +219,7 @@ class EditProductViewController: UIViewController {
         Alamofire.request(URL_IMG, method: .post, parameters: parameters).responseJSON
             {
                 response in
-               
+                
                 if let result = response.result.value {
                     
                     let jsonData = result as! NSDictionary
@@ -230,7 +251,7 @@ class EditProductViewController: UIViewController {
             "division": Division.text!,
             "district": District.text!,
         ]
-
+        
         Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
             {
                 response in
@@ -258,18 +279,147 @@ class EditProductViewController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    func deletePhoto(number: String){
+        let filename = ADDETAIL + number
+        let parameters: Parameters=[
+            "filename": filename,
+        ]
+        
+        Alamofire.request(URL_DELETE_PHOTO, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                
+                if let result = response.result.value {
+                    print("SUCCESS")
+                    
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
+    func ViewPhoto(){
+        let parameters: Parameters=[
+            "ad_detail": ADDETAIL
+        ]
+        
+        Alamofire.request(URL_READ_PHOTO, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
+                        let user = jsonData.value(forKey: "read") as? NSArray
+                        
+                        let photo = user?.value(forKey: "filepath") as? [String]
+                        
+                        var image: [String] = []
+                        
+                        image = photo!
+                        
+                        if(user?.count == 0 || user?.count == 1){
+                            print("1")
+                        }else if(user?.count == 2){
+                            let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
+                        }else if(user?.count == 3){
+                            let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            
+                            self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
+                            self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
+                        }else if(user?.count == 2){
+                            let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            let newPhoto3 = image[3].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            
+                            self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
+                            self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
+                            self.ItemImage4.setImageWith(URL(string: newPhoto3!)!)
+                        }else if(user?.count == 2){
+                            let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            let newPhoto2 = image[2].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            let newPhoto3 = image[3].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            let newPhoto4 = image[4].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                            
+                            self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
+                            self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
+                            self.ItemImage4.setImageWith(URL(string: newPhoto3!)!)
+                            self.ItemImage5.setImageWith(URL(string: newPhoto4!)!)
+                        }
+                        
+                        
+                        
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func saveImage(number: String, Image: UIImageView){
+        let imageData: Data = Image.image!.pngData()!
+        let imageStr: String = imageData.base64EncodedString()
+        
+        let filename = ADDETAIL + number
+        
+        let parameters: Parameters=[
+            "item_id": ITEMID,
+            "ad_detail": ADDETAIL,
+            "filename": filename,
+            "filepath": imageStr,
+            
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_UPLOAD_EXTRA, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    
+                    
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
+    func saveItemID(){
+        let parameters: Parameters=[
+            "id": ITEMID,
+            "ad_detail":ADDETAIL,
+        ]
+        
+        Alamofire.request(URL_EDIT_PROD, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                
+                if let result = response.result.value {
+                    print("SUCCESS")
+                    
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
     @objc private func uploadToServer(sender: UITapGestureRecognizer) {
-            let imageData: Data = ItemImage.image!.pngData()!
-            let imageStr: String = imageData.base64EncodedString()
+        let imageData: Data = ItemImage.image!.pngData()!
+        let imageStr: String = imageData.base64EncodedString()
         
         spinner.show(in: self.view)
-            let parameters: Parameters=[
-                "ad_detail": ADDETAIL,
-                "photo": imageStr,
-            ]
-            
-            //Sending http post request
-            Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
+        let parameters: Parameters=[
+            "ad_detail": ADDETAIL,
+            "photo": imageStr,
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value {
@@ -283,22 +433,84 @@ class EditProductViewController: UIViewController {
                     self.spinner.show(in: self.view)
                     self.spinner.dismiss(afterDelay: 4.0)
                 }
+        }
+    }
+    
+    @objc private func selectImage1(sender: UITapGestureRecognizer) {
+        flag = 1
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true){
+            
+        }
+    }
+    
+    @objc private func selectImage2(sender: UITapGestureRecognizer) {
+        flag = 2
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true){
+            
+        }
+    }
+    
+    @objc private func selectImage3(sender: UITapGestureRecognizer) {
+        flag = 3
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true){
+            
+        }
+    }
+    
+    @objc private func selectImage4(sender: UITapGestureRecognizer) {
+        flag = 4
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true){
+            
+        }
+    }
+    
+    @objc private func selectImage5(sender: UITapGestureRecognizer) {
+        flag = 5
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true){
+            
+        }
+    }
+    
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
+            if(flag == 1){
+                ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage.image = chosenImage
+            }else if(flag == 2){
+                ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage2.image = chosenImage
+            }else if(flag == 3){
+                ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage3.image = chosenImage
+            }else if(flag == 4){
+                ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage4.image = chosenImage
+            }else if(flag == 5){
+                ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage5.image = chosenImage
             }
-           }
-        
-        @objc private func selectImage(sender: UITapGestureRecognizer) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
-            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-            imagePicker.allowsEditing = false
-            present(imagePicker, animated: true, completion: nil)
         }
-         
-        @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as! UIImage
-//            ItemImage.contentMode = .scaleAspectFill
-            ItemImage.image = chosenImage
-            dismiss(animated: true, completion: nil)
-        }
+        dismiss(animated: true, completion: nil)
+    }
     
 }
