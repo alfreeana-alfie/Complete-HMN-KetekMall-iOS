@@ -235,7 +235,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 self.TotalLabel.isHidden = true
                                                                 self.GrandTotal.isHidden = true
                                                                 self.ChangeDeliveryLabel.isHidden = false
-                                                                //                                                                self.GrandTotal.text! = "MYR0.00"
                                                                 self.CartView.reloadData()
                                                             }else
                                                             {
@@ -250,8 +249,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 var index = i
                                                                 
                                                                 if index < self.DELIVERYPRICE.count{
-                                                                    //                                                                    print("SUCCESS" + self.DELIVERYPRICE[index])
-                                                                    var strDays: Int = Int(self.DELIVERYDAYS[index]) ?? 0
+                                                                    let strDays: Int = Int(self.DELIVERYDAYS[index]) ?? 0
                                                                     let date = Date()
                                                                     let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
                                                                     
@@ -274,14 +272,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 
                                                                 strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
                                                                 
-                                                                var indexPrice = i
+                                                                let indexPrice = i
                                                                 
                                                                 if indexPrice < self.DELIVERYPRICE.count{
-                                                                    var strDel: Double = Double(self.DELIVERYPRICE[i]) ?? 0.00
+                                                                    let strDel: Double = Double(self.DELIVERYPRICE[i]) ?? 0.00
                                                                     var strGrandTotal: Double = 0.00
                                                                     strGrand2 += strDel
                                                                     strGrandTotal = strGrand + strGrand2
-                                                                    //                                                                    print(String(format: "%.2f", strGrandTotal))
                                                                     
                                                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
                                                                     
@@ -545,7 +542,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             {
                 response in
                 if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
+                    _ = result as! NSDictionary
                     print("SENT")
                 }else{
                     print("FAILED")
@@ -587,7 +584,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             {
                 response in
                 if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
+                    _ = result as! NSDictionary
                     print("SENT")
                 }else{
                     print("FAILED")
