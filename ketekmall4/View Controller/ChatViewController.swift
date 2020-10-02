@@ -13,6 +13,7 @@ import InputBarAccessoryView
 import FirebaseDatabase
 import FirebaseCore
 import Alamofire
+import FirebaseInstanceID
 
 struct Message: MessageType {
     var sender: SenderType
@@ -44,12 +45,16 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
     var email: String = ""
     var chatWith: String = ""
     var chatName: String = ""
+    var chatToken: String = ""
     var emailUser: String = ""
     var messageSaved: String = ""
     
     var saved: [String] = []
     let newArr: [String] = []
     var list = [Saved]()
+    
+    let senderNotification = PushNotificationSender()
+    var tokenUser: String = ""
     
     private var messages = [Message]()
     var randomString = String.random()
@@ -79,7 +84,17 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         ChatNew()
     }
     
-    
+    func NotificationSetup(Token: String, Title: String, Body: String){
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instange ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                self.tokenUser = result.token
+                self.senderNotification.sendPushNotification(to: Token, title: Title, body: Body)
+            }
+        }
+    }
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String){
         guard !text.replacingOccurrences(of: " ", with: "").isEmpty else{
@@ -160,6 +175,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
             }
         }
         
+        NotificationSetup(Token: chatToken, Title: chatName, Body: text)
         randomString = ""
         randomString = randomString2
         inputBar.inputTextView.text.removeAll()

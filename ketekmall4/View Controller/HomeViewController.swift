@@ -236,11 +236,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let dropDown = DropDown()
     let sharedPref = UserDefaults.standard
     var user: String = ""
-    var tokenUser: String = ""
     var viewController1: UIViewController?
     
     @IBOutlet weak var Tabbar: UITabBar!
     let sender = PushNotificationSender()
+    var tokenUser: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -386,13 +386,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             break
             
         case 2:
-            NotificationSetup()
-//            navigationController?.setNavigationBarHidden(true, animated: false)
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-//            if let navigator = self.navigationController {
-//                navigator.pushViewController(viewController1!, animated: true)
-//            }
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
             break
             
         case 3:
