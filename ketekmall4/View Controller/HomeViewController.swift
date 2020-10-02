@@ -17,6 +17,7 @@ import FBSDKCoreKit
 import JGProgressHUD
 import ImageSlideshow
 import LanguageManager_iOS
+import FirebaseInstanceID
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate, UITabBarDelegate {
     func onViewClick1(cell: ShockingSaleCollectionViewCell) {
@@ -235,6 +236,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let dropDown = DropDown()
     let sharedPref = UserDefaults.standard
     var user: String = ""
+    var tokenUser: String = ""
     var viewController1: UIViewController?
     
     @IBOutlet weak var Tabbar: UITabBar!
@@ -254,7 +256,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Carousel.contentScaleMode = .scaleAspectFill
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
-//        print(user)
         
         dropDown.anchorView = ListBar
         dropDown.dataSource = ["Edit Profile","Change to BM","Change to ENG","About KetekMall", "Logout"]
@@ -385,16 +386,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             break
             
         case 2:
-//            let vc = DetailViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-
-
-            navigationController?.setNavigationBarHidden(true, animated: false)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewController1!, animated: true)
-            }
+            NotificationSetup()
+//            navigationController?.setNavigationBarHidden(true, animated: false)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+//            if let navigator = self.navigationController {
+//                navigator.pushViewController(viewController1!, animated: true)
+//            }
             break
             
         case 3:
@@ -461,7 +459,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         dropDown.width = 200
     }
     
-    
+    func NotificationSetup(){
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instange ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                self.tokenUser = result.token
+                self.sender.sendPushNotification(to: result.token, title: "Notification title", body: "Notification body")
+            }
+        }
+    }
     
     func changeLanguage(str: String){
         SellButton.setTitle("SELL".localized(lang: str), for: .normal)

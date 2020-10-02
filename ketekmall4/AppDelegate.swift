@@ -104,5 +104,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
+    
+    func application(
+      _ application: UIApplication,
+      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+      let token = tokenParts.joined()
+      print("Device Token: \(token)")
+    }
+    
+    func application(
+      _ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error
+    ) {
+      print("Failed to register: \(error)")
+    }
 }
 
