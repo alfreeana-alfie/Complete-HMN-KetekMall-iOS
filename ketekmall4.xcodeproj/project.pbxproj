@@ -199,6 +199,7 @@
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		FBC470622527920200E38DE6 /* KetekMallRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KetekMallRelease.entitlements; sourceTree = "<group>"; };
 		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -279,6 +280,7 @@
 		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXGroup;
 			children = (
+				FBC470622527920200E38DE6 /* KetekMallRelease.entitlements */,
 				FB91420E251F55DC004F62F6 /* DetailViewController.swift */,
 				FB91420A251F55DC004F62F6 /* DetailViewController.xib */,
 				FB91420B251F55DC004F62F6 /* DetailViewModel.swift */,
@@ -859,9 +861,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -894,10 +896,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
