@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import FirebaseInstanceID
 
 class CheckoutViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate, UICollectionViewDelegateFlowLayout, CheckoutDelegate {
     func onSelfClick(cell: CheckoutCollectionViewCell) {
@@ -115,9 +116,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_SEND_EMAILBUYER = "https://ketekmall.com/ketekmall/sendEmail_buyer.php"
     let URL_SEND_EMAILSELLER = "https://ketekmall.com/ketekmall/sendEmail_seller.php"
     let URL_DELETE = "https://ketekmall.com/ketekmall/delete_cart_temp_user.php"
+    let URL_USER = "https://click-1595830894120.firebaseio.com/users.json"
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
+    
+    let sender = PushNotificationSender()
+    var tokenUser: String = ""
     
     override func viewWillDisappear(_ animated: Bool) {
         DeleteOrder()
@@ -401,6 +406,26 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    func NotificationSeller(SELLERNAME: String){
+        Alamofire.request(self.URL_USER, method: .get).responseJSON{
+            response1 in
+            if let resultUser = response1.result.value{
+                
+                if let jsonUser = resultUser as? [String: Any] {
+                    for j in jsonUser.keys{
+                        if let User1 = jsonUser[j] as? [String: Any]{
+                            let token = User1["token"] as! String
+                            
+                            if(j.elementsEqual(SELLERNAME)){
+                                self.sender.sendPushNotification(to: token, title: "KetekMall", body: "You have new order")
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DELIVERYPRICE.count
@@ -500,8 +525,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         
                         if((jsonData.value(forKey: "success") as! NSString).boolValue){
                             let user = jsonData.value(forKey: "read") as! NSArray
+                            let SellerName = user.value(forKey: "name") as! [String]
                             let SellerEmail = user.value(forKey: "email") as! [String]
                             self.sendEmail(Email: SellerEmail[0])
+                            self.NotificationSeller(SELLERNAME: SellerName[0])
                         }
                     }
             }
@@ -525,7 +552,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
         }
     }
-    
     
     func getUserDetails(){
         let parameters: Parameters=[
