@@ -12,9 +12,24 @@ import GoogleSignIn
 import Alamofire
 import FBSDKCoreKit
 import LanguageManager_iOS
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate  {
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
     }
@@ -58,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate  {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         window?.rootViewController = UINavigationController(rootViewController: UIViewController())
-
+        registerForPushNotifications()
         
         let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         if(isUserLoggedIn) {

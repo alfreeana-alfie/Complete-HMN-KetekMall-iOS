@@ -238,6 +238,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var viewController1: UIViewController?
     
     @IBOutlet weak var Tabbar: UITabBar!
+    let sender = PushNotificationSender()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -87,6 +87,7 @@
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
+		FBC47064252797A400E38DE6 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC47063252797A400E38DE6 /* PushNotification.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FBC470622527920200E38DE6 /* KetekMallRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KetekMallRelease.entitlements; sourceTree = "<group>"; };
+		FBC47063252797A400E38DE6 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				FB5A491024F7F0E200F5464C /* Models */,
 				FB5A48EE24F7F07B00F5464C /* Info.plist */,
 				FBDDBB84250A1C1B0027BC90 /* Localizable.strings */,
+				FBC47063252797A400E38DE6 /* PushNotification.swift */,
 			);
 			path = ketekmall4;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				FB4557B324F91EE700FC502B /* MyProductsCollectionViewController.swift in Sources */,
 				FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */,
 				FB7D2119250015530043A286 /* DeliveryViewController.swift in Sources */,
+				FBC47064252797A400E38DE6 /* PushNotification.swift in Sources */,
 				FB3E830524FEBE2400F1CE3C /* AddReviewViewController.swift in Sources */,
 				FB43BFD624FF7516002D36E0 /* AfterPlaceOrderViewController.swift in Sources */,
 				FB5490CD24FD3C8D004E6D73 /* CategoryViewController.swift in Sources */,
