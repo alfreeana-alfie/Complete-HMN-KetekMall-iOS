@@ -4056,7 +4056,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="3" width="134" height="200"/>
+                                                        <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
@@ -6218,6 +6218,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="DeletePhoto4:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="Ilf-yO-eBL"/>
+                                                                            <action selector="DeletePhoto4:" destination="oOO-X6-KEG" eventType="touchUpInside" id="xIT-yO-HL9"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -6261,6 +6262,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="DeletePhoto2:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="3pq-ve-sJE"/>
+                                                                            <action selector="DeletePhoto2:" destination="oOO-X6-KEG" eventType="touchUpInside" id="NQJ-zU-uB0"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -6298,6 +6300,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                         <connections>
+                                                                            <action selector="DeletePhoto5:" destination="oOO-X6-KEG" eventType="touchUpInside" id="37w-Lk-af0"/>
                                                                             <action selector="DeletePhoto5:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="3v8-Hb-Ola"/>
                                                                         </connections>
                                                                     </button>
@@ -6339,6 +6342,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="DeletePhoto3:" destination="ixn-Wf-7HM" eventType="touchUpInside" id="fxI-sG-wAe"/>
+                                                                    <action selector="DeletePhoto3:" destination="oOO-X6-KEG" eventType="touchUpInside" id="yYa-hZ-tm0"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -6521,7 +6525,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AM-ZX-bRD">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4AM-ZX-bRD">
                                                 <rect key="frame" x="147" y="267.5" width="120" height="32"/>
                                                 <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -8468,6 +8472,10 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <constraint firstAttribute="height" constant="414" id="pTl-Fu-5Rd"/>
                                                 </constraints>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPY-vA-PAb" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                                <rect key="frame" x="0.0" y="497" width="414" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLQ-dJ-28x">
                                                 <rect key="frame" x="0.0" y="522.5" width="414" height="114.5"/>
                                                 <subviews>
@@ -8945,7 +8953,9 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstItem="ZbK-0H-BRO" firstAttribute="top" secondItem="QLQ-dJ-28x" secondAttribute="bottom" id="eDI-n9-Jzg"/>
                                             <constraint firstItem="76w-4n-tep" firstAttribute="top" secondItem="ldn-HG-iJj" secondAttribute="bottom" id="ehE-Pr-9hY"/>
                                             <constraint firstItem="QLQ-dJ-28x" firstAttribute="leading" secondItem="ZbK-0H-BRO" secondAttribute="leading" id="fGc-c8-rNC"/>
+                                            <constraint firstItem="LPY-vA-PAb" firstAttribute="leading" secondItem="9ZU-xr-M16" secondAttribute="leading" id="hga-Em-DoS"/>
                                             <constraint firstItem="76w-4n-tep" firstAttribute="leading" secondItem="9ZU-xr-M16" secondAttribute="leading" id="hm0-JR-KBr"/>
+                                            <constraint firstAttribute="trailing" secondItem="LPY-vA-PAb" secondAttribute="trailing" id="hoG-aa-gQv"/>
                                             <constraint firstItem="ldn-HG-iJj" firstAttribute="top" secondItem="Pwd-gS-Ss2" secondAttribute="bottom" id="hrT-JM-gd7"/>
                                             <constraint firstItem="y9q-Ss-tZE" firstAttribute="trailing" secondItem="SrA-IA-SWu" secondAttribute="trailing" constant="7" id="icB-c4-KxG"/>
                                             <constraint firstItem="QLQ-dJ-28x" firstAttribute="trailing" secondItem="ZbK-0H-BRO" secondAttribute="trailing" id="ilJ-wj-P9c"/>
@@ -8956,6 +8966,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstItem="fNI-hp-l7q" firstAttribute="top" secondItem="tsB-i3-j61" secondAttribute="bottom" constant="8" id="pn1-bY-dM9"/>
                                             <constraint firstItem="ZbK-0H-BRO" firstAttribute="leading" secondItem="Pwd-gS-Ss2" secondAttribute="leading" id="q1b-eV-W70"/>
                                             <constraint firstItem="y9q-Ss-tZE" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" id="r9D-yg-ARU"/>
+                                            <constraint firstItem="LPY-vA-PAb" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" id="rYM-B0-DNC"/>
                                             <constraint firstItem="fNI-hp-l7q" firstAttribute="top" secondItem="5CR-LQ-2n4" secondAttribute="top" id="rvt-ZB-DXp"/>
                                             <constraint firstItem="QLQ-dJ-28x" firstAttribute="top" secondItem="fNI-hp-l7q" secondAttribute="bottom" constant="8" id="tQp-MY-X9W"/>
                                             <constraint firstItem="ZbK-0H-BRO" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" constant="637" id="vnw-vD-jRG"/>
@@ -9001,6 +9012,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <outlet property="BaseRating" destination="fNI-hp-l7q" id="a1w-79-nOI"/>
                         <outlet property="ButtonAddCart" destination="pM0-iI-mmq" id="6Vn-Kp-pQV"/>
                         <outlet property="ButtonChat" destination="BBt-yu-dEQ" id="xDD-og-PDG"/>
+                        <outlet property="Carousel" destination="LPY-vA-PAb" id="nTV-xa-k9F"/>
                         <outlet property="FromSameShopLabel" destination="vYF-Ba-Dk8" id="8KS-hy-HyN"/>
                         <outlet property="ItemImage" destination="y9q-Ss-tZE" id="Og8-8M-aDA"/>
                         <outlet property="ItemName" destination="SrA-IA-SWu" id="xcf-lA-OjD"/>

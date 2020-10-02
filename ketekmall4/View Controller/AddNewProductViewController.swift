@@ -52,8 +52,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     let URL_ADD = "https://ketekmall.com/ketekmall/products/uploadimg.php";
     let URL_UPLOAD_EXTRA = "https://ketekmall.com/ketekmall/products_img/uploadimg03.php"
-    let URL_READ_PHOTO = "https://ketekmall.com/ketekmall/products_img/read_photo.php"
-    let URL_EDIT_PROD = "https://ketekmall.com/ketekmall/edit_product_detail.php"
+
+//    let URL_EDIT_PROD = "https://ketekmall.com/ketekmall/edit_product_detail.php"
     let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
     
     let category = ["Cake and pastries", "Process food", "Handicraft", "Retail and Wholesale", "Agriculture", "Service", "Health and Beauty", "home and living", "Fashion Accessories", "Sarawak - Based Product"]
@@ -121,7 +121,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         ButtonCancel.layer.cornerRadius = 15
         UploadImage.layer.cornerRadius = 5
         ButtonAdDetail.layer.cornerRadius = 7
-        ButtonAdDetail.layer.borderWidth = 0.5
+        
         
 //        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
 //        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
@@ -187,7 +187,6 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
 //        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
     }
 
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -282,6 +281,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         AdDetail.DISTRICT = District.text!
         AdDetail.PHOTO = ""
         AdDetail.MAXORDER = MaxOrder.text!
+        AdDetail.CheckView = true
         if let navigator = self.navigationController {
             navigator.pushViewController(AdDetail, animated: true)
         }
@@ -424,9 +424,10 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true)
+        
         }
         
-        @objc private func selectImage2(sender: UITapGestureRecognizer) {
+    @objc private func selectImage2(sender: UITapGestureRecognizer) {
             flag = 2
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -435,7 +436,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             present(imagePicker, animated: true)
         }
         
-        @objc private func selectImage3(sender: UITapGestureRecognizer) {
+    @objc private func selectImage3(sender: UITapGestureRecognizer) {
             flag = 3
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -444,7 +445,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             present(imagePicker, animated: true)
         }
         
-        @objc private func selectImage4(sender: UITapGestureRecognizer) {
+    @objc private func selectImage4(sender: UITapGestureRecognizer) {
             flag = 4
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -453,7 +454,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             present(imagePicker, animated: true)
         }
         
-        @objc private func selectImage5(sender: UITapGestureRecognizer) {
+    @objc private func selectImage5(sender: UITapGestureRecognizer) {
             flag = 5
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -462,7 +463,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             present(imagePicker, animated: true)
         }
         
-        @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
             if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
                 if(flag == 1){
                     ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
@@ -473,7 +474,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     ItemImage2.image = chosenImage
                     if(self.ItemImage2.image == chosenImage){
                         print("PRESENT")
-                        saveImage(number: "2", Image: ItemImage2)
+                        self.Delete_2.isHidden = false
+//                        saveImage(number: "2", Image: ItemImage2)
                     }else{
                         print("EMPTY")
                     }
@@ -483,7 +485,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     ItemImage3.image = chosenImage
                     if(self.ItemImage2.image == chosenImage){
                         print("PRESENT")
-                        saveImage(number: "3", Image: ItemImage2)
+                        self.Delete_3.isHidden = false
+//                        saveImage(number: "3", Image: ItemImage2)
                     }else{
                         print("EMPTY")
                     }
@@ -493,7 +496,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     ItemImage4.image = chosenImage
                     if(self.ItemImage2.image == chosenImage){
                         print("PRESENT")
-                        saveImage(number: "4", Image: ItemImage2)
+                        self.Delete_4.isHidden = false
+//                        saveImage(number: "4", Image: ItemImage2)
                     }else{
                         print("EMPTY")
                     }
@@ -503,7 +507,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     ItemImage5.image = chosenImage
                     if(self.ItemImage2.image == chosenImage){
                         print("PRESENT")
-                        saveImage(number: "5", Image: ItemImage2)
+                        self.Delete_5.isHidden = false
+//                        saveImage(number: "5", Image: ItemImage2)
                     }else{
                         print("EMPTY")
                     }
@@ -544,6 +549,40 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     self.spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
+                    
+                    
+                    if(self.ItemImage2.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "2", Image: self.ItemImage2)
+                        print("SUCCESS 2")
+                    }
+                    
+                    if(self.ItemImage3.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "3", Image: self.ItemImage3)
+//                        self.Delete_3.isHidden = false
+                        print("SUCCESS 3")
+                    }
+                    
+                    if(self.ItemImage4.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "4", Image: self.ItemImage4)
+//                        self.Delete_4.isHidden = false
+                        print("SUCCESS 4")
+                    }
+                    
+                    if(self.ItemImage5.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "5", Image: self.ItemImage5)
+//                        self.Delete_5.isHidden = false
+                        print("SUCCESS 5")
+                    }
+                    
+                        
                     _ = self.navigationController?.popToRootViewController(animated: true)
                 }else{
                     self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()

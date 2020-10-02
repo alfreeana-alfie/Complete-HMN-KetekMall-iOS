@@ -12,6 +12,7 @@ import AFNetworking
 import SDWebImage
 import AARatingBar
 import JGProgressHUD
+import ImageSlideshow
 
 class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -55,6 +56,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var ReviewView: UIView!
     @IBOutlet weak var NoReviewLabel: UILabel!
     
+    @IBOutlet weak var Carousel: ImageSlideshow!
+    
     var viewController1: UIViewController?
     
     
@@ -67,6 +70,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     let URL_EDIT_SOLD = "https://ketekmall.com/ketekmall/edit_detail_sold.php"
     let URL_READALL_SELLER = "https://ketekmall.com/ketekmall/readall_seller.php"
     let MAIN_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
+    let URL_READ_PHOTO = "https://ketekmall.com/ketekmall/products_img/read_photo.php"
     
     var ItemID: String = ""
     var SELLERID: String = ""
@@ -147,6 +151,15 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         ItemImage.setImageWith(URL(string: NEWIm!)!)
         ItemName.text! = ADDETAIL
         ItemPrice.text! = "MYR" + PRICE
+        
+        ViewPhoto()
+        
+        self.Carousel.setImageInputs([
+                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/23-Best-Sales-Promotion-Ideas.png")!),
+                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/download.png")!),
+                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/promotional-analysis.jpg")!)])
+        self.Carousel.slideshowInterval = 3.0
+        self.Carousel.contentScaleMode = .scaleAspectFill
         
         ButtonChat.isUserInteractionEnabled = true
         ShippingInfo.isUserInteractionEnabled = true
@@ -562,6 +575,46 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     print("Install Whatsapp")
                 }
             }
+        }
+    }
+    
+    func ViewPhoto(){
+        let parameters: Parameters=[
+            "ad_detail": ADDETAIL
+        ]
+        
+        Alamofire.request(URL_READ_PHOTO, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
+                        let user = jsonData.value(forKey: "read") as? NSArray
+                        
+                        let photo = user?.value(forKey: "filepath") as? [String]
+                        
+                        var image: [String] = []
+                        
+                        image = photo!
+                        
+//                        for i in 0..<image.count{
+//                            self.Carousel.setImageInputs([KingfisherSource(url: URL(string: image[i])!)])
+//                        }
+                        self.Carousel.setImageInputs([
+                                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/23-Best-Sales-Promotion-Ideas.png")!),
+                                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/download.png")!),
+                                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/promotional-analysis.jpg")!)])
+                        self.Carousel.slideshowInterval = 3.0
+                        self.Carousel.contentScaleMode = .scaleAspectFill
+                        
+                        
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
         }
     }
     

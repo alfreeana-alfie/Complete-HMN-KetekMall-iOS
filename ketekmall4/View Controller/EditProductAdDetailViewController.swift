@@ -38,6 +38,7 @@ class EditProductAdDetailViewController: UIViewController {
         var PHOTO: String = ""
         var DISTRICT: String = ""
         var USERID: String = ""
+    var CheckView: Bool = false
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -81,24 +82,44 @@ class EditProductAdDetailViewController: UIViewController {
     }
     
     @IBAction func Accept(_ sender: Any) {
-        let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController
-        AdDetail.USERID = USERID
-        AdDetail.ITEMID = ITEMID
-        AdDetail.ADDETAIL = self.AdDetail.text!
-        AdDetail.MAINCATE = MAINCATE
-        AdDetail.SUBCATE = SUBCATE
-        AdDetail.PRICE = PRICE
-        AdDetail.BRAND = self.BrandMaterial.text!
-        AdDetail.INNER = self.InnerMaterial.text!
-        AdDetail.STOCK = self.Stock.text!
-        AdDetail.DESC = self.Description.text!
-        AdDetail.DIVISION = DIVISION
-        AdDetail.DISTRICT = DISTRICT
-        AdDetail.PHOTO = PHOTO
-        AdDetail.MAXORDER = MAXORDER
-        if let navigator = self.navigationController {
-            navigator.pushViewController(AdDetail, animated: true)
+        if(CheckView == true){
+            let AdDetail = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
+            AdDetail.userID = USERID
+            AdDetail.Addetail = self.AdDetail.text!
+            AdDetail.Category.text! = MAINCATE
+            AdDetail.Category.text! = SUBCATE
+            AdDetail.Price.text! = PRICE
+            AdDetail.BrandMaterial = self.BrandMaterial.text!
+            AdDetail.InnerMaterial = self.InnerMaterial.text!
+            AdDetail.Stock = self.Stock.text!
+            AdDetail.Description = self.Description.text!
+            AdDetail.Division.text! = DIVISION
+            AdDetail.District.text! = DISTRICT
+            AdDetail.MaxOrder.text! = MAXORDER
+            if let navigator = self.navigationController {
+                navigator.pushViewController(AdDetail, animated: true)
+            }
+        }else{
+            let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController
+            AdDetail.USERID = USERID
+            AdDetail.ITEMID = ITEMID
+            AdDetail.ADDETAIL = self.AdDetail.text!
+            AdDetail.MAINCATE = MAINCATE
+            AdDetail.SUBCATE = SUBCATE
+            AdDetail.PRICE = PRICE
+            AdDetail.BRAND = self.BrandMaterial.text!
+            AdDetail.INNER = self.InnerMaterial.text!
+            AdDetail.STOCK = self.Stock.text!
+            AdDetail.DESC = self.Description.text!
+            AdDetail.DIVISION = DIVISION
+            AdDetail.DISTRICT = DISTRICT
+            AdDetail.PHOTO = PHOTO
+            AdDetail.MAXORDER = MAXORDER
+            if let navigator = self.navigationController {
+                navigator.pushViewController(AdDetail, animated: true)
+            }
         }
+        
     }
     
     @IBAction func Cancel(_ sender: Any) {
