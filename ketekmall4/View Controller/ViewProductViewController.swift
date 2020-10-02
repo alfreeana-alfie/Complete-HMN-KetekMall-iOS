@@ -59,6 +59,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var Carousel: ImageSlideshow!
     
     var viewController1: UIViewController?
+    let pageIndicator = UIPageControl()
     
     
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
@@ -149,17 +150,17 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
+        
         ItemName.text! = ADDETAIL
         ItemPrice.text! = "MYR" + PRICE
         
-        ViewPhoto()
+        self.pageIndicator.currentPageIndicatorTintColor = UIColor.darkGray
+        self.pageIndicator.pageIndicatorTintColor = UIColor.lightGray
+        self.Carousel.pageIndicator = self.pageIndicator
         
-        self.Carousel.setImageInputs([
-                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/23-Best-Sales-Promotion-Ideas.png")!),
-                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/download.png")!),
-                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/promotional-analysis.jpg")!)])
-        self.Carousel.slideshowInterval = 3.0
-        self.Carousel.contentScaleMode = .scaleAspectFill
+        ViewPhoto()
+
         
         ButtonChat.isUserInteractionEnabled = true
         ShippingInfo.isUserInteractionEnabled = true
@@ -579,6 +580,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func ViewPhoto(){
+        var ImageKing = [KingfisherSource]()
         let parameters: Parameters=[
             "ad_detail": ADDETAIL
         ]
@@ -586,33 +588,23 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         Alamofire.request(URL_READ_PHOTO, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        self.spinner.dismiss(afterDelay: 3.0)
-                        let user = jsonData.value(forKey: "read") as? NSArray
-                        
-                        let photo = user?.value(forKey: "filepath") as? [String]
-                        
-                        var image: [String] = []
-                        
-                        image = photo!
-                        
-//                        for i in 0..<image.count{
-//                            self.Carousel.setImageInputs([KingfisherSource(url: URL(string: image[i])!)])
-//                        }
-                        self.Carousel.setImageInputs([
-                                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/23-Best-Sales-Promotion-Ideas.png")!),
-                                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/download.png")!),
-                                   KingfisherSource(url: URL(string: "https://ketekmall.com/ketekmall/promotion/promotional-analysis.jpg")!)])
-                        self.Carousel.slideshowInterval = 3.0
-                        self.Carousel.contentScaleMode = .scaleAspectFill
-                        
+                if let result = response.result.value as? Dictionary<String, Any>{
+                    if let list = result["read"] as? [Dictionary<String, Any>]{
+                        if(list.count == 0){
+                            self.ItemImage.isHidden = false
+                        }else{
+                            self.ItemImage.isHidden = true
+                            for i in list{
+                                let photo = i["filepath"] as! String
+                                
+                                let image = KingfisherSource(urlString: photo)
+                                ImageKing.append(image!)
+                            }
+                            self.Carousel.setImageInputs(ImageKing)
+                            self.Carousel.contentScaleMode = .scaleAspectFill
+                        }
                         
                     }
-                }else{
-                    print("FAILED")
                 }
                 
         }

@@ -4056,7 +4056,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
+                                                        <rect key="frame" x="0.0" y="3" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
@@ -8466,16 +8466,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZU-xr-M16">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1195"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QY-Dw-lM7" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                                <rect key="frame" x="87" y="8" width="240" height="128"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KetekMall" translatesAutoresizingMaskIntoConstraints="NO" id="y9q-Ss-tZE">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="414" id="pTl-Fu-5Rd"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPY-vA-PAb" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                                                <rect key="frame" x="0.0" y="497" width="414" height="200"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLQ-dJ-28x">
                                                 <rect key="frame" x="0.0" y="522.5" width="414" height="114.5"/>
                                                 <subviews>
@@ -8938,6 +8938,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstItem="Pwd-gS-Ss2" firstAttribute="leading" secondItem="ldn-HG-iJj" secondAttribute="leading" id="En5-dV-sYx"/>
                                             <constraint firstItem="tsB-i3-j61" firstAttribute="leading" secondItem="QLQ-dJ-28x" secondAttribute="leading" constant="8" id="IEO-Ym-CGz"/>
                                             <constraint firstItem="y9q-Ss-tZE" firstAttribute="leading" secondItem="SrA-IA-SWu" secondAttribute="leading" constant="-8" id="IGH-CL-EWd"/>
+                                            <constraint firstItem="1QY-Dw-lM7" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" id="LYb-TP-Jq6"/>
                                             <constraint firstItem="ZbK-0H-BRO" firstAttribute="trailing" secondItem="Pwd-gS-Ss2" secondAttribute="trailing" id="LbG-Xn-8i2"/>
                                             <constraint firstItem="tsB-i3-j61" firstAttribute="trailing" secondItem="QLQ-dJ-28x" secondAttribute="trailing" constant="-7" id="MDr-Sy-r5V"/>
                                             <constraint firstItem="SrA-IA-SWu" firstAttribute="trailing" secondItem="tsB-i3-j61" secondAttribute="trailing" id="NEr-ke-9nW"/>
@@ -8946,16 +8947,15 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstItem="fNI-hp-l7q" firstAttribute="leading" secondItem="9ZU-xr-M16" secondAttribute="leadingMargin" id="WMa-C9-kwC"/>
                                             <constraint firstItem="fNI-hp-l7q" firstAttribute="top" secondItem="SrA-IA-SWu" secondAttribute="bottom" constant="36" id="YIP-Fx-4QQ"/>
                                             <constraint firstItem="y9q-Ss-tZE" firstAttribute="leading" secondItem="9ZU-xr-M16" secondAttribute="leading" id="YeG-ip-4rO"/>
-                                            <constraint firstItem="SrA-IA-SWu" firstAttribute="top" secondItem="y9q-Ss-tZE" secondAttribute="bottom" constant="10" id="aUu-VS-ifr"/>
+                                            <constraint firstItem="1QY-Dw-lM7" firstAttribute="leading" secondItem="9ZU-xr-M16" secondAttribute="leading" id="aJ8-J2-JXZ"/>
+                                            <constraint firstItem="SrA-IA-SWu" firstAttribute="top" secondItem="y9q-Ss-tZE" secondAttribute="bottom" id="aUu-VS-ifr"/>
                                             <constraint firstItem="Pwd-gS-Ss2" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" constant="714" id="bBo-SI-nOQ"/>
                                             <constraint firstItem="Pwd-gS-Ss2" firstAttribute="trailing" secondItem="ldn-HG-iJj" secondAttribute="trailing" id="bML-wA-DCj"/>
                                             <constraint firstItem="EoG-VV-t35" firstAttribute="leading" secondItem="5CR-LQ-2n4" secondAttribute="trailing" constant="8" id="dUu-UN-YrA"/>
                                             <constraint firstItem="ZbK-0H-BRO" firstAttribute="top" secondItem="QLQ-dJ-28x" secondAttribute="bottom" id="eDI-n9-Jzg"/>
                                             <constraint firstItem="76w-4n-tep" firstAttribute="top" secondItem="ldn-HG-iJj" secondAttribute="bottom" id="ehE-Pr-9hY"/>
                                             <constraint firstItem="QLQ-dJ-28x" firstAttribute="leading" secondItem="ZbK-0H-BRO" secondAttribute="leading" id="fGc-c8-rNC"/>
-                                            <constraint firstItem="LPY-vA-PAb" firstAttribute="leading" secondItem="9ZU-xr-M16" secondAttribute="leading" id="hga-Em-DoS"/>
                                             <constraint firstItem="76w-4n-tep" firstAttribute="leading" secondItem="9ZU-xr-M16" secondAttribute="leading" id="hm0-JR-KBr"/>
-                                            <constraint firstAttribute="trailing" secondItem="LPY-vA-PAb" secondAttribute="trailing" id="hoG-aa-gQv"/>
                                             <constraint firstItem="ldn-HG-iJj" firstAttribute="top" secondItem="Pwd-gS-Ss2" secondAttribute="bottom" id="hrT-JM-gd7"/>
                                             <constraint firstItem="y9q-Ss-tZE" firstAttribute="trailing" secondItem="SrA-IA-SWu" secondAttribute="trailing" constant="7" id="icB-c4-KxG"/>
                                             <constraint firstItem="QLQ-dJ-28x" firstAttribute="trailing" secondItem="ZbK-0H-BRO" secondAttribute="trailing" id="ilJ-wj-P9c"/>
@@ -8966,11 +8966,12 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                             <constraint firstItem="fNI-hp-l7q" firstAttribute="top" secondItem="tsB-i3-j61" secondAttribute="bottom" constant="8" id="pn1-bY-dM9"/>
                                             <constraint firstItem="ZbK-0H-BRO" firstAttribute="leading" secondItem="Pwd-gS-Ss2" secondAttribute="leading" id="q1b-eV-W70"/>
                                             <constraint firstItem="y9q-Ss-tZE" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" id="r9D-yg-ARU"/>
-                                            <constraint firstItem="LPY-vA-PAb" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" id="rYM-B0-DNC"/>
                                             <constraint firstItem="fNI-hp-l7q" firstAttribute="top" secondItem="5CR-LQ-2n4" secondAttribute="top" id="rvt-ZB-DXp"/>
                                             <constraint firstItem="QLQ-dJ-28x" firstAttribute="top" secondItem="fNI-hp-l7q" secondAttribute="bottom" constant="8" id="tQp-MY-X9W"/>
                                             <constraint firstItem="ZbK-0H-BRO" firstAttribute="top" secondItem="9ZU-xr-M16" secondAttribute="top" constant="637" id="vnw-vD-jRG"/>
                                             <constraint firstAttribute="bottom" secondItem="76w-4n-tep" secondAttribute="bottom" id="x2f-0i-aHa"/>
+                                            <constraint firstItem="SrA-IA-SWu" firstAttribute="top" secondItem="1QY-Dw-lM7" secondAttribute="bottom" id="x9s-eM-tTf"/>
+                                            <constraint firstAttribute="trailing" secondItem="1QY-Dw-lM7" secondAttribute="trailing" id="xbM-JN-fwg"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -9012,7 +9013,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <outlet property="BaseRating" destination="fNI-hp-l7q" id="a1w-79-nOI"/>
                         <outlet property="ButtonAddCart" destination="pM0-iI-mmq" id="6Vn-Kp-pQV"/>
                         <outlet property="ButtonChat" destination="BBt-yu-dEQ" id="xDD-og-PDG"/>
-                        <outlet property="Carousel" destination="LPY-vA-PAb" id="nTV-xa-k9F"/>
+                        <outlet property="Carousel" destination="1QY-Dw-lM7" id="c0a-UU-YGQ"/>
                         <outlet property="FromSameShopLabel" destination="vYF-Ba-Dk8" id="8KS-hy-HyN"/>
                         <outlet property="ItemImage" destination="y9q-Ss-tZE" id="Og8-8M-aDA"/>
                         <outlet property="ItemName" destination="SrA-IA-SWu" id="xcf-lA-OjD"/>
@@ -10704,10 +10705,10 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOz-oh-17i">
-                                <rect key="frame" x="0.0" y="44" width="414" height="526"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="443"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before you can start selling your product, " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atd-la-sSp">
-                                        <rect key="frame" x="47" y="231.5" width="320" height="21"/>
+                                        <rect key="frame" x="47" y="190" width="320" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="SpB-58-Fx0"/>
                                         </constraints>
@@ -10716,7 +10717,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to register as KetekMall Seller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSt-oa-PA7">
-                                        <rect key="frame" x="47" y="260.5" width="320" height="21"/>
+                                        <rect key="frame" x="47" y="219" width="320" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ehF-rt-f9L"/>
                                         </constraints>
@@ -10725,7 +10726,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bx5-c3-4c5">
-                                        <rect key="frame" x="89" y="289.5" width="236" height="40"/>
+                                        <rect key="frame" x="89" y="248" width="236" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="yOx-35-brV"/>
