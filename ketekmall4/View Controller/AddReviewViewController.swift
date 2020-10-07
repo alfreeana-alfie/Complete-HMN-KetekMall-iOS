@@ -32,6 +32,9 @@ class AddReviewViewController: UIViewController {
     let sharedPref = UserDefaults.standard
     var lang: String = ""
 
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +55,41 @@ class AddReviewViewController: UIViewController {
             self.RATING = String(format: "%.2f", ratingValue)
         }
         
+    }
+    
+    func ColorFunc(){
+        let colorView1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorView2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let l = CAGradientLayer()
+        l.frame = self.view.bounds
+        l.colors = [colorView1, colorView2]
+        l.startPoint = CGPoint(x: 0, y: 0.5)
+        l.endPoint = CGPoint(x: 1, y: 0.5)
+        l.cornerRadius = 5
+        self.view.layer.insertSublayer(l, at: 0)
+        
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = ButtonSubmit.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+        ButtonSubmit.layer.insertSublayer(ReceivedGradient, at: 0)
+        
+        let color3 = UIColor(hexString: "#FC4A1A").cgColor
+        let color4 = UIColor(hexString: "#F7B733").cgColor
+        
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = ButtonCancel.bounds
+        CancelGradient.colors = [color3, color4]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 5
+        ButtonCancel.layer.insertSublayer(CancelGradient, at: 0)
     }
     
     func changeLanguage(str: String){

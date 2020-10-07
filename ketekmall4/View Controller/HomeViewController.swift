@@ -239,8 +239,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var viewController1: UIViewController?
     
     @IBOutlet weak var Tabbar: UITabBar!
+    @IBOutlet weak var HomePageView: UIView!
+    
     let sender = PushNotificationSender()
     var tokenUser: String = ""
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -405,6 +411,41 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         default:
             break
         }
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorSellOne = UIColor(hexString: "#ED213A").cgColor
+        let colorSellTwo = UIColor(hexString: "#93291E").cgColor
+        
+        let SellGradient = CAGradientLayer()
+        SellGradient.frame = SellButton.bounds
+        SellGradient.colors = [colorSellOne, colorSellTwo]
+        SellGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        SellGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        SellGradient.cornerRadius = 7
+        SellButton.layer.insertSublayer(SellGradient, at: 0)
+        
+        let colorFindOne = UIColor(hexString: "#0575E6").cgColor
+        let colorFindTwo = UIColor(hexString: "#021B79").cgColor
+        
+        let FindGradient = CAGradientLayer()
+        FindGradient.frame = FindButton.bounds
+        FindGradient.colors = [colorFindOne, colorFindTwo]
+        FindGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        FindGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        FindGradient.cornerRadius = 7
+        FindButton.layer.insertSublayer(FindGradient, at: 0)
     }
     
     @objc func onListClick(sender: Any){
@@ -1042,9 +1083,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
             cell.ItemPrice.text! = "MYR" + self.PRICEHOT[indexPath.row]
-            cell.ButtonView.layer.cornerRadius = 7
-            cell.ButtonView.layer.borderWidth = 0.5
+            cell.ButtonView.layer.cornerRadius = 5
+            
             cell.layer.cornerRadius = 5
+            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
+            let colorTwo = UIColor(hexString: "#F7B733").cgColor
+            
+            let ViewGradient = CAGradientLayer()
+            ViewGradient.frame = cell.ButtonView.bounds
+            ViewGradient.colors = [colorOne, colorTwo]
+            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            ViewGradient.cornerRadius = 5
+            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell.delegate = self
             return cell
         }else{
@@ -1059,7 +1110,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell1.ItemPrice.text! = "MYR" + self.PRICESHOCKING[indexPath.row]
             cell1.ButtonView.layer.cornerRadius = 5
             cell1.layer.cornerRadius = 5
-            cell1.ButtonView.layer.borderWidth = 0.5
+            
+            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
+            let colorTwo = UIColor(hexString: "#F7B733").cgColor
+            
+            let ViewGradient = CAGradientLayer()
+            ViewGradient.frame = cell1.ButtonView.bounds
+            ViewGradient.colors = [colorOne, colorTwo]
+            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            ViewGradient.cornerRadius = 5
+            cell1.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell1.delegate = self
             return cell1
         }

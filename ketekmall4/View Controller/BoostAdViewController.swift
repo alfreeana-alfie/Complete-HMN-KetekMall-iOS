@@ -29,7 +29,12 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         BoostView.delegate = self
@@ -72,6 +77,19 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                     }
                 }
         }
+    }
+    
+    func ColorFunc(){
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+                   let color2 = UIColor(hexString: "#F7B733").cgColor
+                   
+                   let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = self.view.bounds
+                   ReceivedGradient.colors = [color1, color2]
+                   ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+                   ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+                   ReceivedGradient.cornerRadius = 5
+        self.view.layer.insertSublayer(ReceivedGradient, at: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -122,6 +140,19 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
         }else{
             cell.ButtonCancel.setTitle("Cancel".localized(lang: "en"), for: .normal)
         }
+        
+        //Button Accept
+            let color1 = UIColor(hexString: "#FC4A1A").cgColor
+            let color2 = UIColor(hexString: "#F7B733").cgColor
+            
+            let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = cell.ButtonCancel.bounds
+            ReceivedGradient.colors = [color1, color2]
+            ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            ReceivedGradient.cornerRadius = 5
+                cell.ButtonCancel.layer.insertSublayer(ReceivedGradient, at: 0)
+        
         cell.delegate = self
         return cell
     }

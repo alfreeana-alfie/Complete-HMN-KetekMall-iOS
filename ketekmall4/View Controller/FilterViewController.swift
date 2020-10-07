@@ -50,6 +50,10 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,6 +83,42 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             changeLanguage(str: "en")
             navigationItem.title = "Filter".localized(lang: "en")
         }
+        
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorApplyOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorApplyTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ApplyGradient = CAGradientLayer()
+        ApplyGradient.frame = ButtonApply.bounds
+        ApplyGradient.colors = [colorApplyOne, colorApplyTwo]
+        ApplyGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ApplyGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ApplyGradient.cornerRadius = 7
+        ButtonApply.layer.insertSublayer(ApplyGradient, at: 0)
+        
+        let colorCancelOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorCancelTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = ButtonCancel.bounds
+        CancelGradient.colors = [colorCancelOne, colorCancelTwo]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 7
+        ButtonCancel.layer.insertSublayer(CancelGradient, at: 0)
         
     }
     

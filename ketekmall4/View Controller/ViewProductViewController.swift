@@ -122,6 +122,10 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var SELLERLOCATION: String = ""
     var SELLERPHONE: String = ""
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NoReviewLabel.isHidden = true
@@ -242,6 +246,30 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         default:
             break
         }
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorAddCartOne = UIColor(hexString: "#AA076B").cgColor
+        let colorAddCartTwo = UIColor(hexString: "#61045F").cgColor
+        
+        let AddCartGradient = CAGradientLayer()
+        AddCartGradient.frame = self.view.bounds
+        AddCartGradient.colors = [colorAddCartOne, colorAddCartTwo]
+        AddCartGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        AddCartGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        AddCartGradient.cornerRadius = 5
+        self.view.layer.insertSublayer(AddCartGradient, at: 0)
     }
     
     func getSellerDetails(){
@@ -635,8 +663,18 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ItemName.text! = self.ADDETAIL_SAMESHOP[indexPath.row]
         cell.ItemPrice.text! = self.PRICE_SAMESHOP[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 5
-        cell.ButtonView.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 5
+        
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.ButtonView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
         
         cell.delegate = self
         return cell
@@ -662,6 +700,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         viewProduct.PHOTO = self.PHOTO_SAMESHOP[indexPath.row]
         viewProduct.DIVISION = self.DIVISION_SAMESHOP[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICT_SAMESHOP[indexPath.row]
+        
+        
         if let navigator = self.navigationController {
             navigator.pushViewController(viewProduct, animated: true)
         }

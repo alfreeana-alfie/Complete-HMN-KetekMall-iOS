@@ -21,7 +21,9 @@ class GotoRegisterSellerViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var Tabbar: UITabBar!
     var viewController1: UIViewController?
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,19 @@ class GotoRegisterSellerViewController: UIViewController, UITabBarDelegate {
             changeLanguage(str: "en")
             
         }
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = ButtonSeller.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 15
+        ButtonSeller.layer.insertSublayer(ViewGradient, at: 0)
     }
     
     func changeLanguage(str: String){

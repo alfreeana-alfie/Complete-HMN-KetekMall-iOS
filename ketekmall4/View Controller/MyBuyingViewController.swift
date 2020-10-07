@@ -12,7 +12,7 @@ import JGProgressHUD
 
 class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyBuyingDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
-
+    
     @IBOutlet weak var MyBuyingView: UICollectionView!
     
     private let spinner = JGProgressHUD(style: .dark)
@@ -44,7 +44,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var Tabbar: UITabBar!
     var OrderID: [String] = []
     var ItemID: [String] = []
-
+    
     var ad_Detail: [String] = []
     var ItemImage: [String] = []
     var ItemPrice: [String] = []
@@ -65,7 +65,11 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         MyBuyingView.delegate = self
@@ -80,7 +84,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
             changeLanguage(str: "en")
             
         }
-
+        
         
         if(BarHidden == true){
             Tabbar.isHidden = true
@@ -124,7 +128,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.Seller_Division.append(self.seller_division)
                             self.OrderID.append(self.order_id)
                             self.ItemID.append(self.item_id)
-
+                            
                             self.ad_Detail.append(self.ad_detail)
                             self.ItemImage.append(self.item_img)
                             self.ItemPrice.append(self.item_price)
@@ -144,6 +148,19 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                 }
         }
+    }
+    
+    func ColorFunc(){
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let l = CAGradientLayer()
+        l.frame = self.view.bounds
+        l.colors = [color1, color2]
+        l.startPoint = CGPoint(x: 0, y: 0.5)
+        l.endPoint = CGPoint(x: 1, y: 0.5)
+        l.cornerRadius = 16
+        self.view.layer.insertSublayer(l, at: 0)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -184,7 +201,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         Tabbar.items?[1].title = "Notification".localized(lang: str)
         Tabbar.items?[2].title = "Me".localized(lang: str)
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return OrderID.count
@@ -193,24 +210,23 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
+        
         
         let cellSquareSize: CGFloat = screenWidth
-        let cellSquareHeight: CGFloat = screenHeight / 2
-    
+        
         return CGSize(width: cellSquareSize, height: 254);
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-       return 2.0
+        return 2.0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-       return 2.0
+        return 2.0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -230,51 +246,73 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.Status.text! = ItemStatus[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 5
         cell.ButtonReject.layer.cornerRadius = 5
+        
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.ButtonView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 5
+        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let RejectGradient = CAGradientLayer()
+        RejectGradient.frame = cell.ButtonReject.bounds
+        RejectGradient.colors = [colorReject1, colorReject2]
+        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        RejectGradient.cornerRadius = 5
+        cell.ButtonReject.layer.insertSublayer(RejectGradient, at: 0)
         cell.delegate = self
         return cell
     }
     
     func getSellerDetails(SellerID: String, OrderID: String){
-            let parameters: Parameters=[
-                "id": SellerID,
-            ]
-            Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value{
-                        let jsonData = result as! NSDictionary
+        let parameters: Parameters=[
+            "id": SellerID,
+        ]
+        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        let SellerEmail = user.value(forKey: "email") as! [String]
                         
-                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                            let user = jsonData.value(forKey: "read") as! NSArray
-                            let SellerEmail = user.value(forKey: "email") as! [String]
-                            
-                            self.SellerEmail = SellerEmail[0]
-                            
-                            self.sendEmail(Email: self.SellerEmail, OrderID: OrderID)
-                        }
+                        self.SellerEmail = SellerEmail[0]
+                        
+                        self.sendEmail(Email: self.SellerEmail, OrderID: OrderID)
                     }
-            }
+                }
         }
+    }
+    
+    func sendEmail(Email: String, OrderID: String){
+        let parameters: Parameters=[
+            "email": Email,
+            "order_id": OrderID
+        ]
         
-        func sendEmail(Email: String, OrderID: String){
-            let parameters: Parameters=[
-                "email": Email,
-                "order_id": OrderID
-            ]
-            
-            //Sending http post request
-            Alamofire.request(URL_SEND, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value{
-                        let jsonData = result as! NSDictionary
-                        
-                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                            let user = jsonData.value(forKey: "read") as! NSArray
-                        }
+        //Sending http post request
+        Alamofire.request(URL_SEND, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
                     }
-            }
+                }
         }
+    }
     
     func btnREJECT(cell: MyBuyingCollectionViewCell) {
         guard let indexPath = self.MyBuyingView.indexPath(for: cell) else{
@@ -290,33 +328,33 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         
         let parameters: Parameters=[
-                    "order_date": Order_Date,
-                    "remarks": Remarks,
-                    "status": Remarks
-                ]
-                Alamofire.request(URL_CANCEL, method: .post, parameters: parameters).responseJSON
-                    {
-                        response in
-                        if let result = response.result.value{
-                            let jsonData = result as! NSDictionary
+            "order_date": Order_Date,
+            "remarks": Remarks,
+            "status": Remarks
+        ]
+        Alamofire.request(URL_CANCEL, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        print("SUCCESS")
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        if(self.lang == "ms"){
+                            self.spinner.textLabel.text = "Successfully Reject".localized(lang: "ms")
                             
-                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                                print("SUCCESS")
-                                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                                if(self.lang == "ms"){
-                                    self.spinner.textLabel.text = "Successfully Reject".localized(lang: "ms")
-                                    
-                                }else{
-                                    self.spinner.textLabel.text = "Successfully Reject".localized(lang: "en")
-                                   
-                                }
-
-                                self.spinner.show(in: self.view)
-                                self.spinner.dismiss(afterDelay: 4.0)
-                                self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)
-                            }
+                        }else{
+                            self.spinner.textLabel.text = "Successfully Reject".localized(lang: "en")
+                            
                         }
+                        
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
+                        self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)
+                    }
                 }
+        }
         
     }
     

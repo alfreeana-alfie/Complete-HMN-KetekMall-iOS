@@ -45,6 +45,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.productView.delegate = self
@@ -113,6 +117,19 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         
     }
     
+    func ColorFunc(){
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+                   let color2 = UIColor(hexString: "#F7B733").cgColor
+                   
+                   let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = self.view.bounds
+                   ReceivedGradient.colors = [color1, color2]
+                   ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+                   ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+                   ReceivedGradient.cornerRadius = 5
+        self.view.layer.insertSublayer(ReceivedGradient, at: 0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ad_Detail.count
     }
@@ -157,11 +174,8 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             cell.NoDeliveryLabel.isHidden = true
         }
         cell.Btn_Edit.layer.cornerRadius = 5
-        cell.Btn_Edit.layer.borderWidth = 1
         cell.Btn_Boost.layer.cornerRadius = 5
-        cell.Btn_Boost.layer.borderWidth = 1
         cell.Btn_Cancel.layer.cornerRadius = 5
-        cell.Btn_Cancel.layer.borderWidth = 1
         if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
             let f = CGFloat(truncating: n)
             cell.Rating.value = f
@@ -178,6 +192,56 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
 
         cell.layer.cornerRadius = 5
         cell.layer.borderWidth = 0.3
+        
+            //Button Accept
+            let color1 = UIColor(hexString: "#FC4A1A").cgColor
+            let color2 = UIColor(hexString: "#F7B733").cgColor
+            
+            let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = cell.Btn_Edit.bounds
+            ReceivedGradient.colors = [color1, color2]
+            ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            ReceivedGradient.cornerRadius = 5
+                cell.Btn_Edit.layer.insertSublayer(ReceivedGradient, at: 0)
+            
+            //Button Cancel
+            let color3 = UIColor(hexString: "#FC4A1A").cgColor
+            let color4 = UIColor(hexString: "#F7B733").cgColor
+            
+            let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = cell.Btn_Cancel.bounds
+            CancelGradient.colors = [color3, color4]
+            CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            CancelGradient.cornerRadius = 5
+        cell.Btn_Cancel.layer.insertSublayer(CancelGradient, at: 0)
+        
+            //Button Accept
+            let color5 = UIColor(hexString: "#FC4A1A").cgColor
+            let color6 = UIColor(hexString: "#F7B733").cgColor
+            
+            let BoostGradient = CAGradientLayer()
+        BoostGradient.frame = cell.Btn_Boost.bounds
+            BoostGradient.colors = [color5, color6]
+            BoostGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            BoostGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            BoostGradient.cornerRadius = 5
+        cell.Btn_Boost.layer.insertSublayer(BoostGradient, at: 0)
+            
+            //Button Cancel
+            let color7 = UIColor(hexString: "#ED213A").cgColor
+            let color8 = UIColor(hexString: "#93291E").cgColor
+            
+            let NoDeliveryGradient = CAGradientLayer()
+        NoDeliveryGradient.frame = cell.NoDeliveryLabel.bounds
+            NoDeliveryGradient.colors = [color7, color8]
+            NoDeliveryGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            NoDeliveryGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            NoDeliveryGradient.cornerRadius = 5
+        cell.NoDeliveryLabel.layer.insertSublayer(NoDeliveryGradient, at: 0)
+       
+        
         cell.delegate = self
         return cell
     }

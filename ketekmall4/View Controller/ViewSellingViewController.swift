@@ -77,6 +77,9 @@ class ViewSellingViewController: UIViewController {
     @IBOutlet weak var TrackingHeight: NSLayoutConstraint!
     @IBOutlet weak var SubmitHeight: NSLayoutConstraint!
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -239,6 +242,32 @@ class ViewSellingViewController: UIViewController {
         getUserDetails()
         
         
+    }
+    
+    func ColorFunc(){
+        //Button Accept
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = ButtonSubmit.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+            ButtonSubmit.layer.insertSublayer(ReceivedGradient, at: 0)
+        
+        //Button Cancel
+        let color3 = UIColor(hexString: "#FC4A1A").cgColor
+        let color4 = UIColor(hexString: "#F7B733").cgColor
+        
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = ButtonCancel.bounds
+        CancelGradient.colors = [color3, color4]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 5
+        ButtonCancel.layer.insertSublayer(CancelGradient, at: 0)
     }
     
     func changeLanguage(str: String){

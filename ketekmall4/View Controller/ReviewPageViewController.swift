@@ -168,6 +168,10 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Tabbar.delegate = self
@@ -334,6 +338,30 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         let TrackingClick = UITapGestureRecognizer(target: self, action: #selector(onTrackClick(sender:)))
         
         TrackingNo.addGestureRecognizer(TrackingClick)
+    }
+    
+    func ColorFunc(){
+        let colorView1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorView2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let l = CAGradientLayer()
+        l.frame = self.view.bounds
+        l.colors = [colorView1, colorView2]
+        l.startPoint = CGPoint(x: 0, y: 0.5)
+        l.endPoint = CGPoint(x: 1, y: 0.5)
+        l.cornerRadius = 16
+        self.view.layer.insertSublayer(l, at: 0)
+        
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = ButtonReceived.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 16
+        ButtonReceived.layer.insertSublayer(ReceivedGradient, at: 0)
     }
     
     @objc func onTrackClick(sender: Any){

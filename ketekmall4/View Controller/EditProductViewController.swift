@@ -91,6 +91,10 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
@@ -118,14 +122,6 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         ButtonCancel.layer.cornerRadius = 7
         UploadImage.layer.cornerRadius = 7
         
-        //        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
-        //        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
-        
-        //        ButtonAdDetail.layer.cornerRadius = 5
-        //        ButtonAdDetail.layer.borderWidth = 0.1
-        
-        //        ButtonSetupDelivery.layer.cornerRadius = 5
-        //        ButtonSetupDelivery.layer.borderWidth = 0.1
         
         Delete_2.isHidden = true
         Delete_3.isHidden = true
@@ -168,6 +164,92 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         ImageView3.addGestureRecognizer(Image3)
         ImageView4.addGestureRecognizer(Image4)
         ImageView5.addGestureRecognizer(Image5)
+    }
+    
+    func ColorFunc(){
+        //Button Accept
+        let colorImageOne1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorImageOne2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ImageOneGradient = CAGradientLayer()
+        ImageOneGradient.frame = ImageView1.bounds
+        ImageOneGradient.colors = [colorImageOne1, colorImageOne2]
+        ImageOneGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ImageOneGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ImageOneGradient.cornerRadius = 5
+            ImageView1.layer.insertSublayer(ImageOneGradient, at: 0)
+        
+        //Button Accept
+        let colorImageTwo1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorImageTwo2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ImageTwoGradient = CAGradientLayer()
+        ImageTwoGradient.frame = ImageView2.bounds
+        ImageTwoGradient.colors = [colorImageTwo1, colorImageTwo2]
+        ImageTwoGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ImageTwoGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ImageTwoGradient.cornerRadius = 5
+            ImageView2.layer.insertSublayer(ImageTwoGradient, at: 0)
+        
+        //Button Accept
+        let colorImageThree1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorImageThree2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ImageThreeGradient = CAGradientLayer()
+        ImageThreeGradient.frame = ImageView3.bounds
+        ImageThreeGradient.colors = [colorImageThree1, colorImageThree2]
+        ImageThreeGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ImageThreeGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ImageThreeGradient.cornerRadius = 5
+            ImageView3.layer.insertSublayer(ImageThreeGradient, at: 0)
+        
+        //Button Accept
+        let colorImageFour1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorImageFour2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ImageFourGradient = CAGradientLayer()
+        ImageFourGradient.frame = ImageView4.bounds
+        ImageFourGradient.colors = [colorImageFour1, colorImageFour2]
+        ImageFourGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ImageFourGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ImageFourGradient.cornerRadius = 5
+            ImageView4.layer.insertSublayer(ImageFourGradient, at: 0)
+        
+        //Button Accept
+        let colorImageFive1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorImageFive2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ImageFiveGradient = CAGradientLayer()
+        ImageFiveGradient.frame = ImageView5.bounds
+        ImageFiveGradient.colors = [colorImageFive1, colorImageFive2]
+        ImageFiveGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ImageFiveGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ImageFiveGradient.cornerRadius = 5
+            ImageView5.layer.insertSublayer(ImageFiveGradient, at: 0)
+        
+        //Button Accept
+        let color1 = UIColor(hexString: "#AA076B").cgColor
+        let color2 = UIColor(hexString: "#61045F").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = ButtonAccept.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+            ButtonAccept.layer.insertSublayer(ReceivedGradient, at: 0)
+        
+        //Button Cancel
+        let color3 = UIColor(hexString: "#BC4E9C").cgColor
+        let color4 = UIColor(hexString: "#F80759").cgColor
+        
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = ButtonCancel.bounds
+        CancelGradient.colors = [color3, color4]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 5
+        ButtonCancel.layer.insertSublayer(CancelGradient, at: 0)
     }
     
     func changeLanguage(str: String){
@@ -560,6 +642,12 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
             if(flag == 1){
                 ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    saveImage(number: "1", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
                 dismiss(animated: true, completion: nil)
             }else if(flag == 2){
                 ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill

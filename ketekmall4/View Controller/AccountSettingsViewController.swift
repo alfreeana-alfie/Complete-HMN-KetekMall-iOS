@@ -63,6 +63,10 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     
     var pickerView = UIPickerView()
     var datePicker = UIDatePicker()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,9 +99,11 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         BankNameView.layer.cornerRadius = 5
         BankAccView.layer.cornerRadius = 5
         
+        
         Gender.inputView = pickerView
         CreateDatePicker()
         
+        UploadPhoto.layer.cornerRadius = 5
         UploadPhoto.isUserInteractionEnabled = true
         
         let UploadClick = UITapGestureRecognizer(target: self, action: #selector(selectImage(sender:)))
@@ -159,6 +165,55 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         
         
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 5
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
+        
+        //Button Edit Profile
+        let colorEditProfile1 = UIColor(hexString: "#AA076B").cgColor
+        let colorEditProfile2 = UIColor(hexString: "#61045F").cgColor
+        
+        let EditProfileGradient = CAGradientLayer()
+        EditProfileGradient.frame = Btn_EditProfile.bounds
+        EditProfileGradient.colors = [colorEditProfile1, colorEditProfile2]
+        EditProfileGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        EditProfileGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        EditProfileGradient.cornerRadius = 15
+     Btn_EditProfile.layer.insertSublayer(EditProfileGradient, at: 0)
+        
+        //Button Accept
+        let colorAcceptOne = UIColor(hexString: "#AA076B").cgColor
+        let colorAcceptTwo = UIColor(hexString: "#61045F").cgColor
+        
+        let AcceptGradient = CAGradientLayer()
+        AcceptGradient.frame = Btn_Accept.bounds
+        AcceptGradient.colors = [colorAcceptOne, colorAcceptTwo]
+        AcceptGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        AcceptGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        AcceptGradient.cornerRadius = 15
+        Btn_Accept.layer.insertSublayer(AcceptGradient, at: 0)
+        
+//        let colorPhoto1 = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorPhoto2 = UIColor(hexString: "#F7B733").cgColor
+//
+//        let PhotoGradient = CAGradientLayer()
+//        PhotoGradient.frame = UploadPhoto.bounds
+//        PhotoGradient.colors = [colorPhoto1, colorPhoto2]
+//        PhotoGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        PhotoGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        PhotoGradient.cornerRadius = 16
+//        UploadPhoto.layer.insertSublayer(PhotoGradient, at: 0)
     }
     
     func changeLanguage(str: String){
@@ -275,6 +330,29 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         }
     }
     
+    func Uploading(){
+        spinner.show(in: self.view)
+        let imageData: Data = UploadPhoto.image!.pngData()!
+        let imageStr: String = imageData.base64EncodedString()
+
+        let parameters: Parameters=[
+            "id": userID,
+            "photo": imageStr,
+        ]
+
+        Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    self.spinner.dismiss(afterDelay: 3.0)
+                    print(jsonData.value(forKey: "message")!)
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
     @objc private func selectImage(sender: UITapGestureRecognizer) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -289,6 +367,14 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as! UIImage
         UploadPhoto.image = chosenImage
+        UploadPhoto.contentMode = UIView.ContentMode.scaleAspectFill
+        
+        if(self.UploadPhoto.image == chosenImage){
+            print("PRESENT")
+            Uploading()
+        }else{
+            print("EMPTY")
+        }
         dismiss(animated: true, completion: nil)
     }
     

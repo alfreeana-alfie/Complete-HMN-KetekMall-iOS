@@ -23,6 +23,10 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
 
     var viewController1: UIViewController?
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
@@ -43,7 +47,7 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
                    {
                        response in
                        if let result = response.result.value{
-                           let jsonData = result as! NSDictionary
+                        _ = result as! NSDictionary
                            
                        }else{
                            print("FAILED")
@@ -52,6 +56,30 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
                }
         Tabbar.delegate = self
         ButtonShopping.layer.cornerRadius = 5
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorShoppingOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorShoppingTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ShoppingGradient = CAGradientLayer()
+        ShoppingGradient.frame = ButtonShopping.bounds
+        ShoppingGradient.colors = [colorShoppingOne, colorShoppingTwo]
+        ShoppingGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ShoppingGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ShoppingGradient.cornerRadius = 7
+        ButtonShopping.layer.insertSublayer(ShoppingGradient, at: 0)
     }
     
     func changeLanguage(str: String){

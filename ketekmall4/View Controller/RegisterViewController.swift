@@ -39,6 +39,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var PasswordStyle: UIButton!
     @IBOutlet weak var Border: UIView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +66,19 @@ class RegisterViewController: UIViewController {
         PhoneImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         PasswordImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         ConfirmPassImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+    }
+    
+    func ColorFunc(){
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let l = CAGradientLayer()
+        l.frame = self.PasswordStyle.bounds
+        l.colors = [color1, color2]
+        l.startPoint = CGPoint(x: 0, y: 0.5)
+        l.endPoint = CGPoint(x: 1, y: 0.5)
+        l.cornerRadius = 16
+        PasswordStyle.layer.insertSublayer(l, at: 0)
     }
     
     @IBAction func Register(_ sender: Any) {

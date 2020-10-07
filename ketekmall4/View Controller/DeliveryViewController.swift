@@ -34,6 +34,10 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
@@ -51,8 +55,6 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         ButtonAdd.layer.cornerRadius = 7
         ButtonAccept.layer.cornerRadius = 15
         ButtonCancel.layer.cornerRadius = 15
-        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
-        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         spinner.show(in: self.view)
         let parameters: Parameters=[
             "item_id": itemID
@@ -89,6 +91,44 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
                 }
                 
         }
+    }
+    
+    func ColorFunc(){
+        //Button Accept
+        let colorAdd1 = UIColor(hexString: "#AA076B").cgColor
+        let colorAdd2 = UIColor(hexString: "#61045F").cgColor
+        
+        let AddGradient = CAGradientLayer()
+        AddGradient.frame = ButtonAdd.bounds
+        AddGradient.colors = [colorAdd1, colorAdd2]
+        AddGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        AddGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        AddGradient.cornerRadius = 5
+            ButtonAdd.layer.insertSublayer(AddGradient, at: 0)
+        
+        //Button Accept
+        let color1 = UIColor(hexString: "#AA076B").cgColor
+        let color2 = UIColor(hexString: "#61045F").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = ButtonAccept.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+            ButtonAccept.layer.insertSublayer(ReceivedGradient, at: 0)
+        
+        //Button Cancel
+        let color3 = UIColor(hexString: "#BC4E9C").cgColor
+        let color4 = UIColor(hexString: "#F80759").cgColor
+        
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = ButtonCancel.bounds
+        CancelGradient.colors = [color3, color4]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 5
+        ButtonCancel.layer.insertSublayer(CancelGradient, at: 0)
     }
     
     func changeLanguage(str: String){
@@ -140,6 +180,21 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
             cell.EditButton.setTitle("Edit".localized(lang: "en"), for: .normal)
             cell.DeleteButton.setTitle("Delete".localized(lang: "en"), for: .normal)
         }
+        
+        
+        
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = cell.EditButton.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+            cell.EditButton.layer.insertSublayer(ReceivedGradient, at: 0)
+            cell.DeleteButton.layer.insertSublayer(ReceivedGradient, at: 0)
+        
         cell.delegate = self
         return cell
     }
@@ -174,7 +229,7 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
             {
                 response in
                 if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
+                    _ = result as! NSDictionary
                     print("SUCCESS")
                     self.DeliveryView.deleteItems(at: [indexPath])
                     }else{

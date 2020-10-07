@@ -59,6 +59,24 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
         ButtonCancel.layer.cornerRadius = 5
     }
     
+    func ColorFunc(){
+
+        
+        //Button ADD
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = ButtonAdd.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+        
+        ButtonAdd.layer.insertSublayer(ReceivedGradient, at: 0)
+        ButtonCancel.layer.insertSublayer(ReceivedGradient, at: 0)
+    }
+    
     @IBAction func Add(_ sender: Any) {
         spinner.show(in: self.view)
             let parameters: Parameters=[
@@ -98,7 +116,7 @@ class DeliveryAddViewController: UIViewController, UIPickerViewDelegate, UIPicke
                             {
                                 response in
                                 if let result = response.result.value{
-                                    let jsonData = result as! NSDictionary
+                                    _ = result as! NSDictionary
                                     
                                      print("SUCCESS EDIT STATUS")
                                 }else{

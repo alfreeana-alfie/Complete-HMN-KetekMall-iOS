@@ -36,6 +36,7 @@ class ViewController: UIViewController, UITabBarDelegate {
     var email: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -93,6 +94,19 @@ class ViewController: UIViewController, UITabBarDelegate {
                 }
                 
         }
+    }
+    
+    func ColorFunc(){
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let l = CAGradientLayer()
+        l.frame = self.view.bounds
+        l.colors = [color1, color2]
+        l.startPoint = CGPoint(x: 0, y: 0.5)
+        l.endPoint = CGPoint(x: 1, y: 0.5)
+        l.cornerRadius = 16
+        self.view.layer.insertSublayer(l, at: 0)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){

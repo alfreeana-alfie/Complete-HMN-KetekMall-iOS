@@ -104,7 +104,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ADDR01: [String] = []
     var ADDR02: [String] = []
     var DIVISIONU: [String] = []
-    //    var DISTRICTU: [String] = []
     var POSTCODE: [String] = []
     var GRANDTOTAL: [String] = []
     
@@ -123,6 +122,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let sender = PushNotificationSender()
     var tokenUser: String = ""
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         DeleteOrder()
@@ -152,6 +155,32 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         ReadCart()
         
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorPlaceOrderOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorPlaceOrderTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let PlaceOrderGradient = CAGradientLayer()
+        PlaceOrderGradient.frame = ButtonPlaceOrder.bounds
+        PlaceOrderGradient.colors = [colorPlaceOrderOne, colorPlaceOrderTwo]
+        PlaceOrderGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        PlaceOrderGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        PlaceOrderGradient.cornerRadius = 7
+        ButtonPlaceOrder.layer.insertSublayer(PlaceOrderGradient, at: 0)
+      
+       
     }
     
     func ReadCart(){

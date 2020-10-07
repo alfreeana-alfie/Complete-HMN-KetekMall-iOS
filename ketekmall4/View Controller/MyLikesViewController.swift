@@ -32,6 +32,10 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Colorfunc()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +83,19 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    func Colorfunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ad_Detail.count
     }
@@ -114,9 +131,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.ItemLocation.text! = self.location[indexPath.row]
         
         cell.BtnView.layer.cornerRadius = 5
-        cell.BtnView.layer.borderWidth = 0.5
         cell.BtnRemove.layer.cornerRadius = 5
-        cell.BtnRemove.layer.borderWidth = 0.5
         
         if(self.lang == "ms"){
             cell.BtnView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
@@ -135,6 +150,28 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.layer.borderWidth = 0.3
         cell.layer.cornerRadius = 5
         cell.delegate = self
+        
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.BtnView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 5
+        cell.BtnView.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let RejectGradient = CAGradientLayer()
+        RejectGradient.frame = cell.BtnRemove.bounds
+        RejectGradient.colors = [colorReject1, colorReject2]
+        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        RejectGradient.cornerRadius = 5
+        cell.BtnRemove.layer.insertSublayer(RejectGradient, at: 0)
         
         return cell
     }

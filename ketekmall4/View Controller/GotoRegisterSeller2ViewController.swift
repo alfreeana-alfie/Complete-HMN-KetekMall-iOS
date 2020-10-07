@@ -18,6 +18,10 @@ class GotoRegisterSeller2ViewController: UIViewController {
     var lang: String = ""
     var userID: String = ""
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,21 @@ class GotoRegisterSeller2ViewController: UIViewController {
             changeLanguage(str: "en")
             
         }
+    }
+    
+    func ColorFunc(){
+        //Button Accept
+                
+        let colorImageOne1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorImageOne2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ImageOneGradient = CAGradientLayer()
+        ImageOneGradient.frame = ButtonSeller.bounds
+        ImageOneGradient.colors = [colorImageOne1, colorImageOne2]
+        ImageOneGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ImageOneGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ImageOneGradient.cornerRadius = 5
+            ButtonSeller.layer.insertSublayer(ImageOneGradient, at: 0)
     }
     
     func changeLanguage(str: String){

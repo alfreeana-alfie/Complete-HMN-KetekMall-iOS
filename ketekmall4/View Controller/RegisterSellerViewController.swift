@@ -49,6 +49,47 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
         ButtonCancel.layer.cornerRadius = 5
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
+        //Button Accept
+        let colorAcceptOne = UIColor(hexString: "#AA076B").cgColor
+        let colorAcceptTwo = UIColor(hexString: "#61045F").cgColor
+        
+        let AcceptGradient = CAGradientLayer()
+        AcceptGradient.frame = ButtonAccept.bounds
+        AcceptGradient.colors = [colorAcceptOne, colorAcceptTwo]
+        AcceptGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        AcceptGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        AcceptGradient.cornerRadius = 5
+        ButtonAccept.layer.insertSublayer(AcceptGradient, at: 0)
+        
+        //Button Cancel
+        let colorCancelOne = UIColor(hexString: "#BC4E9C").cgColor
+        let colorCancelTwo = UIColor(hexString: "#F80759").cgColor
+        
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = ButtonAccept.bounds
+        CancelGradient.colors = [colorCancelOne, colorCancelTwo]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 5
+        ButtonAccept.layer.insertSublayer(CancelGradient, at: 0)
+    }
+    
     func changeLanguage(str: String){
         ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
         ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)

@@ -38,6 +38,10 @@ class ForgotPasswordViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,5 +52,18 @@ class ForgotPasswordViewController: UIViewController {
         EmailImage.layer.cornerRadius = 5
         
         EmailImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+    }
+    
+    func ColorFunc(){
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let l = CAGradientLayer()
+        l.frame = ButtonSend.bounds
+        l.colors = [color1, color2]
+        l.startPoint = CGPoint(x: 0, y: 0.5)
+        l.endPoint = CGPoint(x: 1, y: 0.5)
+        l.cornerRadius = 16
+        ButtonSend.layer.insertSublayer(l, at: 0)
     }
 }

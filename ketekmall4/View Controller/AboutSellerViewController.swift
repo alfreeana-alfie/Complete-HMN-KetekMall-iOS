@@ -45,8 +45,6 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     var SELLERID1: String = ""
     var SELLLERNAME: String = ""
     var SELLERLOCATION: String = ""
-//    var SELLEREMAIL: String = ""
-//    var SELLERCHATNAME: String = ""
     var SELLERIMAGE: String = ""
     var SELLERPHONE: String = ""
     
@@ -66,6 +64,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     var PHOTO: [String] = []
     var DISTRICT: [String] = []
     var SOLD: [String] = []
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +109,20 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
 
         ProductLabel.text = "Products".localized(lang: str)
         SoldLabel.text = "Sold".localized(lang: str)
+    }
+    
+    func ColorFunc(){
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = self.view.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        self.view.layer.insertSublayer(ViewGradient, at: 0)
+        
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -176,8 +192,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                 
         }
     }
-
-    
+ 
     @IBAction func ButtonWhatsapp(_ sender: Any) {
         let urlWhats = "whatsapp://send?phone=" + "+6" + SELLERPHONE
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
@@ -295,7 +310,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.ItemLocation.text! = self.DISTRICT[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 10
-        cell.ButtonView.layer.borderWidth = 0.5
+        
         cell.layer.borderWidth = 0.2
         cell.layer.cornerRadius = 5
         
@@ -305,6 +320,17 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                    cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
                }
 
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.ButtonView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 10
+        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+        
         return cell
     }
     
