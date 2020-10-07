@@ -1034,7 +1034,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
     }
     
-    func onViewClick(cell: HotCollectionViewCell) {
+    @objc func onViewClick(cell: HotCollectionViewCell) {
         guard let indexPath = self.HotView.indexPath(for: cell) else{
             return
         }
@@ -1059,7 +1059,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             navigator.pushViewController(viewProduct, animated: true)
         }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.HotView{
@@ -1086,6 +1085,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.ButtonView.layer.cornerRadius = 5
             
             cell.layer.cornerRadius = 5
+            
+            cell.ItemImage.isUserInteractionEnabled = true
+            let Image = UITapGestureRecognizer(target: self, action: #selector(onViewClick(cell:)))
+            
+            cell.ItemImage.addGestureRecognizer(Image)
+            
             let colorOne = UIColor(hexString: "#FC4A1A").cgColor
             let colorTwo = UIColor(hexString: "#F7B733").cgColor
             
@@ -1110,6 +1115,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell1.ItemPrice.text! = "MYR" + self.PRICESHOCKING[indexPath.row]
             cell1.ButtonView.layer.cornerRadius = 5
             cell1.layer.cornerRadius = 5
+            
+            cell1.ItemImage.isUserInteractionEnabled = true
+            let Image = UITapGestureRecognizer(target: self, action: #selector(onViewClick(cell:)))
+            
+            cell1.ItemImage.addGestureRecognizer(Image)
             
             let colorOne = UIColor(hexString: "#FC4A1A").cgColor
             let colorTwo = UIColor(hexString: "#F7B733").cgColor

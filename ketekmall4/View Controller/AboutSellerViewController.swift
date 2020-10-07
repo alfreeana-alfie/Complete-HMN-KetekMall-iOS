@@ -17,13 +17,13 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     let URL_ADD_FAV = "https://ketekmall.com/ketekmall/add_to_fav.php"
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
+    let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart_single.php"
     
-    private let spinner = JGProgressHUD(style: .dark)
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     var email_user: String = ""
-
+    
     @IBOutlet weak var ButtonChatSeller: UIImageView!
     @IBOutlet weak var ProductLabel: UILabel!
     @IBOutlet weak var SoldLabel: UILabel!
@@ -81,7 +81,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
             
         }
         Tabbar.delegate = self
-
+        
         AboutSellerView.delegate = self
         AboutSellerView.dataSource = self
         
@@ -106,7 +106,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         Tabbar.items?[0].title = "Home".localized(lang: str)
         Tabbar.items?[1].title = "Notification".localized(lang: str)
         Tabbar.items?[2].title = "Me".localized(lang: str)
-
+        
         ProductLabel.text = "Products".localized(lang: str)
         SoldLabel.text = "Sold".localized(lang: str)
     }
@@ -192,7 +192,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                 
         }
     }
- 
+    
     @IBAction func ButtonWhatsapp(_ sender: Any) {
         let urlWhats = "whatsapp://send?phone=" + "+6" + SELLERPHONE
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
@@ -315,11 +315,16 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.layer.cornerRadius = 5
         
         if(lang == "ms"){
-                   cell.ButtonView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
-               }else{
-                   cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
-               }
-
+            cell.ButtonView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
+        }else{
+            cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
+        }
+        
+        cell.ItemImage.isUserInteractionEnabled = true
+        let Image = UITapGestureRecognizer(target: self, action: #selector(onViewClick(cell:)))
+        
+        cell.ItemImage.addGestureRecognizer(Image)
+        
         let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
         let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
         
@@ -344,16 +349,16 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-       return 0.0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-       return 0.0
+        return 0.0
     }
     
-    func onViewClick(cell: AboutSellerCollectionViewCell) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    @objc func onViewClick(cell: AboutSellerCollectionViewCell) {
         guard let indexPath = self.AboutSellerView.indexPath(for: cell) else{
             return
         }
@@ -379,93 +384,133 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func onAddToFav(cell: AboutSellerCollectionViewCell) {
+        let spinner = JGProgressHUD(style: .dark)
         guard let indexPath = self.AboutSellerView.indexPath(for: cell) else{
-                    return
+            return
+        }
+        
+        let parameters: Parameters=[
+            "seller_id": self.SELLERID[indexPath.row],
+            "item_id": self.ITEMID[indexPath.row],
+            "customer_id": UserID,
+            "main_category": self.MAINCATE[indexPath.row],
+            "sub_category": self.SUBCATE[indexPath.row],
+            "ad_detail": self.ADDETAIL[indexPath.row],
+            "brand_material":self.BRAND[indexPath.row],
+            "inner_material": self.INNER[indexPath.row],
+            "stock": self.STOCK[indexPath.row],
+            "description": self.DESC[indexPath.row],
+            "price": self.PRICE[indexPath.row],
+            "rating": self.RATING[indexPath.row],
+            "division": self.DIVISION[indexPath.row],
+            "district": self.DISTRICT[indexPath.row],
+            "photo": self.PHOTO[indexPath.row]
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                    if(self.lang == "ms"){
+                        spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
+                        
+                    }else{
+                        spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
+                        
+                    }
+                    spinner.show(in: self.view)
+                    spinner.dismiss(afterDelay: 2.0)
                 }
-                
-                let parameters: Parameters=[
-                    "seller_id": self.SELLERID[indexPath.row],
-                    "item_id": self.ITEMID[indexPath.row],
-                    "customer_id": UserID,
-                    "main_category": self.MAINCATE[indexPath.row],
-                    "sub_category": self.SUBCATE[indexPath.row],
-                    "ad_detail": self.ADDETAIL[indexPath.row],
-                    "brand_material":self.BRAND[indexPath.row],
-                    "inner_material": self.INNER[indexPath.row],
-                    "stock": self.STOCK[indexPath.row],
-                    "description": self.DESC[indexPath.row],
-                    "price": self.PRICE[indexPath.row],
-                    "rating": self.RATING[indexPath.row],
-                    "division": self.DIVISION[indexPath.row],
-                    "district": self.DISTRICT[indexPath.row],
-                    "photo": self.PHOTO[indexPath.row]
-                ]
-                
-                //Sending http post request
-                Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
-                    {
-                        response in
-                        if let result = response.result.value {
-                            let jsonData = result as! NSDictionary
-                            print(jsonData.value(forKey: "message")!)
-                            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                            if(self.lang == "ms"){
-                                self.spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
-                                
-                            }else{
-                                self.spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
-                               
-                            }
-                            self.spinner.show(in: self.view)
-                            self.spinner.dismiss(afterDelay: 2.0)
-                        }
-                }
+        }
     }
     
     func onAddToCart(cell: AboutSellerCollectionViewCell) {
+        let spinner = JGProgressHUD(style: .dark)
         guard let indexPath = self.AboutSellerView.indexPath(for: cell) else{
-                    return
-                }
-                
-                let parameters: Parameters=[
-                    "seller_id": self.SELLERID[indexPath.row],
-                    "item_id": self.ITEMID[indexPath.row],
-                    "customer_id": UserID,
-                    "main_category": self.MAINCATE[indexPath.row],
-                    "sub_category": self.SUBCATE[indexPath.row],
-                    "ad_detail": self.ADDETAIL[indexPath.row],
-                    "price": self.PRICE[indexPath.row],
-                    "quantity": "1",
-                    "division": self.DIVISION[indexPath.row],
-                    "district": self.DISTRICT[indexPath.row],
-                    "photo": self.PHOTO[indexPath.row]
-                ]
-                
-                //Sending http post request
-                Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-                    {
-                        response in
-                        //printing response
-        //                print(response)
-                        
-                        //getting the json value from the server
-                        if let result = response.result.value {
+            return
+        }
+        
+        let main_parameters: Parameters = [
+            "customer_id" : UserID,
+            "item_id" : self.ITEMID[indexPath.row]
+        ]
+        
+        Alamofire.request(URL_READ_CART,method: .post, parameters: main_parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    print("\(jsonData)")
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        if(user.count != 0){
+                            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                             
-                            //converting it as NSDictionary
-                            let jsonData = result as! NSDictionary
-                            print(jsonData.value(forKey: "message")!)
-                            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                             if(self.lang == "ms"){
-                                self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                                spinner.textLabel.text = "Sorry, Already in the cart item".localized(lang: "ms")
                                 
                             }else{
-                                self.spinner.textLabel.text = "Added to Cart".localized(lang: "en")
-                               
+                                spinner.textLabel.text = "Sorry, Already in the cart".localized(lang: "en")
+                                
                             }
-
-                            self.spinner.show(in: self.view)
-                            self.spinner.dismiss(afterDelay: 2.0)
+                            spinner.dismiss(afterDelay: 3.0)
+                        }else{
+                            let parameters: Parameters=[
+                                "seller_id": self.SELLERID[indexPath.row],
+                                "item_id": self.ITEMID[indexPath.row],
+                                "customer_id": self.UserID,
+                                "main_category": self.MAINCATE[indexPath.row],
+                                "sub_category": self.SUBCATE[indexPath.row],
+                                "ad_detail": self.ADDETAIL[indexPath.row],
+                                "price": self.PRICE[indexPath.row],
+                                "quantity": "1",
+                                "division": self.DIVISION[indexPath.row],
+                                "district": self.DISTRICT[indexPath.row],
+                                "photo": self.PHOTO[indexPath.row]
+                            ]
+                            
+                            if(self.SELLERID[indexPath.row] == self.UserID){
+                                spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                                if(self.lang == "ms"){
+                                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                                    
+                                }else{
+                                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+                                    
+                                }
+                                
+                                spinner.show(in: self.view)
+                                spinner.dismiss(afterDelay: 3.0)
+                            }else{
+                                Alamofire.request(self.URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                                    {
+                                        response in
+                                        if let result = response.result.value {
+                                            let jsonData = result as! NSDictionary
+                                            print(jsonData.value(forKey: "message")!)
+                                            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                                            if(self.lang == "ms"){
+                                                spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                                                
+                                            }else{
+                                                spinner.textLabel.text = "Added to Cart".localized(lang: "en")
+                                                
+                                            }
+                                            spinner.show(in: self.view)
+                                            spinner.dismiss(afterDelay: 3.0)
+                                            
+                                        }
+                                }
+                            }
                         }
+                    }
                 }
+        }
     }
 }
