@@ -171,8 +171,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     func ColorFunc(){
         //Button Accept
-        let colorImageOne1 = UIColor(hexString: "#AA076B").cgColor
-        let colorImageOne2 = UIColor(hexString: "#61045F").cgColor
+        let colorImageOne1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorImageOne2 = UIColor(hexString: "#F7B733").cgColor
         
         let ImageOneGradient = CAGradientLayer()
         ImageOneGradient.frame = ImageView1.bounds
@@ -181,54 +181,10 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         ImageOneGradient.endPoint = CGPoint(x: 1, y: 0.5)
         ImageOneGradient.cornerRadius = 5
             ImageView1.layer.insertSublayer(ImageOneGradient, at: 0)
-        
-        //Button Accept
-        let colorImageTwo1 = UIColor(hexString: "#AA076B").cgColor
-        let colorImageTwo2 = UIColor(hexString: "#61045F").cgColor
-        
-        let ImageTwoGradient = CAGradientLayer()
-        ImageTwoGradient.frame = ImageView2.bounds
-        ImageTwoGradient.colors = [colorImageTwo1, colorImageTwo2]
-        ImageTwoGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageTwoGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageTwoGradient.cornerRadius = 5
-            ImageView2.layer.insertSublayer(ImageTwoGradient, at: 0)
-        
-        //Button Accept
-        let colorImageThree1 = UIColor(hexString: "#AA076B").cgColor
-        let colorImageThree2 = UIColor(hexString: "#61045F").cgColor
-        
-        let ImageThreeGradient = CAGradientLayer()
-        ImageThreeGradient.frame = ImageView3.bounds
-        ImageThreeGradient.colors = [colorImageThree1, colorImageThree2]
-        ImageThreeGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageThreeGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageThreeGradient.cornerRadius = 5
-            ImageView3.layer.insertSublayer(ImageThreeGradient, at: 0)
-        
-        //Button Accept
-        let colorImageFour1 = UIColor(hexString: "#AA076B").cgColor
-        let colorImageFour2 = UIColor(hexString: "#61045F").cgColor
-        
-        let ImageFourGradient = CAGradientLayer()
-        ImageFourGradient.frame = ImageView4.bounds
-        ImageFourGradient.colors = [colorImageFour1, colorImageFour2]
-        ImageFourGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageFourGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageFourGradient.cornerRadius = 5
-            ImageView4.layer.insertSublayer(ImageFourGradient, at: 0)
-        
-        //Button Accept
-        let colorImageFive1 = UIColor(hexString: "#AA076B").cgColor
-        let colorImageFive2 = UIColor(hexString: "#61045F").cgColor
-        
-        let ImageFiveGradient = CAGradientLayer()
-        ImageFiveGradient.frame = ImageView5.bounds
-        ImageFiveGradient.colors = [colorImageFive1, colorImageFive2]
-        ImageFiveGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageFiveGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageFiveGradient.cornerRadius = 5
-            ImageView5.layer.insertSublayer(ImageFiveGradient, at: 0)
+            ImageView2.layer.insertSublayer(ImageOneGradient, at: 0)
+            ImageView3.layer.insertSublayer(ImageOneGradient, at: 0)
+            ImageView4.layer.insertSublayer(ImageOneGradient, at: 0)
+            ImageView5.layer.insertSublayer(ImageOneGradient, at: 0)
         
         //Button Accept
         let color1 = UIColor(hexString: "#AA076B").cgColor

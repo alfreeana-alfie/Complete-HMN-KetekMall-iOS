@@ -2518,7 +2518,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="ViewClick:" destination="3WV-dc-ubZ" eventType="touchUpInside" id="qwX-6S-0by"/>
+                                                        <action selector="ViewClick:" destination="3WV-dc-ubZ" eventType="touchUpInside" id="7gx-p4-ty2"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BV8-Kf-W1C">

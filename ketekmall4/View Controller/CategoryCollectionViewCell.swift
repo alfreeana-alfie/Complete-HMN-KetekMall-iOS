@@ -27,9 +27,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ButtonAddToFav: UIButton!
     @IBOutlet weak var ButtonAddToCart: UIButton!
     @IBOutlet weak var Rating: AARatingBar!
+   
     
     @IBAction func ViewClick(_ sender: Any) {
-        self.delegate?.onViewClick(cell: self)
+        self.delegate?.onAddToCart(cell: self)
     }
     
     @IBAction func AddToFav(_ sender: Any) {
@@ -37,7 +38,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func AddToCart(_ sender: Any) {
-        self.delegate?.onAddToCart(cell: self)
+        self.delegate?.onAddToFav(cell: self)
     }
     
 }
