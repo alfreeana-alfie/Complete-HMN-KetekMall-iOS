@@ -24,6 +24,13 @@ class HotCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ButtonView: UIButton!
     @IBOutlet weak var Rating: AARatingBar!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewClick(sender:)))
+        ItemImage.isUserInteractionEnabled = true
+        ItemImage.addGestureRecognizer(clickImage)
+    }
+    
     @IBAction func ViewClick(sender: Any){
         self.delegate?.onViewClick(cell: self)
     }

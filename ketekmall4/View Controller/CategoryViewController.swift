@@ -129,9 +129,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
-        print(lang)
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -146,6 +144,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         Tabbar.delegate = self
         
+        ButtonPriceUp.isHidden = true
         
         if(DivisionFilter.isEmpty && DistricFilter.isEmpty){
             ViewList()
@@ -371,11 +370,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
         ViewGradient.cornerRadius = 5
         cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
-        
-        cell.ItemImage.isUserInteractionEnabled = true
-        let Image = UITapGestureRecognizer(target: self, action: #selector(onViewClick(cell:)))
-        
-        cell.ItemImage.addGestureRecognizer(Image)
         
         cell.delegate = self
         return cell

@@ -320,10 +320,6 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
             cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
         }
         
-        cell.ItemImage.isUserInteractionEnabled = true
-        let Image = UITapGestureRecognizer(target: self, action: #selector(onViewClick(cell:)))
-        
-        cell.ItemImage.addGestureRecognizer(Image)
         
         let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
         let colorViewTwo = UIColor(hexString: "#F7B733").cgColor

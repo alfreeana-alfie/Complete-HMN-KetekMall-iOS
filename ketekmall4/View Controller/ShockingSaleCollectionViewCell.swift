@@ -23,7 +23,14 @@ class ShockingSaleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ButtonView: UIButton!
     @IBOutlet weak var Rating: AARatingBar!
     
-    @IBAction func ViewClick1(_ sender: Any) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewClick1(sender:)))
+        ItemImage.isUserInteractionEnabled = true
+        ItemImage.addGestureRecognizer(clickImage)
+    }
+    
+    @IBAction func ViewClick1(sender: Any) {
         self.delegate?.onViewClick1(cell: self)
     }
 }

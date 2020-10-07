@@ -1060,6 +1060,32 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    @objc func onViewClick2(cell: HotCollectionViewCell) {
+            guard let indexPath = self.HotView.indexPath(for: cell) else{
+                return
+            }
+            
+            let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+            viewProduct.USERID = userID
+            viewProduct.ItemID = self.ID[indexPath.row]
+            viewProduct.SELLERID = self.SELLERIDHOT[indexPath.row]
+            viewProduct.MAINCATE = self.MAINCATEHOT[indexPath.row]
+            viewProduct.SUBCATE = self.SUBCATEHOT[indexPath.row]
+            viewProduct.ADDETAIL = self.ADDETAILHOT[indexPath.row]
+            viewProduct.BRAND = self.BRANDHOT[indexPath.row]
+            viewProduct.INNER = self.INNERHOT[indexPath.row]
+            viewProduct.STOCK = self.STOCKHOT[indexPath.row]
+            viewProduct.DESC = self.DESCHOT[indexPath.row]
+            viewProduct.PRICE = self.PRICEHOT[indexPath.row]
+    //        viewProduct.RATING = self.RATINGHOT[indexPath.row]
+            viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
+            viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
+            viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewProduct, animated: true)
+            }
+        }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.HotView{
             return ID.count
@@ -1085,11 +1111,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.ButtonView.layer.cornerRadius = 5
             
             cell.layer.cornerRadius = 5
-            
-            cell.ItemImage.isUserInteractionEnabled = true
-            let Image = UITapGestureRecognizer(target: self, action: #selector(onViewClick(cell:)))
-            
-            cell.ItemImage.addGestureRecognizer(Image)
             
             let colorOne = UIColor(hexString: "#FC4A1A").cgColor
             let colorTwo = UIColor(hexString: "#F7B733").cgColor
@@ -1117,7 +1138,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell1.layer.cornerRadius = 5
             
             cell1.ItemImage.isUserInteractionEnabled = true
-            let Image = UITapGestureRecognizer(target: self, action: #selector(onViewClick(cell:)))
+            let Image = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.onViewClick(cell:)))
             
             cell1.ItemImage.addGestureRecognizer(Image)
             

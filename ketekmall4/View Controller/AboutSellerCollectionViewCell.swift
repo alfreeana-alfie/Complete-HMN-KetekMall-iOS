@@ -28,8 +28,19 @@ class AboutSellerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ButtonView: UIButton!
     @IBOutlet weak var Rating: AARatingBar!
     
-    @IBAction func ViewClick(_ sender: Any) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewImage(sender:)))
+        ItemImage.isUserInteractionEnabled = true
+        ItemImage.addGestureRecognizer(clickImage)
+    }
+    
+    @objc func ViewImage(sender: Any){
         self.delegate?.onViewClick(cell: self)
+    }
+    
+    @IBAction func ViewClick(sender: Any) {
+        self.delegate?.onAddToCart(cell: self)
     }
     
     @IBAction func AddToFav(_ sender: Any) {
