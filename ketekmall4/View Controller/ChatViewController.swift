@@ -37,6 +37,9 @@ struct Saved {
 class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
     
     let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
+    let URL_ADD_CHAT = "https://ketekmall.com/ketekmall/add_chat.php"
+    let URL_EDIT_CHAT = "https://ketekmall.com/ketekmall/edit_chat.php"
+    
     let ref = Database.database().reference(withPath: "messages")
     
     let sharedPref = UserDefaults.standard
@@ -101,25 +104,30 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
             return
         }
         
+        let ref1 = emailUser + "_" + chatWith
+        let ref2 = chatWith + "_" + emailUser
+        let key = "-" + randomString
+        
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "nl_NL")
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT 8")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var randomString2 = String.random()
-        
+        let randomString2 = String.random()
         
         let newDate = dateFormatter.string(from: date)
         messages.append(Message(sender: sender, messageId: randomString, sentDate: date, kind: .text(text)))
         messagesCollectionView.reloadDataAndKeepOffset()
         
-        let msgSender_firebase = self.ref.child(emailUser + "_" + chatWith).child("-" + randomString).child("message")
-        let timeSender_firebase = self.ref.child(emailUser + "_" + chatWith).child("-" + randomString).child("time")
-        let userSender_firebase = self.ref.child(emailUser + "_" + chatWith).child("-" + randomString).child("user")
+        let msgSender_firebase = self.ref.child(ref1).child(key).child("message")
+        let timeSender_firebase = self.ref.child(ref1).child(key).child("time")
+        let userSender_firebase = self.ref.child(ref1).child(key).child("user")
 
-        let msgReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child("-" + randomString).child("message")
-        let timeReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child("-" + randomString).child("time")
-        let userReceiver_firebase = self.ref.child(chatWith + "_" + emailUser).child("-" + randomString).child("user")
+        let msgReceiver_firebase = self.ref.child(ref2).child(key).child("message")
+        let timeReceiver_firebase = self.ref.child(ref2).child(key).child("time")
+        let userReceiver_firebase = self.ref.child(ref2).child(key).child("user")
+        
+        
 
         msgSender_firebase.setValue(text) {
             (error:Error?, ref:DatabaseReference) in
@@ -175,10 +183,31 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
             }
         }
         
+        ChatData(user_chatWith: ref1, chat_key: text)
+        ChatData(user_chatWith: ref2, chat_key: text)
+        
         NotificationSetup(Token: chatToken, Title: chatName, Body: text)
         randomString = ""
         randomString = randomString2
         inputBar.inputTextView.text.removeAll()
+    }
+    
+    private func ChatData(user_chatWith: String, chat_key: String){
+        let parameters: Parameters=[
+            "user_chatwith": user_chatWith,
+            "chat_key": chat_key,
+            "is_read": "false"
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_ADD_CHAT, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }
+        }
     }
 }
 
