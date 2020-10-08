@@ -83,6 +83,9 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         layout.textMessageSizeCalculator.incomingAvatarSize = .zero
         }
         
+        let ref1 = emailUser + "_" + chatWith
+        
+        UpdateChatData(user_chatWith: ref1)
         ChatList2()
         ChatNew()
     }
@@ -201,6 +204,23 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         
         //Sending http post request
         Alamofire.request(URL_ADD_CHAT, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }
+        }
+    }
+    
+    private func UpdateChatData(user_chatWith: String){
+        let parameters: Parameters=[
+            "user_chatwith": user_chatWith,
+            "is_read": "true"
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_EDIT_CHAT, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value {

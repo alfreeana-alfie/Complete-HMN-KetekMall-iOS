@@ -153,6 +153,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_PRICE_DOWN_HOT = "https://ketekmall.com/ketekmall/price_down/readall_sold.php"
     let URL_PRICE_DOWN_SHOCKING_SALE = "https://ketekmall.com/ketekmall/price_down/readall_shocking.php"
     
+    let URL_READ_CHAT = "https://ketekmall.com/ketekmall/read_chat.php"
+    
     
     @IBOutlet weak var CakePastries: UIView!
     @IBOutlet weak var ProcessFood: UIView!
@@ -171,6 +173,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var Verify: UILabel!
     @IBOutlet weak var Carousel: ImageSlideshow!
     @IBOutlet weak var CartViewNav: UIView!
+    @IBOutlet weak var ChatViewNav: UIView!
     
     @IBOutlet weak var VerifyView: UIView!
     @IBOutlet weak var ButtonCake: UIButton!
@@ -236,6 +239,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let dropDown = DropDown()
     let sharedPref = UserDefaults.standard
     var user: String = ""
+    var email: String = ""
     var viewController1: UIViewController?
     
     @IBOutlet weak var Tabbar: UITabBar!
@@ -262,6 +266,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Carousel.contentScaleMode = .scaleAspectFill
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
+        
+        let index = email.firstIndex(of: "@") ?? email.endIndex
+        let newEmail = email[..<index]
+        
+        MessageCount(EmailUser: String(newEmail))
         
         dropDown.anchorView = ListBar
         dropDown.dataSource = ["Edit Profile","Change to BM","Change to ENG","About KetekMall", "Logout"]
@@ -378,6 +388,37 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ShockingSale()
         CartCount(UserID: String(user))
         
+    }
+    
+    func MessageCount(EmailUser: String){
+        Alamofire.request(URL_READ_CHAT, method: .post).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    self.spinner.dismiss(afterDelay: 3.0)
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        if(user.count == 0){
+                            
+                        }else{
+                            var badgeAppearance = BadgeAppearance()
+                            badgeAppearance.backgroundColor = UIColor.red //default is red
+                            badgeAppearance.textColor = UIColor.white // default is white
+                            badgeAppearance.textAlignment = .center //default is center
+                            badgeAppearance.textSize = 10 //default is 12
+                            badgeAppearance.distanceFromCenterX = 10 //default is 0
+                            badgeAppearance.distanceFromCenterY = 1 //default is 0
+                            badgeAppearance.allowShadow = false
+                            badgeAppearance.borderColor = .red
+                            badgeAppearance.borderWidth = 0
+                            self.ChatViewNav.badge(text: String(user.count), appearance: badgeAppearance)
+                        }
+                    }
+                }
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -658,7 +699,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
         }
     }
-    
     
     @IBAction func Find(_ sender: Any) {
 //        let tabbar = tabBarController as! BaseTabBarController
@@ -1020,7 +1060,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                                     badgeAppearance.backgroundColor = UIColor.red //default is red
                                     badgeAppearance.textColor = UIColor.white // default is white
                                     badgeAppearance.textAlignment = .center //default is center
-                                    badgeAppearance.textSize = 9 //default is 12
+                                    badgeAppearance.textSize = 10 //default is 12
                                     badgeAppearance.distanceFromCenterX = 10 //default is 0
                                     badgeAppearance.distanceFromCenterY = 1 //default is 0
                                     badgeAppearance.allowShadow = false
@@ -1059,32 +1099,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             navigator.pushViewController(viewProduct, animated: true)
         }
     }
-    
-    @objc func onViewClick2(cell: HotCollectionViewCell) {
-            guard let indexPath = self.HotView.indexPath(for: cell) else{
-                return
-            }
-            
-            let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
-            viewProduct.USERID = userID
-            viewProduct.ItemID = self.ID[indexPath.row]
-            viewProduct.SELLERID = self.SELLERIDHOT[indexPath.row]
-            viewProduct.MAINCATE = self.MAINCATEHOT[indexPath.row]
-            viewProduct.SUBCATE = self.SUBCATEHOT[indexPath.row]
-            viewProduct.ADDETAIL = self.ADDETAILHOT[indexPath.row]
-            viewProduct.BRAND = self.BRANDHOT[indexPath.row]
-            viewProduct.INNER = self.INNERHOT[indexPath.row]
-            viewProduct.STOCK = self.STOCKHOT[indexPath.row]
-            viewProduct.DESC = self.DESCHOT[indexPath.row]
-            viewProduct.PRICE = self.PRICEHOT[indexPath.row]
-    //        viewProduct.RATING = self.RATINGHOT[indexPath.row]
-            viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
-            viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
-            viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewProduct, animated: true)
-            }
-        }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.HotView{

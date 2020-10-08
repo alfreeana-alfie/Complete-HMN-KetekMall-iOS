@@ -10,6 +10,17 @@ import UIKit
 import Alamofire
 
 class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+                cell.UserName.text! = "Nana"
+        //        cell.accessoryType = .disclosureIndicator
+                return cell
+    }
+    
     
     @IBOutlet weak var ChatView: UITableView!
     @IBOutlet weak var Tabbar: UITabBar!
@@ -35,19 +46,27 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
     var BarHidden: Bool = false
     @IBOutlet weak var BarHeight: NSLayoutConstraint!
     
+    override func viewDidAppear(_ animated: Bool) {
+        ChatView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ChatView.delegate = self
         ChatView.dataSource = self
         
+        self.ChatView.estimatedRowHeight = 0;
+        self.ChatView.estimatedSectionHeaderHeight = 0;
+        self.ChatView.estimatedSectionFooterHeight = 0;
+        
         Tabbar.delegate = self
         
-        if(BarHidden == true){
-            Tabbar.isHidden = true
-            BarHeight.constant = 0
-        }else{
-            Tabbar.isHidden = false
-        }
+//        if(BarHidden == true){
+//            Tabbar.isHidden = true
+//            BarHeight.constant = 0
+//        }else{
+//            Tabbar.isHidden = false
+//        }
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
@@ -57,8 +76,41 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         let newEmail = self.email[..<index]
         
         EMAILUSER = String(newEmail)
-        ChatList2()
+//        ChatList2()
         ChatList()
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        default:
+            break
+        }
     }
     
     func ChatList2(){
@@ -103,7 +155,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                     let json = result as! [String: Any]
                     let Message = json.keys
                     let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
-                    let newEmail = self.email[..<index]
+                    var newEmail = self.email[..<index]
                     
                     for i in Message{
                         if(i.contains(String(newEmail) + "_")){
@@ -118,21 +170,23 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                                 let token = User1["token"] as! String
                                                 
                                                 let index2 = email.firstIndex(of: "@") ?? email.endIndex
-                                                let newEmail2 = email[..<index2]
+                                                var newEmail2 = email[..<index2]
                                                 
-                                                if(!j.elementsEqual(self.name)){
-                                                    if(i.contains(String(newEmail2))){
-                                                        
-                                                        self.USERNAME.append(j)
-                                                        self.USERNAME.removeDuplicates()
-                                                        
-                                                        self.USERTOKEN.append(token)
-                                                        self.USERTOKEN.removingDuplicates()
-                                                        
-                                                        self.CHATWITH.append(String(newEmail2))
-                                                        self.ChatView.reloadData()
-                                                    }
-                                                }
+                                                
+                                                
+//                                                if(!j.elementsEqual(self.name)){
+//                                                    if(i.contains(String(newEmail2))){
+//
+//                                                        self.USERNAME.append(j)
+//                                                        self.USERNAME.removeDuplicates()
+//
+////                                                        self.USERTOKEN.append(token)
+////                                                        self.USERTOKEN.removingDuplicates()
+//
+////                                                        self.CHATWITH.append(String(newEmail2))
+//
+//                                                    }
+//                                                }
                                             }
                                         }
                                     }
@@ -145,29 +199,34 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return USERNAME.count
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 3
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+//        cell.UserName.text! = "Nana"
+////        cell.accessoryType = .disclosureIndicator
+//        return cell
+//    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
-        cell.UserName.text! = self.USERNAME[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let vc = ChatViewController()
-        vc.title = self.USERNAME[indexPath.row]
-        vc.navigationItem.largeTitleDisplayMode = .never
-        vc.chatWith = self.CHATWITH[indexPath.row]
-        vc.chatName = self.USERNAME[indexPath.row]
-        vc.chatToken = self.USERTOKEN[indexPath.row]
-        vc.emailUser = self.EMAILUSER
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//
+//        let vc = ChatViewController()
+//        vc.title = self.USERNAME[indexPath.row]
+//        vc.navigationItem.largeTitleDisplayMode = .never
+//        vc.chatWith = self.CHATWITH[indexPath.row]
+//        vc.chatName = self.USERNAME[indexPath.row]
+//        vc.chatToken = self.USERTOKEN[indexPath.row]
+//        vc.emailUser = self.EMAILUSER
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
 }
 
 extension Array where Element: Hashable {

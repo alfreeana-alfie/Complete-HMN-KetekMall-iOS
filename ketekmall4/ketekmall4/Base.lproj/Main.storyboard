@@ -4288,6 +4288,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <outlet property="Carousel" destination="l6J-RN-R9l" id="x9c-aT-3xZ"/>
                         <outlet property="CartBar" destination="5VV-mx-vj8" id="kFF-mI-Nuk"/>
                         <outlet property="CartViewNav" destination="gDl-ff-InG" id="Udv-qN-7J1"/>
+                        <outlet property="ChatViewNav" destination="4Ff-zw-swT" id="XMT-4z-uuC"/>
                         <outlet property="Fashion" destination="KSg-lE-Ckd" id="9w0-n0-VAc"/>
                         <outlet property="FindBar" destination="wdd-7E-vSz" id="37y-kW-pO1"/>
                         <outlet property="FindButton" destination="Gn9-it-79w" id="DS9-aA-BDS"/>
