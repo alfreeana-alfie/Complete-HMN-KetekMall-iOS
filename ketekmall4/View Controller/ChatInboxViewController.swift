@@ -209,7 +209,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
 //    }
 //
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+//        let cell = tableView.dequeueReusableCell(withReuseIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
 //        cell.UserName.text! = "Nana"
 ////        cell.accessoryType = .disclosureIndicator
 //        return cell
@@ -227,18 +227,4 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
 //        vc.emailUser = self.EMAILUSER
 //        navigationController?.pushViewController(vc, animated: true)
 //    }
-}
-
-extension Array where Element: Hashable {
-    func removingDuplicates() -> [Element] {
-        var addedDict = [Element: Bool]()
-        
-        return filter {
-            addedDict.updateValue(true, forKey: $0) == nil
-        }
-    }
-    
-    mutating func removeDuplicates() {
-        self = self.removingDuplicates()
-    }
 }

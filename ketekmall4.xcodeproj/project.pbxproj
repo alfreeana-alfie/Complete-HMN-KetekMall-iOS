@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B47509B3769400EBE6813EF /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */; };
+		FB0330B2252F6E9800D5F07D /* ChatInboxTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */; };
+		FB0330B4252F6F7F00D5F07D /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */; };
 		FB08436F2512A371003C200E /* AboutKetekMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */; };
 		FB0843712512A38B003C200E /* ReturnRefundPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */; };
 		FB0843732512A39C003C200E /* DeliveryPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */; };
@@ -112,6 +114,8 @@
 		49AA2DA13E08E38990FFD7D1 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7F0E03E474A0A5BC70F344 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
 		E98FF399E68D56229FABBE72 /* Pods-ketekmall4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.debug.xcconfig"; sourceTree = "<group>"; };
+		FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxTwoViewController.swift; sourceTree = "<group>"; };
+		FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutKetekMallViewController.swift; sourceTree = "<group>"; };
 		FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnRefundPolicyViewController.swift; sourceTree = "<group>"; };
 		FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPolicyViewController.swift; sourceTree = "<group>"; };
@@ -398,6 +402,8 @@
 				FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */,
 				FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */,
 				FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */,
+				FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */,
+				FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 				FB4B72DD24FBEF1A00293B81 /* ViewSellingViewController.swift in Sources */,
 				FB528AD524FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift in Sources */,
 				FB528ACD24FA84DA00A968E8 /* ProductRatingViewController.swift in Sources */,
+				FB0330B2252F6E9800D5F07D /* ChatInboxTwoViewController.swift in Sources */,
 				FB528AC624FA616800A968E8 /* MySellingViewController.swift in Sources */,
 				FB43BFD424FF7502002D36E0 /* CheckoutViewController.swift in Sources */,
 				FB4B72D724FB89FA00293B81 /* MyLikesViewController.swift in Sources */,
@@ -655,6 +662,7 @@
 				FB4557B124F90EDA00FC502B /* AccountSettingsViewController.swift in Sources */,
 				FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */,
 				FBB2D5FB2513E20C007BEA53 /* BeforeRegisterViewController.swift in Sources */,
+				FB0330B4252F6F7F00D5F07D /* ChatCollectionViewCell.swift in Sources */,
 				FB7D211D25001C500043A286 /* DeliveryAddViewController.swift in Sources */,
 				FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */,
 				FB9A9286250368B2001DD96C /* ViewController.swift in Sources */,
