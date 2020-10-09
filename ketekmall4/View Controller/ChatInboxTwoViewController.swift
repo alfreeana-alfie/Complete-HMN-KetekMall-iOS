@@ -10,217 +10,271 @@ import UIKit
 import Alamofire
 
 
-class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-        @IBOutlet weak var ChatView: UICollectionView!
-        @IBOutlet weak var Tabbar: UITabBar!
-        var viewController1: UIViewController?
+    @IBOutlet weak var ChatView: UICollectionView!
+    @IBOutlet weak var Tabbar: UITabBar!
+    var viewController1: UIViewController?
+    
+    let sharedPref = UserDefaults.standard
+    var user: String = ""
+    var name: String = ""
+    var email: String = ""
+    
+    let URL_USER = "https://click-1595830894120.firebaseio.com/users.json"
+    let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
+    
+    var USERNAME: [String] = []
+    var USERIMAGE: [String] = []
+    var USERTOKEN: [String] = []
+    
+    var user_messages: [String] = []
+    var strings: [String] = []
+    
+    var NAME: String = ""
+    var EMAILUSER: String = ""
+    var CHATWITH: [String] = []
+    
+    var BarHidden: Bool = false
+    @IBOutlet weak var BarHeight: NSLayoutConstraint!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        Tabbar.delegate = self
+        ChatView.delegate = self
+        ChatView.dataSource = self
         
-        let sharedPref = UserDefaults.standard
-        var user: String = ""
-        var name: String = ""
-        var email: String = ""
-        
-        let URL_USER = "https://click-1595830894120.firebaseio.com/users.json"
-        let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
-        
-        var USERNAME: [String] = []
-        var USERIMAGE: [String] = []
-        var USERTOKEN: [String] = []
-        var strings: [String] = []
-        
-        var NAME: String = ""
-        var EMAILUSER: String = ""
-        var CHATWITH: [String] = []
-        
-        var BarHidden: Bool = false
-        @IBOutlet weak var BarHeight: NSLayoutConstraint!
-        
-        override func viewDidAppear(_ animated: Bool) {
-//            ChatView.reloadData()
+        if(BarHidden == true){
+            Tabbar.isHidden = true
+            BarHeight.constant = 0
+        }else{
+            Tabbar.isHidden = false
         }
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            ChatView.delegate = self
-            ChatView.dataSource = self
-            
-            Tabbar.delegate = self
-            
-    //        if(BarHidden == true){
-    //            Tabbar.isHidden = true
-    //            BarHeight.constant = 0
-    //        }else{
-    //            Tabbar.isHidden = false
-    //        }
-            
-            user = sharedPref.string(forKey: "USERID") ?? "0"
-            name = sharedPref.string(forKey: "NAME") ?? "0"
-            email = sharedPref.string(forKey: "EMAIL") ?? "0"
-            
-            let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
-            let newEmail = self.email[..<index]
-            
-            EMAILUSER = String(newEmail)
-            ChatList2()
-            ChatList()
-        }
+        user = sharedPref.string(forKey: "USERID") ?? "0"
+        name = sharedPref.string(forKey: "NAME") ?? "0"
+        email = sharedPref.string(forKey: "EMAIL") ?? "0"
         
-        func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
-            switch item.tag {
-            case 1:
-                navigationController?.setNavigationBarHidden(true, animated: false)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(viewController1!, animated: true)
-                }
-                break
-                
-            case 2:
-                navigationController?.setNavigationBarHidden(true, animated: false)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(viewController1!, animated: true)
-                }
-                break
-                
-            case 3:
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(viewController1!, animated: true)
-                }
-                break
-                
-            default:
-                break
+        let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
+        let newEmail = self.email[..<index]
+        
+        NAME = name
+        EMAILUSER = String(newEmail)
+        ChatList3()
+        //            ChatList2()
+        UserList()
+        TokenList()
+        ImageList()
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
             }
+            break
+            
+        case 2:
+            navigationController?.setNavigationBarHidden(true, animated: false)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        case 3:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController1!, animated: true)
+            }
+            break
+            
+        default:
+            break
         }
-        
-        func ChatList2(){
-            Alamofire.request(URL_MESSAGE, method: .get).responseJSON
-                {
-                    response in
-                    if let result = response.result.value{
-                        let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
-                        let newEmail = self.email[..<index]
-                        
-                        
-                        if let jsonUser = result as? [String: Any]{
-                            for i in jsonUser.keys{
-                                if(i.contains(String(newEmail) + "_")){
-                                    if let User = jsonUser[i] as? [String: Any]{
-                                        for j in User.keys{
-                                            if let User1 = User[j] as? [String: Any] {
-                                                let name = User1["user"] as? String
-                                                if(name != self.NAME){
-                                                    self.strings.append(name!)
-                                                    self.strings.removeAll { $0 == self.name }
-                                                    
-                                                    self.strings.removeDuplicates()
-                                                }
-                                            }
-                                            
-                                        }
-                                    }
-                                }
+    }
+    
+    func ChatList3(){
+        Alamofire.request(URL_MESSAGE, method: .get).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let json = result as! [String: Any]
+                    let Message = json.keys
+                    for i in Message{
+                        if(i.contains(self.EMAILUSER + "_")){
+                            self.user_messages.append(i)
+                        }
+                    }
+                    
+                }
+        }
+    }
+    
+    func UserList(){
+        Alamofire.request(URL_USER, method: .get).responseJSON{
+            response in
+            if let result = response.result.value{
+                let json = result as! [String: Any]
+                let Users = json.keys
+                for i in Users{
+                    let user1 = json[i] as! [String: String]
+                    
+                    if(!i.elementsEqual(self.NAME)){
+                        for j in user1{
+                            if(j.key == "email"){
+                                let valueEmail = j.value
                                 
-                            }
-                        }
-                    }
-            }
-        }
-        
-        func ChatList(){
-            Alamofire.request(URL_MESSAGE, method: .get).responseJSON
-                {
-                    response in
-                    if let result = response.result.value{
-                        let json = result as! [String: Any]
-                        let Message = json.keys
-                        let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
-                        var newEmail = self.email[..<index]
-                        
-                        for i in Message{
-                            if(i.contains(String(newEmail) + "_")){
-                                Alamofire.request(self.URL_USER, method: .get).responseJSON{
-                                    response1 in
-                                    if let resultUser = response1.result.value{
-                                        
-                                        if let jsonUser = resultUser as? [String: Any] {
-                                            for j in jsonUser.keys{
-                                                if let User1 = jsonUser[j] as? [String: Any]{
-                                                    let email = User1["email"] as! String
-                                                    let token = User1["token"] as! String
-                                                    
-                                                    let index2 = email.firstIndex(of: "@") ?? email.endIndex
-                                                    var newEmail2 = email[..<index2]
-                                                    
-                                                    
-                                                    
-                                                    if(!j.elementsEqual(self.name)){
-                                                        if(i.contains(String(newEmail2))){
-    
-                                                            self.USERNAME.append(j)
-    
-                                                            self.USERTOKEN.append(token)
-                                                            self.USERTOKEN.removingDuplicates()
-    
-                                                            self.CHATWITH.append(String(newEmail2))
-                                                            
-                                                            self.ChatView.reloadData()
-    
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
+                                let index2 = valueEmail.firstIndex(of: "@") ?? valueEmail.endIndex
+                                let newEmail2 = valueEmail[..<index2]
+                                
+                                for k in self.user_messages{
+                                    if(k.contains(String(newEmail2))){
+                                        print("\(String(newEmail2))")
+                                        self.USERNAME.append(i)
+                                        self.USERNAME.removeDuplicates()
+                                        self.CHATWITH.append(String(newEmail2))
+                                        self.CHATWITH.removeDuplicates()
                                     }
-                                    
                                 }
                             }
+                            
+                            
                         }
                     }
+                }
+                
             }
         }
+    }
+    
+    func TokenList(){
+        Alamofire.request(URL_USER, method: .get).responseJSON{
+            response in
+            if let result = response.result.value{
+                let json = result as! [String: Any]
+                let Users = json.keys
+                for i in Users{
+                    let user1 = json[i] as! [String: String]
+                    
+                    if(!i.elementsEqual(self.NAME)){
+                        for k in self.USERNAME{
+                            if(i.elementsEqual(k)){
+                                for j in user1{
+                                    if(j.key == "token"){
+                                        let valueToken = j.value
+                                        print("\(valueToken)")
+                                        
+                                        self.USERTOKEN.append(valueToken)
+                                    }
+                                }
+                            }
+                            
+                            
+                            
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    func ImageList(){
+           Alamofire.request(URL_USER, method: .get).responseJSON{
+               response in
+               if let result = response.result.value{
+                   let json = result as! [String: Any]
+                   let Users = json.keys
+                   for i in Users{
+                       let user1 = json[i] as! [String: String]
+                       
+                       if(!i.elementsEqual(self.NAME)){
+                           for k in self.USERNAME{
+                               if(i.elementsEqual(k)){
+                                   for j in user1{
+                                       if(j.key == "photo"){
+                                           let valueToken = j.value
+                                           print("\(valueToken)")
+                                           
+                                            self.USERIMAGE.append(valueToken)
+                                        
+                                            self.ChatView.reloadData()
+                                       }
+                                   }
+                               }
+                               
+                           }
+                       }
+                   }
+                   
+               }
+           }
+       }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.USERNAME.count
+        return USERNAME.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatCollectionViewCell", for: indexPath) as! ChatCollectionViewCell
-        cell.UserName.text! = self.USERNAME[indexPath.row]
+        let NEWIm = self.USERIMAGE[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        cell.UserImage.setImageWith(URL(string: NEWIm!)!)
+        cell.UserName.text = USERNAME[indexPath.row]
         
         return cell
     }
-        
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        tableView.deselectRow(at: indexPath, animated: true)
-    //
-    //        let vc = ChatViewController()
-    //        vc.title = self.USERNAME[indexPath.row]
-    //        vc.navigationItem.largeTitleDisplayMode = .never
-    //        vc.chatWith = self.CHATWITH[indexPath.row]
-    //        vc.chatName = self.USERNAME[indexPath.row]
-    //        vc.chatToken = self.USERTOKEN[indexPath.row]
-    //        vc.emailUser = self.EMAILUSER
-    //        navigationController?.pushViewController(vc, animated: true)
-    //    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+        let screenWidth = screenSize.width
+        let cellSquareSize: CGFloat = screenWidth
+        return CGSize(width: cellSquareSize, height: 60);
     }
 
-    extension Array where Element: Hashable {
-        func removingDuplicates() -> [Element] {
-            var addedDict = [Element: Bool]()
-            
-            return filter {
-                addedDict.updateValue(true, forKey: $0) == nil
-            }
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         
-        mutating func removeDuplicates() {
-            self = self.removingDuplicates()
+        let vc = ChatViewController()
+        vc.title = self.USERNAME[indexPath.row]
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.chatWith = self.CHATWITH[indexPath.row]
+        vc.chatName = self.USERNAME[indexPath.row]
+        vc.chatToken = self.USERTOKEN[indexPath.row]
+        vc.emailUser = self.EMAILUSER
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+        
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
         }
     }
+    
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
+}

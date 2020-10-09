@@ -717,19 +717,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @objc func onFindBarClick(sender: Any){
-//        let tabbar = tabBarController as! BaseTabBarController
-//        let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
-//        click.UserID = String(user)
-//        click.URL_READ = URL_READ_VIEWALL
-//        click.URL_SEARCH = URL_SEARCH_VIEWALL
-//        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
-//        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
-//        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
-//        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
-//        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(click, animated: true)
-//        }
         let myBuying = self.storyboard!.instantiateViewController(identifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
         myBuying.BarHidden = true
         if let navigator = self.navigationController {
