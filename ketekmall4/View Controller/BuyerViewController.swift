@@ -65,7 +65,7 @@ class BuyerViewController: UIViewController {
     }
 
     @IBAction func ChatInbox(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "ChatInboxViewController") as! ChatInboxViewController
+       let myBuying = self.storyboard!.instantiateViewController(identifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
         myBuying.BarHidden = true
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)
