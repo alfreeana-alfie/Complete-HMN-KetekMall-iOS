@@ -27,6 +27,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var Division: UITextField!
     @IBOutlet weak var District: UITextField!
     @IBOutlet weak var MaxOrder: UITextField!
+    @IBOutlet weak var Weight: UITextField!
+    @IBOutlet weak var PostCode: UITextField!
     
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var ItemImage2: UIImageView!
@@ -125,10 +127,6 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         ButtonCancel.layer.cornerRadius = 15
         UploadImage.layer.cornerRadius = 5
         ButtonAdDetail.layer.cornerRadius = 7
-        
-        
-//        ButtonAccept.layer.maskedCorners = [.layerMaxXMinYCorner]
-//        ButtonCancel.layer.maskedCorners = [.layerMinXMinYCorner]
         
         Delete_2.isHidden = true
         Delete_3.isHidden = true
@@ -581,7 +579,9 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             "price": Price.text!,
             "max_order": MaxOrder.text!,
             "division": Division.text!,
+            "postcode": PostCode.text!,
             "district": District.text!,
+            "weight": Weight.text!,
             "photo": imageStr
         ]
         

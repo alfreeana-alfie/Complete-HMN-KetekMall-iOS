@@ -90,6 +90,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PHOTO: [String] = []
     var SELLERID: [String] = []
     var QUANTITY: [String] = []
+    var POSTCODE_P: [String] = []
+    var WEIGHT: [String] = []
     
     var DELIVERYDIVISION: [String] = []
     var DELIVERYDISTRICT: [String] = []
@@ -117,6 +119,16 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_DELETE = "https://ketekmall.com/ketekmall/delete_cart_temp_user.php"
     let URL_USER = "https://click-1595830894120.firebaseio.com/users.json"
     
+    let API_POSTCODE = "http://stagingsds.pos.com.my/apigateway/as2corporate/api/poslajudomesticbypostcode/v1";
+    let serverKey_POSTCODE = "a1g2cmM2VmowNm00N1lZekFmTGR0MldpRHhKaFRHSks=";
+    var PostCodefrom: String = "96000";
+    var PostCodeTo: String = "93050";
+    var Weight: String = "2";
+    
+    let API_PREACCEPTANCE = "http://stagingsds.pos.com.my/apigateway/as2corporate/api/preacceptancessingle/v1"
+    let serverKey_PREACCEPTANCE = "M1djdzdrbTZod0pXOTZQdnFWVU5jWVpGNU9nUDVzb0M="
+    
+    
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
@@ -134,7 +146,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
-        //        userID = sharedPref.string(forKey: "USERID") ?? "0"
         
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -151,10 +162,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         ChangeDeliveryLabel.isHidden = true
         ButtonPlaceOrder.layer.cornerRadius = 7
         
+        PostCode()
+//        PreAcceptanceSingle()
+        
         spinner.show(in: self.view)
         
         ReadCart()
-        
     }
     
     func ColorFunc(){
@@ -209,6 +222,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.QUANTITY = user.value(forKey: "quantity") as! [String]
                         self.PHOTO = user.value(forKey: "photo") as! [String]
                         self.SELLERID = user.value(forKey: "seller_id") as! [String]
+//                        self.POSTCODE_P = user.value(forKey: "postcode") as! [String]
+//                        self.WEIGHT = user.value(forKey: "weight") as! [String]
                         
                         let parameters: Parameters=[
                             "id": self.userID,
@@ -235,31 +250,51 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.Address.text! = self.NEWADDR
                                         
                                         for i in 0..<self.ITEMID.count{
+                                            
+//                                            let NEW_URL = self.API_POSTCODE + "?postcodeFrom=" + "96000" + "&postcodeTo=" + "96000" + "&Weight=" + "2";
+//
+//                                                let headers = [ "X-User-Key" : self.serverKey_POSTCODE ]
+//
+//                                                let configuration = URLSessionConfiguration.default
+//                                                configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+//
+//                                                Alamofire.request(NEW_URL, method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+//                                                    {
+//                                                        response in
+//                                                        if let result = response.result.value {
+//                                                            let json = result as! [String: Any]
+//                                                            print("JSONjson: \(json)")
+//
+//                                                            self.CartView.reloadData()
+//                                                        }else{
+//                                                            print("Request failed with error: ",response.result.error ?? "Description not available :(")
+//                                                        }
+//                                                }
                                             let parameters: Parameters=[
                                                 "item_id": self.ITEMID[i],
                                                 "division": self.DIVISIONU[0]
                                             ]
-                                            
+
                                             Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
                                                 {
                                                     response in
                                                     self.spinner.dismiss(afterDelay: 3.0)
-                                                    
+
                                                     if let result = response.result.value{
                                                         let jsonData = result as! NSDictionary
-                                                        
+
                                                         if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                                             let user = jsonData.value(forKey: "read") as! NSArray
-                                                            
+
                                                             if(user.count == 0){
                                                                 self.DELIVERYID = [""]
                                                                 self.DELIVERYDIVISION = [""]
                                                                 let deliveryDays = ["Not Supported for selected area"]
                                                                 let deliveryprice = ["Not Supported for selected area"]
-                                                                
+
                                                                 self.DELIVERYPRICE.append(contentsOf: deliveryprice)
                                                                 self.DELIVERYDAYS.append(contentsOf: deliveryDays)
-                                                                
+
                                                                 self.ButtonPlaceOrder.isHidden = true
                                                                 self.TotalLabel.isHidden = true
                                                                 self.GrandTotal.isHidden = true
@@ -271,52 +306,52 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                                 self.DELIVERYDIVISION = user.value(forKey: "division") as! [String]
                                                                 let deliveryDays = user.value(forKey: "days") as! [String]
                                                                 let deliveryprice = user.value(forKey: "price") as! [String]
-                                                                
+
                                                                 self.DELIVERYPRICE.append(contentsOf: deliveryprice)
                                                                 self.DELIVERYDAYS.append(contentsOf: deliveryDays)
-                                                                
+
                                                                 var index = i
-                                                                
+
                                                                 if index < self.DELIVERYPRICE.count{
                                                                     let strDays: Int = Int(self.DELIVERYDAYS[index]) ?? 0
                                                                     let date = Date()
                                                                     let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
-                                                                    
+
                                                                     let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
                                                                     let duration = DateComponents(calendar: Calendar.current, day: strDays)
                                                                     let later = Calendar.current.date(byAdding: duration, to: now.date!)
-                                                                    
+
                                                                     let formatter = DateFormatter()
                                                                     formatter.locale = Locale(identifier: "nl_NL")
                                                                     formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
-                                                                    
+
                                                                     let datetime = formatter.string(from: later!)
-                                                                    
+
                                                                     index += 1
-                                                                    
+
                                                                     self.DELIVERYDATE.append(datetime)
                                                                 }else{
                                                                     print("FAILED")
                                                                 }
-                                                                
+
                                                                 strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
-                                                                
+
                                                                 let indexPrice = i
-                                                                
+
                                                                 if indexPrice < self.DELIVERYPRICE.count{
                                                                     let strDel: Double = Double(self.DELIVERYPRICE[i]) ?? 0.00
                                                                     var strGrandTotal: Double = 0.00
                                                                     strGrand2 += strDel
                                                                     strGrandTotal = strGrand + strGrand2
-                                                                    
+
                                                                     self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
-                                                                    
+
                                                                     self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
-                                                                    
+
                                                                     self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
                                                                 }
                                                                 self.CartView.reloadData()
-                                                                
+
                                                             }
                                                         }else{
                                                             print("Invalid")
@@ -333,6 +368,123 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
         }
     }
+    
+    //MARK: Postcode
+    func PostCode(){
+        let NEW_URL = API_POSTCODE + "?postcodeFrom=" + PostCodefrom + "&postcodeTo=" + PostCodeTo + "&Weight=" + Weight;
+        
+        let headers = [ "X-User-Key" : serverKey_POSTCODE ]
+        
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+    
+        Alamofire.request(NEW_URL, method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let json = result as! [NSArray]
+//                    let postcodeDetail = json.keys
+//
+//                    for i in postcodeDetail{
+//                        let Details = json[i] as! [String: String]
+//
+//                        for j in Details{
+//                            if(j.key == "totalAmount"){
+//                                let totalAmount = j.value
+//
+//                                print("\(totalAmount)")
+//                            }
+//                        }
+//                    }
+                    
+                    print("JSON: \(json)")
+                }else{
+                    print("Request failed with error: ",response.result.error ?? "Description not available :(")
+                }
+        }
+    }
+    
+    //MARK:PreAcceptanceSingle
+//    func PreAcceptanceSingle(){
+//        let headers = [
+//            "X-User-Key": serverKey_PREACCEPTANCE,
+//            "Content-Type": "application/x-www-form-urlencoded"
+//        ]
+//
+//        let configuration = URLSessionConfiguration.default
+//            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+//
+//        let Parameters = [
+//            "subscriptionCode": "subscriptionCode",
+//            "requireToPickup": "requireToPickup",
+//            "requireWebHook": "requireWebhook",
+//            "accountNo": "accountNo",
+//            "callerName": "callerName",
+//            "callerPhone": "callerPhone",
+//            "pickupLocationID": "pickupLocationID",
+//            "pickupLocationName": "pickupLocationName",
+//            "contactPerson": "contactPerson",
+//            "phoneNo": "phoneNo",
+//            "pickupAddress": "pickupAddress",
+//            "ItemType": "itemType",
+//            "totalQuantityToPickup": "totalQuantity",
+//            "totalWeight": "totalWeight",
+//            "consignmentNoteNumber": "consigmentNoteNo",
+//            "PaymentType": "paymentType",
+//            "Amount": "amount",
+//            "readyToCollectAt": "readyAt",
+//            "closeAt": "closeAt",
+//            "receiverName": "receiverName",
+//            "receiverID": "receiverID",
+//            "receiverAddress": "receiverAddress",
+//            "receiverPostCode": "receiverPostCode",
+//            "receiverEmail": "receiverEmailAddress",
+//            "receiverPhone01": "receiverPhone1",
+//            "receiverPhone02": "receiverPhone2",
+//            "sellerReferenceNo": "sellerReferenceNo",
+//            "itemDescription": "itemDescription",
+//            "sellerOrderNo": "sellerOrderNo",
+//            "comments": "comment",
+//            "pickupDistrict": "pickupDistrict",
+//            "pickupProvince": "pickupProvince",
+//            "pickupEmail": "pickupEmail",
+//            "pickupCountry": "pickupCountry",
+//            "pickupLocation": "pickupLocation",
+//            "receiverFname": "receiverFirstName",
+//            "receiverLname": "receiverLastName",
+//            "receiverAddress2": "receiverAddress2",
+//            "receiverDistrict": "receiverDistrict",
+//            "receiverProvince": "receiverProvince",
+//            "receiverCity": "receiverCity",
+//            "receiverCountry": "receiverCountry",
+//            "packDesc": "packDescription",
+//            "packVol": "packVol",
+//            "packLeng": "packLeng",
+//            "postCode": "postalCode",
+//            "ConsignmentNoteNumber": "consigmentNoteNo",
+//            "packWidth": "packWidth",
+//            "packHeight": "packHeight",
+//            "packTotalitem": "totalItem",
+//            "orderDate": "orderDate",
+//            "packDeliveryType": "packDeliveryType",
+//            "ShipmentName": "shipmentName",
+//            "pickupProv": "pickupProvince",
+//            "deliveryProv": "",
+//            "postalCode": "postalCode",
+//            "currency": "currency",
+//            "countryCode": "countryCode"
+//        ]
+//
+//            Alamofire.request(API_PREACCEPTANCE, method: .post,parameters: Parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+//                {
+//                    response in
+//                    if let result = response.result.value {
+//                        print("JSON: \(result)")
+//                    }else{
+//                        print("Request failed with error: ",response.result.error ?? "Description not available :(")
+//                    }
+//            }
+//    }
     
     func AddCheckout(){
         spinner.show(in: self.view)
@@ -461,7 +613,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
         let cellSquareSize: CGFloat = screenWidth
-        return CGSize(width: cellSquareSize, height: 230);
+        return CGSize(width: cellSquareSize, height: 230)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -500,12 +652,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.Quantity.text! = "x" + self.QUANTITY[indexPath.row]
-        cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
-        if(self.DELIVERYPRICE[indexPath.row] == "Not Supported for selected area"){
-            cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
-        }else{
-            cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
-        }
+        cell.DeliveryPrice.text! = "MYR0.00" + self.DELIVERYPRICE[indexPath.row]
+//        if(self.DELIVERYPRICE[indexPath.row] == "Not Supported for selected area"){
+//            cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
+//        }else{
+//            cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
+//        }
         cell.Division.text! = self.DIVISION[indexPath.row] + " to " + self.DIVISIONU[0]
         return cell
     }
