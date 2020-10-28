@@ -382,7 +382,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             {
                 response in
                 if let result = response.result.value {
-                    let json = result as! [NSArray]
+//                    let json = result as! [NSArray]
 //                    let postcodeDetail = json.keys
 //
 //                    for i in postcodeDetail{
@@ -397,7 +397,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
 //                        }
 //                    }
                     
-                    print("JSON: \(json)")
+                    print("JSON: \(result)")
                 }else{
                     print("Request failed with error: ",response.result.error ?? "Description not available :(")
                 }
