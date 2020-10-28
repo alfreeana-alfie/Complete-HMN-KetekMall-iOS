@@ -4055,7 +4055,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
+                                                        <rect key="frame" x="0.0" y="3" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
@@ -4625,17 +4625,17 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="TUR-qP-XDO">
-                                            <size key="itemSize" width="183" height="370"/>
+                                            <size key="itemSize" width="183" height="390"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyProductsCollectionViewCell" id="auU-Ec-Kd4" customClass="MyProductsCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="183" height="370"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="390"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f14-a0-Mn0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="370"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="390"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KetekMall" translatesAutoresizingMaskIntoConstraints="NO" id="6yG-cg-dMv">
@@ -4657,6 +4657,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbL-RC-zPS">
                                                             <rect key="frame" x="6.5" y="278" width="83" height="35"/>
+                                                            <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="35" id="MTM-0h-yPf"/>
                                                             </constraints>
@@ -4670,6 +4671,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRG-QF-jgH">
                                                             <rect key="frame" x="93.5" y="278" width="83" height="35"/>
+                                                            <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <state key="normal" title="DELETE">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4704,7 +4706,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCE-hl-bHI">
-                                                            <rect key="frame" x="6.5" y="316" width="170" height="45"/>
+                                                            <rect key="frame" x="6.5" y="316" width="170" height="30"/>
+                                                            <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <state key="normal" title="BOOST AD">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4713,12 +4716,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                 <action selector="Boost:" destination="auU-Ec-Kd4" eventType="touchUpInside" id="O4M-dF-4QD"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO DELIVERY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-3g-keD">
-                                                            <rect key="frame" x="6.5" y="316" width="170" height="45"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Kg6-b7-Abi">
                                                             <rect key="frame" x="68.5" y="251" width="46.5" height="19"/>
                                                             <constraints>
@@ -4727,6 +4724,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO DELIVERY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-3g-keD">
+                                                            <rect key="frame" x="6.5" y="352" width="170" height="30"/>
+                                                            <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="hLc-h2-UlK"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -4748,20 +4755,19 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                         <constraint firstItem="dbL-RC-zPS" firstAttribute="top" secondItem="Kg6-b7-Abi" secondAttribute="bottom" constant="8" id="PEL-LU-2bf"/>
                                                         <constraint firstItem="zCE-hl-bHI" firstAttribute="top" secondItem="dbL-RC-zPS" secondAttribute="bottom" constant="3" id="PJP-MU-hMP"/>
                                                         <constraint firstItem="U68-Va-MAO" firstAttribute="top" secondItem="6yG-cg-dMv" secondAttribute="bottom" constant="53" id="Rv4-wU-1vj"/>
-                                                        <constraint firstAttribute="bottom" secondItem="zCE-hl-bHI" secondAttribute="bottom" constant="9" id="TSZ-yN-8iI"/>
                                                         <constraint firstItem="dbL-RC-zPS" firstAttribute="baseline" secondItem="kRG-QF-jgH" secondAttribute="baseline" id="Tui-7P-5yE"/>
                                                         <constraint firstItem="U68-Va-MAO" firstAttribute="top" secondItem="xLL-aI-tfT" secondAttribute="bottom" constant="3" id="WFd-eD-C0Z"/>
                                                         <constraint firstItem="xLL-aI-tfT" firstAttribute="centerX" secondItem="f14-a0-Mn0" secondAttribute="centerX" id="Yat-0l-Xmv"/>
                                                         <constraint firstAttribute="trailing" secondItem="kRG-QF-jgH" secondAttribute="trailing" constant="6.5" id="Zdc-oq-uyS"/>
+                                                        <constraint firstItem="JzL-3g-keD" firstAttribute="top" secondItem="zCE-hl-bHI" secondAttribute="bottom" constant="6" id="aik-vl-I6Y"/>
                                                         <constraint firstItem="kRG-QF-jgH" firstAttribute="leading" secondItem="dbL-RC-zPS" secondAttribute="trailing" constant="4" id="bdE-K7-nzj"/>
                                                         <constraint firstItem="P0w-Jz-0OD" firstAttribute="leading" secondItem="f14-a0-Mn0" secondAttribute="leading" constant="9" id="efF-QW-b2f"/>
                                                         <constraint firstAttribute="trailing" secondItem="JzL-3g-keD" secondAttribute="trailing" constant="6.5" id="g3J-Nz-4jr"/>
                                                         <constraint firstAttribute="trailing" secondItem="zCE-hl-bHI" secondAttribute="trailing" constant="6.5" id="hR6-Yq-t8f"/>
-                                                        <constraint firstAttribute="bottom" secondItem="JzL-3g-keD" secondAttribute="bottom" constant="9" id="jMH-IB-weP"/>
+                                                        <constraint firstAttribute="bottom" secondItem="JzL-3g-keD" secondAttribute="bottom" constant="8" id="jMH-IB-weP"/>
                                                         <constraint firstItem="U68-Va-MAO" firstAttribute="centerX" secondItem="f14-a0-Mn0" secondAttribute="centerX" id="oVP-vU-LB5"/>
                                                         <constraint firstItem="xLL-aI-tfT" firstAttribute="top" secondItem="6yG-cg-dMv" secondAttribute="bottom" constant="30" id="pqT-Yw-q5b"/>
                                                         <constraint firstItem="P0w-Jz-0OD" firstAttribute="top" secondItem="6yG-cg-dMv" secondAttribute="bottom" constant="8" symbolic="YES" id="q2O-Nc-tRm"/>
-                                                        <constraint firstItem="JzL-3g-keD" firstAttribute="top" secondItem="dbL-RC-zPS" secondAttribute="bottom" constant="3" id="rqZ-0d-GHs"/>
                                                         <constraint firstItem="P0w-Jz-0OD" firstAttribute="centerX" secondItem="f14-a0-Mn0" secondAttribute="centerX" id="sNg-b5-ZZ1"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>

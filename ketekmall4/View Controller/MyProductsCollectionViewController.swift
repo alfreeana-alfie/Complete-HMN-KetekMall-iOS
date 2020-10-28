@@ -139,7 +139,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             let screenWidth = screenSize.width
     //        let screenHeight = screenSize.height
             let cellSquareSize: CGFloat = screenWidth / 2
-            let cellSquareHeight: CGFloat = 370
+            let cellSquareHeight: CGFloat = 420
             return CGSize(width: cellSquareSize, height: cellSquareHeight);
         }
            
