@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     var gl : CAGradientLayer!
     
     override func viewWillAppear(_ animated: Bool) {
-        ColorFunc()
+//        ColorFunc()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     

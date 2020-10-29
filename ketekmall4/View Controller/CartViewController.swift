@@ -41,6 +41,9 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var SUB: [Double] = []
     var PRICENEW: [String] = []
     var QUANTITYNEW: [String] = []
+    var WEIGHT: [String] = []
+    var POSTCODE: [String] = []
+    
     var Quan: String = ""
     var userID: String = ""
     var sub: Double = 0.00
@@ -57,9 +60,9 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var viewController1: UIViewController?
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,7 +205,8 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         let Photo = user.value(forKey: "photo") as! [String]
                         let seller_id = user.value(forKey: "seller_id") as! [String]
                         let item_id = user.value(forKey: "item_id") as! [String]
-                        
+                        let postcode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                        let weight = user.value(forKey: "weight") as? [String] ?? ["1.00"]
                         
                         self.ID = ID
                         self.MAINCATE = maincate
@@ -214,6 +218,8 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self.PHOTO = Photo
                         self.SELLERID = seller_id
                         self.ITEMID = item_id
+                        self.POSTCODE = postcode
+                        self.WEIGHT = weight
                         
                         self.CartView.reloadData()
                     }
@@ -344,7 +350,8 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     "item_id": self.ITEMID[indexPath.row],
                     "quantity": cell.StepperNew.value,
                     "cart_id": self.ID[indexPath.row],
-                    
+                    "postcode": self.POSTCODE[indexPath.row],
+                    "weight": self.WEIGHT[indexPaht.row]
                 ]
                 var SubTotal1: Double = 0.00
                 SubTotal1 = Double(self.PRICE[indexPath.row])! * Double(Int(cell.Quantity.text!)!)

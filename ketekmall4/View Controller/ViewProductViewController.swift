@@ -88,6 +88,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var PHOTO: String = ""
     var USERID: String = ""
     var SOLD: String = ""
+    var POSTCODE: String = ""
+    var WEIGHT: String = ""
     
     var ITEMIMAGE: [String] = []
     var ITEMNAME: [String] = []
@@ -108,6 +110,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var PRICE_SAMESHOP: [String] = []
     var PHOTO_SAMESHOP: [String] = []
     var DISTRICT_SAMESHOP: [String] = []
+    var POSTCODE_SAMESHOP: [String] = []
+    var WEIGHT_SAMESHOP: [String] = []
+    
     
     var ITEMID_DEL: [String] = []
     var USERID_DEL: [String] = []
@@ -122,9 +127,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var SELLERLOCATION: String = ""
     var SELLERPHONE: String = ""
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -475,6 +480,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
                         
+                        let PostCode = user.value(forKey: "postcode") as! [String]
+                        let Weight = user.value(forKey: "weight") as! [String]
+                        
                         self.ITEMID_SAMESHOP = ItemID
                         //                                        self.SELLERID_SAMESHOP = Seller_ID
                         self.MAINCATE_SAMESHOP = Main_Cate
@@ -491,6 +499,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         self.DIVISION_SAMESHOP = Division
                         self.DISTRICT_SAMESHOP = District
                         
+                        self.POSTCODE_SAMESHOP = PostCode
+                        self.WEIGHT_SAMESHOP = Weight
                         self.SameShopView.reloadData()
                     }
                 }
@@ -700,6 +710,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         viewProduct.PHOTO = self.PHOTO_SAMESHOP[indexPath.row]
         viewProduct.DIVISION = self.DIVISION_SAMESHOP[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICT_SAMESHOP[indexPath.row]
+        viewProduct.POSTCODE = self.POSTCODE_SAMESHOP[indexPath.row]
+        viewProduct.WEIGHT = self.WEIGHT_SAMESHOP[indexPath.row]
         
         
         if let navigator = self.navigationController {
@@ -720,7 +732,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             "quantity": "1",
             "division": DIVISION,
             "district": DISTRICT,
-            "photo": PHOTO
+            "photo": PHOTO,
+            "postcode": POSTCODE,
+            "weight": WEIGHT
         ]
         
         if(SELLERID == USERID){

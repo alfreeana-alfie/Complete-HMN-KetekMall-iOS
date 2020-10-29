@@ -135,9 +135,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let sender = PushNotificationSender()
     var tokenUser: String = ""
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         DeleteOrder()
@@ -160,10 +160,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         GrandTotal2.isHidden = true
         ChangeDeliveryLabel.isHidden = true
+        ButtonPlaceOrder.isHidden = false
         ButtonPlaceOrder.layer.cornerRadius = 7
-        
-        PostCode()
-//        PreAcceptanceSingle()
         
         spinner.show(in: self.view)
         
@@ -222,8 +220,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.QUANTITY = user.value(forKey: "quantity") as! [String]
                         self.PHOTO = user.value(forKey: "photo") as! [String]
                         self.SELLERID = user.value(forKey: "seller_id") as! [String]
-//                        self.POSTCODE_P = user.value(forKey: "postcode") as! [String]
-//                        self.WEIGHT = user.value(forKey: "weight") as! [String]
+                        self.POSTCODE_P = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                        self.WEIGHT = user.value(forKey: "weight") as? [String] ?? ["1.00"]
                         
                         let parameters: Parameters=[
                             "id": self.userID,
@@ -250,112 +248,45 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.Address.text! = self.NEWADDR
                                         
                                         for i in 0..<self.ITEMID.count{
+                                            let NEW_URL = self.API_POSTCODE + "?postcodeFrom=" + self.PostCodefrom + "&postcodeTo=" + self.PostCodeTo + "&Weight=" + self.Weight;
                                             
-//                                            let NEW_URL = self.API_POSTCODE + "?postcodeFrom=" + "96000" + "&postcodeTo=" + "96000" + "&Weight=" + "2";
-//
-//                                                let headers = [ "X-User-Key" : self.serverKey_POSTCODE ]
-//
-//                                                let configuration = URLSessionConfiguration.default
-//                                                configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-//
-//                                                Alamofire.request(NEW_URL, method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
-//                                                    {
-//                                                        response in
-//                                                        if let result = response.result.value {
-//                                                            let json = result as! [String: Any]
-//                                                            print("JSONjson: \(json)")
-//
-//                                                            self.CartView.reloadData()
-//                                                        }else{
-//                                                            print("Request failed with error: ",response.result.error ?? "Description not available :(")
-//                                                        }
-//                                                }
-                                            let parameters: Parameters=[
-                                                "item_id": self.ITEMID[i],
-                                                "division": self.DIVISIONU[0]
-                                            ]
-
-                                            Alamofire.request(self.URL_READ_DELIVERY, method: .post, parameters: parameters).responseJSON
+                                            let headers = [ "X-User-Key" : self.serverKey_POSTCODE ]
+                                            
+                                            let configuration = URLSessionConfiguration.default
+                                            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+                                            
+                                            Alamofire.request(NEW_URL, method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
                                                 {
                                                     response in
-                                                    self.spinner.dismiss(afterDelay: 3.0)
-
-                                                    if let result = response.result.value{
-                                                        let jsonData = result as! NSDictionary
-
-                                                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                                                            let user = jsonData.value(forKey: "read") as! NSArray
-
-                                                            if(user.count == 0){
-                                                                self.DELIVERYID = [""]
-                                                                self.DELIVERYDIVISION = [""]
-                                                                let deliveryDays = ["Not Supported for selected area"]
-                                                                let deliveryprice = ["Not Supported for selected area"]
-
-                                                                self.DELIVERYPRICE.append(contentsOf: deliveryprice)
-                                                                self.DELIVERYDAYS.append(contentsOf: deliveryDays)
-
-                                                                self.ButtonPlaceOrder.isHidden = true
-                                                                self.TotalLabel.isHidden = true
-                                                                self.GrandTotal.isHidden = true
-                                                                self.ChangeDeliveryLabel.isHidden = false
-                                                                self.CartView.reloadData()
-                                                            }else
-                                                            {
-                                                                self.DELIVERYID = user.value(forKey: "id") as! [String]
-                                                                self.DELIVERYDIVISION = user.value(forKey: "division") as! [String]
-                                                                let deliveryDays = user.value(forKey: "days") as! [String]
-                                                                let deliveryprice = user.value(forKey: "price") as! [String]
-
-                                                                self.DELIVERYPRICE.append(contentsOf: deliveryprice)
-                                                                self.DELIVERYDAYS.append(contentsOf: deliveryDays)
-
-                                                                var index = i
-
-                                                                if index < self.DELIVERYPRICE.count{
-                                                                    let strDays: Int = Int(self.DELIVERYDAYS[index]) ?? 0
-                                                                    let date = Date()
-                                                                    let components = Calendar.current.dateComponents([.month, .day, .year], from: date)
-
-                                                                    let now = DateComponents(calendar: Calendar.current, timeZone: TimeZone(abbreviation: "GMT"), year: components.year, month: components.month, day: components.day)
-                                                                    let duration = DateComponents(calendar: Calendar.current, day: strDays)
-                                                                    let later = Calendar.current.date(byAdding: duration, to: now.date!)
-
-                                                                    let formatter = DateFormatter()
-                                                                    formatter.locale = Locale(identifier: "nl_NL")
-                                                                    formatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd")
-
-                                                                    let datetime = formatter.string(from: later!)
-
-                                                                    index += 1
-
-                                                                    self.DELIVERYDATE.append(datetime)
-                                                                }else{
-                                                                    print("FAILED")
-                                                                }
-
-                                                                strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
-
-                                                                let indexPrice = i
-
-                                                                if indexPrice < self.DELIVERYPRICE.count{
-                                                                    let strDel: Double = Double(self.DELIVERYPRICE[i]) ?? 0.00
-                                                                    var strGrandTotal: Double = 0.00
-                                                                    strGrand2 += strDel
-                                                                    strGrandTotal = strGrand + strGrand2
-
-                                                                    self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
-
-                                                                    self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
-
-                                                                    self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
-                                                                }
-                                                                self.CartView.reloadData()
-
-                                                            }
-                                                        }else{
-                                                            print("Invalid")
+                                                    if let result = response.result.value {
+                                                        let details = result as! NSArray
+                                                        
+                                                        let totalAmount = details.value(forKey: "totalAmount") as! [String]
+                                                        self.DELIVERYPRICE.append(contentsOf: totalAmount)
+                                                        print("JSON: \(totalAmount)")
+                                                        
+                                                        strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
+                                                        
+                                                        let indexPrice = i
+                                                        
+                                                        if indexPrice < self.DELIVERYPRICE.count{
+                                                            let strDel: Double = Double(self.DELIVERYPRICE[i]) ?? 0.00
+                                                            var strGrandTotal: Double = 0.00
+                                                            strGrand2 += strDel
+                                                            strGrandTotal = strGrand + strGrand2
+                                                            
+                                                            self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
+                                                            
+                                                            self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
+                                                            
+                                                            self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
+                                                            print("JSON: \(String(format: "%.2f", strGrandTotal))")
                                                         }
+                                                        self.ButtonPlaceOrder.isHidden = false
+                                                        self.TotalLabel.isHidden = false
+                                                        self.GrandTotal.isHidden = false
+                                                        self.spinner.dismiss(afterDelay: 3.0)
+                                                        self.CartView.reloadData()
                                                     }
                                             }
                                         }
@@ -382,24 +313,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             {
                 response in
                 if let result = response.result.value {
-//                    let json = result as! [NSArray]
-//                    let postcodeDetail = json.keys
-//
-//                    for i in postcodeDetail{
-//                        let Details = json[i] as! [String: String]
-//
-//                        for j in Details{
-//                            if(j.key == "totalAmount"){
-//                                let totalAmount = j.value
-//
-//                                print("\(totalAmount)")
-//                            }
-//                        }
-//                    }
+                    let details = result as! NSArray
                     
-                    print("JSON: \(result)")
-                }else{
-                    print("Request failed with error: ",response.result.error ?? "Description not available :(")
+                    let totalAmount = details.value(forKey: "totalAmount") as! [String]
+                    print("JSON: \(totalAmount)")
                 }
         }
     }
@@ -497,15 +414,18 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 "sub_category": self.SUBCATE[i],
                 "price": self.PRICE[i],
                 "division": self.divsionu,
+                "postcode": self.postcode,
                 "district": self.divsionu,
                 "seller_division": self.DIVISION[i],
+                "seller_postcode": self.POSTCODE[i],
                 "seller_district": self.DISTRICT[i],
                 "photo": self.PHOTO[i],
                 "item_id": self.ITEMID[i],
                 "quantity": self.QUANTITY[i],
                 "delivery_price": self.DELIVERYPRICE[i],
                 "delivery_date": self.DELIVERYDATE[i],
-                "delivery_addr": self.NEWADDR
+                "delivery_addr": self.NEWADDR,
+                "weight": self.WEIGHT[i]
             ]
             Alamofire.request(URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
                 {
@@ -652,7 +572,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.Quantity.text! = "x" + self.QUANTITY[indexPath.row]
-        cell.DeliveryPrice.text! = "MYR0.00" + self.DELIVERYPRICE[indexPath.row]
+        cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
 //        if(self.DELIVERYPRICE[indexPath.row] == "Not Supported for selected area"){
 //            cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
 //        }else{

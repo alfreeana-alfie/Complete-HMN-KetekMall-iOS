@@ -64,9 +64,9 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     var pickerView = UIPickerView()
     var datePicker = UIDatePicker()
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

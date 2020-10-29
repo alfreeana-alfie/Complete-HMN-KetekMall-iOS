@@ -38,14 +38,16 @@ class EditProductAdDetailViewController: UIViewController {
         var PHOTO: String = ""
         var DISTRICT: String = ""
         var USERID: String = ""
+    var POSTCODE: String = ""
+    var WEIGHT: String = ""
     var CheckView: Bool = false
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +128,8 @@ class EditProductAdDetailViewController: UIViewController {
             AdDetail.Division.text! = DIVISION
             AdDetail.District.text! = DISTRICT
             AdDetail.MaxOrder.text! = MAXORDER
+            AdDetail.PostCode.text! = POSTCODE
+            AdDetail.Weight.text! = WEIGHT
             if let navigator = self.navigationController {
                 navigator.pushViewController(AdDetail, animated: true)
             }
@@ -145,6 +149,8 @@ class EditProductAdDetailViewController: UIViewController {
             AdDetail.DISTRICT = DISTRICT
             AdDetail.PHOTO = PHOTO
             AdDetail.MAXORDER = MAXORDER
+            AdDetail.POSTCODE = POSTCODE
+            AdDetail.WEIGHT = WEIGHT
             if let navigator = self.navigationController {
                 navigator.pushViewController(AdDetail, animated: true)
             }

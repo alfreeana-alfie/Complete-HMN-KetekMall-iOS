@@ -90,10 +90,9 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     let sharedPref = UserDefaults.standard
     var lang: String = ""
 
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -608,7 +607,6 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                         print("EMPTY")
                     }else{
                         self.saveImage(number: "3", Image: self.ItemImage3)
-//                        self.Delete_3.isHidden = false
                         print("SUCCESS 3")
                     }
                     

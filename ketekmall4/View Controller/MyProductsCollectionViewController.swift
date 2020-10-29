@@ -42,6 +42,9 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     var RATING: [String] = []
     var DELIVERY_STATUS: [String] = []
     
+    var POSTCODE: [String] = []
+    var WEIGHT: [String] = []
+    
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
@@ -89,9 +92,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         let max_order = user.value(forKey: "max_order") as! [String]
                         let rating = user.value(forKey: "rating") as! [String]
                         let delivery_status = user.value(forKey: "delivery_status") as! [String]
-                        //                        let Photo = user.value(forKey: "photo") as! [String]
+                                                
                         let Division = user.value(forKey: "division") as! [String]
-                        //                        let District = user.value(forKey: "district") as! [String]
+                        let PostCode = user.value(forKey: "postcode") as! [String]
+                        let Weight = user.value(forKey: "weight") as! [String]
                         
                         self.ItemID = ID
                         self.ad_Detail = AdDetail
@@ -108,6 +112,8 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         self.DIVISION = Division
                         self.RATING = rating
                         self.DELIVERY_STATUS = delivery_status
+                        self.POSTCODE = PostCode
+                        self.WEIGHT = Weight
 
                         self.productView.reloadData()
                         
@@ -305,6 +311,8 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         ProductView.DISTRICT = self.location[indexPath.row]
         ProductView.PHOTO = self.ItemPhoto[indexPath.row]
         ProductView.MAXORDER = self.MAXORDER[indexPath.row]
+        ProductView.POSTCODE = self.POSTCODE[indexPath.row]
+        ProductView.WEIGHT = self.WEIGHT[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(ProductView, animated: true)
         }

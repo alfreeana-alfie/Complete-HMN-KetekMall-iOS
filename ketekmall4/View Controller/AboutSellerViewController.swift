@@ -65,9 +65,9 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     var DISTRICT: [String] = []
     var SOLD: [String] = []
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

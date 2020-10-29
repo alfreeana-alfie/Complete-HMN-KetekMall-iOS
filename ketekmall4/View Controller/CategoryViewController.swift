@@ -34,6 +34,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PRICE: [String] = []
     var PHOTO: [String] = []
     var DISTRICT: [String] = []
+    var POSTCODE: [String] = []
+    var WEIGHT: [String] = []
+    
     var arr = [Any]()
     
     var UserID: String = ""
@@ -63,6 +66,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PRICE1: String = ""
     var PHOTO1: String = ""
     var DISTRICT1: String = ""
+    var POSTCODE1: String = ""
+    var WEIGHT: String = ""
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -88,9 +93,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     var viewController1: UIViewController?
     
@@ -204,7 +209,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             "rating": self.RATING[indexPath.row],
             "division": self.DIVISION[indexPath.row],
             "district": self.DISTRICT[indexPath.row],
-            "photo": self.PHOTO[indexPath.row]
+            "photo": self.PHOTO[indexPath.row],
+            "postcode": self.POSTCODE[indexPath.row],
+            "weight": self.WEIGHT[indexPath.row]
         ]
         
         if(self.SELLERID[indexPath.row] == UserID){
@@ -291,6 +298,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                                 "division": self.DIVISION[indexPath.row],
                                 "district": self.DISTRICT[indexPath.row],
                                 "photo": self.PHOTO[indexPath.row]
+                                "postcode": self.POSTCODE[indexPath.row],
+                                "weight": self.WEIGHT[indexPath.row]
                             ]
                             
                             if(self.SELLERID[indexPath.row] == self.UserID){
@@ -465,6 +474,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let Photo = user.value(forKey: "photo") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
+                        let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                        let Weight = user.value(forKey: "weight") as? [String] ?? ["1.00"]
                         
                         self.ITEMID = ItemID
                         self.SELLERID = Seller_ID
@@ -480,6 +491,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
+                        self.POSTCODE = PostCode
+                        self.WEIGHT = Weight
                         
                         self.CategoryView.reloadData()
                     }
@@ -518,6 +531,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let Photo = user.value(forKey: "photo") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
+                        let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                        let Weight = user.value(forKey: "weight") as? [String] ?? ["1.00"]
                         
                         self.ITEMID = ItemID
                         self.SELLERID = Seller_ID
@@ -533,7 +548,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
-                        
+                        self.POSTCODE = PostCode
+                        self.WEIGHT = Weight
+
                         self.CategoryView.reloadData()
                         
                     }
@@ -572,6 +589,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let Photo = user.value(forKey: "photo") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
+                        let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                         let Weight = user.value(forKey: "weight") as? [String] ?? ["1.00"]
+                        
                         
                         self.ITEMID = ItemID
                         self.SELLERID = Seller_ID
@@ -587,7 +607,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
-                        
+                        self.POSTCODE = PostCode
+                         self.WEIGHT = Weight
+
                         self.CategoryView.reloadData()
                     }
                 }
@@ -626,7 +648,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let Photo = user.value(forKey: "photo") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
-                        
+                        let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                        let Weight = user.value(forKey: "weight") as? [String] ?? ["1.00"]
+
                         self.ITEMID = ItemID
                         self.SELLERID = Seller_ID
                         self.MAINCATE = Main_Cate
@@ -641,7 +665,9 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
-                        
+                        self.POSTCODE = PostCode
+                         self.WEIGHT = Weight
+
                         self.CategoryView.reloadData()
                     }
                 }
@@ -672,6 +698,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.DESC1 = i["description"] as! String
                             self.SELLERID1 = i["user_id"] as! String
                             self.RATING1 = i["rating"] as! String
+                            self.POSTCODE1 = i["postcode"] as? String ?? "93050"
+                            self.WEIGHT1 = i["weight"] as? String ?? "1.00"
                             
                             self.SELLERID.append(self.SELLERID1)
                             self.ITEMID.append(self.ITEMID1)
@@ -687,6 +715,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.RATING.append(self.RATING1)
                             self.PHOTO.append(self.PHOTO1)
                             self.PRICE.append(self.PRICE1)
+                            self.POSTCODE.append(self.POSTCODE1)
+                            self.WEIGHT.append(self.WEIGHT1)
                             
                             self.CategoryView.reloadData()
                         }
@@ -715,6 +745,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.PHOTO.removeAll()
         self.DIVISION.removeAll()
         self.DISTRICT.removeAll()
+        self.POSTCODE.removeAll()
+        self.WEIGHT.removeAll()
         
         Alamofire.request(URL_PRICE_UP_READALL, method: .post).responseJSON
             {
@@ -737,6 +769,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.DESC1 = i["description"] as! String
                             self.SELLERID1 = i["user_id"] as! String
                             self.RATING1 = i["rating"] as! String
+                            self.POSTCODE1 = i["postcode"] as? String ?? "93050"
+                            self.WEIGHT1 = i["weight"] as? String ?? "1.00"
                             
                             self.SELLERID.append(self.SELLERID1)
                             self.ITEMID.append(self.ITEMID1)
@@ -752,6 +786,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.RATING.append(self.RATING1)
                             self.PHOTO.append(self.PHOTO1)
                             self.PRICE.append(self.PRICE1)
+                            self.POSTCODE.append(self.POSTCODE1)
+                            self.WEIGHT.append(self.WEIGHT1)
                             
                             self.CategoryView.reloadData()
                         }
@@ -780,6 +816,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.PHOTO.removeAll()
         self.DIVISION.removeAll()
         self.DISTRICT.removeAll()
+        self.POSTCODE.removeAll()
+        self.WEIGHT.removeAll()
         
         //        print(self.ADDETAIL.count)
         Alamofire.request(URL_PRICE_DOWN, method: .post).responseJSON
@@ -803,6 +841,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.DESC1 = i["description"] as! String
                             self.SELLERID1 = i["user_id"] as! String
                             self.RATING1 = i["rating"] as! String
+                            self.POSTCODE1 = i["postcode"] as? String ?? "93050"
+                            self.WEIGHT1 = i["weight"] as? String ?? "1.00"
                             
                             self.SELLERID.append(self.SELLERID1)
                             self.ITEMID.append(self.ITEMID1)
@@ -818,6 +858,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.RATING.append(self.RATING1)
                             self.PHOTO.append(self.PHOTO1)
                             self.PRICE.append(self.PRICE1)
+                            self.POSTCODE.append(self.POSTCODE1)
+                            self.WEIGHT.append(self.WEIGHT1)
                             
                             self.CategoryView.reloadData()
                         }

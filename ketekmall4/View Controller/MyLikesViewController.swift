@@ -33,9 +33,9 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
-    override func viewDidAppear(_ animated: Bool) {
-        Colorfunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        Colorfunc()
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

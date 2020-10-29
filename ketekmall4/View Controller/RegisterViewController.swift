@@ -39,9 +39,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var PasswordStyle: UIButton!
     @IBOutlet weak var Border: UIView!
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

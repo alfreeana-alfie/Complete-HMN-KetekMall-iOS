@@ -32,6 +32,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     var order_date: [String] = []
     var customer_id: [String] = []
     var tracking_no: [String] = []
+    var postcode: [String] = []
+    var weight: [String] = []
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -81,6 +83,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         let Order_Date = user.value(forKey: "order_date") as! [String]
                         
                         let Tracking_NO = user.value(forKey: "tracking_no") as! [String]
+                        let PostCode = user.value(forKey: "postcode") as! [String]
+                        let Weight = user.value(forKey: "weight") as! [String]
                         
                         self.tracking_no = Tracking_NO
                         self.customer_id = CustomerID
@@ -92,6 +96,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.item_orderDate = OrderDate
                         self.item_Shipped = Division
                         self.item_status = Status
+                        self.postcode = PostCode
+                        self.weight = Weight
                         
                         self.order_date = Order_Date
                         
@@ -270,6 +276,9 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         MySelling.CUSTOMERID = self.customer_id[indexPath.row]
         MySelling.ORDER_DATE = self.order_date[indexPath.row]
         MySelling.TRACKINGNO = self.tracking_no[indexPath.row]
+        
+        MySelling.POSTCODE = self.postcode[indexPath.row]
+        MySelling.WEIGHT = self.weight[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(MySelling, animated: true)
         }

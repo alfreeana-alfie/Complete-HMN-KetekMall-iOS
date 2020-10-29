@@ -58,6 +58,9 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var Division: UITextField!
     @IBOutlet weak var District: UITextField!
     @IBOutlet weak var Max_Order: UITextField!
+    @IBOutlet weak var PostCode: UITextField!
+    @IBOutlet weak var Weight: UITextField!
+    
     @IBOutlet weak var ButtonAccept: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     
@@ -85,15 +88,17 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     var PHOTO: String = ""
     var DISTRICT: String = ""
     var USERID: String = ""
+    var POSTCODE: String = ""
+    var WEIGHT: String = ""
     
     var flag = 0
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +119,8 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         Division.text! = DIVISION
         District.text! = DISTRICT
         Max_Order.text! = MAXORDER
+        PostCode.text! = POSTCODE
+        Weight.text! = WEIGHT
         
         saveItemID()
         ViewPhoto()
@@ -297,6 +304,8 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         AdDetail.DISTRICT = DISTRICT
         AdDetail.PHOTO = PHOTO
         AdDetail.MAXORDER = MAXORDER
+        AdDetail.POSTCODE = POSTCODE
+        AdDetail.WEIGHT = WEIGHT
         if let navigator = self.navigationController {
             navigator.pushViewController(AdDetail, animated: true)
         }
@@ -355,6 +364,8 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
             "max_order": Max_Order.text!,
             "division": Division.text!,
             "district": District.text!,
+            "postcode": PostCode.text!,
+            "weight": Weight.text!
         ]
         
         Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON

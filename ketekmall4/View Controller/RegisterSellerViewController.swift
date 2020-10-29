@@ -49,9 +49,9 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
         ButtonCancel.layer.cornerRadius = 5
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     func ColorFunc(){
         let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
