@@ -113,7 +113,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single_delivery.php"
     let URL_READ_DELIVERY2 = "https://ketekmall.com/ketekmall/read_detail_delivery_single.php"
     let URL_CART = "https://ketekmall.com/ketekmall/readcart_temp.php"
-    let URL_CHECKOUT = "https://ketekmall.com/ketekmall/add_to_checkout.php"
+    let URL_CHECKOUT = "https://ketekmall.com/ketekmall/add_to_checkout_two.php"
     let URL_SEND_EMAILBUYER = "https://ketekmall.com/ketekmall/sendEmail_buyer.php"
     let URL_SEND_EMAILSELLER = "https://ketekmall.com/ketekmall/sendEmail_seller.php"
     let URL_DELETE = "https://ketekmall.com/ketekmall/delete_cart_temp_user.php"
@@ -423,7 +423,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 "item_id": self.ITEMID[i],
                 "quantity": self.QUANTITY[i],
                 "delivery_price": self.DELIVERYPRICE[i],
-                "delivery_date": self.DELIVERYDATE[i],
+//                "delivery_date": self.DELIVERYDATE[i],
                 "delivery_addr": self.NEWADDR,
                 "weight": self.WEIGHT[i]
             ]
