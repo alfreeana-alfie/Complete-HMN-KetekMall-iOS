@@ -51,6 +51,8 @@ class ViewSellingViewController: UIViewController {
     var QUANTITY: String = ""
     var ORDER_DATE: String = ""
     var TRACKINGNO: String = ""
+    var WEIGHT: String = ""
+    var POSTCODE: String = ""
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""

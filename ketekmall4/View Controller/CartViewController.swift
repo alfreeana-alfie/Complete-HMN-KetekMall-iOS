@@ -351,7 +351,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     "quantity": cell.StepperNew.value,
                     "cart_id": self.ID[indexPath.row],
                     "postcode": self.POSTCODE[indexPath.row],
-                    "weight": self.WEIGHT[indexPaht.row]
+                    "weight": self.WEIGHT[indexPath.row]
                 ]
                 var SubTotal1: Double = 0.00
                 SubTotal1 = Double(self.PRICE[indexPath.row])! * Double(Int(cell.Quantity.text!)!)

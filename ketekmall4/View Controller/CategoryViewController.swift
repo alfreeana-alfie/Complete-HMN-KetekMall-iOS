@@ -67,7 +67,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PHOTO1: String = ""
     var DISTRICT1: String = ""
     var POSTCODE1: String = ""
-    var WEIGHT: String = ""
+    var WEIGHT1: String = ""
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -297,7 +297,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                                 "quantity": "1",
                                 "division": self.DIVISION[indexPath.row],
                                 "district": self.DISTRICT[indexPath.row],
-                                "photo": self.PHOTO[indexPath.row]
+                                "photo": self.PHOTO[indexPath.row],
                                 "postcode": self.POSTCODE[indexPath.row],
                                 "weight": self.WEIGHT[indexPath.row]
                             ]
