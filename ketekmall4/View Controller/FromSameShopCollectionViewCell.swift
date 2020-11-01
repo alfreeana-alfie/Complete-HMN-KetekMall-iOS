@@ -11,6 +11,7 @@ import AARatingBar
 
 protocol FromSameShopDelegate: class {
     func onViewClick(cell: FromSameShopCollectionViewCell)
+    func onAddToCart(cell: FromSameShopCollectionViewCell)
 }
 
 class FromSameShopCollectionViewCell: UICollectionViewCell {
@@ -23,8 +24,23 @@ class FromSameShopCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ButtonView: UIButton!
     @IBOutlet weak var Rating: AARatingBar!
     
-    @IBAction func ViewClick(_ sender: Any) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewImage(sender:)))
+        ItemImage.isUserInteractionEnabled = true
+        ItemImage.addGestureRecognizer(clickImage)
+    }
+    
+    @objc func ViewImage(sender: Any){
         self.delegate?.onViewClick(cell: self)
+    }
+    
+    @IBAction func ViewClick(_ sender: Any) {
+        self.delegate?.onAddToCart(cell: self)
+    }
+    
+    @IBAction func AddtoCart(_ sender: Any) {
+        self.delegate?.onAddToCart(cell: self)
     }
 
 }

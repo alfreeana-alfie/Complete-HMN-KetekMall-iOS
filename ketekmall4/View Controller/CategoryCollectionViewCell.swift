@@ -39,16 +39,12 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         self.delegate?.onViewClick(cell: self)
     }
     
-    @IBAction func ViewClick(sender: Any) {
-        self.delegate?.onAddToCart(cell: self)
-    }
-    
     @IBAction func AddToFav(_ sender: Any) {
         self.delegate?.onAddToFav(cell: self)
     }
     
     @IBAction func AddToCart(_ sender: Any) {
-        self.delegate?.onAddToFav(cell: self)
+        self.delegate?.onAddToCart(cell: self)
     }
     
 }

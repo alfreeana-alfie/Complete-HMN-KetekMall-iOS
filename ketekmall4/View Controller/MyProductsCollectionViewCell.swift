@@ -30,6 +30,9 @@ class MyProductsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Btn_Boost: UIButton!
     @IBOutlet weak var NoDeliveryLabel: UILabel!
     
+    @IBOutlet weak var PendingHeight: NSLayoutConstraint!
+    @IBOutlet weak var Btn_BoostHeight: NSLayoutConstraint!
+    
     @IBAction func Edit(sender: Any){
         self.delegate?.btnEdit(cell: self)
     }

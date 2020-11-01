@@ -12,7 +12,6 @@ import JGProgressHUD
 
 class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var AdDetailLabel: UILabel!
@@ -52,10 +51,9 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var ButtonCancel: UIButton!
     @IBOutlet weak var ButtonAdDetail: UIButton!
     
-    let URL_ADD = "https://ketekmall.com/ketekmall/products/uploadimg.php";
+    let URL_ADD = "https://ketekmall.com/ketekmall/products/uploadimg_new.php";
     let URL_UPLOAD_EXTRA = "https://ketekmall.com/ketekmall/products_img/uploadimg03.php"
 
-//    let URL_EDIT_PROD = "https://ketekmall.com/ketekmall/edit_product_detail.php"
     let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
     
     let category = ["Cake and pastries", "Process food", "Handicraft", "Retail and Wholesale", "Agriculture", "Service", "Health and Beauty", "home and living", "Fashion Accessories", "Sarawak - Based Product"]
@@ -84,6 +82,10 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     var Stock: String = ""
     var Description: String = ""
     var Addetail: String = ""
+    var CategoryText: String = ""
+    var CategorySubText: String = ""
+    var DivisionText: String = ""
+    var DistrictText: String = ""
     
     var flag = 0
     
@@ -103,6 +105,20 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         }else{
             changeLanguage(str: "en")
             
+        }
+        
+        print("\(CategoryText)")
+        
+        if(!CategoryText.isEmpty){
+            Category.text! = CategoryText
+        }
+        
+        if(!DivisionText.isEmpty){
+            Division.text! = DivisionText
+        }
+        
+        if(!DistrictText.isEmpty){
+            District.text! = DistrictText
         }
         
         CategoryPicker.dataSource = self
@@ -311,19 +327,21 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func AdDetail(_ sender: Any) {
         let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
         AdDetail.USERID = userID
-        AdDetail.ITEMID = ""
+//        AdDetail.ITEMID = ""
         AdDetail.ADDETAIL = Addetail
         AdDetail.MAINCATE = Category.text!
         AdDetail.SUBCATE = Category.text!
-        AdDetail.PRICE = Price.text!
+//        AdDetail.PRICE = Price.text!
         AdDetail.BRAND = BrandMaterial
         AdDetail.INNER = InnerMaterial
         AdDetail.STOCK = Stock
         AdDetail.DESC = Description
-        AdDetail.DIVISION = Division.text!
-        AdDetail.DISTRICT = District.text!
-        AdDetail.PHOTO = ""
-        AdDetail.MAXORDER = MaxOrder.text!
+//        AdDetail.DIVISION = Division.text!
+//        AdDetail.DISTRICT = District.text!
+//        AdDetail.PHOTO = ""
+//        AdDetail.MAXORDER = MaxOrder.text!
+//        AdDetail.POSTCODE = PostCode.text!
+//        AdDetail.WEIGHT = Weight.text!
         AdDetail.CheckView = true
         if let navigator = self.navigationController {
             navigator.pushViewController(AdDetail, animated: true)
@@ -562,14 +580,16 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
     
     @IBAction func Accept(_ sender: Any) {
+        let spinner = JGProgressHUD(style: .dark)
+
         spinner.show(in: self.view)
         let imageData: Data = ItemImage.image!.pngData()!
         let imageStr: String = imageData.base64EncodedString()
         
         let parameters: Parameters=[
             "user_id": userID,
-            "main_category":Category.text!,
-            "sub_category":Category.text!,
+            "main_category":CategoryText,
+            "sub_category":CategorySubText,
             "ad_detail":Addetail,
             "brand_material":BrandMaterial,
             "inner_material": InnerMaterial,
@@ -580,22 +600,20 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             "division": Division.text!,
             "postcode": PostCode.text!,
             "district": District.text!,
+            "photo": imageStr + Addetail,
             "weight": Weight.text!,
-            "photo": imageStr
+            "filename": Addetail,
+            "filepath": imageStr
         ]
         
         //Sending http post request
         Alamofire.request(URL_ADD, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                
                 if let result = response.result.value {
-                    
-                    self.spinner.dismiss(afterDelay: 3.0)
+                    spinner.dismiss(afterDelay: 3.0)
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
-                    
-                    
                     if(self.ItemImage2.image == UIImage(named: "AddPhoto")){
                         print("EMPTY")
                     }else{
@@ -625,15 +643,10 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
 //                        self.Delete_5.isHidden = false
                         print("SUCCESS 5")
                     }
-                    
-                        
-                    _ = self.navigationController?.popToRootViewController(animated: true)
-                }else{
-                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
-                    self.spinner.textLabel.text = "Failed to Save"
-                    self.spinner.show(in: self.view)
-                    self.spinner.dismiss(afterDelay: 4.0)
-                }
+                    let viewProduct = self.storyboard!.instantiateViewController(identifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(viewProduct, animated: true)
+                    }                }
         }
     }
     

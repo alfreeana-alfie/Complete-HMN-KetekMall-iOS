@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITabBarDelegate {
     var email: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
+//        ColorFunc()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     

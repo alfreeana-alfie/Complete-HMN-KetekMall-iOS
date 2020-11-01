@@ -51,6 +51,8 @@ class EditProductAdDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("\(MAINCATE)")
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -115,23 +117,23 @@ class EditProductAdDetailViewController: UIViewController {
     
     @IBAction func Accept(_ sender: Any) {
         if(CheckView == true){
-            let AdDetail = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
-            AdDetail.userID = USERID
-            AdDetail.Addetail = self.AdDetail.text!
-            AdDetail.Category.text! = MAINCATE
-            AdDetail.Category.text! = SUBCATE
-            AdDetail.Price.text! = PRICE
-            AdDetail.BrandMaterial = self.BrandMaterial.text!
-            AdDetail.InnerMaterial = self.InnerMaterial.text!
-            AdDetail.Stock = self.Stock.text!
-            AdDetail.Description = self.Description.text!
-            AdDetail.Division.text! = DIVISION
-            AdDetail.District.text! = DISTRICT
-            AdDetail.MaxOrder.text! = MAXORDER
-            AdDetail.PostCode.text! = POSTCODE
-            AdDetail.Weight.text! = WEIGHT
+            let ADDETAIL = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
+            ADDETAIL.userID = USERID
+            ADDETAIL.Addetail = self.AdDetail.text!
+            ADDETAIL.CategoryText = MAINCATE
+            ADDETAIL.CategorySubText = SUBCATE
+//            ADDETAIL.Price.text! = PRICE
+            ADDETAIL.BrandMaterial = self.BrandMaterial.text!
+            ADDETAIL.InnerMaterial = self.InnerMaterial.text!
+            ADDETAIL.Stock = self.Stock.text!
+            ADDETAIL.Description = self.Description.text!
+            ADDETAIL.DivisionText = DIVISION
+            ADDETAIL.DistrictText = DISTRICT
+//            ADDETAIL.MaxOrder.text! = MAXORDER
+//            ADDETAIL.PostCode.text! = POSTCODE
+//            ADDETAIL.Weight.text! = WEIGHT
             if let navigator = self.navigationController {
-                navigator.pushViewController(AdDetail, animated: true)
+                navigator.pushViewController(ADDETAIL, animated: true)
             }
         }else{
             let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController

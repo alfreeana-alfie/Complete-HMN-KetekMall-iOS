@@ -194,28 +194,28 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             cell.ButtonReject.setTitle("REJECT".localized(lang: "en"), for: .normal)
         }
         
-        let color1 = UIColor(hexString: "#FC4A1A").cgColor
-        let color2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let ReceivedGradient = CAGradientLayer()
-        ReceivedGradient.frame = cell.ButtonView.bounds
-        ReceivedGradient.colors = [color1, color2]
-        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ReceivedGradient.cornerRadius = 5
-            cell.ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
-        
-        //Button Cancel
-        let color3 = UIColor(hexString: "#FC4A1A").cgColor
-        let color4 = UIColor(hexString: "#F7B733").cgColor
-        
-        let CancelGradient = CAGradientLayer()
-        CancelGradient.frame = cell.ButtonReject.bounds
-        CancelGradient.colors = [color3, color4]
-        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        CancelGradient.cornerRadius = 5
-        cell.ButtonReject.layer.insertSublayer(CancelGradient, at: 0)
+//        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+//        let color2 = UIColor(hexString: "#F7B733").cgColor
+//        
+//        let ReceivedGradient = CAGradientLayer()
+//        ReceivedGradient.frame = cell.ButtonView.bounds
+//        ReceivedGradient.colors = [color1, color2]
+//        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        ReceivedGradient.cornerRadius = 5
+//            cell.ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
+//        
+//        //Button Cancel
+//        let color3 = UIColor(hexString: "#FC4A1A").cgColor
+//        let color4 = UIColor(hexString: "#F7B733").cgColor
+//        
+//        let CancelGradient = CAGradientLayer()
+//        CancelGradient.frame = cell.ButtonReject.bounds
+//        CancelGradient.colors = [color3, color4]
+//        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        CancelGradient.cornerRadius = 5
+//        cell.ButtonReject.layer.insertSublayer(CancelGradient, at: 0)
         cell.delegate = self
         return cell
     }

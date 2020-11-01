@@ -79,9 +79,9 @@ class ViewSellingViewController: UIViewController {
     @IBOutlet weak var TrackingHeight: NSLayoutConstraint!
     @IBOutlet weak var SubmitHeight: NSLayoutConstraint!
     
-    override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        ColorFunc()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

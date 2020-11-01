@@ -22,7 +22,7 @@ class BeforeRegisterViewController: UIViewController, UITabBarDelegate  {
     var user: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
-        ColorFunc()
+//        ColorFunc()
     }
     
     override func viewDidLoad() {

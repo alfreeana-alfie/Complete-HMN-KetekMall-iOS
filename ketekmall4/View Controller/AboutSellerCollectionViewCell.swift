@@ -38,10 +38,10 @@ class AboutSellerCollectionViewCell: UICollectionViewCell {
     @objc func ViewImage(sender: Any){
         self.delegate?.onViewClick(cell: self)
     }
-    
-    @IBAction func ViewClick(sender: Any) {
-        self.delegate?.onAddToCart(cell: self)
-    }
+//    
+//    @IBAction func ViewClick(sender: Any) {
+//        self.delegate?.onAddToCart(cell: self)
+//    }
     
     @IBAction func AddToFav(_ sender: Any) {
         self.delegate?.onAddToFav(cell: self)

@@ -20,6 +20,140 @@ import LanguageManager_iOS
 import FirebaseInstanceID
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate, UITabBarDelegate {
+    func onAddToCart(cell: HotCollectionViewCell) {
+        let spinner = JGProgressHUD(style: .dark)
+        guard let indexPath = self.HotView.indexPath(for: cell) else{
+            return
+        }
+
+        if(POSTCODEHOT[indexPath.row].contains("0")){
+            POSTCODEHOT[indexPath.row] = "93050"
+        }
+        
+        if(WEIGHTHOT[indexPath.row].contains("0.00")){
+            WEIGHTHOT[indexPath.row] = "1.00"
+        }
+        
+        let parameters: Parameters=[
+            "seller_id": SELLERIDHOT[indexPath.row],
+            "item_id": ID[indexPath.row],
+            "customer_id": userID,
+            "main_category": MAINCATEHOT[indexPath.row],
+            "sub_category": SUBCATEHOT[indexPath.row],
+            "ad_detail": ADDETAILHOT[indexPath.row],
+            "price": PRICEHOT[indexPath.row],
+            "quantity": "1",
+            "division": DIVISIONHOT[indexPath.row],
+            "postcode": POSTCODEHOT[indexPath.row],
+            "district": DISTRICTHOT[indexPath.row],
+            "photo": PHOTOHOT[indexPath.row],
+            "weight": WEIGHTHOT[indexPath.row]
+        ]
+        
+        if(SELLERIDHOT[indexPath.row] == userID){
+            let spinner = JGProgressHUD(style: .dark)
+
+            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+            if(self.lang == "ms"){
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+            }else{
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+            }
+                spinner.show(in: self.view)
+                spinner.dismiss(afterDelay: 3.0)
+            
+        }else{
+            //Sending http post request
+            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        spinner.textLabel.text = "Added to Cart"
+                        if(self.lang == "ms"){
+                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                            
+                        }else{
+                            spinner.textLabel.text = "Added to Cart"
+                           
+                        }
+                        spinner.show(in: self.view)
+                        spinner.dismiss(afterDelay: 3.0)
+                        print(jsonData.value(forKey: "message")!)
+                        
+                    }
+            }
+        }
+    }
+    
+    func onAddToCart1(cell: ShockingSaleCollectionViewCell) {
+        let spinner = JGProgressHUD(style: .dark)
+        guard let indexPath = self.HotView.indexPath(for: cell) else{
+            return
+        }
+
+        if(POSTCODESHOCKING[indexPath.row].contains("0")){
+            POSTCODESHOCKING[indexPath.row] = "93050"
+        }
+        
+        if(WEIGHTSHOCKING[indexPath.row].contains("0.00")){
+            WEIGHTSHOCKING[indexPath.row] = "1.00"
+        }
+        
+        let parameters: Parameters=[
+            "seller_id": SELLERIDSHOCKING[indexPath.row],
+            "item_id": ID1[indexPath.row],
+            "customer_id": userID,
+            "main_category": MAINCATESHOCKING[indexPath.row],
+            "sub_category": SUBCATESHOCKING[indexPath.row],
+            "ad_detail": ADDETAILSHOCKING[indexPath.row],
+            "price": PRICESHOCKING[indexPath.row],
+            "quantity": "1",
+            "division": DIVISIONSHOCKING[indexPath.row],
+            "postcode": POSTCODESHOCKING[indexPath.row],
+            "district": DISTRICTSHOCKING[indexPath.row],
+            "photo": PHOTOSHOCKING[indexPath.row],
+            "weight": WEIGHTSHOCKING[indexPath.row]
+        ]
+        
+        if(SELLERIDSHOCKING[indexPath.row] == userID){
+            let spinner = JGProgressHUD(style: .dark)
+
+            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+            if(self.lang == "ms"){
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+            }else{
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+            }
+                spinner.show(in: self.view)
+                spinner.dismiss(afterDelay: 3.0)
+            
+        }else{
+            //Sending http post request
+            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        spinner.textLabel.text = "Added to Cart"
+                        if(self.lang == "ms"){
+                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                            
+                        }else{
+                            spinner.textLabel.text = "Added to Cart"
+                           
+                        }
+                        spinner.show(in: self.view)
+                        spinner.dismiss(afterDelay: 3.0)
+                        print(jsonData.value(forKey: "message")!)
+                        
+                    }
+            }
+        }
+    }
+    
     func onViewClick1(cell: ShockingSaleCollectionViewCell) {
         guard let indexPath = self.ShockingView.indexPath(for: cell) else{
                     return
@@ -37,7 +171,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 viewProduct.STOCK = self.STOCKSHOCKING[indexPath.row]
                 viewProduct.DESC = self.DESCSHOCKING[indexPath.row]
                 viewProduct.PRICE = self.PRICESHOCKING[indexPath.row]
-        //        viewProduct.RATING = self.RATINGSHOCKING[indexPath.row]
+                viewProduct.POSTCODE = self.POSTCODESHOCKING[indexPath.row]
+                viewProduct.WEIGHT = self.WEIGHTSHOCKING[indexPath.row]
                 viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
                 viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
                 viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
@@ -46,9 +181,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
     }
     
-    
     private let spinner = JGProgressHUD(style: .dark)
     
+    let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
     let MAIN_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
     let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
@@ -155,7 +290,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     let URL_READ_CHAT = "https://ketekmall.com/ketekmall/read_chat.php"
     
-    
     @IBOutlet weak var CakePastries: UIView!
     @IBOutlet weak var ProcessFood: UIView!
     @IBOutlet weak var HealthBeauty: UIView!
@@ -217,7 +351,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var RATINGHOT: [String] = []
     var PHOTOHOT: [String] = []
     var DIVISIONHOT: [String] = []
+    var POSTCODEHOT: [String] = []
     var DISTRICTHOT: [String] = []
+    var WEIGHTHOT: [String] = []
     
     var ID1: [String] = []
     var SELLERIDSHOCKING: [String] = []
@@ -233,6 +369,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var PHOTOSHOCKING: [String] = []
     var DIVISIONSHOCKING: [String] = []
     var DISTRICTSHOCKING: [String] = []
+    var POSTCODESHOCKING: [String] = []
+    var WEIGHTSHOCKING: [String] = []
     
     var userID: String = ""
     var Cart_count: Int = 0
@@ -247,6 +385,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     let sender = PushNotificationSender()
     var tokenUser: String = ""
+    var lang: String = "";
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        ColorFunc()
@@ -267,6 +406,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         user = sharedPref.string(forKey: "USERID") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
+        lang = sharedPref.string(forKey: "LANG") ?? "en"
         
         let index = email.firstIndex(of: "@") ?? email.endIndex
         let newEmail = email[..<index]
@@ -948,6 +1088,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         let Photo = user.value(forKey: "photo") as! [String]
                         let division = user.value(forKey: "division") as! [String]
                         let district = user.value(forKey: "district") as! [String]
+                        let postcode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                        let weight = user.value(forKey: "weight") as? [String] ?? ["1.00"]
                         
                         self.ID = ItemID
                         self.SELLERIDHOT = seller_id
@@ -963,6 +1105,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.PHOTOHOT = Photo
                         self.DIVISIONHOT = division
                         self.DISTRICTHOT = district
+                        self.POSTCODEHOT = postcode
+                        self.WEIGHTHOT = weight
                         
                         self.HotView.reloadData()
                         
@@ -997,6 +1141,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             let Photo = user.value(forKey: "photo") as! [String]
                             let division = user.value(forKey: "division") as! [String]
                             let district = user.value(forKey: "district") as! [String]
+                            let postcode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
+                            let weight = user.value(forKey: "weight") as? [String] ?? ["1.00"]
                             
                             self.ID1 = ItemID
                             self.SELLERIDSHOCKING = seller_id
@@ -1012,6 +1158,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             self.PHOTOSHOCKING = Photo
                             self.DIVISIONSHOCKING = division
                             self.DISTRICTSHOCKING = district
+                            self.POSTCODESHOCKING = postcode
+                            self.WEIGHTSHOCKING = weight
 
                             self.ShockingView.reloadData()
                             
@@ -1078,6 +1226,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.STOCK = self.STOCKHOT[indexPath.row]
         viewProduct.DESC = self.DESCHOT[indexPath.row]
         viewProduct.PRICE = self.PRICEHOT[indexPath.row]
+        viewProduct.POSTCODE = self.POSTCODEHOT[indexPath.row]
+        viewProduct.WEIGHT = self.WEIGHTHOT[indexPath.row]
 //        viewProduct.RATING = self.RATINGHOT[indexPath.row]
         viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
@@ -1113,16 +1263,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             cell.layer.cornerRadius = 5
             
-            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
-            let colorTwo = UIColor(hexString: "#F7B733").cgColor
-            
-            let ViewGradient = CAGradientLayer()
-            ViewGradient.frame = cell.ButtonView.bounds
-            ViewGradient.colors = [colorOne, colorTwo]
-            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-            ViewGradient.cornerRadius = 5
-            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+//            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
+//            let colorTwo = UIColor(hexString: "#F7B733").cgColor
+//
+//            let ViewGradient = CAGradientLayer()
+//            ViewGradient.frame = cell.ButtonView.bounds
+//            ViewGradient.colors = [colorOne, colorTwo]
+//            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//            ViewGradient.cornerRadius = 5
+//            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell.delegate = self
             return cell
         }else{
@@ -1143,16 +1293,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             cell1.ItemImage.addGestureRecognizer(Image)
             
-            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
-            let colorTwo = UIColor(hexString: "#F7B733").cgColor
-            
-            let ViewGradient = CAGradientLayer()
-            ViewGradient.frame = cell1.ButtonView.bounds
-            ViewGradient.colors = [colorOne, colorTwo]
-            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-            ViewGradient.cornerRadius = 5
-            cell1.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+//            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
+//            let colorTwo = UIColor(hexString: "#F7B733").cgColor
+//            
+//            let ViewGradient = CAGradientLayer()
+//            ViewGradient.frame = cell1.ButtonView.bounds
+//            ViewGradient.colors = [colorOne, colorTwo]
+//            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//            ViewGradient.cornerRadius = 5
+//            cell1.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell1.delegate = self
             return cell1
         }

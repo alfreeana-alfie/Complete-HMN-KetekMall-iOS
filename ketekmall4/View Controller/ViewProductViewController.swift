@@ -15,12 +15,14 @@ import JGProgressHUD
 import ImageSlideshow
 
 class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
+    
+    
 
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     var email_user: String = ""
 
-    private let spinner = JGProgressHUD(style: .dark)
+//    private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var ButtonChat: UIImageView!
     @IBOutlet weak var ItemImage: UIImageView!
@@ -72,7 +74,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     let URL_READALL_SELLER = "https://ketekmall.com/ketekmall/readall_seller.php"
     let MAIN_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
     let URL_READ_PHOTO = "https://ketekmall.com/ketekmall/products_img/read_photo.php"
-    
+    let URL_READ_CART = "https://ketekmall.com/ketekmall/readcart_single.php"
+    let URL_READ_CART_TWO = "https://ketekmall.com/ketekmall/readcart_single_ios.php"
+
     var ItemID: String = ""
     var SELLERID: String = ""
     var MAINCATE: String = ""
@@ -136,6 +140,10 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         NoReviewLabel.isHidden = true
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
+        USERID = sharedPref.string(forKey: "USERID") ?? "0"
+        
+//        print("POSTCODE: \(POSTCODE)")
+        
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -381,6 +389,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func getSold(){
+        let spinner = JGProgressHUD(style: .dark)
+
         spinner.show(in: self.view)
         let parameters: Parameters=[
             "seller_id": SELLERID,
@@ -394,7 +404,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        self.spinner.dismiss(afterDelay: 3.0)
+                        spinner.dismiss(afterDelay: 3.0)
                         let user = jsonData.value(forKey: "read") as! NSArray
                         
                         let ID = user.value(forKey: "id") as! [String]
@@ -656,9 +666,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FromSameShopCollectionViewCell", for: indexPath) as! FromSameShopCollectionViewCell
         
         if(lang == "ms"){
-            cell.ButtonView.setTitle("VIEW".localized(lang: "ms"), for: .normal)
+            cell.ButtonView.setTitle("ADD TO CART".localized(lang: "ms"), for: .normal)
         }else{
-            cell.ButtonView.setTitle("VIEW".localized(lang: "en"), for: .normal)
+            cell.ButtonView.setTitle("ADD TO CART".localized(lang: "en"), for: .normal)
         }
 
         
@@ -675,16 +685,16 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ButtonView.layer.cornerRadius = 5
         cell.layer.cornerRadius = 5
         
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-        
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = cell.ButtonView.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 16
-        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+//
+//        let ViewGradient = CAGradientLayer()
+//        ViewGradient.frame = cell.ButtonView.bounds
+//        ViewGradient.colors = [colorViewOne, colorViewTwo]
+//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        ViewGradient.cornerRadius = 16
+//        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
         
         cell.delegate = self
         return cell
@@ -719,7 +729,85 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
+    func onAddToCart(cell: FromSameShopCollectionViewCell) {
+        let spinner = JGProgressHUD(style: .dark)
+        guard let indexPath = self.SameShopView.indexPath(for: cell) else{
+            return
+        }
+
+        if(POSTCODE_SAMESHOP[indexPath.row].contains("0")){
+            POSTCODE_SAMESHOP[indexPath.row] = "93050"
+        }
+        
+        if(WEIGHT_SAMESHOP[indexPath.row].contains("0.00")){
+            WEIGHT_SAMESHOP[indexPath.row] = "1.00"
+        }
+        
+        let parameters: Parameters=[
+            "seller_id": SELLERID_SAMESHOP[indexPath.row],
+            "item_id": ITEMID_SAMESHOP[indexPath.row],
+            "customer_id": USERID,
+            "main_category": MAINCATE_SAMESHOP[indexPath.row],
+            "sub_category": SUBCATE_SAMESHOP[indexPath.row],
+            "ad_detail": ADDETAIL_SAMESHOP[indexPath.row],
+            "price": PRICE_SAMESHOP[indexPath.row],
+            "quantity": "1",
+            "division": DIVISION_SAMESHOP[indexPath.row],
+            "postcode": POSTCODE_SAMESHOP[indexPath.row],
+            "district": DISTRICT_SAMESHOP[indexPath.row],
+            "photo": PHOTO_SAMESHOP[indexPath.row],
+            "weight": WEIGHT_SAMESHOP[indexPath.row]
+        ]
+        
+        if(SELLERID_SAMESHOP[indexPath.row] == USERID){
+            let spinner = JGProgressHUD(style: .dark)
+
+            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+            if(self.lang == "ms"){
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+            }else{
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+            }
+                spinner.show(in: self.view)
+                spinner.dismiss(afterDelay: 3.0)
+            
+        }else{
+            //Sending http post request
+            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        spinner.textLabel.text = "Added to Cart"
+                        if(self.lang == "ms"){
+                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                            
+                        }else{
+                            spinner.textLabel.text = "Added to Cart"
+                           
+                        }
+                        spinner.show(in: self.view)
+                        spinner.dismiss(afterDelay: 3.0)
+                        print(jsonData.value(forKey: "message")!)
+                        
+                    }
+            }
+        }
+
+               
+    }
+    
     @IBAction func AddToCart(_ sender: Any) {
+        let spinner = JGProgressHUD(style: .dark)
+
+        if(POSTCODE.contains("0")){
+            POSTCODE = "93050"
+        }
+        
+        if(WEIGHT.contains("0.00")){
+            WEIGHT = "1.00"
+        }
         
         let parameters: Parameters=[
             "seller_id": SELLERID,
@@ -731,24 +819,24 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             "price": PRICE,
             "quantity": "1",
             "division": DIVISION,
+            "postcode": POSTCODE,
             "district": DISTRICT,
             "photo": PHOTO,
-            "postcode": POSTCODE,
             "weight": WEIGHT
         ]
         
         if(SELLERID == USERID){
-            self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-            if(self.lang == "ms"){
-                self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
-                
-            }else{
-                self.spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
-               
-            }
+            let spinner = JGProgressHUD(style: .dark)
 
-            self.spinner.show(in: self.view)
-            self.spinner.dismiss(afterDelay: 3.0)
+            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+            if(self.lang == "ms"){
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+            }else{
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+            }
+                spinner.show(in: self.view)
+                spinner.dismiss(afterDelay: 3.0)
+            
         }else{
             //Sending http post request
             Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
@@ -756,18 +844,17 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     response in
                     if let result = response.result.value {
                         let jsonData = result as! NSDictionary
-                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        self.spinner.textLabel.text = "Added to Cart"
+                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        spinner.textLabel.text = "Added to Cart"
                         if(self.lang == "ms"){
-                            self.spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
                             
                         }else{
-                            self.spinner.textLabel.text = "Added to Cart"
+                            spinner.textLabel.text = "Added to Cart"
                            
                         }
-
-                        self.spinner.show(in: self.view)
-                        self.spinner.dismiss(afterDelay: 3.0)
+                        spinner.show(in: self.view)
+                        spinner.dismiss(afterDelay: 3.0)
                         print(jsonData.value(forKey: "message")!)
                         
                     }

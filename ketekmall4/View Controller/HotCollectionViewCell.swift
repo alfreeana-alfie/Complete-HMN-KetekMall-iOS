@@ -11,6 +11,7 @@ import AARatingBar
 
 protocol HotDelegate: class {
     func onViewClick(cell: HotCollectionViewCell)
+    func onAddToCart(cell: HotCollectionViewCell)
     
 }
 
@@ -26,12 +27,16 @@ class HotCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewClick(sender:)))
+        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewImage(sender:)))
         ItemImage.isUserInteractionEnabled = true
         ItemImage.addGestureRecognizer(clickImage)
     }
     
-    @IBAction func ViewClick(sender: Any){
+    @objc func ViewImage(sender: Any){
         self.delegate?.onViewClick(cell: self)
+    }
+    
+    @IBAction func AddCart(sender: Any){
+        self.delegate?.onAddToCart(cell: self)
     }
 }

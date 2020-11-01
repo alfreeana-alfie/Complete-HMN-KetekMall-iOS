@@ -204,6 +204,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 response in
                 var strGrand: Double = 0.00
                 var strGrand2: Double = 0.00
+                var strCharges: Double = 0.00
                 if let result = response.result.value{
                     let jsonData = result as! NSDictionary
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
@@ -248,7 +249,11 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.Address.text! = self.NEWADDR
                                         
                                         for i in 0..<self.ITEMID.count{
-                                            let NEW_URL = self.API_POSTCODE + "?postcodeFrom=" + self.PostCodefrom + "&postcodeTo=" + self.PostCodeTo + "&Weight=" + self.Weight;
+                                            
+                                            strCharges = Double(Int(self.QUANTITY[i])!) * Double(self.WEIGHT[i])!
+                                            
+                                            let NEW_URL_PARTONE = self.API_POSTCODE + "?postcodeFrom=" + self.POSTCODE_P[i];
+                                            let NEW_URL =  NEW_URL_PARTONE + "&postcodeTo=" + self.POSTCODE[0] + "&Weight=" + String(format: "%.2f", strCharges);
                                             
                                             let headers = [ "X-User-Key" : self.serverKey_POSTCODE ]
                                             
@@ -296,27 +301,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                 }
                         }
                     }
-                }
-        }
-    }
-    
-    //MARK: Postcode
-    func PostCode(){
-        let NEW_URL = API_POSTCODE + "?postcodeFrom=" + PostCodefrom + "&postcodeTo=" + PostCodeTo + "&Weight=" + Weight;
-        
-        let headers = [ "X-User-Key" : serverKey_POSTCODE ]
-        
-        let configuration = URLSessionConfiguration.default
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-    
-        Alamofire.request(NEW_URL, method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
-            {
-                response in
-                if let result = response.result.value {
-                    let details = result as! NSArray
-                    
-                    let totalAmount = details.value(forKey: "totalAmount") as! [String]
-                    print("JSON: \(totalAmount)")
                 }
         }
     }
@@ -404,6 +388,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
 //    }
     
     func AddCheckout(){
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let resultDate = formatter.string(from: date)
+        print("\(resultDate)")
+
         spinner.show(in: self.view)
         for i in 0..<self.SELLERID.count{
             let parameters: Parameters=[
@@ -417,13 +407,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 "postcode": self.postcode,
                 "district": self.divsionu,
                 "seller_division": self.DIVISION[i],
-                "seller_postcode": self.POSTCODE[i],
+                "seller_postcode": self.POSTCODE_P[i],
                 "seller_district": self.DISTRICT[i],
                 "photo": self.PHOTO[i],
                 "item_id": self.ITEMID[i],
                 "quantity": self.QUANTITY[i],
                 "delivery_price": self.DELIVERYPRICE[i],
-//                "delivery_date": self.DELIVERYDATE[i],
+                "delivery_date": resultDate,
                 "delivery_addr": self.NEWADDR,
                 "weight": self.WEIGHT[i]
             ]
@@ -437,6 +427,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         
                         self.getSellerDetails()
                         self.getUserDetails()
+                    }
+                    else{
+                        print("FAILED")
                     }
             }
         }
@@ -527,13 +520,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DELIVERYPRICE.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenSize = collectionView.bounds
-        let screenWidth = screenSize.width
-        let cellSquareSize: CGFloat = screenWidth
-        return CGSize(width: cellSquareSize, height: 230)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -98,7 +98,5 @@ class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigatio
         
         webView = paymentSDK!.checkout(requeryPayment) as? WKWebView
         self.view.addSubview(webView!)
-        
-        
     }
 }

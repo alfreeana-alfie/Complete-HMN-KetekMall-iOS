@@ -11,6 +11,7 @@ import AARatingBar
 
 protocol ShockingDelegate: class {
     func onViewClick1(cell: ShockingSaleCollectionViewCell)
+    func onAddToCart1(cell: ShockingSaleCollectionViewCell)
 }
 
 class ShockingSaleCollectionViewCell: UICollectionViewCell {
@@ -25,12 +26,16 @@ class ShockingSaleCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewClick1(sender:)))
+        let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewImage(sender:)))
         ItemImage.isUserInteractionEnabled = true
         ItemImage.addGestureRecognizer(clickImage)
     }
     
-    @IBAction func ViewClick1(sender: Any) {
+    @objc func ViewImage(sender: Any){
         self.delegate?.onViewClick1(cell: self)
+    }
+    
+    @IBAction func AddCart1(sender: Any) {
+        self.delegate?.onAddToCart1(cell: self)
     }
 }

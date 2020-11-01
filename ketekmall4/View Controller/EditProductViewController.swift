@@ -46,13 +46,13 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var UploadedPhotoLabel: UILabel!
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var AdDetailLabel: UILabel!
-    @IBOutlet weak var ButtonSetupDelivery: UIButton!
+//    @IBOutlet weak var ButtonSetupDelivery: UIButton!
     @IBOutlet weak var PriceLabel: UILabel!
     @IBOutlet weak var DivisionLabel: UILabel!
     @IBOutlet weak var DistrictLabel: UILabel!
     @IBOutlet weak var MaxOrderLabel: UILabel!
     @IBOutlet weak var ButtonAdDetail: UIButton!
-    @IBOutlet weak var SetupDeliveryLabel: UILabel!
+//    @IBOutlet weak var SetupDeliveryLabel: UILabel!
     
     @IBOutlet weak var Price: UITextField!
     @IBOutlet weak var Division: UITextField!
@@ -70,7 +70,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var DivisionView: UIView!
     @IBOutlet weak var DistrictView: UIView!
     @IBOutlet weak var MaxOrderView: UIView!
-    @IBOutlet weak var DeliveryView: UIView!
+//    @IBOutlet weak var DeliveryView: UIView!
     
     var viewController1: UIViewController?
     
@@ -152,7 +152,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         DivisionView.layer.cornerRadius = 7
         DistrictView.layer.cornerRadius = 7
         MaxOrderView.layer.cornerRadius = 7
-        DeliveryView.layer.cornerRadius = 7
+//        DeliveryView.layer.cornerRadius = 7
         
         ImageView1.isUserInteractionEnabled = true
         ImageView2.isUserInteractionEnabled = true
@@ -266,7 +266,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         DivisionLabel.text = "Division".localized(lang: str)
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
-        SetupDeliveryLabel.text = "Setup Delivery".localized(lang: str)
+//        SetupDeliveryLabel.text = "Setup Delivery".localized(lang: str)
         //        UploadImage.titleLabel?.text = "Upload Image".localized(lang: str)
         
         UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
@@ -279,7 +279,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
         Max_Order.placeholder = "Max Order".localized(lang: str)
         //        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
         
-        ButtonSetupDelivery.setTitle("Click to Edit Setup Delivery".localized(lang: str), for: .normal)
+//        ButtonSetupDelivery.setTitle("Click to Edit Setup Delivery".localized(lang: str), for: .normal)
         
         //        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
         //        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
@@ -702,7 +702,6 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                 dismiss(animated: true, completion: nil)
             }
         }
-//        dismiss(animated: true, completion: nil)
     }
     
 }
