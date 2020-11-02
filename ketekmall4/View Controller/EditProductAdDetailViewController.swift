@@ -144,7 +144,7 @@ class EditProductAdDetailViewController: UIViewController {
             AdDetail.SUBCATE = SUBCATE
             AdDetail.PRICE = PRICE
             AdDetail.BRAND = self.BrandMaterial.text!
-            AdDetail.INNER = self.InnerMaterial.text!
+            AdDetail.INNER = self.BrandMaterial.text!
             AdDetail.STOCK = self.Stock.text!
             AdDetail.DESC = self.Description.text!
             AdDetail.DIVISION = DIVISION

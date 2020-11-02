@@ -269,19 +269,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-ME-jFX">
-                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="OYT-hA-KkS" kind="embed" id="z3u-lg-KnN"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cU6-Zf-5yb">
-                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="BrF-RY-Z7v" kind="embed" id="hEA-pb-C9I"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c18-e5-vkT">
-                                <rect key="frame" x="0.0" y="194" width="414" height="487"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="570"/>
                                 <connections>
                                     <segue destination="NYb-Qg-Vgc" kind="embed" id="BF5-o4-KeI"/>
                                 </connections>
@@ -333,7 +333,7 @@
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRX-RP-FXh">
-                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Dgz-t3-Bg4"/>
@@ -1342,7 +1342,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </constraints>
                                     </view>
                                     <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRN-Pr-tq7">
-                                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                        <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
                                             <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Xp3-By-F9u"/>
@@ -1550,7 +1550,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <viewLayoutGuide key="safeArea" id="b4j-ne-VzS"/>
                             </stackView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCP-7f-PPn">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="4et-58-wCJ"/>
@@ -1681,7 +1681,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPq-y4-lnB">
-                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="QdI-X0-oAq"/>
@@ -1743,10 +1743,10 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRp-ni-rd5" userLabel="Checkout">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="691"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-hp-6ha">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="626"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zXJ-fq-8ca">
                                             <size key="itemSize" width="414" height="178"/>
@@ -1928,19 +1928,19 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-6h-LJD">
-                                        <rect key="frame" x="45" y="667" width="27" height="15"/>
+                                        <rect key="frame" x="45" y="633" width="27" height="15"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MYR0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp0-f1-jOn">
-                                        <rect key="frame" x="45" y="690" width="71.5" height="21"/>
+                                        <rect key="frame" x="45" y="656" width="71.5" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.56000000000000005" alpha="1" colorSpace="deviceWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-5i-LTX">
-                                        <rect key="frame" x="270" y="673" width="100" height="44"/>
+                                        <rect key="frame" x="270" y="639" width="100" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="wHz-PK-8Mo"/>
@@ -1973,7 +1973,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-L0-Wzt">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="3Gr-ft-J9K"/>
@@ -2701,7 +2701,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-kT-YKq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SN8-ky-bjb">
                                     <size key="itemSize" width="414" height="94"/>
@@ -2763,7 +2763,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fW2-Ks-uXx">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="Axj-KI-d72"/>
@@ -2810,26 +2810,26 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INNER MATERIAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zow-JC-595">
-                                        <rect key="frame" x="31" y="71" width="136" height="20"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="INNER MATERIAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zow-JC-595">
+                                        <rect key="frame" x="31" y="71" width="136" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STOCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYC-sP-Ml9">
-                                        <rect key="frame" x="31" y="99" width="57" height="20"/>
+                                        <rect key="frame" x="31" y="85.5" width="57" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHIPS FROM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iB-Eh-885">
-                                        <rect key="frame" x="31" y="127" width="101" height="20"/>
+                                        <rect key="frame" x="31" y="133" width="101" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdD-f8-9TA">
-                                        <rect key="frame" x="31" y="178" width="111" height="20"/>
+                                        <rect key="frame" x="31" y="194.5" width="111" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -2843,17 +2843,14 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Inner Material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0g-oG-rzh">
-                                        <rect key="frame" x="182" y="72" width="224" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="Ko7-Kg-4WI"/>
-                                        </constraints>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Inner Material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0g-oG-rzh">
+                                        <rect key="frame" x="182" y="72" width="224" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Stock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZ4-ET-Eco">
-                                        <rect key="frame" x="182" y="100" width="224" height="20"/>
+                                        <rect key="frame" x="182" y="83.5" width="224" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="g6Y-IP-WAb"/>
                                         </constraints>
@@ -2863,15 +2860,12 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Ships From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-uK-azh">
                                         <rect key="frame" x="182" y="128" width="224" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="Mbz-85-8di"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSv-3A-5g8">
-                                        <rect key="frame" x="31" y="206" width="352" height="541"/>
+                                        <rect key="frame" x="31" y="226.5" width="352" height="467.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2880,39 +2874,41 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="9iB-Eh-885" firstAttribute="top" secondItem="TYC-sP-Ml9" secondAttribute="bottom" constant="8" id="0jw-mZ-wyj"/>
-                                    <constraint firstAttribute="bottom" secondItem="vSv-3A-5g8" secondAttribute="bottom" constant="2" id="2Az-CR-TkI"/>
+                                    <constraint firstAttribute="bottom" secondItem="vSv-3A-5g8" secondAttribute="bottom" constant="55" id="2Az-CR-TkI"/>
+                                    <constraint firstItem="FdD-f8-9TA" firstAttribute="top" secondItem="9iB-Eh-885" secondAttribute="bottom" constant="41.5" id="4ed-WG-sjX"/>
                                     <constraint firstItem="l0g-oG-rzh" firstAttribute="top" secondItem="lRx-mM-gA5" secondAttribute="bottom" constant="8" id="5Dz-aN-BGt"/>
                                     <constraint firstItem="lRx-mM-gA5" firstAttribute="leading" secondItem="HXP-Hl-dkI" secondAttribute="trailing" constant="8" id="5Jk-xx-P9k"/>
                                     <constraint firstItem="zZ4-ET-Eco" firstAttribute="leading" secondItem="TYC-sP-Ml9" secondAttribute="trailing" constant="94" id="5ms-lf-qrt"/>
                                     <constraint firstItem="Zow-JC-595" firstAttribute="top" secondItem="HXP-Hl-dkI" secondAttribute="bottom" constant="8" id="6JV-z7-8we"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FdD-f8-9TA" secondAttribute="trailing" constant="20" symbolic="YES" id="8fO-nd-R9v"/>
-                                    <constraint firstItem="vSv-3A-5g8" firstAttribute="top" secondItem="FdD-f8-9TA" secondAttribute="bottom" constant="8" id="AH9-Bh-Vaq"/>
-                                    <constraint firstItem="bfU-uK-azh" firstAttribute="top" secondItem="zZ4-ET-Eco" secondAttribute="bottom" constant="8" id="DTp-jB-GYn"/>
+                                    <constraint firstItem="vSv-3A-5g8" firstAttribute="top" secondItem="FdD-f8-9TA" secondAttribute="bottom" constant="12" id="AH9-Bh-Vaq"/>
+                                    <constraint firstItem="9iB-Eh-885" firstAttribute="leading" secondItem="TYC-sP-Ml9" secondAttribute="leading" id="EFo-su-gBM"/>
+                                    <constraint firstItem="bfU-uK-azh" firstAttribute="leading" secondItem="zZ4-ET-Eco" secondAttribute="leading" id="EO5-AP-nmn"/>
                                     <constraint firstItem="l0g-oG-rzh" firstAttribute="top" secondItem="lRx-mM-gA5" secondAttribute="bottom" constant="8" id="F35-Q8-pbe"/>
-                                    <constraint firstItem="bfU-uK-azh" firstAttribute="leading" secondItem="9iB-Eh-885" secondAttribute="trailing" constant="50" id="IPs-4y-Ocw"/>
                                     <constraint firstAttribute="trailing" secondItem="l0g-oG-rzh" secondAttribute="trailing" constant="8" id="Ira-fH-VJm"/>
                                     <constraint firstAttribute="trailing" secondItem="vSv-3A-5g8" secondAttribute="trailing" constant="31" id="IyP-X2-7nF"/>
+                                    <constraint firstItem="bfU-uK-azh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9iB-Eh-885" secondAttribute="trailing" constant="8" symbolic="YES" id="JQq-Ox-Jy2"/>
+                                    <constraint firstItem="bfU-uK-azh" firstAttribute="trailing" secondItem="zZ4-ET-Eco" secondAttribute="trailing" id="Kh0-w3-kOc"/>
                                     <constraint firstItem="Zow-JC-595" firstAttribute="leading" secondItem="azU-ub-kF6" secondAttribute="leading" constant="31" id="M7T-1b-GGd"/>
                                     <constraint firstItem="HXP-Hl-dkI" firstAttribute="leading" secondItem="azU-ub-kF6" secondAttribute="leading" constant="31" id="Mf0-eP-mJC"/>
                                     <constraint firstItem="HXP-Hl-dkI" firstAttribute="top" secondItem="azU-ub-kF6" secondAttribute="top" constant="43" id="Myb-FX-olM"/>
-                                    <constraint firstItem="TYC-sP-Ml9" firstAttribute="top" secondItem="Zow-JC-595" secondAttribute="bottom" constant="8" id="Oia-Fz-bW4"/>
-                                    <constraint firstItem="bfU-uK-azh" firstAttribute="top" secondItem="zZ4-ET-Eco" secondAttribute="bottom" constant="8" id="UfO-XU-yoQ"/>
+                                    <constraint firstItem="TYC-sP-Ml9" firstAttribute="top" secondItem="Zow-JC-595" secondAttribute="bottom" constant="14.5" id="Oia-Fz-bW4"/>
                                     <constraint firstItem="Zow-JC-595" firstAttribute="top" secondItem="HXP-Hl-dkI" secondAttribute="bottom" constant="8" id="cHx-Ce-vdm"/>
+                                    <constraint firstItem="9iB-Eh-885" firstAttribute="top" secondItem="azU-ub-kF6" secondAttribute="top" constant="133" id="dOg-EJ-Lzl"/>
+                                    <constraint firstItem="bfU-uK-azh" firstAttribute="top" secondItem="zZ4-ET-Eco" secondAttribute="bottom" constant="24.5" id="dg5-TS-Coo"/>
+                                    <constraint firstItem="vSv-3A-5g8" firstAttribute="top" secondItem="bfU-uK-azh" secondAttribute="bottom" constant="78.5" id="e4N-Pi-Ni2"/>
                                     <constraint firstItem="lRx-mM-gA5" firstAttribute="top" secondItem="azU-ub-kF6" secondAttribute="top" constant="44" id="eWZ-BC-00G"/>
                                     <constraint firstItem="TYC-sP-Ml9" firstAttribute="leading" secondItem="azU-ub-kF6" secondAttribute="leading" constant="31" id="fhh-un-dEm"/>
                                     <constraint firstItem="FdD-f8-9TA" firstAttribute="leading" secondItem="azU-ub-kF6" secondAttribute="leading" constant="31" id="iPJ-Jq-NuV"/>
                                     <constraint firstAttribute="trailing" secondItem="lRx-mM-gA5" secondAttribute="trailing" constant="8" id="lpm-pi-Ncd"/>
-                                    <constraint firstItem="FdD-f8-9TA" firstAttribute="top" secondItem="9iB-Eh-885" secondAttribute="bottom" constant="31" id="mQg-64-pee"/>
+                                    <constraint firstItem="9iB-Eh-885" firstAttribute="top" secondItem="TYC-sP-Ml9" secondAttribute="bottom" constant="27.5" id="mZg-Jp-83I"/>
                                     <constraint firstItem="l0g-oG-rzh" firstAttribute="leading" secondItem="Zow-JC-595" secondAttribute="trailing" constant="15" id="oAw-XW-gdi"/>
-                                    <constraint firstAttribute="trailing" secondItem="bfU-uK-azh" secondAttribute="trailing" constant="8" id="paq-eG-xFP"/>
                                     <constraint firstAttribute="trailing" secondItem="zZ4-ET-Eco" secondAttribute="trailing" constant="8" id="qYj-TQ-GZn"/>
-                                    <constraint firstItem="zZ4-ET-Eco" firstAttribute="top" secondItem="l0g-oG-rzh" secondAttribute="bottom" constant="8" id="rp5-mc-fLn"/>
+                                    <constraint firstItem="zZ4-ET-Eco" firstAttribute="top" secondItem="l0g-oG-rzh" secondAttribute="bottom" constant="11.5" id="rp5-mc-fLn"/>
+                                    <constraint firstItem="bfU-uK-azh" firstAttribute="top" secondItem="azU-ub-kF6" secondAttribute="top" constant="128" id="txZ-KP-Y4B"/>
                                     <constraint firstItem="vSv-3A-5g8" firstAttribute="leading" secondItem="azU-ub-kF6" secondAttribute="leading" constant="31" id="vH6-6A-ZJY"/>
-                                    <constraint firstItem="9iB-Eh-885" firstAttribute="top" secondItem="TYC-sP-Ml9" secondAttribute="bottom" constant="8" id="vfx-1T-4Aj"/>
-                                    <constraint firstItem="TYC-sP-Ml9" firstAttribute="top" secondItem="Zow-JC-595" secondAttribute="bottom" constant="8" id="w9a-gC-iMh"/>
-                                    <constraint firstItem="zZ4-ET-Eco" firstAttribute="top" secondItem="l0g-oG-rzh" secondAttribute="bottom" constant="8" id="z5S-S6-nrs"/>
-                                    <constraint firstItem="9iB-Eh-885" firstAttribute="leading" secondItem="azU-ub-kF6" secondAttribute="leading" constant="31" id="zAp-Eh-14I"/>
+                                    <constraint firstItem="TYC-sP-Ml9" firstAttribute="top" secondItem="Zow-JC-595" secondAttribute="bottom" constant="14.5" id="w9a-gC-iMh"/>
+                                    <constraint firstItem="zZ4-ET-Eco" firstAttribute="top" secondItem="l0g-oG-rzh" secondAttribute="bottom" constant="11.5" id="z5S-S6-nrs"/>
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-cz-hi7">
@@ -3276,7 +3272,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Uk-hB-D8w">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IhH-FC-IUq">
                                     <size key="itemSize" width="375" height="109"/>
@@ -3356,7 +3352,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </cells>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ryd-Hq-eUg">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="A46-J3-ciE"/>
@@ -3570,7 +3566,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-jF-ICD">
-                                <rect key="frame" x="0.0" y="263" width="414" height="501"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="418"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP9-CD-EMd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="919"/>
@@ -4056,7 +4052,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="3" width="134" height="200"/>
+                                                        <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
@@ -4244,7 +4240,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <viewLayoutGuide key="frameLayoutGuide" id="KLQ-aM-B1k"/>
                             </scrollView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvD-uF-d9x">
-                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="681" width="414" height="132"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="rnh-As-6pA"/>
@@ -4481,7 +4477,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8j1-qH-y47">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem tag="1" title="Home" image="house.fill" catalog="system" id="00g-Mj-OpT"/>
@@ -5081,17 +5077,17 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GM-mi-QkL">
                                                         <rect key="frame" x="10" y="0.0" width="354" height="50"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qer-sI-xS0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="50"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produt Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qer-sI-xS0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="115.5" height="50"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usH-nx-HJk">
-                                                                <rect key="frame" x="74" y="0.0" width="280" height="50"/>
+                                                                <rect key="frame" x="115.5" y="0.0" width="238.5" height="50"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                <state key="normal" title="Click to Edit Ad Detail">
+                                                                <state key="normal" title="Click to Edit Details">
                                                                     <color key="titleColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
@@ -5449,7 +5445,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-DH-jCT">
-                                <rect key="frame" x="8" y="423" width="398" height="50"/>
+                                <rect key="frame" x="8" y="383" width="398" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="HRM-FA-5qH"/>
@@ -5462,8 +5458,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <action selector="Accept:" destination="kqh-qr-pPc" eventType="touchUpInside" id="KMy-qg-DT5"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="iyU-Nx-Cm3">
-                                <rect key="frame" x="50" y="113" width="111.5" height="238.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="iyU-Nx-Cm3">
+                                <rect key="frame" x="50" y="113" width="111.5" height="196"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ima-i2-GWE">
                                         <rect key="frame" x="0.0" y="0.0" width="111.5" height="20.5"/>
@@ -5476,7 +5472,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbO-se-Btl">
-                                        <rect key="frame" x="0.0" y="54.5" width="111.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="58.5" width="111.5" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="UcO-Fk-vAr"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="111.5" id="dKn-A4-6oY"/>
@@ -5485,8 +5481,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inner Material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opa-15-j3o">
-                                        <rect key="frame" x="0.0" y="109" width="111.5" height="20.5"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inner Material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opa-15-j3o">
+                                        <rect key="frame" x="0.0" y="98" width="111.5" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="111.5" id="1YU-0f-kaB"/>
                                             <constraint firstAttribute="height" constant="20.5" id="tLr-tC-Fd1"/>
@@ -5496,7 +5492,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSk-R9-bwl">
-                                        <rect key="frame" x="0.0" y="163.5" width="111.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="117" width="111.5" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="IXr-Pa-EeY"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="111.5" id="T9Y-Bv-Bki"/>
@@ -5506,7 +5502,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjQ-XQ-bn3">
-                                        <rect key="frame" x="0.0" y="218" width="111.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="175.5" width="111.5" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="CNN-Sv-2nJ"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="111.5" id="cik-Xm-gvM"/>
@@ -5518,7 +5514,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hHA-Jb-lZb">
-                                <rect key="frame" x="170" y="112" width="200" height="240"/>
+                                <rect key="frame" x="170" y="112" width="200" height="200"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rkh-5M-Bts">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
@@ -5553,9 +5549,9 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fiK-Jm-Ix8">
-                                        <rect key="frame" x="0.0" y="100" width="200" height="40"/>
+                                        <rect key="frame" x="0.0" y="100" width="200" height="0.0"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Inner Material" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdw-at-6Ke">
+                                            <textField hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Inner Material" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jdw-at-6Ke">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="D8U-eB-Rim"/>
@@ -5567,7 +5563,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wm0-ch-9BE">
-                                        <rect key="frame" x="0.0" y="150" width="200" height="40"/>
+                                        <rect key="frame" x="0.0" y="110" width="200" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stock" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdd-SE-dg3">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
@@ -5584,7 +5580,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bJt-J3-0Ob">
-                                        <rect key="frame" x="0.0" y="200" width="200" height="40"/>
+                                        <rect key="frame" x="0.0" y="160" width="200" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ck6-cC-Y7I">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
@@ -5602,7 +5598,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrU-MX-3Ao">
-                                <rect key="frame" x="8" y="481" width="398" height="50"/>
+                                <rect key="frame" x="8" y="441" width="398" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OtX-34-PTx"/>
@@ -5651,7 +5647,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ct0-zJ-tKE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4132" y="2783.658170914543"/>
+            <point key="canvasLocation" x="4131.884057971015" y="2783.0357142857142"/>
         </scene>
         <!--Me-->
         <scene sceneID="4ND-Mq-wMJ">
@@ -10250,7 +10246,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
             <objects>
                 <viewController storyboardIdentifier="BuyerViewController" id="8Jq-av-GqR" customClass="BuyerViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l1L-Se-ab4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ld-Uj-BrC" userLabel="My Likes">
@@ -10490,7 +10486,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
             <objects>
                 <viewController storyboardIdentifier="SellerViewController" id="kbR-Lc-sXr" customClass="SellerViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tbf-gN-Jb4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8j-7D-YuY">
@@ -10810,7 +10806,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
             <objects>
                 <viewController storyboardIdentifier="GotoRegister2SellerViewController" id="BrF-RY-Z7v" customClass="GotoRegisterSeller2ViewController" customModule="KetekMall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vJ7-B5-gqX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOz-oh-17i">

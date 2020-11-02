@@ -592,7 +592,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             "sub_category":CategorySubText,
             "ad_detail":Addetail,
             "brand_material":BrandMaterial,
-            "inner_material": InnerMaterial,
+            "inner_material": BrandMaterial,
             "stock": Stock,
             "description": Description,
             "price": Price.text!,
