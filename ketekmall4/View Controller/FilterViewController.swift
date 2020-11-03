@@ -309,7 +309,7 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func Apply(_ sender: Any) {
-        let filter = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
+        let filter = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         filter.UserID = UserID
         filter.DivisionFilter = Division.text!
         filter.DistricFilter = District.text!

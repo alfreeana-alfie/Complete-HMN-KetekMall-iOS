@@ -78,7 +78,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var CategoryView: UICollectionView!
     
     @IBAction func Filter(_ sender: Any) {
-        let filter = self.storyboard!.instantiateViewController(identifier: "FilterViewController") as! FilterViewController
+        let filter = self.storyboard!.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
         filter.DivisionFilter = DivisionFilter
         filter.DistricFilter = DistricFilter
         filter.URL_READ = URL_READ
@@ -386,7 +386,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         
-        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+        let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
         viewProduct.USERID = UserID
         viewProduct.ItemID = self.ITEMID[indexPath.row]
         viewProduct.SELLERID = self.SELLERID[indexPath.row]

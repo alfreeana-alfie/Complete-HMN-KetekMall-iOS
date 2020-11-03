@@ -181,7 +181,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
             return
         }
         
-        let ViewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+        let ViewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
         let ID = self.ItemID[indexPath.row]
         ViewProduct.ItemID = ID
         if let navigator = self.navigationController {

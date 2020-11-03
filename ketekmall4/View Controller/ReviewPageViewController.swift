@@ -107,7 +107,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
                         
                         self.getSellerDetails(SellerID: self.SELLERID, OrderID: self.ORDERID)
                         
-                        let ReviewProduct = self.storyboard!.instantiateViewController(identifier: "AddReviewViewController") as! AddReviewViewController                        
+                        let ReviewProduct = self.storyboard!.instantiateViewController(withIdentifier: "AddReviewViewController") as! AddReviewViewController                        
                         ReviewProduct.USERID = self.USERID
                         ReviewProduct.ITEMID = self.itemID
                         ReviewProduct.SELLERID = self.SELLERID

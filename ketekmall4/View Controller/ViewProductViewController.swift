@@ -225,7 +225,11 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         
         ViewButton.layer.cornerRadius = 10
         ViewButton.layer.borderWidth = 1
-        ViewButton.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
+        if #available(iOS 13.0, *) {
+            ViewButton.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
+        } else {
+            // Fallback on earlier versions
+        }
         SellerImage.layer.cornerRadius = SellerImage.frame.width / 2
         SellerImage.layer.masksToBounds = true
         ButtonAddCart.layer.cornerRadius = 40
@@ -620,7 +624,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @objc func onShippingInfoClick(sender: Any){
         
-        let click = self.storyboard!.instantiateViewController(identifier: "ShippingInfoViewController") as! ShippingInfoViewController
+        let click = self.storyboard!.instantiateViewController(withIdentifier: "ShippingInfoViewController") as! ShippingInfoViewController
         click.ITEMID = ItemID
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
@@ -629,7 +633,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @objc func onMoreDetailsClick(sender: Any){
         
-        let click = self.storyboard!.instantiateViewController(identifier: "MoreDetailsViewController") as! MoreDetailsViewController
+        let click = self.storyboard!.instantiateViewController(withIdentifier: "MoreDetailsViewController") as! MoreDetailsViewController
         click.BRAND = BRAND
         click.INNER = INNER
         click.STOCK = STOCK
@@ -642,7 +646,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @IBAction func onAboutSellerClick(_ sender: Any){        
-        let click = self.storyboard!.instantiateViewController(identifier: "AboutSellerViewController") as! AboutSellerViewController
+        let click = self.storyboard!.instantiateViewController(withIdentifier: "AboutSellerViewController") as! AboutSellerViewController
         click.UserID = USERID
         click.SELLERID1 = SELLERID
         click.SELLLERNAME = SELLERNAME
@@ -655,7 +659,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc func onViewReview(sender: Any){
-        let click = self.storyboard!.instantiateViewController(identifier: "ViewReviewViewController") as! ViewReviewViewController
+        let click = self.storyboard!.instantiateViewController(withIdentifier: "ViewReviewViewController") as! ViewReviewViewController
         click.ITEMID = ItemID
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
@@ -663,7 +667,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc func onFromSameShopClick(sender: Any){
-        let click = self.storyboard!.instantiateViewController(identifier: "AboutSellerViewController") as! AboutSellerViewController
+        let click = self.storyboard!.instantiateViewController(withIdentifier: "AboutSellerViewController") as! AboutSellerViewController
         click.UserID = USERID
         click.SELLERID1 = SELLERID
         click.SELLLERNAME = SELLERNAME
@@ -771,7 +775,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             return
         }
         
-        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+        let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
         viewProduct.USERID = USERID
         viewProduct.ItemID = self.ITEMID_SAMESHOP[indexPath.row]
         viewProduct.SELLERID = self.SELLERID

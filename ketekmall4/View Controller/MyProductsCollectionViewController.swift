@@ -298,7 +298,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             return
         }
         
-        let ProductView = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController
+        let ProductView = self.storyboard!.instantiateViewController(withIdentifier: "EditProductViewController") as! EditProductViewController
         //        let ID = self.ItemID[indexPath.row]
         ProductView.USERID = userID
         ProductView.ITEMID = self.ItemID[indexPath.row]

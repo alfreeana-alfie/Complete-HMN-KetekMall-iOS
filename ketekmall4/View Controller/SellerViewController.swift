@@ -56,7 +56,7 @@ class SellerViewController: UIViewController {
     }
     
     @IBAction func MySelling(_ sender: Any) {
-        let myselling = self.storyboard!.instantiateViewController(identifier: "MySellingViewController") as! MySellingViewController
+        let myselling = self.storyboard!.instantiateViewController(withIdentifier: "MySellingViewController") as! MySellingViewController
         myselling.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(myselling, animated: true)
@@ -64,7 +64,7 @@ class SellerViewController: UIViewController {
     }
     
     @IBAction func AddProduct(_ sender: Any) {
-        let addproduct = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
+        let addproduct = self.storyboard!.instantiateViewController(withIdentifier: "AddNewProductViewController") as! AddNewProductViewController
         addproduct.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(addproduct, animated: true)
@@ -73,7 +73,7 @@ class SellerViewController: UIViewController {
     
     
     @IBAction func MyProducts(_ sender: Any) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
         accountsettings.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(accountsettings, animated: true)
@@ -81,7 +81,7 @@ class SellerViewController: UIViewController {
     }
     
     @IBAction func MyIncome(_ sender: Any) {
-        let myincome = self.storyboard!.instantiateViewController(identifier: "MyIncomeViewController") as! MyIncomeViewController
+        let myincome = self.storyboard!.instantiateViewController(withIdentifier: "MyIncomeViewController") as! MyIncomeViewController
         myincome.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(myincome, animated: true)
@@ -90,7 +90,7 @@ class SellerViewController: UIViewController {
     
     
     @IBAction func ProductRating(_ sender: Any) {
-        let productrating = self.storyboard!.instantiateViewController(identifier: "ProductRatingViewController") as! ProductRatingViewController
+        let productrating = self.storyboard!.instantiateViewController(withIdentifier: "ProductRatingViewController") as! ProductRatingViewController
         productrating.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(productrating, animated: true)
@@ -98,7 +98,7 @@ class SellerViewController: UIViewController {
     }
     
     @IBAction func BoostAd(_ sender: Any) {
-        let boostAd = self.storyboard!.instantiateViewController(identifier: "BoostAdViewController") as! BoostAdViewController
+        let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "BoostAdViewController") as! BoostAdViewController
         boostAd.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(boostAd, animated: true)

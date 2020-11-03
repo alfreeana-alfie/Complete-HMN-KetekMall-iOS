@@ -159,7 +159,7 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
                 response in
                 print(response)
                 
-                let boostAd = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
+                let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "AddNewProductViewController") as! AddNewProductViewController
                 boostAd.userID = self.UserID
                 if let navigator = self.navigationController {
                     navigator.pushViewController(boostAd, animated: true)

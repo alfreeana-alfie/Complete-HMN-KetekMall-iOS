@@ -385,7 +385,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     @IBAction func Checkout(_ sender: Any) {
-        let boostAd = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
+        let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
         boostAd.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(boostAd, animated: true)

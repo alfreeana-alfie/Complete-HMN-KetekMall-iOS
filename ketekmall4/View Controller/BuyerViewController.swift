@@ -56,7 +56,7 @@ class BuyerViewController: UIViewController {
     }
     
   @IBAction func MyBuying(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "MyBuyingViewController") as! MyBuyingViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "MyBuyingViewController") as! MyBuyingViewController
         myBuying.userID = userID
         myBuying.BarHidden = true
         if let navigator = self.navigationController {
@@ -65,7 +65,7 @@ class BuyerViewController: UIViewController {
     }
 
     @IBAction func ChatInbox(_ sender: Any) {
-       let myBuying = self.storyboard!.instantiateViewController(identifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
+       let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
         myBuying.BarHidden = true
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)
@@ -73,7 +73,7 @@ class BuyerViewController: UIViewController {
     }
     
     @IBAction func MyRating(_ sender: Any) {
-        let myRating = self.storyboard!.instantiateViewController(identifier: "MyRatingViewController") as! MyRatingViewController
+        let myRating = self.storyboard!.instantiateViewController(withIdentifier: "MyRatingViewController") as! MyRatingViewController
         myRating.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(myRating, animated: true)
@@ -81,7 +81,7 @@ class BuyerViewController: UIViewController {
     }
     
     @IBAction func MyLikes(_ sender: Any) {
-        let myLikes = self.storyboard!.instantiateViewController(identifier: "MyLikesViewController") as! MyLikesViewController
+        let myLikes = self.storyboard!.instantiateViewController(withIdentifier: "MyLikesViewController") as! MyLikesViewController
         myLikes.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(myLikes, animated: true)
@@ -89,7 +89,7 @@ class BuyerViewController: UIViewController {
     }
     
     @IBAction func AccountSettings(_ sender: Any) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "AccountSettingsViewController") as! AccountSettingsViewController
+        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
         accountsettings.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(accountsettings, animated: true)

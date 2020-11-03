@@ -87,7 +87,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                 }
             }
             
-            let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+            let tabbar = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             if let navigator = self.navigationController {
                 navigator.pushViewController(tabbar, animated: true)
             }
@@ -327,7 +327,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                             }
                         }
                         self.hud.dismiss(afterDelay: 2.0)
-                        let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+                        let tabbar = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                         tabbar.userID = userID[0]
                         if let navigator = self.navigationController {
                             navigator.pushViewController(tabbar, animated: true)
@@ -415,7 +415,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         }
                         self.hud.dismiss(afterDelay: 2.0)
                         
-                        let tabbar = self.storyboard!.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+                        let tabbar = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                         tabbar.userID = userID[0]
                         if let navigator = self.navigationController {
                             navigator.pushViewController(tabbar, animated: true)
@@ -432,14 +432,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     @IBAction func GotoReset(_ sender: Any) {
-        let forgotViewController = self.storyboard!.instantiateViewController(identifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+        let forgotViewController = self.storyboard!.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
         self.navigationController?.pushViewController(forgotViewController, animated: true)
         self.dismiss(animated: false, completion: nil)
     }
     
     
     @IBAction func GotoRegister(_ sender: Any) {
-        let registerViewController = self.storyboard!.instantiateViewController(identifier: "RegisterViewController") as! RegisterViewController
+        let registerViewController = self.storyboard!.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
         self.navigationController?.pushViewController(registerViewController, animated: true)
         self.dismiss(animated: false, completion: nil)
     }

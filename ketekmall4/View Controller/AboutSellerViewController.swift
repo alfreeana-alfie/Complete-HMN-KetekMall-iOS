@@ -366,7 +366,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
             return
         }
         
-        let viewProduct = self.storyboard!.instantiateViewController(identifier: "ViewProductViewController") as! ViewProductViewController
+        let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
         viewProduct.USERID = UserID
         viewProduct.ItemID = self.ITEMID[indexPath.row]
         viewProduct.SELLERID = self.SELLERID[indexPath.row]

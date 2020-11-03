@@ -325,7 +325,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func AdDetail(_ sender: Any) {
-        let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
+        let AdDetail = self.storyboard!.instantiateViewController(withIdentifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
         AdDetail.USERID = userID
 //        AdDetail.ITEMID = ""
         AdDetail.ADDETAIL = Addetail
@@ -643,7 +643,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
 //                        self.Delete_5.isHidden = false
                         print("SUCCESS 5")
                     }
-                    let viewProduct = self.storyboard!.instantiateViewController(identifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+                    let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
                     if let navigator = self.navigationController {
                         navigator.pushViewController(viewProduct, animated: true)
                     }                }

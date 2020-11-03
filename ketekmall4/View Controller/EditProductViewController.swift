@@ -289,7 +289,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func AdDetail(_ sender: Any) {
-        let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
+        let AdDetail = self.storyboard!.instantiateViewController(withIdentifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
         AdDetail.USERID = USERID
         AdDetail.ITEMID = ITEMID
         AdDetail.ADDETAIL = ADDETAIL
@@ -312,7 +312,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func SetupDelivery(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "DeliveryViewController") as! DeliveryViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "DeliveryViewController") as! DeliveryViewController
         myBuying.userID = USERID
         myBuying.itemID = ITEMID
         myBuying.Addetail = ADDETAIL

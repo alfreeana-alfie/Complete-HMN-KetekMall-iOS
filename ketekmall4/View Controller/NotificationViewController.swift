@@ -89,7 +89,7 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
 
     
     @IBAction func OrderUpdates(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "MyBuyingViewController") as! MyBuyingViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "MyBuyingViewController") as! MyBuyingViewController
         myBuying.userID = String(user)
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)
@@ -97,14 +97,14 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func SocialUpdates(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "ChatInboxViewController") as! ChatInboxViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxViewController") as! ChatInboxViewController
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)
         }
     }
     
     @IBAction func Promotion(_ sender: Any) {
-        let click = self.storyboard!.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
+        let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
                click.UserID = String(user)
                click.URL_READ = URL_READ_SHOCKING_SALE
                click.URL_SEARCH = URL_SEARCH_SHOCKING_SALE

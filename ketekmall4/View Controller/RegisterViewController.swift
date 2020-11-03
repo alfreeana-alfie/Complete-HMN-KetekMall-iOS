@@ -114,7 +114,7 @@ class RegisterViewController: UIViewController {
                             print(jsonData.value(forKey: "message")!)
                             self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                             self.spinner.show(in: self.view)
-                            let tabbar = self.storyboard!.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+                            let tabbar = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                                        if let navigator = self.navigationController {
                                            navigator.pushViewController(tabbar, animated: true)
                                     }
@@ -132,7 +132,7 @@ class RegisterViewController: UIViewController {
 
     
     @IBAction func GotoLogin(_ sender: Any) {
-        let loginViewController = self.storyboard!.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+        let loginViewController = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         
         self.navigationController?.pushViewController(loginViewController, animated: true)
                                     

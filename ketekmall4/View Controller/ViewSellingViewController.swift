@@ -337,7 +337,7 @@ class ViewSellingViewController: UIViewController {
                                 if let result = response.result.value {
                                     let jsonData = result as! NSDictionary
                                     self.spinner.dismiss(afterDelay: 3.0)
-                                    let boostAd = self.storyboard!.instantiateViewController(identifier: "MySellingViewController") as! MySellingViewController
+                                    let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "MySellingViewController") as! MySellingViewController
                                     boostAd.userID = self.USERID
                                     if let navigator = self.navigationController {
                                         navigator.pushViewController(boostAd, animated: true)

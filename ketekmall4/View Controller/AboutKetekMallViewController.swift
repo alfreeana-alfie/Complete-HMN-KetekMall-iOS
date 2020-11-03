@@ -61,28 +61,28 @@ class AboutKetekMallViewController: UIViewController, UITabBarDelegate {
     }
 
     @IBAction func GotoRefund(_ sender: Any) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "ReturnRefundPolicyViewController") as! ReturnRefundPolicyViewController
+        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "ReturnRefundPolicyViewController") as! ReturnRefundPolicyViewController
         if let navigator = self.navigationController {
             navigator.pushViewController(accountsettings, animated: true)
         }
     }
     
     @IBAction func ButtonDelivery(_ sender: Any) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "DeliveryPolicyViewController") as! DeliveryPolicyViewController
+        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "DeliveryPolicyViewController") as! DeliveryPolicyViewController
         if let navigator = self.navigationController {
             navigator.pushViewController(accountsettings, animated: true)
         }
     }
     
     @IBAction func ButtonContact(_ sender: Any) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "ContactUsViewController") as! ContactUsViewController
+        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "ContactUsViewController") as! ContactUsViewController
         if let navigator = self.navigationController {
             navigator.pushViewController(accountsettings, animated: true)
         }
     }
     
     @IBAction func ButtonTerms(_ sender: Any) {
-        let accountsettings = self.storyboard!.instantiateViewController(identifier: "TermsConditionsViewController") as! TermsConditionsViewController
+        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "TermsConditionsViewController") as! TermsConditionsViewController
         if let navigator = self.navigationController {
             navigator.pushViewController(accountsettings, animated: true)
         }

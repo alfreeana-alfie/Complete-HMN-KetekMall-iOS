@@ -117,7 +117,7 @@ class EditProductAdDetailViewController: UIViewController {
     
     @IBAction func Accept(_ sender: Any) {
         if(CheckView == true){
-            let ADDETAIL = self.storyboard!.instantiateViewController(identifier: "AddNewProductViewController") as! AddNewProductViewController
+            let ADDETAIL = self.storyboard!.instantiateViewController(withIdentifier: "AddNewProductViewController") as! AddNewProductViewController
             ADDETAIL.userID = USERID
             ADDETAIL.Addetail = self.AdDetail.text!
             ADDETAIL.CategoryText = MAINCATE
@@ -136,7 +136,7 @@ class EditProductAdDetailViewController: UIViewController {
                 navigator.pushViewController(ADDETAIL, animated: true)
             }
         }else{
-            let AdDetail = self.storyboard!.instantiateViewController(identifier: "EditProductViewController") as! EditProductViewController
+            let AdDetail = self.storyboard!.instantiateViewController(withIdentifier: "EditProductViewController") as! EditProductViewController
             AdDetail.USERID = USERID
             AdDetail.ITEMID = ITEMID
             AdDetail.ADDETAIL = self.AdDetail.text!

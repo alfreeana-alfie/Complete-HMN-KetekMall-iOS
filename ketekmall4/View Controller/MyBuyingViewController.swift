@@ -363,7 +363,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
             return
         }
         
-        let ReviewProduct = self.storyboard!.instantiateViewController(identifier: "ReviewPageViewController") as! ReviewPageViewController
+        let ReviewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ReviewPageViewController") as! ReviewPageViewController
         ReviewProduct.itemID = self.ItemID[indexPath.row]
         ReviewProduct.ORDERID = self.OrderID[indexPath.row]
         ReviewProduct.TRACKINGNO = self.TrackingNo[indexPath.row]

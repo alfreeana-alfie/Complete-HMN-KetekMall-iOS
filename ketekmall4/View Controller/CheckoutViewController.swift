@@ -541,8 +541,12 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ButtonSelfPickUp.layer.cornerRadius = 7
         cell.ButtonSelfPickUp.isHidden = true
         cell.ButtonSelfPickUp.layer.borderWidth = 1
-        cell.ButtonSelfPickUp.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
-        
+        if #available(iOS 13.0, *) {
+            cell.ButtonSelfPickUp.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
+        } else {
+            // Fallback on earlier versions
+            
+        }
         if(self.DIVISIONU[0] == DIVISION[indexPath.row]){
             cell.ButtonSelfPickUp.isHidden = false
         }else{
@@ -569,7 +573,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     @IBAction func GotoEditAddress(_ sender: Any) {
-        let boostAd = self.storyboard!.instantiateViewController(identifier: "AccountSettingsViewController") as! AccountSettingsViewController
+        let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
         boostAd.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(boostAd, animated: true)
@@ -579,7 +583,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBAction func PlaceOrder(_ sender: Any) {
         
         AddCheckout()
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
         myBuying.userID = self.userID
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)

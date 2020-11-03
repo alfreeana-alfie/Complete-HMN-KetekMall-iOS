@@ -204,7 +204,7 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
             return
         }
         
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "DeliveryAddViewController") as! DeliveryAddViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "DeliveryAddViewController") as! DeliveryAddViewController
         myBuying.USERID = userID
         myBuying.ITEMID = itemID
         myBuying.ADDETAIL = Addetail
@@ -245,7 +245,7 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
     
     
     @IBAction func Add(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "DeliveryAddViewController") as! DeliveryAddViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "DeliveryAddViewController") as! DeliveryAddViewController
         myBuying.USERID = userID
         myBuying.ITEMID = itemID
         myBuying.ADDETAIL = Addetail
@@ -255,7 +255,7 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
     }
     
     @IBAction func Accept(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(identifier: "MySellingViewController") as! MySellingViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "MySellingViewController") as! MySellingViewController
         myBuying.userID = userID
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)

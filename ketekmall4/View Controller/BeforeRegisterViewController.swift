@@ -66,7 +66,7 @@ class BeforeRegisterViewController: UIViewController, UITabBarDelegate  {
     }
 
     @IBAction func GotoRegister(_ sender: Any) {
-        let RegisterSeller = self.storyboard!.instantiateViewController(identifier: "RegisterSellerViewController") as! RegisterSellerViewController
+        let RegisterSeller = self.storyboard!.instantiateViewController(withIdentifier: "RegisterSellerViewController") as! RegisterSellerViewController
         RegisterSeller.UserID = user
         if let navigator = self.navigationController {
             navigator.pushViewController(RegisterSeller, animated: true)
