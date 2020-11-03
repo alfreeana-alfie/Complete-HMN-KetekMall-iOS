@@ -14,9 +14,75 @@ import AARatingBar
 import JGProgressHUD
 import ImageSlideshow
 
-class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, FromSameShopDelegate, UITabBarDelegate, UICollectionViewDelegateFlowLayout {
+class ViewProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarDelegate, UICollectionViewDelegateFlowLayout, FromSameShopDelegate {
     
-    
+    func onAddToCart2(cell: FromSameShopCollectionViewCell) {
+        let spinner = JGProgressHUD(style: .dark)
+        guard let indexPath = self.SameShopView.indexPath(for: cell) else{
+            return
+        }
+
+        if(POSTCODE_SAMESHOP[indexPath.row].contains("0")){
+            POSTCODE_SAMESHOP[indexPath.row] = "93050"
+        }
+
+        if(WEIGHT_SAMESHOP[indexPath.row].contains("0.00")){
+            WEIGHT_SAMESHOP[indexPath.row] = "1.00"
+        }
+        
+        let parameters: Parameters=[
+            "seller_id": SELLERID,
+            "item_id": ITEMID_SAMESHOP[indexPath.row],
+            "customer_id": USERID,
+            "main_category": MAINCATE_SAMESHOP[indexPath.row],
+            "sub_category": SUBCATE_SAMESHOP[indexPath.row],
+            "ad_detail": ADDETAIL_SAMESHOP[indexPath.row],
+            "price": PRICE_SAMESHOP[indexPath.row],
+            "quantity": "1",
+            "division": DIVISION_SAMESHOP[indexPath.row],
+            "postcode": POSTCODE_SAMESHOP[indexPath.row],
+            "district": DISTRICT_SAMESHOP[indexPath.row],
+            "photo": PHOTO_SAMESHOP[indexPath.row],
+            "weight": WEIGHT_SAMESHOP[indexPath.row]
+        ]
+        
+        if(SELLERID == USERID){
+            let spinner = JGProgressHUD(style: .dark)
+
+            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+            if(self.lang == "ms"){
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+            }else{
+                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+            }
+                spinner.show(in: self.view)
+                spinner.dismiss(afterDelay: 3.0)
+            
+        }else{
+            //Sending http post request
+            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let jsonData = result as! NSDictionary
+                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        spinner.textLabel.text = "Added to Cart"
+                        if(self.lang == "ms"){
+                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                            
+                        }else{
+                            spinner.textLabel.text = "Added to Cart"
+                           
+                        }
+                        spinner.show(in: self.view)
+                        spinner.dismiss(afterDelay: 3.0)
+                        print(jsonData.value(forKey: "message")!)
+                        
+                    }
+            }
+        }
+
+    }
 
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -727,75 +793,6 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         if let navigator = self.navigationController {
             navigator.pushViewController(viewProduct, animated: true)
         }
-    }
-    
-    func onAddToCart(cell: FromSameShopCollectionViewCell) {
-        let spinner = JGProgressHUD(style: .dark)
-        guard let indexPath = self.SameShopView.indexPath(for: cell) else{
-            return
-        }
-
-        if(POSTCODE_SAMESHOP[indexPath.row].contains("0")){
-            POSTCODE_SAMESHOP[indexPath.row] = "93050"
-        }
-        
-        if(WEIGHT_SAMESHOP[indexPath.row].contains("0.00")){
-            WEIGHT_SAMESHOP[indexPath.row] = "1.00"
-        }
-        
-        let parameters: Parameters=[
-            "seller_id": SELLERID_SAMESHOP[indexPath.row],
-            "item_id": ITEMID_SAMESHOP[indexPath.row],
-            "customer_id": USERID,
-            "main_category": MAINCATE_SAMESHOP[indexPath.row],
-            "sub_category": SUBCATE_SAMESHOP[indexPath.row],
-            "ad_detail": ADDETAIL_SAMESHOP[indexPath.row],
-            "price": PRICE_SAMESHOP[indexPath.row],
-            "quantity": "1",
-            "division": DIVISION_SAMESHOP[indexPath.row],
-            "postcode": POSTCODE_SAMESHOP[indexPath.row],
-            "district": DISTRICT_SAMESHOP[indexPath.row],
-            "photo": PHOTO_SAMESHOP[indexPath.row],
-            "weight": WEIGHT_SAMESHOP[indexPath.row]
-        ]
-        
-        if(SELLERID_SAMESHOP[indexPath.row] == USERID){
-            let spinner = JGProgressHUD(style: .dark)
-
-            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-            if(self.lang == "ms"){
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
-            }else{
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
-            }
-                spinner.show(in: self.view)
-                spinner.dismiss(afterDelay: 3.0)
-            
-        }else{
-            //Sending http post request
-            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        spinner.textLabel.text = "Added to Cart"
-                        if(self.lang == "ms"){
-                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
-                            
-                        }else{
-                            spinner.textLabel.text = "Added to Cart"
-                           
-                        }
-                        spinner.show(in: self.view)
-                        spinner.dismiss(afterDelay: 3.0)
-                        print(jsonData.value(forKey: "message")!)
-                        
-                    }
-            }
-        }
-
-               
     }
     
     @IBAction func AddToCart(_ sender: Any) {

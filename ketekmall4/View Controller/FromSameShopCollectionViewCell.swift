@@ -11,7 +11,7 @@ import AARatingBar
 
 protocol FromSameShopDelegate: class {
     func onViewClick(cell: FromSameShopCollectionViewCell)
-    func onAddToCart(cell: FromSameShopCollectionViewCell)
+    func onAddToCart2(cell: FromSameShopCollectionViewCell)
 }
 
 class FromSameShopCollectionViewCell: UICollectionViewCell {
@@ -35,12 +35,8 @@ class FromSameShopCollectionViewCell: UICollectionViewCell {
         self.delegate?.onViewClick(cell: self)
     }
     
-    @IBAction func ViewClick(_ sender: Any) {
-        self.delegate?.onAddToCart(cell: self)
-    }
-    
     @IBAction func AddtoCart(_ sender: Any) {
-        self.delegate?.onAddToCart(cell: self)
+        self.delegate?.onAddToCart2(cell: self)
     }
 
 }
