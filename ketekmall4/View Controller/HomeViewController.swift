@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let parameters: Parameters=[
             "seller_id": SELLERIDHOT[indexPath.row],
             "item_id": ID[indexPath.row],
-            "customer_id": userID,
+            "customer_id": user,
             "main_category": MAINCATEHOT[indexPath.row],
             "sub_category": SUBCATEHOT[indexPath.row],
             "ad_detail": ADDETAILHOT[indexPath.row],
@@ -89,7 +89,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func onAddToCart1(cell: ShockingSaleCollectionViewCell) {
         let spinner = JGProgressHUD(style: .dark)
-        guard let indexPath = self.HotView.indexPath(for: cell) else{
+        guard let indexPath = self.ShockingView.indexPath(for: cell) else{
             return
         }
 
@@ -104,7 +104,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let parameters: Parameters=[
             "seller_id": SELLERIDSHOCKING[indexPath.row],
             "item_id": ID1[indexPath.row],
-            "customer_id": userID,
+            "customer_id": user,
             "main_category": MAINCATESHOCKING[indexPath.row],
             "sub_category": SUBCATESHOCKING[indexPath.row],
             "ad_detail": ADDETAILSHOCKING[indexPath.row],
@@ -633,8 +633,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         dropDown.show()
         dropDown.direction = .bottom
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-//          print("Selected item: \(item) at index: \(index)")
-            
             switch index{
             case 0:
                 let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController

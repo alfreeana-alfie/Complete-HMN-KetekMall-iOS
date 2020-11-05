@@ -243,10 +243,21 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.DIVISIONU = user.value(forKey: "division") as! [String]
                                         self.POSTCODE = user.value(forKey: "postcode") as! [String]
                                         
-                                        self.divsionu = self.DIVISIONU[0]
-                                        self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
-                                        self.NEWADDR =  self.ADDR01[0] + " " + self.ADDR02[0] + "\n" + self.DIVISIONU[0] + " " + self.POSTCODE[0]
-                                        self.Address.text! = self.NEWADDR
+                                        if(self.ADDR01[0] == "" && self.ADDR02[0] == "" && self.DIVISIONU[0] == "" && self.POSTCODE[0] == ""){
+                                            self.divsionu = self.DIVISIONU[0]
+                                            self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
+                                            self.NEWADDR =  "No Address SET"
+                                            self.DIVISIONU[0] = "No Address SET"
+                                            self.POSTCODE[0].append("93050")
+                                            self.Address.text! = self.NEWADDR
+                                        }else{
+                                            self.divsionu = self.DIVISIONU[0]
+                                            self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
+                                            self.NEWADDR =  self.ADDR01[0] + " " + self.ADDR02[0] + "\n" + self.DIVISIONU[0] + " " + self.POSTCODE[0]
+                                            self.Address.text! = self.NEWADDR
+                                        }
+                                        
+                                        
                                         
                                         for i in 0..<self.ITEMID.count{
                                             
