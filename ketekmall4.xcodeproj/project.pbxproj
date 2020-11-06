@@ -155,7 +155,7 @@
 		FB5490CC24FD3C8D004E6D73 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FB5490CE24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB5490D024FD7019004E6D73 /* FromSameShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromSameShopCollectionViewCell.swift; sourceTree = "<group>"; };
-		FB5A48DD24F7F06B00F5464C /* ketekmall4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ketekmall4.app; path = KetekMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB5A48DD24F7F06B00F5464C /* KetekMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KetekMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB5A48E024F7F06B00F5464C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FB5A48E924F7F07B00F5464C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 		FB5A48DE24F7F06B00F5464C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FB5A48DD24F7F06B00F5464C /* ketekmall4.app */,
+				FB5A48DD24F7F06B00F5464C /* KetekMall.app */,
 				FB5A48F324F7F07B00F5464C /* ketekmall4Tests.xctest */,
 				FB5A48FE24F7F07B00F5464C /* ketekmall4UITests.xctest */,
 			);
@@ -428,7 +428,7 @@
 			);
 			name = ketekmall4;
 			productName = ketekmall4;
-			productReference = FB5A48DD24F7F06B00F5464C /* ketekmall4.app */;
+			productReference = FB5A48DD24F7F06B00F5464C /* KetekMall.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FB5A48F224F7F07B00F5464C /* ketekmall4Tests */ = {
@@ -875,7 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -887,7 +887,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -899,7 +899,7 @@
 				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64e arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -913,7 +913,7 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -925,7 +925,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -937,7 +937,7 @@
 				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64e arm64 armv7 armv7s";
 			};
 			name = Release;

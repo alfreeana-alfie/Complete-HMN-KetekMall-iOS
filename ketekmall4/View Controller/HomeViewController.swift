@@ -21,137 +21,153 @@ import FirebaseInstanceID
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate, UITabBarDelegate {
     func onAddToCart(cell: HotCollectionViewCell) {
-        let spinner = JGProgressHUD(style: .dark)
-        guard let indexPath = self.HotView.indexPath(for: cell) else{
-            return
-        }
-
-        if(POSTCODEHOT[indexPath.row].contains("0")){
-            POSTCODEHOT[indexPath.row] = "93050"
-        }
-        
-        if(WEIGHTHOT[indexPath.row].contains("0.00")){
-            WEIGHTHOT[indexPath.row] = "1.00"
-        }
-        
-        let parameters: Parameters=[
-            "seller_id": SELLERIDHOT[indexPath.row],
-            "item_id": ID[indexPath.row],
-            "customer_id": user,
-            "main_category": MAINCATEHOT[indexPath.row],
-            "sub_category": SUBCATEHOT[indexPath.row],
-            "ad_detail": ADDETAILHOT[indexPath.row],
-            "price": PRICEHOT[indexPath.row],
-            "quantity": "1",
-            "division": DIVISIONHOT[indexPath.row],
-            "postcode": POSTCODEHOT[indexPath.row],
-            "district": DISTRICTHOT[indexPath.row],
-            "photo": PHOTOHOT[indexPath.row],
-            "weight": WEIGHTHOT[indexPath.row]
-        ]
-        
-        if(SELLERIDHOT[indexPath.row] == userID){
-            let spinner = JGProgressHUD(style: .dark)
-
-            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-            if(self.lang == "ms"){
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
-            }else{
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+        if(user == "0"){
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
             }
-                spinner.show(in: self.view)
-                spinner.dismiss(afterDelay: 3.0)
-            
         }else{
-            //Sending http post request
-            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        spinner.textLabel.text = "Added to Cart"
-                        if(self.lang == "ms"){
-                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
-                            
-                        }else{
+            let spinner = JGProgressHUD(style: .dark)
+            guard let indexPath = self.HotView.indexPath(for: cell) else{
+                return
+            }
+
+            if(POSTCODEHOT[indexPath.row].contains("0")){
+                POSTCODEHOT[indexPath.row] = "93050"
+            }
+            
+            if(WEIGHTHOT[indexPath.row].contains("0.00")){
+                WEIGHTHOT[indexPath.row] = "1.00"
+            }
+            
+            let parameters: Parameters=[
+                "seller_id": SELLERIDHOT[indexPath.row],
+                "item_id": ID[indexPath.row],
+                "customer_id": user,
+                "main_category": MAINCATEHOT[indexPath.row],
+                "sub_category": SUBCATEHOT[indexPath.row],
+                "ad_detail": ADDETAILHOT[indexPath.row],
+                "price": PRICEHOT[indexPath.row],
+                "quantity": "1",
+                "division": DIVISIONHOT[indexPath.row],
+                "postcode": POSTCODEHOT[indexPath.row],
+                "district": DISTRICTHOT[indexPath.row],
+                "photo": PHOTOHOT[indexPath.row],
+                "weight": WEIGHTHOT[indexPath.row]
+            ]
+            
+            if(SELLERIDHOT[indexPath.row] == userID){
+                let spinner = JGProgressHUD(style: .dark)
+
+                spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                if(self.lang == "ms"){
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                }else{
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+                }
+                    spinner.show(in: self.view)
+                    spinner.dismiss(afterDelay: 3.0)
+                
+            }else{
+                //Sending http post request
+                Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                             spinner.textLabel.text = "Added to Cart"
-                           
+                            if(self.lang == "ms"){
+                                spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                                
+                            }else{
+                                spinner.textLabel.text = "Added to Cart"
+                               
+                            }
+                            spinner.show(in: self.view)
+                            spinner.dismiss(afterDelay: 3.0)
+                            print(jsonData.value(forKey: "message")!)
+                            
                         }
-                        spinner.show(in: self.view)
-                        spinner.dismiss(afterDelay: 3.0)
-                        print(jsonData.value(forKey: "message")!)
-                        
-                    }
+                }
             }
         }
+        
     }
     
     func onAddToCart1(cell: ShockingSaleCollectionViewCell) {
-        let spinner = JGProgressHUD(style: .dark)
-        guard let indexPath = self.ShockingView.indexPath(for: cell) else{
-            return
-        }
-
-        if(POSTCODESHOCKING[indexPath.row].contains("0")){
-            POSTCODESHOCKING[indexPath.row] = "93050"
-        }
-        
-        if(WEIGHTSHOCKING[indexPath.row].contains("0.00")){
-            WEIGHTSHOCKING[indexPath.row] = "1.00"
-        }
-        
-        let parameters: Parameters=[
-            "seller_id": SELLERIDSHOCKING[indexPath.row],
-            "item_id": ID1[indexPath.row],
-            "customer_id": user,
-            "main_category": MAINCATESHOCKING[indexPath.row],
-            "sub_category": SUBCATESHOCKING[indexPath.row],
-            "ad_detail": ADDETAILSHOCKING[indexPath.row],
-            "price": PRICESHOCKING[indexPath.row],
-            "quantity": "1",
-            "division": DIVISIONSHOCKING[indexPath.row],
-            "postcode": POSTCODESHOCKING[indexPath.row],
-            "district": DISTRICTSHOCKING[indexPath.row],
-            "photo": PHOTOSHOCKING[indexPath.row],
-            "weight": WEIGHTSHOCKING[indexPath.row]
-        ]
-        
-        if(SELLERIDSHOCKING[indexPath.row] == userID){
-            let spinner = JGProgressHUD(style: .dark)
-
-            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-            if(self.lang == "ms"){
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
-            }else{
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+        if(user == "0"){
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
             }
-                spinner.show(in: self.view)
-                spinner.dismiss(afterDelay: 3.0)
-            
         }else{
-            //Sending http post request
-            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        spinner.textLabel.text = "Added to Cart"
-                        if(self.lang == "ms"){
-                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
-                            
-                        }else{
+            let spinner = JGProgressHUD(style: .dark)
+            guard let indexPath = self.ShockingView.indexPath(for: cell) else{
+                return
+            }
+
+            if(POSTCODESHOCKING[indexPath.row].contains("0")){
+                POSTCODESHOCKING[indexPath.row] = "93050"
+            }
+            
+            if(WEIGHTSHOCKING[indexPath.row].contains("0.00")){
+                WEIGHTSHOCKING[indexPath.row] = "1.00"
+            }
+            
+            let parameters: Parameters=[
+                "seller_id": SELLERIDSHOCKING[indexPath.row],
+                "item_id": ID1[indexPath.row],
+                "customer_id": user,
+                "main_category": MAINCATESHOCKING[indexPath.row],
+                "sub_category": SUBCATESHOCKING[indexPath.row],
+                "ad_detail": ADDETAILSHOCKING[indexPath.row],
+                "price": PRICESHOCKING[indexPath.row],
+                "quantity": "1",
+                "division": DIVISIONSHOCKING[indexPath.row],
+                "postcode": POSTCODESHOCKING[indexPath.row],
+                "district": DISTRICTSHOCKING[indexPath.row],
+                "photo": PHOTOSHOCKING[indexPath.row],
+                "weight": WEIGHTSHOCKING[indexPath.row]
+            ]
+            
+            if(SELLERIDSHOCKING[indexPath.row] == userID){
+                let spinner = JGProgressHUD(style: .dark)
+
+                spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                if(self.lang == "ms"){
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                }else{
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+                }
+                    spinner.show(in: self.view)
+                    spinner.dismiss(afterDelay: 3.0)
+                
+            }else{
+                //Sending http post request
+                Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                             spinner.textLabel.text = "Added to Cart"
-                           
+                            if(self.lang == "ms"){
+                                spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                                
+                            }else{
+                                spinner.textLabel.text = "Added to Cart"
+                               
+                            }
+                            spinner.show(in: self.view)
+                            spinner.dismiss(afterDelay: 3.0)
+                            print(jsonData.value(forKey: "message")!)
+                            
                         }
-                        spinner.show(in: self.view)
-                        spinner.dismiss(afterDelay: 3.0)
-                        print(jsonData.value(forKey: "message")!)
-                        
-                    }
+                }
             }
         }
+        
     }
     
     func onViewClick1(cell: ShockingSaleCollectionViewCell) {
@@ -411,7 +427,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let index = email.firstIndex(of: "@") ?? email.endIndex
         let newEmail = email[..<index]
         
-        MessageCount(EmailUser: String(newEmail))
+        
         
         dropDown.anchorView = ListBar
         dropDown.dataSource = ["Edit Profile","Change to BM","Change to ENG","About KetekMall", "Logout"]
@@ -523,11 +539,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Fashion.addGestureRecognizer(FashionClick)
           
 
-        getUserDetails(userID: String(user))
+        if(user != "0"){
+            getUserDetails(userID: String(user))
+            MessageCount(EmailUser: String(newEmail))
+            CartCount(UserID: String(user))
+        }else{
+            print("SUCCESS")
+        }
         HotSelling()
         ShockingSale()
-        CartCount(UserID: String(user))
-        
     }
     
     func MessageCount(EmailUser: String){
@@ -582,11 +602,19 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             break
             
         case 3:
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewController1!, animated: true)
+            if(user == "0"){
+                let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(addProduct, animated: true)
+                }
+            }else{
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(viewController1!, animated: true)
+                }
             }
+            
             break
             
         default:
@@ -635,10 +663,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             switch index{
             case 0:
-                let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
-                accountsettings.userID = self.user
+                let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
+                myBuying.BarHidden = true
                 if let navigator = self.navigationController {
-                    navigator.pushViewController(accountsettings, animated: true)
+                    navigator.pushViewController(myBuying, animated: true)
+                }else{
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
+                    accountsettings.userID = self.user
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(accountsettings, animated: true)
+                    }
                 }
                 break
                 
@@ -661,7 +695,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
             case 4:
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                self.viewController1 = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                self.viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 if let navigator = self.navigationController {
                     navigator.pushViewController(self.viewController1!, animated: true)
                 }
@@ -795,47 +829,55 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func Sell(_ sender: Any) {
-//        let tabbar = tabBarController as! BaseTabBarController
-        let parameters: Parameters=[
-            "id": String(user)
-        ]
-        
-        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value{
-                    let jsonData = result as! NSDictionary
-                    
-                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        let user = jsonData.value(forKey: "read") as! NSArray
+        if(user == "0"){
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
+            }
+        }else{
+            //        let tabbar = tabBarController as! BaseTabBarController
+            let parameters: Parameters=[
+                "id": String(user)
+            ]
+            
+            Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+                {
+                    response in
+                    if let result = response.result.value{
+                        let jsonData = result as! NSDictionary
                         
-                        let name = user.value(forKey: "name") as! [String]
-                        let verify = user.value(forKey: "verification") as! [String]
-                        let Photo = user.value(forKey: "photo") as! [String]
-                        
-                        self.Username.text = name[0]
-                        if verify[0] == "0" {
+                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                            let user = jsonData.value(forKey: "read") as! NSArray
                             
-                            let gotoRegister = self.storyboard!.instantiateViewController(withIdentifier: "GotoRegisterSellerViewController") as! GotoRegisterSellerViewController
-                            gotoRegister.userID = self.user
-                            if let navigator = self.navigationController {
-                                navigator.pushViewController(gotoRegister, animated: true)
+                            let name = user.value(forKey: "name") as! [String]
+                            let verify = user.value(forKey: "verification") as! [String]
+                            let Photo = user.value(forKey: "photo") as! [String]
+                            
+                            self.Username.text = name[0]
+                            if verify[0] == "0" {
+                                
+                                let gotoRegister = self.storyboard!.instantiateViewController(withIdentifier: "GotoRegisterSellerViewController") as! GotoRegisterSellerViewController
+                                gotoRegister.userID = self.user
+                                if let navigator = self.navigationController {
+                                    navigator.pushViewController(gotoRegister, animated: true)
+                                }
+                            }else{
+                                let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "AddNewProductViewController") as! AddNewProductViewController
+                                addProduct.userID = self.user
+                                if let navigator = self.navigationController {
+                                    navigator.pushViewController(addProduct, animated: true)
+                                }
                             }
-                        }else{
-                            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "AddNewProductViewController") as! AddNewProductViewController
-                            addProduct.userID = self.user
-                            if let navigator = self.navigationController {
-                                navigator.pushViewController(addProduct, animated: true)
-                            }
+                            
+                            self.UserImage.setImageWith(URL(string: Photo[0])!)
                         }
-                        
-                        self.UserImage.setImageWith(URL(string: Photo[0])!)
+                    }else{
+                        print("FAILED")
                     }
-                }else{
-                    print("FAILED")
-                }
-                
+                    
+            }
         }
+
     }
     
     @IBAction func Find(_ sender: Any) {
@@ -855,10 +897,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @objc func onFindBarClick(sender: Any){
-        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
-        myBuying.BarHidden = true
-        if let navigator = self.navigationController {
-            navigator.pushViewController(myBuying, animated: true)
+        if(user == "0"){
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
+            }
+        }else{
+            let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
+            myBuying.BarHidden = true
+            if let navigator = self.navigationController {
+                navigator.pushViewController(myBuying, animated: true)
+            }
         }
     }
     

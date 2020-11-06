@@ -118,11 +118,19 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             break
             
         case 3:
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewController1!, animated: true)
+            if(UserID == "0"){
+                let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(addProduct, animated: true)
+                }
+            }else{
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(viewController1!, animated: true)
+                }
             }
+            
             break
             
         default:
@@ -186,136 +194,151 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         ButtonFilter.setTitle("FILTER".localized(lang: str), for: .normal)
     }
     
-    
     func onAddToFav(cell: CategoryCollectionViewCell) {
-        let spinner = JGProgressHUD(style: .dark)
-        guard let indexPath = self.CategoryView.indexPath(for: cell) else{
-            return
-        }
-        spinner.show(in: self.view)
-        
-        let parameters: Parameters=[
-            "seller_id": self.SELLERID[indexPath.row],
-            "item_id": self.ITEMID[indexPath.row],
-            "customer_id": UserID,
-            "main_category": self.MAINCATE[indexPath.row],
-            "sub_category": self.SUBCATE[indexPath.row],
-            "ad_detail": self.ADDETAIL[indexPath.row],
-            "brand_material":self.BRAND[indexPath.row],
-            "inner_material": self.INNER[indexPath.row],
-            "stock": self.STOCK[indexPath.row],
-            "description": self.DESC[indexPath.row],
-            "price": self.PRICE[indexPath.row],
-            "rating": self.RATING[indexPath.row],
-            "division": self.DIVISION[indexPath.row],
-            "district": self.DISTRICT[indexPath.row],
-            "photo": self.PHOTO[indexPath.row],
-            "postcode": self.POSTCODE[indexPath.row],
-            "weight": self.WEIGHT[indexPath.row]
-        ]
-        
-        if(self.SELLERID[indexPath.row] == UserID){
-            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-            if(self.lang == "ms"){
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
-                
-            }else{
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
-                
+        if(UserID == "0"){
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
             }
-            
-            spinner.show(in: self.view)
-            spinner.dismiss(afterDelay: 2.0)
         }else{
-            Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        print(jsonData.value(forKey: "message")!)
-                       spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        if(self.lang == "ms"){
-                            spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
+            let spinner = JGProgressHUD(style: .dark)
+            guard let indexPath = self.CategoryView.indexPath(for: cell) else{
+                return
+            }
+            spinner.show(in: self.view)
+            
+            let parameters: Parameters=[
+                "seller_id": self.SELLERID[indexPath.row],
+                "item_id": self.ITEMID[indexPath.row],
+                "customer_id": UserID,
+                "main_category": self.MAINCATE[indexPath.row],
+                "sub_category": self.SUBCATE[indexPath.row],
+                "ad_detail": self.ADDETAIL[indexPath.row],
+                "brand_material":self.BRAND[indexPath.row],
+                "inner_material": self.INNER[indexPath.row],
+                "stock": self.STOCK[indexPath.row],
+                "description": self.DESC[indexPath.row],
+                "price": self.PRICE[indexPath.row],
+                "rating": self.RATING[indexPath.row],
+                "division": self.DIVISION[indexPath.row],
+                "district": self.DISTRICT[indexPath.row],
+                "photo": self.PHOTO[indexPath.row],
+                "postcode": self.POSTCODE[indexPath.row],
+                "weight": self.WEIGHT[indexPath.row]
+            ]
+            
+            if(self.SELLERID[indexPath.row] == UserID){
+                spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                if(self.lang == "ms"){
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                    
+                }else{
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+                    
+                }
+                
+                spinner.show(in: self.view)
+                spinner.dismiss(afterDelay: 2.0)
+            }else{
+                Alamofire.request(URL_ADD_FAV, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            print(jsonData.value(forKey: "message")!)
+                           spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                            if(self.lang == "ms"){
+                                spinner.textLabel.text = "Added to My Likes".localized(lang: "ms")
+                                
+                            }else{
+                                spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
+                                
+                            }
                             
-                        }else{
-                            spinner.textLabel.text = "Add to My Likes".localized(lang: "en")
+                           spinner.show(in: self.view)
+                           spinner.dismiss(afterDelay: 2.0)
                             
                         }
-                        
-                       spinner.show(in: self.view)
-                       spinner.dismiss(afterDelay: 2.0)
-                        
-                    }
+                }
             }
         }
+        
         
     }
     
     func onAddToCart(cell: CategoryCollectionViewCell) {
-        let spinner = JGProgressHUD(style: .dark)
-        guard let indexPath = self.CategoryView.indexPath(for: cell) else{
-            return
-        }
-
-        if(POSTCODE[indexPath.row].contains("0")){
-            POSTCODE[indexPath.row] = "93050"
-        }
-        
-        if(WEIGHT[indexPath.row].contains("0.00")){
-            WEIGHT[indexPath.row] = "1.00"
-        }
-        
-        let parameters: Parameters=[
-            "seller_id": SELLERID[indexPath.row],
-            "item_id": ITEMID[indexPath.row],
-            "customer_id": UserID,
-            "main_category": MAINCATE[indexPath.row],
-            "sub_category": SUBCATE[indexPath.row],
-            "ad_detail": ADDETAIL[indexPath.row],
-            "price": PRICE[indexPath.row],
-            "quantity": "1",
-            "division": DIVISION[indexPath.row],
-            "postcode": POSTCODE[indexPath.row],
-            "district": DISTRICT[indexPath.row],
-            "photo": PHOTO[indexPath.row],
-            "weight": WEIGHT[indexPath.row]
-        ]
-        
-        if(SELLERID[indexPath.row] == UserID){
-            let spinner = JGProgressHUD(style: .dark)
-
-            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-            if(self.lang == "ms"){
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
-            }else{
-                spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+        if(UserID == "0"){
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
             }
-                spinner.show(in: self.view)
-                spinner.dismiss(afterDelay: 3.0)
-            
         }else{
-            //Sending http post request
-            Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        spinner.textLabel.text = "Added to Cart"
-                        if(self.lang == "ms"){
-                            spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
-                            
-                        }else{
+            let spinner = JGProgressHUD(style: .dark)
+            guard let indexPath = self.CategoryView.indexPath(for: cell) else{
+                return
+            }
+
+            if(POSTCODE[indexPath.row].contains("0")){
+                POSTCODE[indexPath.row] = "93050"
+            }
+            
+            if(WEIGHT[indexPath.row].contains("0.00")){
+                WEIGHT[indexPath.row] = "1.00"
+            }
+            
+            let parameters: Parameters=[
+                "seller_id": SELLERID[indexPath.row],
+                "item_id": ITEMID[indexPath.row],
+                "customer_id": UserID,
+                "main_category": MAINCATE[indexPath.row],
+                "sub_category": SUBCATE[indexPath.row],
+                "ad_detail": ADDETAIL[indexPath.row],
+                "price": PRICE[indexPath.row],
+                "quantity": "1",
+                "division": DIVISION[indexPath.row],
+                "postcode": POSTCODE[indexPath.row],
+                "district": DISTRICT[indexPath.row],
+                "photo": PHOTO[indexPath.row],
+                "weight": WEIGHT[indexPath.row]
+            ]
+            
+            if(SELLERID[indexPath.row] == UserID){
+                let spinner = JGProgressHUD(style: .dark)
+
+                spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                if(self.lang == "ms"){
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "ms")
+                }else{
+                    spinner.textLabel.text = "Sorry, cannot add your own item".localized(lang: "en")
+                }
+                    spinner.show(in: self.view)
+                    spinner.dismiss(afterDelay: 3.0)
+                
+            }else{
+                //Sending http post request
+                Alamofire.request(URL_ADD_CART, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                             spinner.textLabel.text = "Added to Cart"
-                           
+                            if(self.lang == "ms"){
+                                spinner.textLabel.text = "Added to Cart".localized(lang: "ms")
+                                
+                            }else{
+                                spinner.textLabel.text = "Added to Cart"
+                               
+                            }
+                            spinner.show(in: self.view)
+                            spinner.dismiss(afterDelay: 3.0)
+                            print(jsonData.value(forKey: "message")!)
+                            
                         }
-                        spinner.show(in: self.view)
-                        spinner.dismiss(afterDelay: 3.0)
-                        print(jsonData.value(forKey: "message")!)
-                        
-                    }
+                }
             }
         }
+        
 
     }
     

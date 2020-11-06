@@ -64,10 +64,17 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
             break
             
         case 3:
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            if let navigator = self.navigationController {
-                navigator.pushViewController(viewController1!, animated: true)
+            if(user == "0"){
+                let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(addProduct, animated: true)
+                }
+            }else{
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                viewController1 = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(viewController1!, animated: true)
+                }
             }
             break
             
