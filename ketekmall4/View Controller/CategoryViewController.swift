@@ -141,7 +141,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
-        UserID = sharedPref.string(forKey: "USERID") ?? "0"
         
         if(lang == "ms"){
             changeLanguage(str: "ms")

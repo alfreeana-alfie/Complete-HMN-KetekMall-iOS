@@ -425,6 +425,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             user = "0"
             email = "0"
             lang = sharedPref.string(forKey: "LANG") ?? "en"
+            Verify.isHidden = true
+            Username.isHidden = true
         }else{
             user = sharedPref.string(forKey: "USERID") ?? "0"
             email = sharedPref.string(forKey: "EMAIL") ?? "0"

@@ -103,7 +103,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var ItemName: UILabel!
     @IBOutlet weak var ItemPrice: UILabel!
     @IBOutlet weak var Sold: UILabel!
-    @IBOutlet weak var ShippingInfo: UILabel!
+//    @IBOutlet weak var ShippingInfo: UILabel!
     @IBOutlet weak var MoreDetails: UILabel!
     @IBOutlet weak var FromSameShopLabel: UILabel!
     @IBOutlet weak var SoldLabel: UILabel!
@@ -127,8 +127,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var Tabbar: UITabBar!
     
     
-    @IBOutlet weak var ShippingRight: UIImageView!
-    @IBOutlet weak var MoreRight: UIImageView!
+//    @IBOutlet weak var ShippingRight: UIImageView!
+    @IBOutlet weak var MoreRight: UIButton!
     @IBOutlet weak var ReviewView: UIView!
     @IBOutlet weak var NoReviewLabel: UILabel!
     
@@ -258,8 +258,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
 
         
         ButtonChat.isUserInteractionEnabled = true
-        ShippingInfo.isUserInteractionEnabled = true
-        ShippingRight.isUserInteractionEnabled = true
+//        ShippingInfo.isUserInteractionEnabled = true
+//        ShippingRight.isUserInteractionEnabled = true
         MoreDetails.isUserInteractionEnabled = true
         MoreRight.isUserInteractionEnabled = true
         ViewReview.isUserInteractionEnabled = true
@@ -276,9 +276,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let Whatsapp_Click = UITapGestureRecognizer(target: self, action: #selector(openWhatsapp(sender:)))
         
-        ShippingInfo.addGestureRecognizer(ShippingInfo_Click)
+//        ShippingInfo.addGestureRecognizer(ShippingInfo_Click)
         MoreDetails.addGestureRecognizer(MoreDetails_Click)
-        ShippingRight.addGestureRecognizer(ShippingInfo_Click)
+//        ShippingRight.addGestureRecognizer(ShippingInfo_Click)
         MoreRight.addGestureRecognizer(MoreDetails_Click)
         ViewReview.addGestureRecognizer(ViewReview_Click)
         ViewSameShop.addGestureRecognizer(ViewSameShop_Click)
@@ -293,7 +293,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func changeLanguage(str: String){
         SoldLabel.text = "Sold".localized(lang: str)
-        ShippingInfo.text = "Shipping Information".localized(lang: str)
+//        ShippingInfo.text = "Shipping Information".localized(lang: str)
         MoreDetails.text = "More Details".localized(lang: str)
         ViewReview.text = "View".localized(lang: str)
         FromSameShopLabel.text = "From the Same Shop".localized(lang: str)

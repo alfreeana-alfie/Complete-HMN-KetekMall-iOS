@@ -60,6 +60,7 @@
 		FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */; };
 		FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */; };
 		FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */; };
+		FB604B42255555EC00408237 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = FB61D40B251741740087E7C9 /* GoogleService-Info.plist */; };
 		FB61D40C251741740087E7C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB61D40B251741740087E7C9 /* GoogleService-Info.plist */; };
 		FB7115802500B7B400B19D77 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB71157F2500B7B300B19D77 /* FilterViewController.swift */; };
 		FB7787B724FE0F0500AB01F4 /* ShippingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7787B624FE0F0500AB01F4 /* ShippingInfoViewController.swift */; };
@@ -605,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB604B42255555EC00408237 /* GoogleService-Info.plist in Sources */,
 				FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */,
 				FB4557B324F91EE700FC502B /* MyProductsCollectionViewController.swift in Sources */,
 				FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */,
