@@ -55,53 +55,71 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     let sharedPref = UserDefaults.standard
     var tokenUser: String = ""
     var name: String = ""
+    var USERID: String = ""
+    var CheckUser: Bool = true
     
     var gl : CAGradientLayer!
     
     override func viewWillAppear(_ animated: Bool) {
 //        ColorFunc()
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         name = sharedPref.string(forKey: "NAME") ?? "0"
+        USERID = sharedPref.string(forKey: "USERID") ?? "0"
         
         let boolValue = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
-        if(boolValue == true){
-            hud.textLabel.text = "Loading"
-            hud.show(in: self.view)
-            
-            UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
-            UserDefaults.standard.synchronize()
-            
-            let token_firebase = self.ref.child(name).child("token")
-            InstanceID.instanceID().instanceID { (result, error) in
-                if let error = error {
-                    print("Error fetching remote instange ID: \(error)")
-                } else if let result = result {
-                    print("Remote instance ID token: \(result.token)")
-                    self.tokenUser = result.token
-
-                    token_firebase.setValue(result.token) {
-                      (error:Error?, ref:DatabaseReference) in
-                      if let error = error {
-                        print("Data could not be saved: \(error).")
-                      } else {
-                        print("Data saved successfully!")
-                      }
-                    }
-                }
-            }
-            
+        if(CheckUser == false){
             let tabbar = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            tabbar.CheckUser = false
             if let navigator = self.navigationController {
                 navigator.pushViewController(tabbar, animated: true)
             }
         }else{
-            hud.dismiss(afterDelay: 2.0)
+            if(boolValue == true){
+                hud.textLabel.text = "Loading"
+                hud.show(in: self.view)
+                
+                UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                UserDefaults.standard.synchronize()
+                
+                let token_firebase = self.ref.child(name).child("token")
+                InstanceID.instanceID().instanceID { (result, error) in
+                    if let error = error {
+                        print("Error fetching remote instange ID: \(error)")
+                    } else if let result = result {
+                        print("Remote instance ID token: \(result.token)")
+                        self.tokenUser = result.token
+
+                        token_firebase.setValue(result.token) {
+                          (error:Error?, ref:DatabaseReference) in
+                          if let error = error {
+                            print("Data could not be saved: \(error).")
+                          } else {
+                            print("Data saved successfully!")
+                          }
+                        }
+                    }
+                }
+                
+                let tabbar = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(tabbar, animated: true)
+                }
+            }else{
+                hud.dismiss(afterDelay: 2.0)
+//                UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+//                UserDefaults.standard.synchronize()
+//                let tabbar = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+//                if let navigator = self.navigationController {
+//                    navigator.pushViewController(tabbar, animated: true)
+//                }
+            }
         }
+        
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.clientID = "918843433379-sttk0oa9ea0htiqt3j3ncakoi2vrma2i.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self

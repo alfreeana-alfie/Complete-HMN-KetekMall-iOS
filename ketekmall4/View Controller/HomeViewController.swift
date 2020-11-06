@@ -394,6 +394,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let sharedPref = UserDefaults.standard
     var user: String = ""
     var email: String = ""
+    var CheckUser: Bool = true
     var viewController1: UIViewController?
     
     @IBOutlet weak var Tabbar: UITabBar!
@@ -420,14 +421,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Carousel.slideshowInterval = 3.0
         Carousel.contentScaleMode = .scaleAspectFill
         
-        user = sharedPref.string(forKey: "USERID") ?? "0"
-        email = sharedPref.string(forKey: "EMAIL") ?? "0"
-        lang = sharedPref.string(forKey: "LANG") ?? "en"
+        if(CheckUser == false){
+            user = "0"
+            email = "0"
+            lang = sharedPref.string(forKey: "LANG") ?? "en"
+        }else{
+            user = sharedPref.string(forKey: "USERID") ?? "0"
+            email = sharedPref.string(forKey: "EMAIL") ?? "0"
+            lang = sharedPref.string(forKey: "LANG") ?? "en"
+        }
         
         let index = email.firstIndex(of: "@") ?? email.endIndex
         let newEmail = email[..<index]
-        
-        
         
         dropDown.anchorView = ListBar
         dropDown.dataSource = ["Edit Profile","Change to BM","Change to ENG","About KetekMall", "Logout"]
@@ -695,9 +700,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 
             case 4:
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                self.viewController1 = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                let click = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                click.CheckUser = false
                 if let navigator = self.navigationController {
-                    navigator.pushViewController(self.viewController1!, animated: true)
+                    navigator.pushViewController(click, animated: true)
                 }
                 UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
                 UserDefaults.standard.synchronize()
