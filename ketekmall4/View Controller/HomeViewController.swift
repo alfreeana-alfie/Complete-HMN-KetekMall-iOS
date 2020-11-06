@@ -770,11 +770,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @objc func onCartBarClick(sender: Any){
-//        let tabbar = tabBarController as! BaseTabBarController
-        let click = self.storyboard!.instantiateViewController(withIdentifier: "CartViewController") as! CartViewController
-        click.userID = String(user)
-        if let navigator = self.navigationController {
-            navigator.pushViewController(click, animated: true)
+        if(user == "0"){
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
+            }
+        }else{
+            //        let tabbar = tabBarController as! BaseTabBarController
+            let click = self.storyboard!.instantiateViewController(withIdentifier: "CartViewController") as! CartViewController
+            click.userID = String(user)
+            if let navigator = self.navigationController {
+                navigator.pushViewController(click, animated: true)
+            }
         }
     }
     

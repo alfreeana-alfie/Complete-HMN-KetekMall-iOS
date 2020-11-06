@@ -214,7 +214,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         NoReviewLabel.isHidden = true
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
-        USERID = sharedPref.string(forKey: "USERID") ?? "0"
+//        USERID = sharedPref.string(forKey: "USERID") ?? "0"
         
 //        print("POSTCODE: \(POSTCODE)")
         
