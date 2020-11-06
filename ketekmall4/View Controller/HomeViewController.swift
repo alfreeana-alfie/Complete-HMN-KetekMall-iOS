@@ -189,6 +189,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 viewProduct.PRICE = self.PRICESHOCKING[indexPath.row]
                 viewProduct.POSTCODE = self.POSTCODESHOCKING[indexPath.row]
                 viewProduct.WEIGHT = self.WEIGHTSHOCKING[indexPath.row]
+        //        viewProduct.RATING = self.RATINGSHOCKING[indexPath.row]
                 viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
                 viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
                 viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
@@ -427,6 +428,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             lang = sharedPref.string(forKey: "LANG") ?? "en"
             Verify.isHidden = true
             Username.isHidden = true
+            VerifyView.isHidden = true
         }else{
             user = sharedPref.string(forKey: "USERID") ?? "0"
             email = sharedPref.string(forKey: "EMAIL") ?? "0"
@@ -776,7 +778,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 navigator.pushViewController(addProduct, animated: true)
             }
         }else{
-            //        let tabbar = tabBarController as! BaseTabBarController
             let click = self.storyboard!.instantiateViewController(withIdentifier: "CartViewController") as! CartViewController
             click.userID = String(user)
             if let navigator = self.navigationController {
@@ -1350,10 +1351,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell1.ButtonView.layer.cornerRadius = 5
             cell1.layer.cornerRadius = 5
             
-            cell1.ItemImage.isUserInteractionEnabled = true
-            let Image = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.onViewClick(cell:)))
-            
-            cell1.ItemImage.addGestureRecognizer(Image)
+//            cell1.ItemImage.isUserInteractionEnabled = true
+//            let Image = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.onViewClick1(cell:)))
+//
+//            cell1.ItemImage.addGestureRecognizer(Image)
             
 //            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
 //            let colorTwo = UIColor(hexString: "#F7B733").cgColor

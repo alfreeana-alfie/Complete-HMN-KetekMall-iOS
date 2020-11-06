@@ -268,7 +268,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         
         
         let Chat_Click = UITapGestureRecognizer(target: self, action: #selector(onChatClick(sender:)))
-        let ShippingInfo_Click = UITapGestureRecognizer(target: self, action: #selector(onShippingInfoClick(sender:)))
+        _ = UITapGestureRecognizer(target: self, action: #selector(onShippingInfoClick(sender:)))
         let MoreDetails_Click = UITapGestureRecognizer(target: self, action: #selector(onMoreDetailsClick(sender:)))
         
         let ViewReview_Click = UITapGestureRecognizer(target: self, action: #selector(onViewReview(sender:)))
@@ -730,7 +730,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                             for i in list{
                                 let photo = i["filepath"] as! String
                                 
-                                let image = KingfisherSource(urlString: photo)
+                                let NEWIm = photo.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                                
+                                let image = KingfisherSource(urlString: NEWIm!)
                                 ImageKing.append(image!)
                             }
                             self.Carousel.setImageInputs(ImageKing)
