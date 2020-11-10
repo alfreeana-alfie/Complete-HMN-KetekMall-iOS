@@ -137,7 +137,6 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var viewController1: UIViewController?
     let pageIndicator = UIPageControl()
     
-    
     let URL_ADD_CART = "https://ketekmall.com/ketekmall/add_to_cart.php"
     let URL_READ_SELLER = "https://ketekmall.com/ketekmall/read_order_done_seller.php"
     let URL_READ_REVIEW = "https://ketekmall.com/ketekmall/read_review.php"
@@ -214,9 +213,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         NoReviewLabel.isHidden = true
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
-//        USERID = sharedPref.string(forKey: "USERID") ?? "0"
         
-//        print("POSTCODE: \(POSTCODE)")
+        print("POSTCODE: \(USERID)")
         
         if(lang == "ms"){
             changeLanguage(str: "ms")

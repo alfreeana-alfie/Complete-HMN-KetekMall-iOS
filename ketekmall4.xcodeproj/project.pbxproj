@@ -91,6 +91,7 @@
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
 		FBC47064252797A400E38DE6 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC47063252797A400E38DE6 /* PushNotification.swift */; };
+		FBCE5666255A2AD800598DFA /* AppleSignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -199,14 +200,15 @@
 		FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoRegisterSeller2ViewController.swift; sourceTree = "<group>"; };
 		FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionsViewController.swift; sourceTree = "<group>"; };
 		FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeRegisterViewController.swift; sourceTree = "<group>"; };
-		FBB2D5FC251495B2007BEA53 /* ketekmall4.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ketekmall4.entitlements; sourceTree = "<group>"; };
 		FBB2D5FD251495B8007BEA53 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		FBC293C22508A5D00057961A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxViewController.swift; sourceTree = "<group>"; };
 		FBC293C62508A6120057961A /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		FBC470622527920200E38DE6 /* KetekMallRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KetekMallRelease.entitlements; sourceTree = "<group>"; };
 		FBC47063252797A400E38DE6 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
+		FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInClient.swift; sourceTree = "<group>"; };
+		FBCE5667255A355F00598DFA /* ketekmall4.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ketekmall4.entitlements; sourceTree = "<group>"; };
+		FBCE5668255A356900598DFA /* KetekMallRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = KetekMallRelease.entitlements; sourceTree = "<group>"; };
 		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -264,13 +266,13 @@
 		FB5A48D424F7F06B00F5464C = {
 			isa = PBXGroup;
 			children = (
+				DD0B1AF328BAB6338770F315 /* Frameworks */,
 				FB61D40B251741740087E7C9 /* GoogleService-Info.plist */,
 				FB5A48DF24F7F06B00F5464C /* ketekmall4 */,
 				FB5A48F624F7F07B00F5464C /* ketekmall4Tests */,
 				FB5A490124F7F07B00F5464C /* ketekmall4UITests */,
-				FB5A48DE24F7F06B00F5464C /* Products */,
 				9744CE111CB0B2C47541132C /* Pods */,
-				DD0B1AF328BAB6338770F315 /* Frameworks */,
+				FB5A48DE24F7F06B00F5464C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,23 +289,24 @@
 		FB5A48DF24F7F06B00F5464C /* ketekmall4 */ = {
 			isa = PBXGroup;
 			children = (
-				FBC470622527920200E38DE6 /* KetekMallRelease.entitlements */,
+				FBCE5668255A356900598DFA /* KetekMallRelease.entitlements */,
+				FBCE5667255A355F00598DFA /* ketekmall4.entitlements */,
+				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
 				FB91420E251F55DC004F62F6 /* DetailViewController.swift */,
 				FB91420A251F55DC004F62F6 /* DetailViewController.xib */,
 				FB91420B251F55DC004F62F6 /* DetailViewModel.swift */,
+				FB5A48EE24F7F07B00F5464C /* Info.plist */,
 				FB91420C251F55DC004F62F6 /* Ipay.h */,
 				FB91420D251F55DC004F62F6 /* IpayPayment.h */,
 				FB914209251F55DB004F62F6 /* ketekmall4_Bridging_Header.h */,
-				FBB2D5FC251495B2007BEA53 /* ketekmall4.entitlements */,
-				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
-				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
-				FB288354250994C2008B18BB /* Main.storyboard */,
 				FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */,
-				FB5A491124F7F0F900F5464C /* View Controller */,
-				FB5A491024F7F0E200F5464C /* Models */,
-				FB5A48EE24F7F07B00F5464C /* Info.plist */,
 				FBDDBB84250A1C1B0027BC90 /* Localizable.strings */,
+				FB288354250994C2008B18BB /* Main.storyboard */,
+				FB5A491024F7F0E200F5464C /* Models */,
 				FBC47063252797A400E38DE6 /* PushNotification.swift */,
+				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
+				FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */,
+				FB5A491124F7F0F900F5464C /* View Controller */,
 			);
 			path = ketekmall4;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 		FB5A491124F7F0F900F5464C /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */,
 				FB3E830224FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift */,
 				FB7787BA24FE0F7A00AB01F4 /* AboutSellerViewController.swift */,
 				FB4557B024F90EDA00FC502B /* AccountSettingsViewController.swift */,
@@ -344,22 +348,32 @@
 				FB3E830424FEBE2400F1CE3C /* AddReviewViewController.swift */,
 				FB43BFD524FF7516002D36E0 /* AfterPlaceOrderViewController.swift */,
 				FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */,
+				FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */,
 				FB528AD024FA88BD00A968E8 /* BoostAdCollectionViewCell.swift */,
 				FB528ACE24FA84E700A968E8 /* BoostAdViewController.swift */,
+				FB9A928725037A51001DD96C /* BuyerViewController.swift */,
 				FB43BFD724FF7766002D36E0 /* CartCollectionViewCell.swift */,
 				FB43BFD124FF74EB002D36E0 /* CartViewController.swift */,
 				FB5490CE24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift */,
 				FB5490CC24FD3C8D004E6D73 /* CategoryViewController.swift */,
+				FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */,
+				FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */,
+				FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */,
+				FBC293C22508A5D00057961A /* ChatTableViewCell.swift */,
+				FBC293C62508A6120057961A /* ChatViewController.swift */,
 				FB7D211624FFE5A90043A286 /* CheckoutCollectionViewCell.swift */,
 				FB43BFD324FF7502002D36E0 /* CheckoutViewController.swift */,
+				FB2883462509759E008B18BB /* ContactUsViewController.swift */,
 				FB7D211C25001C500043A286 /* DeliveryAddViewController.swift */,
 				FB7D211A250016CC0043A286 /* DeliveryCollectionViewCell.swift */,
+				FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */,
 				FB7D2118250015530043A286 /* DeliveryViewController.swift */,
 				FB43BFCF24FF60F8002D36E0 /* EditProductAdDetailViewController.swift */,
 				FB3E830624FEC1C100F1CE3C /* EditProductViewController.swift */,
 				FB71157F2500B7B300B19D77 /* FilterViewController.swift */,
 				FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */,
 				FB5490D024FD7019004E6D73 /* FromSameShopCollectionViewCell.swift */,
+				FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */,
 				FB5490CA24FD209B004E6D73 /* GotoRegisterSellerViewController.swift */,
 				FB5A491424F7F49E00F5464C /* HomeViewController.swift */,
 				FB77A15224FCD3D70005EB39 /* HotCollectionViewCell.swift */,
@@ -377,34 +391,23 @@
 				FB4B72D024FB792000293B81 /* MyRatingViewController.swift */,
 				FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */,
 				FB528AC524FA616800A968E8 /* MySellingViewController.swift */,
+				FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */,
 				FB528AD224FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift */,
 				FB528ACC24FA84DA00A968E8 /* ProductRatingViewController.swift */,
 				FB5490C824FD1ECF004E6D73 /* RegisterSellerViewController.swift */,
 				FB5A491824F7F5EE00F5464C /* RegisterViewController.swift */,
+				FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */,
 				FB7787C024FE35CA00AB01F4 /* ReviewCollectionViewCell.swift */,
 				FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */,
+				FB9A928925037A75001DD96C /* SellerViewController.swift */,
 				FB7787BE24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift */,
 				FB7787B624FE0F0500AB01F4 /* ShippingInfoViewController.swift */,
 				FB77A15424FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift */,
+				FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */,
+				FB9A9285250368B2001DD96C /* ViewController.swift */,
 				FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */,
 				FB7787BC24FE0FCA00AB01F4 /* ViewReviewViewController.swift */,
 				FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */,
-				FB9A9285250368B2001DD96C /* ViewController.swift */,
-				FB9A928725037A51001DD96C /* BuyerViewController.swift */,
-				FB9A928925037A75001DD96C /* SellerViewController.swift */,
-				FBC293C22508A5D00057961A /* ChatTableViewCell.swift */,
-				FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */,
-				FBC293C62508A6120057961A /* ChatViewController.swift */,
-				FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */,
-				FB2883462509759E008B18BB /* ContactUsViewController.swift */,
-				FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */,
-				FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */,
-				FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */,
-				FBB2D5F62513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift */,
-				FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */,
-				FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */,
-				FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */,
-				FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				FB7115802500B7B400B19D77 /* FilterViewController.swift in Sources */,
 				FB4B72D124FB792000293B81 /* MyRatingViewController.swift in Sources */,
 				FB0843712512A38B003C200E /* ReturnRefundPolicyViewController.swift in Sources */,
+				FBCE5666255A2AD800598DFA /* AppleSignInClient.swift in Sources */,
 				FB43BFD224FF74EB002D36E0 /* CartViewController.swift in Sources */,
 				FBBA2D74250918E500F55FE2 /* NotificationViewController.swift in Sources */,
 				FB7787BD24FE0FCA00AB01F4 /* ViewReviewViewController.swift in Sources */,
@@ -875,9 +879,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -889,11 +893,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.5;
-				ONLY_ACTIVE_ARCH = NO;
+				MARKETING_VERSION = 1.0.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "KetekMall 02";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = ketekmall4/ketekmall4_Bridging_Header.h;
@@ -903,6 +907,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64e arm64 armv7 armv7s";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "arm64e arm64 armv7 armv7s x86_64";
 			};
 			name = Debug;
 		};
@@ -915,7 +920,7 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -927,8 +932,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.5;
-				ONLY_ACTIVE_ARCH = NO;
+				MARKETING_VERSION = 1.0.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
 				PROVISIONING_PROFILE_SPECIFIER = "KetekMall 02";
@@ -941,6 +946,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64e arm64 armv7 armv7s";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "arm64e arm64 armv7 armv7s x86_64";
 			};
 			name = Release;
 		};

@@ -20,13 +20,7 @@ import FirebaseDatabase
 import FirebaseCore
 import AuthenticationServices
 
-class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate, ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
-    
-    @available(iOS 13.0, *)
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
-    }
-    
+class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     
     let ref = Database.database().reference(withPath: "users")
     
@@ -38,7 +32,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
 
     @IBOutlet weak var NameView: UIView!
     @IBOutlet weak var PasswordView: UIView!
-    
     
     @IBOutlet weak var Border: UIView!
     @IBOutlet weak var EmailField: UITextField!
@@ -59,6 +52,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     var CheckUser: Bool = true
     
     var gl : CAGradientLayer!
+    
+    let appleProvider = AppleSignInClient()
     
     override func viewWillAppear(_ animated: Bool) {
 //        ColorFunc()
@@ -126,12 +121,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         
         if #available(iOS 13.0, *) {
             let authorizationButton = ASAuthorizationAppleIDButton()
-            authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-            
             FBView.addSubview(authorizationButton)
-
-//            NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: FBView, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0).isActive = true
-//            NSLayoutConstraint(item: loginButton, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: FBView, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0).isActive = true
+            authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress(sender:)), for: .touchUpInside)
+            
             authorizationButton.frame = CGRect(x: 0, y: 0, width: FBView.bounds.width, height: FBView.bounds.height)
         } else {
             // Fallback on earlier versions
@@ -478,72 +470,13 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     
     @available(iOS 13.0, *)
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            // Create an account in your system.
-            let userIdentifier = appleIDCredential.user
-            let userFirstName = appleIDCredential.fullName?.givenName
-            let userLastName = appleIDCredential.fullName?.familyName
-            let userEmail = appleIDCredential.email
-            
-            let parameters: Parameters=[
-                "name": userFirstName! + " " + userLastName!,
-                "email": userEmail!,
-                "phone_no": "000000000000",
-                "password": userFirstName! + userLastName!,
-                "birthday": "00/00/2020",
-                "gender": "Female",
-                "photo": URL_PHOTO,
-                "verification": "0",
-            ]
-            Alamofire.request(URL_REGISTER, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        print(jsonData.value(forKey: "message")!)
-                        self.login(email: userEmail!, password: userFirstName! + userLastName!)
-                    }else{
-                        print("FAILED")
-                        self.login(email: userEmail!, password: userFirstName! + userLastName!)
-                    }
-            }
-            
-            //Navigate to other view controller
-        } else if let passwordCredential = authorization.credential as? ASPasswordCredential {
-            // Sign in using an existing iCloud Keychain credential.
-            let username = passwordCredential.user
-            let password = passwordCredential.password
-            
-            //Navigate to other view controller
-        }
-    }
-    
-    @available(iOS 13.0, *)
-    @objc func handleAuthorizationAppleIDButtonPress() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+    @objc
+    func handleAuthorizationAppleIDButtonPress(sender: ASAuthorizationAppleIDButton) {
         
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
+        appleProvider.handleAppleIdRequest(block: {fullName, email, token in
+            //Receive data in login class
+        })
     }
-    
-    @available(iOS 13.0, *)
-    func performExistingAccountSetupFlows() {
-        // Prepare requests for both Apple ID and password providers.
-        let requests = [ASAuthorizationAppleIDProvider().createRequest(),
-                        ASAuthorizationPasswordProvider().createRequest()]
-        
-        // Create an authorization controller with the given requests.
-        let authorizationController = ASAuthorizationController(authorizationRequests: requests)
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
-    }
-
 }
 
 extension UIColor {

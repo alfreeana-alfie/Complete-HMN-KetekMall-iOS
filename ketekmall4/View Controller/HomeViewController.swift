@@ -672,15 +672,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             switch index{
             case 0:
-                let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
-                myBuying.BarHidden = true
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(myBuying, animated: true)
-                }else{
-                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
-                    accountsettings.userID = self.user
+                if(user == "0"){
+                    let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                     if let navigator = self.navigationController {
-                        navigator.pushViewController(accountsettings, animated: true)
+                        navigator.pushViewController(addProduct, animated: true)
+                    }
+                }else{
+                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
+                    myBuying.BarHidden = true
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(myBuying, animated: true)
+                    }else{
+                        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
+                        accountsettings.userID = self.user
+                        if let navigator = self.navigationController {
+                            navigator.pushViewController(accountsettings, animated: true)
+                        }
                     }
                 }
                 break
@@ -888,14 +895,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             self.UserImage.setImageWith(URL(string: Photo[0])!)
                         }
                     }else{
+
+                    }
                         print("FAILED")
                     }
                     
             }
         }
-
-    }
-    
     @IBAction func Find(_ sender: Any) {
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
@@ -1278,7 +1284,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
-        viewProduct.USERID = userID
+        viewProduct.USERID = String(user)
         viewProduct.ItemID = self.ID[indexPath.row]
         viewProduct.SELLERID = self.SELLERIDHOT[indexPath.row]
         viewProduct.MAINCATE = self.MAINCATEHOT[indexPath.row]
