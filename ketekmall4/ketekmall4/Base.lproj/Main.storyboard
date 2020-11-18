@@ -2816,7 +2816,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azU-ub-kF6">
-                                <rect key="frame" x="0.0" y="64" width="414" height="748"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRAND MATERIAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXP-Hl-dkI">
                                         <rect key="frame" x="31" y="43" width="143" height="20"/>
@@ -2882,7 +2882,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSv-3A-5g8">
-                                        <rect key="frame" x="31" y="226.5" width="352" height="466.5"/>
+                                        <rect key="frame" x="31" y="226.5" width="352" height="486.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2945,7 +2945,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="azU-ub-kF6" firstAttribute="leading" secondItem="ury-4R-mqX" secondAttribute="leading" id="0vv-VE-iIP"/>
-                            <constraint firstItem="azU-ub-kF6" firstAttribute="top" secondItem="ury-4R-mqX" secondAttribute="top" constant="20" id="2UO-y8-XHi"/>
+                            <constraint firstItem="azU-ub-kF6" firstAttribute="top" secondItem="ury-4R-mqX" secondAttribute="top" id="2UO-y8-XHi"/>
                             <constraint firstItem="bl9-cz-hi7" firstAttribute="trailing" secondItem="ury-4R-mqX" secondAttribute="trailing" id="6Pn-b5-ACw"/>
                             <constraint firstItem="bl9-cz-hi7" firstAttribute="leading" secondItem="ury-4R-mqX" secondAttribute="leading" id="EJH-JR-ijf"/>
                             <constraint firstItem="ury-4R-mqX" firstAttribute="trailing" secondItem="azU-ub-kF6" secondAttribute="trailing" id="S2c-Sv-GVf"/>
