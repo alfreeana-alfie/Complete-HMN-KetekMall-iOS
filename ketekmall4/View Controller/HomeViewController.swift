@@ -405,9 +405,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var tokenUser: String = ""
     var lang: String = "";
     
-//    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        if(user == "0"){
+            Verify.isHidden = true
+            Username.isHidden = true
+            VerifyView.isHidden = true
+        }
 //        ColorFunc()
-//    }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -430,6 +435,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             Username.isHidden = true
             VerifyView.isHidden = true
         }else{
+            Verify.isHidden = false
+            Username.isHidden = false
+            VerifyView.isHidden = false
             user = sharedPref.string(forKey: "USERID") ?? "0"
             email = sharedPref.string(forKey: "EMAIL") ?? "0"
             lang = sharedPref.string(forKey: "LANG") ?? "en"

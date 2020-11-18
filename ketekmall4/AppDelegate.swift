@@ -17,6 +17,8 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate  {
     
+    var window: UIWindow?
+
     func registerForPushNotifications() {
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -44,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         return GIDSignIn.sharedInstance().handle(url)
     }
     
-    var window: UIWindow?
     var indicator = UIActivityIndicatorView()
     
     func addIndicator(){
