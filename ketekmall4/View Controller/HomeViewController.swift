@@ -686,16 +686,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         navigator.pushViewController(addProduct, animated: true)
                     }
                 }else{
-                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
-                    myBuying.BarHidden = true
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
+                    accountsettings.userID = self.user
                     if let navigator = self.navigationController {
-                        navigator.pushViewController(myBuying, animated: true)
-                    }else{
-                        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
-                        accountsettings.userID = self.user
-                        if let navigator = self.navigationController {
-                            navigator.pushViewController(accountsettings, animated: true)
-                        }
+                        navigator.pushViewController(accountsettings, animated: true)
                     }
                 }
                 break

@@ -12,6 +12,20 @@ import JGProgressHUD
 
 class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+//    let defaultManager: Alamofire.Manager = {
+//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+//            "localhost:3443": .DisableEvaluation
+//        ]
+//
+//        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+//        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
+//
+//        return Alamofire.Manager(
+//            configuration: configuration,
+//            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+//        )
+//    }()
+    
     
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var AdDetailLabel: UILabel!
@@ -589,7 +603,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         let parameters: Parameters=[
             "user_id": userID,
             "main_category":CategoryText,
-            "sub_category":CategorySubText,
+            "sub_category":CategoryText,
             "ad_detail":Addetail,
             "brand_material":BrandMaterial,
             "inner_material": BrandMaterial,
@@ -643,10 +657,20 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
 //                        self.Delete_5.isHidden = false
                         print("SUCCESS 5")
                     }
-                    let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+                    accountsettings.userID = self.userID
                     if let navigator = self.navigationController {
-                        navigator.pushViewController(viewProduct, animated: true)
-                    }                }
+                        navigator.pushViewController(accountsettings, animated: true)
+                    }
+                    
+                }else{
+                    print("FAILED")
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+                    accountsettings.userID = self.userID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(accountsettings, animated: true)
+                    }
+            }
         }
     }
     

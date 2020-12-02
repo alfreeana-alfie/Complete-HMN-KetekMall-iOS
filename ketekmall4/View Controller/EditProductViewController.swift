@@ -12,9 +12,23 @@ import JGProgressHUD
 import ImagePicker
 
 class EditProductViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private static var Manager : Alamofire.SessionManager = {
+        // Create the server trust policies
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "localhost": .disableEvaluation
+        ]
+        // Create custom manager
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+        let man = Alamofire.SessionManager(
+            configuration: URLSessionConfiguration.default,
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        return man
+    }()
     
     let URL_UPLOAD = "https://ketekmall.com/ketekmall/edituser.php"
-    let URL_IMG = "https://ketekmall.com/ketekmall/uploadimg02.php"
+    let URL_IMG = "https://ketekmall.com/ketekmall/products/uploadimg02.php"
     let URL_UPLOAD_EXTRA = "https://ketekmall.com/ketekmall/products_img/uploadimg03.php"
     let URL_READ_PHOTO = "https://ketekmall.com/ketekmall/products_img/read_photo.php"
     let URL_EDIT_PROD = "https://ketekmall.com/ketekmall/edit_product_detail.php"
@@ -380,8 +394,42 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                     self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                     self.spinner.textLabel.text = "Edit Saved"
                     self.spinner.show(in: self.view)
+                                        
+                    if(self.ItemImage2.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "2", Image: self.ItemImage2)
+                        print("SUCCESS 2")
+                    }
+                    
+                    if(self.ItemImage3.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "3", Image: self.ItemImage3)
+                        print("SUCCESS 3")
+                    }
+                    
+                    if(self.ItemImage4.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "4", Image: self.ItemImage4)
+//                        self.Delete_4.isHidden = false
+                        print("SUCCESS 4")
+                    }
+                    
+                    if(self.ItemImage5.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "5", Image: self.ItemImage5)
+//                        self.Delete_5.isHidden = false
+                        print("SUCCESS 5")
+                    }
                     self.spinner.dismiss(afterDelay: 4.0)
-                    _ = self.navigationController?.popViewController(animated: true)
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+                    accountsettings.userID = self.USERID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(accountsettings, animated: true)
+                    }
                 }else{
                     self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
                     self.spinner.textLabel.text = "Failed"
@@ -474,6 +522,8 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             let newPhoto = image[1].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                             self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
                             
+                            self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+                            
                             self.Delete_2.isHidden = false
                             self.Delete_3.isHidden = true
                             self.Delete_4.isHidden = true
@@ -485,6 +535,9 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             
                             self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
                             self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
+                            
+                            self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+                            self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill;
                             
                             self.Delete_2.isHidden = false
                             self.Delete_3.isHidden = false
@@ -498,6 +551,10 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             self.ItemImage2.setImageWith(URL(string: newPhoto!)!)
                             self.ItemImage3.setImageWith(URL(string: newPhoto2!)!)
                             self.ItemImage4.setImageWith(URL(string: newPhoto3!)!)
+                            
+                            self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+                            self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill;
+                            self.ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill;
                             
                             self.Delete_2.isHidden = false
                             self.Delete_3.isHidden = false
@@ -514,6 +571,11 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                             self.ItemImage4.setImageWith(URL(string: newPhoto3!)!)
                             self.ItemImage5.setImageWith(URL(string: newPhoto4!)!)
                             
+                            self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+                            self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill;
+                            self.ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill;
+                            self.ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill;
+                            
                             self.Delete_2.isHidden = false
                             self.Delete_3.isHidden = false
                             self.Delete_4.isHidden = false
@@ -524,6 +586,33 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                     print("FAILED")
                 }
                 
+        }
+    }
+    
+    func saveImage1(Image: UIImageView){
+        let imageData: Data = Image.image!.pngData()!
+        let imageStr: String = imageData.base64EncodedString()
+        
+        let filename = ADDETAIL
+        
+        let parameters: Parameters=[
+            "id": ITEMID,
+            "ad_detail": ADDETAIL,
+            "photo": imageStr,
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_IMG, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    
+                    
+                }else{
+                    print("FAILED")
+                }
         }
     }
     
@@ -558,7 +647,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
     
     func saveItemID(){
         let parameters: Parameters=[
-            "id": ITEMID,
+            "item_id": ITEMID,
             "ad_detail":ADDETAIL,
         ]
         
@@ -658,6 +747,7 @@ class EditProductViewController: UIViewController, UIImagePickerControllerDelega
                     saveImage(number: "1", Image: ItemImage2)
                 }else{
                     print("EMPTY")
+                    saveImage1(Image: ItemImage)
                 }
                 dismiss(animated: true, completion: nil)
             }else if(flag == 2){

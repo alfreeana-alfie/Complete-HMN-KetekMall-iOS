@@ -109,7 +109,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         
         let ref1 = emailUser + "_" + chatWith
         let ref2 = chatWith + "_" + emailUser
-        let key = "-" + randomString
+        let key = randomString
         
         let date = Date()
         let dateFormatter = DateFormatter()

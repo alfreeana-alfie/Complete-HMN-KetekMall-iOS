@@ -104,7 +104,8 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func SocialUpdates(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxViewController") as! ChatInboxViewController
+        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
+        myBuying.BarHidden = true
         if let navigator = self.navigationController {
             navigator.pushViewController(myBuying, animated: true)
         }
