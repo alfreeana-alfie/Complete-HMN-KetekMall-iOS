@@ -125,8 +125,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var PostCodeTo: String = "93050";
     var Weight: String = "2";
     
-    let API_PREACCEPTANCE = "http://stagingsds.pos.com.my/apigateway/as2corporate/api/preacceptancessingle/v1"
-    let serverKey_PREACCEPTANCE = "M1djdzdrbTZod0pXOTZQdnFWVU5jWVpGNU9nUDVzb0M="
+    let API_PREACCEPTANCE = "https://apis.pos.com.my/apigateway/as2corporate/api/poslajubypostcodedomestic/v1"
+    let serverKey_PREACCEPTANCE = "N1hHVHJFRW95cjRkQ0NyR3dialdrZUF4NGxaNm9Na1U="
     
     
     let sharedPref = UserDefaults.standard
