@@ -39,9 +39,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     @IBOutlet weak var LoginStyle: UIButton!
     @IBOutlet weak var EmailImage: UIImageView!
     @IBOutlet weak var PasswordImage: UIImageView!
-    @IBOutlet weak var GoogleSignInBtn: GIDSignInButton!
+//    @IBOutlet weak var GoogleSignInBtn: GIDSignInButton!
 //    private let loginButton = FBLoginButton()
-    @IBOutlet weak var FBView: UIView!
+//    @IBOutlet weak var FBView: UIView!
     
     let hud = JGProgressHUD(style: .dark)
     
@@ -120,11 +120,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         GIDSignIn.sharedInstance()?.delegate = self
         
         if #available(iOS 13.0, *) {
-            let authorizationButton = ASAuthorizationAppleIDButton()
-            FBView.addSubview(authorizationButton)
-            authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress(sender:)), for: .touchUpInside)
+//            let authorizationButton = ASAuthorizationAppleIDButton()
+//            FBView.addSubview(authorizationButton)
+//            authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress(sender:)), for: .touchUpInside)
             
-            authorizationButton.frame = CGRect(x: 0, y: 0, width: FBView.bounds.width, height: FBView.bounds.height)
+//            authorizationButton.frame = CGRect(x: 0, y: 0, width: FBView.bounds.width, height: FBView.bounds.height)
         } else {
             // Fallback on earlier versions
         }
@@ -217,7 +217,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         
         Border.layer.cornerRadius = 2
         LoginStyle.layer.cornerRadius = 15
-        GoogleSignInBtn.layer.cornerRadius = 10
+//        GoogleSignInBtn.layer.cornerRadius = 10
 //        loginButton.layer.cornerRadius = 10
     }
     

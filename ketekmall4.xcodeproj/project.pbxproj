@@ -92,6 +92,7 @@
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
 		FBC47064252797A400E38DE6 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC47063252797A400E38DE6 /* PushNotification.swift */; };
 		FBCE5666255A2AD800598DFA /* AppleSignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */; };
+		FBDBE791258E627000FD43A6 /* PosLajuTestArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -210,6 +211,7 @@
 		FBCE5667255A355F00598DFA /* ketekmall4.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ketekmall4.entitlements; sourceTree = "<group>"; };
 		FBCE5668255A356900598DFA /* KetekMallRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = KetekMallRelease.entitlements; sourceTree = "<group>"; };
 		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
+		FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosLajuTestArea.swift; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
 				FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */,
 				FB5A491124F7F0F900F5464C /* View Controller */,
+				FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */,
 			);
 			path = ketekmall4;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				FB5490D124FD7019004E6D73 /* FromSameShopCollectionViewCell.swift in Sources */,
 				FB3E830724FEC1C100F1CE3C /* EditProductViewController.swift in Sources */,
 				FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */,
+				FBDBE791258E627000FD43A6 /* PosLajuTestArea.swift in Sources */,
 				FB43BFD824FF7766002D36E0 /* CartCollectionViewCell.swift in Sources */,
 				FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */,
 				FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import PDFKit
 
 class ViewSellingViewController: UIViewController {
 
@@ -27,7 +28,6 @@ class ViewSellingViewController: UIViewController {
     @IBOutlet weak var Customer_Address: UITextView!
     @IBOutlet weak var Customer_Phone: UILabel!
     
-    @IBOutlet weak var Tracking_No: UITextField!
     @IBOutlet weak var ButtonSubmit: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     
@@ -50,7 +50,6 @@ class ViewSellingViewController: UIViewController {
     var STATUS: String = ""
     var QUANTITY: String = ""
     var ORDER_DATE: String = ""
-    var TRACKINGNO: String = ""
     var WEIGHT: String = ""
     var POSTCODE: String = ""
     
@@ -105,7 +104,6 @@ class ViewSellingViewController: UIViewController {
         Ship_Place.text! = "Shipped out to" + SHIPPLACED
         Status.text! = STATUS
         Quantity.text! = "x" + QUANTITY
-        Tracking_No.text! = TRACKINGNO
         
         ButtonSubmit.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
@@ -207,7 +205,6 @@ class ViewSellingViewController: UIViewController {
             
             PosLabel.isHidden = true
             PosLabelHeight.constant = 0
-            Tracking_No.isHidden = true
             TrackingHeight.constant = 0
             ButtonSubmit.isHidden = true
             SubmitHeight.constant = 0
@@ -234,7 +231,6 @@ class ViewSellingViewController: UIViewController {
             
             PosLabel.isHidden = true
             PosLabelHeight.constant = 0
-            Tracking_No.isHidden = true
             TrackingHeight.constant = 0
             ButtonSubmit.isHidden = true
             SubmitHeight.constant = 0
@@ -276,6 +272,8 @@ class ViewSellingViewController: UIViewController {
         ButtonSubmit.titleLabel?.text = "SUBMIT".localized(lang: str)
         ButtonCancel.titleLabel?.text = "Cancel".localized(lang: str)
     }
+    
+    
     
     func getUserDetails(){
         spinner.show(in: self.view)
@@ -325,31 +323,35 @@ class ViewSellingViewController: UIViewController {
     }
 
     @IBAction func Submit(_ sender: Any) {
-        spinner.show(in: self.view)
-        let parameters: Parameters=[
-                            "order_date": ORDER_DATE,
-                            "tracking_no": Tracking_No.text!
-                        ]
-                        
-                        Alamofire.request(URL_EDIT, method: .post, parameters: parameters).responseJSON
-                            {
-                                response in
-                                if let result = response.result.value {
-                                    let jsonData = result as! NSDictionary
-                                    self.spinner.dismiss(afterDelay: 3.0)
-                                    let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "MySellingViewController") as! MySellingViewController
-                                    boostAd.userID = self.USERID
-                                    if let navigator = self.navigationController {
-                                        navigator.pushViewController(boostAd, animated: true)
-                                    }
-                                }else{
-                                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
-                                    self.spinner.textLabel.text = "Failed"
-                                    self.spinner.show(in: self.view)
-                                    self.spinner.dismiss(afterDelay: 4.0)
-                                }
-                                
-                        }
+        let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "PosLajuTestArea") as! PosLajuTestArea
+        if let navigator = self.navigationController {
+            navigator.pushViewController(boostAd, animated: true)
+        }
+        
+//        spinner.show(in: self.view)
+//        let parameters: Parameters=[
+//                            "order_date": ORDER_DATE,
+//                        ]
+//
+//                        Alamofire.request(URL_EDIT, method: .post, parameters: parameters).responseJSON
+//                            {
+//                                response in
+//                                if let result = response.result.value {
+//                                    let jsonData = result as! NSDictionary
+//                                    self.spinner.dismiss(afterDelay: 3.0)
+//                                    let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "MySellingViewController") as! MySellingViewController
+//                                    boostAd.userID = self.USERID
+//                                    if let navigator = self.navigationController {
+//                                        navigator.pushViewController(boostAd, animated: true)
+//                                    }
+//                                }else{
+//                                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+//                                    self.spinner.textLabel.text = "Failed"
+//                                    self.spinner.show(in: self.view)
+//                                    self.spinner.dismiss(afterDelay: 4.0)
+//                                }
+//
+//                        }
     }
     
     @IBAction func Cancel(_ sender: Any) {

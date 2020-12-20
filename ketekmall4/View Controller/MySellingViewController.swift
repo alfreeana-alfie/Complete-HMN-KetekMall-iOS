@@ -275,7 +275,6 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         MySelling.QUANTITY = self.item_quantity[indexPath.row]
         MySelling.CUSTOMERID = self.customer_id[indexPath.row]
         MySelling.ORDER_DATE = self.order_date[indexPath.row]
-        MySelling.TRACKINGNO = self.tracking_no[indexPath.row]
         
         MySelling.POSTCODE = self.postcode[indexPath.row]
         MySelling.WEIGHT = self.weight[indexPath.row]
