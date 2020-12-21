@@ -34,6 +34,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     var tracking_no: [String] = []
     var postcode: [String] = []
     var weight: [String] = []
+    var deliveryprice: [String] = []
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -83,6 +84,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         let Order_Date = user.value(forKey: "order_date") as! [String]
                         
                         let Tracking_NO = user.value(forKey: "tracking_no") as! [String]
+                        let DeliveryPrice = user.value(forKey: "delivery_price") as! [String]
                         let PostCode = user.value(forKey: "postcode") as! [String]
                         let Weight = user.value(forKey: "weight") as! [String]
                         
@@ -98,7 +100,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.item_status = Status
                         self.postcode = PostCode
                         self.weight = Weight
-                        
+                        self.deliveryprice = DeliveryPrice
                         self.order_date = Order_Date
                         
                         self.MySellingView.reloadData()
@@ -159,17 +161,17 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             return CGSize(width: cellSquareSize, height: cellSquareHeight);
         }
            
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 2.0
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2.0
+    }
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 2.0
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2.0
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MySellingCollectionViewCell", for: indexPath) as! MySellingCollectionViewCell
@@ -261,6 +263,10 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             return
         }
         
+        let Amount01 = Double(self.item_price[indexPath.row])! * Double(self.item_quantity[indexPath.row])!
+        let Amount02 = Amount01 + Double(self.deliveryprice[indexPath.row])!
+        let TotalAmount = String(format: "%.2f", Amount02)
+        
         let MySelling = self.storyboard!.instantiateViewController(withIdentifier: "ViewSellingViewController") as! ViewSellingViewController
         let ID = self.item_orderID[indexPath.row]
         MySelling.ItemID = ID
@@ -275,13 +281,11 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         MySelling.QUANTITY = self.item_quantity[indexPath.row]
         MySelling.CUSTOMERID = self.customer_id[indexPath.row]
         MySelling.ORDER_DATE = self.order_date[indexPath.row]
-        
+        MySelling.AMOUNT = TotalAmount
         MySelling.POSTCODE = self.postcode[indexPath.row]
         MySelling.WEIGHT = self.weight[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(MySelling, animated: true)
         }
     }
-    
-    
 }

@@ -52,8 +52,10 @@ class ViewSellingViewController: UIViewController {
     var ORDER_DATE: String = ""
     var WEIGHT: String = ""
     var POSTCODE: String = ""
+    var AMOUNT: String = ""
     
     let sharedPref = UserDefaults.standard
+    var user: String = ""
     var lang: String = ""
 
     @IBOutlet weak var Ordered: UILabel!
@@ -87,6 +89,7 @@ class ViewSellingViewController: UIViewController {
 //        print(ItemID)
         
         lang = sharedPref.string(forKey: "LANG") ?? "0"
+        user = sharedPref.string(forKey: "USERID") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -273,8 +276,6 @@ class ViewSellingViewController: UIViewController {
         ButtonCancel.titleLabel?.text = "Cancel".localized(lang: str)
     }
     
-    
-    
     func getUserDetails(){
         spinner.show(in: self.view)
         let parameters: Parameters=[
@@ -309,6 +310,298 @@ class ViewSellingViewController: UIViewController {
         }
     }
     
+    //MARK: PosLajeGetData
+    func PosLajuGetData(customerID: String, OrderID: String, subscriptionCode: String, AccountNo: String){
+        let parameters: Parameters=[
+            "id": user
+        ]
+        
+        Alamofire.request(URL_READ_CUSTOMER, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let SellerName = user.value(forKey: "name") as! [String]
+                        let SellerEmail = user.value(forKey: "email") as! [String]
+                        let SellerAddress01 = user.value(forKey: "address_01") as! [String]
+                        let SellerAddress02 = user.value(forKey: "address_02") as! [String]
+                        let SellerDivision = user.value(forKey: "division") as! [String]
+                        let SellerPostCode = user.value(forKey: "postcode") as! [String]
+                        let SellerPhoneNo = user.value(forKey: "phone_no") as! [String]
+                        
+                        let parameters: Parameters=[
+                            "id": self.CUSTOMERID
+                        ]
+                        
+                        Alamofire.request(self.URL_READ_CUSTOMER, method: .post, parameters: parameters).responseJSON
+                            {
+                                response in
+                                if let result = response.result.value{
+                                    let jsonData = result as! NSDictionary
+                                    
+                                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                                        let user = jsonData.value(forKey: "read") as! NSArray
+                                        
+                                        let ReceiverName = user.value(forKey: "name") as! [String]
+                                        let ReceiverEmail = user.value(forKey: "email") as! [String]
+                                        let ReceiverAddress01 = user.value(forKey: "division") as! [String]
+                                        let ReceiverAddress02 = user.value(forKey: "phone_no") as! [String]
+                                        let ReceiverDivision = user.value(forKey: "division") as! [String]
+                                        let ReceiverPostCode = user.value(forKey: "postcode") as! [String]
+                                        let ReceiverPhoneNo = user.value(forKey: "phone_no") as! [String]
+                                        
+                                        let SellerFullAddress01 = "\(SellerAddress01[0]), \(SellerAddress02[0])"
+                                        let SellerFullAddress02 = "\(SellerPostCode[0])  \(SellerDivision[0])"
+                                        let SellerFullAddress = SellerFullAddress01 + "," + SellerFullAddress02
+                                        
+                                        let ReceiverFullAddress01 = "\(ReceiverAddress01[0]), \(ReceiverAddress02[0])"
+                                        let ReceiverFullAddress02 = "\(ReceiverPostCode[0]) \(ReceiverDivision[0])"
+                                        let ReceiverFullAddress = ReceiverFullAddress01 + "," + ReceiverFullAddress02
+                                        
+                                        self.RoutingCode(Origin: SellerPostCode[0],Destination: ReceiverPostCode[0], OrderID: self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName[0], SellerPhone: SellerPhoneNo[0], SellerAddress: SellerFullAddress, PickupLocationID: self.ORDERID + SellerPostCode[0], ContactPerson: SellerPhoneNo[0], PickupAddress: SellerFullAddress, PostCode: SellerPostCode[0], TotalQuantityToPickup: self.QUANTITY, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName[0], ReceiverAddress: ReceiverFullAddress, ReceiverPostCode: ReceiverPostCode[0], ReceiverPhone: ReceiverPhoneNo[0], PickupDistrict: SellerAddress02[0], PickupProvince: SellerDivision[0], PickupEmail: SellerEmail[0], ReceiverFirstName: ReceiverName[0], ReceiverLastName: ReceiverName[0], ReceiverDistrict: ReceiverAddress02[0], ReceiverProvince: ReceiverAddress02[0], ReceiverCity: ReceiverDivision[0], ReceiverAddress01: ReceiverAddress01[0], ReceiverAddress02: ReceiverAddress02[0], ReceiverEmail: ReceiverEmail[0])
+                                    }
+                                }else{
+                                    print("FAILED")
+                                }
+                                
+                        }
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    //MARK: Routing Code
+    let HTTP_RoutingCode = "https://apis.pos.com.my/apigateway/as01/api/routingcode/v1";
+    let serverKey_RoutingCode = "aWFGekJBMXUyRFFmTmNxUEpmcXhwR0hXYnY5cWdCTmE=";
+    func RoutingCode(Origin: String, Destination: String,
+                     OrderID: String, subscriptionCode: String,
+                     AccountNo: String, SellerName: String,
+                     SellerPhone: String, SellerAddress: String,
+                     PickupLocationID: String, ContactPerson: String,
+                     PickupAddress: String,
+                     PostCode: String, TotalQuantityToPickup: String,
+                     Weight: String, Amount: String,
+                     ReceiverName: String, ReceiverAddress: String,
+                     ReceiverPostCode: String, ReceiverPhone: String,
+                     PickupDistrict: String, PickupProvince: String,
+                     PickupEmail: String, ReceiverFirstName: String,
+                     ReceiverLastName: String, ReceiverDistrict: String,
+                     ReceiverProvince: String, ReceiverCity: String,
+                     ReceiverAddress01: String, ReceiverAddress02: String,
+                     ReceiverEmail: String){
+        let headers = [
+            "X-User-Key": serverKey_RoutingCode,
+        ]
+
+        let configuration = URLSessionConfiguration.default
+            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+
+        Alamofire.request(HTTP_RoutingCode + "?Origin=" + Origin + "&Destination=" + Destination, method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        print("SUCCESS")
+                        let details = result as! NSObject
+                        
+                        let RoutingCode = details.value(forKey: "RoutingCode") as! String
+                        print("JSON: \(RoutingCode)")
+                        
+                        self.GenConnote(numberOfItem: TotalQuantityToPickup, OrderID: self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverAddress01: ReceiverAddress01, ReceiverAddress02: ReceiverAddress02, ReceiverEmail: ReceiverEmail, RoutingCode: RoutingCode)
+                        
+                    }else{
+                        print("FAILED TO RECEIVE")
+                    }
+            }
+        
+    }
+    
+    //MARK: GenConnote
+    let HTTP_GenConnote = "https://apis.pos.com.my/apigateway/as01/api/genconnote/v1";
+    let serverKey_GenConnote = "MmpkbDI0MFpuTVpuZDRXb3J0VUk4M25ZTkY1a2NqSFU=";
+    func GenConnote(numberOfItem: String,
+                    OrderID: String, subscriptionCode: String,
+                    AccountNo: String, SellerName: String,
+                    SellerPhone: String, SellerAddress: String,
+                    PickupLocationID: String, ContactPerson: String,
+                    PostCode: String, TotalQuantityToPickup: String,
+                    Weight: String, Amount: String,
+                    ReceiverName: String, ReceiverAddress: String,
+                    ReceiverPostCode: String, ReceiverPhone: String,
+                    PickupDistrict: String, PickupProvince: String,
+                    PickupEmail: String, ReceiverFirstName: String,
+                    ReceiverLastName: String, ReceiverDistrict: String,
+                    ReceiverProvince: String, ReceiverCity: String,
+                    ReceiverAddress01: String, ReceiverAddress02: String,
+                    ReceiverEmail: String, RoutingCode: String){
+        let date01 = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let date = df.string(from: date01)
+        
+        let headers = [
+            "X-User-Key": serverKey_GenConnote,
+        ]
+
+        let configuration = URLSessionConfiguration.default
+            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+
+        Alamofire.request(HTTP_GenConnote + "?numberOfItem=" + numberOfItem + "&Prefix=ERC" + "&ApplicationCode=HNM" + "&Secretid=HM@$343" + "&Orderid=" + "4" + "&username=HMNNadhir", method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        let details = result as! NSObject
+                        
+                        let ConnoteNo = details.value(forKey: "ConnoteNo") as! String
+                        print("JSON: \(ConnoteNo)")
+                        
+                        self.PreAcceptanceSingle(subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, ConsignmentNoteNumber: ConnoteNo, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverEmail: ReceiverEmail)
+                        
+                        self.GeneratePDF(ShipDate: date, Weight: self.WEIGHT, OrderID: self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
+                    }else{
+                        print("FAILED TO RECEIVE")
+                    }
+            }
+    }
+    
+    //MARK:PreAcceptanceSingle
+    let API_PREACCEPTANCE = "https://apis.pos.com.my/apigateway/as2corporate/api/preacceptancessingle/v1"
+    let serverKey_PREACCEPTANCE = "S0FFRHRLRXhQOVlFWVRzWjhyN0FzZnNCdmRxTElvTkI="
+    func PreAcceptanceSingle(subscriptionCode: String,
+                             AccountNo: String, SellerName: String,
+                             SellerPhone: String, SellerAddress: String,
+                             PickupLocationID: String, ContactPerson: String,
+                             PostCode: String, TotalQuantityToPickup: String,
+                             Weight: String, ConsignmentNoteNumber: String, Amount: String,
+                             ReceiverName: String, ReceiverAddress: String,
+                             ReceiverPostCode: String, ReceiverPhone: String,
+                             PickupDistrict: String, PickupProvince: String,
+                             PickupEmail: String, ReceiverFirstName: String,
+                             ReceiverLastName: String, ReceiverDistrict: String,
+                             ReceiverProvince: String, ReceiverCity: String, ReceiverEmail: String){
+        let headers = [
+            "X-User-Key": serverKey_PREACCEPTANCE,
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+
+        let configuration = URLSessionConfiguration.default
+            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+
+        let Parameters = [
+            "subscriptionCode": subscriptionCode,
+            "requireToPickup": "FALSE",
+            "requireWebHook": "FALSE",
+            "accountNo": "8800546487",
+            "callerName": SellerName,
+            "callerPhone": SellerPhone,
+            "pickupLocationID": PickupLocationID,
+            "pickupLocationName": SellerAddress,
+            "contactPerson": ContactPerson,
+            "phoneNo": SellerPhone,
+            "pickupAddress": SellerAddress,
+            "ItemType": "1",
+            "totalQuantityToPickup": TotalQuantityToPickup,
+            "totalWeight": Weight,
+            "consignmentNoteNumber": ConsignmentNoteNumber,
+            "PaymentType": "2",
+            "Amount": Amount,
+            "readyToCollectAt": "08:00 AM",
+            "closeAt": "06:00 PM",
+            "receiverName": ReceiverName,
+            "receiverID": CUSTOMERID,
+            "receiverAddress": ReceiverAddress,
+            "receiverPostCode": ReceiverPostCode,
+            "receiverEmail": ReceiverEmail,
+            "receiverPhone01": ReceiverPhone,
+            "receiverPhone02": ReceiverPhone,
+            "sellerReferenceNo": "",
+            "itemDescription": "",
+            "sellerOrderNo": "",
+            "comments": "",
+            "pickupDistrict": PickupDistrict,
+            "pickupProvince": PickupProvince,
+            "pickupEmail": PickupEmail,
+            "pickupCountry": "MY",
+            "pickupLocation": "",
+            "receiverFname": ReceiverName,
+            "receiverLname": ReceiverName,
+            "receiverAddress2": ReceiverAddress,
+            "receiverDistrict": ReceiverDistrict,
+            "receiverProvince": ReceiverProvince,
+            "receiverCity": ReceiverCity,
+            "receiverCountry": "MY",
+            "packDesc": "",
+            "packVol": "",
+            "packLeng": "",
+            "postCode": PostCode,
+            "ConsignmentNoteNumber": "ERC500599407MY",
+            "packWidth": "",
+            "packHeight": "",
+            "packTotalitem": "",
+            "orderDate": "",
+            "packDeliveryType": "",
+            "ShipmentName": "PosLaju",
+            "pickupProv": PickupProvince,
+            "deliveryProv": "",
+            "postalCode": ReceiverPostCode,
+            "currency": "MYR",
+            "countryCode": "MY"
+        ]
+
+            Alamofire.request(API_PREACCEPTANCE, method: .post,parameters: Parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+                {
+                    response in
+                    if let result = response.result.value {
+                        print("JSON: \(result)")
+                    }else{
+                        print("Request failed with error: ",response.result.error ?? "Description not available :(")
+                    }
+            }
+    }
+    
+    //MARK: Generate PDF
+    func GeneratePDF(ShipDate: String, Weight: String,
+                     OrderID: String, SenderName: String,
+                     SenderPhone: String, SenderAddress: String,
+                     SenderPostCode: String, RecipientName: String,
+                     RecipientPhone: String, RecipientPostCode: String,
+                     RecipientAccountNO: String, RecipientAddress: String,
+                     RecipientAddress01: String, RecipientAddress02: String,
+                     RecipientCity: String, RecipientState: String,
+                     RecipientEmail: String, ProductCode: String,
+                     Type: String, RoutingCode: String,
+                     ConnoteNo: String, ConnoteDate: String){
+        let pdf = self.storyboard!.instantiateViewController(withIdentifier: "PosLajuTestArea") as! PosLajuTestArea
+        if let navigator = self.navigationController {
+            pdf.DATE = ShipDate
+            pdf.WEIGHT = Weight
+            pdf.ORDERID = ORDERID
+            pdf.SELLERNAME = SenderName
+            pdf.SELLERPHONE = SenderPhone
+            pdf.SELLERADDRESS = SenderAddress
+            pdf.POSTCODE = SenderPostCode
+            pdf.RECEIVERNAME = RecipientName
+            pdf.RECEIVERPHONE = RecipientPhone
+            pdf.ACCOUNTNO = RecipientAccountNO
+            pdf.RECEIVERADDRESS = RecipientAddress
+            pdf.RECEIVERADDRESS01 = RecipientAddress01
+            pdf.RECEIVERADDRESS02 = RecipientAddress02
+            pdf.RECEIVERCITY = RecipientCity
+            pdf.RECEIVERPROVINCE = RecipientState
+            pdf.RECEIVEREMAIL = RecipientEmail
+            pdf.RECEIVERPOSTCODE = RecipientPostCode
+            pdf.ROUTINGCODE = RoutingCode
+            pdf.CONNOTENO = ConnoteNo
+            navigator.pushViewController(pdf, animated: true)
+        }
+    }
+    
     func sendEmail(Email: String, OrderID: String){
         let parameters: Parameters=[
             "email": Email,
@@ -323,11 +616,12 @@ class ViewSellingViewController: UIViewController {
     }
 
     @IBAction func Submit(_ sender: Any) {
-        let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "PosLajuTestArea") as! PosLajuTestArea
-        if let navigator = self.navigationController {
-            navigator.pushViewController(boostAd, animated: true)
-        }
         
+        PosLajuGetData(customerID: self.CUSTOMERID, OrderID: self.ORDERID, subscriptionCode: "admin@ketekmall.com", AccountNo: "8800546487")
+//        let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "PosLajuTestArea") as! PosLajuTestArea
+//        if let navigator = self.navigationController {
+//            navigator.pushViewController(boostAd, animated: true)
+//        }
 //        spinner.show(in: self.view)
 //        let parameters: Parameters=[
 //                            "order_date": ORDER_DATE,

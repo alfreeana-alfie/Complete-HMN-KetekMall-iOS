@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class RegisterSellerViewController: UIViewController, UITabBarDelegate {
+class RegisterSellerViewController: UIViewController, UITabBarDelegate, UITextFieldDelegate {
     
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_detail_seller.php"
     
@@ -31,6 +31,10 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ICNOField.delegate = self
+        BankNameField.delegate = self
+        BankAccField.delegate = self
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -47,6 +51,11 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate {
         BankAccView.layer.cornerRadius = 5
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
 //    override func viewDidAppear(_ animated: Bool) {

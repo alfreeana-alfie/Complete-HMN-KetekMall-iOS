@@ -20,7 +20,7 @@ import FirebaseDatabase
 import FirebaseCore
 import AuthenticationServices
 
-class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
+class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate, UITextFieldDelegate {
     
     let ref = Database.database().reference(withPath: "users")
     
@@ -62,6 +62,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        EmailField.delegate = self
+        PasswordField.delegate = self
         
         name = sharedPref.string(forKey: "NAME") ?? "0"
         USERID = sharedPref.string(forKey: "USERID") ?? "0"
@@ -219,6 +222,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         LoginStyle.layer.cornerRadius = 15
 //        GoogleSignInBtn.layer.cornerRadius = 10
 //        loginButton.layer.cornerRadius = 10
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func ColorFunc(){

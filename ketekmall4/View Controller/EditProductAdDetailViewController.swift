@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProductAdDetailViewController: UIViewController {
+class EditProductAdDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var AdDetailLabel: UILabel!
     @IBOutlet weak var BrandLabel: UILabel!
@@ -20,7 +20,7 @@ class EditProductAdDetailViewController: UIViewController {
     @IBOutlet weak var BrandMaterial: UITextField!
     @IBOutlet weak var InnerMaterial: UITextField!
     @IBOutlet weak var Stock: UITextField!
-    @IBOutlet weak var Description: UITextField!
+    @IBOutlet weak var Description: UITextView!
     @IBOutlet weak var ButtonAccept: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     
@@ -52,7 +52,12 @@ class EditProductAdDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("\(MAINCATE)")
+        AdDetail.delegate = self
+        BrandMaterial.delegate = self
+        InnerMaterial.delegate = self
+        Stock.delegate = self
+        Description.delegate = self
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -70,6 +75,19 @@ class EditProductAdDetailViewController: UIViewController {
         
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     func ColorFunc(){
@@ -109,7 +127,6 @@ class EditProductAdDetailViewController: UIViewController {
         BrandMaterial.placeholder = "Brand Material".localized(lang: str)
         InnerMaterial.placeholder = "Inner Material".localized(lang: str)
         Stock.placeholder = "Stock".localized(lang: str)
-        Description.placeholder = "Description".localized(lang: str)
         
         ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
         ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)

@@ -11,7 +11,7 @@ import Alamofire
 import AFNetworking
 import JGProgressHUD
 
-class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate   {
+class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate   {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -23,6 +23,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     var lang: String = ""
     
     @IBOutlet weak var UploadPhoto: UIImageView!
+    
     @IBOutlet weak var Name: UITextField!
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var PhoneNo: UITextField!
@@ -70,6 +71,18 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Name.delegate = self
+        Email.delegate = self
+        PhoneNo.delegate = self
+        Address01.delegate = self
+        Address02.delegate = self
+        City.delegate = self
+        PostCode.delegate = self
+        Birthday.delegate = self
+        BankName.delegate = self
+        BankAcc.delegate = self
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -165,6 +178,11 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func ColorFunc(){

@@ -13,25 +13,46 @@ class PosLajuTestArea: UIViewController {
     
     let pageWidth = 420;
     let pageHeight = 595;
+    
+    //INFORMATION
+    var DATE: String = "";
+    var WEIGHT: String = "";
+    var ORDERID: String = "";
+    var SELLERNAME: String = "";
+    var SELLERPHONE: String = "";
+    var SELLERADDRESS: String = "";
+    var POSTCODE: String = "";
+    var RECEIVERNAME: String = "";
+    var RECEIVERPHONE: String = "";
+    var ACCOUNTNO: String = "";
+    var RECEIVERADDRESS: String = "";
+    var RECEIVERADDRESS01: String = "";
+    var RECEIVERADDRESS02: String = "";
+    var RECEIVERCITY: String = "";
+    var RECEIVERPROVINCE: String = "";
+    var RECEIVEREMAIL: String = "";
+    var RECEIVERPOSTCODE: String = "";
+    var ROUTINGCODE: String = "";
+    var CONNOTENO: String = "";
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let filePath = (documentsDirectory as NSString).appendingPathComponent("foo.pdf") as String
+        let filePath = (documentsDirectory as NSString).appendingPathComponent("PosLaju\(DATE).pdf") as String
 
         let pdfMetadata = [
             // The name of the application creating the PDF.
-            kCGPDFContextCreator: "Your iOS App",
+            kCGPDFContextCreator: "KetekMall",
 
             // The name of the PDF's author.
-            kCGPDFContextAuthor: "Foo Bar",
+            kCGPDFContextAuthor: "HMNNadhir",
 
             // The title of the PDF.
-            kCGPDFContextTitle: "Lorem Ipsum",
+            kCGPDFContextTitle: "Pos Laje Consignment Note PDF",
 
             // Encrypts the document with the value as the owner password. Used to enable/disable different permissions.
-            kCGPDFContextOwnerPassword: "myPassword123"
+            kCGPDFContextOwnerPassword: "HMNNADHIR123"
         ]
 
         // Creates a new PDF file at the specified path.
@@ -40,7 +61,40 @@ class PosLajuTestArea: UIViewController {
         // Creates a new page in the current PDF context.
         UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight), nil);
         
+        // Let's draw the title of the PDF on top of the page.
+        let font = UIFont.preferredFont(forTextStyle: .body).withSize(10)
+        
+        let ArialParaBody = UIFont(name: "Arial", size: 10)
+        let ArialParaBodyBOLD = UIFont(name: "Arial Bold", size: 10)
+        let ArialParaBodyLARGER = UIFont(name: "Arial", size: 22)
+        let ArialParaBodyBOLDLARGER = UIFont(name: "Arial Bold", size: 26)
+        let ArialParaBodyBOLDLARGER02 = UIFont(name: "Arial Bold", size: 16)
+        
+        let paraStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paraStyle.alignment = .left
+        paraStyle.lineBreakMode = .byWordWrapping
+        
+        let paraStyle2 = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paraStyle2.alignment = .center
+        paraStyle2.lineBreakMode = .byWordWrapping
+        
+        let paraStyle3 = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paraStyle3.alignment = .left
+        paraStyle3.lineBreakMode = .byWordWrapping
+        
+        let ParaNormal = [NSAttributedString.Key.font: ArialParaBody,
+                          NSAttributedString.Key.paragraphStyle: paraStyle] as [NSAttributedString.Key : Any]
+        let ParaBold = [NSAttributedString.Key.font: ArialParaBodyBOLD,
+                        NSAttributedString.Key.paragraphStyle: paraStyle] as [NSAttributedString.Key : Any]
+        let ParaLarge = [NSAttributedString.Key.font: ArialParaBodyLARGER,
+                         NSAttributedString.Key.paragraphStyle: paraStyle2] as [NSAttributedString.Key : Any]
+        let ParaBoldLarge = [NSAttributedString.Key.font: ArialParaBodyBOLDLARGER,
+                         NSAttributedString.Key.paragraphStyle: paraStyle2] as [NSAttributedString.Key : Any]
+        let ParaBoldLarge02 = [NSAttributedString.Key.font: ArialParaBodyBOLDLARGER02,
+                         NSAttributedString.Key.paragraphStyle: paraStyle3] as [NSAttributedString.Key : Any]
+        
         let context = UIGraphicsGetCurrentContext()
+        
         // Design - Outer Border
         context!.setStrokeColor(UIColor.black.cgColor)
         context!.setLineWidth(2)
@@ -62,33 +116,22 @@ class PosLajuTestArea: UIViewController {
         context!.setFillColor(UIColor.gray.cgColor)
         let OrderDetailTitle = CGRect(x: 12, y: 90, width: 251, height: 15)
         context!.fill(OrderDetailTitle)
+        
+        let barcodeABOVE = generateBarcode(from: CONNOTENO)
+        let BarCodeABOVERECT = CGRect(x: 245, y: 15, width: 150, height: 55)
+        barcodeABOVE?.draw(in: BarCodeABOVERECT)
+        
+        let BarCodeTEXTABOVE = NSAttributedString(string: CONNOTENO, attributes: ParaBold)
+        let BarCodeTEXTABOVERECT = CGRect(x: 280, y: 65, width: 100, height: 170)
+        BarCodeTEXTABOVE.draw(in: BarCodeTEXTABOVERECT)
 
-        // Let's draw the title of the PDF on top of the page.
-        let font = UIFont.preferredFont(forTextStyle: .body).withSize(10)
+        let PosLajuImage = UIImage(named: "PosLaju-black")
+        let PosLajuImageRECT = CGRect(x: 14, y: 18, width: 100, height: 60)
+        PosLajuImage?.draw(in: PosLajuImageRECT)
         
-        let ArialParaBody = UIFont(name: "Arial", size: 10)
-        let ArialParaBodyBOLD = UIFont(name: "Arial Bold", size: 10)
-        let ArialParaBodyLARGER = UIFont(name: "Arial", size: 22)
-        let ArialParaBodyBOLDLARGER = UIFont(name: "Arial Bold", size: 26)
-        
-        let paraStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-        paraStyle.alignment = .left
-        paraStyle.lineBreakMode = .byWordWrapping
-        
-        let paraStyle2 = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-        paraStyle2.alignment = .center
-        paraStyle2.lineBreakMode = .byWordWrapping
-        
-        let ParaNormal = [NSAttributedString.Key.font: ArialParaBody,
-                          NSAttributedString.Key.paragraphStyle: paraStyle] as [NSAttributedString.Key : Any]
-        let ParaBold = [NSAttributedString.Key.font: ArialParaBodyBOLD,
-                        NSAttributedString.Key.paragraphStyle: paraStyle] as [NSAttributedString.Key : Any]
-        
-        let ParaLarge = [NSAttributedString.Key.font: ArialParaBodyLARGER,
-                         NSAttributedString.Key.paragraphStyle: paraStyle2] as [NSAttributedString.Key : Any]
-        
-        let ParaBoldLarge = [NSAttributedString.Key.font: ArialParaBodyBOLDLARGER,
-                         NSAttributedString.Key.paragraphStyle: paraStyle2] as [NSAttributedString.Key : Any]
+        let KetekMallImage = UIImage(named: "KetekMallx512_black")
+        let KetekMallImageRECT = CGRect(x: 115, y: 18, width: 60, height: 60)
+        KetekMallImage?.draw(in: KetekMallImageRECT)
         
         // LEFT
         let OrderTitle = UILabel()
@@ -97,7 +140,6 @@ class PosLajuTestArea: UIViewController {
         OrderTitle.font = UIFont(name: "Arial Bold", size: 12)
         OrderTitle.adjustsFontSizeToFitWidth = true
         let OrderTitleRECT = CGRect(x: 14, y: 90, width: 251, height: 15)
-
         OrderTitle.drawText(in: OrderTitleRECT)
         
         let ShipDateLeft = NSAttributedString(string: "Ship By Date:", attributes: ParaNormal)
@@ -113,15 +155,15 @@ class PosLajuTestArea: UIViewController {
         OrderIDLeft.draw(in: OrderIDLeftRECT)
         
         // RIGHT
-        let ShipDateRight = NSAttributedString(string: "15-04-2020", attributes: ParaNormal)
+        let ShipDateRight = NSAttributedString(string: DATE, attributes: ParaNormal)
         let ShipDateRightRECT = CGRect(x: 85, y: 105, width: 251, height: 15)
         ShipDateRight.draw(in: ShipDateRightRECT)
         
-        let WeightRight = NSAttributedString(string: "1.00", attributes: ParaNormal )
+        let WeightRight = NSAttributedString(string: WEIGHT, attributes: ParaNormal )
         let WeightRightRECT = CGRect(x: 85, y: 117, width: 251, height: 15)
         WeightRight.draw(in: WeightRightRECT)
         
-        let OrderIDRight = NSAttributedString(string: "123", attributes: ParaBold)
+        let OrderIDRight = NSAttributedString(string: ORDERID, attributes: ParaBold)
 
         let OrderIDRightRECT = CGRect(x: 85, y: 129, width: 251, height: 15)
         OrderIDRight.draw(in: OrderIDRightRECT)
@@ -143,6 +185,21 @@ class PosLajuTestArea: UIViewController {
         let OrderTitle02RECT = CGRect(x: 270, y: 90, width: 143, height: 15)
         OrderTitle02.drawText(in: OrderTitle02RECT)
         
+        let AccountNo = NSAttributedString(string: "Account Number:", attributes: ParaBoldLarge02)
+        let AccountNoRECT = CGRect(x: 273, y: 110, width: 143, height: 45)
+        AccountNo.draw(in: AccountNoRECT)
+        
+        let Number = NSAttributedString(string: ACCOUNTNO, attributes: ParaBoldLarge02)
+        let NumberRECT = CGRect(x: 273, y: 125, width: 143, height: 45)
+        Number.draw(in: NumberRECT)
+        
+        let Product = NSAttributedString(string: "Product: Courier Charges Domestic", attributes: ParaNormal)
+        let ProductRECT = CGRect(x: 273, y: 145, width: 143, height: 45)
+        Product.draw(in: ProductRECT)
+        
+        let Type = NSAttributedString(string: "Type: Document", attributes: ParaNormal)
+        let TypeRECT = CGRect(x: 273, y: 170, width: 143, height: 45)
+        Type.draw(in: TypeRECT)
         // Sender, Receiver, POD
         /// Sender Details
         context!.setStrokeColor(UIColor.black.cgColor)
@@ -178,19 +235,19 @@ class PosLajuTestArea: UIViewController {
         SenderPostcodeLeft.draw(in: SenderPostcodeLeftRECT)
         
         // RIGHT
-        let SenderNameRight = NSAttributedString(string: "DD", attributes: ParaNormal)
+        let SenderNameRight = NSAttributedString(string: SELLERNAME, attributes: ParaNormal)
         let SenderNameRightRECT = CGRect(x: 85, y: 212, width: 130, height: 150)
         SenderNameRight.draw(in: SenderNameRightRECT)
         
-        let SenderPhoneRight = NSAttributedString(string: "0138940023", attributes: ParaNormal)
+        let SenderPhoneRight = NSAttributedString(string: SELLERPHONE, attributes: ParaNormal)
         let SenderPhoneRightRECT = CGRect(x: 85, y: 248, width: 251, height: 15)
         SenderPhoneRight.draw(in: SenderPhoneRightRECT)
         
-        let SenderAddressRight = NSAttributedString(string: "asdfasdfsdfsdfsdfasdf sdfds affsfasdfsdf", attributes: ParaNormal)
+        let SenderAddressRight = NSAttributedString(string: SELLERADDRESS, attributes: ParaNormal)
         let SenderAddressRightRECT = CGRect(x: 85, y: 260, width: 130, height: 150)
         SenderAddressRight.draw(in: SenderAddressRightRECT)
         
-        let SenderPostcodeRight = NSAttributedString(string: "96000", attributes: ParaNormal)
+        let SenderPostcodeRight = NSAttributedString(string: POSTCODE, attributes: ParaNormal)
         let SenderPostcodeRightRECT = CGRect(x: 85, y: 333, width: 251, height: 15)
         SenderPostcodeRight.draw(in: SenderPostcodeRightRECT)
         
@@ -229,19 +286,19 @@ class PosLajuTestArea: UIViewController {
         ReceiverPostcodeLeft.draw(in: ReceiverPostcodeLeftRECT)
         
         // RIGHT
-        let ReceiverNameRight = NSAttributedString(string: "nana", attributes: ParaNormal)
+        let ReceiverNameRight = NSAttributedString(string: RECEIVERNAME, attributes: ParaNormal)
         let ReceiverNameRightRECT = CGRect(x: 85, y: 363, width: 130, height: 150)
         ReceiverNameRight.draw(in: ReceiverNameRightRECT)
         
-        let ReceiverPhoneRight = NSAttributedString(string: "012312039123", attributes: ParaNormal)
+        let ReceiverPhoneRight = NSAttributedString(string: RECEIVERPHONE, attributes: ParaNormal)
         let ReceiverPhoneRightRECT = CGRect(x: 85, y: 411, width: 251, height: 15)
         ReceiverPhoneRight.draw(in: ReceiverPhoneRightRECT)
         
-        let ReceiverAddressRight = NSAttributedString(string: "Asdfdfadsfadsf adfasdf", attributes: ParaNormal)
+        let ReceiverAddressRight = NSAttributedString(string: RECEIVERADDRESS, attributes: ParaNormal)
         let ReceiverAddressRightRECT = CGRect(x: 85, y: 426, width: 130, height: 150)
         ReceiverAddressRight.draw(in: ReceiverAddressRightRECT)
         
-        let ReceiverPostcodeRight = NSAttributedString(string: "96000", attributes: ParaNormal)
+        let ReceiverPostcodeRight = NSAttributedString(string: RECEIVERPOSTCODE, attributes: ParaNormal)
         let ReceiverPostcodeRightRECT = CGRect(x: 85, y: 484, width: 251, height: 15)
         ReceiverPostcodeRight.draw(in: ReceiverPostcodeRightRECT)
         
@@ -286,17 +343,29 @@ class PosLajuTestArea: UIViewController {
         let QRBorder1 = CGRect(x: 268, y: 227, width: 143, height: 70)
         context!.stroke(QRBorder1)
         
-        let RoutingCode = NSAttributedString(string: "KCU-SB-SBW", attributes: ParaLarge)
+        let RoutingCode = NSAttributedString(string: ROUTINGCODE, attributes: ParaLarge)
         let RoutingCodeRECT = CGRect(x: 290, y: 237, width: 100, height: 170)
         RoutingCode.draw(in: RoutingCodeRECT)
         
-        let POSTCODE = NSAttributedString(string: "96000", attributes: ParaBoldLarge)
+        let POSTCODE = NSAttributedString(string: RECEIVERPOSTCODE, attributes: ParaBoldLarge)
         let POSTCODERECT = CGRect(x: 290, y: 317, width: 100, height: 170)
         POSTCODE.draw(in: POSTCODERECT)
         
-        let image = generateQRCode(from: "Hacking with Swift is the best iOS coding tutorial I've ever read!")
+        let barcode = generateBarcode(from: CONNOTENO)
+        let BarCodeRECT = CGRect(x: 278, y: 500, width: 125, height: 60)
+        barcode?.draw(in: BarCodeRECT)
+        
+        let BarCodeTEXTBELOW = NSAttributedString(string: CONNOTENO, attributes: ParaNormal)
+        let BarCodeTEXTBELOWRECT = CGRect(x: 300, y: 555, width: 100, height: 170)
+        BarCodeTEXTBELOW.draw(in: BarCodeTEXTBELOWRECT)
+        
+        let image = generateQRCode(from: "A2^\(CONNOTENO)^\(DATE)^MY^\(ORDERID)^\(SELLERNAME)^\(SELLERPHONE)^\(SELLERPHONE)^^\(POSTCODE)^\(ACCOUNTNO)\(RECEIVERNAME)^^\(RECEIVERADDRESS01)^\(RECEIVERADDRESS02)^\(RECEIVERPOSTCODE)^\(RECEIVERCITY)^\(RECEIVERPROVINCE)^\(RECEIVERPHONE)^\(RECEIVEREMAIL)^\(WEIGHT)^^^^^^\("Document")^")
         let QRCODERECT = CGRect(x: 320, y: 400, width: 51, height: 51)
         image?.draw(in: QRCODERECT)
+        
+        // Creates a new page in the current PDF context.
+        UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight), nil);
+        
         UIGraphicsEndPDFContext()
 
         let pdfView = PDFView(frame: view.bounds)
@@ -306,6 +375,21 @@ class PosLajuTestArea: UIViewController {
         // Create a `PDFDocument` object and set it as `PDFView`'s document to load the document in that view.
         let pdfDocument = PDFDocument(url: URL(fileURLWithPath: filePath))!
         pdfView.document = pdfDocument
+    }
+    
+    func generateBarcode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+
+        if let filter = CIFilter(name: "CICode128BarcodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+
+        return nil
     }
     
     func generateQRCode(from string: String) -> UIImage? {

@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
 //    let defaultManager: Alamofire.Manager = {
 //        let serverTrustPolicies: [String: ServerTrustPolicy] = [
@@ -112,6 +112,15 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Category.delegate = self
+        Price.delegate = self
+        Division.delegate = self
+        District.delegate = self
+        MaxOrder.delegate = self
+        Weight.delegate = self
+        PostCode.delegate = self
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -194,6 +203,11 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         UploadImage.addTarget(self, action: #selector(selectImage1), for: .touchUpInside)
         
         navigationItem.title = "Add New Product"
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func ColorFunc(){

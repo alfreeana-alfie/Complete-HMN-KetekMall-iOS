@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     let URL_SEND_EMAIL = "https://ketekmall.com/ketekmall/sendEmail_getPassword.php";
     
     private let spinner = JGProgressHUD(style: .dark)
@@ -45,6 +45,8 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Email.delegate = self
+        
         Border.layer.cornerRadius = 2
         ButtonSend.layer.cornerRadius = 20
         
@@ -52,6 +54,11 @@ class ForgotPasswordViewController: UIViewController {
         EmailImage.layer.cornerRadius = 5
         
         EmailImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func ColorFunc(){

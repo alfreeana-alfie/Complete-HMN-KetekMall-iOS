@@ -11,7 +11,7 @@ import Alamofire
 import AARatingBar
 import JGProgressHUD
 
-class AddReviewViewController: UIViewController {
+class AddReviewViewController: UIViewController, UITextViewDelegate {
     
     let URL_ADD = "https://ketekmall.com/ketekmall/add_review.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
@@ -38,6 +38,9 @@ class AddReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Review.delegate = self
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -55,6 +58,14 @@ class AddReviewViewController: UIViewController {
             self.RATING = String(format: "%.2f", ratingValue)
         }
         
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     func ColorFunc(){

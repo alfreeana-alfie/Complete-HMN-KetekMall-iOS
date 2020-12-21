@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     let URL_REGISTER = "https://ketekmall.com/ketekmall/register.php";
     let URL_PHOTO = "https://ketekmall.com/ketekmall/profile_image/main_photo.png";
@@ -46,6 +46,12 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Name.delegate = self
+        Email.delegate = self
+        PhoneNo.delegate = self
+        Password.delegate = self
+        ConfirmPassword.delegate = self
+        
         PasswordStyle.layer.cornerRadius = 20
         Border.layer.cornerRadius = 2
         
@@ -66,6 +72,11 @@ class RegisterViewController: UIViewController {
         PhoneImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         PasswordImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         ConfirmPassImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func ColorFunc(){
