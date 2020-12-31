@@ -3655,42 +3655,14 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Di-ga-Etx" userLabel="Category">
                                                         <rect key="frame" x="0.0" y="0.0" width="526" height="209"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S95-ZY-8kY">
-                                                                <rect key="frame" x="8" y="8" width="94" height="95"/>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-LJ-cbE" userLabel="Process Food">
+                                                                <rect key="frame" x="8" y="8" width="95" height="95"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cake-and-pastries" translatesAutoresizingMaskIntoConstraints="NO" id="dMw-fO-dvQ">
-                                                                        <rect key="frame" x="22.5" y="8" width="49" height="50"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Process Food" translatesAutoresizingMaskIntoConstraints="NO" id="k68-tM-B9Z">
+                                                                        <rect key="frame" x="22.5" y="8" width="649" height="50"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-Vr-TIO">
-                                                                        <rect key="frame" x="8" y="72" width="78" height="23"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="23" id="Ejf-7E-lBP"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Cake and pastries">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="dMw-fO-dvQ" firstAttribute="top" secondItem="S95-ZY-8kY" secondAttribute="top" constant="8" id="Blp-UI-Cao"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="dMw-fO-dvQ" secondAttribute="trailing" constant="22.5" id="HXI-8U-jnA"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="JJt-Vr-TIO" secondAttribute="bottom" id="YeF-U5-kl2"/>
-                                                                    <constraint firstItem="JJt-Vr-TIO" firstAttribute="top" secondItem="dMw-fO-dvQ" secondAttribute="bottom" constant="14" id="ZDs-qy-fhn"/>
-                                                                    <constraint firstItem="JJt-Vr-TIO" firstAttribute="leading" secondItem="S95-ZY-8kY" secondAttribute="leading" constant="8" id="m7O-7d-Uvw"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="JJt-Vr-TIO" secondAttribute="trailing" constant="8" id="pbR-XX-W6W"/>
-                                                                    <constraint firstItem="dMw-fO-dvQ" firstAttribute="leading" secondItem="S95-ZY-8kY" secondAttribute="leading" constant="22.5" id="waQ-Ll-8m7"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-LJ-cbE" userLabel="Process Food">
-                                                                <rect key="frame" x="110" y="8" width="95" height="95"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Process Food" translatesAutoresizingMaskIntoConstraints="NO" id="k68-tM-B9Z">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="50"/>
-                                                                    </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOB-qK-uhI">
-                                                                        <rect key="frame" x="8" y="72" width="79" height="23"/>
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOB-qK-uhI">
+                                                                        <rect key="frame" x="8" y="72" width="678" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Process Food">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3700,47 +3672,37 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="dOB-qK-uhI" firstAttribute="top" secondItem="k68-tM-B9Z" secondAttribute="bottom" constant="14" id="4yd-6v-7oh"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="dOB-qK-uhI" secondAttribute="trailing" constant="8" id="Tkq-aj-Yoz"/>
-                                                                    <constraint firstItem="k68-tM-B9Z" firstAttribute="top" secondItem="8hP-LJ-cbE" secondAttribute="top" constant="8" id="aiW-3i-AVh"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="dOB-qK-uhI" secondAttribute="bottom" id="b07-oH-oVa"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="k68-tM-B9Z" secondAttribute="trailing" constant="22.5" id="bLp-US-Do9"/>
-                                                                    <constraint firstItem="dOB-qK-uhI" firstAttribute="leading" secondItem="8hP-LJ-cbE" secondAttribute="leading" constant="8" id="cFQ-Nv-Kgy"/>
-                                                                    <constraint firstItem="k68-tM-B9Z" firstAttribute="leading" secondItem="8hP-LJ-cbE" secondAttribute="leading" constant="22.5" id="hOf-ra-aQR"/>
+                                                                    <constraint firstAttribute="width" constant="95" id="j0e-A6-V4n"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sF-VV-xHB" userLabel="Health Beauty">
-                                                                <rect key="frame" x="110" y="110" width="95" height="95"/>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sF-VV-xHB" userLabel="Health Beauty">
+                                                                <rect key="frame" x="8" y="110" width="95" height="95"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-jy-YcG">
-                                                                        <rect key="frame" x="8" y="72" width="79" height="23"/>
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-jy-YcG">
+                                                                        <rect key="frame" x="8" y="72" width="678" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Health and Beauty">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Health and Beauty" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-51-iLq">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="50"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Health and Beauty" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-51-iLq">
+                                                                        <rect key="frame" x="22.5" y="8" width="649" height="50"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="qEl-51-iLq" firstAttribute="top" secondItem="3sF-VV-xHB" secondAttribute="top" constant="8" id="1Ab-Y7-kBq"/>
-                                                                    <constraint firstItem="IP4-jy-YcG" firstAttribute="leading" secondItem="3sF-VV-xHB" secondAttribute="leading" constant="8" id="75O-X3-rBQ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="qEl-51-iLq" secondAttribute="trailing" constant="22.5" id="CzK-bu-blh"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="IP4-jy-YcG" secondAttribute="trailing" constant="8" id="NE4-mK-RfO"/>
-                                                                    <constraint firstItem="qEl-51-iLq" firstAttribute="leading" secondItem="3sF-VV-xHB" secondAttribute="leading" constant="22.5" id="cYY-AI-skW"/>
                                                                     <constraint firstItem="IP4-jy-YcG" firstAttribute="top" secondItem="qEl-51-iLq" secondAttribute="bottom" constant="14" id="j7S-ZB-YqH"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="IP4-jy-YcG" secondAttribute="bottom" id="nNx-an-m88"/>
+                                                                    <constraint firstAttribute="width" constant="95" id="xgc-SJ-nbb"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNP-Xf-gYe" userLabel="Handicraft">
-                                                                <rect key="frame" x="213" y="8" width="95" height="95"/>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uNP-Xf-gYe" userLabel="Handicraft">
+                                                                <rect key="frame" x="213" y="8" width="694" height="95"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Handicraft" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-mU-Ujb">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="50"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Handicraft" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-mU-Ujb">
+                                                                        <rect key="frame" x="22.5" y="8" width="649" height="50"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLR-U8-wSz">
-                                                                        <rect key="frame" x="8" y="72" width="79" height="23"/>
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLR-U8-wSz">
+                                                                        <rect key="frame" x="8" y="72" width="678" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
                                                                         <state key="normal" title="Handicraft">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3749,94 +3711,35 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="tA5-mU-Ujb" secondAttribute="trailing" constant="22.5" id="04l-XW-oZl"/>
-                                                                    <constraint firstItem="tA5-mU-Ujb" firstAttribute="top" secondItem="uNP-Xf-gYe" secondAttribute="top" constant="8" id="5St-X8-0Kv"/>
                                                                     <constraint firstItem="wLR-U8-wSz" firstAttribute="top" secondItem="tA5-mU-Ujb" secondAttribute="bottom" constant="14" id="ByL-VK-1Pl"/>
-                                                                    <constraint firstItem="wLR-U8-wSz" firstAttribute="leading" secondItem="uNP-Xf-gYe" secondAttribute="leading" constant="8" id="OtF-2f-NeL"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="wLR-U8-wSz" secondAttribute="trailing" constant="8" id="qBI-S3-0Vo"/>
-                                                                    <constraint firstItem="tA5-mU-Ujb" firstAttribute="leading" secondItem="uNP-Xf-gYe" secondAttribute="leading" constant="22.5" id="vsA-fu-Yxf"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="wLR-U8-wSz" secondAttribute="bottom" id="zfV-ql-5yP"/>
+                                                                    <constraint firstAttribute="width" constant="95" id="rWv-SY-ri6"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-zc-gyp" userLabel="Home living">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-zc-gyp" userLabel="Home living">
                                                                 <rect key="frame" x="213" y="110" width="95" height="95"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNY-yH-vzw">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNY-yH-vzw">
                                                                         <rect key="frame" x="8" y="74" width="79" height="21"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="7"/>
                                                                         <state key="normal" title="Home and living">
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Home and Living" translatesAutoresizingMaskIntoConstraints="NO" id="TSA-LE-fl2">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Home and Living" translatesAutoresizingMaskIntoConstraints="NO" id="TSA-LE-fl2">
                                                                         <rect key="frame" x="22.5" y="8" width="50" height="52"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="NNY-yH-vzw" secondAttribute="trailing" constant="8" id="41j-DT-do1"/>
-                                                                    <constraint firstItem="NNY-yH-vzw" firstAttribute="leading" secondItem="RxX-zc-gyp" secondAttribute="leading" constant="8" id="9zP-0c-Ghc"/>
-                                                                    <constraint firstItem="TSA-LE-fl2" firstAttribute="top" secondItem="RxX-zc-gyp" secondAttribute="top" constant="8" id="Acp-F0-ZVV"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="TSA-LE-fl2" secondAttribute="trailing" constant="22.5" id="Ch3-bK-fy4"/>
-                                                                    <constraint firstItem="TSA-LE-fl2" firstAttribute="leading" secondItem="RxX-zc-gyp" secondAttribute="leading" constant="22.5" id="Qjt-RQ-Z1L"/>
                                                                     <constraint firstItem="NNY-yH-vzw" firstAttribute="top" secondItem="TSA-LE-fl2" secondAttribute="bottom" constant="14" id="tfn-LB-7cZ"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="NNY-yH-vzw" secondAttribute="bottom" id="y0j-Eh-5lV"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="470-US-bhR" userLabel="Retail">
-                                                                <rect key="frame" x="316" y="8" width="95" height="95"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Retail and Wholesales" translatesAutoresizingMaskIntoConstraints="NO" id="FMW-1F-K59">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="51"/>
-                                                                    </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lU6-kF-pfF">
-                                                                        <rect key="frame" x="0.0" y="73" width="95" height="22"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="8"/>
-                                                                        <state key="normal" title="Retail and Wholesale">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="lU6-kF-pfF" secondAttribute="trailing" id="6kP-PT-f7w"/>
-                                                                    <constraint firstItem="FMW-1F-K59" firstAttribute="leading" secondItem="470-US-bhR" secondAttribute="leading" constant="22.5" id="Kvb-14-NSn"/>
-                                                                    <constraint firstItem="FMW-1F-K59" firstAttribute="top" secondItem="470-US-bhR" secondAttribute="top" constant="8" id="Q5h-E7-A6j"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="lU6-kF-pfF" secondAttribute="bottom" id="Ykn-AR-frj"/>
-                                                                    <constraint firstItem="lU6-kF-pfF" firstAttribute="top" secondItem="FMW-1F-K59" secondAttribute="bottom" constant="14" id="YsV-Sw-N4A"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="FMW-1F-K59" secondAttribute="trailing" constant="22.5" id="yQm-cl-sSg"/>
-                                                                    <constraint firstItem="lU6-kF-pfF" firstAttribute="leading" secondItem="470-US-bhR" secondAttribute="leading" id="yUC-ca-gD7"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMM-F9-Bid" userLabel="Agriculture">
-                                                                <rect key="frame" x="419" y="8" width="96" height="95"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Agriculture" translatesAutoresizingMaskIntoConstraints="NO" id="WcB-3e-Hy0">
-                                                                        <rect key="frame" x="22.5" y="8" width="51" height="50"/>
-                                                                    </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-gZ-Tua">
-                                                                        <rect key="frame" x="8" y="72" width="80" height="23"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Agriculture">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="WcB-3e-Hy0" firstAttribute="leading" secondItem="CMM-F9-Bid" secondAttribute="leading" constant="22.5" id="Jic-qL-EiH"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="JgX-gZ-Tua" secondAttribute="bottom" id="LEi-J4-iM5"/>
-                                                                    <constraint firstItem="WcB-3e-Hy0" firstAttribute="top" secondItem="CMM-F9-Bid" secondAttribute="top" constant="8" id="PPl-HE-VHN"/>
-                                                                    <constraint firstItem="JgX-gZ-Tua" firstAttribute="top" secondItem="WcB-3e-Hy0" secondAttribute="bottom" constant="14" id="Q8F-40-WNA"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="JgX-gZ-Tua" secondAttribute="trailing" constant="8" id="eve-I8-WKM"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="WcB-3e-Hy0" secondAttribute="trailing" constant="22.5" id="fhW-Uz-Zmj"/>
-                                                                    <constraint firstItem="JgX-gZ-Tua" firstAttribute="leading" secondItem="CMM-F9-Bid" secondAttribute="leading" constant="8" id="rfV-ZH-BSv"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-Jd-TEj" userLabel="Sarawak Based">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-Jd-TEj" userLabel="Sarawak Based">
                                                                 <rect key="frame" x="419" y="110" width="96" height="95"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok8-MC-hwM">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok8-MC-hwM">
                                                                         <rect key="frame" x="0.0" y="75" width="96" height="10"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="10" id="qNl-aO-yeX"/>
@@ -3846,7 +3749,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-c6-O2j">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-c6-O2j">
                                                                         <rect key="frame" x="0.0" y="85" width="96" height="10"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="10" id="XQg-1o-ZZR"/>
@@ -3856,61 +3759,24 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
                                                                     </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sarawak - Based Product" translatesAutoresizingMaskIntoConstraints="NO" id="f4m-Vk-ZJr">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Sarawak - Based Product" translatesAutoresizingMaskIntoConstraints="NO" id="f4m-Vk-ZJr">
                                                                         <rect key="frame" x="22.5" y="8" width="51" height="49"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="ok8-MC-hwM" firstAttribute="leading" secondItem="1uI-Jd-TEj" secondAttribute="leading" id="2fV-QQ-lm6"/>
                                                                     <constraint firstItem="TUO-c6-O2j" firstAttribute="top" secondItem="ok8-MC-hwM" secondAttribute="bottom" id="3ha-MU-2qu"/>
                                                                     <constraint firstItem="ok8-MC-hwM" firstAttribute="top" secondItem="f4m-Vk-ZJr" secondAttribute="bottom" constant="18" id="3ic-rc-PA4"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="ok8-MC-hwM" secondAttribute="trailing" id="5Tn-38-ei2"/>
-                                                                    <constraint firstItem="ok8-MC-hwM" firstAttribute="leading" secondItem="1uI-Jd-TEj" secondAttribute="leading" id="E8A-MG-j2d"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="TUO-c6-O2j" secondAttribute="trailing" id="Kdx-VA-OCV"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="TUO-c6-O2j" secondAttribute="bottom" id="UYD-fF-XNR"/>
-                                                                    <constraint firstItem="f4m-Vk-ZJr" firstAttribute="leading" secondItem="1uI-Jd-TEj" secondAttribute="leading" constant="22.5" id="Zsi-0A-bww"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="ok8-MC-hwM" secondAttribute="trailing" id="flK-oZ-zvN"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="f4m-Vk-ZJr" secondAttribute="trailing" constant="22.5" id="l9o-I6-KjQ"/>
-                                                                    <constraint firstItem="f4m-Vk-ZJr" firstAttribute="top" secondItem="1uI-Jd-TEj" secondAttribute="top" constant="8" id="sJ0-9W-SuQ"/>
-                                                                    <constraint firstItem="TUO-c6-O2j" firstAttribute="leading" secondItem="1uI-Jd-TEj" secondAttribute="leading" id="wcq-Aa-Z6G"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzE-bR-ZO0" userLabel="Service">
-                                                                <rect key="frame" x="8" y="110" width="94" height="95"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j21-Xu-3WK">
-                                                                        <rect key="frame" x="8" y="72" width="78" height="23"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Service">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Services" translatesAutoresizingMaskIntoConstraints="NO" id="qaP-Bd-bB6">
-                                                                        <rect key="frame" x="22" y="6" width="50" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="50" id="zXB-KW-sRS"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="qaP-Bd-bB6" firstAttribute="leading" secondItem="OzE-bR-ZO0" secondAttribute="leading" constant="22" id="Cko-OH-ks1"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="j21-Xu-3WK" secondAttribute="bottom" id="I4l-G8-58N"/>
-                                                                    <constraint firstItem="qaP-Bd-bB6" firstAttribute="top" secondItem="OzE-bR-ZO0" secondAttribute="top" constant="6" id="QHY-DD-To9"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="qaP-Bd-bB6" secondAttribute="trailing" constant="22" id="fvz-aK-JiG"/>
-                                                                    <constraint firstItem="j21-Xu-3WK" firstAttribute="top" secondItem="qaP-Bd-bB6" secondAttribute="bottom" constant="16" id="kNx-yy-UKj"/>
-                                                                    <constraint firstItem="j21-Xu-3WK" firstAttribute="leading" secondItem="OzE-bR-ZO0" secondAttribute="leading" constant="8" id="oOe-sV-wcZ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="j21-Xu-3WK" secondAttribute="trailing" constant="8" id="uzA-G2-sRA"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSg-lE-Ckd" userLabel="Fashion">
+                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSg-lE-Ckd" userLabel="Fashion">
                                                                 <rect key="frame" x="316" y="110" width="95" height="95"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Fashion and Accessories" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-fr-m6b">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Fashion and Accessories" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-fr-m6b">
                                                                         <rect key="frame" x="22.5" y="8" width="50" height="51"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0s-Gw-bRS">
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0s-Gw-bRS">
                                                                         <rect key="frame" x="0.0" y="73" width="95" height="22"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="8"/>
                                                                         <state key="normal" title="Fashion Accessories">
@@ -3920,61 +3786,18 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="B0s-Gw-bRS" firstAttribute="leading" secondItem="KSg-lE-Ckd" secondAttribute="leading" id="4rN-oF-4JS"/>
                                                                     <constraint firstItem="B0s-Gw-bRS" firstAttribute="top" secondItem="6L9-fr-m6b" secondAttribute="bottom" constant="14" id="AWk-B8-VC0"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="B0s-Gw-bRS" secondAttribute="bottom" id="HoM-jV-aqR"/>
-                                                                    <constraint firstItem="6L9-fr-m6b" firstAttribute="leading" secondItem="KSg-lE-Ckd" secondAttribute="leading" constant="22.5" id="MXt-Lz-2uW"/>
-                                                                    <constraint firstItem="6L9-fr-m6b" firstAttribute="top" secondItem="KSg-lE-Ckd" secondAttribute="top" constant="8" id="bdN-gI-Af8"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="6L9-fr-m6b" secondAttribute="trailing" constant="22.5" id="kWt-ha-lcB"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="B0s-Gw-bRS" secondAttribute="trailing" id="sHo-5A-rK6"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="1uI-Jd-TEj" firstAttribute="leading" secondItem="KSg-lE-Ckd" secondAttribute="trailing" constant="8" id="0xU-1J-zIk"/>
-                                                            <constraint firstItem="470-US-bhR" firstAttribute="leading" secondItem="uNP-Xf-gYe" secondAttribute="trailing" constant="8" id="13e-dK-YLW"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="leading" secondItem="RxX-zc-gyp" secondAttribute="trailing" constant="8" symbolic="YES" id="4Ky-9d-RRP"/>
-                                                            <constraint firstAttribute="bottom" secondItem="1uI-Jd-TEj" secondAttribute="bottom" constant="4" id="6QY-ak-gsu"/>
+                                                            <constraint firstAttribute="bottom" secondItem="3sF-VV-xHB" secondAttribute="bottom" constant="4" id="4QI-ti-UBW"/>
                                                             <constraint firstAttribute="width" constant="526" id="73X-5O-ErV"/>
-                                                            <constraint firstItem="uNP-Xf-gYe" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="213" id="7bS-AH-dms"/>
-                                                            <constraint firstItem="RxX-zc-gyp" firstAttribute="leading" secondItem="3sF-VV-xHB" secondAttribute="trailing" constant="8" id="8qy-aV-MLR"/>
-                                                            <constraint firstAttribute="bottom" secondItem="3sF-VV-xHB" secondAttribute="bottom" constant="4" id="8tU-Wv-F2l"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="leading" secondItem="RxX-zc-gyp" secondAttribute="trailing" constant="8" id="9K1-rK-4zv"/>
-                                                            <constraint firstItem="3sF-VV-xHB" firstAttribute="leading" secondItem="OzE-bR-ZO0" secondAttribute="trailing" constant="8" id="B9g-gP-qDU"/>
-                                                            <constraint firstItem="uNP-Xf-gYe" firstAttribute="leading" secondItem="8hP-LJ-cbE" secondAttribute="trailing" constant="8" id="Bn8-wJ-UZH"/>
-                                                            <constraint firstItem="S95-ZY-8kY" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="Bwx-DZ-QHw"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="top" secondItem="1uI-Jd-TEj" secondAttribute="top" id="DQV-pN-0cT"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="316" id="Et1-Rv-YwP"/>
-                                                            <constraint firstItem="RxX-zc-gyp" firstAttribute="top" secondItem="uNP-Xf-gYe" secondAttribute="bottom" constant="7" id="Hpr-6Q-Vnn"/>
-                                                            <constraint firstItem="uNP-Xf-gYe" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="JOE-ng-pbG"/>
-                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="leading" secondItem="S95-ZY-8kY" secondAttribute="trailing" constant="8" id="Kml-ud-m1B"/>
-                                                            <constraint firstAttribute="bottom" secondItem="RxX-zc-gyp" secondAttribute="bottom" constant="4" id="N0w-01-aTw"/>
-                                                            <constraint firstItem="OzE-bR-ZO0" firstAttribute="top" secondItem="S95-ZY-8kY" secondAttribute="bottom" constant="7" id="NcI-vg-jLm"/>
-                                                            <constraint firstAttribute="trailing" secondItem="CMM-F9-Bid" secondAttribute="trailing" constant="11" id="OnN-U0-jbA"/>
-                                                            <constraint firstItem="RxX-zc-gyp" firstAttribute="top" secondItem="uNP-Xf-gYe" secondAttribute="bottom" constant="7" id="Oz7-wb-shZ"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="top" secondItem="OzE-bR-ZO0" secondAttribute="top" id="PJ8-XD-WTg"/>
-                                                            <constraint firstItem="470-US-bhR" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="PJr-lL-3JA"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="top" secondItem="470-US-bhR" secondAttribute="bottom" constant="7" id="Qvs-PL-tg6"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="top" secondItem="3sF-VV-xHB" secondAttribute="top" id="RUb-W8-ZNV"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="top" secondItem="RxX-zc-gyp" secondAttribute="top" id="SJR-bO-XiS"/>
-                                                            <constraint firstAttribute="trailing" secondItem="1uI-Jd-TEj" secondAttribute="trailing" constant="11" id="Swx-eQ-V8y"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="110" id="WGv-UD-fFt"/>
-                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="WSH-4X-KIb"/>
-                                                            <constraint firstItem="OzE-bR-ZO0" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="XyB-SM-YtZ"/>
-                                                            <constraint firstAttribute="bottom" secondItem="KSg-lE-Ckd" secondAttribute="bottom" constant="4" id="aOO-2H-bGw"/>
-                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="leading" secondItem="3sF-VV-xHB" secondAttribute="leading" id="dlE-m9-Xtw"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="leading" secondItem="RxX-zc-gyp" secondAttribute="trailing" constant="8" id="mFQ-vI-MS8"/>
-                                                            <constraint firstItem="3sF-VV-xHB" firstAttribute="top" secondItem="8hP-LJ-cbE" secondAttribute="bottom" constant="7" id="mWe-Si-O55"/>
-                                                            <constraint firstItem="S95-ZY-8kY" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="opI-hC-roP"/>
-                                                            <constraint firstItem="uNP-Xf-gYe" firstAttribute="leading" secondItem="RxX-zc-gyp" secondAttribute="leading" id="sNU-1d-N8c"/>
-                                                            <constraint firstAttribute="bottom" secondItem="OzE-bR-ZO0" secondAttribute="bottom" constant="4" id="tYB-4u-0S7"/>
-                                                            <constraint firstItem="CMM-F9-Bid" firstAttribute="leading" secondItem="470-US-bhR" secondAttribute="trailing" constant="8" id="uLQ-HJ-ura"/>
-                                                            <constraint firstItem="1uI-Jd-TEj" firstAttribute="leading" secondItem="CMM-F9-Bid" secondAttribute="leading" id="ule-dg-Uc2"/>
-                                                            <constraint firstItem="1uI-Jd-TEj" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="419" id="vnX-EU-9e7"/>
-                                                            <constraint firstItem="KSg-lE-Ckd" firstAttribute="leading" secondItem="470-US-bhR" secondAttribute="leading" id="vuu-6O-OTq"/>
-                                                            <constraint firstItem="1uI-Jd-TEj" firstAttribute="top" secondItem="CMM-F9-Bid" secondAttribute="bottom" constant="7" id="wxN-KR-DGD"/>
-                                                            <constraint firstItem="CMM-F9-Bid" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="xpe-fl-Jis"/>
+                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="FmA-yW-aBY"/>
+                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="RZd-Dr-swd"/>
+                                                            <constraint firstItem="3sF-VV-xHB" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="gdN-cm-CL3"/>
+                                                            <constraint firstItem="3sF-VV-xHB" firstAttribute="top" secondItem="8hP-LJ-cbE" secondAttribute="bottom" constant="7" id="nSt-xP-yt4"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -4115,7 +3938,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="3" width="134" height="200"/>
+                                                        <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
                                                             <rect key="frame" x="0.0" y="0.0" width="134" height="200"/>
@@ -4334,21 +4157,15 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                     </view>
                     <navigationItem key="navigationItem" id="tzG-nI-mEg"/>
                     <connections>
-                        <outlet property="Agriculture" destination="CMM-F9-Bid" id="VIF-jg-tBC"/>
                         <outlet property="BrowseCate" destination="Una-ED-EMa" id="qaC-VJ-doH"/>
-                        <outlet property="ButtonAgri" destination="JgX-gZ-Tua" id="fJk-c8-6pe"/>
-                        <outlet property="ButtonCake" destination="JJt-Vr-TIO" id="FcI-3c-MKk"/>
                         <outlet property="ButtonFashion" destination="B0s-Gw-bRS" id="vLZ-pb-M9S"/>
                         <outlet property="ButtonHandicraft" destination="wLR-U8-wSz" id="gSy-ir-P85"/>
                         <outlet property="ButtonHealth" destination="IP4-jy-YcG" id="wYg-3z-hxQ"/>
                         <outlet property="ButtonHome" destination="NNY-yH-vzw" id="0yY-dK-9kQ"/>
                         <outlet property="ButtonProcess" destination="dOB-qK-uhI" id="izY-kS-ezp"/>
-                        <outlet property="ButtonRetail" destination="lU6-kF-pfF" id="S60-r8-KGV"/>
                         <outlet property="ButtonSarawak" destination="ok8-MC-hwM" id="Dq2-pE-PIT"/>
                         <outlet property="ButtonSarawak2" destination="TUO-c6-O2j" id="RgN-Vf-SCU"/>
-                        <outlet property="ButtonService" destination="j21-Xu-3WK" id="XZX-y7-RuY"/>
                         <outlet property="BuyLabel" destination="w9x-4E-8Bo" id="JCL-2W-rNb"/>
-                        <outlet property="CakePastries" destination="S95-ZY-8kY" id="Phs-24-XeE"/>
                         <outlet property="Carousel" destination="l6J-RN-R9l" id="x9c-aT-3xZ"/>
                         <outlet property="CartBar" destination="5VV-mx-vj8" id="kFF-mI-Nuk"/>
                         <outlet property="CartViewNav" destination="gDl-ff-InG" id="Udv-qN-7J1"/>
@@ -4364,10 +4181,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                         <outlet property="HotView" destination="lJV-Tw-fqq" id="RNw-iB-nRp"/>
                         <outlet property="ListBar" destination="Tzx-AB-LMD" id="g9F-UD-hnr"/>
                         <outlet property="ProcessFood" destination="8hP-LJ-cbE" id="PAD-bu-OQk"/>
-                        <outlet property="Retail" destination="470-US-bhR" id="Fci-vQ-Ajj"/>
                         <outlet property="SarawakBased" destination="1uI-Jd-TEj" id="zVV-aQ-YPg"/>
                         <outlet property="SellButton" destination="DKl-KL-XIM" id="Ntz-rH-bM2"/>
-                        <outlet property="Service" destination="OzE-bR-ZO0" id="UgO-SN-pRL"/>
                         <outlet property="ShockingLabel" destination="aie-uG-mtn" id="Yxy-zD-Qsn"/>
                         <outlet property="ShockingView" destination="oty-th-mtQ" id="YLy-jD-jNi"/>
                         <outlet property="Tabbar" destination="VvD-uF-d9x" id="m17-Oy-iwM"/>
@@ -10994,7 +10809,6 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <image name="580b57fcd9996e24bc43c543" width="1000" height="1000"/>
         <image name="AddPhoto" width="45" height="45"/>
         <image name="Address" width="30" height="30"/>
-        <image name="Agriculture" width="670" height="700"/>
         <image name="Bank Acc" width="30" height="30"/>
         <image name="Bank Name" width="30" height="30"/>
         <image name="Bin" width="30" height="30"/>
@@ -11032,11 +10846,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <image name="Phone" width="30" height="30"/>
         <image name="Phone Orange" width="30" height="30"/>
         <image name="Process Food" width="649" height="649"/>
-        <image name="Retail and Wholesales" width="649" height="649"/>
         <image name="Sarawak - Based Product" width="649" height="649"/>
-        <image name="Services" width="649" height="657"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
-        <image name="cake-and-pastries" width="50" height="50"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="ic_accountsettings_foreground" width="162" height="162"/>
