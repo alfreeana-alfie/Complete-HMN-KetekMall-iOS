@@ -3457,16 +3457,16 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                 <rect key="frame" x="0.0" y="88" width="414" height="219"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlD-3e-Wu9">
-                                        <rect key="frame" x="25" y="141" width="64.5" height="16.5"/>
+                                        <rect key="frame" x="25" y="134" width="64.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.98823529409999999" green="0.95294117649999999" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oyv-U8-Ixk">
-                                        <rect key="frame" x="25" y="83" width="50" height="50"/>
+                                        <rect key="frame" x="25" y="76" width="50" height="50"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKl-KL-XIM">
-                                        <rect key="frame" x="292" y="99" width="95" height="35"/>
+                                        <rect key="frame" x="292" y="92" width="95" height="35"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="VWS-II-fyk"/>
@@ -3481,23 +3481,23 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhR-VU-jFh" userLabel="Navigation Bar">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="63.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="56.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KETEKM@LL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8YJ-bO-Qlj">
-                                                <rect key="frame" x="24" y="18" width="106.5" height="27.5"/>
+                                                <rect key="frame" x="24" y="18" width="106.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="251" image="Option" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-AB-LMD">
-                                                <rect key="frame" x="355" y="16" width="36" height="37"/>
+                                                <rect key="frame" x="355" y="16" width="36" height="30"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="5vc-5T-EAw"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ff-zw-swT">
-                                                <rect key="frame" x="245" y="8" width="50" height="45"/>
+                                                <rect key="frame" x="245" y="1" width="50" height="45"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="Chat" translatesAutoresizingMaskIntoConstraints="NO" id="wdd-7E-vSz">
                                                         <rect key="frame" x="10" y="15" width="30" height="30"/>
@@ -3537,11 +3537,9 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Tzx-AB-LMD" secondAttribute="trailing" constant="23" id="1l8-m4-GD9"/>
-                                            <constraint firstItem="gDl-ff-InG" firstAttribute="top" secondItem="xhR-VU-jFh" secondAttribute="top" constant="1" id="3J4-dq-LNZ"/>
                                             <constraint firstAttribute="bottom" secondItem="Tzx-AB-LMD" secondAttribute="bottom" constant="10.5" id="56a-H7-4s4"/>
                                             <constraint firstItem="Tzx-AB-LMD" firstAttribute="top" secondItem="xhR-VU-jFh" secondAttribute="top" constant="16" id="Gzh-af-ZzR"/>
                                             <constraint firstAttribute="bottom" secondItem="4Ff-zw-swT" secondAttribute="bottom" constant="10.5" id="HGc-p7-6tF"/>
-                                            <constraint firstItem="4Ff-zw-swT" firstAttribute="top" secondItem="xhR-VU-jFh" secondAttribute="top" constant="8" id="JQF-XV-sTy"/>
                                             <constraint firstAttribute="bottom" secondItem="8YJ-bO-Qlj" secondAttribute="bottom" constant="18" id="LTB-ng-Ixy"/>
                                             <constraint firstItem="gDl-ff-InG" firstAttribute="leading" secondItem="4Ff-zw-swT" secondAttribute="trailing" constant="2" id="bmU-A5-mlv"/>
                                             <constraint firstItem="Tzx-AB-LMD" firstAttribute="leading" secondItem="gDl-ff-InG" secondAttribute="trailing" constant="8" id="inn-Rw-o41"/>
@@ -3552,7 +3550,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gn9-it-79w">
-                                        <rect key="frame" x="292" y="138" width="95" height="35"/>
+                                        <rect key="frame" x="292" y="131" width="95" height="35"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="HTy-ih-u31"/>
@@ -3567,19 +3565,19 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="WELCOME!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1O-X4-HYa">
-                                        <rect key="frame" x="25" y="186" width="64" height="14"/>
+                                        <rect key="frame" x="25" y="179" width="64" height="14"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BUY. SELL. FIND. ALMOST EVERYTHING!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9x-4E-8Bo">
-                                        <rect key="frame" x="25" y="202" width="228" height="10"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GREAT STORE, GREAT CHOICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9x-4E-8Bo">
+                                        <rect key="frame" x="25" y="195" width="175" height="23"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ca3-0y-ad9">
-                                        <rect key="frame" x="83" y="109" width="100" height="25"/>
+                                        <rect key="frame" x="83" y="102" width="100" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VERIFICATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-UG-P1o">
                                                 <rect key="frame" x="1" y="5" width="98" height="15"/>
@@ -3610,11 +3608,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <constraint firstItem="w9x-4E-8Bo" firstAttribute="top" secondItem="L1O-X4-HYa" secondAttribute="bottom" constant="2" id="I9n-fS-gy1"/>
                                     <constraint firstItem="Gn9-it-79w" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KlD-3e-Wu9" secondAttribute="trailing" constant="8" symbolic="YES" id="Kcj-GF-yAF"/>
                                     <constraint firstAttribute="bottom" secondItem="w9x-4E-8Bo" secondAttribute="bottom" constant="1" id="Mvd-EQ-fuq"/>
+                                    <constraint firstItem="Gn9-it-79w" firstAttribute="centerX" secondItem="DKl-KL-XIM" secondAttribute="centerX" id="Os8-3n-zx9"/>
                                     <constraint firstItem="Gn9-it-79w" firstAttribute="top" secondItem="DKl-KL-XIM" secondAttribute="bottom" constant="4" id="RwN-2d-009"/>
                                     <constraint firstItem="L1O-X4-HYa" firstAttribute="top" secondItem="KlD-3e-Wu9" secondAttribute="bottom" constant="28.5" id="Sy9-q8-NWr"/>
                                     <constraint firstItem="KlD-3e-Wu9" firstAttribute="leading" secondItem="bk0-V9-OEE" secondAttribute="leading" constant="25" id="Vo5-Kk-fXn"/>
                                     <constraint firstAttribute="height" constant="219" id="WzB-eI-IT7"/>
                                     <constraint firstItem="Ca3-0y-ad9" firstAttribute="leading" secondItem="Oyv-U8-Ixk" secondAttribute="trailing" constant="8" id="YBH-mO-Vbd"/>
+                                    <constraint firstItem="DKl-KL-XIM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ca3-0y-ad9" secondAttribute="trailing" symbolic="YES" id="aDG-hI-2UU"/>
                                     <constraint firstAttribute="trailing" secondItem="Gn9-it-79w" secondAttribute="trailing" constant="27" id="aQS-6x-2Is"/>
                                     <constraint firstItem="Oyv-U8-Ixk" firstAttribute="leading" secondItem="bk0-V9-OEE" secondAttribute="leading" constant="25" id="dIO-ns-Gtf"/>
                                     <constraint firstItem="Gn9-it-79w" firstAttribute="top" secondItem="DKl-KL-XIM" secondAttribute="bottom" constant="4" id="efi-ea-LmL"/>
@@ -3653,151 +3653,223 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <rect key="frame" x="0.0" y="251" width="414" height="209"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Di-ga-Etx" userLabel="Category">
-                                                        <rect key="frame" x="0.0" y="0.0" width="526" height="209"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="430" height="209"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hP-LJ-cbE" userLabel="Process Food">
-                                                                <rect key="frame" x="8" y="8" width="95" height="95"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-Jd-TEj" userLabel="Process Food">
+                                                                <rect key="frame" x="8" y="8" width="96" height="95"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Process Food" translatesAutoresizingMaskIntoConstraints="NO" id="k68-tM-B9Z">
-                                                                        <rect key="frame" x="22.5" y="8" width="649" height="50"/>
-                                                                    </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOB-qK-uhI">
-                                                                        <rect key="frame" x="8" y="72" width="678" height="23"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Process Food">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="dOB-qK-uhI" firstAttribute="top" secondItem="k68-tM-B9Z" secondAttribute="bottom" constant="14" id="4yd-6v-7oh"/>
-                                                                    <constraint firstAttribute="width" constant="95" id="j0e-A6-V4n"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sF-VV-xHB" userLabel="Health Beauty">
-                                                                <rect key="frame" x="8" y="110" width="95" height="95"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-jy-YcG">
-                                                                        <rect key="frame" x="8" y="72" width="678" height="23"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Health and Beauty">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Health and Beauty" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-51-iLq">
-                                                                        <rect key="frame" x="22.5" y="8" width="649" height="50"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="IP4-jy-YcG" firstAttribute="top" secondItem="qEl-51-iLq" secondAttribute="bottom" constant="14" id="j7S-ZB-YqH"/>
-                                                                    <constraint firstAttribute="width" constant="95" id="xgc-SJ-nbb"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uNP-Xf-gYe" userLabel="Handicraft">
-                                                                <rect key="frame" x="213" y="8" width="694" height="95"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Handicraft" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-mU-Ujb">
-                                                                        <rect key="frame" x="22.5" y="8" width="649" height="50"/>
-                                                                    </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLR-U8-wSz">
-                                                                        <rect key="frame" x="8" y="72" width="678" height="23"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Handicraft">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="wLR-U8-wSz" firstAttribute="top" secondItem="tA5-mU-Ujb" secondAttribute="bottom" constant="14" id="ByL-VK-1Pl"/>
-                                                                    <constraint firstAttribute="width" constant="95" id="rWv-SY-ri6"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-zc-gyp" userLabel="Home living">
-                                                                <rect key="frame" x="213" y="110" width="95" height="95"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNY-yH-vzw">
-                                                                        <rect key="frame" x="8" y="74" width="79" height="21"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="7"/>
-                                                                        <state key="normal" title="Home and living">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Home and Living" translatesAutoresizingMaskIntoConstraints="NO" id="TSA-LE-fl2">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="52"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="NNY-yH-vzw" firstAttribute="top" secondItem="TSA-LE-fl2" secondAttribute="bottom" constant="14" id="tfn-LB-7cZ"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1uI-Jd-TEj" userLabel="Sarawak Based">
-                                                                <rect key="frame" x="419" y="110" width="96" height="95"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok8-MC-hwM">
-                                                                        <rect key="frame" x="0.0" y="75" width="96" height="10"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="10" id="qNl-aO-yeX"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Sarawak - Based">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUO-c6-O2j">
-                                                                        <rect key="frame" x="0.0" y="85" width="96" height="10"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="10" id="XQg-1o-ZZR"/>
-                                                                        </constraints>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="9"/>
-                                                                        <state key="normal" title="Product">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Sarawak - Based Product" translatesAutoresizingMaskIntoConstraints="NO" id="f4m-Vk-ZJr">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Process Food" translatesAutoresizingMaskIntoConstraints="NO" id="f4m-Vk-ZJr">
                                                                         <rect key="frame" x="22.5" y="8" width="51" height="49"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4d-tL-FXQ">
+                                                                        <rect key="frame" x="0.0" y="60" width="96" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Process Food">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <font key="NSFont" size="9" name="Helvetica-Bold"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="TUO-c6-O2j" firstAttribute="top" secondItem="ok8-MC-hwM" secondAttribute="bottom" id="3ha-MU-2qu"/>
-                                                                    <constraint firstItem="ok8-MC-hwM" firstAttribute="top" secondItem="f4m-Vk-ZJr" secondAttribute="bottom" constant="18" id="3ic-rc-PA4"/>
+                                                                    <constraint firstAttribute="width" constant="96" id="oOD-R9-cMl"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSg-lE-Ckd" userLabel="Fashion">
-                                                                <rect key="frame" x="316" y="110" width="95" height="95"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aR5-6n-72g" userLabel="Fashion">
+                                                                <rect key="frame" x="8" y="106" width="96" height="95"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="Fashion and Accessories" translatesAutoresizingMaskIntoConstraints="NO" id="6L9-fr-m6b">
-                                                                        <rect key="frame" x="22.5" y="8" width="50" height="51"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Fashion and Accessories" translatesAutoresizingMaskIntoConstraints="NO" id="txk-gy-BZ7">
+                                                                        <rect key="frame" x="22.5" y="8" width="51" height="49"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0s-Gw-bRS">
-                                                                        <rect key="frame" x="0.0" y="73" width="95" height="22"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="8"/>
-                                                                        <state key="normal" title="Fashion Accessories">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-gX-ANe">
+                                                                        <rect key="frame" x="0.0" y="60" width="96" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Fashion Acessories">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <font key="NSFont" size="9" name="Helvetica-Bold"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="B0s-Gw-bRS" firstAttribute="top" secondItem="6L9-fr-m6b" secondAttribute="bottom" constant="14" id="AWk-B8-VC0"/>
-                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqA-9e-6X0" userLabel="Handicraft">
+                                                                <rect key="frame" x="112" y="8" width="96" height="95"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Handicraft" translatesAutoresizingMaskIntoConstraints="NO" id="P1y-aK-yWc">
+                                                                        <rect key="frame" x="22.5" y="8" width="51" height="49"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-KI-kTv">
+                                                                        <rect key="frame" x="0.0" y="60" width="96" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Handicraft">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <font key="NSFont" size="9" name="Helvetica-Bold"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uiy-Ik-eRH" userLabel="Sarawak Based">
+                                                                <rect key="frame" x="112" y="106" width="96" height="95"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sarawak - Based Product" translatesAutoresizingMaskIntoConstraints="NO" id="mu0-Zv-1NC">
+                                                                        <rect key="frame" x="22.5" y="8" width="51" height="49"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNV-GB-JOi">
+                                                                        <rect key="frame" x="0.0" y="60" width="96" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Sarawak - Based Product">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <font key="NSFont" size="9" name="Helvetica-Bold"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28c-K2-sl2" userLabel="Health">
+                                                                <rect key="frame" x="215" y="8" width="96" height="95"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Health and Beauty" translatesAutoresizingMaskIntoConstraints="NO" id="Zki-eL-ffo">
+                                                                        <rect key="frame" x="22.5" y="8" width="51" height="49"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFj-Wh-iqh">
+                                                                        <rect key="frame" x="0.0" y="60" width="96" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Health and Beauty">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <font key="NSFont" size="9" name="Helvetica-Bold"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwt-G4-v3N" userLabel="Pickup">
+                                                                <rect key="frame" x="215" y="106" width="96" height="95"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Retail and Wholesales" translatesAutoresizingMaskIntoConstraints="NO" id="pQ1-Rz-Mr8">
+                                                                        <rect key="frame" x="22.5" y="8" width="51" height="49"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj4-Tm-b2T">
+                                                                        <rect key="frame" x="0.0" y="60" width="96" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Self Pick-up">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <font key="NSFont" size="9" name="Helvetica-Bold"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBr-xO-2fl" userLabel="Home">
+                                                                <rect key="frame" x="319" y="8" width="96" height="95"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Home and Living" translatesAutoresizingMaskIntoConstraints="NO" id="glI-sE-WE2">
+                                                                        <rect key="frame" x="22.5" y="8" width="51" height="49"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEu-z7-ZM9">
+                                                                        <rect key="frame" x="0.0" y="60" width="96" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <attributedString key="attributedText">
+                                                                            <fragment content="Home and Living">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <font key="NSFont" size="9" name="Helvetica-Bold"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="3sF-VV-xHB" secondAttribute="bottom" constant="4" id="4QI-ti-UBW"/>
-                                                            <constraint firstAttribute="width" constant="526" id="73X-5O-ErV"/>
-                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="FmA-yW-aBY"/>
-                                                            <constraint firstItem="8hP-LJ-cbE" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="RZd-Dr-swd"/>
-                                                            <constraint firstItem="3sF-VV-xHB" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="gdN-cm-CL3"/>
-                                                            <constraint firstItem="3sF-VV-xHB" firstAttribute="top" secondItem="8hP-LJ-cbE" secondAttribute="bottom" constant="7" id="nSt-xP-yt4"/>
+                                                            <constraint firstItem="28c-K2-sl2" firstAttribute="width" secondItem="1uI-Jd-TEj" secondAttribute="width" id="1N0-eS-oe4"/>
+                                                            <constraint firstItem="uBr-xO-2fl" firstAttribute="width" secondItem="1uI-Jd-TEj" secondAttribute="width" id="1ar-Vz-OQr"/>
+                                                            <constraint firstItem="aR5-6n-72g" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="1oc-8l-S3q"/>
+                                                            <constraint firstItem="Uiy-Ik-eRH" firstAttribute="height" secondItem="1uI-Jd-TEj" secondAttribute="height" id="4uS-IV-fdk"/>
+                                                            <constraint firstItem="uBr-xO-2fl" firstAttribute="leading" secondItem="28c-K2-sl2" secondAttribute="trailing" constant="8" symbolic="YES" id="521-Bf-Zsj"/>
+                                                            <constraint firstAttribute="width" constant="430" id="73X-5O-ErV"/>
+                                                            <constraint firstItem="aR5-6n-72g" firstAttribute="top" secondItem="1uI-Jd-TEj" secondAttribute="bottom" constant="3" id="89Q-7O-RTW"/>
+                                                            <constraint firstItem="aR5-6n-72g" firstAttribute="width" secondItem="1uI-Jd-TEj" secondAttribute="width" id="8eZ-60-zd0"/>
+                                                            <constraint firstAttribute="trailing" secondItem="uBr-xO-2fl" secondAttribute="trailing" constant="15" id="AXx-Fa-pwu"/>
+                                                            <constraint firstItem="uBr-xO-2fl" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="AnW-nQ-N4o"/>
+                                                            <constraint firstItem="WqA-9e-6X0" firstAttribute="height" secondItem="1uI-Jd-TEj" secondAttribute="height" id="Bab-ih-gnx"/>
+                                                            <constraint firstAttribute="bottom" secondItem="uBr-xO-2fl" secondAttribute="bottom" constant="106" id="BcF-qy-WXe"/>
+                                                            <constraint firstAttribute="trailing" secondItem="gwt-G4-v3N" secondAttribute="trailing" constant="119" id="CHS-lf-eDV"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Uiy-Ik-eRH" secondAttribute="bottom" constant="8" id="DBQ-97-drE"/>
+                                                            <constraint firstItem="1uI-Jd-TEj" firstAttribute="leading" secondItem="6Di-ga-Etx" secondAttribute="leading" constant="8" id="Erx-pB-rdK"/>
+                                                            <constraint firstItem="1uI-Jd-TEj" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="FkK-QQ-Uvx"/>
+                                                            <constraint firstAttribute="bottom" secondItem="aR5-6n-72g" secondAttribute="bottom" constant="8" id="FpP-J2-WrZ"/>
+                                                            <constraint firstItem="WqA-9e-6X0" firstAttribute="width" secondItem="1uI-Jd-TEj" secondAttribute="width" id="ICr-hE-4YF"/>
+                                                            <constraint firstItem="28c-K2-sl2" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="NiE-ez-UxF"/>
+                                                            <constraint firstItem="aR5-6n-72g" firstAttribute="height" secondItem="1uI-Jd-TEj" secondAttribute="height" id="NzB-2A-ryH"/>
+                                                            <constraint firstItem="Uiy-Ik-eRH" firstAttribute="top" secondItem="WqA-9e-6X0" secondAttribute="bottom" constant="3" id="Sqc-CQ-s2U"/>
+                                                            <constraint firstItem="Uiy-Ik-eRH" firstAttribute="width" secondItem="1uI-Jd-TEj" secondAttribute="width" id="UEH-GK-SNe"/>
+                                                            <constraint firstItem="Uiy-Ik-eRH" firstAttribute="top" secondItem="WqA-9e-6X0" secondAttribute="bottom" constant="3" id="VHo-ky-PEj"/>
+                                                            <constraint firstItem="gwt-G4-v3N" firstAttribute="height" secondItem="1uI-Jd-TEj" secondAttribute="height" id="Ybj-pa-wjm"/>
+                                                            <constraint firstItem="Uiy-Ik-eRH" firstAttribute="leading" secondItem="aR5-6n-72g" secondAttribute="trailing" constant="8" symbolic="YES" id="Z68-Ie-XhI"/>
+                                                            <constraint firstItem="WqA-9e-6X0" firstAttribute="leading" secondItem="1uI-Jd-TEj" secondAttribute="trailing" constant="8" symbolic="YES" id="cbx-xf-4Ua"/>
+                                                            <constraint firstItem="WqA-9e-6X0" firstAttribute="top" secondItem="6Di-ga-Etx" secondAttribute="top" constant="8" id="dDV-DD-Jfo"/>
+                                                            <constraint firstItem="gwt-G4-v3N" firstAttribute="width" secondItem="1uI-Jd-TEj" secondAttribute="width" id="dT0-zf-X8Q"/>
+                                                            <constraint firstItem="gwt-G4-v3N" firstAttribute="top" secondItem="28c-K2-sl2" secondAttribute="bottom" constant="3" id="gs5-Cb-a4H"/>
+                                                            <constraint firstItem="28c-K2-sl2" firstAttribute="height" secondItem="1uI-Jd-TEj" secondAttribute="height" id="mzS-oU-kc4"/>
+                                                            <constraint firstItem="28c-K2-sl2" firstAttribute="leading" secondItem="WqA-9e-6X0" secondAttribute="trailing" constant="7" id="pG9-a4-fqm"/>
+                                                            <constraint firstAttribute="bottom" secondItem="gwt-G4-v3N" secondAttribute="bottom" constant="8" id="xaN-k1-H5L"/>
+                                                            <constraint firstItem="uBr-xO-2fl" firstAttribute="height" secondItem="1uI-Jd-TEj" secondAttribute="height" id="xoA-ZQ-sOu"/>
+                                                            <constraint firstItem="gwt-G4-v3N" firstAttribute="leading" secondItem="Uiy-Ik-eRH" secondAttribute="trailing" constant="7" id="xrf-L2-1c3"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -3859,7 +3931,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iua-BR-TPC">
-                                                                    <rect key="frame" x="5" y="168" width="124" height="20"/>
+                                                                    <rect key="frame" x="25" y="168" width="84" height="20"/>
                                                                     <color key="backgroundColor" red="1" green="0.76470588240000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="yOW-8E-jdf"/>
@@ -3896,7 +3968,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                             <constraints>
                                                                 <constraint firstItem="jyn-eb-2hd" firstAttribute="centerX" secondItem="eQa-6V-Jui" secondAttribute="centerX" id="3c5-Nl-hXq"/>
                                                                 <constraint firstItem="Iua-BR-TPC" firstAttribute="top" secondItem="eQa-6V-Jui" secondAttribute="bottom" constant="6" id="6ER-KL-m14"/>
-                                                                <constraint firstItem="Iua-BR-TPC" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" constant="5" id="6K1-DU-edj"/>
+                                                                <constraint firstItem="Iua-BR-TPC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FPB-P6-1Eb" secondAttribute="leading" id="6K1-DU-edj"/>
                                                                 <constraint firstItem="eQa-6V-Jui" firstAttribute="centerX" secondItem="Iua-BR-TPC" secondAttribute="centerX" id="ALY-s7-pHn"/>
                                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jyn-eb-2hd" secondAttribute="trailing" id="HgA-0h-qED"/>
                                                                 <constraint firstItem="AZn-Kz-e1j" firstAttribute="top" secondItem="tys-y0-A2q" secondAttribute="bottom" constant="8" id="Nss-Uw-Lsr"/>
@@ -3910,7 +3982,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                 <constraint firstAttribute="trailing" secondItem="eQa-6V-Jui" secondAttribute="trailing" constant="30" id="peY-xF-jfa"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Iua-BR-TPC" secondAttribute="bottom" constant="5" id="uEF-iE-w05"/>
                                                                 <constraint firstItem="AZn-Kz-e1j" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jyn-eb-2hd" secondAttribute="trailing" id="ufC-Qi-SPZ"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Iua-BR-TPC" secondAttribute="trailing" constant="5" id="wBr-PN-1rR"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Iua-BR-TPC" secondAttribute="trailing" id="wBr-PN-1rR"/>
                                                                 <constraint firstItem="eQa-6V-Jui" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" constant="30" id="x9L-kX-zDG"/>
                                                                 <constraint firstItem="AZn-Kz-e1j" firstAttribute="leading" secondItem="FPB-P6-1Eb" secondAttribute="leading" constant="17" id="ylG-fE-VIP"/>
                                                                 <constraint firstItem="jyn-eb-2hd" firstAttribute="top" secondItem="AZn-Kz-e1j" secondAttribute="bottom" constant="2" id="zQG-Jb-SMr"/>
@@ -4011,7 +4083,8 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                                 <constraint firstAttribute="trailing" secondItem="q0b-yf-qev" secondAttribute="trailing" constant="17" id="HOc-Dn-Blv"/>
                                                                 <constraint firstAttribute="trailing" secondItem="qfB-29-rUw" secondAttribute="trailing" constant="30" id="KW6-YB-eCr"/>
                                                                 <constraint firstAttribute="trailing" secondItem="rmp-0m-tdh" secondAttribute="trailing" constant="5" id="V86-pj-lVi"/>
-                                                                <constraint firstAttribute="trailing" secondItem="oEg-AB-vBw" secondAttribute="trailing" constant="32" id="XtU-XS-Ycf"/>
+                                                                <constraint firstItem="oEg-AB-vBw" firstAttribute="centerX" secondItem="7yX-Gr-aCY" secondAttribute="centerX" id="XcX-1P-nPu"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oEg-AB-vBw" secondAttribute="trailing" symbolic="YES" id="XtU-XS-Ycf"/>
                                                                 <constraint firstAttribute="trailing" secondItem="hRI-YI-adn" secondAttribute="trailing" id="bqs-r1-EiJ"/>
                                                                 <constraint firstItem="qfB-29-rUw" firstAttribute="top" secondItem="oEg-AB-vBw" secondAttribute="bottom" constant="8" id="fbc-Rl-CGn"/>
                                                                 <constraint firstItem="q0b-yf-qev" firstAttribute="top" secondItem="hRI-YI-adn" secondAttribute="bottom" constant="10" id="ilY-FR-LCs"/>
@@ -4158,30 +4231,31 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                     <navigationItem key="navigationItem" id="tzG-nI-mEg"/>
                     <connections>
                         <outlet property="BrowseCate" destination="Una-ED-EMa" id="qaC-VJ-doH"/>
-                        <outlet property="ButtonFashion" destination="B0s-Gw-bRS" id="vLZ-pb-M9S"/>
-                        <outlet property="ButtonHandicraft" destination="wLR-U8-wSz" id="gSy-ir-P85"/>
-                        <outlet property="ButtonHealth" destination="IP4-jy-YcG" id="wYg-3z-hxQ"/>
-                        <outlet property="ButtonHome" destination="NNY-yH-vzw" id="0yY-dK-9kQ"/>
-                        <outlet property="ButtonProcess" destination="dOB-qK-uhI" id="izY-kS-ezp"/>
-                        <outlet property="ButtonSarawak" destination="ok8-MC-hwM" id="Dq2-pE-PIT"/>
-                        <outlet property="ButtonSarawak2" destination="TUO-c6-O2j" id="RgN-Vf-SCU"/>
+                        <outlet property="ButtonFashion" destination="ch1-gX-ANe" id="wov-jJ-0NX"/>
+                        <outlet property="ButtonHandicraft" destination="DBE-KI-kTv" id="L2y-ni-fIz"/>
+                        <outlet property="ButtonHealth" destination="qFj-Wh-iqh" id="x41-8K-MLc"/>
+                        <outlet property="ButtonHome" destination="sEu-z7-ZM9" id="DSd-wm-fOi"/>
+                        <outlet property="ButtonPickup" destination="cj4-Tm-b2T" id="9Ca-2f-PDF"/>
+                        <outlet property="ButtonProcess" destination="x4d-tL-FXQ" id="xNF-lE-ZxS"/>
+                        <outlet property="ButtonSarawak" destination="ZNV-GB-JOi" id="vrQ-NH-XQd"/>
                         <outlet property="BuyLabel" destination="w9x-4E-8Bo" id="JCL-2W-rNb"/>
                         <outlet property="Carousel" destination="l6J-RN-R9l" id="x9c-aT-3xZ"/>
                         <outlet property="CartBar" destination="5VV-mx-vj8" id="kFF-mI-Nuk"/>
                         <outlet property="CartViewNav" destination="gDl-ff-InG" id="Udv-qN-7J1"/>
                         <outlet property="ChatViewNav" destination="4Ff-zw-swT" id="XMT-4z-uuC"/>
-                        <outlet property="Fashion" destination="KSg-lE-Ckd" id="9w0-n0-VAc"/>
+                        <outlet property="Fashion" destination="aR5-6n-72g" id="d3N-le-ENm"/>
                         <outlet property="FindBar" destination="wdd-7E-vSz" id="37y-kW-pO1"/>
                         <outlet property="FindButton" destination="Gn9-it-79w" id="DS9-aA-BDS"/>
-                        <outlet property="Handicraft" destination="uNP-Xf-gYe" id="ReN-k1-cLK"/>
-                        <outlet property="HealthBeauty" destination="3sF-VV-xHB" id="HiM-UQ-Kb8"/>
-                        <outlet property="HomeLiving" destination="RxX-zc-gyp" id="WoU-AD-dTG"/>
+                        <outlet property="Handicraft" destination="WqA-9e-6X0" id="njz-mr-P9M"/>
+                        <outlet property="HealthBeauty" destination="28c-K2-sl2" id="DEj-Xj-Zwe"/>
+                        <outlet property="HomeLiving" destination="uBr-xO-2fl" id="dtA-nz-ahJ"/>
                         <outlet property="HomePageView" destination="bk0-V9-OEE" id="73b-1B-gdx"/>
                         <outlet property="HotLabel" destination="R83-hQ-vPu" id="191-Mo-Ada"/>
                         <outlet property="HotView" destination="lJV-Tw-fqq" id="RNw-iB-nRp"/>
                         <outlet property="ListBar" destination="Tzx-AB-LMD" id="g9F-UD-hnr"/>
-                        <outlet property="ProcessFood" destination="8hP-LJ-cbE" id="PAD-bu-OQk"/>
-                        <outlet property="SarawakBased" destination="1uI-Jd-TEj" id="zVV-aQ-YPg"/>
+                        <outlet property="Pickup" destination="gwt-G4-v3N" id="1mB-fa-XgB"/>
+                        <outlet property="ProcessFood" destination="1uI-Jd-TEj" id="PfM-48-0Qg"/>
+                        <outlet property="SarawakBased" destination="Uiy-Ik-eRH" id="rip-pt-0LT"/>
                         <outlet property="SellButton" destination="DKl-KL-XIM" id="Ntz-rH-bM2"/>
                         <outlet property="ShockingLabel" destination="aie-uG-mtn" id="Yxy-zD-Qsn"/>
                         <outlet property="ShockingView" destination="oty-th-mtQ" id="YLy-jD-jNi"/>
@@ -10846,6 +10920,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
         <image name="Phone" width="30" height="30"/>
         <image name="Phone Orange" width="30" height="30"/>
         <image name="Process Food" width="649" height="649"/>
+        <image name="Retail and Wholesales" width="649" height="649"/>
         <image name="Sarawak - Based Product" width="649" height="649"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="heart" catalog="system" width="128" height="109"/>

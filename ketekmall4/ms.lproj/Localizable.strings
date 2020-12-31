@@ -13,7 +13,7 @@
 "BUYER" = "PEMBELI";
 "Welcome!" = "SELAMAT DATANG!";
 "VERIFICATION" = "Verifikasi";
-"BUY. SELL. FIND. ALMOST EVERYTHING" = "BELI. JUAL. CARI. HAMPIR KESEMUANYA";
+"GREAT STORE.GREAT CHOICE" = "KEDAI HEBAT. PILIHAN HEBAT.";
 "BROWSE CATEGORIES" = "PILIH KATEGORI";
 "HOT SELLING" = "JUALAN HANGAT";
 "SHOCKING SALE" = "JUALAN RUNTUH";
@@ -113,11 +113,12 @@
 "Handicraft" = "Kraftangan";
 "Service" = "Perkhidmatan";
 "Health and Beauty" = "Kesihatan dan Kecantikan";
-"Home and living" = "Kediaman dan Tempat Tinggal";
+"Home and Living" = "Kediaman dan Tempat Tinggal";
 "Retail and Wholesale" = "Barang Borong dan Runcit";
 "Agriculture" = "Pertanian";
 "Fashion Accessories" = "Perhiasan Fesyen";
-"Sarawak - Based" = "Sarawak - Berasas";
+"Sarawak - Based Product" = "Produk Sarawak";
+"Self Pick-up" = "Ambil Sendiri";
 
 "Add to Cart" = "Masukkan ke Troli";
 "Added to Cart" = "Masukkan ke Troli";

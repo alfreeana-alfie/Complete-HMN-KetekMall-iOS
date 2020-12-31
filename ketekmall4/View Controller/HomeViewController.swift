@@ -207,116 +207,40 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_READ_HOT = "https://ketekmall.com/ketekmall/category/readall_sold.php"
     let URL_READ_SHOCKING_SALE = "https://ketekmall.com/ketekmall/category/readall_shocking.php"
     
-//    let URL_READ_CAKE = "https://ketekmall.com/ketekmall/category/read_cake.php"
-    let URL_READ_PROCESS = "https://ketekmall.com/ketekmall/category/read_process.php"
-    let URL_READ_HEALTH = "https://ketekmall.com/ketekmall/category/read_health.php"
-    let URL_READ_HANDICRAFT = "https://ketekmall.com/ketekmall/category/read_handicraft.php"
-    let URL_READ_HOMELIVING = "https://ketekmall.com/ketekmall/category/read_home.php"
-//    let URL_READ_RETAIL = "https://ketekmall.com/ketekmall/category/read_retail.php"
-//    let URL_READ_AGRICULTURE = "https://ketekmall.com/ketekmall/category/read_agri.php"
-    let URL_READ_SARAWAKBASED = "https://ketekmall.com/ketekmall/category/read_pepper.php"
-//    let URL_READ_SERVICE = "https://ketekmall.com/ketekmall/category/read_service.php"
-    let URL_READ_FASHION = "https://ketekmall.com/ketekmall/category/read_fashion.php"
-    let URL_READ_VIEWALL = "https://ketekmall.com/ketekmall/category/readall.php"
-    
-//    let URL_SEARCH_CAKE = "https://ketekmall.com/ketekmall/search/read_cake.php"
-    let URL_SEARCH_PROCESS = "https://ketekmall.com/ketekmall/search/read_process.php"
-    let URL_SEARCH_HEALTH = "https://ketekmall.com/ketekmall/search/read_health.php"
-    let URL_SEARCH_HANDICRAFT = "https://ketekmall.com/ketekmall/search/read_handicraft.php"
-    let URL_SEARCH_HOMELIVING = "https://ketekmall.com/ketekmall/search/read_home.php"
-//    let URL_SEARCH_RETAIL = "https://ketekmall.com/ketekmall/search/read_retail.php"
-//    let URL_SEARCH_AGRICULTURE = "https://ketekmall.com/ketekmall/search/read_agri.php"
-    let URL_SEARCH_SARAWAKBASED = "https://ketekmall.com/ketekmall/search/read_pepper.php"
-//    let URL_SEARCH_SERVICE = "https://ketekmall.com/ketekmall/search/read_service.php"
-    let URL_SEARCH_FASHION = "https://ketekmall.com/ketekmall/search/read_fashion.php"
-    let URL_SEARCH_VIEWALL = "https://ketekmall.com/ketekmall/search/readall.php"
-    let URL_SEARCH_HOT = "https://ketekmall.com/ketekmall/search/readall_sold.php"
-    let URL_SEARCH_SHOCKING_SALE = "https://ketekmall.com/ketekmall/search/readall_shocking.php"
-    
-//    let URL_FILTER_DIVISION_CAKE = "https://ketekmall.com/ketekmall/filter_division/read_cake.php"
-    let URL_FILTER_DIVISION_PROCESS = "https://ketekmall.com/ketekmall/filter_division/read_process.php"
-    let URL_FILTER_DIVISION_HEALTH = "https://ketekmall.com/ketekmall/filter_division/read_health.php"
-    let URL_FILTER_DIVISION_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_division/read_handicraft.php"
-    let URL_FILTER_DIVISION_HOMELIVING = "https://ketekmall.com/ketekmall/filter_division/read_home.php"
-//    let URL_FILTER_DIVISION_RETAIL = "https://ketekmall.com/ketekmall/filter_division/read_retail.php"
-//    let URL_FILTER_DIVISION_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_division/read_agri.php"
-    let URL_FILTER_DIVISION_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_division/read_pepper.php"
-//    let URL_FILTER_DIVISION_SERVICE = "https://ketekmall.com/ketekmall/filter_division/read_service.php"
-    let URL_FILTER_DIVISION_FASHION = "https://ketekmall.com/ketekmall/filter_division/read_fashion.php"
-    let URL_FILTER_DIVISION_VIEWALL = "https://ketekmall.com/ketekmall/filter_division/readall.php"
-    let URL_FILTER_DIVISION_HOT = "https://ketekmall.com/ketekmall/filter_division/readall_sold.php"
-    let URL_FILTER_DIVISION_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_division/readall_shocking.php"
-    
-//    let URL_FILTER_DISTRICT_CAKE = "https://ketekmall.com/ketekmall/filter_district/read_cake.php"
-    let URL_FILTER_DISTRICT_PROCESS = "https://ketekmall.com/ketekmall/filter_district/read_process.php"
-    let URL_FILTER_DISTRICT_HEALTH = "https://ketekmall.com/ketekmall/filter_district/read_health.php"
-    let URL_FILTER_DISTRICT_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_district/read_handicraft.php"
-    let URL_FILTER_DISTRICT_HOMELIVING = "https://ketekmall.com/ketekmall/filter_district/read_home.php"
-//    let URL_FILTER_DISTRICT_RETAIL = "https://ketekmall.com/ketekmall/filter_district/read_retail.php"
-//    let URL_FILTER_DISTRICT_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_district/read_agri.php"
-    let URL_FILTER_DISTRICT_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_district/read_pepper.php"
-//    let URL_FILTER_DISTRICT_SERVICE = "https://ketekmall.com/ketekmall/filter_district/read_service.php"
-    let URL_FILTER_DISTRICT_FASHION = "https://ketekmall.com/ketekmall/filter_district/read_fashion.php"
-    let URL_FILTER_DISTRICT_VIEWALL = "https://ketekmall.com/ketekmall/filter_district/readall.php"
-    let URL_FILTER_DISTRICT_HOT = "https://ketekmall.com/ketekmall/filter_district/readall_sold.php"
-    let URL_FILTER_DISTRICT_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_district/readall_shocking.php"
-    
-//    let URL_FILTER_SEARCH_DIVISION_CAKE = "https://ketekmall.com/ketekmall/filter_search_division/read_cake.php"
-    let URL_FILTER_SEARCH_DIVISION_PROCESS = "https://ketekmall.com/ketekmall/filter_search_division/read_process.php"
-    let URL_FILTER_SEARCH_DIVISION_HEALTH = "https://ketekmall.com/ketekmall/filter_search_division/read_health.php"
-    let URL_FILTER_SEARCH_DIVISION_HANDICRAFT = "https://ketekmall.com/ketekmall/filter_search_division/read_handicraft.php"
-    let URL_FILTER_SEARCH_DIVISION_HOMELIVING = "https://ketekmall.com/ketekmall/filter_search_division/read_home.php"
-//    let URL_FILTER_SEARCH_DIVISION_RETAIL = "https://ketekmall.com/ketekmall/filter_search_division/read_retail.php"
-//    let URL_FILTER_SEARCH_DIVISION_AGRICULTURE = "https://ketekmall.com/ketekmall/filter_search_division/read_agri.php"
-    let URL_FILTER_SEARCH_DIVISION_SARAWAKBASED = "https://ketekmall.com/ketekmall/filter_search_division/read_pepper.php"
-//    let URL_FILTER_SEARCH_DIVISION_SERVICE = "https://ketekmall.com/ketekmall/filter_search_division/read_service.php"
-    let URL_FILTER_SEARCH_DIVISION_FASHION = "https://ketekmall.com/ketekmall/filter_search_division/read_fashion.php"
-    let URL_FILTER_SEARCH_DIVISION_VIEWALL = "https://ketekmall.com/ketekmall/filter_search_division/readall.php"
-    let URL_FILTER_SEARCH_DIVISION_HOT = "https://ketekmall.com/ketekmall/filter_search_division/readall_sold.php"
-    let URL_FILTER_SEARCH_DIVISION_SHOCKING_SALE = "https://ketekmall.com/ketekmall/filter_search_division/readall_shocking.php"
-    
-    let URL_PRICE_UP_READALL = "https://ketekmall.com/ketekmall/price_up/readall.php"
-//    let URL_PRICE_UP_CAKE = "https://ketekmall.com/ketekmall/price_up/read_cake.php"
-    let URL_PRICE_UP_PROCESS = "https://ketekmall.com/ketekmall/price_up/read_process.php"
-    let URL_PRICE_UP_HEALTH = "https://ketekmall.com/ketekmall/price_up/read_health.php"
-    let URL_PRICE_UP_HANDICRAFT = "https://ketekmall.com/ketekmall/price_up/read_handicraft.php"
-    let URL_PRICE_UP_HOMELIVING = "https://ketekmall.com/ketekmall/price_up/read_home.php"
-//    let URL_PRICE_UP_RETAIL = "https://ketekmall.com/ketekmall/price_up/read_retail.php"
-//    let URL_PRICE_UP_AGRICULTURE = "https://ketekmall.com/ketekmall/price_up/read_agri.php"
-    let URL_PRICE_UP_SARAWAKBASED = "https://ketekmall.com/ketekmall/price_up/read_pepper.php"
-//    let URL_PRICE_UP_SERVICE = "https://ketekmall.com/ketekmall/price_up/read_service.php"
-    let URL_PRICE_UP_FASHION = "https://ketekmall.com/ketekmall/price_up/read_fashion.php"
-    let URL_PRICE_UP_VIEWALL = "https://ketekmall.com/ketekmall/price_up/readall.php"
-    let URL_PRICE_UP_HOT = "https://ketekmall.com/ketekmall/price_up/readall_sold.php"
-    let URL_PRICE_UP_SHOCKING_SALE = "https://ketekmall.com/ketekmall/price_up/readall_shocking.php"
-    
-    let URL_PRICE_DOWN_READALL = "https://ketekmall.com/ketekmall/price_down/readall.php"
-//    let URL_PRICE_DOWN_CAKE = "https://ketekmall.com/ketekmall/price_down/read_cake.php"
-    let URL_PRICE_DOWN_PROCESS = "https://ketekmall.com/ketekmall/price_down/read_process.php"
-    let URL_PRICE_DOWN_HEALTH = "https://ketekmall.com/ketekmall/price_down/read_health.php"
-    let URL_PRICE_DOWN_HANDICRAFT = "https://ketekmall.com/ketekmall/price_down/read_handicraft.php"
-    let URL_PRICE_DOWN_HOMELIVING = "https://ketekmall.com/ketekmall/price_down/read_home.php"
-//    let URL_PRICE_DOWN_RETAIL = "https://ketekmall.com/ketekmall/price_down/read_retail.php"
-//    let URL_PRICE_DOWN_AGRICULTURE = "https://ketekmall.com/ketekmall/price_down/read_agri.php"
-    let URL_PRICE_DOWN_SARAWAKBASED = "https://ketekmall.com/ketekmall/price_down/read_pepper.php"
-//    let URL_PRICE_DOWN_SERVICE = "https://ketekmall.com/ketekmall/price_down/read_service.php"
-    let URL_PRICE_DOWN_FASHION = "https://ketekmall.com/ketekmall/price_down/read_fashion.php"
-    let URL_PRICE_DOWN_VIEWALL = "https://ketekmall.com/ketekmall/price_down/readall.php"
-    let URL_PRICE_DOWN_HOT = "https://ketekmall.com/ketekmall/price_down/readall_sold.php"
-    let URL_PRICE_DOWN_SHOCKING_SALE = "https://ketekmall.com/ketekmall/price_down/readall_shocking.php"
     
     let URL_READ_CHAT = "https://ketekmall.com/ketekmall/read_chat.php"
     
-//    @IBOutlet weak var CakePastries: UIView!
+    let URL_READ_CATEGORY_MAIN = "https://ketekmall.com/ketekmall/category/"
+    let URL_READ_CATEGORY_SEARCH_MAIN = "https://ketekmall.com/ketekmall/search/"
+    let URL_READ_CATEGORY_FILTER_DISTRICT_MAIN = "https://ketekmall.com/ketekmall/filter_district/"
+    let URL_READ_CATEGORY_FILTER_DIVISION_MAIN = "https://ketekmall.com/ketekmall/filter_division/"
+    let URL_READ_CATEGORY_FILTER_SEARCH_MAIN = "https://ketekmall.com/ketekmall/filter_search_division/"
+    let URL_READ_CATEGORY_PRICE_UP = "https://ketekmall.com/ketekmall/price_up/"
+    let URL_READ_CATEGORY_PRICE_DOWN = "https://ketekmall.com/ketekmall/price_down/"
+    
+    var CATEGORYLIST: [String] = ["read_cake.php",
+                                  "read_process.php",
+                                  "read_handicraft.php",
+                                  "read_retail.php",
+                                  "read_agri.php",
+                                  "read_service.php",
+                                  "read_health.php",
+                                  "read_home.php",
+                                  "read_fashion.php",
+                                  "read_pepper.php",
+                                  "readall.php",
+                                  "readall_sold.php",
+                                  "readall_shocking.php",
+                                  "read_pickup.php"]
+    
     @IBOutlet weak var ProcessFood: UIView!
     @IBOutlet weak var HealthBeauty: UIView!
     @IBOutlet weak var Handicraft: UIView!
     @IBOutlet weak var HomeLiving: UIView!
-//    @IBOutlet weak var Retail: UIView!
-//    @IBOutlet weak var Agriculture: UIView!
+    @IBOutlet weak var Pickup: UIView!
     @IBOutlet weak var SarawakBased: UIView!
-//    @IBOutlet weak var Service: UIView!
     @IBOutlet weak var Fashion: UIView!
+    
     @IBOutlet weak var HotView: UICollectionView!
     @IBOutlet weak var ShockingView: UICollectionView!
     @IBOutlet weak var UserImage: UIImageView!
@@ -327,17 +251,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var ChatViewNav: UIView!
     
     @IBOutlet weak var VerifyView: UIView!
-//    @IBOutlet weak var ButtonCake: UIButton!
-    @IBOutlet weak var ButtonProcess: UIButton!
-    @IBOutlet weak var ButtonHealth: UIButton!
-    @IBOutlet weak var ButtonHandicraft: UIButton!
-    @IBOutlet weak var ButtonHome: UIButton!
-//    @IBOutlet weak var ButtonRetail: UIButton!
-//    @IBOutlet weak var ButtonAgri: UIButton!
-    @IBOutlet weak var ButtonSarawak: UIButton!
-    @IBOutlet weak var ButtonSarawak2: UIButton!
-//    @IBOutlet weak var ButtonService: UIButton!
-    @IBOutlet weak var ButtonFashion: UIButton!
+    
+    @IBOutlet weak var ButtonProcess: UITextView!
+    @IBOutlet weak var ButtonHealth: UITextView!
+    @IBOutlet weak var ButtonHandicraft: UITextView!
+    @IBOutlet weak var ButtonHome: UITextView!
+    @IBOutlet weak var ButtonSarawak: UITextView!
+    @IBOutlet weak var ButtonFashion: UITextView!
+    @IBOutlet weak var ButtonPickup: UITextView!
     
     @IBOutlet weak var BrowseCate: UILabel!
     @IBOutlet weak var ShockingLabel: UILabel!
@@ -462,11 +383,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         UserImage.layer.masksToBounds = true
         VerifyView.layer.cornerRadius = 7
         
-//        CakePastries.layer.cornerRadius = 10
-//        CakePastries.layer.shadowOpacity = 1
-//        CakePastries.layer.shadowOffset = .zero
-//        CakePastries.layer.shadowRadius = 0.5
-        
         ProcessFood.layer.cornerRadius = 10
         ProcessFood.layer.shadowOpacity = 1
         ProcessFood.layer.shadowOffset = .zero
@@ -487,40 +403,27 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         HomeLiving.layer.shadowOffset = .zero
         HomeLiving.layer.shadowRadius = 0.5
         
-//        Retail.layer.cornerRadius = 10
-//        Retail.layer.shadowOpacity = 1
-//        Retail.layer.shadowOffset = .zero
-//        Retail.layer.shadowRadius = 0.5
-//
-//        Agriculture.layer.cornerRadius = 10
-//        Agriculture.layer.shadowOpacity = 1
-//        Agriculture.layer.shadowOffset = .zero
-//        Agriculture.layer.shadowRadius = 0.5
-        
         SarawakBased.layer.cornerRadius = 10
         SarawakBased.layer.shadowOpacity = 1
         SarawakBased.layer.shadowOffset = .zero
         SarawakBased.layer.shadowRadius = 0.5
         
-//        Service.layer.cornerRadius = 10
-//        Service.layer.shadowOpacity = 1
-//        Service.layer.shadowOffset = .zero
-//        Service.layer.shadowRadius = 0.5
+        Pickup.layer.cornerRadius = 10
+        Pickup.layer.shadowOpacity = 1
+        Pickup.layer.shadowOffset = .zero
+        Pickup.layer.shadowRadius = 0.5
         
         Fashion.layer.cornerRadius = 10
         Fashion.layer.shadowOpacity = 1
         Fashion.layer.shadowOffset = .zero
         Fashion.layer.shadowRadius = 0.5
         
-//        CakePastries.isUserInteractionEnabled = true
         ProcessFood.isUserInteractionEnabled = true
         HealthBeauty.isUserInteractionEnabled = true
         Handicraft.isUserInteractionEnabled = true
         HomeLiving.isUserInteractionEnabled = true
-//        Retail.isUserInteractionEnabled = true
-//        Agriculture.isUserInteractionEnabled = true
         SarawakBased.isUserInteractionEnabled = true
-//        Service.isUserInteractionEnabled = true
+        Pickup.isUserInteractionEnabled = true
         Fashion.isUserInteractionEnabled = true
         FindBar.isUserInteractionEnabled = true
         CartBar.isUserInteractionEnabled = true
@@ -530,31 +433,24 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let CartClick = UITapGestureRecognizer(target: self, action: #selector(onCartBarClick(sender:)))
         let ListClick = UITapGestureRecognizer(target: self, action: #selector(onListClick(sender:)))
 
-//        let CakeClick = UITapGestureRecognizer(target: self, action: #selector(onCake(sender:)))
         let ProcessClick = UITapGestureRecognizer(target: self, action: #selector(onProcess(sender:)))
         let HealthClick = UITapGestureRecognizer(target: self, action: #selector(onHealth))
         let HandicraftClick = UITapGestureRecognizer(target: self, action: #selector(onHandicraft(sender:)))
         let HomeLivingClick = UITapGestureRecognizer(target: self, action: #selector(onHomeLiving(sender:)))
-//        let RetailClick = UITapGestureRecognizer(target: self, action: #selector(onRetail(sender:)))
-//        let AgricultureClick = UITapGestureRecognizer(target: self, action: #selector(onAgriculture(sender:)))
         let SarawakClick = UITapGestureRecognizer(target: self, action: #selector(onSarawakBased(sender:)))
-//        let ServiceClick = UITapGestureRecognizer(target: self, action: #selector(onService(sender:)))
+        let PickupClick = UITapGestureRecognizer(target: self, action: #selector(onPickup(sender:)))
         let FashionClick = UITapGestureRecognizer(target: self, action: #selector(onFashion(sender:)))
         
         FindBar.addGestureRecognizer(FindClick)
         CartBar.addGestureRecognizer(CartClick)
         ListBar.addGestureRecognizer(ListClick)
-//        CakePastries.addGestureRecognizer(CakeClick)
         ProcessFood.addGestureRecognizer(ProcessClick)
         HealthBeauty.addGestureRecognizer(HealthClick)
         Handicraft.addGestureRecognizer(HandicraftClick)
         HomeLiving.addGestureRecognizer(HomeLivingClick)
-//        Retail.addGestureRecognizer(RetailClick)
-//        Agriculture.addGestureRecognizer(AgricultureClick)
         SarawakBased.addGestureRecognizer(SarawakClick)
-//        Service.addGestureRecognizer(ServiceClick)
+        Pickup.addGestureRecognizer(PickupClick)
         Fashion.addGestureRecognizer(FashionClick)
-          
 
         if(user != "0"){
             getUserDetails(userID: String(user))
@@ -747,7 +643,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         SellButton.setTitle("SELL".localized(lang: str), for: .normal)
         FindButton.setTitle("FIND".localized(lang: str), for: .normal)
         WelcomeLabel.text = "Welcome!".localized(lang: str)
-        BuyLabel.text = "BUY. SELL. FIND. ALMOST EVERYTHING".localized(lang: str)
+        BuyLabel.text = "GREAT STORE.GREAT CHOICE".localized(lang: str)
         Verify.text = "VERIFICATION".localized(lang: str)
         if(Verify.text == "SELLER"){
             Verify.text = "SELLER".localized(lang: str)
@@ -762,18 +658,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ViewAllHot.setTitle("VIEW ALL".localized(lang: str), for: .normal)
         ViewAllButton.setTitle("VIEW ALL".localized(lang: str), for: .normal)
         ViewAllShocking.setTitle("VIEW ALL".localized(lang: str), for: .normal)
-
-//        ButtonCake.setTitle("Cake and pastries".localized(lang: str), for: .normal)
-//        ButtonAgri.setTitle("Agriculture".localized(lang: str), for: .normal)
-        ButtonHome.setTitle("Home and living".localized(lang: str), for: .normal)
-        ButtonHealth.setTitle("Health and Beauty".localized(lang: str), for: .normal)
-//        ButtonRetail.setTitle("Retail and Wholesale".localized(lang: str), for: .normal)
-        ButtonFashion.setTitle("Fashion Accessories".localized(lang: str), for: .normal)
-        ButtonProcess.setTitle("Process Food".localized(lang: str), for: .normal)
-        ButtonSarawak.setTitle("Sarawak - Based".localized(lang: str), for: .normal)
-        ButtonSarawak2.setTitle("Products".localized(lang: str), for: .normal)
-//        ButtonService.setTitle("Service".localized(lang: str), for: .normal)
-        ButtonHandicraft.setTitle("Handicraft".localized(lang: str), for: .normal)
+        
+        ButtonProcess.text = "Process Food".localized(lang: str)
+        ButtonFashion.text = "Fashion Accessories".localized(lang: str)
+        ButtonHandicraft.text = "Handicraft".localized(lang: str)
+        ButtonSarawak.text = "Sarawak - Based Product".localized(lang: str)
+        ButtonHealth.text = "Health and Beauty".localized(lang: str)
+        ButtonPickup.text = "Self Pick-up".localized(lang: str)
+        ButtonHome.text = "Home and Living".localized(lang: str)
+        
     
         Tabbar.items?[0].title = "Home".localized(lang: str)
         Tabbar.items?[1].title = "Notification".localized(lang: str)
@@ -799,13 +692,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_VIEWALL
-        click.URL_SEARCH = URL_SEARCH_VIEWALL
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[10]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[10]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[10]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[10]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[10]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[10]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[10]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -815,13 +708,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_HOT
-        click.URL_SEARCH = URL_SEARCH_HOT
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HOT
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HOT
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HOT
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HOT
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HOT
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[11]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[11]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[11]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[11]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[11]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[11]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[11]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -831,13 +724,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_SHOCKING_SALE
-        click.URL_SEARCH = URL_SEARCH_SHOCKING_SALE
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SHOCKING_SALE
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_SHOCKING_SALE
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_SHOCKING_SALE
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_SHOCKING_SALE
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_SHOCKING_SALE
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[12]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[12]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[12]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[12]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[12]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[12]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[12]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -908,13 +801,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_VIEWALL
-        click.URL_SEARCH = URL_SEARCH_VIEWALL
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_VIEWALL
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_VIEWALL
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_VIEWALL
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_READALL
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_READALL
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[10]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[10]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[10]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[10]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[10]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[10]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[10]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -935,33 +828,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-//    @objc func onCake(sender: Any){
-////        let tabbar = tabBarController as! BaseTabBarController
-//        let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
-//        click.UserID = String(user)
-//        click.URL_READ = URL_READ_CAKE
-//        click.URL_SEARCH = URL_SEARCH_CAKE
-//        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_CAKE
-//        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_CAKE
-//        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_CAKE
-//        click.URL_PRICE_UP_READALL = URL_PRICE_UP_CAKE
-//        click.URL_PRICE_DOWN = URL_PRICE_DOWN_CAKE
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(click, animated: true)
-//        }
-//    }
     @objc func onProcess(sender: Any){
         print("Success")
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_PROCESS
-        click.URL_SEARCH = URL_SEARCH_PROCESS
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_PROCESS
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_PROCESS
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_PROCESS
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_PROCESS
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_PROCESS
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[1]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[1]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[1]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[1]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[1]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[1]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[1]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -971,13 +849,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_HEALTH
-        click.URL_SEARCH = URL_SEARCH_HEALTH
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HEALTH
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HEALTH
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HEALTH
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HEALTH
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HEALTH
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[6]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[6]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[6]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[6]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[6]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[6]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[6]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -987,13 +865,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_HANDICRAFT
-        click.URL_SEARCH = URL_SEARCH_HANDICRAFT
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HANDICRAFT
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HANDICRAFT
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HANDICRAFT
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HANDICRAFT
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HANDICRAFT
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[2]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[2]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[2]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[2]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[2]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[2]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[2]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -1003,93 +881,61 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_HOMELIVING
-        click.URL_SEARCH = URL_SEARCH_HOMELIVING
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_HOMELIVING
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_HOMELIVING
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_HOMELIVING
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_HOMELIVING
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_HOMELIVING
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[7]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[7]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[7]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[7]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[7]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[7]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[7]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
     }
-//    @objc func onRetail(sender: Any){
-//        print("Success")
-////        let tabbar = tabBarController as! BaseTabBarController
-//        let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
-//        click.UserID = String(user)
-//        click.URL_READ = URL_READ_RETAIL
-//        click.URL_SEARCH = URL_SEARCH_RETAIL
-//        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_RETAIL
-//        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_RETAIL
-//        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_RETAIL
-//        click.URL_PRICE_UP_READALL = URL_PRICE_UP_RETAIL
-//        click.URL_PRICE_DOWN = URL_PRICE_DOWN_RETAIL
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(click, animated: true)
-//        }
-//    }
-//    @objc func onAgriculture(sender: Any){
-//        print("Success")
-////        let tabbar = tabBarController as! BaseTabBarController
-//        let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
-//        click.UserID = String(user)
-//        click.URL_READ = URL_READ_AGRICULTURE
-//        click.URL_SEARCH = URL_SEARCH_AGRICULTURE
-//        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_AGRICULTURE
-//        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_AGRICULTURE
-//        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_AGRICULTURE
-//        click.URL_PRICE_UP_READALL = URL_PRICE_UP_AGRICULTURE
-//        click.URL_PRICE_DOWN = URL_PRICE_DOWN_AGRICULTURE
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(click, animated: true)
-//        }
-//    }
     @objc func onSarawakBased(sender: Any){
         print("Success")
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_SARAWAKBASED
-        click.URL_SEARCH = URL_SEARCH_SARAWAKBASED
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SARAWAKBASED
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_SARAWAKBASED
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_SARAWAKBASED
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_SARAWAKBASED
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_SARAWAKBASED
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[9]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[9]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[9]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[9]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[9]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[9]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[9]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
     }
-//    @objc func onService(sender: Any){
-//        print("Success")
-////        let tabbar = tabBarController as! BaseTabBarController
-//        let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
-//        click.UserID = String(user)
-//        click.URL_READ = URL_READ_SERVICE
-//        click.URL_SEARCH = URL_SEARCH_SERVICE
-//        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_SERVICE
-//        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_SERVICE
-//        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_SERVICE
-//        click.URL_PRICE_UP_READALL = URL_PRICE_UP_SERVICE
-//        click.URL_PRICE_DOWN = URL_PRICE_DOWN_SERVICE
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(click, animated: true)
-//        }
-//    }
     @objc func onFashion(sender: Any){
         print("Success")
 //        let tabbar = tabBarController as! BaseTabBarController
         let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         click.UserID = String(user)
-        click.URL_READ = URL_READ_FASHION
-        click.URL_SEARCH = URL_SEARCH_FASHION
-        click.URL_FILTER_DIVISION = URL_FILTER_DIVISION_FASHION
-        click.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT_FASHION
-        click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_FASHION
-        click.URL_PRICE_UP_READALL = URL_PRICE_UP_FASHION
-        click.URL_PRICE_DOWN = URL_PRICE_DOWN_FASHION
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[8]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[8]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[8]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[8]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[8]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[8]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[8]
+        if let navigator = self.navigationController {
+            navigator.pushViewController(click, animated: true)
+        }
+    }
+    @objc func onPickup(sender: Any){
+        print("Success")
+//        let tabbar = tabBarController as! BaseTabBarController
+        let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
+        click.UserID = String(user)
+        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[13]
+        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[13]
+        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[13]
+        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[13]
+        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[13]
+        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[13]
+        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[13]
         if let navigator = self.navigationController {
             navigator.pushViewController(click, animated: true)
         }
@@ -1135,7 +981,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func HotSelling(){
         spinner.show(in: self.HotView)
-        Alamofire.request(URL_READ_HOT, method: .post).responseJSON
+        Alamofire.request(URL_READ_CATEGORY_MAIN + CATEGORYLIST[11], method: .post).responseJSON
             {
                 response in
                 if let result = response.result.value{
@@ -1188,7 +1034,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func ShockingSale(){
         spinner.show(in: self.ShockingView)
-            Alamofire.request(URL_READ_SHOCKING_SALE, method: .post).responseJSON
+            Alamofire.request(URL_READ_CATEGORY_MAIN + CATEGORYLIST[12], method: .post).responseJSON
                 {
                     response in
                     self.spinner.dismiss(afterDelay: 3.0)
@@ -1299,7 +1145,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.PRICE = self.PRICEHOT[indexPath.row]
         viewProduct.POSTCODE = self.POSTCODEHOT[indexPath.row]
         viewProduct.WEIGHT = self.WEIGHTHOT[indexPath.row]
-//        viewProduct.RATING = self.RATINGHOT[indexPath.row]
         viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]

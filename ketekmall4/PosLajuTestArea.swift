@@ -8,11 +8,16 @@
 
 import UIKit
 import PDFKit
+import Alamofire
 
 class PosLajuTestArea: UIViewController {
     
     let pageWidth = 420;
     let pageHeight = 595;
+    
+    //URL
+    let URL_ONESIGNAL = "https://ketekmall.com/ketekmall/onesignal_noti.php"
+    let ONESIGNAL_ID = "6236bfc3-df4d-4f44-82d6-754332044779"
     
     //INFORMATION
     var DATE: String = "";
@@ -405,5 +410,29 @@ class PosLajuTestArea: UIViewController {
         }
 
         return nil
+    }
+    
+    func OneSignalNotification(){
+        let parameters: Parameters=[
+            "PlayerID": "",
+            "Name": "Sell",
+            "Words": "You did it!"
+        ]
+        
+        Alamofire.request(URL_ONESIGNAL, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        
+                    }
+                }else{
+                    
+                    print("FAILED")
+                }
+                
+        }
     }
 }

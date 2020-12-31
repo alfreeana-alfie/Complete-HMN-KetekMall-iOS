@@ -39,20 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         return true
     }
 
-//    func registerForPushNotifications() {
-//        UNUserNotificationCenter.current().delegate = self
-//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-//            (granted, error) in
-//            print("Permission granted: \(granted)")
-//            // 1. Check if permission granted
-//            guard granted else { return }
-//            // 2. Attempt registration for remote notifications on the main thread
-//            DispatchQueue.main.async {
-//                UIApplication.shared.registerForRemoteNotifications()
-//            }
-//        }
-//    }
-    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
     }
     
@@ -76,22 +62,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         indicator.alpha = 1.00
      }
     
-     func showIndicator(){
-        //show the Indicator
-         indicator.startAnimating()
-         window?.addSubview(indicator)
+    func showIndicator(){
+    //show the Indicator
+        indicator.startAnimating()
+        window?.addSubview(indicator)
 
-     }
+    }
      
-     func hideIndicator(){
-         //Hide the Indicator
-         indicator.stopAnimating()
-         indicator.removeFromSuperview()
-     }
+    func hideIndicator(){
+        //Hide the Indicator
+        indicator.stopAnimating()
+        indicator.removeFromSuperview()
+    }
     
-    
-    
-
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)
