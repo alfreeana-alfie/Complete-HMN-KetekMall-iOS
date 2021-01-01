@@ -20,6 +20,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     let URL_REJECT = "https://ketekmall.com/ketekmall/edit_order.php"
     let URL_READ_CUSTOMER = "https://ketekmall.com/ketekmall/read_detail.php"
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_reject.php"
+    let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
+    let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
     
     var item_photo: [String] = []
     var ad_Detail: [String] = []
@@ -196,28 +198,28 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             cell.ButtonReject.setTitle("REJECT".localized(lang: "en"), for: .normal)
         }
         
-//        let color1 = UIColor(hexString: "#FC4A1A").cgColor
-//        let color2 = UIColor(hexString: "#F7B733").cgColor
-//        
-//        let ReceivedGradient = CAGradientLayer()
-//        ReceivedGradient.frame = cell.ButtonView.bounds
-//        ReceivedGradient.colors = [color1, color2]
-//        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ReceivedGradient.cornerRadius = 5
-//            cell.ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
-//        
-//        //Button Cancel
-//        let color3 = UIColor(hexString: "#FC4A1A").cgColor
-//        let color4 = UIColor(hexString: "#F7B733").cgColor
-//        
-//        let CancelGradient = CAGradientLayer()
-//        CancelGradient.frame = cell.ButtonReject.bounds
-//        CancelGradient.colors = [color3, color4]
-//        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        CancelGradient.cornerRadius = 5
-//        cell.ButtonReject.layer.insertSublayer(CancelGradient, at: 0)
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = cell.ButtonView.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+            cell.ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
+        
+        //Button Cancel
+        let color3 = UIColor(hexString: "#FC4A1A").cgColor
+        let color4 = UIColor(hexString: "#F7B733").cgColor
+        
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = cell.ButtonReject.bounds
+        CancelGradient.colors = [color3, color4]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 5
+        cell.ButtonReject.layer.insertSublayer(CancelGradient, at: 0)
         cell.delegate = self
         return cell
     }
@@ -227,7 +229,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             return
         }
         
-        let CustEmail = self.customer_id[indexPath.row]
+        let CustID = self.customer_id[indexPath.row]
         let Order_ID = self.item_orderID[indexPath.row]
         let Order_Date = self.order_date[indexPath.row]
         let Remarks = "Reject"
@@ -247,11 +249,13 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        self.getCustomerDetails(CustomerID: CustEmail, OrderID: Order_ID)
+                        self.getCustomerDetails(CustomerID: CustID, OrderID: Order_ID)
                         self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
                         self.spinner.textLabel.text = "Successfully Rejected"
                         self.spinner.show(in: self.view)
                         self.spinner.dismiss(afterDelay: 4.0)
+                        
+                        self.GetPlayerData(CustomerID: CustID, OrderID: Order_ID)
                     }
                 }
         }
@@ -286,6 +290,52 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         MySelling.WEIGHT = self.weight[indexPath.row]
         if let navigator = self.navigationController {
             navigator.pushViewController(MySelling, animated: true)
+        }
+    }
+    
+    func GetPlayerData(CustomerID: String, OrderID: String){
+        let parameters: Parameters=[
+            "UserID": CustomerID
+        ]
+        
+        Alamofire.request(URL_GET_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        _ = user.value(forKey: "UserID") as! [String]
+                        
+                        self.OneSignalNoti(PlayerID: PlayerID[0], Name: Name[0], OrderID: OrderID)
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func OneSignalNoti(PlayerID: String, Name: String, OrderID: String){
+        let parameters: Parameters=[
+            "PlayerID": PlayerID,
+            "Name": Name,
+            "Words": "Order KM" + OrderID + " have been rejected! Please contact respective Seller for more details."
+        ]
+        
+        Alamofire.request(URL_NOTI, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+            if response.result.value != nil{
+                    print("ONESIGNAL SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+                
         }
     }
 }

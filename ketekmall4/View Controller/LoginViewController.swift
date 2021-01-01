@@ -56,7 +56,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     let appleProvider = AppleSignInClient()
     
     override func viewWillAppear(_ animated: Bool) {
-//        ColorFunc()
+        ColorFunc()
 //        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     

@@ -1,6 +1,0 @@
-framework module Pods_ketekmall4 {
-  umbrella header "Pods-ketekmall4-umbrella.h"
-
-  export *
-  module * { export * }
-}

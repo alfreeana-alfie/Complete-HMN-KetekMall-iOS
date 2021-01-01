@@ -15,6 +15,8 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_remarks_done.php"
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_received.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
+    let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
+    let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
     
     private let spinner = JGProgressHUD(style: .dark)
     let sharedPref = UserDefaults.standard
@@ -107,6 +109,8 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
                         
                         self.getSellerDetails(SellerID: self.SELLERID, OrderID: self.ORDERID)
                         
+                        self.GetPlayerData(CustomerID: self.SELLERID, OrderID: self.ORDERID)
+                        
                         let ReviewProduct = self.storyboard!.instantiateViewController(withIdentifier: "AddReviewViewController") as! AddReviewViewController                        
                         ReviewProduct.USERID = self.USERID
                         ReviewProduct.ITEMID = self.itemID
@@ -168,9 +172,9 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -341,16 +345,16 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     }
     
     func ColorFunc(){
-        let colorView1 = UIColor(hexString: "#FC4A1A").cgColor
-        let colorView2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let l = CAGradientLayer()
-        l.frame = self.view.bounds
-        l.colors = [colorView1, colorView2]
-        l.startPoint = CGPoint(x: 0, y: 0.5)
-        l.endPoint = CGPoint(x: 1, y: 0.5)
-        l.cornerRadius = 16
-        self.view.layer.insertSublayer(l, at: 0)
+//        let colorView1 = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorView2 = UIColor(hexString: "#F7B733").cgColor
+//
+//        let l = CAGradientLayer()
+//        l.frame = self.view.bounds
+//        l.colors = [colorView1, colorView2]
+//        l.startPoint = CGPoint(x: 0, y: 0.5)
+//        l.endPoint = CGPoint(x: 1, y: 0.5)
+//        l.cornerRadius = 16
+//        self.view.layer.insertSublayer(l, at: 0)
         
         let color1 = UIColor(hexString: "#FC4A1A").cgColor
         let color2 = UIColor(hexString: "#F7B733").cgColor
@@ -362,6 +366,52 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
         ReceivedGradient.cornerRadius = 16
         ButtonReceived.layer.insertSublayer(ReceivedGradient, at: 0)
+    }
+    
+    func GetPlayerData(CustomerID: String, OrderID: String){
+        let parameters: Parameters=[
+            "UserID": CustomerID
+        ]
+        
+        Alamofire.request(URL_GET_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        _ = user.value(forKey: "UserID") as! [String]
+                        
+                        self.OneSignalNoti(PlayerID: PlayerID[0], Name: Name[0], OrderID: OrderID)
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func OneSignalNoti(PlayerID: String, Name: String, OrderID: String){
+        let parameters: Parameters=[
+            "PlayerID": PlayerID,
+            "Name": Name,
+            "Words": "Order KM" + OrderID + " have been received! Please check My Selling for more details."
+        ]
+        
+        Alamofire.request(URL_NOTI, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+            if response.result.value != nil{
+                    print("ONESIGNAL SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+                
+        }
     }
     
     @objc func onTrackClick(sender: Any){

@@ -17,16 +17,21 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
     var viewController1: UIViewController?
     
     let sharedPref = UserDefaults.standard
-    var user: String = ""
+    var UserID: String = ""
     var name: String = ""
     var email: String = ""
     
+    
+    
     let URL_USER = "https://click-1595830894120.firebaseio.com/users.json"
     let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
+    let URL_READ_USER_DETAIL = "https://ketekmall.com/ketekmall/getNotificationDetail.php"
     
     var USERNAME: [String] = []
     var USERIMAGE: [String] = []
     var USERTOKEN: [String] = []
+    var ChatID: [String] = []
+    var ChatName: [String] = []
     
     var user_messages: [String] = []
     var strings: [String] = []
@@ -51,7 +56,7 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
             Tabbar.isHidden = false
         }
         
-        user = sharedPref.string(forKey: "USERID") ?? "0"
+        UserID = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
         
@@ -154,6 +159,30 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         }
     }
     
+    func getChatData(NameFirebase: String){
+        let parameters: Parameters=[
+            "name": NameFirebase
+        ]
+        
+        Alamofire.request(URL_READ_USER_DETAIL, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let id = user.value(forKey: "id") as! [String]
+                        let name = user.value(forKey: "name") as! [String]
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
     func TokenList(){
         Alamofire.request(URL_USER, method: .get).responseJSON{
             response in
@@ -175,9 +204,6 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
                                     }
                                 }
                             }
-                            
-                            
-                            
                         }
                     }
                 }
@@ -260,6 +286,30 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         vc.chatName = self.USERNAME[indexPath.row]
         vc.chatToken = self.USERTOKEN[indexPath.row]
         vc.emailUser = self.EMAILUSER
+        let parameters: Parameters=[
+            "Name": self.USERNAME[indexPath.row]
+        ]
+        
+        Alamofire.request(URL_READ_USER_DETAIL, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        
+                        vc.ChatID = PlayerID[0]
+                        vc.ChatUserName = Name[0]
+                    }
+                    print("CHAT SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+        }
         navigationController?.pushViewController(vc, animated: true)
         
     }

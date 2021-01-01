@@ -16,7 +16,7 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
-                cell.UserName.text! = "Nana"
+//                cell.UserName.text! = "Back"
         //        cell.accessoryType = .disclosureIndicator
                 return cell
     }
@@ -172,21 +172,6 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                                                 let index2 = email.firstIndex(of: "@") ?? email.endIndex
                                                 var newEmail2 = email[..<index2]
                                                 
-                                                
-                                                
-//                                                if(!j.elementsEqual(self.name)){
-//                                                    if(i.contains(String(newEmail2))){
-//
-//                                                        self.USERNAME.append(j)
-//                                                        self.USERNAME.removeDuplicates()
-//
-////                                                        self.USERTOKEN.append(token)
-////                                                        self.USERTOKEN.removingDuplicates()
-//
-////                                                        self.CHATWITH.append(String(newEmail2))
-//
-//                                                    }
-//                                                }
                                             }
                                         }
                                     }
@@ -198,33 +183,4 @@ class ChatInboxViewController: UIViewController, UITableViewDataSource, UITableV
                 }
         }
     }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withReuseIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
-//        cell.UserName.text! = "Nana"
-////        cell.accessoryType = .disclosureIndicator
-//        return cell
-//    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        let vc = ChatViewController()
-//        vc.title = self.USERNAME[indexPath.row]
-//        vc.navigationItem.largeTitleDisplayMode = .never
-//        vc.chatWith = self.CHATWITH[indexPath.row]
-//        vc.chatName = self.USERNAME[indexPath.row]
-//        vc.chatToken = self.USERTOKEN[indexPath.row]
-//        vc.emailUser = self.EMAILUSER
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
 }

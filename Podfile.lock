@@ -129,6 +129,7 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - OneSignal (3.0.1)
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
   - SDWebImage (5.9.1):
@@ -154,6 +155,7 @@ DEPENDENCIES:
   - LanguageManager-iOS
   - MessageInputBar
   - MessageKit
+  - OneSignal (< 4.0, >= 3.0.0)
   - SDWebImage (~> 5.0)
   - SimpleCheckbox
 
@@ -190,6 +192,7 @@ SPEC REPOS:
     - MessageInputBar
     - MessageKit
     - nanopb
+    - OneSignal
     - PromisesObjC
     - Protobuf
     - SDWebImage
@@ -227,11 +230,12 @@ SPEC CHECKSUMS:
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  OneSignal: 29b4046637f63c7212785f47f0eb1f2472649285
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: e8ad7eb1f1bb715f2e3f7a8c7fc2029645f308cf
+PODFILE CHECKSUM: 9f5ed760d4e03a77737940d0f8a29adaf0f8e49e
 
 COCOAPODS: 1.9.3

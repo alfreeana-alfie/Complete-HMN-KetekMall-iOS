@@ -39,6 +39,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
     let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
     let URL_ADD_CHAT = "https://ketekmall.com/ketekmall/add_chat.php"
     let URL_EDIT_CHAT = "https://ketekmall.com/ketekmall/edit_chat.php"
+    let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
+    let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
     
     let ref = Database.database().reference(withPath: "messages")
     
@@ -51,6 +53,9 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
     var chatToken: String = ""
     var emailUser: String = ""
     var messageSaved: String = ""
+    
+    var ChatID: String = ""
+    var ChatUserName: String = ""
     
     var saved: [String] = []
     let newArr: [String] = []
@@ -88,18 +93,6 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         UpdateChatData(user_chatWith: ref1)
         ChatList2()
         ChatNew()
-    }
-    
-    func NotificationSetup(Token: String, Title: String, Body: String){
-        InstanceID.instanceID().instanceID { (result, error) in
-            if let error = error {
-                print("Error fetching remote instange ID: \(error)")
-            } else if let result = result {
-                print("Remote instance ID token: \(result.token)")
-                self.tokenUser = result.token
-                self.senderNotification.sendPushNotification(to: Token, title: Title, body: Body)
-            }
-        }
     }
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String){
@@ -189,7 +182,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         ChatData(user_chatWith: ref1, chat_key: text)
         ChatData(user_chatWith: ref2, chat_key: text)
         
-        NotificationSetup(Token: chatToken, Title: chatName, Body: text)
+        self.OneSignalNoti(PlayerID: ChatID, Name: self.name, MessageText: text)
         randomString = ""
         randomString = randomString2
         inputBar.inputTextView.text.removeAll()
@@ -227,6 +220,50 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
                     let jsonData = result as! NSDictionary
                     print(jsonData.value(forKey: "message")!)
                 }
+        }
+    }
+    
+    func GetPlayerData(SellerID: String, MessageText: String, CustomerID: String){
+        let parameters: Parameters=[
+            "UserID": SellerID
+        ]
+        
+        Alamofire.request(URL_GET_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        _ = user.value(forKey: "UserID") as! [String]
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func OneSignalNoti(PlayerID: String, Name: String, MessageText: String){
+        let parameters: Parameters=[
+            "PlayerID": PlayerID,
+            "Name": Name,
+            "Words": Name + ": " + MessageText
+        ]
+        
+        Alamofire.request(URL_NOTI, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+            if response.result.value != nil{
+                    print("ONESIGNAL SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+                
         }
     }
 }

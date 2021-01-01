@@ -18,6 +18,7 @@ import JGProgressHUD
 import ImageSlideshow
 import LanguageManager_iOS
 import FirebaseInstanceID
+import OneSignal
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, HotDelegate, ShockingDelegate, UITabBarDelegate {
     func onAddToCart(cell: HotCollectionViewCell) {
@@ -207,6 +208,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_READ_HOT = "https://ketekmall.com/ketekmall/category/readall_sold.php"
     let URL_READ_SHOCKING_SALE = "https://ketekmall.com/ketekmall/category/readall_shocking.php"
     
+    let URL_ADD_PLAYERID = "https://ketekmall.com/ketekmall/add_playerID.php"
+    
     
     let URL_READ_CHAT = "https://ketekmall.com/ketekmall/read_chat.php"
     
@@ -217,6 +220,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_READ_CATEGORY_FILTER_SEARCH_MAIN = "https://ketekmall.com/ketekmall/filter_search_division/"
     let URL_READ_CATEGORY_PRICE_UP = "https://ketekmall.com/ketekmall/price_up/"
     let URL_READ_CATEGORY_PRICE_DOWN = "https://ketekmall.com/ketekmall/price_down/"
+    
+    let ONESIGNAL_APP_ID = "6236bfc3-df4d-4f44-82d6-754332044779"
     
     var CATEGORYLIST: [String] = ["read_cake.php",
                                   "read_process.php",
@@ -332,7 +337,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             Username.isHidden = true
             VerifyView.isHidden = true
         }
-//        ColorFunc()
+        ColorFunc()
     }
     
     override func viewDidLoad() {
@@ -362,6 +367,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             user = sharedPref.string(forKey: "USERID") ?? "0"
             email = sharedPref.string(forKey: "EMAIL") ?? "0"
             lang = sharedPref.string(forKey: "LANG") ?? "en"
+            
         }
         
         let index = email.firstIndex(of: "@") ?? email.endIndex
@@ -536,16 +542,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func ColorFunc(){
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-        
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = self.view.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 16
-        self.view.layer.insertSublayer(ViewGradient, at: 0)
+//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+//
+//        let ViewGradient = CAGradientLayer()
+//        ViewGradient.frame = self.view.bounds
+//        ViewGradient.colors = [colorViewOne, colorViewTwo]
+//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        ViewGradient.cornerRadius = 16
+//        self.view.layer.insertSublayer(ViewGradient, at: 0)
         
         let colorSellOne = UIColor(hexString: "#ED213A").cgColor
         let colorSellTwo = UIColor(hexString: "#93291E").cgColor
@@ -671,6 +677,26 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Tabbar.items?[0].title = "Home".localized(lang: str)
         Tabbar.items?[1].title = "Notification".localized(lang: str)
         Tabbar.items?[2].title = "Me".localized(lang: str)
+    }
+    
+    func InsertNotificationData(Name: String){
+        let parameters: Parameters=[
+            "PlayerID": OneSignal.getDeviceState()!.userId!,
+            "Name": Name,
+            "UserID": user
+        ]
+        
+        Alamofire.request(URL_ADD_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    print("ONESIGNAL SUCCESS")
+                }else{
+                    self.spinner.dismiss(afterDelay: 3.0)
+                    print("FAILED")
+                }
+                
+        }
     }
     
     @objc func onCartBarClick(sender: Any){
@@ -970,6 +996,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         }
                         
                         self.UserImage.setImageWith(URL(string: Photo[0])!)
+                        
+                        self.InsertNotificationData(Name: name[0])
                     }
                 }else{
                     self.spinner.dismiss(afterDelay: 3.0)
@@ -1179,16 +1207,16 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             cell.layer.cornerRadius = 5
             
-//            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
-//            let colorTwo = UIColor(hexString: "#F7B733").cgColor
-//
-//            let ViewGradient = CAGradientLayer()
-//            ViewGradient.frame = cell.ButtonView.bounds
-//            ViewGradient.colors = [colorOne, colorTwo]
-//            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//            ViewGradient.cornerRadius = 5
-//            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
+            let colorTwo = UIColor(hexString: "#F7B733").cgColor
+
+            let ViewGradient = CAGradientLayer()
+            ViewGradient.frame = cell.ButtonView.bounds
+            ViewGradient.colors = [colorOne, colorTwo]
+            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            ViewGradient.cornerRadius = 5
+            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell.delegate = self
             return cell
         }else{
@@ -1204,21 +1232,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell1.ButtonView.layer.cornerRadius = 5
             cell1.layer.cornerRadius = 5
             
-//            cell1.ItemImage.isUserInteractionEnabled = true
-//            let Image = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.onViewClick1(cell:)))
-//
-//            cell1.ItemImage.addGestureRecognizer(Image)
+            cell1.ItemImage.isUserInteractionEnabled = true
+            let Image = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.onViewClick1(cell:)))
+
+            cell1.ItemImage.addGestureRecognizer(Image)
             
-//            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
-//            let colorTwo = UIColor(hexString: "#F7B733").cgColor
-//            
-//            let ViewGradient = CAGradientLayer()
-//            ViewGradient.frame = cell1.ButtonView.bounds
-//            ViewGradient.colors = [colorOne, colorTwo]
-//            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//            ViewGradient.cornerRadius = 5
-//            cell1.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
+            let colorTwo = UIColor(hexString: "#F7B733").cgColor
+            
+            let ViewGradient = CAGradientLayer()
+            ViewGradient.frame = cell1.ButtonView.bounds
+            ViewGradient.colors = [colorOne, colorTwo]
+            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+            ViewGradient.cornerRadius = 5
+            cell1.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell1.delegate = self
             return cell1
         }

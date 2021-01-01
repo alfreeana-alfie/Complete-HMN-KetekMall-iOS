@@ -204,9 +204,9 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var SELLERLOCATION: String = ""
     var SELLERPHONE: String = ""
     
-//    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 //        ColorFunc()
-//    }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -770,16 +770,16 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         cell.ButtonView.layer.cornerRadius = 5
         cell.layer.cornerRadius = 5
         
-//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-//
-//        let ViewGradient = CAGradientLayer()
-//        ViewGradient.frame = cell.ButtonView.bounds
-//        ViewGradient.colors = [colorViewOne, colorViewTwo]
-//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ViewGradient.cornerRadius = 16
-//        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.ButtonView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 16
+        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
         
         cell.delegate = self
         return cell

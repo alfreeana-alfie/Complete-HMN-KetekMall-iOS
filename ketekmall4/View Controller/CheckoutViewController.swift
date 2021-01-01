@@ -135,9 +135,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let sender = PushNotificationSender()
     var tokenUser: String = ""
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         DeleteOrder()
@@ -169,16 +169,16 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func ColorFunc(){
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-        
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = self.view.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 16
-        self.view.layer.insertSublayer(ViewGradient, at: 0)
+//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+//        
+//        let ViewGradient = CAGradientLayer()
+//        ViewGradient.frame = self.view.bounds
+//        ViewGradient.colors = [colorViewOne, colorViewTwo]
+//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        ViewGradient.cornerRadius = 16
+//        self.view.layer.insertSublayer(ViewGradient, at: 0)
         
         let colorPlaceOrderOne = UIColor(hexString: "#FC4A1A").cgColor
         let colorPlaceOrderTwo = UIColor(hexString: "#F7B733").cgColor

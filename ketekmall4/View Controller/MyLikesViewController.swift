@@ -151,27 +151,27 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.layer.cornerRadius = 5
         cell.delegate = self
         
-//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-//        
-//        let ViewGradient = CAGradientLayer()
-//        ViewGradient.frame = cell.BtnView.bounds
-//        ViewGradient.colors = [colorViewOne, colorViewTwo]
-//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ViewGradient.cornerRadius = 5
-//        cell.BtnView.layer.insertSublayer(ViewGradient, at: 0)
-//        
-//        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
-//        
-//        let RejectGradient = CAGradientLayer()
-//        RejectGradient.frame = cell.BtnRemove.bounds
-//        RejectGradient.colors = [colorReject1, colorReject2]
-//        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        RejectGradient.cornerRadius = 5
-//        cell.BtnRemove.layer.insertSublayer(RejectGradient, at: 0)
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.BtnView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 5
+        cell.BtnView.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let RejectGradient = CAGradientLayer()
+        RejectGradient.frame = cell.BtnRemove.bounds
+        RejectGradient.colors = [colorReject1, colorReject2]
+        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        RejectGradient.cornerRadius = 5
+        cell.BtnRemove.layer.insertSublayer(RejectGradient, at: 0)
         
         return cell
     }

@@ -1,4 +1,4 @@
-framework module MessageInputBar {
+module MessageInputBar {
   umbrella header "MessageInputBar-umbrella.h"
 
   export *

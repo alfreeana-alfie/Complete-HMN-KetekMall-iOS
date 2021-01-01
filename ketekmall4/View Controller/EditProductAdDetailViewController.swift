@@ -45,9 +45,9 @@ class EditProductAdDetailViewController: UIViewController, UITextFieldDelegate, 
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

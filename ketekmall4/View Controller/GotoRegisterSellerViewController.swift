@@ -21,9 +21,9 @@ class GotoRegisterSellerViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var Tabbar: UITabBar!
     var viewController1: UIViewController?
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -21,6 +21,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_CANCEL = "https://ketekmall.com/ketekmall/edit_order.php";
     let URL_SEND = "https://ketekmall.com/ketekmall/edit_order.php";
     let Main_Photo = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
+    let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
+    let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
     
     var userID: String = ""
     var order_id: String = ""
@@ -66,9 +68,9 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
-//    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 //        ColorFunc()
-//    }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -247,27 +249,27 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ButtonView.layer.cornerRadius = 5
         cell.ButtonReject.layer.cornerRadius = 5
         
-//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-//        
-//        let ViewGradient = CAGradientLayer()
-//        ViewGradient.frame = cell.ButtonView.bounds
-//        ViewGradient.colors = [colorViewOne, colorViewTwo]
-//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ViewGradient.cornerRadius = 5
-//        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
-//        
-//        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
-//        
-//        let RejectGradient = CAGradientLayer()
-//        RejectGradient.frame = cell.ButtonReject.bounds
-//        RejectGradient.colors = [colorReject1, colorReject2]
-//        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        RejectGradient.cornerRadius = 5
-//        cell.ButtonReject.layer.insertSublayer(RejectGradient, at: 0)
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.ButtonView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 5
+        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+        
+        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
+        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
+        
+        let RejectGradient = CAGradientLayer()
+        RejectGradient.frame = cell.ButtonReject.bounds
+        RejectGradient.colors = [colorReject1, colorReject2]
+        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        RejectGradient.cornerRadius = 5
+        cell.ButtonReject.layer.insertSublayer(RejectGradient, at: 0)
         cell.delegate = self
         return cell
     }
@@ -314,6 +316,52 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    func GetPlayerData(CustomerID: String, OrderID: String){
+        let parameters: Parameters=[
+            "UserID": CustomerID
+        ]
+        
+        Alamofire.request(URL_GET_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        _ = user.value(forKey: "UserID") as! [String]
+                        
+                        self.OneSignalNoti(PlayerID: PlayerID[0], Name: Name[0], OrderID: OrderID)
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func OneSignalNoti(PlayerID: String, Name: String, OrderID: String){
+        let parameters: Parameters=[
+            "PlayerID": PlayerID,
+            "Name": Name,
+            "Words": "Order KM" + OrderID + " have been canceld! Please contact respective Buyer for more details."
+        ]
+        
+        Alamofire.request(URL_NOTI, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+            if response.result.value != nil{
+                    print("ONESIGNAL SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
     func btnREJECT(cell: MyBuyingCollectionViewCell) {
         guard let indexPath = self.MyBuyingView.indexPath(for: cell) else{
             return
@@ -348,6 +396,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.spinner.textLabel.text = "Successfully Reject".localized(lang: "en")
                             
                         }
+                        
+                        self.GetPlayerData(CustomerID: Seller_ID, OrderID: Order_ID)
                         
                         self.spinner.show(in: self.view)
                         self.spinner.dismiss(afterDelay: 4.0)

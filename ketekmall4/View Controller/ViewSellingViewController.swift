@@ -37,6 +37,8 @@ class ViewSellingViewController: UIViewController {
     let URL_READ_CUSTOMER = "https://ketekmall.com/ketekmall/read_detail.php"
     let URL_EDIT = "https://ketekmall.com/ketekmall/edit_tracking_no.php"
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_reject.php"
+    let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
+    let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
     
     var ItemID = ""
     var USERID: String = ""
@@ -77,12 +79,12 @@ class ViewSellingViewController: UIViewController {
     @IBOutlet weak var FinishedHeight: NSLayoutConstraint!
     
     @IBOutlet weak var PosLabelHeight: NSLayoutConstraint!
-    @IBOutlet weak var TrackingHeight: NSLayoutConstraint!
+//    @IBOutlet weak var TrackingHeight: NSLayoutConstraint!
     @IBOutlet weak var SubmitHeight: NSLayoutConstraint!
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,7 +210,7 @@ class ViewSellingViewController: UIViewController {
             
             PosLabel.isHidden = true
             PosLabelHeight.constant = 0
-            TrackingHeight.constant = 0
+//            TrackingHeight.constant = 0
             ButtonSubmit.isHidden = true
             SubmitHeight.constant = 0
             
@@ -234,7 +236,7 @@ class ViewSellingViewController: UIViewController {
             
             PosLabel.isHidden = true
             PosLabelHeight.constant = 0
-            TrackingHeight.constant = 0
+//            TrackingHeight.constant = 0
             ButtonSubmit.isHidden = true
             SubmitHeight.constant = 0
         }
@@ -617,38 +619,57 @@ class ViewSellingViewController: UIViewController {
 
     @IBAction func Submit(_ sender: Any) {
         
-        PosLajuGetData(customerID: self.CUSTOMERID, OrderID: self.ORDERID, subscriptionCode: "admin@ketekmall.com", AccountNo: "8800546487")
-//        let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "PosLajuTestArea") as! PosLajuTestArea
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(boostAd, animated: true)
-//        }
-//        spinner.show(in: self.view)
-//        let parameters: Parameters=[
-//                            "order_date": ORDER_DATE,
-//                        ]
-//
-//                        Alamofire.request(URL_EDIT, method: .post, parameters: parameters).responseJSON
-//                            {
-//                                response in
-//                                if let result = response.result.value {
-//                                    let jsonData = result as! NSDictionary
-//                                    self.spinner.dismiss(afterDelay: 3.0)
-//                                    let boostAd = self.storyboard!.instantiateViewController(withIdentifier: "MySellingViewController") as! MySellingViewController
-//                                    boostAd.userID = self.USERID
-//                                    if let navigator = self.navigationController {
-//                                        navigator.pushViewController(boostAd, animated: true)
-//                                    }
-//                                }else{
-//                                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
-//                                    self.spinner.textLabel.text = "Failed"
-//                                    self.spinner.show(in: self.view)
-//                                    self.spinner.dismiss(afterDelay: 4.0)
-//                                }
-//
-//                        }
+        PosLajuGetData(customerID: self.CUSTOMERID, OrderID: "KM" + self.ORDERID, subscriptionCode: "admin@ketekmall.com", AccountNo: "8800546487")
+        GetPlayerData(CustomerID: self.CUSTOMERID, OrderID: self.ORDERID)
     }
     
     @IBAction func Cancel(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func GetPlayerData(CustomerID: String, OrderID: String){
+        let parameters: Parameters=[
+            "UserID": CustomerID
+        ]
+        
+        Alamofire.request(URL_GET_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        _ = user.value(forKey: "UserID") as! [String]
+                        
+                        self.OneSignalNoti(PlayerID: PlayerID[0], Name: Name[0], OrderID: OrderID)
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func OneSignalNoti(PlayerID: String, Name: String, OrderID: String){
+        let parameters: Parameters=[
+            "PlayerID": PlayerID,
+            "Name": Name,
+            "Words": "Your Order " + OrderID + " have been shipped! Please check My Buying for more details."
+        ]
+        
+        Alamofire.request(URL_NOTI, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+            if response.result.value != nil{
+                    print("ONESIGNAL SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+                
+        }
     }
 }

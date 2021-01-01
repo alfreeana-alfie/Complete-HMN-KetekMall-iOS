@@ -1,4 +1,4 @@
-framework module GMStepper {
+module GMStepper {
   umbrella header "GMStepper-umbrella.h"
 
   export *

@@ -30,9 +30,9 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
-//    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 //        ColorFunc()
-//    }
+    }
 
     
     override func viewDidLoad() {

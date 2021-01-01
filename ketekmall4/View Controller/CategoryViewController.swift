@@ -369,16 +369,16 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.ButtonView.setTitle("ADD TO CART".localized(lang: "en"), for: .normal)
         }
         
-//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-//        
-//        let ViewGradient = CAGradientLayer()
-//        ViewGradient.frame = cell.ButtonView.bounds
-//        ViewGradient.colors = [colorViewOne, colorViewTwo]
-//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ViewGradient.cornerRadius = 5
-//        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+        let ViewGradient = CAGradientLayer()
+        ViewGradient.frame = cell.ButtonView.bounds
+        ViewGradient.colors = [colorViewOne, colorViewTwo]
+        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ViewGradient.cornerRadius = 5
+        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
         
         cell.delegate = self
         return cell

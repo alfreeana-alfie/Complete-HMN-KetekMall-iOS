@@ -38,9 +38,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

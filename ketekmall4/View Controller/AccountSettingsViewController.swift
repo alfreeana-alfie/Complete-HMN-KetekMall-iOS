@@ -65,9 +65,9 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     var pickerView = UIPickerView()
     var datePicker = UIDatePicker()
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,16 +186,16 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     func ColorFunc(){
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-        
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = self.view.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 5
-        self.view.layer.insertSublayer(ViewGradient, at: 0)
+//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+//        
+//        let ViewGradient = CAGradientLayer()
+//        ViewGradient.frame = self.view.bounds
+//        ViewGradient.colors = [colorViewOne, colorViewTwo]
+//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        ViewGradient.cornerRadius = 5
+//        self.view.layer.insertSublayer(ViewGradient, at: 0)
         
         
         //Button Edit Profile

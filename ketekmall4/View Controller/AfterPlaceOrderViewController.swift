@@ -13,6 +13,9 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     
     let URL_DELETE = "https://ketekmall.com/ketekmall/delete_order_buyer.php"
     
+    let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
+    let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
+    
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     var userID: String = ""
@@ -23,9 +26,9 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
 
     var viewController1: UIViewController?
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +62,16 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     }
     
     func ColorFunc(){
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-        
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = self.view.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 16
-        self.view.layer.insertSublayer(ViewGradient, at: 0)
+//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+//
+//        let ViewGradient = CAGradientLayer()
+//        ViewGradient.frame = self.view.bounds
+//        ViewGradient.colors = [colorViewOne, colorViewTwo]
+//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        ViewGradient.cornerRadius = 16
+//        self.view.layer.insertSublayer(ViewGradient, at: 0)
         
         let colorShoppingOne = UIColor(hexString: "#FC4A1A").cgColor
         let colorShoppingTwo = UIColor(hexString: "#F7B733").cgColor
@@ -130,5 +133,53 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
            navigator.pushViewController(viewController1!, animated: true)
        }
     }
+    
+    func OneSignalNoti(PlayerID: String, Name: String){
+        let parameters: Parameters=[
+            "PlayerID": PlayerID,
+            "Name": Name,
+            "Words": "New order has been placed! Check My Buying for information."
+        ]
+        
+        Alamofire.request(URL_NOTI, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+            if response.result.value != nil{
+                    print("ONESIGNAL SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    func GetPlayerData(CustomerID: String){
+        let parameters: Parameters=[
+            "UserID": CustomerID
+        ]
+        
+        Alamofire.request(URL_GET_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        _ = user.value(forKey: "UserID") as! [String]
+                        
+                        self.OneSignalNoti(PlayerID: PlayerID[0], Name: Name[0])
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
+    
+    
 
 }
