@@ -28,7 +28,7 @@ class MyProductsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Btn_Edit: UIButton!
     @IBOutlet weak var Btn_Cancel: UIButton!
     @IBOutlet weak var Btn_Boost: UIButton!
-    @IBOutlet weak var NoDeliveryLabel: UILabel!
+    @IBOutlet weak var NoDeliveryLabel: UIButton!
     
     @IBOutlet weak var PendingHeight: NSLayoutConstraint!
     @IBOutlet weak var Btn_BoostHeight: NSLayoutConstraint!

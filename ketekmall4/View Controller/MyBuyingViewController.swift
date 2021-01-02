@@ -249,27 +249,51 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ButtonView.layer.cornerRadius = 5
         cell.ButtonReject.layer.cornerRadius = 5
         
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        //Button Accept
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
         
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = cell.ButtonView.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 5
-        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+        let ReceivedGradient = CAGradientLayer()
+        ReceivedGradient.frame = cell.ButtonView.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 5
+        cell.ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
         
-        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
-        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
+        //Button Cancel
+        let color3 = UIColor(hexString: "#FC4A1A").cgColor
+        let color4 = UIColor(hexString: "#F7B733").cgColor
         
-        let RejectGradient = CAGradientLayer()
-        RejectGradient.frame = cell.ButtonReject.bounds
-        RejectGradient.colors = [colorReject1, colorReject2]
-        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        RejectGradient.cornerRadius = 5
-        cell.ButtonReject.layer.insertSublayer(RejectGradient, at: 0)
+        let CancelGradient = CAGradientLayer()
+        CancelGradient.frame = cell.ButtonReject.bounds
+        CancelGradient.colors = [color3, color4]
+        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        CancelGradient.cornerRadius = 5
+        cell.ButtonReject.layer.insertSublayer(CancelGradient, at: 0)
+        
+//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
+        
+//        let ViewGradient = CAGradientLayer()
+//        ViewGradient.frame = cell.ButtonView.bounds
+//        ViewGradient.colors = [colorViewOne, colorViewTwo]
+//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        ViewGradient.cornerRadius = 5
+//        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+//
+//        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
+//
+//        let RejectGradient = CAGradientLayer()
+//        RejectGradient.frame = cell.ButtonReject.bounds
+//        RejectGradient.colors = [colorReject1, colorReject2]
+//        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
+//        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
+//        RejectGradient.cornerRadius = 5
+//        cell.ButtonReject.layer.insertSublayer(RejectGradient, at: 0)
         cell.delegate = self
         return cell
     }

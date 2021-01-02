@@ -278,6 +278,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         let details = result as! NSArray
                                                         
                                                         let totalAmount = details.value(forKey: "totalAmount") as! [String]
+                                                        
                                                         self.DELIVERYPRICE.append(contentsOf: totalAmount)
                                                         print("JSON: \(totalAmount)")
                                                         
@@ -286,7 +287,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         let indexPrice = i
                                                         
                                                         if indexPrice < self.DELIVERYPRICE.count{
-                                                            let strDel: Double = Double(self.DELIVERYPRICE[i]) ?? 0.00
+                                                            let strDel: Double = round(Double(self.DELIVERYPRICE[i])!)
                                                             var strGrandTotal: Double = 0.00
                                                             strGrand2 += strDel
                                                             strGrandTotal = strGrand + strGrand2
@@ -565,6 +566,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        let NewDeliveryPrice = round(Double(self.DELIVERYPRICE[indexPath.row])!)
+        
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         
@@ -573,7 +576,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.Quantity.text! = "x" + self.QUANTITY[indexPath.row]
-        cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
+        cell.DeliveryPrice.text! = "MYR" + String(format: "%.2f", NewDeliveryPrice)
 //        if(self.DELIVERYPRICE[indexPath.row] == "Not Supported for selected area"){
 //            cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
 //        }else{
