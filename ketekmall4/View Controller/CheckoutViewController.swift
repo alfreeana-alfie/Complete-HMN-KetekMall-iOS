@@ -496,72 +496,80 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    @IBAction func PlaceOrder(_ sender: Any) {
+    func WarningCheck(){
         if(lang == "ms"){
             let refreshAlert = UIAlertController(title: "Transaction".localized(lang: "ms"), message: "Please make sure all the details is correct before you can proceed to the transaction.".localized(lang: "ms"), preferredStyle: UIAlertController.Style.alert)
             refreshAlert.addAction(UIAlertAction(title: "Proceed".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
-                let date = Date()
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                let resultDate = formatter.string(from: date)
-                print("\(resultDate)")
+                if(self.GrandTotal2.text! == "MYR0.00"){
+                    let refreshAlertWarning = UIAlertController(title: "Warning".localized(lang: "ms"), message: "Oops, It seems Product/User Postcode is incorrect. Please check all the details before proceed.".localized(lang: "ms"), preferredStyle: UIAlertController.Style.alert)
+                    refreshAlertWarning.addAction(UIAlertAction(title: "Continue".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+                        return
+                    }))
+                    self.present(refreshAlertWarning, animated: true, completion: nil)
+                }else{
+                    let date = Date()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd"
+                    let resultDate = formatter.string(from: date)
+                    print("\(resultDate)")
 
-                self.spinner.show(in: self.view)
-                for i in 0..<self.SELLERID.count{
-                    let parameters: Parameters=[
-                        "seller_id": self.SELLERID[i],
-                        "customer_id": self.userID,
-                        "ad_detail": self.ADDETAIL[i],
-                        "main_category":self.MAINCATE[i],
-                        "sub_category": self.MAINCATE[i],
-                        "price": self.PRICE[i],
-                        "division": self.divsionu,
-                        "postcode": self.postcode,
-                        "district": self.divsionu,
-                        "seller_division": self.DIVISION[i],
-                        "seller_postcode": self.POSTCODE_P[i],
-                        "seller_district": self.DISTRICT[i],
-                        "photo": self.PHOTO[i],
-                        "item_id": self.ITEMID[i],
-                        "quantity": self.QUANTITY[i],
-                        "delivery_price": self.DELIVERYPRICE[i],
-                        "delivery_date": resultDate,
-                        "delivery_addr": self.NEWADDR,
-                        "weight": self.WEIGHT[i]
-                    ]
-                    Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
-                        {
-                            response in
-                            if let result = response.result.value {
-                                self.spinner.dismiss(afterDelay: 3.0)
-                                let jsonData = result as! NSDictionary
-        //                        print(jsonData.value(forKey: "message")!)
-                                
-                                self.getSellerDetails()
-                                self.getUserDetails()
-                                print("CHECKOUT SUCCESS")
-                                
-                            }
-                            else{
-                                print("CHECKOUT FAILED")
-                            }
+                    self.spinner.show(in: self.view)
+                    for i in 0..<self.SELLERID.count{
+                        let parameters: Parameters=[
+                            "seller_id": self.SELLERID[i],
+                            "customer_id": self.userID,
+                            "ad_detail": self.ADDETAIL[i],
+                            "main_category":self.MAINCATE[i],
+                            "sub_category": self.MAINCATE[i],
+                            "price": self.PRICE[i],
+                            "division": self.divsionu,
+                            "postcode": self.postcode,
+                            "district": self.divsionu,
+                            "seller_division": self.DIVISION[i],
+                            "seller_postcode": self.POSTCODE_P[i],
+                            "seller_district": self.DISTRICT[i],
+                            "photo": self.PHOTO[i],
+                            "item_id": self.ITEMID[i],
+                            "quantity": self.QUANTITY[i],
+                            "delivery_price": self.DELIVERYPRICE[i],
+                            "delivery_date": resultDate,
+                            "delivery_addr": self.NEWADDR,
+                            "weight": self.WEIGHT[i]
+                        ]
+                        Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
+                            {
+                                response in
+                                if let result = response.result.value {
+                                    self.spinner.dismiss(afterDelay: 3.0)
+                                    let jsonData = result as! NSDictionary
+            //                        print(jsonData.value(forKey: "message")!)
+                                    
+                                    self.getSellerDetails()
+                                    self.getUserDetails()
+                                    print("CHECKOUT SUCCESS")
+                                    
+                                }
+                                else{
+                                    print("CHECKOUT FAILED")
+                                }
+                        }
                     }
+                    
+                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+                    myBuying.userID = self.userID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(myBuying, animated: true)
+                    }
+
+                    let vc = DetailViewController()
+                    vc.UserName = self.NAME[0]
+                    vc.UserEmail = self.EMAIL[0]
+                    vc.UserContact = self.PHONE_NO[0]
+                    vc.Amount = self.GrandTotal2.text!
+
+
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
-                
-                let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-                myBuying.userID = self.userID
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(myBuying, animated: true)
-                }
-
-                let vc = DetailViewController()
-                vc.UserName = self.NAME[0]
-                vc.UserEmail = self.EMAIL[0]
-                vc.UserContact = self.PHONE_NO[0]
-                vc.Amount = self.GrandTotal2.text!
-
-
-                self.navigationController?.pushViewController(vc, animated: true)
                 return
             }))
             refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
@@ -571,78 +579,87 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }else{
             let refreshAlert = UIAlertController(title: "Transaction".localized(lang: "en"), message: "Please make sure all the details is correct before you can proceed to the transaction.".localized(lang: "en"), preferredStyle: UIAlertController.Style.alert)
             refreshAlert.addAction(UIAlertAction(title: "Proceed".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
-                let date = Date()
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                let resultDate = formatter.string(from: date)
-                print("\(resultDate)")
+                if(self.GrandTotal2.text! == "MYR0.00"){
+                    let refreshAlertWarning = UIAlertController(title: "Warning".localized(lang: "en"), message: "Oops, It seems Product/User Postcode is incorrect. Please check all the details before proceed.".localized(lang: "en"), preferredStyle: UIAlertController.Style.alert)
+                    refreshAlertWarning.addAction(UIAlertAction(title: "Continue".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+                        return
+                    }))
+                    self.present(refreshAlertWarning, animated: true, completion: nil)
+                }else{
+                    let date = Date()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd"
+                    let resultDate = formatter.string(from: date)
+                    print("\(resultDate)")
 
-                self.spinner.show(in: self.view)
-                for i in 0..<self.SELLERID.count{
-                    let parameters: Parameters=[
-                        "seller_id": self.SELLERID[i],
-                        "customer_id": self.userID,
-                        "ad_detail": self.ADDETAIL[i],
-                        "main_category":self.MAINCATE[i],
-                        "sub_category": self.MAINCATE[i],
-                        "price": self.PRICE[i],
-                        "division": self.divsionu,
-                        "postcode": self.postcode,
-                        "district": self.divsionu,
-                        "seller_division": self.DIVISION[i],
-                        "seller_postcode": self.POSTCODE_P[i],
-                        "seller_district": self.DISTRICT[i],
-                        "photo": self.PHOTO[i],
-                        "item_id": self.ITEMID[i],
-                        "quantity": self.QUANTITY[i],
-                        "delivery_price": self.DELIVERYPRICE[i],
-                        "delivery_date": resultDate,
-                        "delivery_addr": self.NEWADDR,
-                        "weight": self.WEIGHT[i]
-                    ]
-                    Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
-                        {
-                            response in
-                            if let result = response.result.value {
-                                self.spinner.dismiss(afterDelay: 3.0)
-                                let jsonData = result as! NSDictionary
-        //                        print(jsonData.value(forKey: "message")!)
-                                
-                                self.getSellerDetails()
-                                self.getUserDetails()
-                                print("CHECKOUT SUCCESS")
-                                
-                            }
-                            else{
-                                print("CHECKOUT FAILED")
-                            }
+                    self.spinner.show(in: self.view)
+                    for i in 0..<self.SELLERID.count{
+                        let parameters: Parameters=[
+                            "seller_id": self.SELLERID[i],
+                            "customer_id": self.userID,
+                            "ad_detail": self.ADDETAIL[i],
+                            "main_category":self.MAINCATE[i],
+                            "sub_category": self.MAINCATE[i],
+                            "price": self.PRICE[i],
+                            "division": self.divsionu,
+                            "postcode": self.postcode,
+                            "district": self.divsionu,
+                            "seller_division": self.DIVISION[i],
+                            "seller_postcode": self.POSTCODE_P[i],
+                            "seller_district": self.DISTRICT[i],
+                            "photo": self.PHOTO[i],
+                            "item_id": self.ITEMID[i],
+                            "quantity": self.QUANTITY[i],
+                            "delivery_price": self.DELIVERYPRICE[i],
+                            "delivery_date": resultDate,
+                            "delivery_addr": self.NEWADDR,
+                            "weight": self.WEIGHT[i]
+                        ]
+                        Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
+                            {
+                                response in
+                                if let result = response.result.value {
+                                    self.spinner.dismiss(afterDelay: 3.0)
+                                    let jsonData = result as! NSDictionary
+            //                        print(jsonData.value(forKey: "message")!)
+                                    
+                                    self.getSellerDetails()
+                                    self.getUserDetails()
+                                    print("CHECKOUT SUCCESS")
+                                    
+                                }
+                                else{
+                                    print("CHECKOUT FAILED")
+                                }
+                        }
                     }
+                    
+                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+                    myBuying.userID = self.userID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(myBuying, animated: true)
+                    }
+
+                    let vc = DetailViewController()
+                    vc.UserName = self.NAME[0]
+                    vc.UserEmail = self.EMAIL[0]
+                    vc.UserContact = self.PHONE_NO[0]
+                    vc.Amount = self.GrandTotal2.text!
+
+
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
-                
-                let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-                myBuying.userID = self.userID
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(myBuying, animated: true)
-                }
-
-                let vc = DetailViewController()
-                vc.UserName = self.NAME[0]
-                vc.UserEmail = self.EMAIL[0]
-                vc.UserContact = self.PHONE_NO[0]
-                vc.Amount = self.GrandTotal2.text!
-
-
-                self.navigationController?.pushViewController(vc, animated: true)
                 return
             }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
                 return
             }))
             present(refreshAlert, animated: true, completion: nil)
         }
-        
-        
-        
+    }
+    
+    @IBAction func PlaceOrder(_ sender: Any) {
+        WarningCheck()
     }
     
     func getSellerDetails(){

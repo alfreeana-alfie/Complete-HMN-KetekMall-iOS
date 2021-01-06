@@ -140,6 +140,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(CategoryViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         
         if(lang == "ms"){
@@ -167,6 +171,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         
+    }
+    
+    @objc func back(sender: UIBarButtonItem){
+        let myRating = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        if let navigator = self.navigationController {
+            navigator.pushViewController(myRating, animated: true)
+        }
     }
     
 //    func ColorFunc(){

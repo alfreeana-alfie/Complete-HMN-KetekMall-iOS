@@ -11,7 +11,7 @@ import Alamofire
 import AFNetworking
 import JGProgressHUD
 
-class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate   {
+class AccountSettings02ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate   {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -71,9 +71,9 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.hidesBackButton = true
-//        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AccountSettingsViewController.back(sender:)))
-//        self.navigationItem.leftBarButtonItem = newBackButton
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AccountSettings02ViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
         
         Name.delegate = self
         Email.delegate = self
@@ -194,13 +194,13 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
         
     }
     
-//    @objc func back(sender: UIBarButtonItem){
-//        let myRating = self.storyboard!.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//        myRating.userID = userID
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(myRating, animated: true)
-//        }
-//    }
+    @objc func back(sender: UIBarButtonItem){
+        let myRating = self.storyboard!.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        myRating.userID = userID
+        if let navigator = self.navigationController {
+            navigator.pushViewController(myRating, animated: true)
+        }
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -210,7 +210,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     func ColorFunc(){
 //        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
 //        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-//        
+//
 //        let ViewGradient = CAGradientLayer()
 //        ViewGradient.frame = self.view.bounds
 //        ViewGradient.colors = [colorViewOne, colorViewTwo]
@@ -257,7 +257,7 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     func changeLanguage(str: String){
-        EditProfileLabel.text = "Edit Profile".localized(lang: str)        
+        EditProfileLabel.text = "Edit Profile".localized(lang: str)
         Name.placeholder = "Name".localized(lang: str)
         Email.placeholder = "Email".localized(lang: str)
         PhoneNo.placeholder = "Phone Number".localized(lang: str)

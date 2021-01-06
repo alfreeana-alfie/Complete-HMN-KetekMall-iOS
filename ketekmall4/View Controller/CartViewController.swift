@@ -66,6 +66,10 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(CartViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         userID = sharedPref.string(forKey: "USERID") ?? "0"
         if(lang == "ms"){
@@ -85,6 +89,13 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ButtonCheckout.isHidden = true
         
         ViewList()
+    }
+    
+    @objc func back(sender: UIBarButtonItem){
+        let myRating = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        if let navigator = self.navigationController {
+            navigator.pushViewController(myRating, animated: true)
+        }
     }
     
     func ColorFunc(){

@@ -342,7 +342,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Tabbar.delegate = self
         navigationController?.setNavigationBarHidden(true, animated: false)
 
@@ -460,17 +459,21 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         if(user != "0"){
             getUserDetails(userID: String(user))
-            MessageCount(EmailUser: String(newEmail))
+            MessageCount02(EmailUser: String(newEmail))
             CartCount(UserID: String(user))
         }else{
-            print("SUCCESS")
+            print("FAILED")
         }
         HotSelling()
         ShockingSale()
     }
     
-    func MessageCount(EmailUser: String){
-        Alamofire.request(URL_READ_CHAT, method: .post).responseJSON
+    func MessageCount02(EmailUser: String){
+        let parameters: Parameters=[
+            "user_chatwith": EmailUser
+        ]
+        
+        Alamofire.request(URL_READ_CHAT, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value{
@@ -588,7 +591,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         navigator.pushViewController(addProduct, animated: true)
                     }
                 }else{
-                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettings02ViewController") as! AccountSettingsViewController
                     accountsettings.userID = self.user
                     if let navigator = self.navigationController {
                         navigator.pushViewController(accountsettings, animated: true)
@@ -846,7 +849,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 navigator.pushViewController(addProduct, animated: true)
             }
         }else{
-            let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
+            let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxViewController") as! ChatInboxViewController
             myBuying.BarHidden = true
             if let navigator = self.navigationController {
                 navigator.pushViewController(myBuying, animated: true)
