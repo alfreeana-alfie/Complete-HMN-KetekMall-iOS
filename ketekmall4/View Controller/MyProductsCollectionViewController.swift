@@ -256,41 +256,79 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     }
     
     func btnRemove(cell: MyProductsCollectionViewCell) {
-        let refreshAlert = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
-        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            guard let indexPath = self.productView.indexPath(for: cell) else{
-                return
-            }
-            
-            let ID = self.ItemID[indexPath.row]
-            let parameters: Parameters=[
-                "id": ID,
-            ]
-            
-            //Sending http post request
-            Alamofire.request(self.URL_REMOVE, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value{
-                        let jsonData = result as! NSDictionary
-                        
-                        if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                            self.ItemPhoto.remove(at: indexPath.row)
-                            self.ad_Detail.remove(at: indexPath.row)
-                            self.price.remove(at: indexPath.row)
-                            self.location.remove(at: indexPath.row)
-                            self.RATING.remove(at: indexPath.row)
-                            self.productView.deleteItems(at: [indexPath])
+        if(lang == "ms"){
+            let refreshAlert = UIAlertController(title: "Delete".localized(lang: "ms"), message: "Are you sure?".localized(lang: "ms"), preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Yes".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+                guard let indexPath = self.productView.indexPath(for: cell) else{
+                    return
+                }
+                
+                let ID = self.ItemID[indexPath.row]
+                let parameters: Parameters=[
+                    "id": ID,
+                ]
+                
+                //Sending http post request
+                Alamofire.request(self.URL_REMOVE, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value{
+                            let jsonData = result as! NSDictionary
+                            
+                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                                self.ItemPhoto.remove(at: indexPath.row)
+                                self.ad_Detail.remove(at: indexPath.row)
+                                self.price.remove(at: indexPath.row)
+                                self.location.remove(at: indexPath.row)
+                                self.RATING.remove(at: indexPath.row)
+                                self.productView.deleteItems(at: [indexPath])
+                            }
                         }
-                    }
-            }
-            return
-        }))
-        
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            return
-        }))
-        present(refreshAlert, animated: true, completion: nil)
+                }
+                return
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+                return
+            }))
+            present(refreshAlert, animated: true, completion: nil)
+        }else{
+            let refreshAlert = UIAlertController(title: "Delete".localized(lang: "en"), message: "Are you sure?".localized(lang: "en"), preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Yes".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+                guard let indexPath = self.productView.indexPath(for: cell) else{
+                    return
+                }
+                
+                let ID = self.ItemID[indexPath.row]
+                let parameters: Parameters=[
+                    "id": ID,
+                ]
+                
+                //Sending http post request
+                Alamofire.request(self.URL_REMOVE, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value{
+                            let jsonData = result as! NSDictionary
+                            
+                            if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                                self.ItemPhoto.remove(at: indexPath.row)
+                                self.ad_Detail.remove(at: indexPath.row)
+                                self.price.remove(at: indexPath.row)
+                                self.location.remove(at: indexPath.row)
+                                self.RATING.remove(at: indexPath.row)
+                                self.productView.deleteItems(at: [indexPath])
+                            }
+                        }
+                }
+                return
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+                return
+            }))
+            present(refreshAlert, animated: true, completion: nil)
+        }
     }
     
     func btnEdit(cell: MyProductsCollectionViewCell) {
@@ -341,7 +379,13 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        self.spinner.textLabel.text = "Added to Boost"
+                        if(self.lang == "ms"){
+                            self.spinner.textLabel.text = "Added to Boost".localized(lang: "ms")
+                            
+                        }else{
+                            self.spinner.textLabel.text = "Added to Boost"
+                           
+                        }
                         self.spinner.show(in: self.view)
                         self.spinner.dismiss(afterDelay: 2.0)
                     }else{

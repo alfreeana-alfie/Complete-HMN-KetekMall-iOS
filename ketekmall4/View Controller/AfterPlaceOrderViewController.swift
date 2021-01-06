@@ -62,16 +62,6 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     }
     
     func ColorFunc(){
-//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-//
-//        let ViewGradient = CAGradientLayer()
-//        ViewGradient.frame = self.view.bounds
-//        ViewGradient.colors = [colorViewOne, colorViewTwo]
-//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ViewGradient.cornerRadius = 16
-//        self.view.layer.insertSublayer(ViewGradient, at: 0)
         
         let colorShoppingOne = UIColor(hexString: "#FC4A1A").cgColor
         let colorShoppingTwo = UIColor(hexString: "#F7B733").cgColor
@@ -124,7 +114,6 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
         }
     }
 
-    
     @IBAction func ContinueShopping(_ sender: Any) {
        navigationController?.setNavigationBarHidden(true, animated: false)
        let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -180,6 +169,4 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
         }
     }
     
-    
-
 }

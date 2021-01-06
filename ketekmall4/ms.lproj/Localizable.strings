@@ -81,6 +81,7 @@
 "My Income" = "Pendapatan Saya";
 "Product Rating" = "Rating Produk";
 "Boost Ad" = "Boost Ad";
+"Added to Boost" = "Masukkan ke Boost";
 
 "Edit Profile" = "Ubah Profil";
 "Upload to Server" = "Muat Turun ke Server";
@@ -119,10 +120,19 @@
 "Fashion Accessories" = "Perhiasan Fesyen";
 "Sarawak - Based Product" = "Produk Sarawak";
 "Self Pick-up" = "Ambil Sendiri";
+"Please make sure all the details is correct before you can proceed to the transaction." = "Pastikan semua maklumat yang tertera adalah tepat dan benar sebelum anda memulakan pembayaran.";
+
+"Are you sure?" = "Adakah anda pasti?";
+"Proceed" = "Teruskan";
+"Yes" = "Ya";
+"Cancel" = "Batal";
+"Remove" = "Buang";
+"Transaction" = "Transaksi";
 
 "Add to Cart" = "Masukkan ke Troli";
 "Added to Cart" = "Masukkan ke Troli";
 "Added to My Likes" = "Masukkan ke Kesukaan Saya";
+"ADD TO CART" = "BELI";
 
 "SubTotal" = "Jumlah Sub";
 "Quantity" = "Kuantiti";

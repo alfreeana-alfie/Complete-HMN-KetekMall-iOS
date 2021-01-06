@@ -1204,6 +1204,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
             cell.ItemPrice.text! = "MYR" + self.PRICEHOT[indexPath.row]
             cell.ButtonView.layer.cornerRadius = 5
+            if(lang == "ms"){
+                cell.ButtonView.setTitle("ADD TO CART".localized(lang: "ms"), for: .normal)
+            }else{
+                cell.ButtonView.setTitle("ADD TO CART".localized(lang: "en"), for: .normal)
+            }
             
             cell.layer.cornerRadius = 5
             
@@ -1230,6 +1235,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell1.ItemName.text! = self.ADDETAILSHOCKING[indexPath.row]
             cell1.ItemPrice.text! = "MYR" + self.PRICESHOCKING[indexPath.row]
             cell1.ButtonView.layer.cornerRadius = 5
+            if(lang == "ms"){
+                cell1.ButtonView.setTitle("ADD TO CART".localized(lang: "ms"), for: .normal)
+            }else{
+                cell1.ButtonView.setTitle("ADD TO CART".localized(lang: "en"), for: .normal)
+            }
+            
             cell1.layer.cornerRadius = 5
             
             cell1.ItemImage.isUserInteractionEnabled = true

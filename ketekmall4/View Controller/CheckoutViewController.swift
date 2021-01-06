@@ -33,7 +33,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ButtonSelfPickUp.isHidden = true
     }
     
-    
     private let spinner = JGProgressHUD(style: .dark)
     
     @IBOutlet weak var NamePhone: UILabel!
@@ -112,8 +111,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single_delivery.php"
     let URL_READ_DELIVERY2 = "https://ketekmall.com/ketekmall/read_detail_delivery_single.php"
-    let URL_CART = "https://ketekmall.com/ketekmall/readcart_temp.php"
-    let URL_CHECKOUT = "https://ketekmall.com/ketekmall/add_to_checkout_two.php"
+    let URL_CART = "https://ketekmall.com/ketekmall/getCartTempCustomer.php"
+    let URL_CHECKOUT = "https://ketekmall.com/ketekmall/add_to_checkout.php"
     let URL_SEND_EMAILBUYER = "https://ketekmall.com/ketekmall/sendEmail_buyer.php"
     let URL_SEND_EMAILSELLER = "https://ketekmall.com/ketekmall/sendEmail_seller.php"
     let URL_DELETE = "https://ketekmall.com/ketekmall/delete_cart_temp_user.php"
@@ -121,6 +120,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let API_POSTCODE = "http://stagingsds.pos.com.my/apigateway/as2corporate/api/poslajudomesticbypostcode/v1";
     let serverKey_POSTCODE = "a1g2cmM2VmowNm00N1lZekFmTGR0MldpRHhKaFRHSks=";
+    
     var PostCodefrom: String = "96000";
     var PostCodeTo: String = "93050";
     var Weight: String = "2";
@@ -140,13 +140,14 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        DeleteOrder()
+//        DeleteOrder()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         
+        print("\(userID)")
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -196,7 +197,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func ReadCart(){
         let parameters: Parameters=[
-            "customer_id": userID,
+            "customer_id": userID
         ]
         
         Alamofire.request(URL_CART, method: .post, parameters: parameters).responseJSON
@@ -221,8 +222,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.QUANTITY = user.value(forKey: "quantity") as! [String]
                         self.PHOTO = user.value(forKey: "photo") as! [String]
                         self.SELLERID = user.value(forKey: "seller_id") as! [String]
-                        self.POSTCODE_P = user.value(forKey: "postcode") as? [String] ?? ["93050"]
-                        self.WEIGHT = user.value(forKey: "weight") as? [String] ?? ["1.00"]
+                        self.POSTCODE_P = user.value(forKey: "postcode") as! [String]
+                        self.WEIGHT = user.value(forKey: "weight") as! [String]
+                        
+                        print("\(self.WEIGHT)")
                         
                         let parameters: Parameters=[
                             "id": self.userID,
@@ -243,6 +246,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.DIVISIONU = user.value(forKey: "division") as! [String]
                                         self.POSTCODE = user.value(forKey: "postcode") as! [String]
                                         
+                                        print("\(self.NAME)")
+                                        
                                         if(self.ADDR01[0] == "" && self.ADDR02[0] == "" && self.DIVISIONU[0] == "" && self.POSTCODE[0] == ""){
                                             self.divsionu = self.DIVISIONU[0]
                                             self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
@@ -257,16 +262,14 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                             self.Address.text! = self.NEWADDR
                                         }
                                         
-                                        
-                                        
-                                        for i in 0..<self.ITEMID.count{
+                                        for i in 0..<self.ID.count{
                                             
                                             strCharges = Double(Int(self.QUANTITY[i])!) * Double(self.WEIGHT[i])!
                                             
-                                            let NEW_URL_PARTONE = self.API_POSTCODE + "?postcodeFrom=" + self.POSTCODE_P[i];
+                                            let NEW_URL_PARTONE = self.API_PREACCEPTANCE + "?postcodeFrom=" + self.POSTCODE_P[i];
                                             let NEW_URL =  NEW_URL_PARTONE + "&postcodeTo=" + self.POSTCODE[0] + "&Weight=" + String(format: "%.2f", strCharges);
                                             
-                                            let headers = [ "X-User-Key" : self.serverKey_POSTCODE ]
+                                            let headers = [ "X-User-Key" : self.serverKey_PREACCEPTANCE ]
                                             
                                             let configuration = URLSessionConfiguration.default
                                             configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -275,12 +278,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                 {
                                                     response in
                                                     if let result = response.result.value {
+                                                        print("SUCCESS")
                                                         let details = result as! NSArray
                                                         
                                                         let totalAmount = details.value(forKey: "totalAmount") as! [String]
+                                                        print("JSON: \(totalAmount)")
                                                         
                                                         self.DELIVERYPRICE.append(contentsOf: totalAmount)
-                                                        print("JSON: \(totalAmount)")
                                                         
                                                         strGrand += (Double(self.PRICE[i])! * Double(Int(self.QUANTITY[i])!))
                                                         
@@ -316,88 +320,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
         }
     }
-    
-    //MARK:PreAcceptanceSingle
-//    func PreAcceptanceSingle(){
-//        let headers = [
-//            "X-User-Key": serverKey_PREACCEPTANCE,
-//            "Content-Type": "application/x-www-form-urlencoded"
-//        ]
-//
-//        let configuration = URLSessionConfiguration.default
-//            configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-//
-//        let Parameters = [
-//            "subscriptionCode": "subscriptionCode",
-//            "requireToPickup": "requireToPickup",
-//            "requireWebHook": "requireWebhook",
-//            "accountNo": "accountNo",
-//            "callerName": "callerName",
-//            "callerPhone": "callerPhone",
-//            "pickupLocationID": "pickupLocationID",
-//            "pickupLocationName": "pickupLocationName",
-//            "contactPerson": "contactPerson",
-//            "phoneNo": "phoneNo",
-//            "pickupAddress": "pickupAddress",
-//            "ItemType": "itemType",
-//            "totalQuantityToPickup": "totalQuantity",
-//            "totalWeight": "totalWeight",
-//            "consignmentNoteNumber": "consigmentNoteNo",
-//            "PaymentType": "paymentType",
-//            "Amount": "amount",
-//            "readyToCollectAt": "readyAt",
-//            "closeAt": "closeAt",
-//            "receiverName": "receiverName",
-//            "receiverID": "receiverID",
-//            "receiverAddress": "receiverAddress",
-//            "receiverPostCode": "receiverPostCode",
-//            "receiverEmail": "receiverEmailAddress",
-//            "receiverPhone01": "receiverPhone1",
-//            "receiverPhone02": "receiverPhone2",
-//            "sellerReferenceNo": "sellerReferenceNo",
-//            "itemDescription": "itemDescription",
-//            "sellerOrderNo": "sellerOrderNo",
-//            "comments": "comment",
-//            "pickupDistrict": "pickupDistrict",
-//            "pickupProvince": "pickupProvince",
-//            "pickupEmail": "pickupEmail",
-//            "pickupCountry": "pickupCountry",
-//            "pickupLocation": "pickupLocation",
-//            "receiverFname": "receiverFirstName",
-//            "receiverLname": "receiverLastName",
-//            "receiverAddress2": "receiverAddress2",
-//            "receiverDistrict": "receiverDistrict",
-//            "receiverProvince": "receiverProvince",
-//            "receiverCity": "receiverCity",
-//            "receiverCountry": "receiverCountry",
-//            "packDesc": "packDescription",
-//            "packVol": "packVol",
-//            "packLeng": "packLeng",
-//            "postCode": "postalCode",
-//            "ConsignmentNoteNumber": "consigmentNoteNo",
-//            "packWidth": "packWidth",
-//            "packHeight": "packHeight",
-//            "packTotalitem": "totalItem",
-//            "orderDate": "orderDate",
-//            "packDeliveryType": "packDeliveryType",
-//            "ShipmentName": "shipmentName",
-//            "pickupProv": "pickupProvince",
-//            "deliveryProv": "",
-//            "postalCode": "postalCode",
-//            "currency": "currency",
-//            "countryCode": "countryCode"
-//        ]
-//
-//            Alamofire.request(API_PREACCEPTANCE, method: .post,parameters: Parameters, encoding: URLEncoding.httpBody, headers: headers).responseJSON
-//                {
-//                    response in
-//                    if let result = response.result.value {
-//                        print("JSON: \(result)")
-//                    }else{
-//                        print("Request failed with error: ",response.result.error ?? "Description not available :(")
-//                    }
-//            }
-//    }
     
     func AddCheckout(){
         let date = Date()
@@ -439,9 +361,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         
                         self.getSellerDetails()
                         self.getUserDetails()
+                        print("CHECKOUT SUCCESS")
                     }
                     else{
-                        print("FAILED")
+                        print("CHECKOUT FAILED")
                     }
             }
         }
@@ -509,29 +432,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    func NotificationSeller(SELLERNAME: String){
-        Alamofire.request(self.URL_USER, method: .get).responseJSON{
-            response1 in
-            if let resultUser = response1.result.value{
-                
-                if let jsonUser = resultUser as? [String: Any] {
-                    for j in jsonUser.keys{
-                        if let User1 = jsonUser[j] as? [String: Any]{
-                            let token = User1["token"] as! String
-                            
-                            if(j.elementsEqual(SELLERNAME)){
-                                self.sender.sendPushNotification(to: token, title: "KetekMall", body: "You have new order")
-                            }
-                        }
-                    }
-                }
-            }
-            
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DELIVERYPRICE.count
+        return self.DELIVERYPRICE.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -595,22 +497,151 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     @IBAction func PlaceOrder(_ sender: Any) {
-        
-        AddCheckout()
-        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-        myBuying.userID = self.userID
-        if let navigator = self.navigationController {
-            navigator.pushViewController(myBuying, animated: true)
+        if(lang == "ms"){
+            let refreshAlert = UIAlertController(title: "Transaction".localized(lang: "ms"), message: "Please make sure all the details is correct before you can proceed to the transaction.".localized(lang: "ms"), preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Proceed".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                let resultDate = formatter.string(from: date)
+                print("\(resultDate)")
+
+                self.spinner.show(in: self.view)
+                for i in 0..<self.SELLERID.count{
+                    let parameters: Parameters=[
+                        "seller_id": self.SELLERID[i],
+                        "customer_id": self.userID,
+                        "ad_detail": self.ADDETAIL[i],
+                        "main_category":self.MAINCATE[i],
+                        "sub_category": self.MAINCATE[i],
+                        "price": self.PRICE[i],
+                        "division": self.divsionu,
+                        "postcode": self.postcode,
+                        "district": self.divsionu,
+                        "seller_division": self.DIVISION[i],
+                        "seller_postcode": self.POSTCODE_P[i],
+                        "seller_district": self.DISTRICT[i],
+                        "photo": self.PHOTO[i],
+                        "item_id": self.ITEMID[i],
+                        "quantity": self.QUANTITY[i],
+                        "delivery_price": self.DELIVERYPRICE[i],
+                        "delivery_date": resultDate,
+                        "delivery_addr": self.NEWADDR,
+                        "weight": self.WEIGHT[i]
+                    ]
+                    Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
+                        {
+                            response in
+                            if let result = response.result.value {
+                                self.spinner.dismiss(afterDelay: 3.0)
+                                let jsonData = result as! NSDictionary
+        //                        print(jsonData.value(forKey: "message")!)
+                                
+                                self.getSellerDetails()
+                                self.getUserDetails()
+                                print("CHECKOUT SUCCESS")
+                                
+                            }
+                            else{
+                                print("CHECKOUT FAILED")
+                            }
+                    }
+                }
+                
+                let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+                myBuying.userID = self.userID
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(myBuying, animated: true)
+                }
+
+                let vc = DetailViewController()
+                vc.UserName = self.NAME[0]
+                vc.UserEmail = self.EMAIL[0]
+                vc.UserContact = self.PHONE_NO[0]
+                vc.Amount = self.GrandTotal2.text!
+
+
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+                return
+            }))
+            present(refreshAlert, animated: true, completion: nil)
+        }else{
+            let refreshAlert = UIAlertController(title: "Transaction".localized(lang: "en"), message: "Please make sure all the details is correct before you can proceed to the transaction.".localized(lang: "en"), preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Proceed".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                let resultDate = formatter.string(from: date)
+                print("\(resultDate)")
+
+                self.spinner.show(in: self.view)
+                for i in 0..<self.SELLERID.count{
+                    let parameters: Parameters=[
+                        "seller_id": self.SELLERID[i],
+                        "customer_id": self.userID,
+                        "ad_detail": self.ADDETAIL[i],
+                        "main_category":self.MAINCATE[i],
+                        "sub_category": self.MAINCATE[i],
+                        "price": self.PRICE[i],
+                        "division": self.divsionu,
+                        "postcode": self.postcode,
+                        "district": self.divsionu,
+                        "seller_division": self.DIVISION[i],
+                        "seller_postcode": self.POSTCODE_P[i],
+                        "seller_district": self.DISTRICT[i],
+                        "photo": self.PHOTO[i],
+                        "item_id": self.ITEMID[i],
+                        "quantity": self.QUANTITY[i],
+                        "delivery_price": self.DELIVERYPRICE[i],
+                        "delivery_date": resultDate,
+                        "delivery_addr": self.NEWADDR,
+                        "weight": self.WEIGHT[i]
+                    ]
+                    Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
+                        {
+                            response in
+                            if let result = response.result.value {
+                                self.spinner.dismiss(afterDelay: 3.0)
+                                let jsonData = result as! NSDictionary
+        //                        print(jsonData.value(forKey: "message")!)
+                                
+                                self.getSellerDetails()
+                                self.getUserDetails()
+                                print("CHECKOUT SUCCESS")
+                                
+                            }
+                            else{
+                                print("CHECKOUT FAILED")
+                            }
+                    }
+                }
+                
+                let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+                myBuying.userID = self.userID
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(myBuying, animated: true)
+                }
+
+                let vc = DetailViewController()
+                vc.UserName = self.NAME[0]
+                vc.UserEmail = self.EMAIL[0]
+                vc.UserContact = self.PHONE_NO[0]
+                vc.Amount = self.GrandTotal2.text!
+
+
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+                return
+            }))
+            present(refreshAlert, animated: true, completion: nil)
         }
         
-        let vc = DetailViewController()
-        vc.UserName = self.NAME[0]
-        vc.UserEmail = self.EMAIL[0]
-        vc.UserContact = self.PHONE_NO[0]
-        vc.Amount = self.GrandTotal2.text!
-
-
-        navigationController?.pushViewController(vc, animated: true)
+        
         
     }
     
@@ -630,7 +661,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                             let SellerName = user.value(forKey: "name") as! [String]
                             let SellerEmail = user.value(forKey: "email") as! [String]
                             self.sendEmail(Email: SellerEmail[0])
-                            self.NotificationSeller(SELLERNAME: SellerName[0])
                         }
                     }
             }

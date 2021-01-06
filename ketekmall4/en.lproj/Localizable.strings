@@ -11,7 +11,7 @@
 "BUYER" = "BUYER";
 "Welcome!" = "Welcome!";
 "VERIFICATION" = "VERIFICATION";
-"BUY. SELL. FIND. ALMOST EVERYTHING" = "BUY. SELL. FIND. ALMOST EVERYTHING";
+"GREAT STORE.GREAT CHOICE" = "GREAT STORE.GREAT CHOICE";
 "BROWSE CATEGORIES" = "BROWSE CATEGORIES";
 "HOT SELLING" = "HOT SELLING";
 "SHOCKING SALE" = "SHOCKING SALE";
@@ -113,6 +113,18 @@
 "Agriculture" = "Agriculture";
 "Fashion Accessories" = "Fashion Accessories";
 "Sarawak - Based" = "Sarawak - Based";
+
+"Self Pick-up" = "Self Pick-up";
+"Please make sure all the details is correct before you can proceed to the transaction." = "Please make sure all the details is correct before you can proceed to the transaction.";
+
+"Are you sure?" = "Are you sure?";
+"Proceed" = "Proceed";
+"Yes" = "Yes";
+"Cancel" = "Cancel";
+"Remove" = "Remove";
+"Transaction" = "Transaction";
+"Added to Boost" = "Added to Boost";
+"ADD TO CART" = "ADD TO CART";
 
 "Edit" = "EDIT";
 "Delete" = "DELETE";

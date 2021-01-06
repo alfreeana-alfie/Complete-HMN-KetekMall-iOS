@@ -125,14 +125,14 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func DeleteOrder(){
         let parameters: Parameters=[
             "customer_id": userID,
-            
+
         ]
         Alamofire.request(URL_DELETE, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value {
                     let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
+                    print("CART SUCCESS")
                 }else{
                     print("FAILED")
                 }
@@ -174,7 +174,6 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             break
         }
     }
-
     
     func ViewList(){
         spinner.show(in: self.view)
@@ -224,34 +223,68 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func onDeleteClick(cell: CartCollectionViewCell) {
-        let refreshAlert = UIAlertController(title: "Remove", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
-        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            guard let indexPath = self.CartView.indexPath(for: cell) else{
+        if(lang == "ms"){
+            let refreshAlert = UIAlertController(title: "Remove".localized(lang: "ms"), message: "Are you sure?".localized(lang: "ms"), preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Yes".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+                guard let indexPath = self.CartView.indexPath(for: cell) else{
+                    return
+                }
+                let parameters: Parameters=[
+                    "id": self.ID[indexPath.row]
+                    
+                ]
+                Alamofire.request(self.URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            print(jsonData.value(forKey: "message")!)
+                            self.ID.remove(at: indexPath.row)
+                            self.PHOTO.remove(at: indexPath.row)
+                            self.ADDETAIL.remove(at: indexPath.row)
+                            self.PRICE.remove(at: indexPath.row)
+                            self.CartView.deleteItems(at: [indexPath])
+                        }
+                }
                 return
-            }
-            let parameters: Parameters=[
-                "id": self.ID[indexPath.row]
-                
-            ]
-            Alamofire.request(self.URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        let jsonData = result as! NSDictionary
-                        print(jsonData.value(forKey: "message")!)
-                        self.ID.remove(at: indexPath.row)
-                        self.PHOTO.remove(at: indexPath.row)
-                        self.ADDETAIL.remove(at: indexPath.row)
-                        self.PRICE.remove(at: indexPath.row)
-                        self.CartView.deleteItems(at: [indexPath])
-                    }
-            }
-            return
-        }))
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            return
-        }))
-        present(refreshAlert, animated: true, completion: nil)
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+                return
+            }))
+            present(refreshAlert, animated: true, completion: nil)
+        }else{
+            let refreshAlert = UIAlertController(title: "Remove".localized(lang: "en"), message: "Are you sure?".localized(lang: "en"), preferredStyle: UIAlertController.Style.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Yes".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+                guard let indexPath = self.CartView.indexPath(for: cell) else{
+                    return
+                }
+                let parameters: Parameters=[
+                    "id": self.ID[indexPath.row]
+                    
+                ]
+                Alamofire.request(self.URL_DELETE_CART, method: .post, parameters: parameters).responseJSON
+                    {
+                        response in
+                        if let result = response.result.value {
+                            let jsonData = result as! NSDictionary
+                            print(jsonData.value(forKey: "message")!)
+                            self.ID.remove(at: indexPath.row)
+                            self.PHOTO.remove(at: indexPath.row)
+                            self.ADDETAIL.remove(at: indexPath.row)
+                            self.PRICE.remove(at: indexPath.row)
+                            self.CartView.deleteItems(at: [indexPath])
+                        }
+                }
+                return
+            }))
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
+                return
+            }))
+            present(refreshAlert, animated: true, completion: nil)
+        }
+        
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -360,6 +393,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             for i in self.PRICENEW{
                                 SubTotal2 += Double(i)!
                                 self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
+                                print("CART SUCCESS")
                             }
                 }
             }

@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		06FC24982362E5807DF6F5E4 /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4558E65B2E6BADC9DDE084 /* Pods_ketekmall4.framework */; };
-		6B1DAC39F44AACAF6C0F9374 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D97A6F375539D1FBA60D7F3 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		FB0330B2252F6E9800D5F07D /* ChatInboxTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */; };
 		FB0330B4252F6F7F00D5F07D /* ChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */; };
 		FB08436F2512A371003C200E /* AboutKetekMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08436E2512A371003C200E /* AboutKetekMallViewController.swift */; };
 		FB0843712512A38B003C200E /* ReturnRefundPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */; };
 		FB0843732512A39C003C200E /* DeliveryPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */; };
+		FB14E3D125A099B0001C247C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D97A6F375539D1FBA60D7F3 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2883462509759E008B18BB /* ContactUsViewController.swift */; };
 		FB288356250994C3008B18BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB288354250994C2008B18BB /* Main.storyboard */; };
 		FB3E830324FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E830224FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift */; };
@@ -88,7 +88,6 @@
 		FBB2D5FB2513E20C007BEA53 /* BeforeRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */; };
 		FBB2D5FE251495B8007BEA53 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2D5FD251495B8007BEA53 /* AudioToolbox.framework */; };
 		FBB3E638259EFF3F0025D16C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB3E637259EFF3F0025D16C /* NotificationService.swift */; };
-		FBB3E63C259EFF3F0025D16C /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FBB3E635259EFF3F0025D16C /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FBBA2D74250918E500F55FE2 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */; };
 		FBC293C32508A5D00057961A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C22508A5D00057961A /* ChatTableViewCell.swift */; };
 		FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */; };
@@ -97,6 +96,7 @@
 		FBCE5666255A2AD800598DFA /* AppleSignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */; };
 		FBDBE791258E627000FD43A6 /* PosLajuTestArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
+		FBFA3A1925A0BBC9009B8399 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFA3A1825A0BBC9009B8399 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +114,7 @@
 			remoteGlobalIDString = FB5A48DC24F7F06B00F5464C;
 			remoteInfo = ketekmall4;
 		};
-		FBB3E63A259EFF3F0025D16C /* PBXContainerItemProxy */ = {
+		FBFA3A1C25A0BBD6009B8399 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FB5A48D524F7F06B00F5464C /* Project object */;
 			proxyType = 1;
@@ -122,20 +122,6 @@
 			remoteInfo = OneSignalNotificationServiceExtension;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		FBB3E63D259EFF3F0025D16C /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				FBB3E63C259EFF3F0025D16C /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0B5EB2B68539A1E8E59FCD5C /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
@@ -246,6 +232,7 @@
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBDDBB86250A1C760027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB87250A1C770027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ketekmall4/ms.lproj/Main.strings; sourceTree = "<group>"; };
+		FBFA3A1825A0BBC9009B8399 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +242,7 @@
 			files = (
 				FB914208251F5333004F62F6 /* libipay88sdk.a in Frameworks */,
 				FBB2D5FE251495B8007BEA53 /* AudioToolbox.framework in Frameworks */,
+				FBFA3A1925A0BBC9009B8399 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 				06FC24982362E5807DF6F5E4 /* Pods_ketekmall4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B1DAC39F44AACAF6C0F9374 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
+				FB14E3D125A099B0001C247C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +286,7 @@
 		DD0B1AF328BAB6338770F315 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FBFA3A1825A0BBC9009B8399 /* Pods_OneSignalNotificationServiceExtension.framework */,
 				FBD224BC251BE96A004B02F6 /* libipay88sdk.a */,
 				FBB2D5FD251495B8007BEA53 /* AudioToolbox.framework */,
 				1D97A6F375539D1FBA60D7F3 /* Pods_OneSignalNotificationServiceExtension.framework */,
@@ -478,14 +467,13 @@
 				FB5A48D924F7F06B00F5464C /* Sources */,
 				FB5A48DA24F7F06B00F5464C /* Frameworks */,
 				FB5A48DB24F7F06B00F5464C /* Resources */,
-				FBB3E63D259EFF3F0025D16C /* Embed App Extensions */,
-				EB43A03A4F22AA0A5EEC7643 /* [CP] Embed Pods Frameworks */,
-				ED4E62AD8E302B985D260021 /* [CP] Copy Pods Resources */,
+				214D3E18643FAA365032C6F1 /* [CP] Embed Pods Frameworks */,
+				92535E0A4C7BD2003763252F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FBB3E63B259EFF3F0025D16C /* PBXTargetDependency */,
+				FBFA3A1D25A0BBD6009B8399 /* PBXTargetDependency */,
 			);
 			name = ketekmall4;
 			productName = ketekmall4;
@@ -633,6 +621,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		214D3E18643FAA365032C6F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92535E0A4C7BD2003763252F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DCCC81A0681EFF205A8C2E02 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -675,40 +697,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EB43A03A4F22AA0A5EEC7643 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ED4E62AD8E302B985D260021 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -834,10 +822,10 @@
 			target = FB5A48DC24F7F06B00F5464C /* ketekmall4 */;
 			targetProxy = FB5A48FF24F7F07B00F5464C /* PBXContainerItemProxy */;
 		};
-		FBB3E63B259EFF3F0025D16C /* PBXTargetDependency */ = {
+		FBFA3A1D25A0BBD6009B8399 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FBB3E634259EFF3F0025D16C /* OneSignalNotificationServiceExtension */;
-			targetProxy = FBB3E63A259EFF3F0025D16C /* PBXContainerItemProxy */;
+			targetProxy = FBFA3A1C25A0BBD6009B8399 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1001,13 +989,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A293345F08DBE878E4F29A77 /* Pods-ketekmall4.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1019,7 +1006,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -1041,13 +1028,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B5EB2B68539A1E8E59FCD5C /* Pods-ketekmall4.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1059,7 +1045,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -1177,21 +1163,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0D258DD5755DA776AD3402C /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "KetekMall OneSignal Notification Service Dist";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1204,21 +1192,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 125323E22ADE51E360EFDE60 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "KetekMall OneSignal Notification Service Dist";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
