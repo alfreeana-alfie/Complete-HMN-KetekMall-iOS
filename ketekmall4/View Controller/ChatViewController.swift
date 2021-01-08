@@ -42,6 +42,11 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
     let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
     let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
     
+    let URL_CREATECHAT = "https://ketekmall.com/ketekmall/createChat.php"
+    let URL_GETCHATSINGLE = "https://ketekmall.com/ketekmall/getChatSingle.php"
+    let URL_GETCHAT = "https://ketekmall.com/ketekmall/getChat.php"
+    let URL_UPDATECHAT = "https://ketekmall.com/ketekmall/updateChat.php"
+    
     let ref = Database.database().reference(withPath: "messages")
     
     let sharedPref = UserDefaults.standard
@@ -56,6 +61,14 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
     
     var ChatID: String = ""
     var ChatUserName: String = ""
+    
+    // Chat Variable
+    var UserPhoto: String = ""
+    var chatWithV: String = ""
+    var chatWithID: String = ""
+    var chatWithPhoto: String = ""
+    
+    var TypeChat: [String] = []
     
     var saved: [String] = []
     let newArr: [String] = []
@@ -76,7 +89,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
 
         sender = Sender(senderId: "1", displayName: name)
-        other_user = Sender(senderId: "2", displayName: chatWith)
+        other_user = Sender(senderId: "2", displayName: chatWithV)
         
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -88,11 +101,141 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
         layout.textMessageSizeCalculator.incomingAvatarSize = .zero
         }
         
-        let ref1 = emailUser + "_" + chatWith
+//        print("\(UserPhoto)")
         
-        UpdateChatData(user_chatWith: ref1)
-        ChatList2()
-        ChatNew()
+        getChat()
+//        UpdateChat()
+        
+//        UpdateChatData(user_chatWith: ref1)
+//        ChatList2()
+//        ChatNew()
+    }
+    
+    func getChat(){
+        let parameters: Parameters=[
+            "UserID": user,
+            "ChatWithID": chatWithID
+        ]
+        
+        Alamofire.request(URL_GETCHATSINGLE, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let ID = user.value(forKey: "id") as! [String]
+                        let Content = user.value(forKey: "Content") as! [String]
+                        let CreatedDateTime = user.value(forKey: "CreatedDateTime") as! [String]
+                        let Type = user.value(forKey: "Type") as! [String]
+                        
+                        let date = Date()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.locale = Locale(identifier: "nl_NL")
+                        dateFormatter.timeZone = TimeZone(abbreviation: "GMT 8")
+                        dateFormatter.dateFormat = "MMMM-dd-yyyy HH:mm"
+                        
+                        self.TypeChat = Type
+                        for i in 0..<self.TypeChat.count{
+                            if(self.TypeChat[i] == "1"){
+                                self.messages.append(Message(sender: self.sender, messageId: ID[i], sentDate: date, kind: .text(Content[i])))
+                            }else{
+                                self.messages.append(Message(sender: self.other_user, messageId: ID[i], sentDate: date, kind: .text(Content[i])))
+                            }
+                            self.messagesCollectionView.reloadData()
+                        }
+                       
+                    }
+                    print("CHAT SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
+    func createChat(MessageText: String){
+        let parameters: Parameters=[
+            "Name": self.name,
+            "UserID": self.user,
+            "UserPhoto": UserPhoto,
+            "ChatWith": chatWithV,
+            "ChatWithID": chatWithID,
+            "ChatWithPhoto": chatWithPhoto,
+            "Content": MessageText,
+            "IsRead": "true",
+            "Type": "1"
+        ]
+        
+        Alamofire.request(URL_CREATECHAT, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        print("SAVED!")
+                    }
+                    print("CHAT SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
+    func createChatWith(MessageTextWith: String){
+        let parameters: Parameters=[
+            "Name": chatWithV,
+            "UserID": chatWithID,
+            "UserPhoto": chatWithPhoto,
+            "ChatWith": self.name,
+            "ChatWithID": self.user,
+            "ChatWithPhoto": self.UserPhoto,
+            "Content": MessageTextWith,
+            "IsRead": "false",
+            "Type": "2"
+        ]
+        
+        Alamofire.request(URL_CREATECHAT, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        print("SAVED!")
+                    }
+                    print("CHAT SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+        }
+    }
+    
+    func UpdateChat(){
+        let parameters: Parameters=[
+            "Name": self.name,
+            "UserID": self.user,
+            "UserPhoto": UserPhoto,
+            "ChatWithID": chatWithID,
+            "IsRead": "true"
+        ]
+        
+        Alamofire.request(URL_UPDATECHAT, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        print("SAVED!")
+                    }
+                    print("CHAT SUCCESS")
+                }else{
+                    print("FAILED")
+                }
+        }
     }
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String){
@@ -100,87 +243,18 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
             return
         }
         
-        let ref1 = emailUser + "_" + chatWith
-        let ref2 = chatWith + "_" + emailUser
-        let key = randomString
-        
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "nl_NL")
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT 8")
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let randomString2 = String.random()
+        dateFormatter.dateFormat = "MMMM-dd-yyyy HH:mm"
+        var randomString2 = String.random()
         
-        let newDate = dateFormatter.string(from: date)
         messages.append(Message(sender: sender, messageId: randomString, sentDate: date, kind: .text(text)))
         messagesCollectionView.reloadDataAndKeepOffset()
         
-        let msgSender_firebase = self.ref.child(ref1).child(key).child("message")
-        let timeSender_firebase = self.ref.child(ref1).child(key).child("time")
-        let userSender_firebase = self.ref.child(ref1).child(key).child("user")
-
-        let msgReceiver_firebase = self.ref.child(ref2).child(key).child("message")
-        let timeReceiver_firebase = self.ref.child(ref2).child(key).child("time")
-        let userReceiver_firebase = self.ref.child(ref2).child(key).child("user")
-        
-        
-
-        msgSender_firebase.setValue(text) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-
-        timeSender_firebase.setValue(newDate) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-
-        userSender_firebase.setValue(name) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-
-        msgReceiver_firebase.setValue(text) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-
-        timeReceiver_firebase.setValue(newDate) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-
-        userReceiver_firebase.setValue(name) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-        
-        ChatData(user_chatWith: ref1, chat_key: text)
-        ChatData(user_chatWith: ref2, chat_key: text)
+        self.createChat(MessageText: text)
+        self.createChatWith(MessageTextWith: text)
         
         self.OneSignalNoti(PlayerID: ChatID, Name: self.name, MessageText: text)
         randomString = ""

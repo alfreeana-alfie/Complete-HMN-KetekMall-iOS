@@ -27,6 +27,16 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
     let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
     let URL_READ_USER_DETAIL = "https://ketekmall.com/ketekmall/getNotificationDetail.php"
     
+    let URL_GETCHAT = "https://ketekmall.com/ketekmall/getChat.php"
+    let URL_GETCHATISREAD = "https://ketekmall.com/ketekmall/getChatIsRead.php"
+    let URL_READUSER = "https://ketekmall.com/ketekmall/read_detail.php"
+    
+    var UserPhoto: [String] = []
+    var ChatWith: [String] = []
+    var ChatWithID: [String] = []
+    var ChatWithPhoto: [String] = []
+    var ChatCount: [String] = []
+    
     var USERNAME: [String] = []
     var USERIMAGE: [String] = []
     var USERTOKEN: [String] = []
@@ -59,19 +69,13 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         UserID = sharedPref.string(forKey: "USERID") ?? "0"
         name = sharedPref.string(forKey: "NAME") ?? "0"
         email = sharedPref.string(forKey: "EMAIL") ?? "0"
-        
-        let index = self.email.firstIndex(of: "@") ?? self.email.endIndex
-        let newEmail = self.email[..<index]
-        
+                
         NAME = name
-        EMAILUSER = String(newEmail)
-        ChatList3()
-        //            ChatList2()
-        UserList()
-        TokenList()
-        ImageList()
+        
+        getChat()
+        getUserDetails()
     }
-    
+    // Start Her
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
@@ -105,6 +109,89 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         }
     }
     
+    func getChat(){
+        let parameters: Parameters=[
+            "UserID": UserID
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_GETCHAT, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+//                        let Name = user.value(forKey: "Name") as! [String]
+//                        let UserPhoto = user.value(forKey: "UserPhoto") as! [String]
+                        let ChatWith = user.value(forKey: "ChatWith") as! [String]
+                        let ChatWithID = user.value(forKey: "ChatWithID") as! [String]
+                        let ChatWithPhoto = user.value(forKey: "ChatWithPhoto") as! [String]
+                        
+                        self.ChatWith = ChatWith
+                        self.ChatWithID = ChatWithID
+                        self.ChatWithPhoto = ChatWithPhoto
+                        
+                        for i in 0..<self.ChatWithID.count{
+                            let parametersInner: Parameters=[
+                                "UserID": self.UserID,
+                                "ChatWithID": self.ChatWithID[i]
+                            ]
+                            
+                            Alamofire.request(self.URL_GETCHATISREAD, method: .post, parameters: parametersInner).responseJSON
+                            {
+                                responseInner in
+                                
+                                if let resultInner = responseInner.result.value{
+                                    let jsonDataInner = resultInner as! NSDictionary
+                                    let Success = jsonDataInner.value(forKey: "success") as! NSString
+                                    
+                                    if(Success.boolValue){
+                                        let DataInner = jsonDataInner.value(forKey: "read") as! NSArray
+                                        let ChatCount = DataInner.count
+                                        
+                                        self.ChatCount.append(String(ChatCount))
+                                        
+                                        self.ChatView.reloadData()
+                                    }else{
+                                        print("Failed to retrieve!")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }
+    
+    func getUserDetails(){
+        let parameters: Parameters=[
+            "id": UserID
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_READUSER, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+//                        let Name = user.value(forKey: "Name") as! [String]
+//                        let UserPhoto = user.value(forKey: "UserPhoto") as! [String]
+                        let UserPhoto = user.value(forKey: "photo") as! [String]
+                        
+                        self.UserPhoto = UserPhoto
+                    }
+                }
+        }
+    }
+    
+    // Stop Here
     func ChatList3(){
         Alamofire.request(URL_MESSAGE, method: .get).responseJSON
             {
@@ -244,16 +331,16 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
            }
        }
     
+    // Start Here
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return USERNAME.count
+        return self.ChatCount.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatCollectionViewCell", for: indexPath) as! ChatCollectionViewCell
-        let NEWIm = self.USERIMAGE[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        let NEWIm = self.ChatWithPhoto[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         cell.UserImage.setImageWith(URL(string: NEWIm!)!)
-        cell.UserName.text = USERNAME[indexPath.row]
-        
+        cell.UserName.text = self.ChatWith[indexPath.row]
         return cell
     }
     
@@ -280,14 +367,20 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let vc = ChatViewController()
-        vc.title = self.USERNAME[indexPath.row]
+        vc.title = self.ChatWith[indexPath.row]
         vc.navigationItem.largeTitleDisplayMode = .never
-        vc.chatWith = self.CHATWITH[indexPath.row]
-        vc.chatName = self.USERNAME[indexPath.row]
-        vc.chatToken = self.USERTOKEN[indexPath.row]
-        vc.emailUser = self.EMAILUSER
+//        vc.chatWith = self.ChatWith[indexPath.row]
+//        vc.chatName = self.USERNAME[indexPath.row]
+//        vc.chatToken = self.USERTOKEN[indexPath.row]
+//        vc.emailUser = self.EMAILUSER
+        
+        vc.UserPhoto = self.UserPhoto[0]
+        vc.chatWithV  = self.ChatWith[indexPath.row]
+        vc.chatWithID = self.ChatWithID[indexPath.row]
+        vc.chatWithPhoto = self.ChatWithPhoto[indexPath.row]
+        
         let parameters: Parameters=[
-            "Name": self.USERNAME[indexPath.row]
+            "Name": self.ChatWith[indexPath.row]
         ]
         
         Alamofire.request(URL_READ_USER_DETAIL, method: .post, parameters: parameters).responseJSON

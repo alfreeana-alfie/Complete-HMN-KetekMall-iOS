@@ -849,7 +849,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 navigator.pushViewController(addProduct, animated: true)
             }
         }else{
-            let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxViewController") as! ChatInboxViewController
+            let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "ChatInboxTwoViewController") as! ChatInboxTwoViewController
             myBuying.BarHidden = true
             if let navigator = self.navigationController {
                 navigator.pushViewController(myBuying, animated: true)

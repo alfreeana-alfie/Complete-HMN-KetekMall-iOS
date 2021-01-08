@@ -3641,7 +3641,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                     <constraint firstItem="KlD-3e-Wu9" firstAttribute="leading" secondItem="bk0-V9-OEE" secondAttribute="leading" constant="25" id="Vo5-Kk-fXn"/>
                                     <constraint firstAttribute="height" constant="219" id="WzB-eI-IT7"/>
                                     <constraint firstItem="Ca3-0y-ad9" firstAttribute="leading" secondItem="Oyv-U8-Ixk" secondAttribute="trailing" constant="8" id="YBH-mO-Vbd"/>
-                                    <constraint firstItem="DKl-KL-XIM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ca3-0y-ad9" secondAttribute="trailing" symbolic="YES" id="aDG-hI-2UU"/>
+                                    <constraint firstItem="DKl-KL-XIM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ca3-0y-ad9" secondAttribute="trailing" constant="8" symbolic="YES" id="aDG-hI-2UU"/>
                                     <constraint firstAttribute="trailing" secondItem="Gn9-it-79w" secondAttribute="trailing" constant="27" id="aQS-6x-2Is"/>
                                     <constraint firstItem="Oyv-U8-Ixk" firstAttribute="leading" secondItem="bk0-V9-OEE" secondAttribute="leading" constant="25" id="dIO-ns-Gtf"/>
                                     <constraint firstItem="Gn9-it-79w" firstAttribute="top" secondItem="DKl-KL-XIM" secondAttribute="bottom" constant="4" id="efi-ea-LmL"/>
@@ -3996,7 +3996,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShockingSaleCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-vR-JQH" customClass="ShockingSaleCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="ShockingSaleCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-vR-JQH" customClass="ShockingSaleCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="134" height="193"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FPB-P6-1Eb">
@@ -4109,7 +4109,7 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" reuseIdentifier="HotCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="791-RU-Ld3" customClass="HotCollectionViewCell" customModule="KetekMall" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="2.5" width="134" height="200"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7yX-Gr-aCY">
