@@ -8617,9 +8617,30 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xch-7B-1qU">
+                                                    <rect key="frame" x="375" y="4" width="15" height="15"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTd-SR-8Gt">
+                                                            <rect key="frame" x="2" y="2" width="11" height="11"/>
+                                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="LTd-SR-8Gt" firstAttribute="leading" secondItem="xch-7B-1qU" secondAttribute="leading" constant="2" id="2gx-MW-aYq"/>
+                                                        <constraint firstAttribute="bottom" secondItem="LTd-SR-8Gt" secondAttribute="bottom" constant="2" id="MMq-Np-QHu"/>
+                                                        <constraint firstItem="LTd-SR-8Gt" firstAttribute="top" secondItem="xch-7B-1qU" secondAttribute="top" constant="2" id="ag3-qr-f2f"/>
+                                                        <constraint firstAttribute="trailing" secondItem="LTd-SR-8Gt" secondAttribute="trailing" constant="2" id="qvJ-2B-dqG"/>
+                                                        <constraint firstAttribute="width" secondItem="xch-7B-1qU" secondAttribute="height" multiplier="1:1" id="scc-3K-Cxb"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="xch-7B-1qU" firstAttribute="top" secondItem="gMJ-s2-IGh" secondAttribute="top" constant="4" id="2vu-kv-hHS"/>
                                                 <constraint firstAttribute="bottom" secondItem="lby-4R-4pg" secondAttribute="bottom" constant="10" id="7hX-P5-OGN"/>
                                                 <constraint firstItem="EO4-Dr-d1K" firstAttribute="leading" secondItem="lby-4R-4pg" secondAttribute="trailing" constant="8" symbolic="YES" id="B7h-Pq-5Yc"/>
                                                 <constraint firstItem="lby-4R-4pg" firstAttribute="top" secondItem="gMJ-s2-IGh" secondAttribute="top" constant="10" id="HYo-Vr-mgA"/>
@@ -8628,10 +8649,13 @@ Buyer will only be refunded after Ketekmall has received the confirmation from S
                                                 <constraint firstItem="lby-4R-4pg" firstAttribute="leading" secondItem="gMJ-s2-IGh" secondAttribute="leading" constant="28" id="cnA-7B-4Wg"/>
                                                 <constraint firstAttribute="bottom" secondItem="EO4-Dr-d1K" secondAttribute="bottom" constant="19" id="g0M-WK-D4R"/>
                                                 <constraint firstItem="EO4-Dr-d1K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lby-4R-4pg" secondAttribute="trailing" constant="8" symbolic="YES" id="k0d-Kk-Qf5"/>
+                                                <constraint firstAttribute="trailing" secondItem="xch-7B-1qU" secondAttribute="trailing" constant="4" id="u51-bQ-qdg"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="ChatBadgeView" destination="xch-7B-1qU" id="O8k-pv-mSi"/>
+                                            <outlet property="ChatCount" destination="LTd-SR-8Gt" id="zXb-ld-zfi"/>
                                             <outlet property="UserImage" destination="lby-4R-4pg" id="NA9-ba-vLP"/>
                                             <outlet property="UserName" destination="EO4-Dr-d1K" id="WOR-Yo-vEo"/>
                                         </connections>

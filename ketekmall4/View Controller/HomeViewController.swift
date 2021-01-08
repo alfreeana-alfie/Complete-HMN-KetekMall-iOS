@@ -209,9 +209,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     let URL_READ_SHOCKING_SALE = "https://ketekmall.com/ketekmall/category/readall_shocking.php"
     
     let URL_ADD_PLAYERID = "https://ketekmall.com/ketekmall/add_playerID.php"
-    
-    
     let URL_READ_CHAT = "https://ketekmall.com/ketekmall/read_chat.php"
+    let URL_GETCHATALL = "https://ketekmall.com/ketekmall/getChatIsReadAll.php"
     
     let URL_READ_CATEGORY_MAIN = "https://ketekmall.com/ketekmall/category/"
     let URL_READ_CATEGORY_SEARCH_MAIN = "https://ketekmall.com/ketekmall/search/"
@@ -459,13 +458,49 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         if(user != "0"){
             getUserDetails(userID: String(user))
-            MessageCount02(EmailUser: String(newEmail))
+            MessageCount03()
+//            MessageCount02(EmailUser: String(newEmail))
             CartCount(UserID: String(user))
         }else{
             print("FAILED")
         }
         HotSelling()
         ShockingSale()
+    }
+    
+    func MessageCount03(){
+        let parameters: Parameters=[
+            "UserID": user
+        ]
+        
+        Alamofire.request(URL_GETCHATALL, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    self.spinner.dismiss(afterDelay: 3.0)
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        if(user.count == 0){
+                            
+                        }else{
+                            var badgeAppearance = BadgeAppearance()
+                            badgeAppearance.backgroundColor = UIColor.red //default is red
+                            badgeAppearance.textColor = UIColor.white // default is white
+                            badgeAppearance.textAlignment = .center //default is center
+                            badgeAppearance.textSize = 10 //default is 12
+                            badgeAppearance.distanceFromCenterX = 10 //default is 0
+                            badgeAppearance.distanceFromCenterY = 1 //default is 0
+                            badgeAppearance.allowShadow = false
+                            badgeAppearance.borderColor = .red
+                            badgeAppearance.borderWidth = 0
+                            self.ChatViewNav.badge(text: String(user.count), appearance: badgeAppearance)
+                        }
+                    }
+                }
+        }
     }
     
     func MessageCount02(EmailUser: String){

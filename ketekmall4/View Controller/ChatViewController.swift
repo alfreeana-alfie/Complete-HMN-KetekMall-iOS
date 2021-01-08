@@ -104,7 +104,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate{
 //        print("\(UserPhoto)")
         
         getChat()
-//        UpdateChat()
+        UpdateChat()
         
 //        UpdateChatData(user_chatWith: ref1)
 //        ChatList2()

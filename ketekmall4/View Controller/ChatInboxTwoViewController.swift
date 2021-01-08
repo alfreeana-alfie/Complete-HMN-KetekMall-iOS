@@ -36,6 +36,7 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
     var ChatWithID: [String] = []
     var ChatWithPhoto: [String] = []
     var ChatCount: [String] = []
+    var ChatMember: [String] = []
     
     var USERNAME: [String] = []
     var USERIMAGE: [String] = []
@@ -75,7 +76,7 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         getChat()
         getUserDetails()
     }
-    // Start Her
+    // Start Here
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
@@ -137,7 +138,7 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
                         for i in 0..<self.ChatWithID.count{
                             let parametersInner: Parameters=[
                                 "UserID": self.UserID,
-                                "ChatWithID": self.ChatWithID[i]
+                                "ChatWithID": ChatWithID[i]
                             ]
                             
                             Alamofire.request(self.URL_GETCHATISREAD, method: .post, parameters: parametersInner).responseJSON
@@ -151,16 +152,21 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
                                     if(Success.boolValue){
                                         let DataInner = jsonDataInner.value(forKey: "read") as! NSArray
                                         let ChatCount = DataInner.count
+                                        let ChatCountString = String(ChatCount)
                                         
-                                        self.ChatCount.append(String(ChatCount))
+                                        self.ChatCount.append(ChatCountString)
                                         
+//                                        print("CharCount: \(self.ChatWithID[i])")
+//                                        print("ChatCount: \(self.ChatCount)")
                                         self.ChatView.reloadData()
                                     }else{
                                         print("Failed to retrieve!")
                                     }
                                 }
                             }
+                            
                         }
+                        
                     }
                 }
         }
@@ -341,6 +347,17 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         let NEWIm = self.ChatWithPhoto[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         cell.UserImage.setImageWith(URL(string: NEWIm!)!)
         cell.UserName.text = self.ChatWith[indexPath.row]
+        cell.ChatCount.text = self.ChatCount[indexPath.row]
+        
+//        print("ChatCount: \(self.ChatCount[indexPath.row])")
+        
+        cell.ChatBadgeView.layer.cornerRadius = 7
+        
+        if(cell.ChatCount.text == "0"){
+            cell.ChatBadgeView.isHidden = true
+        }else{
+            cell.ChatBadgeView.isHidden = false
+        }
         return cell
     }
     
