@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ketekmall4
 //
-//  Created by Alfreeana Alfie on 27/08/2020.
+//  Created by HMN Nadhir on 27/08/2020.
 //  Copyright © 2020 HNM Nadir Sdn Bhd. All rights reserved.
 //
 

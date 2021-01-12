@@ -94,7 +94,6 @@
 		FBC293C72508A6120057961A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC293C62508A6120057961A /* ChatViewController.swift */; };
 		FBC47064252797A400E38DE6 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC47063252797A400E38DE6 /* PushNotification.swift */; };
 		FBCE5666255A2AD800598DFA /* AppleSignInClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */; };
-		FBD3187625A8DF4200A41C63 /* ChatViewNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD3187525A8DF4200A41C63 /* ChatViewNewViewController.swift */; };
 		FBDBE791258E627000FD43A6 /* PosLajuTestArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */; };
 		FBDDBB82250A1C1B0027BC90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBDDBB84250A1C1B0027BC90 /* Localizable.strings */; };
 		FBFA3A1925A0BBC9009B8399 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFA3A1825A0BBC9009B8399 /* Pods_OneSignalNotificationServiceExtension.framework */; };
@@ -228,7 +227,6 @@
 		FBCE5667255A355F00598DFA /* ketekmall4.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ketekmall4.entitlements; sourceTree = "<group>"; };
 		FBCE5668255A356900598DFA /* KetekMallRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = KetekMallRelease.entitlements; sourceTree = "<group>"; };
 		FBD224BC251BE96A004B02F6 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libipay88sdk.a; path = ketekmall4/libipay88sdk.a; sourceTree = "<group>"; };
-		FBD3187525A8DF4200A41C63 /* ChatViewNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewNewViewController.swift; sourceTree = "<group>"; };
 		FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosLajuTestArea.swift; sourceTree = "<group>"; };
 		FBDDBB83250A1C1B0027BC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBDDBB85250A1C750027BC90 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -397,7 +395,6 @@
 				FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */,
 				FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */,
 				FBC293C62508A6120057961A /* ChatViewController.swift */,
-				FBD3187525A8DF4200A41C63 /* ChatViewNewViewController.swift */,
 				FB7D211624FFE5A90043A286 /* CheckoutCollectionViewCell.swift */,
 				FB43BFD324FF7502002D36E0 /* CheckoutViewController.swift */,
 				FB2883462509759E008B18BB /* ContactUsViewController.swift */,
@@ -758,7 +755,6 @@
 				FB5A48E324F7F06B00F5464C /* SceneDelegate.swift in Sources */,
 				FB5A491524F7F49E00F5464C /* HomeViewController.swift in Sources */,
 				FB5A492124F810FD00F5464C /* AddNewProductViewController.swift in Sources */,
-				FBD3187625A8DF4200A41C63 /* ChatViewNewViewController.swift in Sources */,
 				FB7787C124FE35CA00AB01F4 /* ReviewCollectionViewCell.swift in Sources */,
 				FB9A928825037A51001DD96C /* BuyerViewController.swift in Sources */,
 				FB2883472509759E008B18BB /* ContactUsViewController.swift in Sources */,
@@ -998,7 +994,7 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1010,7 +1006,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.1.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -1037,7 +1033,7 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1049,7 +1045,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.1.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;

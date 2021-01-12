@@ -2,8 +2,8 @@
 //  ketekmall4_Bridging_Header_h.h
 //  ketekmall4
 //
-//  Created by Alfreeana Alfie on 24/09/2020.
-//  Copyright © 2020 Alfreeana Alfie. All rights reserved.
+//  Created by HMN Nadhir on 24/09/2020.
+//  Copyright © 2020 HMN Nadhir. All rights reserved.
 //
 
 #ifndef ketekmall4_Bridging_Header_h

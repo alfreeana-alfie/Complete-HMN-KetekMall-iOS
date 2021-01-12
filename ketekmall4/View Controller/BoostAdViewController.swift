@@ -2,8 +2,8 @@
 //  BoostAdViewController.swift
 //  ketekmall4
 //
-//  Created by Alfreeana Alfie on 29/08/2020.
-//  Copyright © 2020 Alfreeana Alfie. All rights reserved.
+//  Created by HMN Nadhir on 29/08/2020.
+//  Copyright © 2020 HMN Nadhir. All rights reserved.
 //
 
 import UIKit
@@ -31,7 +31,7 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
     var lang: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
+//        CfolorFunc()
     }
 
     

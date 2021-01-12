@@ -2,8 +2,8 @@
 //  DeliveryAddViewController.swift
 //  ketekmall4
 //
-//  Created by Alfreeana Alfie on 03/09/2020.
-//  Copyright © 2020 Alfreeana Alfie. All rights reserved.
+//  Created by HMN Nadhir on 03/09/2020.
+//  Copyright © 2020 HMN Nadhir. All rights reserved.
 //
 
 import UIKit
