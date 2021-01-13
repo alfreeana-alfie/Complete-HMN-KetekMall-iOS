@@ -1,11 +1,3 @@
-//
-//  PushNotification.swift
-//  ketekmall4
-//
-//  Created by HMN Nadhir on 03/10/2020.
-//  Copyright © 2020 HMN Nadhir. All rights reserved.
-//
-
 import Foundation
 import UIKit
 

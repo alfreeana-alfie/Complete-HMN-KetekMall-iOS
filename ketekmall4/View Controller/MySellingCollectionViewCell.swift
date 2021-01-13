@@ -1,10 +1,4 @@
-//
-//  MySellingCollectionViewCell.swift
-//  ketekmall4
-//
-//  Created by HMN Nadhir on 29/08/2020.
-//  Copyright © 2020 HMN Nadhir. All rights reserved.
-//
+
 
 import UIKit
 

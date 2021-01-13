@@ -1,11 +1,3 @@
-//
-//  AppleSignInClient.swift
-//  ketekmall4
-//
-//  Created by HMN Nadhir on 10/11/2020.
-//  Copyright © 2020 HMN Nadhir. All rights reserved.
-//
-
 import AuthenticationServices
 
 class AppleSignInClient: NSObject {

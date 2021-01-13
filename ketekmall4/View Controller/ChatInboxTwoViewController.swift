@@ -1,10 +1,4 @@
-//
-//  ChatInboxTwoViewController.swift
-//  ketekmall4
-//
-//  Created by HMN Nadhir on 08/10/2020.
-//  Copyright © 2020 HMN Nadhir. All rights reserved.
-//
+
 
 import UIKit
 import Alamofire
