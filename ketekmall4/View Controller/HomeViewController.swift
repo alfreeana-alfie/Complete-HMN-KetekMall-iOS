@@ -363,7 +363,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         let index = email.firstIndex(of: "@") ?? email.endIndex
-        let newEmail = email[..<index]
+        _ = email[..<index]
         
         dropDown.anchorView = ListBar
         dropDown.dataSource = ["Edit Profile","Change to BM","Change to ENG","About KetekMall", "Logout"]
@@ -484,7 +484,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             badgeAppearance.backgroundColor = UIColor.red //default is red
                             badgeAppearance.textColor = UIColor.white // default is white
                             badgeAppearance.textAlignment = .center //default is center
-                            badgeAppearance.textSize = 10 //default is 12
+//                            badgeAppearance.textSize = 10 //default is 12
                             badgeAppearance.distanceFromCenterX = 10 //default is 0
                             badgeAppearance.distanceFromCenterY = 1 //default is 0
                             badgeAppearance.allowShadow = false
@@ -519,7 +519,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             badgeAppearance.backgroundColor = UIColor.red //default is red
                             badgeAppearance.textColor = UIColor.white // default is white
                             badgeAppearance.textAlignment = .center //default is center
-                            badgeAppearance.textSize = 10 //default is 12
+//                            badgeAppearance.textSize = 10 //default is 12
                             badgeAppearance.distanceFromCenterX = 10 //default is 0
                             badgeAppearance.distanceFromCenterY = 1 //default is 0
                             badgeAppearance.allowShadow = false
@@ -1172,7 +1172,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                                     badgeAppearance.backgroundColor = UIColor.red //default is red
                                     badgeAppearance.textColor = UIColor.white // default is white
                                     badgeAppearance.textAlignment = .center //default is center
-                                    badgeAppearance.textSize = 10 //default is 12
+//                                    badgeAppearance.textSize = 10 //default is 12
                                     badgeAppearance.distanceFromCenterX = 10 //default is 0
                                     badgeAppearance.distanceFromCenterY = 1 //default is 0
                                     badgeAppearance.allowShadow = false

@@ -1,8 +1,0 @@
-${PODS_ROOT}/Target Support Files/Pods-ketekmall4/Pods-ketekmall4-resources.sh
-${PODS_ROOT}/DropDown/DropDown/resources/DropDownCell.xib
-${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle
-${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle
-${PODS_CONFIGURATION_BUILD_DIR}/ImagePicker/ImagePicker.bundle
-${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png
-${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png
-${PODS_ROOT}/MessageKit/Sources/Assets.xcassets

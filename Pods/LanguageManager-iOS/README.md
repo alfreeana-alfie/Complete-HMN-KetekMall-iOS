@@ -32,27 +32,28 @@ and for Arabic file :  <br>
 After that in didFinishLaunchingWithOptions inside the AppDelegate.swift set your default language that your app will run first time
 
 ```swift
-LanguageManager.shared.defaultLanguage = .en
+LanguageManager.shared.defaultLanguage = .en // you can use .deviceLanguage to keep the device language.
 ```
 
 If you want to change the language use the ```setLanguage(language:)``` method by passing to it the new language
 
 ```swift
-@IBAction func changeLanguage(_ sender: UIButton) {
+  @IBAction func changeLanguage(_ sender: UIButton) {
 
-  let selectedLanguage: Languages = sender.tag == 1 ? .en : .ar
-        
-  let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  // the view controller that you want to show after changing the language
-  let viewController = storyboard.instantiateInitialViewController()
-        
-  // change the language
-  LanguageManager.shared.setLanguage(language: selectedLanguage, rootViewController: viewController, animation: { view in
-    // do custom animation
-    view.transform = CGAffineTransform(scaleX: 2, y: 2)
-    view.alpha = 0
-  })
-}
+    let selectedLanguage: Languages = sender.tag == 1 ? .en : .ar
+
+    // change the language
+    LanguageManager.shared.setLanguage(language: selectedLanguage)
+    { title -> UIViewController in
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      // the view controller that you want to show after changing the language
+      return storyboard.instantiateInitialViewController()!
+    } animation: { view in
+      // do custom animation
+      view.transform = CGAffineTransform(scaleX: 2, y: 2)
+      view.alpha = 0
+    }
+  }
 ```
 
 If you have an image and you want to change the direction of the image depending on the language, you can use image direction property, the property can be one of the following values:
@@ -69,7 +70,7 @@ and the image is right to left image then you need to set the value as 2.
 
 Please check the example project to see how it works.
 
-<b>Installation</b>
+## Installation
 
 LanguageManager-iOS is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -84,10 +85,19 @@ Or you can use [Carthage](https://github.com/Carthage/Carthage).
 github "Abedalkareem/LanguageManager-iOS"
 ```
 
-## Note
+You can also use [Swift Package Manager](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
-I'm going to be very happy if you give me a feedback or advice , thank you
+## Support me 🚀
 
+You can support this project by:  
+
+1- Checking my [apps](https://apps.apple.com/us/developer/id928910207).  
+2- Star the repo.  
+3- Share the repo with your friends.  
+
+## Follow me ❤️
+
+[Facebook](https://www.facebook.com/Abedalkareem.Omreyh/) | [Twitter](http://twitter.com/abedalkareemomr) | [Instagram](http://instagram.com/abedalkareemomreyh/) | [Youtube](https://www.youtube.com/user/AbedalkareemOmreyh)
 
 ## License
 
