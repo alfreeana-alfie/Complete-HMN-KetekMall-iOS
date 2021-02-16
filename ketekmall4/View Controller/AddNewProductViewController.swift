@@ -5,22 +5,6 @@ import Alamofire
 import JGProgressHUD
 
 class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-    
-//    let defaultManager: Alamofire.Manager = {
-//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//            "localhost:3443": .DisableEvaluation
-//        ]
-//
-//        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-//        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
-//
-//        return Alamofire.Manager(
-//            configuration: configuration,
-//            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-//        )
-//    }()
-    
-    
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var AdDetailLabel: UILabel!
     @IBOutlet weak var DistrictLabel: UILabel!
@@ -545,61 +529,116 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true)
         }
-        
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
-                if(flag == 1){
-                    ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
-                    ItemImage.image = chosenImage
-                    dismiss(animated: true, completion: nil)
-                }else if(flag == 2){
-                    ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
-                    ItemImage2.image = chosenImage
-                    if(self.ItemImage2.image == chosenImage){
-                        print("PRESENT")
-                        self.Delete_2.isHidden = false
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let chosenImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage{
+            if(flag == 1){
+                ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage.image = chosenImage
+                dismiss(animated: true, completion: nil)
+            }else if(flag == 2){
+                ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage2.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    self.Delete_2.isHidden = false
 //                        saveImage(number: "2", Image: ItemImage2)
-                    }else{
-                        print("EMPTY")
-                    }
-                    dismiss(animated: true, completion: nil)
-                }else if(flag == 3){
-                    ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
-                    ItemImage3.image = chosenImage
-                    if(self.ItemImage2.image == chosenImage){
-                        print("PRESENT")
-                        self.Delete_3.isHidden = false
-//                        saveImage(number: "3", Image: ItemImage2)
-                    }else{
-                        print("EMPTY")
-                    }
-                    dismiss(animated: true, completion: nil)
-                }else if(flag == 4){
-                    ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
-                    ItemImage4.image = chosenImage
-                    if(self.ItemImage2.image == chosenImage){
-                        print("PRESENT")
-                        self.Delete_4.isHidden = false
-//                        saveImage(number: "4", Image: ItemImage2)
-                    }else{
-                        print("EMPTY")
-                    }
-                    dismiss(animated: true, completion: nil)
-                }else if(flag == 5){
-                    ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
-                    ItemImage5.image = chosenImage
-                    if(self.ItemImage2.image == chosenImage){
-                        print("PRESENT")
-                        self.Delete_5.isHidden = false
-//                        saveImage(number: "5", Image: ItemImage2)
-                    }else{
-                        print("EMPTY")
-                    }
-                    dismiss(animated: true, completion: nil)
+                }else{
+                    print("EMPTY")
                 }
+                dismiss(animated: true, completion: nil)
+            }else if(flag == 3){
+                ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage3.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    self.Delete_3.isHidden = false
+//                        saveImage(number: "3", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
+                dismiss(animated: true, completion: nil)
+            }else if(flag == 4){
+                ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage4.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    self.Delete_4.isHidden = false
+//                        saveImage(number: "4", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
+                dismiss(animated: true, completion: nil)
+            }else if(flag == 5){
+                ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                ItemImage5.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+                    self.Delete_5.isHidden = false
+//                        saveImage(number: "5", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+                }
+                dismiss(animated: true, completion: nil)
             }
-    //        dismiss(animated: true, completion: nil)
         }
+//        dismiss(animated: true, completion: nil)
+    }
+        
+//    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//            if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
+//                if(flag == 1){
+//                    ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+//                    ItemImage.image = chosenImage
+//                    dismiss(animated: true, completion: nil)
+//                }else if(flag == 2){
+//                    ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+//                    ItemImage2.image = chosenImage
+//                    if(self.ItemImage2.image == chosenImage){
+//                        print("PRESENT")
+//                        self.Delete_2.isHidden = false
+////                        saveImage(number: "2", Image: ItemImage2)
+//                    }else{
+//                        print("EMPTY")
+//                    }
+//                    dismiss(animated: true, completion: nil)
+//                }else if(flag == 3){
+//                    ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+//                    ItemImage3.image = chosenImage
+//                    if(self.ItemImage2.image == chosenImage){
+//                        print("PRESENT")
+//                        self.Delete_3.isHidden = false
+////                        saveImage(number: "3", Image: ItemImage2)
+//                    }else{
+//                        print("EMPTY")
+//                    }
+//                    dismiss(animated: true, completion: nil)
+//                }else if(flag == 4){
+//                    ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+//                    ItemImage4.image = chosenImage
+//                    if(self.ItemImage2.image == chosenImage){
+//                        print("PRESENT")
+//                        self.Delete_4.isHidden = false
+////                        saveImage(number: "4", Image: ItemImage2)
+//                    }else{
+//                        print("EMPTY")
+//                    }
+//                    dismiss(animated: true, completion: nil)
+//                }else if(flag == 5){
+//                    ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+//                    ItemImage5.image = chosenImage
+//                    if(self.ItemImage2.image == chosenImage){
+//                        print("PRESENT")
+//                        self.Delete_5.isHidden = false
+////                        saveImage(number: "5", Image: ItemImage2)
+//                    }else{
+//                        print("EMPTY")
+//                    }
+//                    dismiss(animated: true, completion: nil)
+//                }
+//            }
+//    //        dismiss(animated: true, completion: nil)
+//        }
     
     @IBAction func Accept(_ sender: Any) {
         let spinner = JGProgressHUD(style: .dark)
