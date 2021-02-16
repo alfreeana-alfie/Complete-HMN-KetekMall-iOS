@@ -7,6 +7,7 @@ class AboutKetekMallViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var ButtonDelivery: UIButton!
     @IBOutlet weak var ButtonContact: UIButton!
     @IBOutlet weak var Tabbar: UITabBar!
+    @IBOutlet weak var AppVersion: UIButton!
     
     var viewController1: UIViewController?
     
@@ -58,6 +59,14 @@ class AboutKetekMallViewController: UIViewController, UITabBarDelegate {
             navigator.pushViewController(accountsettings, animated: true)
         }
     }
+    
+    @IBAction func ButtonAppVersion(_ sender: Any) {
+        let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AppVersionViewController") as! AppVersionViewController
+        if let navigator = self.navigationController {
+            navigator.pushViewController(accountsettings, animated: true)
+        }
+    }
+    
     
     @IBAction func ButtonDelivery(_ sender: Any) {
         let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "DeliveryPolicyViewController") as! DeliveryPolicyViewController

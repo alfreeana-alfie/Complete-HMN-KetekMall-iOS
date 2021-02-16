@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D46060A631834C2D97D13D8 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE468A582F4ECDE3C859230 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		395381CA25DBAEAB008B16BB /* AppVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395381C925DBAEAB008B16BB /* AppVersionViewController.swift */; };
 		C445ED7C9CD1F4976D6042C5 /* Pods_ketekmall4Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F543144A72DD3BBC020B6243 /* Pods_ketekmall4Tests.framework */; };
 		C6E0DAE1B7F3A81947E27BCB /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E7F0E86A92BCCCD9020AE35 /* Pods_ketekmall4.framework */; };
 		D6E43C175A676DA21E8FC631 /* Pods_ketekmall4_ketekmall4UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77BF025829DD3C7FD080D730 /* Pods_ketekmall4_ketekmall4UITests.framework */; };
@@ -128,6 +129,7 @@
 		0CC3FD104D4C11C958FCB9BC /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; sourceTree = "<group>"; };
 		0E7F0E86A92BCCCD9020AE35 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16DBB2CE9D170C83B5833FBE /* Pods-ketekmall4Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4Tests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4Tests/Pods-ketekmall4Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		395381C925DBAEAB008B16BB /* AppVersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionViewController.swift; sourceTree = "<group>"; };
 		3FFA2B7FC2B4F475EA4F5524 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
 		498607E8EFF4D303E1EFDC7B /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		569F9A64D8C35390DA3380F1 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */,
 				FB7787BC24FE0FCA00AB01F4 /* ViewReviewViewController.swift */,
 				FB4B72DC24FBEF1A00293B81 /* ViewSellingViewController.swift */,
+				395381C925DBAEAB008B16BB /* AppVersionViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				FB3E830324FE6D2A00F1CE3C /* AboutSellerCollectionViewCell.swift in Sources */,
 				FB77A15524FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift in Sources */,
 				FB528ACB24FA84BF00A968E8 /* MyIncomeViewController.swift in Sources */,
+				395381CA25DBAEAB008B16BB /* AppVersionViewController.swift in Sources */,
 				FB43BFD024FF60F8002D36E0 /* EditProductAdDetailViewController.swift in Sources */,
 				FB4B72CF24FB6FC000293B81 /* MyBuyingViewController.swift in Sources */,
 				FB7787BB24FE0F7A00AB01F4 /* AboutSellerViewController.swift in Sources */,
@@ -1088,9 +1092,8 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1101,11 +1104,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.1.9;
+				MARKETING_VERSION = 1.2.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
-				PROVISIONING_PROFILE_SPECIFIER = "KetekMall 02";
+				PROVISIONING_PROFILE_SPECIFIER = "New KetekMall Main";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = ketekmall4/ketekmall4_Bridging_Header.h;
@@ -1128,9 +1131,8 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1141,11 +1143,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.1.9;
+				MARKETING_VERSION = 1.2.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
-				PROVISIONING_PROFILE_SPECIFIER = "KetekMall 02";
+				PROVISIONING_PROFILE_SPECIFIER = "New KetekMall Main";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = ketekmall4/ketekmall4_Bridging_Header.h;
@@ -1266,9 +1268,8 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1276,11 +1277,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.2.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "KetekMall OneSignal Notification Service Dist";
+				PROVISIONING_PROFILE_SPECIFIER = "New KetekMall";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1296,9 +1297,8 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1306,11 +1306,11 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.2.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "KetekMall OneSignal Notification Service Dist";
+				PROVISIONING_PROFILE_SPECIFIER = "New KetekMall";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

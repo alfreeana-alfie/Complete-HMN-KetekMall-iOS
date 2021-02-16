@@ -64,7 +64,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
     
-    let category = ["Cake and pastries", "Process food", "Handicraft", "Retail and Wholesale", "Agriculture", "Service", "Health and Beauty", "home and living", "Fashion Accessories", "Sarawak - Based Product"]
+    let category = ["Process food", "Handicraft","Health and Beauty", "Home and Living", "Fashion Accessories", "Sarawak - Based Product", "Self Pickup"]
     
     let division = ["Kuching", "Kota Samarahan", "Serian", "Sri Aman", "Betong", "Sarikei", "Sibu", "Mukah", "Bintulu", "Kapit", "Miri", "Limbang"]
     
