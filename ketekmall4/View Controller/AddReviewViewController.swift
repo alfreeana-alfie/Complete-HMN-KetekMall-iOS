@@ -8,6 +8,7 @@ import JGProgressHUD
 class AddReviewViewController: UIViewController, UITextViewDelegate {
     
     let URL_ADD = "https://ketekmall.com/ketekmall/add_review.php"
+    let URL_CANCEL = "https://ketekmall.com/ketekmall/cancel_review.php"
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     
     private let spinner = JGProgressHUD(style: .dark)
@@ -22,6 +23,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     var SELLERID: String = ""
     var ITEMID: String = ""
     var RATING: String = ""
+    var ORDERDATE: String = ""
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -34,6 +36,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         Review.delegate = self
+        Review.textColor = UIColor.lightGray
         
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
@@ -62,17 +65,31 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Write your review here"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
     func ColorFunc(){
-        let colorView1 = UIColor(hexString: "#FC4A1A").cgColor
-        let colorView2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let l = CAGradientLayer()
-        l.frame = self.view.bounds
-        l.colors = [colorView1, colorView2]
-        l.startPoint = CGPoint(x: 0, y: 0.5)
-        l.endPoint = CGPoint(x: 1, y: 0.5)
-        l.cornerRadius = 5
-        self.view.layer.insertSublayer(l, at: 0)
+//        let colorView1 = UIColor(hexString: "#FC4A1A").cgColor
+//        let colorView2 = UIColor(hexString: "#F7B733").cgColor
+//
+//        let l = CAGradientLayer()
+//        l.frame = self.view.bounds
+//        l.colors = [colorView1, colorView2]
+//        l.startPoint = CGPoint(x: 0, y: 0.5)
+//        l.endPoint = CGPoint(x: 1, y: 0.5)
+//        l.cornerRadius = 5
+//        self.view.layer.insertSublayer(l, at: 0)
         
         let color1 = UIColor(hexString: "#FC4A1A").cgColor
         let color2 = UIColor(hexString: "#F7B733").cgColor
@@ -169,6 +186,30 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func Cancel(_ sender: Any) {
-         _ = navigationController?.popViewController(animated: true)
+        
+        spinner.show(in: self.view)
+        let parameters: Parameters=[
+            "order_date": ORDERDATE
+        ]
+        Alamofire.request(URL_CANCEL, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        self.spinner.textLabel.text = "Success"
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
+                        _ = self.navigationController?.popViewController(animated: true)
+                        }
+                    }else{
+                        self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                        self.spinner.textLabel.text = "Failed"
+                        self.spinner.show(in: self.view)
+                        self.spinner.dismiss(afterDelay: 4.0)
+                    }
+                }
+        }
     }
-}

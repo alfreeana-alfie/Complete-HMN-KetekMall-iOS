@@ -69,7 +69,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app requires access to the location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires access to the photo library</string>
+	<string>This app requires access to the photo library.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -116,7 +116,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app requires access to the photo library.</string>
 </dict>
 </plist>

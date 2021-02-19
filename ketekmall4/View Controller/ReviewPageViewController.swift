@@ -30,6 +30,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     var SELLERID: String = ""
     var STATUS: String = ""
     var SELLER_DIVISION: String = ""
+    
     var viewController1: UIViewController?
     
     var Total1: Double = 0.00
@@ -108,6 +109,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
                         ReviewProduct.USERID = self.USERID
                         ReviewProduct.ITEMID = self.itemID
                         ReviewProduct.SELLERID = self.SELLERID
+                        ReviewProduct.ORDERDATE = self.DATEORDER
                         if let navigator = self.navigationController {
                             navigator.pushViewController(ReviewProduct, animated: true)
                         }
@@ -191,6 +193,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         ItemName.text! = ADDETAIL
         ItemPrice.text! = "MYR" + PRICE
         ItemQuantity.text! = "x" + QUANTITY
+        let strShippingCost = round(Double(SHIPPINGTOTAL)!)
         
         if(SHIPPEDTO == SELLER_DIVISION){
             SHIPPINGTOTAL = "0.00"
@@ -198,15 +201,21 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
             Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
             Total2 = Total1 + Double(SHIPPINGTOTAL)!
             
+            let strShippingCost = round(Double(SHIPPINGTOTAL)!)
+            print(SHIPPINGTOTAL)
+            
             SubTotal.text! = "MYR" + PRICE
-            ShippingTotal.text! = "MYR" + SHIPPINGTOTAL
+            ShippingTotal.text! = "MYR" + String(format: "%.2f", strShippingCost)
             GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
         }else{
             Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
-            Total2 = Total1 + Double(SHIPPINGTOTAL)!
+            Total2 = Total1 + strShippingCost 
             
+//            let strDel: Double = round(Double(self.DELIVERYPRICE[i])!)
+            
+            print(SHIPPINGTOTAL)
             SubTotal.text! = "MYR" + PRICE
-            ShippingTotal.text! = "MYR" + SHIPPINGTOTAL
+            ShippingTotal.text! = "MYR" + String(format: "%.2f", strShippingCost)
             GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
         }
         
