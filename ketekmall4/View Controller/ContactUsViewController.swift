@@ -44,6 +44,12 @@ class ContactUsViewController: UIViewController, UITabBarDelegate {
         }
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         lang = sharedPref.string(forKey: "LANG") ?? "0"
@@ -56,6 +62,8 @@ class ContactUsViewController: UIViewController, UITabBarDelegate {
         }
 
         Tabbar.delegate = self
+        self.hideKeyboardWhenTappedAround()
+        
     }
     
     func changeLanguage(str: String){

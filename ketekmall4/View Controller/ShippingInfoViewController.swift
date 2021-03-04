@@ -24,7 +24,7 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lang = sharedPref.string(forKey: "LANG") ?? "0"
+       lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -41,6 +41,11 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
         DeliveryList()
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func changeLanguage(str: String){
         Tabbar.items?[0].title = "Home".localized(lang: str)
         Tabbar.items?[1].title = "Notification".localized(lang: str)
@@ -152,7 +157,7 @@ class ShippingInfoViewController: UIViewController, UICollectionViewDelegate, UI
         cell.layer.cornerRadius = 5
         cell.Division.text! = self.DIVISION[indexPath.row]
         cell.Days.text! = "Delivered in " + self.DAYS[indexPath.row] + " Days"
-        cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
+        cell.Price.text! = "RM" + self.PRICE[indexPath.row]
         
         return cell
     }

@@ -14,11 +14,16 @@
 "Promotion" = "Promotion";
 "Social Updates" = "Social Updates";
 "Order Updates" = "Order Updates";
+"Share" = "Share";
+"Download" = "Download";
+"Delivery Settings" = "Delivery Settings";
+"Submit" = "Submit";
 
 "Division" = "Division";
 "District" = "District";
 "Apply" = "Apply";
-"Cancel" = "Cancel";
+"Cancel" = "Batal";
+"CANCEL" = "CANCEL";
 
 "Home" = "Home";
 "Notification" = "Notification";
@@ -83,8 +88,10 @@
 "Birthday" = "Birthday";
 "Gender" = "Gender";
 
+"NEXT" = "NEXT";
 "Category" = "Category";
-"Ad Detail" = "Ad Detail";
+"Edit Details" = "Edit Details";
+"Product Details" = "Product Details";
 "Price" = "Price";
 "Max Order" = "Max Order";
 "Brand Material" = "Brand Material";
@@ -106,7 +113,7 @@
 "Retail and Wholesale" = "Retail and Wholesale";
 "Agriculture" = "Agriculture";
 "Fashion Accessories" = "Fashion Accessories";
-"Sarawak - Based" = "Sarawak - Based";
+"Sarawak Product" = "Sarawak Product";
 
 "Self Pick-up" = "Self Pick-up";
 "Please make sure all the details is correct before you can proceed to the transaction." = "Please make sure all the details is correct before you can proceed to the transaction.";
@@ -144,3 +151,11 @@
 "Date Received" = "Date Received";
 "Shipping Total" = "Shipping Total";
 "Grand Total" = "Grand Total";
+
+"Weight" = "Weight";
+"Postcode" = "Postcode";
+"VIEW" = "VIEW";
+"REJECT" = "REJECT";
+"SELLER" = "SELLER";
+"BUYER" = "BUYER";
+"Order Placed On" = "Tempah Pada";

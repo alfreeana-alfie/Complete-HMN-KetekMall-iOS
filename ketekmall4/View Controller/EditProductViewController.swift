@@ -4,8 +4,12 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 import ImagePicker
+import PhotosUI
 
-class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, PHPickerViewControllerDelegate{
+    
+    
+    
     private static var Manager : Alamofire.SessionManager = {
         // Create the server trust policies
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
@@ -20,6 +24,225 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         )
         return man
     }()
+
+    // MARK: UIImageView
+    @IBOutlet weak var ItemImage: UIImageView!
+    @IBOutlet weak var ItemImage2: UIImageView!
+    @IBOutlet weak var ItemImage3: UIImageView!
+    @IBOutlet weak var ItemImage4: UIImageView!
+    @IBOutlet weak var ItemImage5: UIImageView!
+    
+    // MARK: UIView
+    @IBOutlet weak var ImageView1: UIView!
+    @IBOutlet weak var ImageView2: UIView!
+    @IBOutlet weak var ImageView3: UIView!
+    @IBOutlet weak var ImageView4: UIView!
+    @IBOutlet weak var ImageView5: UIView!
+    @IBOutlet weak var CategoryView: UIView!
+    @IBOutlet weak var ProdDetailView: UIView!
+    @IBOutlet weak var PriceView: UIView!
+    @IBOutlet weak var DivisionView: UIView!
+    @IBOutlet weak var DistrictView: UIView!
+    @IBOutlet weak var MaxOrderView: UIView!
+    @IBOutlet weak var WeightView: UIView!
+    @IBOutlet weak var PostcodeView: UIView!
+    
+    // MARK: UILabel
+    @IBOutlet weak var UploadedPhotoLabel: UILabel!
+    @IBOutlet weak var CategoryLabel: UILabel!
+    @IBOutlet weak var AdDetailLabel: UILabel!
+    @IBOutlet weak var PriceLabel: UILabel!
+    @IBOutlet weak var DivisionLabel: UILabel!
+    @IBOutlet weak var DistrictLabel: UILabel!
+    @IBOutlet weak var MaxOrderLabel: UILabel!
+    @IBOutlet weak var WeightLabel: UILabel!
+    @IBOutlet weak var PostcodeLabel: UILabel!
+    
+    // MARK: UIButton
+    @IBOutlet weak var Category: UITextField!
+    @IBOutlet weak var Price: UITextField!
+    @IBOutlet weak var Division: UITextField!
+    @IBOutlet weak var District: UITextField!
+    @IBOutlet weak var Max_Order: UITextField!
+    @IBOutlet weak var PostCode: UITextField!
+    @IBOutlet weak var Weight: UITextField!
+    @IBOutlet weak var ButtonAdDetail: UIButton!
+    @IBOutlet weak var ButtonAccept: UIButton!
+    @IBOutlet weak var ButtonCancel: UIButton!
+    @IBOutlet weak var Delete_2: UIButton!
+    @IBOutlet weak var Delete_3: UIButton!
+    @IBOutlet weak var Delete_4: UIButton!
+    @IBOutlet weak var Delete_5: UIButton!
+    
+    // MARK: IBAction
+    @IBAction func AdDetail(_ sender: Any) {
+        let AdDetail = self.storyboard!.instantiateViewController(withIdentifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
+        AdDetail.USERID = USERID
+        AdDetail.ITEMID = ITEMID
+        AdDetail.ADDETAIL = ADDETAIL
+        AdDetail.MAINCATE = MAINCATE
+        AdDetail.SUBCATE = SUBCATE
+        AdDetail.PRICE = PRICE
+        AdDetail.BRAND = BRAND
+        AdDetail.INNER = INNER
+        AdDetail.STOCK = STOCK
+        AdDetail.DESC = DESC
+        AdDetail.DIVISION = DIVISION
+        AdDetail.DISTRICT = DISTRICT
+        AdDetail.PHOTO = PHOTO
+        AdDetail.MAXORDER = MAXORDER
+        AdDetail.POSTCODE = POSTCODE
+        AdDetail.WEIGHT = WEIGHT
+        if let navigator = self.navigationController {
+            navigator.pushViewController(AdDetail, animated: true)
+        }
+    }
+    
+//    @IBAction func SetupDelivery(_ sender: Any) {
+//        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "DeliveryViewController") as! DeliveryViewController
+//        myBuying.userID = USERID
+//        myBuying.itemID = ITEMID
+//        myBuying.Addetail = ADDETAIL
+//        if let navigator = self.navigationController {
+//            navigator.pushViewController(myBuying, animated: true)
+//        }
+//    }
+//
+//    @IBAction func Uploading(_ sender: Any) {
+//        spinner.show(in: self.view)
+//        let parameters: Parameters=[
+//            "ad_detail":ADDETAIL,
+//            "photo":PHOTO,
+//        ]
+//
+//        print(ADDETAIL)
+//        //Sending http post request
+//        Alamofire.request(URL_IMG, method: .post, parameters: parameters).responseJSON
+//            {
+//                response in
+//
+//                if let result = response.result.value {
+//
+//                    let jsonData = result as! NSDictionary
+//                    print(jsonData.value(forKey: "message")!)
+//
+//                    self.spinner.dismiss(afterDelay: 3.0)
+//                }else{
+//                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+//                    self.spinner.textLabel.text = "Failed"
+//                    self.spinner.show(in: self.view)
+//                    self.spinner.dismiss(afterDelay: 4.0)
+//                }
+//        }
+//    }
+    
+    @IBAction func Accpt(_ sender: Any) {
+        spinner.show(in: self.view)
+        let parameters: Parameters=[
+            "id": ITEMID,
+            "main_category":Category.text!,
+            "sub_category":Category.text!,
+            "ad_detail":ADDETAIL,
+            "brand_material":BRAND,
+            "inner_material": INNER,
+            "stock": STOCK,
+            "description": DESC,
+            "price": Price.text!,
+            "max_order": Max_Order.text!,
+            "division": Division.text!,
+            "district": District.text!,
+            "postcode": PostCode.text!,
+            "weight": Weight.text!
+        ]
+        
+        Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                
+                if let result = response.result.value {
+                    
+                    self.spinner.dismiss(afterDelay: 3.0)
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                    self.spinner.textLabel.text = "Edit Saved"
+                    self.spinner.show(in: self.view)
+                                        
+                    if(self.ItemImage2.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "2", Image: self.ItemImage2)
+                        print("SUCCESS 2")
+                    }
+                    
+                    if(self.ItemImage3.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "3", Image: self.ItemImage3)
+                        print("SUCCESS 3")
+                    }
+                    
+                    if(self.ItemImage4.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "4", Image: self.ItemImage4)
+//                        self.Delete_4.isHidden = false
+                        print("SUCCESS 4")
+                    }
+                    
+                    if(self.ItemImage5.image == UIImage(named: "AddPhoto")){
+                        print("EMPTY")
+                    }else{
+                        self.saveImage(number: "5", Image: self.ItemImage5)
+//                        self.Delete_5.isHidden = false
+                        print("SUCCESS 5")
+                    }
+                    self.spinner.dismiss(afterDelay: 4.0)
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
+                    accountsettings.userID = self.USERID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(accountsettings, animated: true)
+                    }
+                }else{
+                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.spinner.textLabel.text = "Failed"
+                    self.spinner.show(in: self.view)
+                    self.spinner.dismiss(afterDelay: 4.0)
+                }
+        }
+    }
+    
+    @IBAction func Cancel(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func DeletePhoto2(_ sender: Any) {
+        ItemImage2.contentMode = .center
+        ItemImage2.image = UIImage(named: "AddPhoto")
+        deletePhoto(number: "2")
+        Delete_2.isHidden = true
+    }
+    
+    @IBAction func DeletePhoto3(_ sender: Any) {
+        ItemImage3.contentMode = .center
+        ItemImage3.image = UIImage(named: "AddPhoto")
+        deletePhoto(number: "3")
+        Delete_3.isHidden = true
+    }
+    
+    @IBAction func DeletePhoto4(_ sender: Any) {
+        ItemImage4.contentMode = .center
+        ItemImage4.image = UIImage(named: "AddPhoto")
+        deletePhoto(number: "4")
+        Delete_4.isHidden = true
+    }
+    
+    @IBAction func DeletePhoto5(_ sender: Any) {
+        ItemImage5.contentMode = .center
+        ItemImage5.image = UIImage(named: "AddPhoto")
+        deletePhoto(number: "5")
+        Delete_5.isHidden = true
+    }
     
     let URL_UPLOAD = "https://ketekmall.com/ketekmall/edituser.php"
     let URL_IMG = "https://ketekmall.com/ketekmall/products/uploadimg02.php"
@@ -28,7 +251,7 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let URL_EDIT_PROD = "https://ketekmall.com/ketekmall/edit_product_detail.php"
     let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
     
-    let category = ["Process food", "Handicraft","Health and Beauty", "Home and Living", "Fashion Accessories", "Sarawak - Based Product", "Self Pickup"]
+    let category = ["Process food", "Handicraft","Health and Beauty", "Home and Living", "Fashion Accessories", "Sarawak Product"]
     
     let division = ["Kuching", "Kota Samarahan", "Serian", "Sri Aman", "Betong", "Sarikei", "Sibu", "Mukah", "Bintulu", "Kapit", "Miri", "Limbang"]
     
@@ -46,56 +269,6 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let limbang = ["Limbang", "Lawas"]
     
     private let spinner = JGProgressHUD(style: .dark)
-    
-    @IBOutlet weak var ItemImage: UIImageView!
-    @IBOutlet weak var ItemImage2: UIImageView!
-    @IBOutlet weak var ItemImage3: UIImageView!
-    @IBOutlet weak var ItemImage4: UIImageView!
-    @IBOutlet weak var ItemImage5: UIImageView!
-    
-    @IBOutlet weak var ImageView1: UIView!
-    @IBOutlet weak var ImageView2: UIView!
-     @IBOutlet weak var ImageView3: UIView!
-     @IBOutlet weak var ImageView4: UIView!
-     @IBOutlet weak var ImageView5: UIView!
-    
-    @IBOutlet weak var Delete_2: UIButton!
-    @IBOutlet weak var Delete_3: UIButton!
-    @IBOutlet weak var Delete_4: UIButton!
-    @IBOutlet weak var Delete_5: UIButton!
-    
-    
-    @IBOutlet weak var UploadImage: UIButton!
-    @IBOutlet weak var Category: UITextField!
-    
-    @IBOutlet weak var UploadedPhotoLabel: UILabel!
-    @IBOutlet weak var CategoryLabel: UILabel!
-    @IBOutlet weak var AdDetailLabel: UILabel!
-//    @IBOutlet weak var ButtonSetupDelivery: UIButton!
-    @IBOutlet weak var PriceLabel: UILabel!
-    @IBOutlet weak var DivisionLabel: UILabel!
-    @IBOutlet weak var DistrictLabel: UILabel!
-    @IBOutlet weak var MaxOrderLabel: UILabel!
-    @IBOutlet weak var ButtonAdDetail: UIButton!
-//    @IBOutlet weak var SetupDeliveryLabel: UILabel!
-    
-    @IBOutlet weak var Price: UITextField!
-    @IBOutlet weak var Division: UITextField!
-    @IBOutlet weak var District: UITextField!
-    @IBOutlet weak var Max_Order: UITextField!
-    @IBOutlet weak var PostCode: UITextField!
-    @IBOutlet weak var Weight: UITextField!
-    
-    @IBOutlet weak var ButtonAccept: UIButton!
-    @IBOutlet weak var ButtonCancel: UIButton!
-    
-    @IBOutlet weak var CategoryView: UIView!
-    @IBOutlet weak var ProdDetailView: UIView!
-    @IBOutlet weak var PriceView: UIView!
-    @IBOutlet weak var DivisionView: UIView!
-    @IBOutlet weak var DistrictView: UIView!
-    @IBOutlet weak var MaxOrderView: UIView!
-//    @IBOutlet weak var DeliveryView: UIView!
     
     var viewController1: UIViewController?
     
@@ -125,21 +298,12 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        ColorFunc()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lang = sharedPref.string(forKey: "LANG") ?? "0"
-        if(lang == "ms"){
-            changeLanguage(str: "ms")
-            
-        }else{
-            changeLanguage(str: "en")
-            
-        }
-        
         let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         ItemImage.setImageWith(URL(string: NEWIm!)!)
@@ -173,7 +337,7 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         ButtonAccept.layer.cornerRadius = 7
         ButtonCancel.layer.cornerRadius = 7
-        UploadImage.layer.cornerRadius = 7
+//        UploadImage.layer.cornerRadius = 7
         
         
         Delete_2.isHidden = true
@@ -217,8 +381,17 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         ImageView3.addGestureRecognizer(Image3)
         ImageView4.addGestureRecognizer(Image4)
         ImageView5.addGestureRecognizer(Image5)
+        
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
     }
     
+    @objc override func dismissKeyboard() {
+            //Causes the view (or one of its embedded text fields) to resign the first responder status.
+            view.endEditing(true)
+        }
+
     func ColorFunc(){
         //Button Accept
         let colorImageOne1 = UIColor(hexString: "#FC4A1A").cgColor
@@ -231,54 +404,10 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         ImageOneGradient.endPoint = CGPoint(x: 1, y: 0.5)
         ImageOneGradient.cornerRadius = 5
             ImageView1.layer.insertSublayer(ImageOneGradient, at: 0)
-        
-        //Button Accept
-        let colorImageTwo1 = UIColor(hexString: "#FC4A1A").cgColor
-        let colorImageTwo2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let ImageTwoGradient = CAGradientLayer()
-        ImageTwoGradient.frame = ImageView2.bounds
-        ImageTwoGradient.colors = [colorImageTwo1, colorImageTwo2]
-        ImageTwoGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageTwoGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageTwoGradient.cornerRadius = 5
-            ImageView2.layer.insertSublayer(ImageTwoGradient, at: 0)
-        
-        //Button Accept
-        let colorImageThree1 = UIColor(hexString: "#FC4A1A").cgColor
-        let colorImageThree2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let ImageThreeGradient = CAGradientLayer()
-        ImageThreeGradient.frame = ImageView3.bounds
-        ImageThreeGradient.colors = [colorImageThree1, colorImageThree2]
-        ImageThreeGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageThreeGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageThreeGradient.cornerRadius = 5
-            ImageView3.layer.insertSublayer(ImageThreeGradient, at: 0)
-        
-        //Button Accept
-        let colorImageFour1 = UIColor(hexString: "#FC4A1A").cgColor
-        let colorImageFour2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let ImageFourGradient = CAGradientLayer()
-        ImageFourGradient.frame = ImageView4.bounds
-        ImageFourGradient.colors = [colorImageFour1, colorImageFour2]
-        ImageFourGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageFourGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageFourGradient.cornerRadius = 5
-            ImageView4.layer.insertSublayer(ImageFourGradient, at: 0)
-        
-        //Button Accept
-        let colorImageFive1 = UIColor(hexString: "#FC4A1A").cgColor
-        let colorImageFive2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let ImageFiveGradient = CAGradientLayer()
-        ImageFiveGradient.frame = ImageView5.bounds
-        ImageFiveGradient.colors = [colorImageFive1, colorImageFive2]
-        ImageFiveGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ImageFiveGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ImageFiveGradient.cornerRadius = 5
-            ImageView5.layer.insertSublayer(ImageFiveGradient, at: 0)
+            ImageView2.layer.insertSublayer(ImageOneGradient, at: 0)
+            ImageView3.layer.insertSublayer(ImageOneGradient, at: 0)
+            ImageView4.layer.insertSublayer(ImageOneGradient, at: 0)
+            ImageView5.layer.insertSublayer(ImageOneGradient, at: 0)
         
         //Button Accept
         let color1 = UIColor(hexString: "#AA076B").cgColor
@@ -306,22 +435,29 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func changeLanguage(str: String){
-        UploadedPhotoLabel.text = "Upload Image".localized(lang: str)
         CategoryLabel.text = "Category".localized(lang: str)
+        AdDetailLabel.text = "Ad Detail".localized(lang: str)
         PriceLabel.text = "Price".localized(lang: str)
         DivisionLabel.text = "Division".localized(lang: str)
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
-        UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
-        
+        WeightLabel.text = "Weight".localized(lang: str)
+        PostcodeLabel.text = "Postcode".localized(lang: str)
+        UploadedPhotoLabel.text = "Upload Image".localized(lang: str)
         Category.placeholder = "Category".localized(lang: str)
+        ButtonAdDetail.setTitle("Edit Details".localized(lang: str), for: .normal)
+//        UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
         Price.placeholder = "Price".localized(lang: str)
         Division.placeholder = "Division".localized(lang: str)
         District.placeholder = "District".localized(lang: str)
         Max_Order.placeholder = "Max Order".localized(lang: str)
+        Weight.placeholder = "Weight".localized(lang: str)
+        PostCode.placeholder = "Postcode".localized(lang: str)
         
-        ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
+        ButtonAccept.setTitle("NEXT".localized(lang: str), for: .normal)
         ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
+//        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+//        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -473,175 +609,6 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @objc func donePressed(){
         self.view.endEditing(true)
-    }
-    
-    @IBAction func AdDetail(_ sender: Any) {
-        let AdDetail = self.storyboard!.instantiateViewController(withIdentifier: "EditProductAdDetailViewController") as! EditProductAdDetailViewController
-        AdDetail.USERID = USERID
-        AdDetail.ITEMID = ITEMID
-        AdDetail.ADDETAIL = ADDETAIL
-        AdDetail.MAINCATE = MAINCATE
-        AdDetail.SUBCATE = SUBCATE
-        AdDetail.PRICE = PRICE
-        AdDetail.BRAND = BRAND
-        AdDetail.INNER = INNER
-        AdDetail.STOCK = STOCK
-        AdDetail.DESC = DESC
-        AdDetail.DIVISION = DIVISION
-        AdDetail.DISTRICT = DISTRICT
-        AdDetail.PHOTO = PHOTO
-        AdDetail.MAXORDER = MAXORDER
-        AdDetail.POSTCODE = POSTCODE
-        AdDetail.WEIGHT = WEIGHT
-        if let navigator = self.navigationController {
-            navigator.pushViewController(AdDetail, animated: true)
-        }
-    }
-    
-    @IBAction func SetupDelivery(_ sender: Any) {
-        let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "DeliveryViewController") as! DeliveryViewController
-        myBuying.userID = USERID
-        myBuying.itemID = ITEMID
-        myBuying.Addetail = ADDETAIL
-        if let navigator = self.navigationController {
-            navigator.pushViewController(myBuying, animated: true)
-        }
-    }
-    
-    @IBAction func Uploading(_ sender: Any) {
-        spinner.show(in: self.view)
-        let parameters: Parameters=[
-            "ad_detail":ADDETAIL,
-            "photo":PHOTO,
-        ]
-        
-        print(ADDETAIL)
-        //Sending http post request
-        Alamofire.request(URL_IMG, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                
-                if let result = response.result.value {
-                    
-                    let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
-                    
-                    self.spinner.dismiss(afterDelay: 3.0)
-                }else{
-                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
-                    self.spinner.textLabel.text = "Failed"
-                    self.spinner.show(in: self.view)
-                    self.spinner.dismiss(afterDelay: 4.0)
-                }
-        }
-    }
-    
-    @IBAction func Accpt(_ sender: Any) {
-        spinner.show(in: self.view)
-        let parameters: Parameters=[
-            "id": ITEMID,
-            "main_category":Category.text!,
-            "sub_category":Category.text!,
-            "ad_detail":ADDETAIL,
-            "brand_material":BRAND,
-            "inner_material": INNER,
-            "stock": STOCK,
-            "description": DESC,
-            "price": Price.text!,
-            "max_order": Max_Order.text!,
-            "division": Division.text!,
-            "district": District.text!,
-            "postcode": PostCode.text!,
-            "weight": Weight.text!
-        ]
-        
-        Alamofire.request(URL_UPLOAD, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                
-                if let result = response.result.value {
-                    
-                    self.spinner.dismiss(afterDelay: 3.0)
-                    let jsonData = result as! NSDictionary
-                    print(jsonData.value(forKey: "message")!)
-                    self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                    self.spinner.textLabel.text = "Edit Saved"
-                    self.spinner.show(in: self.view)
-                                        
-                    if(self.ItemImage2.image == UIImage(named: "AddPhoto")){
-                        print("EMPTY")
-                    }else{
-                        self.saveImage(number: "2", Image: self.ItemImage2)
-                        print("SUCCESS 2")
-                    }
-                    
-                    if(self.ItemImage3.image == UIImage(named: "AddPhoto")){
-                        print("EMPTY")
-                    }else{
-                        self.saveImage(number: "3", Image: self.ItemImage3)
-                        print("SUCCESS 3")
-                    }
-                    
-                    if(self.ItemImage4.image == UIImage(named: "AddPhoto")){
-                        print("EMPTY")
-                    }else{
-                        self.saveImage(number: "4", Image: self.ItemImage4)
-//                        self.Delete_4.isHidden = false
-                        print("SUCCESS 4")
-                    }
-                    
-                    if(self.ItemImage5.image == UIImage(named: "AddPhoto")){
-                        print("EMPTY")
-                    }else{
-                        self.saveImage(number: "5", Image: self.ItemImage5)
-//                        self.Delete_5.isHidden = false
-                        print("SUCCESS 5")
-                    }
-                    self.spinner.dismiss(afterDelay: 4.0)
-                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
-                    accountsettings.userID = self.USERID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(accountsettings, animated: true)
-                    }
-                }else{
-                    self.spinner.indicatorView = JGProgressHUDErrorIndicatorView()
-                    self.spinner.textLabel.text = "Failed"
-                    self.spinner.show(in: self.view)
-                    self.spinner.dismiss(afterDelay: 4.0)
-                }
-        }
-    }
-    
-    @IBAction func Cancel(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func DeletePhoto2(_ sender: Any) {
-        ItemImage2.contentMode = .center
-        ItemImage2.image = UIImage(named: "AddPhoto")
-        deletePhoto(number: "2")
-        Delete_2.isHidden = true
-    }
-    
-    @IBAction func DeletePhoto3(_ sender: Any) {
-        ItemImage3.contentMode = .center
-        ItemImage3.image = UIImage(named: "AddPhoto")
-        deletePhoto(number: "3")
-        Delete_3.isHidden = true
-    }
-    
-    @IBAction func DeletePhoto4(_ sender: Any) {
-        ItemImage4.contentMode = .center
-        ItemImage4.image = UIImage(named: "AddPhoto")
-        deletePhoto(number: "4")
-        Delete_4.isHidden = true
-    }
-    
-    @IBAction func DeletePhoto5(_ sender: Any) {
-        ItemImage5.contentMode = .center
-        ItemImage5.image = UIImage(named: "AddPhoto")
-        deletePhoto(number: "5")
-        Delete_5.isHidden = true
     }
 
     
@@ -866,48 +833,196 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @objc private func selectImage1(sender: UITapGestureRecognizer) {
-        flag = 1
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true)
+        
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            flag = 1
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+            present(picker, animated: true)
+            
+        }else{
+            flag = 1
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true)
+        }
     }
     
     @objc private func selectImage2(sender: UITapGestureRecognizer) {
-        flag = 2
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true)
+        
+        if #available(iOS 14, *) {
+            flag = 2
+        // using PHPickerViewController
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+        }else{
+            flag = 2
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true)
+        }
     }
     
     @objc private func selectImage3(sender: UITapGestureRecognizer) {
-        flag = 3
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true)
+        
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            flag = 3
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+            
+        }else{
+            flag = 3
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true)
+            
+        }
     }
     
     @objc private func selectImage4(sender: UITapGestureRecognizer) {
-        flag = 4
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true)
+        
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            flag = 4
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+            
+        }else{
+            flag = 4
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true)
+            
+        }
     }
     
     @objc private func selectImage5(sender: UITapGestureRecognizer) {
-        flag = 5
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true)
+        
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            flag = 5
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+            
+        }else{
+            flag = 5
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true)
+            
+        }
+    }
+    
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
+    @available(iOS 14, *)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+       for result in results {
+        picker.dismiss(animated: true, completion: nil)
+          result.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { (object, error) in
+             if let image = object as? UIImage {
+                if(self.flag == 1){
+                    self.ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage.image = image
+                    if(self.ItemImage2.image == image){
+                        print("PRESENT")
+                        self.saveImage(number: "1", Image: self.ItemImage2)
+                    }else{
+                        print("EMPTY")
+                        self.saveImage1(Image: self.ItemImage)
+                    }
+                }else if(self.flag == 2){
+                    self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage2.image = image
+                    if(self.ItemImage2.image == image){
+                        print("PRESENT")
+                        self.saveImage(number: "2", Image: self.ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                }else if(self.flag == 3){
+                    self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage3.image = image
+                    if(self.ItemImage3.image == image){
+                        print("PRESENT")
+                        self.saveImage(number: "3", Image: self.ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                    
+                }else if(self.flag == 4){
+                    self.ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage4.image = image
+                    if(self.ItemImage4.image == image){
+                        print("PRESENT")
+                        self.saveImage(number: "4", Image: self.ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                }else if(self.flag == 5){
+                    self.ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage5.image = image
+                    if(self.ItemImage5.image == image){
+                        print("PRESENT")
+                        self.saveImage(number: "5", Image: self.ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                }
+             }
+          })
+       }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -966,62 +1081,4 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
             }
         }
     }
-    
-//    @objc func imagePickerController(_picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
-//            if(flag == 1){
-//                ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "1", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                    saveImage1(Image: ItemImage)
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 2){
-//                ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage2.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "2", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 3){
-//                ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage3.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "3", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 4){
-//                ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage4.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "4", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 5){
-//                ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage5.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "5", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }
-//        }
-//    }
-//
 }

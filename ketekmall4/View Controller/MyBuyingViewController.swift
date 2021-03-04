@@ -56,6 +56,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var DeliveryDate: [String] = []
     
     var BarHidden: Bool = false
+//    @IBOutlet weak var BarHeight: NSLayoutConstraint!   
     @IBOutlet weak var BarHeight: NSLayoutConstraint!
     
     let sharedPref = UserDefaults.standard
@@ -67,6 +68,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         MyBuyingView.delegate = self
         MyBuyingView.dataSource = self
         Tabbar.delegate = self
@@ -145,6 +147,11 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func ColorFunc(){
         let color1 = UIColor(hexString: "#FC4A1A").cgColor
         let color2 = UIColor(hexString: "#F7B733").cgColor
@@ -196,7 +203,6 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         Tabbar.items?[1].title = "Notification".localized(lang: str)
         Tabbar.items?[2].title = "Me".localized(lang: str)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return OrderID.count

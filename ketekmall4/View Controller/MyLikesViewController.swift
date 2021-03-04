@@ -32,6 +32,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
 
         MyLikesView.delegate = self
@@ -74,8 +75,15 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
                     }
                 }
         }
+        self.hideKeyboardWhenTappedAround()
     }
-    
+ 
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
     func Colorfunc(){
         let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
         let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
@@ -120,7 +128,7 @@ class MyLikesViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
-        cell.ItemPrice.text! = "MYR" + self.price[indexPath.row]
+        cell.ItemPrice.text! = "RM" + self.price[indexPath.row]
         cell.ItemLocation.text! = self.location[indexPath.row]
         
         cell.BtnView.layer.cornerRadius = 5

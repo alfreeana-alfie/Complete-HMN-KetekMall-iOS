@@ -47,6 +47,16 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+                                
+        //Looks for single or multiple taps.
+         let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+                
         self.productView.delegate = self
         self.productView.dataSource = self
         
@@ -115,7 +125,13 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         }
         
     }
-    
+  
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
     func ColorFunc(){
         let color1 = UIColor(hexString: "#FC4A1A").cgColor
                    let color2 = UIColor(hexString: "#F7B733").cgColor
@@ -136,9 +152,8 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let screenSize = collectionView.bounds
             let screenWidth = screenSize.width
-    //        let screenHeight = screenSize.height
             let cellSquareSize: CGFloat = screenWidth / 2
-            let cellSquareHeight: CGFloat = 420
+            let cellSquareHeight: CGFloat = 370
             return CGSize(width: cellSquareSize, height: cellSquareHeight);
         }
            
@@ -162,7 +177,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
-        cell.ItemPrice.text! = "MYR" + self.price[indexPath.row]
+        cell.ItemPrice.text! = "RM" + self.price[indexPath.row]
         cell.ItemLocation.text! = self.location[indexPath.row]
         
         if(self.DELIVERY_STATUS[indexPath.row] == "0"){

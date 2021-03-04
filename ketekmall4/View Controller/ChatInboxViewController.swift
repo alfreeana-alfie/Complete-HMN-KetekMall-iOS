@@ -15,8 +15,6 @@ class ChatInboxViewController: UIViewController, UITabBarDelegate, UICollectionV
     var name: String = ""
     var email: String = ""
     
-    
-    
     let URL_USER = "https://click-1595830894120.firebaseio.com/users.json"
     let URL_MESSAGE = "https://click-1595830894120.firebaseio.com/messages.json"
     let URL_READ_USER_DETAIL = "https://ketekmall.com/ketekmall/getNotificationDetail.php"
@@ -50,6 +48,8 @@ class ChatInboxViewController: UIViewController, UITabBarDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         Tabbar.delegate = self
         ChatView.delegate = self
         ChatView.dataSource = self
@@ -69,7 +69,14 @@ class ChatInboxViewController: UIViewController, UITabBarDelegate, UICollectionV
         
         getChat()
         getUserDetails()
+        self.hideKeyboardWhenTappedAround()
     }
+    
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     // Start Here
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {

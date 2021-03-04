@@ -63,6 +63,8 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     let sharedPref = UserDefaults.standard
     var lang: String = ""
     
+    var CheckPage: Bool = true
+    
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var Tabbar: UITabBar!
     @IBOutlet weak var ButtonFilter: UIButton!
@@ -73,7 +75,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBAction func Filter(_ sender: Any) {
         let filter = self.storyboard!.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
         filter.DivisionFilter = DivisionFilter
-        filter.DistricFilter = DistricFilter
+//        filter.DistricFilter = DistricFilter
         filter.URL_READ = URL_READ
         filter.URL_FILTER_DIVISION = URL_FILTER_DIVISION
         filter.URL_FILTER_DISTRICT = URL_FILTER_DISTRICT
@@ -133,6 +135,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(CategoryViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -162,15 +165,27 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }else if(!DivisionFilter.isEmpty && !DistricFilter.isEmpty){
             Filter_District()
         }
-        
-        
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     @objc func back(sender: UIBarButtonItem){
-        let myRating = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        if let navigator = self.navigationController {
-            navigator.pushViewController(myRating, animated: true)
+        if(CheckPage == true){
+            let myRating = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(myRating, animated: true)
+            }
+        }else{
+            let myRating = self.storyboard!.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(myRating, animated: true)
+            }
         }
+        
     }
     
 //    func ColorFunc(){
@@ -360,7 +375,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.Rating.value = f
         }
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
-        cell.Price.text! = "MYR" + self.PRICE[indexPath.row]
+        cell.Price.text! = "RM" + self.PRICE[indexPath.row]
         cell.District.text! = self.DISTRICT[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 5
         

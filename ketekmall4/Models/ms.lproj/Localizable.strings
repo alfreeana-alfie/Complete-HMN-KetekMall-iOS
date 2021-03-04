@@ -10,10 +10,16 @@
 "HOT SELLING" = "JUALAN HANGAT";
 "SHOCKING SALE" = "JUALAN RUNTUH";
 "VIEW ALL" = "Lihat Semua";
+"VIEW" = "LIHAT";
+"REJECT" = "TOLAK";
 
 "Promotion" = "Promosi";
 "Social Updates" = "Sosial Terkini";
 "Order Updates" = "Tempahan Terkini";
+"Share" = "Kongsi";
+"Download" = "Muat Turun";
+"Delivery Settings" = "Seting Penghantaran";
+"Submit" = "Hantar";
 
 "Division" = "Bahagian";
 "District" = "Daerah";
@@ -87,8 +93,10 @@
 "Birthday" = "Tarikh Lahir";
 "Gender" = "Jantina";
 
+"NEXT" = "TERUS";
 "Category" = "Kategori";
-"Ad Detail" = "Tentang Produk";
+"Edit Details" = "Ubah Maklumat";
+"Product Details" = "Tentang Produk";
 "Price" = "Harga";
 "Max Order" = "Tempahan Maksima";
 "Brand Material" = "Jename Bahan";
@@ -110,7 +118,7 @@
 "Retail and Wholesale" = "Barang Borong dan Runcit";
 "Agriculture" = "Pertanian";
 "Fashion Accessories" = "Perhiasan Fesyen";
-"Sarawak - Based Product" = "Produk Sarawak";
+"Sarawak Product" = "Produk Sarawak";
 "Self Pick-up" = "Ambil Sendiri";
 "Please make sure all the details is correct before you can proceed to the transaction." = "Pastikan semua maklumat yang tertera adalah tepat dan benar sebelum anda memulakan pembayaran.";
 
@@ -144,3 +152,9 @@
 "Date Received" = "Tarikh Penerimaan";
 "Shipping Total" = "Kos Penghantaran";
 "Grand Total" = "Jumlah Semua";
+
+"Weight" = "Berat";
+"Postcode" = "Postcode";
+"SELLER" = "PENJUAL";
+"BUYER" = "PEMBELI";
+"Order Placed On" = "Order Placed On";

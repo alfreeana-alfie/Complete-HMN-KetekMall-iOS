@@ -17,10 +17,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         newPrice = Double(self.DELIVERYPRICE[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
         
         print(String(format: "%.2f", newGrandTotal))
-        self.GrandTotal.text! = "MYR" + String(format: "%.2f", newGrandTotal)
+        self.GrandTotal.text! = "RM" + String(format: "%.2f", newGrandTotal)
         self.GrandTotal2.text! = String(format: "%.2f", newGrandTotal)
         
-        cell.DeliveryPrice.text! = "MYR" + String(format: "%.2f", newPrice)
+        cell.DeliveryPrice.text! = "RM" + String(format: "%.2f", newPrice)
         
         cell.ButtonSelfPickUp.isHidden = true
     }
@@ -135,9 +135,15 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
 //        DeleteOrder()
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        
+       lang = sharedPref.string(forKey: "LANG") ?? "0"
         
         print("\(userID)")
         if(lang == "ms"){
@@ -159,6 +165,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         spinner.show(in: self.view)
         
         ReadCart()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func ColorFunc(){
@@ -288,7 +295,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                             strGrand2 += strDel
                                                             strGrandTotal = strGrand + strGrand2
                                                             
-                                                            self.GrandTotal.text! = "MYR" + String(format: "%.2f", strGrandTotal)
+                                                            self.GrandTotal.text! = "RM" + String(format: "%.2f", strGrandTotal)
                                                             
                                                             self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
                                                             
@@ -468,13 +475,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.OrderID.text! = "KM" + self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         
-        cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
+        cell.ItemPrice.text! = "RM" + self.PRICE[indexPath.row]
         cell.Quantity.text! = "x" + self.QUANTITY[indexPath.row]
-        cell.DeliveryPrice.text! = "MYR" + String(format: "%.2f", NewDeliveryPrice)
+        cell.DeliveryPrice.text! = "RM" + String(format: "%.2f", NewDeliveryPrice)
 //        if(self.DELIVERYPRICE[indexPath.row] == "Not Supported for selected area"){
 //            cell.DeliveryPrice.text! = self.DELIVERYPRICE[indexPath.row]
 //        }else{
-//            cell.DeliveryPrice.text! = "MYR" + self.DELIVERYPRICE[indexPath.row]
+//            cell.DeliveryPrice.text! = "RM" + self.DELIVERYPRICE[indexPath.row]
 //        }
         cell.Division.text! = self.DIVISION[indexPath.row] + " to " + self.DIVISIONU[0]
         return cell

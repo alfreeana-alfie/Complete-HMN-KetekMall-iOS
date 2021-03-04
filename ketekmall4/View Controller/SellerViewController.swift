@@ -22,7 +22,6 @@ class SellerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         print(lang)
         if(lang == "ms"){
@@ -38,7 +37,7 @@ class SellerViewController: UIViewController {
         userID = String(user)
         
     }
-    
+
     func changeLanguage(str: String){
         ButtonMySelling.setTitle("My Selling".localized(lang: str), for: .normal)
         ButtonAddNewProduct.setTitle("Add New Product".localized(lang: str), for: .normal)

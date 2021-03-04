@@ -173,6 +173,15 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+                                
+        //Looks for single or multiple taps.
+         let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
         Tabbar.delegate = self
         
         if(BarHidden == true){
@@ -191,7 +200,7 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         
         ItemImage.setImageWith(URL(string: NEWIm!)!)
         ItemName.text! = ADDETAIL
-        ItemPrice.text! = "MYR" + PRICE
+        ItemPrice.text! = "RM" + PRICE
         ItemQuantity.text! = "x" + QUANTITY
         let strShippingCost = round(Double(SHIPPINGTOTAL)!)
         
@@ -204,9 +213,9 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
             let strShippingCost = round(Double(SHIPPINGTOTAL)!)
             print(SHIPPINGTOTAL)
             
-            SubTotal.text! = "MYR" + PRICE
-            ShippingTotal.text! = "MYR" + String(format: "%.2f", strShippingCost)
-            GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
+            SubTotal.text! = "RM" + PRICE
+            ShippingTotal.text! = "RM" + String(format: "%.2f", strShippingCost)
+            GrandTotal.text! = "RM" + String(format: "%.2f", Total2)
         }else{
             Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
             Total2 = Total1 + strShippingCost 
@@ -214,9 +223,9 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
 //            let strDel: Double = round(Double(self.DELIVERYPRICE[i])!)
             
             print(SHIPPINGTOTAL)
-            SubTotal.text! = "MYR" + PRICE
-            ShippingTotal.text! = "MYR" + String(format: "%.2f", strShippingCost)
-            GrandTotal.text! = "MYR" + String(format: "%.2f", Total2)
+            SubTotal.text! = "RM" + PRICE
+            ShippingTotal.text! = "RM" + String(format: "%.2f", strShippingCost)
+            GrandTotal.text! = "RM" + String(format: "%.2f", Total2)
         }
         
         ButtonReceived.layer.cornerRadius = 5
@@ -345,7 +354,12 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         
         TrackingNo.addGestureRecognizer(TrackingClick)
     }
-    
+   
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func ColorFunc(){
 //        let colorView1 = UIColor(hexString: "#FC4A1A").cgColor
 //        let colorView2 = UIColor(hexString: "#F7B733").cgColor

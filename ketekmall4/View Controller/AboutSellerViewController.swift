@@ -65,10 +65,15 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
 //    override func viewDidAppear(_ animated: Bool) {
 //        ColorFunc()
 //    }
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        
+       lang = sharedPref.string(forKey: "LANG") ?? "0"
         email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -97,6 +102,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         ButtonChatSeller.isUserInteractionEnabled = true
         let Chat_Click = UITapGestureRecognizer(target: self, action: #selector(onChatClick(sender:)))
         ButtonChatSeller.addGestureRecognizer(Chat_Click)
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+   
     }
     
     func changeLanguage(str: String){
@@ -190,7 +199,7 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
-    @IBAction func ButtonWhatsapp(_ sender: Any) {
+    @IBAction func ButtonWhatsapp(_ sender: Any)    {
         let urlWhats = "whatsapp://send?phone=" + "+6" + SELLERPHONE
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
@@ -207,6 +216,15 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
     }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
     
     func getSold(){
         let parameters: Parameters=[

@@ -35,6 +35,12 @@ class BeforeRegisterViewController: UIViewController, UITabBarDelegate  {
                 self.ButtonAgree.isHidden = false
             }
         }
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func ColorFunc(){

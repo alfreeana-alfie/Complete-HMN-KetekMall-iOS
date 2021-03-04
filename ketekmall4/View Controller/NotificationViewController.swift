@@ -19,6 +19,8 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
     var user: String = ""
     var viewController1: UIViewController?
     
+    var CheckPage: Bool = false
+    
     @IBOutlet weak var Tabbar: UITabBar!
     @IBOutlet weak var OrderUpdateBtn: UIButton!
     @IBOutlet weak var SocialUpdatesBtn: UIButton!
@@ -34,9 +36,16 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
         }else{
             changeLanguage(str: "en")
         }
+        self.hideKeyboardWhenTappedAround()
         
     }
-    
+
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:
@@ -115,16 +124,9 @@ class NotificationViewController: UIViewController, UITabBarDelegate {
                click.URL_FILTER_SEARCH_DIVISION = URL_FILTER_SEARCH_DIVISION_SHOCKING_SALE
                click.URL_PRICE_UP_READALL = URL_PRICE_UP_SHOCKING_SALE
                click.URL_PRICE_DOWN = URL_PRICE_DOWN_SHOCKING_SALE
+            click.CheckPage = CheckPage
                if let navigator = self.navigationController {
                    navigator.pushViewController(click, animated: true)
                }
     }
 }
-extension String {
-func localized2(lang:String) ->String {
-
-    let path = Bundle.main.path(forResource: lang, ofType: "lproj")
-    let bundle = Bundle(path: path!)
-
-    return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
-}}

@@ -31,6 +31,7 @@ class MoreDetailsViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+                
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -47,8 +48,15 @@ class MoreDetailsViewController: UIViewController, UITabBarDelegate {
         Stock.text! = STOCK
         ShipsFrom.text! = DIVISION + "," + DISTRICT
         Description.text! = DESC
+        self.hideKeyboardWhenTappedAround()
     }
-    
+
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
     func changeLanguage(str: String){
         BrandLabel.text = "BRAND MATERIAL".localized(lang: str)
         InnerLabel.text = "INNER MATERIAL".localized(lang: str)

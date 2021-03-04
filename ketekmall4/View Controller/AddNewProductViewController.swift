@@ -3,8 +3,13 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import ImagePicker
+import PhotosUI
 
-class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, PHPickerViewControllerDelegate {
+    
+    
+    
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var AdDetailLabel: UILabel!
     @IBOutlet weak var DistrictLabel: UILabel!
@@ -12,6 +17,8 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var MaxOrderLabel: UILabel!
     @IBOutlet weak var DivisionLabel: UILabel!
     @IBOutlet weak var UploadedPhotoLabel: UILabel!
+    @IBOutlet weak var WeightLabel: UILabel!
+    @IBOutlet weak var PostCodeLabel: UILabel!
     
     @IBOutlet weak var Category: UITextField!
     @IBOutlet weak var Price: UITextField!
@@ -38,7 +45,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var ImageView4: UIView!
     @IBOutlet weak var ImageView5: UIView!
     
-    @IBOutlet weak var UploadImage: UIButton!
+//    @IBOutlet weak var UploadImage: UIButton!
     @IBOutlet weak var ButtonAccept: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     @IBOutlet weak var ButtonAdDetail: UIButton!
@@ -48,7 +55,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
     
-    let category = ["Process food", "Handicraft","Health and Beauty", "Home and Living", "Fashion Accessories", "Sarawak - Based Product", "Self Pickup"]
+    let category = ["Process food", "Handicraft","Health and Beauty", "Home and Living", "Fashion Accessories", "Sarawak Product"]
     
     let division = ["Kuching", "Kota Samarahan", "Serian", "Sri Aman", "Betong", "Sarikei", "Sibu", "Mukah", "Bintulu", "Kapit", "Miri", "Limbang"]
     
@@ -88,9 +95,23 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         ColorFunc()
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+                
+        //Looks for single or multiple taps.
+         let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+
         Category.delegate = self
         Price.delegate = self
         Division.delegate = self
@@ -141,7 +162,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         ButtonAccept.layer.cornerRadius = 15
         ButtonCancel.layer.cornerRadius = 15
-        UploadImage.layer.cornerRadius = 5
+//        UploadImage.layer.cornerRadius = 5
         ButtonAdDetail.layer.cornerRadius = 7
         
         Delete_2.isHidden = true
@@ -178,9 +199,13 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         ImageView4.addGestureRecognizer(Image4)
         ImageView5.addGestureRecognizer(Image5)
         
-        UploadImage.addTarget(self, action: #selector(selectImage1), for: .touchUpInside)
+//        UploadImage.addTarget(self, action: #selector(selectImage1), for: .touchUpInside)
         
         navigationItem.title = "Add New Product"
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+   
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -232,25 +257,38 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     func changeLanguage(str: String){
         CategoryLabel.text = "Category".localized(lang: str)
-        AdDetailLabel.text = "Ad Detail".localized(lang: str)
+        AdDetailLabel.text = "Product Details".localized(lang: str)
         PriceLabel.text = "Price".localized(lang: str)
         DivisionLabel.text = "Division".localized(lang: str)
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
+        WeightLabel.text = "Weight".localized(lang: str)
+        PostCodeLabel.text = "Postcode".localized(lang: str)
         UploadedPhotoLabel.text = "Upload Image".localized(lang: str)
         Category.placeholder = "Category".localized(lang: str)
-        ButtonAdDetail.setTitle("Ad Detail".localized(lang: str), for: .normal)
-        UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
+        ButtonAdDetail.setTitle("Edit Details".localized(lang: str), for: .normal)
+//        UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
         Price.placeholder = "Price".localized(lang: str)
         Division.placeholder = "Division".localized(lang: str)
         District.placeholder = "District".localized(lang: str)
         MaxOrder.placeholder = "Max Order".localized(lang: str)
+        Weight.placeholder = "Weight".localized(lang: str)
+        PostCode.placeholder = "Postcode".localized(lang: str)
         
-        ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
+        ButtonAccept.setTitle("NEXT".localized(lang: str), for: .normal)
         ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
 //        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
 //        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
     }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -485,50 +523,177 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @objc private func selectImage1(sender: UITapGestureRecognizer) {
-            flag = 1
+        flag = 1
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+        }else{
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true)
-        
         }
+    }
         
     @objc private func selectImage2(sender: UITapGestureRecognizer) {
-            flag = 2
+        flag = 2
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+        }else{
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true)
         }
+    }
         
     @objc private func selectImage3(sender: UITapGestureRecognizer) {
-            flag = 3
+        flag = 3
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+        }else{
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true)
         }
+    }
         
     @objc private func selectImage4(sender: UITapGestureRecognizer) {
-            flag = 4
+        flag = 4
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+        }else{
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true)
         }
+    }
         
     @objc private func selectImage5(sender: UITapGestureRecognizer) {
-            flag = 5
+        flag = 5
+        if #available(iOS 14, *) {
+        // using PHPickerViewController
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.selectionLimit = 1
+            config.filter = .images
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+                DispatchQueue.main.async {
+                    self.present(picker, animated: true)
+                }
+        }else{
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true)
         }
+    }
+    
+    @available(iOS 14, *)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+       for result in results {
+        picker.dismiss(animated: true, completion: nil)
+          result.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { (object, error) in
+             if let image = object as? UIImage {
+                if(self.flag == 1){
+                    self.ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage.image = image
+                    if(self.ItemImage2.image == image){
+                        print("PRESENT")
+                        self.Delete_2.isHidden = false
+    //                        saveImage(number: "2", Image: ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                }else if(self.flag == 2){
+                    self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage2.image = image
+                    if(self.ItemImage2.image == image){
+                        print("PRESENT")
+                        self.Delete_2.isHidden = false
+    //                        saveImage(number: "3", Image: ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                }else if(self.flag == 3){
+                    self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage3.image = image
+                    if(self.ItemImage3.image == image){
+                        print("PRESENT")
+                        self.Delete_3.isHidden = false
+    //                        saveImage(number: "3", Image: ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                    
+                }else if(self.flag == 4){
+                    self.ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage4.image = image
+                    if(self.ItemImage4.image == image){
+                        print("PRESENT")
+                        self.Delete_4.isHidden = false
+    //                        saveImage(number: "4", Image: ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                }else if(self.flag == 5){
+                    self.ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.ItemImage5.image = image
+                    if(self.ItemImage5.image == image){
+                        print("PRESENT")
+                        self.Delete_5.isHidden = false
+    //                        saveImage(number: "5", Image: ItemImage2)
+                    }else{
+                        print("EMPTY")
+                    }
+                }
+             }
+          })
+       }
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let chosenImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage{
@@ -584,61 +749,6 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
 //        dismiss(animated: true, completion: nil)
     }
-        
-//    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//            if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
-//                if(flag == 1){
-//                    ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
-//                    ItemImage.image = chosenImage
-//                    dismiss(animated: true, completion: nil)
-//                }else if(flag == 2){
-//                    ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
-//                    ItemImage2.image = chosenImage
-//                    if(self.ItemImage2.image == chosenImage){
-//                        print("PRESENT")
-//                        self.Delete_2.isHidden = false
-////                        saveImage(number: "2", Image: ItemImage2)
-//                    }else{
-//                        print("EMPTY")
-//                    }
-//                    dismiss(animated: true, completion: nil)
-//                }else if(flag == 3){
-//                    ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
-//                    ItemImage3.image = chosenImage
-//                    if(self.ItemImage2.image == chosenImage){
-//                        print("PRESENT")
-//                        self.Delete_3.isHidden = false
-////                        saveImage(number: "3", Image: ItemImage2)
-//                    }else{
-//                        print("EMPTY")
-//                    }
-//                    dismiss(animated: true, completion: nil)
-//                }else if(flag == 4){
-//                    ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
-//                    ItemImage4.image = chosenImage
-//                    if(self.ItemImage2.image == chosenImage){
-//                        print("PRESENT")
-//                        self.Delete_4.isHidden = false
-////                        saveImage(number: "4", Image: ItemImage2)
-//                    }else{
-//                        print("EMPTY")
-//                    }
-//                    dismiss(animated: true, completion: nil)
-//                }else if(flag == 5){
-//                    ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
-//                    ItemImage5.image = chosenImage
-//                    if(self.ItemImage2.image == chosenImage){
-//                        print("PRESENT")
-//                        self.Delete_5.isHidden = false
-////                        saveImage(number: "5", Image: ItemImage2)
-//                    }else{
-//                        print("EMPTY")
-//                    }
-//                    dismiss(animated: true, completion: nil)
-//                }
-//            }
-//    //        dismiss(animated: true, completion: nil)
-//        }
     
     @IBAction func Accept(_ sender: Any) {
         let spinner = JGProgressHUD(style: .dark)

@@ -5,7 +5,7 @@ import UIKit
 class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITabBarDelegate {
     
     var DivisionFilter: String = ""
-    var DistricFilter: String = ""
+//    var DistricFilter: String = ""
     
     var UserID: String = ""
     var URL_READ: String = ""
@@ -16,30 +16,30 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     let division = ["All", "Kuching", "Kota Samarahan", "Serian", "Sri Aman", "Betong", "Sarikei", "Sibu", "Mukah", "Bintulu", "Kapit", "Miri", "Limbang"]
     
-    let kuching = ["All","Kuching", "Bau", "Lundu"]
-    let samarahan = ["All","Kota Samarahan", "Asajaya", "Simunjan"]
-    let serian = ["All","Serian", "Tembedu"]
-    let sri_aman = ["All","Sri Aman", "Lubok Antu"]
-    let betong = ["All","Betong", "Saratok", "Pusa","Kabong"]
-    let sarikei = ["All","Sarikei", "Meradong", "Julau", "Pakan"]
-    let sibu = ["All","Sibu", "Kanowit", "Selangau"]
-    let mukah = ["All","Mukah", "Dalat", "Matu", "Daro", "Tanjong"]
-    let bintulu = ["All","Bintulu", "Sebauh", "Tatau"]
-    let kapit = ["All","Kapit", "Song", "Belaga", "Bukit Mabong"]
-    let miri = ["All","Miri", "Marudi", "Subis", "Beluru", "Telang Usan"]
-    let limbang = ["All","Limbang", "Lawas"]
+//    let kuching = ["All","Kuching", "Bau", "Lundu"]
+//    let samarahan = ["All","Kota Samarahan", "Asajaya", "Simunjan"]
+//    let serian = ["All","Serian", "Tembedu"]
+//    let sri_aman = ["All","Sri Aman", "Lubok Antu"]
+//    let betong = ["All","Betong", "Saratok", "Pusa","Kabong"]
+//    let sarikei = ["All","Sarikei", "Meradong", "Julau", "Pakan"]
+//    let sibu = ["All","Sibu", "Kanowit", "Selangau"]
+//    let mukah = ["All","Mukah", "Dalat", "Matu", "Daro", "Tanjong"]
+//    let bintulu = ["All","Bintulu", "Sebauh", "Tatau"]
+//    let kapit = ["All","Kapit", "Song", "Belaga", "Bukit Mabong"]
+//    let miri = ["All","Miri", "Marudi", "Subis", "Beluru", "Telang Usan"]
+//    let limbang = ["All","Limbang", "Lawas"]
     
     @IBOutlet weak var Division: UITextField!
-    @IBOutlet weak var District: UITextField!
+//    @IBOutlet weak var District: UITextField!
     @IBOutlet weak var ButtonApply: UIButton!
     @IBOutlet weak var ButtonCancel: UIButton!
     @IBOutlet weak var Tabbar: UITabBar!
     @IBOutlet weak var DivisionLabel: UILabel!
-    @IBOutlet weak var DistrictLabel: UILabel!
+//    @IBOutlet weak var DistrictLabel: UILabel!
     
     var viewController1: UIViewController?
     var DivisionPicker = UIPickerView()
-    var DistrictPicker = UIPickerView()
+//    var DistrictPicker = UIPickerView()
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -50,22 +50,32 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
+                                
+                //Looks for single or multiple taps.
+                 let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryViewController.dismissKeyboard))
+
+                //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+                //tap.cancelsTouchesInView = false
+
+                view.addGestureRecognizer(tap)
+                
+
         Tabbar.delegate = self
         
         DivisionPicker.dataSource = self
         DivisionPicker.delegate = self
         
-        DistrictPicker.dataSource = self
-        DistrictPicker.delegate = self
+//        DistrictPicker.dataSource = self
+//        DistrictPicker.delegate = self
         
         CreateDivisionPicker()
-        CreateDistrictPicker()
+//        CreateDistrictPicker()
         
         Division.text! = DivisionFilter
         Division.layer.cornerRadius = 5
-        District.text! = DistricFilter
-        District.layer.cornerRadius = 5
+//        District.text! = DistricFilter
+//        District.layer.cornerRadius = 5
         ButtonApply.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
         
@@ -80,6 +90,11 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func ColorFunc(){
 //        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
 //        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
@@ -118,9 +133,9 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func changeLanguage(str: String){
         Division.placeholder = "Division".localized1(lang: str)
-        District.placeholder = "District".localized1(lang: str)
+//        District.placeholder = "District".localized1(lang: str)
         DivisionLabel.text = "Division".localized1(lang: str)
-        DistrictLabel.text = "District".localized1(lang: str)
+        //DistrictLabel.text = "District".localized1(lang: str)
 
         ButtonApply.setTitle("Apply".localized(lang: str), for: .normal)
         ButtonCancel.setTitle("Cancel".localized(lang: str), for: .normal)
@@ -176,34 +191,35 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == DivisionPicker{
-            return division.count        }
-        else if pickerView == DistrictPicker{
-            if(Division.text == "Kuching"){
-                return kuching.count
-            } else if(Division.text == "Kota Samarahan"){
-                return samarahan.count
-            } else if(Division.text == "Serian"){
-                return serian.count
-            }  else if(Division.text == "Sri Aman"){
-                return sri_aman.count
-            } else if(Division.text == "Betong"){
-                return betong.count
-            } else if(Division.text == "Sarikei"){
-                return sarikei.count
-            }else if(Division.text == "Sibu"){
-                return sibu.count
-            }else if(Division.text == "Mukah"){
-                return mukah.count
-            }else if(Division.text == "Bintulu"){
-                return bintulu.count
-            }else if(Division.text == "Kapit"){
-                return kapit.count
-            }else if(Division.text == "Miri"){
-                return miri.count
-            }else if(Division.text == "Limbang"){
-                return limbang.count
-            }
+            return division.count
         }
+//        else if pickerView == DistrictPicker{
+//            if(Division.text == "Kuching"){
+//                return kuching.count
+//            } else if(Division.text == "Kota Samarahan"){
+//                return samarahan.count
+//            } else if(Division.text == "Serian"){
+//                return serian.count
+//            }  else if(Division.text == "Sri Aman"){
+//                return sri_aman.count
+//            } else if(Division.text == "Betong"){
+//                return betong.count
+//            } else if(Division.text == "Sarikei"){
+//                return sarikei.count
+//            }else if(Division.text == "Sibu"){
+//                return sibu.count
+//            }else if(Division.text == "Mukah"){
+//                return mukah.count
+//            }else if(Division.text == "Bintulu"){
+//                return bintulu.count
+//            }else if(Division.text == "Kapit"){
+//                return kapit.count
+//            }else if(Division.text == "Miri"){
+//                return miri.count
+//            }else if(Division.text == "Limbang"){
+//                return limbang.count
+//            }
+//        }
         
         return 1
     }
@@ -211,34 +227,34 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == DivisionPicker{
             return division[row]
-        }else if pickerView == DistrictPicker{
-            if(Division.text == "Kuching"){
-                return kuching[row]
-            } else if(Division.text == "Kota Samarahan"){
-                return samarahan[row]
-            }else if(Division.text == "Serian"){
-                return serian[row]
-            }  else if(Division.text == "Sri Aman"){
-                return sri_aman[row]
-            } else if(Division.text == "Betong"){
-                return betong[row]
-            } else if(Division.text == "Sarikei"){
-                return sarikei[row]
-            }else if(Division.text == "Sibu"){
-                return sibu[row]
-            }else if(Division.text == "Mukah"){
-                return mukah[row]
-            }else if(Division.text == "Bintulu"){
-                return bintulu[row]
-            }else if(Division.text == "Kapit"){
-                return kapit[row]
-            }else if(Division.text == "Miri"){
-                return miri[row]
-            }else if(Division.text == "Limbang"){
-                return limbang[row]
-            }
         }
-        
+//        else if pickerView == DistrictPicker{
+//            if(Division.text == "Kuching"){
+//                return kuching[row]
+//            } else if(Division.text == "Kota Samarahan"){
+//                return samarahan[row]
+//            }else if(Division.text == "Serian"){
+//                return serian[row]
+//            }  else if(Division.text == "Sri Aman"){
+//                return sri_aman[row]
+//            } else if(Division.text == "Betong"){
+//                return betong[row]
+//            } else if(Division.text == "Sarikei"){
+//                return sarikei[row]
+//            }else if(Division.text == "Sibu"){
+//                return sibu[row]
+//            }else if(Division.text == "Mukah"){
+//                return mukah[row]
+//            }else if(Division.text == "Bintulu"){
+//                return bintulu[row]
+//            }else if(Division.text == "Kapit"){
+//                return kapit[row]
+//            }else if(Division.text == "Miri"){
+//                return miri[row]
+//            }else if(Division.text == "Limbang"){
+//                return limbang[row]
+//            }
+//        }
         return ""
     }
     
@@ -246,36 +262,37 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if pickerView == DivisionPicker{
             Division.text = division[row]
             self.view.endEditing(false)
-        }else if pickerView == DistrictPicker{
-            if(Division.text == "Kuching"){
-                District.text = kuching[row]
-                self.view.endEditing(false)
-            } else if(Division.text == "Kota Samarahan"){
-                District.text = samarahan[row]
-                self.view.endEditing(false)
-            }else if(Division.text == "Serian"){
-                District.text = serian[row]
-            }  else if(Division.text == "Sri Aman"){
-                District.text = sri_aman[row]
-            } else if(Division.text == "Betong"){
-                District.text = betong[row]
-            } else if(Division.text == "Sarikei"){
-                District.text = sarikei[row]
-            }else if(Division.text == "Sibu"){
-                District.text = sibu[row]
-            }else if(Division.text == "Mukah"){
-                District.text = mukah[row]
-            }else if(Division.text == "Bintulu"){
-                District.text = bintulu[row]
-            }else if(Division.text == "Kapit"){
-                District.text = kapit[row]
-            }else if(Division.text == "Miri"){
-                District.text = miri[row]
-            }else if(Division.text == "Limbang"){
-                District.text = limbang[row]
-            }
-            
         }
+//        else if pickerView == DistrictPicker{
+//            if(Division.text == "Kuching"){
+//                District.text = kuching[row]
+//                self.view.endEditing(false)
+//            } else if(Division.text == "Kota Samarahan"){
+//                District.text = samarahan[row]
+//                self.view.endEditing(false)
+//            }else if(Division.text == "Serian"){
+//                District.text = serian[row]
+//            }  else if(Division.text == "Sri Aman"){
+//                District.text = sri_aman[row]
+//            } else if(Division.text == "Betong"){
+//                District.text = betong[row]
+//            } else if(Division.text == "Sarikei"){
+//                District.text = sarikei[row]
+//            }else if(Division.text == "Sibu"){
+//                District.text = sibu[row]
+//            }else if(Division.text == "Mukah"){
+//                District.text = mukah[row]
+//            }else if(Division.text == "Bintulu"){
+//                District.text = bintulu[row]
+//            }else if(Division.text == "Kapit"){
+//                District.text = kapit[row]
+//            }else if(Division.text == "Miri"){
+//                District.text = miri[row]
+//            }else if(Division.text == "Limbang"){
+//                District.text = limbang[row]
+//            }
+//
+//        }
     }
     
     func CreateDivisionPicker(){
@@ -294,8 +311,8 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolbar.setItems([doneBtn], animated: true)
-        District.inputAccessoryView = toolbar
-        District.inputView = DistrictPicker
+//        District.inputAccessoryView = toolbar
+//        District.inputView = DistrictPicker
     }
     
     @objc func donePressed(){
@@ -306,7 +323,7 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let filter = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
         filter.UserID = UserID
         filter.DivisionFilter = Division.text!
-        filter.DistricFilter = District.text!
+//        filter.DistricFilter = District.text!
         
         filter.URL_READ = URL_READ
         filter.URL_SEARCH = URL_SEARCH
@@ -323,12 +340,3 @@ class FilterViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
 }
-
-extension String {
-func localized1(lang:String) ->String {
-
-    let path = Bundle.main.path(forResource: lang, ofType: "lproj")
-    let bundle = Bundle(path: path!)
-
-    return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
-}}

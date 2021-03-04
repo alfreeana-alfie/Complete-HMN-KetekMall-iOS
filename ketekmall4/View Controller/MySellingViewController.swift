@@ -40,6 +40,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         
 
@@ -104,10 +106,16 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                     }
                 }
         }
-        
+        self.hideKeyboardWhenTappedAround()
+    }
+
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     
+
     func getCustomerDetails(CustomerID: String, OrderID: String){
         let parameters: Parameters=[
             "id": CustomerID,
@@ -172,11 +180,13 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MySellingCollectionViewCell", for: indexPath) as! MySellingCollectionViewCell
         
+        let OrderPlaceOn = "Order Placed On "
+        
         cell.OrderID.text! = "KM" + self.item_orderID[indexPath.row]
         cell.AdDetail.text! = self.ad_Detail[indexPath.row]
-        cell.Price.text! = "MYR" + self.item_price[indexPath.row]
+        cell.Price.text! = "RM" + self.item_price[indexPath.row]
         cell.Quantity.text! = "x" + self.item_quantity[indexPath.row]
-        cell.DateOrder.text! = "Order Placed on " + self.item_orderDate[indexPath.row]
+        cell.DateOrder.text! = OrderPlaceOn + self.item_orderDate[indexPath.row]
         cell.ShipPlace.text! = "Shipped out to " + self.item_Shipped[indexPath.row]
         cell.Status.text! = self.item_status[indexPath.row]
         let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)

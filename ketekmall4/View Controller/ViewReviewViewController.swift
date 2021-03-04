@@ -27,6 +27,8 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -73,8 +75,15 @@ class ViewReviewViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
                 
         }
+        
+        self.hideKeyboardWhenTappedAround()
     }
-    
+
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func changeLanguage(str: String){
         Tabbar.items?[0].title = "Home".localized(lang: str)
         Tabbar.items?[1].title = "Notification".localized(lang: str)

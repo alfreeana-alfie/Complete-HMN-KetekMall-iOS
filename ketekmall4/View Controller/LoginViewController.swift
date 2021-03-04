@@ -56,7 +56,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         EmailField.delegate = self
         PasswordField.delegate = self
         
@@ -216,8 +215,20 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         LoginStyle.layer.cornerRadius = 15
 //        GoogleSignInBtn.layer.cornerRadius = 10
 //        loginButton.layer.cornerRadius = 10
+        
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+    
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -398,6 +409,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         self.sharedPref.setValue(userID[0], forKey: "USERID")
                         self.sharedPref.setValue(NAME[0], forKey: "NAME")
                         self.sharedPref.setValue(EMAIL[0], forKey: "EMAIL")
+                        self.sharedPref.setValue("true", forKey: "CheckUSER")
                         
                         UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                         UserDefaults.standard.synchronize()
@@ -479,24 +491,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             //Receive data in login class
         })
     }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
 }
 
-extension UIColor {
-    convenience init(hexString: String) {
-        let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt64()
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-        self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
-    }
-}
+

@@ -26,6 +26,7 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         lang = sharedPref.string(forKey: "LANG") ?? "0"
 //        userID = sharedPref.string(forKey: "USERID") ?? "0"
         
@@ -53,6 +54,7 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
                }
         Tabbar.delegate = self
         ButtonShopping.layer.cornerRadius = 5
+        self.hideKeyboardWhenTappedAround()
     }
     
     func ColorFunc(){
@@ -69,6 +71,11 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
         ButtonShopping.layer.insertSublayer(ShoppingGradient, at: 0)
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+        
     func changeLanguage(str: String){
         ButtonShopping.setTitle("Continue Shopping".localized(lang: str), for: .normal)
         ContinueLabel.text = "Continue Shopping".localized(lang: str)

@@ -19,7 +19,6 @@ class GotoRegisterSeller2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ButtonSeller.layer.cornerRadius = 15
         
         lang = sharedPref.string(forKey: "LANG") ?? "0"
@@ -30,8 +29,26 @@ class GotoRegisterSeller2ViewController: UIViewController {
             changeLanguage(str: "en")
             
         }
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+
     }
     
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
     func ColorFunc(){
         //Button Accept
                 
@@ -53,8 +70,6 @@ class GotoRegisterSeller2ViewController: UIViewController {
         YouNeedLabel.text = "Before you can start selling your product, ".localized(lang: str)
     }
 
-    
-    
     @IBAction func GotoRegisterPage(_ sender: Any) {
 
         let RegisterSeller = self.storyboard!.instantiateViewController(withIdentifier: "BeforeRegisterViewController") as! BeforeRegisterViewController

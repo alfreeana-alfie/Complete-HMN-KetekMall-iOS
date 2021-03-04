@@ -24,6 +24,8 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate, UITextFi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+                
         ICNOField.delegate = self
         BankNameField.delegate = self
         BankAccField.delegate = self
@@ -44,8 +46,17 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate, UITextFi
         BankAccView.layer.cornerRadius = 5
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+ 
     }
-    
+ 
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -171,6 +182,14 @@ class RegisterSellerViewController: UIViewController, UITabBarDelegate, UITextFi
     
     @IBAction func Cancel(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
     }
     
 }

@@ -165,32 +165,58 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
-    func onViewClick1(cell: ShockingSaleCollectionViewCell) {
+    @objc func onViewClick1(cell: ShockingSaleCollectionViewCell) {
         guard let indexPath = self.ShockingView.indexPath(for: cell) else{
-                    return
-                }
-                
-                let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
-                viewProduct.USERID = userID
-                viewProduct.ItemID = self.ID1[indexPath.row]
-                viewProduct.SELLERID = self.SELLERIDSHOCKING[indexPath.row]
-                viewProduct.MAINCATE = self.MAINCATESHOCKING[indexPath.row]
-                viewProduct.SUBCATE = self.SUBCATESHOCKING[indexPath.row]
-                viewProduct.ADDETAIL = self.ADDETAILSHOCKING[indexPath.row]
-                viewProduct.BRAND = self.BRANDSHOCKING[indexPath.row]
-                viewProduct.INNER = self.INNERSHOCKING[indexPath.row]
-                viewProduct.STOCK = self.STOCKSHOCKING[indexPath.row]
-                viewProduct.DESC = self.DESCSHOCKING[indexPath.row]
-                viewProduct.PRICE = self.PRICESHOCKING[indexPath.row]
-                viewProduct.POSTCODE = self.POSTCODESHOCKING[indexPath.row]
-                viewProduct.WEIGHT = self.WEIGHTSHOCKING[indexPath.row]
-        //        viewProduct.RATING = self.RATINGSHOCKING[indexPath.row]
-                viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
-                viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
-                viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(viewProduct, animated: true)
-                }
+            return
+        }
+        
+        let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
+        viewProduct.USERID = String(user)
+        viewProduct.ItemID = self.ID1[indexPath.row]
+        viewProduct.SELLERID = self.SELLERIDSHOCKING[indexPath.row]
+        viewProduct.MAINCATE = self.MAINCATESHOCKING[indexPath.row]
+        viewProduct.SUBCATE = self.SUBCATESHOCKING[indexPath.row]
+        viewProduct.ADDETAIL = self.ADDETAILSHOCKING[indexPath.row]
+        viewProduct.BRAND = self.BRANDSHOCKING[indexPath.row]
+        viewProduct.INNER = self.INNERSHOCKING[indexPath.row]
+        viewProduct.STOCK = self.STOCKSHOCKING[indexPath.row]
+        viewProduct.DESC = self.DESCSHOCKING[indexPath.row]
+        viewProduct.PRICE = self.PRICESHOCKING[indexPath.row]
+        viewProduct.POSTCODE = self.POSTCODESHOCKING[indexPath.row]
+        viewProduct.WEIGHT = self.WEIGHTSHOCKING[indexPath.row]
+        viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
+        viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
+        viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
+        if let navigator = self.navigationController {
+            navigator.pushViewController(viewProduct, animated: true)
+        }
+    }
+    
+    @objc func onViewClick(cell: HotCollectionViewCell) {
+        guard let indexPath = self.HotView.indexPath(for: cell) else{
+            return
+        }
+        
+        let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
+        viewProduct.USERID = String(user)
+        viewProduct.ItemID = self.ID[indexPath.row]
+        viewProduct.SELLERID = self.SELLERIDHOT[indexPath.row]
+        viewProduct.MAINCATE = self.MAINCATEHOT[indexPath.row]
+        viewProduct.SUBCATE = self.SUBCATEHOT[indexPath.row]
+        viewProduct.ADDETAIL = self.ADDETAILHOT[indexPath.row]
+        viewProduct.BRAND = self.BRANDHOT[indexPath.row]
+        viewProduct.INNER = self.INNERHOT[indexPath.row]
+        viewProduct.STOCK = self.STOCKHOT[indexPath.row]
+        viewProduct.DESC = self.DESCHOT[indexPath.row]
+        viewProduct.PRICE = self.PRICEHOT[indexPath.row]
+        viewProduct.POSTCODE = self.POSTCODEHOT[indexPath.row]
+        viewProduct.WEIGHT = self.WEIGHTHOT[indexPath.row]
+        viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
+        viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
+        viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
+        if let navigator = self.navigationController {
+            navigator.pushViewController(viewProduct, animated: true)
+        }
     }
     
     private let spinner = JGProgressHUD(style: .dark)
@@ -235,7 +261,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var HealthBeauty: UIView!
     @IBOutlet weak var Handicraft: UIView!
     @IBOutlet weak var HomeLiving: UIView!
-    @IBOutlet weak var Pickup: UIView!
     @IBOutlet weak var SarawakBased: UIView!
     @IBOutlet weak var Fashion: UIView!
     
@@ -256,7 +281,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var ButtonHome: UITextView!
     @IBOutlet weak var ButtonSarawak: UITextView!
     @IBOutlet weak var ButtonFashion: UITextView!
-    @IBOutlet weak var ButtonPickup: UITextView!
     
     @IBOutlet weak var BrowseCate: UILabel!
     @IBOutlet weak var ShockingLabel: UILabel!
@@ -273,7 +297,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var SellButton: UIButton!
     @IBOutlet weak var FindButton: UIButton!
     
-
+    // Hot Sale
     var ID: [String] = []
     var SELLERIDHOT: [String] = []
     var MAINCATEHOT: [String] = []
@@ -291,6 +315,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var DISTRICTHOT: [String] = []
     var WEIGHTHOT: [String] = []
     
+    // Shocking Sale
     var ID1: [String] = []
     var SELLERIDSHOCKING: [String] = []
     var MAINCATESHOCKING: [String] = []
@@ -322,13 +347,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     let sender = PushNotificationSender()
     var tokenUser: String = ""
-    var lang: String = "";
+    var lang: String = ""
+    var CheckUSER: String = ""
     
     override func viewDidAppear(_ animated: Bool) {
         if(user == "0"){
             Verify.isHidden = true
             Username.isHidden = true
             VerifyView.isHidden = true
+            UserImage.isHidden = true
         }
         ColorFunc()
     }
@@ -336,6 +363,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         Tabbar.delegate = self
+        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        CheckUSER = sharedPref.string(forKey: "CheckUSER") ?? "true"
+        print("\(CheckUSER)")
+        if(lang == "ms"){
+            changeLanguage(str: "ms")
+            
+        }else{
+            changeLanguage(str: "en")
+            
+        }
         navigationController?.setNavigationBarHidden(true, animated: false)
 
         Carousel.setImageInputs([
@@ -345,10 +383,9 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Carousel.slideshowInterval = 3.0
         Carousel.contentScaleMode = .scaleAspectFill
         
-        if(CheckUser == false){
+        if(CheckUSER == "false"){
             user = "0"
             email = "0"
-            lang = sharedPref.string(forKey: "LANG") ?? "en"
             Verify.isHidden = true
             Username.isHidden = true
             VerifyView.isHidden = true
@@ -358,8 +395,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             VerifyView.isHidden = false
             user = sharedPref.string(forKey: "USERID") ?? "0"
             email = sharedPref.string(forKey: "EMAIL") ?? "0"
-            lang = sharedPref.string(forKey: "LANG") ?? "en"
-            
         }
         
         let index = email.firstIndex(of: "@") ?? email.endIndex
@@ -406,11 +441,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         SarawakBased.layer.shadowOffset = .zero
         SarawakBased.layer.shadowRadius = 0.5
         
-        Pickup.layer.cornerRadius = 10
-        Pickup.layer.shadowOpacity = 1
-        Pickup.layer.shadowOffset = .zero
-        Pickup.layer.shadowRadius = 0.5
-        
         Fashion.layer.cornerRadius = 10
         Fashion.layer.shadowOpacity = 1
         Fashion.layer.shadowOffset = .zero
@@ -421,7 +451,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Handicraft.isUserInteractionEnabled = true
         HomeLiving.isUserInteractionEnabled = true
         SarawakBased.isUserInteractionEnabled = true
-        Pickup.isUserInteractionEnabled = true
         Fashion.isUserInteractionEnabled = true
         FindBar.isUserInteractionEnabled = true
         CartBar.isUserInteractionEnabled = true
@@ -436,7 +465,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let HandicraftClick = UITapGestureRecognizer(target: self, action: #selector(onHandicraft(sender:)))
         let HomeLivingClick = UITapGestureRecognizer(target: self, action: #selector(onHomeLiving(sender:)))
         let SarawakClick = UITapGestureRecognizer(target: self, action: #selector(onSarawakBased(sender:)))
-        let PickupClick = UITapGestureRecognizer(target: self, action: #selector(onPickup(sender:)))
         let FashionClick = UITapGestureRecognizer(target: self, action: #selector(onFashion(sender:)))
         
         FindBar.addGestureRecognizer(FindClick)
@@ -447,7 +475,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         Handicraft.addGestureRecognizer(HandicraftClick)
         HomeLiving.addGestureRecognizer(HomeLivingClick)
         SarawakBased.addGestureRecognizer(SarawakClick)
-        Pickup.addGestureRecognizer(PickupClick)
         Fashion.addGestureRecognizer(FashionClick)
 
         if(user != "0"){
@@ -462,6 +489,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         ShockingSale()
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func MessageCount03(){
         let parameters: Parameters=[
             "UserID": user
@@ -620,7 +652,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         navigator.pushViewController(addProduct, animated: true)
                     }
                 }else{
-                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettings02ViewController") as! AccountSettingsViewController
+                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "AccountSettingsViewController") as! AccountSettingsViewController
                     accountsettings.userID = self.user
                     if let navigator = self.navigationController {
                         navigator.pushViewController(accountsettings, animated: true)
@@ -654,6 +686,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
                 UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
                 UserDefaults.standard.synchronize()
+                self.sharedPref.setValue("false", forKey: "CheckUSER")
+
                 GIDSignIn.sharedInstance()?.signOut()
                 LoginManager().logOut()
                 break
@@ -693,16 +727,15 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         HotLabel.text = "HOT SELLING".localized(lang: str)
         ShockingLabel.text = "SHOCKING SALE".localized(lang: str)
         
-        ViewAllHot.setTitle("VIEW ALL".localized(lang: str), for: .normal)
-        ViewAllButton.setTitle("VIEW ALL".localized(lang: str), for: .normal)
-        ViewAllShocking.setTitle("VIEW ALL".localized(lang: str), for: .normal)
+        ViewAllHot.setTitle("View".localized(lang: str), for: .normal)
+        ViewAllButton.setTitle("View".localized(lang: str), for: .normal)
+        ViewAllShocking.setTitle("View".localized(lang: str), for: .normal)
         
         ButtonProcess.text = "Process Food".localized(lang: str)
         ButtonFashion.text = "Fashion Accessories".localized(lang: str)
         ButtonHandicraft.text = "Handicraft".localized(lang: str)
-        ButtonSarawak.text = "Sarawak - Based Product".localized(lang: str)
+        ButtonSarawak.text = "Sarawak Product".localized(lang: str)
         ButtonHealth.text = "Health and Beauty".localized(lang: str)
-        ButtonPickup.text = "Self Pick-up".localized(lang: str)
         ButtonHome.text = "Home and Living".localized(lang: str)
         
     
@@ -982,22 +1015,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             navigator.pushViewController(click, animated: true)
         }
     }
-    @objc func onPickup(sender: Any){
-        print("Success")
-//        let tabbar = tabBarController as! BaseTabBarController
-        let click = self.storyboard!.instantiateViewController(withIdentifier: "CategoryViewController") as! CategoryViewController
-        click.UserID = String(user)
-        click.URL_READ = URL_READ_CATEGORY_MAIN + CATEGORYLIST[13]
-        click.URL_SEARCH = URL_READ_CATEGORY_SEARCH_MAIN + CATEGORYLIST[13]
-        click.URL_FILTER_DIVISION = URL_READ_CATEGORY_FILTER_DIVISION_MAIN + CATEGORYLIST[13]
-        click.URL_FILTER_DISTRICT = URL_READ_CATEGORY_FILTER_DISTRICT_MAIN + CATEGORYLIST[13]
-        click.URL_FILTER_SEARCH_DIVISION = URL_READ_CATEGORY_FILTER_SEARCH_MAIN + CATEGORYLIST[13]
-        click.URL_PRICE_UP_READALL = URL_READ_CATEGORY_PRICE_UP + CATEGORYLIST[13]
-        click.URL_PRICE_DOWN = URL_READ_CATEGORY_PRICE_DOWN + CATEGORYLIST[13]
-        if let navigator = self.navigationController {
-            navigator.pushViewController(click, animated: true)
-        }
-    }
     
     func getUserDetails(userID: String){
         spinner.show(in: self.view)
@@ -1186,33 +1203,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
     }
     
-    @objc func onViewClick(cell: HotCollectionViewCell) {
-        guard let indexPath = self.HotView.indexPath(for: cell) else{
-            return
-        }
-        
-        let viewProduct = self.storyboard!.instantiateViewController(withIdentifier: "ViewProductViewController") as! ViewProductViewController
-        viewProduct.USERID = String(user)
-        viewProduct.ItemID = self.ID[indexPath.row]
-        viewProduct.SELLERID = self.SELLERIDHOT[indexPath.row]
-        viewProduct.MAINCATE = self.MAINCATEHOT[indexPath.row]
-        viewProduct.SUBCATE = self.SUBCATEHOT[indexPath.row]
-        viewProduct.ADDETAIL = self.ADDETAILHOT[indexPath.row]
-        viewProduct.BRAND = self.BRANDHOT[indexPath.row]
-        viewProduct.INNER = self.INNERHOT[indexPath.row]
-        viewProduct.STOCK = self.STOCKHOT[indexPath.row]
-        viewProduct.DESC = self.DESCHOT[indexPath.row]
-        viewProduct.PRICE = self.PRICEHOT[indexPath.row]
-        viewProduct.POSTCODE = self.POSTCODEHOT[indexPath.row]
-        viewProduct.WEIGHT = self.WEIGHTHOT[indexPath.row]
-        viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
-        viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
-        viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
-        if let navigator = self.navigationController {
-            navigator.pushViewController(viewProduct, animated: true)
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.HotView{
             return ID.count
@@ -1234,7 +1224,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                 cell.Rating.value = f
             }
             cell.ItemName.text! = self.ADDETAILHOT[indexPath.row]
-            cell.ItemPrice.text! = "MYR" + self.PRICEHOT[indexPath.row]
+            cell.ItemPrice.text! = "RM" + self.PRICEHOT[indexPath.row]
             cell.ButtonView.layer.cornerRadius = 5
             if(lang == "ms"){
                 cell.ButtonView.setTitle("ADD TO CART".localized(lang: "ms"), for: .normal)
@@ -1257,51 +1247,41 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             cell.delegate = self
             return cell
         }else{
-            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "ShockingSaleCollectionViewCell", for: indexPath) as! ShockingSaleCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShockingSaleCollectionViewCell", for: indexPath) as! ShockingSaleCollectionViewCell
+            
             let NEWIm = self.PHOTOSHOCKING[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-            cell1.ItemImage.setImageWith(URL(string: NEWIm!)!)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
             if let n = NumberFormatter().number(from: self.RATINGSHOCKING[indexPath.row]) {
                 let f = CGFloat(truncating: n)
-                cell1.Rating.value = f
+                cell.Rating.value = f
             }
-            cell1.ItemName.text! = self.ADDETAILSHOCKING[indexPath.row]
-            cell1.ItemPrice.text! = "MYR" + self.PRICESHOCKING[indexPath.row]
-            cell1.ButtonView.layer.cornerRadius = 5
+            cell.ItemName.text! = self.ADDETAILSHOCKING[indexPath.row]
+            cell.ItemPrice.text! = "RM" + self.PRICESHOCKING[indexPath.row]
+            cell.ButtonView.layer.cornerRadius = 5
             if(lang == "ms"){
-                cell1.ButtonView.setTitle("ADD TO CART".localized(lang: "ms"), for: .normal)
+                cell.ButtonView.setTitle("ADD TO CART".localized(lang: "ms"), for: .normal)
             }else{
-                cell1.ButtonView.setTitle("ADD TO CART".localized(lang: "en"), for: .normal)
+                cell.ButtonView.setTitle("ADD TO CART".localized(lang: "en"), for: .normal)
             }
             
-            cell1.layer.cornerRadius = 5
-            
-            cell1.ItemImage.isUserInteractionEnabled = true
-            let Image = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.onViewClick1(cell:)))
-
-            cell1.ItemImage.addGestureRecognizer(Image)
+            cell.layer.cornerRadius = 5
             
             let colorOne = UIColor(hexString: "#FC4A1A").cgColor
             let colorTwo = UIColor(hexString: "#F7B733").cgColor
-            
+
             let ViewGradient = CAGradientLayer()
-            ViewGradient.frame = cell1.ButtonView.bounds
+            ViewGradient.frame = cell.ButtonView.bounds
             ViewGradient.colors = [colorOne, colorTwo]
             ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
             ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
             ViewGradient.cornerRadius = 5
-            cell1.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
-            cell1.delegate = self
-            return cell1
+            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
+            cell.delegate = self
+            return cell
         }
 
     }
 }
 
-extension String {
-func localized(lang:String) ->String {
 
-    let path = Bundle.main.path(forResource: lang, ofType: "lproj")
-    let bundle = Bundle(path: path!)
-
-    return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
-}}

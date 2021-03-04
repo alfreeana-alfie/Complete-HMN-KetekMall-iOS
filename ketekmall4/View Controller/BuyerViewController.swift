@@ -35,6 +35,11 @@ class BuyerViewController: UIViewController {
         
         userID = String(user)
     }
+
+//    @objc override func dismissKeyboard() {
+//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+//        view.endEditing(true)
+//    }
     
     func changeLanguage(str: String){
         ButtonMyBuying.setTitle("My Buying".localized(lang: str), for: .normal)
@@ -49,7 +54,7 @@ class BuyerViewController: UIViewController {
         UIApplication.shared.openURL(NSURL(string: "https://ketekmall.com")! as URL)
     }
     
-  @IBAction func MyBuying(_ sender: Any) {
+    @IBAction func MyBuying(_ sender: Any) {
         let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "MyBuyingViewController") as! MyBuyingViewController
         myBuying.userID = userID
         myBuying.BarHidden = true

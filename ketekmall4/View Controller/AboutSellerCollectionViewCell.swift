@@ -25,6 +25,7 @@ class AboutSellerCollectionViewCell: UICollectionViewCell {
         let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewImage(sender:)))
         ItemImage.isUserInteractionEnabled = true
         ItemImage.addGestureRecognizer(clickImage)
+
     }
     
     @objc func ViewImage(sender: Any){

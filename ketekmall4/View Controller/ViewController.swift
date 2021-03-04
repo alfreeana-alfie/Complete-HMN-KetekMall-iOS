@@ -88,7 +88,7 @@ class ViewController: UIViewController, UITabBarDelegate {
                 
         }
     }
-    
+
     func ColorFunc(){
         let color1 = UIColor(hexString: "#FC4A1A").cgColor
         let color2 = UIColor(hexString: "#F7B733").cgColor

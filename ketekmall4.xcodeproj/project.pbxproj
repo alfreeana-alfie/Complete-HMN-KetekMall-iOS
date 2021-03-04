@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D46060A631834C2D97D13D8 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE468A582F4ECDE3C859230 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		392EB4E425EB1F6F009A1177 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392EB4E325EB1F6F009A1177 /* Extension.swift */; };
 		395381CA25DBAEAB008B16BB /* AppVersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395381C925DBAEAB008B16BB /* AppVersionViewController.swift */; };
+		3997641E25E69DF200CEB949 /* PrintingPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997641D25E69DF200CEB949 /* PrintingPDF.swift */; };
 		C445ED7C9CD1F4976D6042C5 /* Pods_ketekmall4Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F543144A72DD3BBC020B6243 /* Pods_ketekmall4Tests.framework */; };
 		C6E0DAE1B7F3A81947E27BCB /* Pods_ketekmall4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E7F0E86A92BCCCD9020AE35 /* Pods_ketekmall4.framework */; };
 		D6E43C175A676DA21E8FC631 /* Pods_ketekmall4_ketekmall4UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77BF025829DD3C7FD080D730 /* Pods_ketekmall4_ketekmall4UITests.framework */; };
@@ -76,9 +78,6 @@
 		FB77A15324FCD3D70005EB39 /* HotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77A15224FCD3D70005EB39 /* HotCollectionViewCell.swift */; };
 		FB77A15524FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77A15424FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift */; };
 		FB7D211724FFE5A90043A286 /* CheckoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D211624FFE5A90043A286 /* CheckoutCollectionViewCell.swift */; };
-		FB7D2119250015530043A286 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D2118250015530043A286 /* DeliveryViewController.swift */; };
-		FB7D211B250016CC0043A286 /* DeliveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D211A250016CC0043A286 /* DeliveryCollectionViewCell.swift */; };
-		FB7D211D25001C500043A286 /* DeliveryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D211C25001C500043A286 /* DeliveryAddViewController.swift */; };
 		FB914208251F5333004F62F6 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD224BC251BE96A004B02F6 /* libipay88sdk.a */; };
 		FB91420F251F55DC004F62F6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB91420A251F55DC004F62F6 /* DetailViewController.xib */; };
 		FB914210251F55DC004F62F6 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91420B251F55DC004F62F6 /* DetailViewModel.swift */; };
@@ -129,7 +128,9 @@
 		0CC3FD104D4C11C958FCB9BC /* Pods-ketekmall4-ketekmall4UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.release.xcconfig"; sourceTree = "<group>"; };
 		0E7F0E86A92BCCCD9020AE35 /* Pods_ketekmall4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ketekmall4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16DBB2CE9D170C83B5833FBE /* Pods-ketekmall4Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4Tests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4Tests/Pods-ketekmall4Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		392EB4E325EB1F6F009A1177 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		395381C925DBAEAB008B16BB /* AppVersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionViewController.swift; sourceTree = "<group>"; };
+		3997641D25E69DF200CEB949 /* PrintingPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintingPDF.swift; sourceTree = "<group>"; };
 		3FFA2B7FC2B4F475EA4F5524 /* Pods-ketekmall4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4.release.xcconfig"; path = "Target Support Files/Pods-ketekmall4/Pods-ketekmall4.release.xcconfig"; sourceTree = "<group>"; };
 		498607E8EFF4D303E1EFDC7B /* Pods-ketekmall4-ketekmall4UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; path = "Target Support Files/Pods-ketekmall4-ketekmall4UITests/Pods-ketekmall4-ketekmall4UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		569F9A64D8C35390DA3380F1 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,9 +209,6 @@
 		FB77A15224FCD3D70005EB39 /* HotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB77A15424FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShockingSaleCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB7D211624FFE5A90043A286 /* CheckoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCollectionViewCell.swift; sourceTree = "<group>"; };
-		FB7D2118250015530043A286 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
-		FB7D211A250016CC0043A286 /* DeliveryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCollectionViewCell.swift; sourceTree = "<group>"; };
-		FB7D211C25001C500043A286 /* DeliveryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddViewController.swift; sourceTree = "<group>"; };
 		FB914209251F55DB004F62F6 /* ketekmall4_Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ketekmall4_Bridging_Header.h; sourceTree = "<group>"; };
 		FB91420A251F55DC004F62F6 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		FB91420B251F55DC004F62F6 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -281,6 +279,178 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39AE624725EE00E60084E8FD /* About KetekMall */ = {
+			isa = PBXGroup;
+			children = (
+				395381C925DBAEAB008B16BB /* AppVersionViewController.swift */,
+				FB2883462509759E008B18BB /* ContactUsViewController.swift */,
+				FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */,
+				FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */,
+				FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */,
+			);
+			name = "About KetekMall";
+			sourceTree = "<group>";
+		};
+		39AE624925EE1B220084E8FD /* My Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */,
+				FB4557B224F91EE700FC502B /* MyProductsCollectionViewController.swift */,
+			);
+			name = "My Products";
+			sourceTree = "<group>";
+		};
+		39AE624A25EE4FFC0084E8FD /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				392EB4E325EB1F6F009A1177 /* Extension.swift */,
+				FBC47063252797A400E38DE6 /* PushNotification.swift */,
+				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
+				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
+				FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */,
+				FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */,
+			);
+			name = Backend;
+			sourceTree = "<group>";
+		};
+		39AE624B25EE501C0084E8FD /* Boost Ad */ = {
+			isa = PBXGroup;
+			children = (
+				FB528AD024FA88BD00A968E8 /* BoostAdCollectionViewCell.swift */,
+				FB528ACE24FA84E700A968E8 /* BoostAdViewController.swift */,
+			);
+			name = "Boost Ad";
+			sourceTree = "<group>";
+		};
+		39AE624C25EE504B0084E8FD /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				FB43BFD724FF7766002D36E0 /* CartCollectionViewCell.swift */,
+				FB43BFD124FF74EB002D36E0 /* CartViewController.swift */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
+		39AE624D25EE50640084E8FD /* Category View */ = {
+			isa = PBXGroup;
+			children = (
+				FB5490CE24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift */,
+				FB5490CC24FD3C8D004E6D73 /* CategoryViewController.swift */,
+			);
+			name = "Category View";
+			sourceTree = "<group>";
+		};
+		39AE624E25EE506F0084E8FD /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */,
+				FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */,
+				FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */,
+				FBC293C62508A6120057961A /* ChatViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		39AE624F25EE50820084E8FD /* Check Out */ = {
+			isa = PBXGroup;
+			children = (
+				FB7D211624FFE5A90043A286 /* CheckoutCollectionViewCell.swift */,
+				FB43BFD324FF7502002D36E0 /* CheckoutViewController.swift */,
+			);
+			name = "Check Out";
+			sourceTree = "<group>";
+		};
+		39AE625125EE51360084E8FD /* Product Edit-Add */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */,
+				FB43BFCF24FF60F8002D36E0 /* EditProductAdDetailViewController.swift */,
+				FB3E830624FEC1C100F1CE3C /* EditProductViewController.swift */,
+			);
+			name = "Product Edit-Add";
+			sourceTree = "<group>";
+		};
+		39AE625225EE51D60084E8FD /* My Buying */ = {
+			isa = PBXGroup;
+			children = (
+				FB4B72CC24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift */,
+				FB4B72CE24FB6FC000293B81 /* MyBuyingViewController.swift */,
+			);
+			name = "My Buying";
+			sourceTree = "<group>";
+		};
+		39AE625325EE51F00084E8FD /* My Income */ = {
+			isa = PBXGroup;
+			children = (
+				FB528AD424FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift */,
+				FB528ACA24FA84BF00A968E8 /* MyIncomeViewController.swift */,
+			);
+			name = "My Income";
+			sourceTree = "<group>";
+		};
+		39AE625425EE52080084E8FD /* My Likes */ = {
+			isa = PBXGroup;
+			children = (
+				FB4B72D424FB89E100293B81 /* MyLikesCollectionViewCell.swift */,
+				FB4B72D624FB89FA00293B81 /* MyLikesViewController.swift */,
+			);
+			name = "My Likes";
+			sourceTree = "<group>";
+		};
+		39AE625525EE521A0084E8FD /* My Rating */ = {
+			isa = PBXGroup;
+			children = (
+				FB4B72D224FB793000293B81 /* MyRatingCollectionViewCell.swift */,
+				FB4B72D024FB792000293B81 /* MyRatingViewController.swift */,
+			);
+			name = "My Rating";
+			sourceTree = "<group>";
+		};
+		39AE625625EE52370084E8FD /* My Selling */ = {
+			isa = PBXGroup;
+			children = (
+				FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */,
+				FB528AC524FA616800A968E8 /* MySellingViewController.swift */,
+			);
+			name = "My Selling";
+			sourceTree = "<group>";
+		};
+		39AE625725EE52510084E8FD /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */,
+				3997641D25E69DF200CEB949 /* PrintingPDF.swift */,
+			);
+			name = PDF;
+			sourceTree = "<group>";
+		};
+		39AE625825EE52590084E8FD /* Product Rating */ = {
+			isa = PBXGroup;
+			children = (
+				FB528AD224FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift */,
+				FB528ACC24FA84DA00A968E8 /* ProductRatingViewController.swift */,
+			);
+			name = "Product Rating";
+			sourceTree = "<group>";
+		};
+		39AE625925EE52B40084E8FD /* Review Page */ = {
+			isa = PBXGroup;
+			children = (
+				FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */,
+				FB7787C024FE35CA00AB01F4 /* ReviewCollectionViewCell.swift */,
+			);
+			name = "Review Page";
+			sourceTree = "<group>";
+		};
+		39AE625A25EE52DF0084E8FD /* Shipping Info */ = {
+			isa = PBXGroup;
+			children = (
+				FB7787BE24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift */,
+				FB7787B624FE0F0500AB01F4 /* ShippingInfoViewController.swift */,
+			);
+			name = "Shipping Info";
+			sourceTree = "<group>";
+		};
 		9744CE111CB0B2C47541132C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,11 +540,11 @@
 		FB5A491024F7F0E200F5464C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FB5A48E924F7F07B00F5464C /* Assets.xcassets */,
 				FB91420A251F55DC004F62F6 /* DetailViewController.xib */,
+				FB288354250994C2008B18BB /* Main.storyboard */,
 				FB5A48EB24F7F07B00F5464C /* LaunchScreen.storyboard */,
 				FBDDBB84250A1C1B0027BC90 /* Localizable.strings */,
-				FB288354250994C2008B18BB /* Main.storyboard */,
-				FB5A48E924F7F07B00F5464C /* Assets.xcassets */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,36 +557,19 @@
 				FB7787BA24FE0F7A00AB01F4 /* AboutSellerViewController.swift */,
 				FBBDF31C25A5F55F00079AA5 /* AccountSettings02ViewController.swift */,
 				FB4557B024F90EDA00FC502B /* AccountSettingsViewController.swift */,
-				FB5A492024F810FD00F5464C /* AddNewProductViewController.swift */,
 				FB3E830424FEBE2400F1CE3C /* AddReviewViewController.swift */,
 				FB43BFD524FF7516002D36E0 /* AfterPlaceOrderViewController.swift */,
-				FB5A48E024F7F06B00F5464C /* AppDelegate.swift */,
-				FBCE5665255A2AD800598DFA /* AppleSignInClient.swift */,
-				395381C925DBAEAB008B16BB /* AppVersionViewController.swift */,
-				FB5A491C24F7FD6B00F5464C /* BaseTabBarController.swift */,
+				39AE624A25EE4FFC0084E8FD /* Backend */,
 				FBB2D5FA2513E20C007BEA53 /* BeforeRegisterViewController.swift */,
-				FB528AD024FA88BD00A968E8 /* BoostAdCollectionViewCell.swift */,
-				FB528ACE24FA84E700A968E8 /* BoostAdViewController.swift */,
+				39AE624B25EE501C0084E8FD /* Boost Ad */,
 				FB9A928725037A51001DD96C /* BuyerViewController.swift */,
-				FB43BFD724FF7766002D36E0 /* CartCollectionViewCell.swift */,
-				FB43BFD124FF74EB002D36E0 /* CartViewController.swift */,
-				FB5490CE24FD4ADE004E6D73 /* CategoryCollectionViewCell.swift */,
-				FB5490CC24FD3C8D004E6D73 /* CategoryViewController.swift */,
-				FB0330B3252F6F7F00D5F07D /* ChatCollectionViewCell.swift */,
-				FB0330B1252F6E9800D5F07D /* ChatInboxTwoViewController.swift */,
-				FBC293C42508A5FD0057961A /* ChatInboxViewController.swift */,
-				FBC293C62508A6120057961A /* ChatViewController.swift */,
-				FB7D211624FFE5A90043A286 /* CheckoutCollectionViewCell.swift */,
-				FB43BFD324FF7502002D36E0 /* CheckoutViewController.swift */,
-				FB2883462509759E008B18BB /* ContactUsViewController.swift */,
-				FB7D211C25001C500043A286 /* DeliveryAddViewController.swift */,
-				FB7D211A250016CC0043A286 /* DeliveryCollectionViewCell.swift */,
-				FB0843722512A39C003C200E /* DeliveryPolicyViewController.swift */,
-				FB7D2118250015530043A286 /* DeliveryViewController.swift */,
+				39AE624C25EE504B0084E8FD /* Cart */,
+				39AE624D25EE50640084E8FD /* Category View */,
+				39AE624E25EE506F0084E8FD /* Chat */,
+				39AE624F25EE50820084E8FD /* Check Out */,
 				FB91420E251F55DC004F62F6 /* DetailViewController.swift */,
 				FB91420B251F55DC004F62F6 /* DetailViewModel.swift */,
-				FB43BFCF24FF60F8002D36E0 /* EditProductAdDetailViewController.swift */,
-				FB3E830624FEC1C100F1CE3C /* EditProductViewController.swift */,
+				39AE625125EE51360084E8FD /* Product Edit-Add */,
 				FB71157F2500B7B300B19D77 /* FilterViewController.swift */,
 				FB5A491A24F7F66C00F5464C /* ForgotPasswordViewController.swift */,
 				FB5490D024FD7019004E6D73 /* FromSameShopCollectionViewCell.swift */,
@@ -426,34 +579,22 @@
 				FB77A15224FCD3D70005EB39 /* HotCollectionViewCell.swift */,
 				FB5A491224F7F47000F5464C /* LoginViewController.swift */,
 				FB7787B824FE0F5500AB01F4 /* MoreDetailsViewController.swift */,
-				FB4B72CC24FB6FA500293B81 /* MyBuyingCollectionViewCell.swift */,
-				FB4B72CE24FB6FC000293B81 /* MyBuyingViewController.swift */,
-				FB528AD424FAD00D00A968E8 /* MyIncomeCollectionViewCell.swift */,
-				FB528ACA24FA84BF00A968E8 /* MyIncomeViewController.swift */,
-				FB4B72D424FB89E100293B81 /* MyLikesCollectionViewCell.swift */,
-				FB4B72D624FB89FA00293B81 /* MyLikesViewController.swift */,
-				FB528AB724FA0D1700A968E8 /* MyProductsCollectionViewCell.swift */,
-				FB4557B224F91EE700FC502B /* MyProductsCollectionViewController.swift */,
-				FB4B72D224FB793000293B81 /* MyRatingCollectionViewCell.swift */,
-				FB4B72D024FB792000293B81 /* MyRatingViewController.swift */,
-				FB528AC724FA619E00A968E8 /* MySellingCollectionViewCell.swift */,
-				FB528AC524FA616800A968E8 /* MySellingViewController.swift */,
+				39AE625225EE51D60084E8FD /* My Buying */,
+				39AE625325EE51F00084E8FD /* My Income */,
+				39AE625425EE52080084E8FD /* My Likes */,
+				39AE624925EE1B220084E8FD /* My Products */,
+				39AE625525EE521A0084E8FD /* My Rating */,
+				39AE625625EE52370084E8FD /* My Selling */,
 				FBBA2D73250918E500F55FE2 /* NotificationViewController.swift */,
-				FBDBE790258E627000FD43A6 /* PosLajuTestArea.swift */,
-				FB528AD224FA88CF00A968E8 /* ProductRatingCollectionViewCell.swift */,
-				FB528ACC24FA84DA00A968E8 /* ProductRatingViewController.swift */,
-				FBC47063252797A400E38DE6 /* PushNotification.swift */,
+				39AE625725EE52510084E8FD /* PDF */,
+				39AE625825EE52590084E8FD /* Product Rating */,
 				FB5490C824FD1ECF004E6D73 /* RegisterSellerViewController.swift */,
 				FB5A491824F7F5EE00F5464C /* RegisterViewController.swift */,
-				FB0843702512A38B003C200E /* ReturnRefundPolicyViewController.swift */,
-				FB7787C024FE35CA00AB01F4 /* ReviewCollectionViewCell.swift */,
-				FB4B72DA24FBE24A00293B81 /* ReviewPageViewController.swift */,
-				FB5A48E224F7F06B00F5464C /* SceneDelegate.swift */,
+				39AE624725EE00E60084E8FD /* About KetekMall */,
+				39AE625925EE52B40084E8FD /* Review Page */,
 				FB9A928925037A75001DD96C /* SellerViewController.swift */,
-				FB7787BE24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift */,
-				FB7787B624FE0F0500AB01F4 /* ShippingInfoViewController.swift */,
+				39AE625A25EE52DF0084E8FD /* Shipping Info */,
 				FB77A15424FCDA150005EB39 /* ShockingSaleCollectionViewCell.swift */,
-				FBB2D5F82513E0E5007BEA53 /* TermsConditionsViewController.swift */,
 				FB9A9285250368B2001DD96C /* ViewController.swift */,
 				FB4B72D824FBE00800293B81 /* ViewProductViewController.swift */,
 				FB7787BC24FE0FCA00AB01F4 /* ViewReviewViewController.swift */,
@@ -807,7 +948,6 @@
 				FBB2D5F72513D01D007BEA53 /* GotoRegisterSeller2ViewController.swift in Sources */,
 				FB4557B324F91EE700FC502B /* MyProductsCollectionViewController.swift in Sources */,
 				FB5A491D24F7FD6B00F5464C /* BaseTabBarController.swift in Sources */,
-				FB7D2119250015530043A286 /* DeliveryViewController.swift in Sources */,
 				FBC47064252797A400E38DE6 /* PushNotification.swift in Sources */,
 				FB3E830524FEBE2400F1CE3C /* AddReviewViewController.swift in Sources */,
 				FB43BFD624FF7516002D36E0 /* AfterPlaceOrderViewController.swift in Sources */,
@@ -828,6 +968,7 @@
 				FB3E830724FEC1C100F1CE3C /* EditProductViewController.swift in Sources */,
 				FB5A491B24F7F66C00F5464C /* ForgotPasswordViewController.swift in Sources */,
 				FBDBE791258E627000FD43A6 /* PosLajuTestArea.swift in Sources */,
+				3997641E25E69DF200CEB949 /* PrintingPDF.swift in Sources */,
 				FB43BFD824FF7766002D36E0 /* CartCollectionViewCell.swift in Sources */,
 				FB528AC824FA619E00A968E8 /* MySellingCollectionViewCell.swift in Sources */,
 				FB7787BF24FE2ECA00AB01F4 /* ShippingInfoCollectionViewCell.swift in Sources */,
@@ -836,10 +977,10 @@
 				FB914211251F55DC004F62F6 /* DetailViewController.swift in Sources */,
 				FB5A48E124F7F06B00F5464C /* AppDelegate.swift in Sources */,
 				FB4B72D324FB793000293B81 /* MyRatingCollectionViewCell.swift in Sources */,
-				FB7D211B250016CC0043A286 /* DeliveryCollectionViewCell.swift in Sources */,
 				FB4B72DB24FBE24A00293B81 /* ReviewPageViewController.swift in Sources */,
 				FB5A491924F7F5EE00F5464C /* RegisterViewController.swift in Sources */,
 				FBC293C52508A5FD0057961A /* ChatInboxViewController.swift in Sources */,
+				392EB4E425EB1F6F009A1177 /* Extension.swift in Sources */,
 				FBC293C72508A6120057961A /* ChatViewController.swift in Sources */,
 				FB914210251F55DC004F62F6 /* DetailViewModel.swift in Sources */,
 				FB4B72DD24FBEF1A00293B81 /* ViewSellingViewController.swift in Sources */,
@@ -864,7 +1005,6 @@
 				FB4B72D524FB89E100293B81 /* MyLikesCollectionViewCell.swift in Sources */,
 				FBB2D5FB2513E20C007BEA53 /* BeforeRegisterViewController.swift in Sources */,
 				FB0330B4252F6F7F00D5F07D /* ChatCollectionViewCell.swift in Sources */,
-				FB7D211D25001C500043A286 /* DeliveryAddViewController.swift in Sources */,
 				FB528AB824FA0D1700A968E8 /* MyProductsCollectionViewCell.swift in Sources */,
 				FB9A9286250368B2001DD96C /* ViewController.swift in Sources */,
 				FB7787B924FE0F5500AB01F4 /* MoreDetailsViewController.swift in Sources */,
@@ -997,6 +1137,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1063,6 +1204,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1092,9 +1234,9 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1105,7 +1247,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.2.7;
+				MARKETING_VERSION = 1.3.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -1132,9 +1274,9 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = ketekmall4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1145,7 +1287,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.2.7;
+				MARKETING_VERSION = 1.3.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -1270,9 +1412,9 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1280,7 +1422,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.3.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1300,9 +1442,9 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1310,7 +1452,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.3.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -50,6 +50,10 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+                
+        
+
         Tabbar.delegate = self
         ChatView.delegate = self
         ChatView.dataSource = self
@@ -69,7 +73,16 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
         
         getChat()
         getUserDetails()
+        
+        self.hideKeyboardWhenTappedAround()
+        
     }
+    
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     // Start Here
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
@@ -419,16 +432,3 @@ class ChatInboxTwoViewController: UIViewController, UITabBarDelegate, UICollecti
     }
 }
 
-extension Array where Element: Hashable {
-    func removingDuplicates() -> [Element] {
-        var addedDict = [Element: Bool]()
-        
-        return filter {
-            addedDict.updateValue(true, forKey: $0) == nil
-        }
-    }
-    
-    mutating func removeDuplicates() {
-        self = self.removingDuplicates()
-    }
-}

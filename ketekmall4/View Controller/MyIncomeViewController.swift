@@ -88,7 +88,7 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
                             
                             
                         }
-                       self.IncomeTotal.text! = String(format: "%.2f", self.newSold2)
+                       self.IncomeTotal.text! = "RM"+String(format: "%.2f", self.newSold2)
                         
                     }
                     
@@ -139,7 +139,11 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         
     }
-    
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func ColorFunc(){
         let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
         let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
@@ -172,17 +176,17 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
             return CGSize(width: cellSquareSize, height: cellSquareHeight);
         }
            
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 0.0
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 0.0
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyIncomeCollectionViewCell", for: indexPath) as! MyIncomeCollectionViewCell
@@ -193,13 +197,13 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
 //        cell.UserName.text! = self.customer_name[indexPath.row]
-        cell.Price.text! = self.item_price[indexPath.row]
+        cell.Price.text! = "RM"+self.item_price[indexPath.row]
         cell.Quantity.text! = self.item_quantity[indexPath.row]
         cell.DeliveryAddress.text! = self.delivery_address[indexPath.row]
         cell.DeliveryTime.text! = self.delivery_time[indexPath.row]
-        cell.DeliveryPrice.text! = self.delivery_price[indexPath.row]
+        cell.DeliveryPrice.text! = "RM"+self.delivery_price[indexPath.row]
         print(self.grand_total[indexPath.row])
-        cell.GrandTotal.text! = self.grand_total[indexPath.row]
+        cell.GrandTotal.text! = "RM"+self.grand_total[indexPath.row]
         cell.Status.text! = self.item_status[indexPath.row]
         if(lang == "ms"){
             cell.DeliveryAddresslabel.text = "Delivery Address".localized(lang: "ms")

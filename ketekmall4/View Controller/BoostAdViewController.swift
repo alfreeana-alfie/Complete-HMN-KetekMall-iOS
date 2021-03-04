@@ -31,7 +31,16 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         BoostView.delegate = self
         BoostView.dataSource = self
-        
+        self.hideKeyboardWhenTappedAround()
+                
+        //Looks for single or multiple taps.
+         let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+
         navigationItem.title = "Boost Ad"
         let parameters: Parameters=[
             "user_id": userID,
@@ -69,6 +78,11 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
                     }
                 }
         }
+    }
+    
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func ColorFunc(){

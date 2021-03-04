@@ -203,6 +203,8 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         NoReviewLabel.isHidden = true
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
@@ -222,7 +224,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         SameShopView.dataSource = self
         
         
-        ViewButton.layer.cornerRadius = 10
+        ViewButton.layer.cornerRadius = 5
         ViewButton.layer.borderWidth = 1
         if #available(iOS 13.0, *) {
             ViewButton.layer.borderColor = CGColor(srgbRed: 1.000, green: 0.765, blue: 0.000, alpha: 1.000)
@@ -239,7 +241,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         
         
         ItemName.text! = ADDETAIL
-        ItemPrice.text! = "MYR" + PRICE
+        ItemPrice.text! = "RM" + PRICE
         
         self.pageIndicator.currentPageIndicatorTintColor = UIColor.darkGray
         self.pageIndicator.pageIndicatorTintColor = UIColor.lightGray
@@ -280,8 +282,14 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         getReview()
         getSold()
         SameShopList()
+        self.hideKeyboardWhenTappedAround()
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     func changeLanguage(str: String){
         SoldLabel.text = "Sold".localized(lang: str)
 //        ShippingInfo.text = "Shipping Information".localized(lang: str)

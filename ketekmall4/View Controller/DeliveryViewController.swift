@@ -34,6 +34,15 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+                
+        //Looks for single or multiple taps.
+         let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         if(lang == "ms"){
             changeLanguage(str: "ms")
@@ -87,6 +96,11 @@ class DeliveryViewController: UIViewController,UICollectionViewDelegate, UIColle
         }
     }
     
+    @objc override func dismissKeyboard() {
+            //Causes the view (or one of its embedded text fields) to resign the first responder status.
+            view.endEditing(true)
+        }
+
     func ColorFunc(){
         //Button Accept
         let colorAdd1 = UIColor(hexString: "#AA076B").cgColor

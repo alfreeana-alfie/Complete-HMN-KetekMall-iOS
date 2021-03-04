@@ -85,6 +85,11 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ViewList()
     }
     
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     @objc func back(sender: UIBarButtonItem){
         let myRating = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         if let navigator = self.navigationController {
@@ -322,14 +327,14 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.AdDetail.text! = self.ADDETAIL[indexPath.row]
-        cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
+        cell.ItemPrice.text! = "RM" + self.PRICE[indexPath.row]
         
         cell.Quantity.isHidden = true
 //        cell.Stepper.isHidden = true
         cell.CheckBOx.checkmarkStyle = .tick
         cell.CheckBOx.borderStyle = .circle
         cell.CheckBOx.layer.cornerRadius = 5
-        cell.SubTotal.text! = "MYR" + self.PRICE[indexPath.row]
+        cell.SubTotal.text! = "RM" + self.PRICE[indexPath.row]
         
         
         if(lang == "ms"){
@@ -364,7 +369,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                                 var SubTotal2 = 0.00
                                 for i in self.PRICENEW{
                                     SubTotal2 += Double(i)!
-                                    self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
+                                    self.GrandTotal.text! = "RM" + String(format: "%.2f", SubTotal2)
                                 }
                             }
                         }
@@ -397,7 +402,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             var SubTotal2 = 0.00
                             for i in self.PRICENEW{
                                 SubTotal2 += Double(i)!
-                                self.GrandTotal.text! = "MYR" + String(format: "%.2f", SubTotal2)
+                                self.GrandTotal.text! = "RM" + String(format: "%.2f", SubTotal2)
                                 print("CART SUCCESS")
                             }
                 }
@@ -411,7 +416,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             var sub: Double = 0.00
             sub = Double(self.PRICE[indexPath.row])! * Double(stepper)!
-            cell.SubTotal.text! = "MYR" + String(sub)
+            cell.SubTotal.text! = "RM" + String(format: "%.2f", sub)
         }
         return cell
     }

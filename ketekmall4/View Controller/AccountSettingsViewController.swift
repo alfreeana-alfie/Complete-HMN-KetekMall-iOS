@@ -62,12 +62,17 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
     override func viewDidAppear(_ animated: Bool) {
         ColorFunc()
     }
-
+    
+    @objc override func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.hidesBackButton = true
-//        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(AccountSettingsViewController.back(sender:)))
-//        self.navigationItem.leftBarButtonItem = newBackButton
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         Name.delegate = self
         Email.delegate = self
@@ -185,8 +190,19 @@ class AccountSettingsViewController: UIViewController, UIPickerViewDelegate, UIP
                 }
         }
         
-        
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+ 
     }
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    
     
 //    @objc func back(sender: UIBarButtonItem){
 //        let myRating = self.storyboard!.instantiateViewController(withIdentifier: "ViewController") as! ViewController
