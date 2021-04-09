@@ -67,8 +67,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var addr01: String = ""
     var addr02: String = ""
     var divsionu: String = ""
-    var districtu: String = ""
     var postcode: String = ""
+    var PaymentRefNo: String = ""
     
     var ID: [String] = []
     var ITEMID: [String] = []
@@ -143,9 +143,11 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       lang = sharedPref.string(forKey: "LANG") ?? "0"
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
         
-        print("\(userID)")
+        PaymentRefNo = String.random()
+        
+        print("\(PaymentRefNo)")
         if(lang == "ms"){
             changeLanguage(str: "ms")
             
@@ -224,7 +226,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.POSTCODE_P = user.value(forKey: "postcode") as! [String]
                         self.WEIGHT = user.value(forKey: "weight") as! [String]
                         
-                        print("\(self.WEIGHT)")
+                        print("\(self.DISTRICT)")
                         
                         let parameters: Parameters=[
                             "id": self.userID,
@@ -245,10 +247,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         self.DIVISIONU = user.value(forKey: "division") as! [String]
                                         self.POSTCODE = user.value(forKey: "postcode") as! [String]
                                         
-                                        print("\(self.NAME)")
-                                        
                                         if(self.ADDR01[0] == "" && self.ADDR02[0] == "" && self.DIVISIONU[0] == "" && self.POSTCODE[0] == ""){
                                             self.divsionu = self.DIVISIONU[0]
+                                        
                                             self.NamePhone.text! = self.NAME[0] + " | " + self.PHONE_NO[0]
                                             self.NEWADDR =  "No Address SET"
                                             self.DIVISIONU[0] = "No Address SET"
@@ -281,7 +282,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         let details = result as! NSArray
                                                         
                                                         let totalAmount = details.value(forKey: "totalAmount") as! [String]
-                                                        print("JSON: \(totalAmount)")
+//                                                        print("JSON: \(totalAmount)")
                                                         
                                                         self.DELIVERYPRICE.append(contentsOf: totalAmount)
                                                         
@@ -348,7 +349,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 "delivery_price": self.DELIVERYPRICE[i],
                 "delivery_date": resultDate,
                 "delivery_addr": self.NEWADDR,
-                "weight": self.WEIGHT[i]
+                "weight": self.WEIGHT[i],
+                "refno": self.PaymentRefNo
             ]
             Alamofire.request(URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
                 {
@@ -431,6 +433,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = collectionView.bounds
+        let screenWidth = screenSize.width
+        let cellSquareSize: CGFloat = screenWidth
+        return CGSize(width: cellSquareSize, height: 230);
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.DELIVERYPRICE.count
     }
@@ -466,12 +475,19 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.ButtonSelfPickUp.isHidden = true
         }
         
-        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        if !self.PHOTO[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.PHOTO[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.PHOTO[indexPath.row])!)
+        }
+        
         let NewDeliveryPrice = round(Double(self.DELIVERYPRICE[indexPath.row])!)
-        
-        
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-        
+                
         cell.OrderID.text! = "KM" + self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         
@@ -533,7 +549,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                             "delivery_price": self.DELIVERYPRICE[i],
                             "delivery_date": resultDate,
                             "delivery_addr": self.NEWADDR,
-                            "weight": self.WEIGHT[i]
+                            "weight": self.WEIGHT[i],
+                            "refno": self.PaymentRefNo
                         ]
                         Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
                             {
@@ -564,8 +581,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     vc.UserName = self.NAME[0]
                     vc.UserEmail = self.EMAIL[0]
                     vc.UserContact = self.PHONE_NO[0]
+                    vc.RefNo = self.PaymentRefNo
                     vc.Amount = self.GrandTotal2.text!
-
 
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -612,7 +629,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                             "delivery_price": self.DELIVERYPRICE[i],
                             "delivery_date": resultDate,
                             "delivery_addr": self.NEWADDR,
-                            "weight": self.WEIGHT[i]
+                            "weight": self.WEIGHT[i],
+                            "refno": self.PaymentRefNo
                         ]
                         Alamofire.request(self.URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
                             {
@@ -643,6 +661,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     vc.UserName = self.NAME[0]
                     vc.UserEmail = self.EMAIL[0]
                     vc.UserContact = self.PHONE_NO[0]
+                    vc.RefNo = self.PaymentRefNo
                     vc.Amount = self.GrandTotal2.text!
 
 
@@ -650,7 +669,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
                 return
             }))
-            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
+            refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
                 return
             }))
             present(refreshAlert, animated: true, completion: nil)

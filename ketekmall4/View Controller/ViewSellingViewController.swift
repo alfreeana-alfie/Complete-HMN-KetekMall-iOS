@@ -34,6 +34,10 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_reject.php"
     let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
     let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
+    let URL_createConnote = "https://ketekmall.com/ketekmall/createConnote.php"
+    let URL_getConnote = "https://ketekmall.com/ketekmall/getConnote.php"
+    let URL_editTrackingNo = "https://ketekmall.com/ketekmall/editTrackingNo.php"
+
     
     var ItemID = ""
     var USERID: String = ""
@@ -50,6 +54,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
     var WEIGHT: String = ""
     var POSTCODE: String = ""
     var AMOUNT: String = ""
+    var TRACKINGNO: String = ""
     
     let sharedPref = UserDefaults.standard
     var user: String = ""
@@ -74,8 +79,29 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
     @IBOutlet weak var FinishedHeight: NSLayoutConstraint!
     
     @IBOutlet weak var PosLabelHeight: NSLayoutConstraint!
-//    @IBOutlet weak var TrackingHeight: NSLayoutConstraint!
-    @IBOutlet weak var SubmitHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var DeliveryView: UIView!
+    
+    
+    var CONNOTENO: String = ""
+    var CONNOTEDATE: String = ""
+    var PRODUCTCODE: String = ""
+    var SENDERNAME: String = ""
+    var SENDERPHONE: String = ""
+    var SENDERPOSTCODE: String = ""
+    var RECIPIENTACCOUNTNO: String = ""
+    var RECIPIENTNAME: String = ""
+    var RECIPIENTADDRESS01: String = ""
+    var RECIPIENTADDRESS02: String = ""
+    var RECIPIENTPOSTCODE: String = ""
+    var RECIPIENTCITY: String = ""
+    var RECIPIENTSTATE: String = ""
+    var RECIPIENTPHONE: String = ""
+    var RECIPIENTEMAIL: String = ""
+    var WEIGHTCONNOTE: String = ""
+    var TYPE: String = ""
+
+    
     
     var pdfView = PDFView()
         var pdfURL: URL!
@@ -107,6 +133,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
         Ship_Place.text! = "Shipped out to " + SHIPPLACED
         Status.text! = STATUS
         Quantity.text! = "x" + QUANTITY
+        TrackingNo.text! = TRACKINGNO
         
         ButtonShare.layer.cornerRadius = 5
         ButtonSubmit.layer.cornerRadius = 5
@@ -186,7 +213,8 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
             Received_Green.isHidden = false
             
             Finished.isHidden = false
-        }else if(STATUS == "Reject"){
+            
+        }else if(STATUS == "Rejected"){
             
             Ordered_Black.isHidden = false
             Ordered_Green.isHidden = true
@@ -210,9 +238,12 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
             PosLabelHeight.constant = 0
 //            TrackingHeight.constant = 0
             ButtonShare.isHidden = true
-            SubmitHeight.constant = 0
+            ButtonDownload.isHidden = true
             
-        }else if(STATUS == "Cancel"){
+            TrackingNo.isHidden = true
+            ButtonSubmit.isHidden = true
+            DeliveryView.isHidden = true
+        }else if(STATUS == "Cancelled"){
             
             Ordered_Black.isHidden = false
             Ordered_Green.isHidden = true
@@ -236,7 +267,11 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
             PosLabelHeight.constant = 0
 //            TrackingHeight.constant = 0
             ButtonShare.isHidden = true
-            SubmitHeight.constant = 0
+            ButtonDownload.isHidden = true
+            TrackingNo.isHidden = true
+            ButtonSubmit.isHidden = true
+            DeliveryView.isHidden = true
+//            SubmitHeight.constant = 0
         }
         
         
@@ -575,18 +610,37 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
         let configuration = URLSessionConfiguration.default
             configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
 
-        Alamofire.request(HTTP_GenConnote + "?numberOfItem=" + numberOfItem + "&Prefix=ERC" + "&ApplicationCode=HNM" + "&Secretid=HM@$343" + "&Orderid=" + "4" + "&username=HMNNadhir", method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+        Alamofire.request(HTTP_GenConnote + "?numberOfItem=" + numberOfItem + "&Prefix=ERC" + "&ApplicationCode=HNM" + "&Secretid=HM@$343" + "&Orderid=" + OrderID + "&username=HMNNadhir", method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
                 {
                     response in
                     if let result = response.result.value {
                         let details = result as! NSObject
                         
+                        let Message = details.value(forKey: "Message") as! String
                         let ConnoteNo = details.value(forKey: "ConnoteNo") as! String
+
                         print("JSON: \(ConnoteNo)")
                         
-                        self.PreAcceptanceSingle(subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, ConsignmentNoteNumber: ConnoteNo, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverEmail: ReceiverEmail)
+                        if(Message.contains("Record already exist/Wrong Credential")){
+                            let spinner1 = JGProgressHUD(style: .dark)
+                            spinner1.show(in: self.view)
+                            self.getConnoteShare(getProductCode: "KM00" + self.ORDERID, SenderAddress: SellerAddress, RecipientAddress: ReceiverAddress, RoutingCode: RoutingCode, date: date)
+                            spinner1.dismiss(afterDelay: 3.0)
+                        }else{
+                            let spinner1 = JGProgressHUD(style: .dark)
+                            spinner1.show(in: self.view)
+                            self.EditTrackingNo(ConnoteNo: ConnoteNo)
+
+                            self.CreateConnote(ConnoteNo: ConnoteNo, ConnoteDate: date, ProductCode: "KM00" + self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderPostcode: PostCode, RecipientAccountNo: AccountNo, RecipientName: ReceiverName, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientPostcode: ReceiverPostCode, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientPhone: ReceiverPhone, RecipientEmail: ReceiverEmail, Weight: self.WEIGHT)
+                            
+                            self.PreAcceptanceSingle(subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, ConsignmentNoteNumber: ConnoteNo, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverEmail: ReceiverEmail)
+                            
+                            self.GeneratePDF(ShipDate: date, Weight: self.WEIGHT, OrderID: self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
+                            spinner1.dismiss(afterDelay: 3.0)
+                        }
                         
-                        self.GeneratePDF(ShipDate: date, Weight: self.WEIGHT, OrderID: self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
+                        
+                        
                     }else{
                         print("FAILED TO RECEIVE")
                     }
@@ -620,16 +674,36 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
         let configuration = URLSessionConfiguration.default
             configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
 
-        Alamofire.request(HTTP_GenConnote + "?numberOfItem=" + numberOfItem + "&Prefix=ERC" + "&ApplicationCode=HNM" + "&Secretid=HM@$343" + "&Orderid=" + "4" + "&username=HMNNadhir", method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
+        Alamofire.request(HTTP_GenConnote + "?numberOfItem=" + numberOfItem + "&Prefix=ERC" + "&ApplicationCode=HNM" + "&Secretid=HM@$343" + "&Orderid=" + OrderID + "&username=HMNNadhir", method: .get, encoding: URLEncoding.httpBody, headers: headers).responseJSON
                 {
                     response in
                     if let result = response.result.value {
                         let details = result as! NSObject
                         
+                        let Message = details.value(forKey: "Message") as! String
                         let ConnoteNo = details.value(forKey: "ConnoteNo") as! String
-                        print("JSON: \(ConnoteNo)")
+
+                        print("JSON: \(response)")
                         
-                        self.DownloadPDF(ShipDate: date, Weight: self.WEIGHT, OrderID: self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
+                        if(Message.contains("Record already exist/Wrong Credential")){
+                            print("JSON:01")
+                            let spinner1 = JGProgressHUD(style: .dark)
+                            spinner1.show(in: self.view)
+                            self.getConnoteDownload(getProductCode: "KM00" + self.ORDERID, SenderAddress: SellerAddress, RecipientAddress: ReceiverAddress, RoutingCode: RoutingCode, date: date)
+                            spinner1.dismiss(afterDelay: 3.0)
+                        }else{
+                            print("JSON:02")
+                            let spinner1 = JGProgressHUD(style: .dark)
+                            spinner1.show(in: self.view)
+                            self.EditTrackingNo(ConnoteNo: ConnoteNo)
+                            
+                            self.CreateConnote(ConnoteNo: ConnoteNo, ConnoteDate: date, ProductCode: "KM00" + self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderPostcode: PostCode, RecipientAccountNo: AccountNo, RecipientName: ReceiverName, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientPostcode: ReceiverPostCode, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientPhone: ReceiverPhone, RecipientEmail: ReceiverEmail, Weight: self.WEIGHT)
+                            
+                            self.DownloadPDF(ShipDate: date, Weight: self.WEIGHT, OrderID: self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
+                            spinner1.dismiss(afterDelay: 3.0)
+                        }
+                        
+
                     }else{
                         print("FAILED TO RECEIVE")
                     }
@@ -747,7 +821,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
         if let navigator = self.navigationController {
             pdf.DATE = ShipDate
             pdf.WEIGHT = Weight
-            pdf.ORDERID = ORDERID
+            pdf.ORDERID = "KM" + ORDERID
             pdf.SELLERNAME = SenderName
             pdf.SELLERPHONE = SenderPhone
             pdf.SELLERADDRESS = SenderAddress
@@ -820,7 +894,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
 
     @IBAction func Preview(_ sender: Any) {
         spinner.show(in: self.view)
-        PosLajuGetData(customerID: self.CUSTOMERID, OrderID: "KM" + self.ORDERID, subscriptionCode: "admin@ketekmall.com", AccountNo: "8800546487")
+        PosLajuGetData(customerID: self.CUSTOMERID, OrderID: "KM00" + self.ORDERID, subscriptionCode: "admin@ketekmall.com", AccountNo: "8800546487")
         GetPlayerData(CustomerID: self.CUSTOMERID, OrderID: self.ORDERID)
         self.spinner.dismiss(afterDelay: 3.0)
     }
@@ -844,9 +918,35 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
     
     @IBAction func Download(_ sender: Any) {
         spinner.show(in: self.view)
-        PosLajuGetData02(customerID: self.CUSTOMERID, OrderID: "KM" + self.ORDERID, subscriptionCode: "admin@ketekmall.com", AccountNo: "8800546487")
+        PosLajuGetData02(customerID: self.CUSTOMERID, OrderID: "KM00" + self.ORDERID, subscriptionCode: "admin@ketekmall.com", AccountNo: "8800546487")
         self.showToast(message: "Downloading...", font: .systemFont(ofSize: 12.0))
         self.spinner.dismiss(afterDelay: 3.0)
+    }
+    
+    func EditTrackingNo(ConnoteNo: String){
+        let parameters: Parameters=[
+            "id": ORDERID,
+            "tracking_no": ConnoteNo
+        ]
+        Alamofire.request(URL_editTrackingNo, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                //printing response
+                print(response)
+                
+                //getting the json value from the server
+                if let result = response.result.value {
+                    
+                    //converting it as NSDictionary
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    self.spinner.dismiss(afterDelay: 3.0)
+                }else{
+                    print("FAILED")
+                    self.spinner.dismiss(afterDelay: 3.0)
+                }
+                
+        }
     }
     
     @IBAction func Submit(_ sender: Any) {
@@ -855,7 +955,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
         let parameters: Parameters=[
             "id": ORDERID,
             "order_date": ORDER_DATE,
-            "tracking_no": "PL" + TrackingNo.text!
+            "tracking_no": TrackingNo.text!
         ]
         Alamofire.request(URL_EDIT, method: .post, parameters: parameters).responseJSON
             {
@@ -875,6 +975,176 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                     self.spinner.dismiss(afterDelay: 3.0)
                 }
                 
+        }
+    }
+    
+    func CreateConnote(ConnoteNo: String, ConnoteDate: String,
+                               ProductCode: String, SenderName: String,
+                               SenderPhone: String, SenderPostcode: String,
+                               RecipientAccountNo: String, RecipientName: String,
+                               RecipientAddress01: String, RecipientAddress02: String,
+                               RecipientPostcode: String, RecipientCity: String,
+                               RecipientState: String, RecipientPhone: String,
+                               RecipientEmail: String, Weight: String){
+        let parameters: Parameters=[
+            "ConnoteNo": ConnoteNo,
+            "ConnoteDate": ConnoteDate,
+            "ProductCode": ProductCode,
+            "SenderName": SenderName,
+            "SenderPhone": SenderPhone,
+            "SenderPostcode": SenderPostcode,
+            "RecipientAccountNo": RecipientAccountNo,
+            "RecipientName": RecipientName,
+            "RecipientAddress01": RecipientAddress01,
+            "RecipientAddress02": RecipientAddress02,
+            "RecipientPostcode": RecipientPostcode,
+            "RecipientCity": RecipientCity,
+            "RecipientState": RecipientState,
+            "RecipientPhone": RecipientPhone,
+            "RecipientEmail": RecipientEmail,
+            "Weight": Weight,
+            "Type": "Document"
+        ]
+        Alamofire.request(URL_createConnote, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                //printing response
+                print(response)
+                
+                //getting the json value from the server
+                if let result = response.result.value {
+                    
+                    //converting it as NSDictionary
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                    self.spinner.dismiss(afterDelay: 3.0)
+                }else{
+                    print("FAILED")
+                    self.spinner.dismiss(afterDelay: 3.0)
+                }
+                
+        }
+    }
+    
+    func getConnoteDownload(getProductCode: String, SenderAddress: String,
+                            RecipientAddress: String, RoutingCode: String,
+                            date: String){
+        print("\(getProductCode)")
+        let parameters: Parameters=[
+            "ProductCode": getProductCode
+        ]
+        Alamofire.request(URL_getConnote, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        print("\(response)")
+                        self.spinner.dismiss(afterDelay: 3.0)
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        let ConnoteNo = user.value(forKey: "ConnoteNo") as! [String]
+                        let ConnoteDate = user.value(forKey: "ConnoteDate") as! [String]
+                        let ProductCode = user.value(forKey: "ProductCode") as! [String]
+                        let SenderName = user.value(forKey: "SenderName") as! [String]
+                        let SenderPhone = user.value(forKey: "SenderPhone") as! [String]
+                        let SenderPostcode = user.value(forKey: "SenderPostcode") as! [String]
+                        let RecipientAccountNo = user.value(forKey: "RecipientAccountNo") as! [String]
+                        let RecipientName = user.value(forKey: "RecipientName") as! [String]
+                        let RecipientAddress01 = user.value(forKey: "RecipientAddress01") as! [String]
+                        let RecipientAddress02 = user.value(forKey: "RecipientAddress02") as! [String]
+                        let RecipientPostcode = user.value(forKey: "RecipientPostcode") as! [String]
+                        let RecipientCity = user.value(forKey: "RecipientCity") as! [String]
+                        let RecipientState = user.value(forKey: "RecipientState") as! [String]
+
+                        let RecipientPhone = user.value(forKey: "RecipientPhone") as! [String]
+                        let RecipientEmail = user.value(forKey: "RecipientEmail") as! [String]
+                        let Weight = user.value(forKey: "Weight") as! [String]
+                        let Type = user.value(forKey: "Type") as! [String]
+
+                        self.CONNOTENO = ConnoteNo[0]
+                        self.CONNOTEDATE = ConnoteDate[0]
+                        self.PRODUCTCODE = ProductCode[0]
+                        self.SENDERNAME = SenderName[0]
+                        self.SENDERPHONE = SenderPhone[0]
+                        self.SENDERPOSTCODE = SenderPostcode[0]
+                        self.RECIPIENTACCOUNTNO = RecipientAccountNo[0]
+                        self.RECIPIENTNAME = RecipientName[0]
+                        self.RECIPIENTADDRESS01 = RecipientAddress01[0]
+                        self.RECIPIENTADDRESS02 = RecipientAddress02[0]
+                        self.RECIPIENTPOSTCODE = RecipientPostcode[0]
+                        self.RECIPIENTCITY = RecipientCity[0]
+                        self.RECIPIENTSTATE = RecipientState[0]
+                        self.RECIPIENTPHONE = RecipientPhone[0]
+                        self.RECIPIENTEMAIL = RecipientEmail[0]
+                        self.WEIGHTCONNOTE = Weight[0]
+                        self.TYPE = Type[0]
+
+                        self.DownloadPDF(ShipDate: date, Weight: self.WEIGHTCONNOTE, OrderID: getProductCode, SenderName: self.SENDERNAME, SenderPhone: self.SENDERPHONE, SenderAddress: SenderAddress, SenderPostCode: self.SENDERPOSTCODE, RecipientName: self.RECIPIENTNAME, RecipientPhone: self.RECIPIENTPHONE, RecipientPostCode: self.RECIPIENTPOSTCODE, RecipientAccountNO: self.RECIPIENTACCOUNTNO, RecipientAddress: RecipientAddress, RecipientAddress01: self.RECIPIENTADDRESS01, RecipientAddress02: self.RECIPIENTADDRESS02, RecipientCity: self.RECIPIENTCITY, RecipientState: self.RECIPIENTSTATE, RecipientEmail: self.RECIPIENTEMAIL, ProductCode: self.PRODUCTCODE, Type: self.TYPE, RoutingCode: RoutingCode, ConnoteNo: ConnoteNo[0], ConnoteDate: self.CONNOTEDATE)
+
+                    }
+                }
+        }
+    }
+    
+    func getConnoteShare(getProductCode: String, SenderAddress: String,
+                            RecipientAddress: String, RoutingCode: String,
+                            date: String){
+        let parameters: Parameters=[
+            "ProductCode": getProductCode
+        ]
+        Alamofire.request(URL_getConnote, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        self.spinner.dismiss(afterDelay: 3.0)
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        let ConnoteNo = user.value(forKey: "ConnoteNo") as! [String]
+                        let ConnoteDate = user.value(forKey: "ConnoteDate") as! [String]
+                        let ProductCode = user.value(forKey: "ProductCode") as! [String]
+                        let SenderName = user.value(forKey: "SenderName") as! [String]
+                        let SenderPhone = user.value(forKey: "SenderPhone") as! [String]
+                        let SenderPostcode = user.value(forKey: "SenderPostcode") as! [String]
+                        let RecipientAccountNo = user.value(forKey: "RecipientAccountNo") as! [String]
+                        let RecipientName = user.value(forKey: "RecipientName") as! [String]
+                        let RecipientAddress01 = user.value(forKey: "RecipientAddress01") as! [String]
+                        let RecipientAddress02 = user.value(forKey: "RecipientAddress02") as! [String]
+                        let RecipientPostcode = user.value(forKey: "RecipientPostcode") as! [String]
+                        let RecipientCity = user.value(forKey: "RecipientCity") as! [String]
+                        let RecipientState = user.value(forKey: "RecipientState") as! [String]
+                        
+                        let RecipientPhone = user.value(forKey: "RecipientPhone") as! [String]
+                        let RecipientEmail = user.value(forKey: "RecipientEmail") as! [String]
+                        let Weight = user.value(forKey: "Weight") as! [String]
+                        let Type = user.value(forKey: "Type") as! [String]
+                        
+                        self.CONNOTENO = ConnoteNo[0]
+                        self.CONNOTEDATE = ConnoteDate[0]
+                        self.PRODUCTCODE = ProductCode[0]
+                        self.SENDERNAME = SenderName[0]
+                        self.SENDERPHONE = SenderPhone[0]
+                        self.SENDERPOSTCODE = SenderPostcode[0]
+                        self.RECIPIENTACCOUNTNO = RecipientAccountNo[0]
+                        self.RECIPIENTNAME = RecipientName[0]
+                        self.RECIPIENTADDRESS01 = RecipientAddress01[0]
+                        self.RECIPIENTADDRESS02 = RecipientAddress02[0]
+                        self.RECIPIENTPOSTCODE = RecipientPostcode[0]
+                        self.RECIPIENTCITY = RecipientCity[0]
+                        self.RECIPIENTSTATE = RecipientState[0]
+                        self.RECIPIENTPHONE = RecipientPhone[0]
+                        self.RECIPIENTEMAIL = RecipientEmail[0]
+                        self.WEIGHTCONNOTE = Weight[0]
+                        self.TYPE = Type[0]
+                        
+                        self.GeneratePDF(ShipDate: date, Weight: self.WEIGHTCONNOTE, OrderID: getProductCode, SenderName: self.SENDERNAME, SenderPhone: self.SENDERPHONE, SenderAddress: SenderAddress, SenderPostCode: self.SENDERPOSTCODE, RecipientName: self.RECIPIENTNAME, RecipientPhone: self.RECIPIENTPHONE, RecipientPostCode: self.RECIPIENTPOSTCODE, RecipientAccountNO: self.RECIPIENTACCOUNTNO, RecipientAddress: RecipientAddress, RecipientAddress01: self.RECIPIENTADDRESS01, RecipientAddress02: self.RECIPIENTADDRESS02, RecipientCity: self.RECIPIENTCITY, RecipientState: self.RECIPIENTSTATE, RecipientEmail: self.RECIPIENTEMAIL, ProductCode: self.PRODUCTCODE, Type: self.TYPE, RoutingCode: RoutingCode, ConnoteNo: self.CONNOTENO, ConnoteDate: self.CONNOTEDATE)
+                        
+                    }
+                }
         }
     }
     

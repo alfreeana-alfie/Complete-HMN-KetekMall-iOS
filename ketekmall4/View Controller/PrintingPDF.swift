@@ -36,7 +36,7 @@ class PrintingPDF: UIViewController {
         super.viewDidLoad()
         
         let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let filePath = (documentsDirectory as NSString).appendingPathComponent("PosLaju\(ORDERID).pdf") as String
+        let filePath = (documentsDirectory as NSString).appendingPathComponent("PosLaju-\(ORDERID).pdf") as String
 
         let pdfMetadata = [
             // The name of the application creating the PDF.
@@ -365,14 +365,14 @@ class PrintingPDF: UIViewController {
         
         UIGraphicsEndPDFContext()
 
-//        let pdfView = PDFView(frame: view.bounds)
-//        pdfView.sizeToFit()
-//        pdfView.autoScales = true
-//        view.addSubview(pdfView)
-//
-//         Create a `PDFDocument` object and set it as `PDFView`'s document to load the document in that view.
-//        let pdfDocument = PDFDocument(url: URL(fileURLWithPath: filePath))!
-//        pdfView.document = pdfDocument
+        let pdfView = PDFView(frame: view.bounds)
+        pdfView.sizeToFit()
+        pdfView.autoScales = true
+        view.addSubview(pdfView)
+        
+//        // Create a `PDFDocument` object and set it as `PDFView`'s document to load the document in that view.
+        let pdfDocument = PDFDocument(url: URL(fileURLWithPath: filePath))!
+        pdfView.document = pdfDocument
         
         let fm = FileManager.default
 
@@ -380,32 +380,51 @@ class PrintingPDF: UIViewController {
         pdfURL = pdfURL.appendingPathComponent("PosLaju\(DATE).pdf") as URL
 
         //Rename document name to "Hello.pdf"
-        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("PosLaju\(DATE).pdf") as NSURL
-
-        do {
-            let data = try Data(contentsOf: pdfURL)
-
-            try data.write(to: url as URL)
-
-            let activitycontroller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            if activitycontroller.responds(to: #selector(getter: activitycontroller.completionWithItemsHandler))
-            {
-                activitycontroller.completionWithItemsHandler = {(type, isCompleted, items, error) in
-                    if isCompleted
-                    {
-                        print("completed")
-                    }
-                }
-            }
-            activitycontroller.excludedActivityTypes = [UIActivity.ActivityType.airDrop]
-            activitycontroller.popoverPresentationController?.sourceView = self.view
-            self.present(activitycontroller, animated: true, completion: nil)
-
-        }
-        catch {
-            //ERROR
-        }
+        _ = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("PosLaju\(DATE).pdf") as NSURL
+        
+        let docu = NSData(contentsOfFile: filePath)
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [docu!], applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivity.ActivityType.airDrop]
+        activityViewController.popoverPresentationController?.sourceView=self.view
+        present(activityViewController, animated: true, completion: nil)
     }
+    
+//    @IBAction func sharePDF(_ sender: Any) {
+//
+//        let fm = FileManager.default
+//
+//        var pdfURL = (fm.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+//        pdfURL = pdfURL.appendingPathComponent("GridLines.pdf") as URL
+//
+//        //Rename document name to "Hello.pdf"
+//        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("Hello.pdf") as NSURL
+//
+//        do {
+//            let data = try Data(contentsOf: pdfURL)
+//
+//            try data.write(to: url as URL)
+//
+//            let activitycontroller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+//            if activitycontroller.responds(to: #selector(getter: activitycontroller.completionWithItemsHandler))
+//            {
+//                activitycontroller.completionWithItemsHandler = {(type, isCompleted, items, error) in
+//                    if isCompleted
+//                    {
+//                        print("completed")
+//                    }
+//                }
+//            }
+//
+//            activitycontroller.excludedActivityTypes = [UIActivity.ActivityType.airDrop]
+//            activitycontroller.popoverPresentationController?.sourceView = self.view
+//            self.present(activitycontroller, animated: true, completion: nil)
+//
+//        }
+//        catch {
+//            //ERROR
+//        }
+//    }
     
     func generateBarcode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)

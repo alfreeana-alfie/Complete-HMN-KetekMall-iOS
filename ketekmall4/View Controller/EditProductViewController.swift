@@ -441,7 +441,7 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         DivisionLabel.text = "Division".localized(lang: str)
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
-        WeightLabel.text = "Weight".localized(lang: str)
+        WeightLabel.text = "Weight (Kg)".localized(lang: str)
         PostcodeLabel.text = "Postcode".localized(lang: str)
         UploadedPhotoLabel.text = "Upload Image".localized(lang: str)
         Category.placeholder = "Category".localized(lang: str)

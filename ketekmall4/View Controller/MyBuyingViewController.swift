@@ -16,6 +16,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     let Main_Photo = "https://ketekmall.com/ketekmall/profile_image/main_photo.png"
     let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
     let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
+    let URL_getPayment = "https://ketekmall.com/ketekmall/getPaymentBuyerIOS.php"
+    let URL_updateOrder = "https://ketekmall.com/ketekmall/updateOrder.php"
     
     var userID: String = ""
     var order_id: String = ""
@@ -33,6 +35,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var delivery_date: String = ""
     var seller_division: String = ""
     var Seller_ID: String = ""
+    var refno: String = ""
+    var payStatus: String = ""
     
     var SellerEmail:String = ""
     var viewController1: UIViewController?
@@ -54,9 +58,10 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     var TrackingNo: [String] = []
     var DeliveryPrice: [String] = []
     var DeliveryDate: [String] = []
+    var RefNo: [String] = []
+    var PaymentStatus: [String] = []
     
     var BarHidden: Bool = false
-//    @IBOutlet weak var BarHeight: NSLayoutConstraint!   
     @IBOutlet weak var BarHeight: NSLayoutConstraint!
     
     let sharedPref = UserDefaults.standard
@@ -64,6 +69,64 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidAppear(_ animated: Bool) {
 //        ColorFunc()
+    }
+    
+    func getList(){
+        let parameters: Parameters=[
+            "customer_id": userID,
+        ]
+        
+        //Sending http post request
+        Alamofire.request(URL_getPayment, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value as? Dictionary<String,Any>{
+                    if let list = result["read"] as? [Dictionary<String,Any>]{
+                        self.spinner.dismiss(afterDelay: 3.0)
+                        for i in list{
+                            self.order_id = i["id"] as! String
+                            self.item_id = i["item_id"] as! String
+                            self.ad_detail = i["ad_detail"] as! String
+                            self.item_img = i["photo"] as! String
+                            self.item_price = i["price"] as! String
+                            self.item_quantity = i["quantity"] as! String
+                            self.item_orderplaced = i["date"] as! String
+                            self.item_shipplaced = i["division"] as! String
+                            self.item_status = i["status"] as! String
+                            self.order_date = i["order_date"] as! String
+                            self.delivery_price = i["delivery_price"] as! String
+                            self.delivery_date = i["delivery_date"] as! String
+                            self.tracking_no = i["tracking_no"] as! String
+                            self.Seller_ID = i["seller_id"] as! String
+                            self.seller_division = i["seller_division"] as! String
+//                            self.refno = i["refno"] as! String
+                            self.payStatus = i["Status"] as! String
+                            
+                            self.seller_id.append(self.Seller_ID)
+                            self.Seller_Division.append(self.seller_division)
+                            self.OrderID.append(self.order_id)
+                            self.ItemID.append(self.item_id)
+                            
+                            self.ad_Detail.append(self.ad_detail)
+                            self.ItemImage.append(self.item_img)
+                            self.ItemPrice.append(self.item_price)
+                            self.ItemQuan.append(self.item_quantity)
+                            self.ItemOrderPlaced.append(self.item_orderplaced)
+                            self.ItemShipPlaced.append(self.item_shipplaced)
+                            self.ItemStatus.append(self.item_status)
+                            self.OrderDate.append(self.order_date)
+                            
+                            self.TrackingNo.append(self.tracking_no)
+                            self.DeliveryPrice.append(self.delivery_price)
+                            self.DeliveryDate.append(self.delivery_date)
+//                            self.RefNo.append(self.refno)
+                            self.PaymentStatus.append(self.payStatus)
+                            
+                            self.MyBuyingView.reloadData()
+                        }
+                    }
+                }
+        }
     }
     
     override func viewDidLoad() {
@@ -93,58 +156,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         navigationItem.title = "My Buying"
         
         spinner.show(in: self.view)
-        let parameters: Parameters=[
-            "customer_id": userID,
-        ]
-        
-        //Sending http post request
-        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value as? Dictionary<String,Any>{
-                    if let list = result["read"] as? [Dictionary<String,Any>]{
-                        self.spinner.dismiss(afterDelay: 3.0)
-                        for i in list{
-                            self.order_id = i["id"] as! String
-                            self.item_id = i["item_id"] as! String
-                            self.ad_detail = i["ad_detail"] as! String
-                            self.item_img = i["photo"] as! String
-                            self.item_price = i["price"] as! String
-                            self.item_quantity = i["quantity"] as! String
-                            self.item_orderplaced = i["date"] as! String
-                            self.item_shipplaced = i["division"] as! String
-                            self.item_status = i["status"] as! String
-                            self.order_date = i["order_date"] as! String
-                            self.delivery_price = i["delivery_price"] as! String
-                            self.delivery_date = i["delivery_date"] as! String
-                            self.tracking_no = i["tracking_no"] as! String
-                            self.Seller_ID = i["seller_id"] as! String
-                            self.seller_division = i["seller_division"] as! String
-                            
-                            self.seller_id.append(self.Seller_ID)
-                            self.Seller_Division.append(self.seller_division)
-                            self.OrderID.append(self.order_id)
-                            self.ItemID.append(self.item_id)
-                            
-                            self.ad_Detail.append(self.ad_detail)
-                            self.ItemImage.append(self.item_img)
-                            self.ItemPrice.append(self.item_price)
-                            self.ItemQuan.append(self.item_quantity)
-                            self.ItemOrderPlaced.append(self.item_orderplaced)
-                            self.ItemShipPlaced.append(self.item_shipplaced)
-                            self.ItemStatus.append(self.item_status)
-                            self.OrderDate.append(self.order_date)
-                            
-                            self.TrackingNo.append(self.tracking_no)
-                            self.DeliveryPrice.append(self.delivery_price)
-                            self.DeliveryDate.append(self.delivery_date)
-                            
-                            self.MyBuyingView.reloadData()
-                        }
-                    }
-                    
-                }
-        }
+        getList()
     }
     
     @objc override func dismissKeyboard() {
@@ -212,7 +224,6 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
         
-        
         let cellSquareSize: CGFloat = screenWidth
         
         return CGSize(width: cellSquareSize, height: 254);
@@ -233,9 +244,18 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyBuyingCollectionViewCell", for: indexPath) as! MyBuyingCollectionViewCell
         
-        let NEWIm = self.ItemImage[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        if !self.ItemImage[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.ItemImage[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.ItemImage[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.ItemImage[indexPath.row])!)
+        }
         
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
         
         cell.AdDetail.text! = ad_Detail[indexPath.row]
         
@@ -244,55 +264,19 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.Quantity.text! = "x" + ItemQuan[indexPath.row]
         cell.OrderPlaced.text! = "Order Placed on " + ItemOrderPlaced[indexPath.row]
         cell.ShipPlaced.text! = "Shipped out to " + ItemShipPlaced[indexPath.row]
-        cell.Status.text! = ItemStatus[indexPath.row]
+        if(self.PaymentStatus[indexPath.row] == "Unsuccessful"){
+            cell.Status.text! = "Unsuccessful"
+            cell.Status.textColor = UIColor.red
+        }else{
+            cell.Status.text! = self.ItemStatus[indexPath.row]
+            if(self.ItemStatus[indexPath.row] == "Rejected"){
+                cell.Status.textColor = UIColor.red
+            }
+        }
         cell.ButtonView.layer.cornerRadius = 5
         cell.ButtonReject.layer.cornerRadius = 5
         
-        //Button Accept
-        let color1 = UIColor(hexString: "#FC4A1A").cgColor
-        let color2 = UIColor(hexString: "#F7B733").cgColor
         
-        let ReceivedGradient = CAGradientLayer()
-        ReceivedGradient.frame = cell.ButtonView.bounds
-        ReceivedGradient.colors = [color1, color2]
-        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ReceivedGradient.cornerRadius = 5
-        cell.ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
-        
-        //Button Cancel
-        let color3 = UIColor(hexString: "#FC4A1A").cgColor
-        let color4 = UIColor(hexString: "#F7B733").cgColor
-        
-        let CancelGradient = CAGradientLayer()
-        CancelGradient.frame = cell.ButtonReject.bounds
-        CancelGradient.colors = [color3, color4]
-        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        CancelGradient.cornerRadius = 5
-        cell.ButtonReject.layer.insertSublayer(CancelGradient, at: 0)
-        
-//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-        
-//        let ViewGradient = CAGradientLayer()
-//        ViewGradient.frame = cell.ButtonView.bounds
-//        ViewGradient.colors = [colorViewOne, colorViewTwo]
-//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ViewGradient.cornerRadius = 5
-//        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
-//
-//        let colorReject1 = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorReject2 = UIColor(hexString: "#F7B733").cgColor
-//
-//        let RejectGradient = CAGradientLayer()
-//        RejectGradient.frame = cell.ButtonReject.bounds
-//        RejectGradient.colors = [colorReject1, colorReject2]
-//        RejectGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        RejectGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        RejectGradient.cornerRadius = 5
-//        cell.ButtonReject.layer.insertSublayer(RejectGradient, at: 0)
         cell.delegate = self
         return cell
     }
@@ -386,24 +370,25 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func btnREJECT(cell: MyBuyingCollectionViewCell) {
+        let spinner1 = JGProgressHUD(style: .dark)
+        
         guard let indexPath = self.MyBuyingView.indexPath(for: cell) else{
             return
         }
         
-        spinner.show(in: self.view)
+        
         
         let Seller_ID = self.seller_id[indexPath.row]
         let Order_ID = self.OrderID[indexPath.row]
-        let Order_Date = self.OrderDate[indexPath.row]
-        let Remarks = "Cancel"
+        let Remarks = "Cancelled"
         
         
         let parameters: Parameters=[
-            "order_date": Order_Date,
+            "id": Order_ID,
             "remarks": Remarks,
             "status": Remarks
         ]
-        Alamofire.request(URL_CANCEL, method: .post, parameters: parameters).responseJSON
+        Alamofire.request(URL_updateOrder, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value{
@@ -411,20 +396,14 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         print("SUCCESS")
-                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        if(self.lang == "ms"){
-                            self.spinner.textLabel.text = "Successfully Reject".localized(lang: "ms")
-                            
-                        }else{
-                            self.spinner.textLabel.text = "Successfully Reject".localized(lang: "en")
-                            
-                        }
-                        
+//                        self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)
                         self.GetPlayerData(CustomerID: Seller_ID, OrderID: Order_ID)
                         
-                        self.spinner.show(in: self.view)
-                        self.spinner.dismiss(afterDelay: 4.0)
-                        self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)
+                        spinner1.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        spinner1.textLabel.text = "Successfully Cancelled"
+                        spinner1.show(in: self.view)
+                        spinner1.dismiss(afterDelay: 3.0)
+                        
                     }
                 }
         }

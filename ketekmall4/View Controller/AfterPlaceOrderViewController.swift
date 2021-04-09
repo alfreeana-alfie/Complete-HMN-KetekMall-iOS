@@ -81,7 +81,6 @@ class AfterPlaceOrderViewController: UIViewController, UITabBarDelegate {
         ContinueLabel.text = "Continue Shopping".localized(lang: str)
     }
 
-
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:

@@ -126,9 +126,18 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoostAdCollectionViewCell", for: indexPath) as! BoostAdCollectionViewCell
         
-        let NEWIm = self.Item_Photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        if !self.Item_Photo[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.Item_Photo[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.Item_Photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.Item_Photo[indexPath.row])!)
+        }
         
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        
         cell.ButtonCancel.layer.cornerRadius = 5
         cell.AdDetail.text! = ad_Detail[indexPath.row]
         cell.Price.text! = item_price[indexPath.row]

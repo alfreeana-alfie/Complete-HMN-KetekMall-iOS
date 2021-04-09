@@ -20,12 +20,29 @@ class AboutSellerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ButtonView: UIButton!
     @IBOutlet weak var Rating: AARatingBar!
     
+    let ReceivedGradient = CAGradientLayer()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let clickImage = UITapGestureRecognizer(target: self, action: #selector(ViewImage(sender:)))
         ItemImage.isUserInteractionEnabled = true
         ItemImage.addGestureRecognizer(clickImage)
 
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //Button Accept
+        let color1 = UIColor(hexString: "#FC4A1A").cgColor
+        let color2 = UIColor(hexString: "#F7B733").cgColor
+        
+        ReceivedGradient.frame = ButtonView.bounds
+        ReceivedGradient.colors = [color1, color2]
+        ReceivedGradient.locations = [0.0, 1.0]
+        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        ReceivedGradient.cornerRadius = 7
+        ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
     }
     
     @objc func ViewImage(sender: Any){

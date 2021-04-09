@@ -141,7 +141,8 @@
 "Delivery Time" = "Delivery Time";
 "Remove" = "Remove";
 "Successfully Remove" = "Successfully Remove";
-"Successfully Reject" = "Successfully Reject";
+"Successfully Rejected" = "Successfully Rejected";
+"Successfully Cancelled" = "Successfully Cancelled";
 
 "Order" = "Order";
 "Click" = "Sila Tekan No Penjejakan untuk lihat";
@@ -152,7 +153,7 @@
 "Shipping Total" = "Shipping Total";
 "Grand Total" = "Grand Total";
 
-"Weight" = "Weight";
+"Weight (Kg)" = "Weight (Kg)";
 "Postcode" = "Postcode";
 "VIEW" = "VIEW";
 "REJECT" = "REJECT";

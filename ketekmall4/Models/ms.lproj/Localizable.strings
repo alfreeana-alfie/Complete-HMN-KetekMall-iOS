@@ -142,7 +142,8 @@
 "Delivery Time" = "Tarikh Penghantaran";
 "Remove" = "Buang";
 "Successfully Remove" = "Berjaya Dibuang";
-"Successfully Reject" = "Berjaya Ditolak";
+"Successfully Rejected" = "Berjaya Ditolak";
+"Successfully Cancelled" = "Berjaya Batal";
 
 "Order" = "Tempah";
 "Click" = "Sila Tekan No Penjejakan untuk lihat";
@@ -153,7 +154,7 @@
 "Shipping Total" = "Kos Penghantaran";
 "Grand Total" = "Jumlah Semua";
 
-"Weight" = "Berat";
+"Weight (Kg)" = "Berat (Kg)";
 "Postcode" = "Postcode";
 "SELLER" = "PENJUAL";
 "BUYER" = "PEMBELI";

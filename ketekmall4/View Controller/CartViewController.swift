@@ -322,10 +322,18 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartCollectionViewCell", for: indexPath) as! CartCollectionViewCell
-        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
+        if !self.PHOTO[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.PHOTO[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.PHOTO[indexPath.row])!)
+        }
         
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.AdDetail.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = "RM" + self.PRICE[indexPath.row]
         

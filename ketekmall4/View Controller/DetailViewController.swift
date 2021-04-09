@@ -5,36 +5,62 @@ import WebKit
 
 class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigationDelegate{
     func paymentSuccess(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withAuthCode authCode: String!) {
-//        let accountsettings = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(accountsettings, animated: true)
-//        }
+        print("JSONP: \(remark)")
+        if #available(iOS 13.0, *) {
+            let accountsettings = self.storyboard!.instantiateViewController(identifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(accountsettings, animated: true)
+            }
+        } else {
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
+            }
+        }
+        
     }
     
     func paymentFailed(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withErrDesc errDesc: String!) {
-//        let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(accountsettings, animated: true)
-//        }
+        print("JSONP: \(errDesc)")
+        if #available(iOS 13.0, *) {
+            let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(accountsettings, animated: true)
+            }
+        } else {
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
+            }
+        }
+        
     }
     
     func paymentCancelled(_ refNo: String!, withTransId transId: String!, withAmount amount: String!, withRemark remark: String!, withErrDesc errDesc: String!) {
-//        let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
-//        if let navigator = self.navigationController {
-//            navigator.pushViewController(accountsettings, animated: true)
-//        }
+        
+        print("JSONP: \(errDesc)")
+        if #available(iOS 13.0, *) {
+            let accountsettings = self.storyboard!.instantiateViewController(identifier: "CheckoutViewController") as! CheckoutViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(accountsettings, animated: true)
+            }
+        } else {
+            let addProduct = self.storyboard!.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
+            if let navigator = self.navigationController {
+                navigator.pushViewController(addProduct, animated: true)
+            }
+        }
+        
     }
     
     func requerySuccess(_ refNo: String!, withMerchantCode merchantCode: String!, withAmount amount: String!, withResult result: String!) {
-        print("SUCCESS")
+        print("JSONP: \(result)")
     }
     
     func requeryFailed(_ refNo: String!, withMerchantCode merchantCode: String!, withAmount amount: String!, withErrDesc errDesc: String!) {
-        print("FAILED")
+        print("JSONP: \(errDesc)")
     }
     
-    
-
     var paymentSDK: Ipay?
     var requeryPayment: IpayPayment?
     var paymentView: UIView?
@@ -62,9 +88,6 @@ class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigatio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
-        RefNo = String.random()
         MerchantKey = "8bgBOjTkij"
         MerchantCode = "M29640"
         ProdDesc = "KetekMall"
@@ -82,9 +105,9 @@ class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigatio
         requeryPayment?.amount = Amount
         requeryPayment?.currency = "MYR"
         requeryPayment?.prodDesc = ProdDesc
-        requeryPayment?.userName = "Nana"
-        requeryPayment?.userEmail = "nana@gmail.com"
-        requeryPayment?.userContact = "1232142341"
+        requeryPayment?.userName = UserName
+        requeryPayment?.userEmail = UserEmail
+        requeryPayment?.userContact = UserContact
         requeryPayment?.remark = Remarks
         requeryPayment?.lang = "ISO-8859-1"
         requeryPayment?.country = "MY"

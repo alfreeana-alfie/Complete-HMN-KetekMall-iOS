@@ -86,10 +86,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        ColorFunc()
-//    }
-    
     var viewController1: UIViewController?
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
@@ -187,19 +183,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
     }
-    
-//    func ColorFunc(){
-//        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-//        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-//
-//        let ViewGradient = CAGradientLayer()
-//        ViewGradient.frame = self.view.bounds
-//        ViewGradient.colors = [colorViewOne, colorViewTwo]
-//        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-//        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-//        ViewGradient.cornerRadius = 16
-//        self.view.layer.insertSublayer(ViewGradient, at: 0)
-//    }
     
     func changeLanguage(str: String){
         SearchBar.placeholder = "Search Here".localized(lang: str)
@@ -367,9 +350,16 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
         
-        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        if !self.PHOTO[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.PHOTO[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.PHOTO[indexPath.row])!)
+        }
         if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
             let f = CGFloat(truncating: n)
             cell.Rating.value = f
@@ -377,7 +367,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.Price.text! = "RM" + self.PRICE[indexPath.row]
         cell.District.text! = self.DISTRICT[indexPath.row]
-        cell.ButtonView.layer.cornerRadius = 5
         
         cell.layer.cornerRadius = 5
         cell.layer.borderWidth = 0.2
@@ -387,18 +376,6 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         }else{
             cell.ButtonView.setTitle("ADD TO CART".localized(lang: "en"), for: .normal)
         }
-        
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-        
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = cell.ButtonView.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 5
-        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
-        
         cell.delegate = self
         return cell
     }

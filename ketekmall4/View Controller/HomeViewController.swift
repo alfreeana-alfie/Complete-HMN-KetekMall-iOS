@@ -333,6 +333,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var POSTCODESHOCKING: [String] = []
     var WEIGHTSHOCKING: [String] = []
     
+    var PROMOTION: String = ""
+    
     var userID: String = ""
     var Cart_count: Int = 0
     let dropDown = DropDown()
@@ -376,12 +378,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        Carousel.setImageInputs([
-            KingfisherSource(url: URL(string: "http://ketekmall.com/NewImage/K1.JPG")!),
-            KingfisherSource(url: URL(string: "http://ketekmall.com/NewImage/K2.JPG")!),
-            KingfisherSource(url: URL(string: "http://ketekmall.com/NewImage/K3.JPG")!)])
-        Carousel.slideshowInterval = 3.0
-        Carousel.contentScaleMode = .scaleAspectFill
+//        Carousel.setImageInputs([
+//            KingfisherSource(url: URL(string: "http://ketekmall.com/NewImage/K1.JPG")!),
+//            KingfisherSource(url: URL(string: "http://ketekmall.com/NewImage/K2.JPG")!),
+//            KingfisherSource(url: URL(string: "http://ketekmall.com/NewImage/K3.JPG")!)])
+//        Carousel.slideshowInterval = 3.0
+//        Carousel.contentScaleMode = .scaleAspectFill
         
         if(CheckUSER == "false"){
             user = "0"
@@ -487,6 +489,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         HotSelling()
         ShockingSale()
+        ReadPromotion()
     }
     
     @objc override func dismissKeyboard() {
@@ -638,6 +641,31 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         FindGradient.endPoint = CGPoint(x: 1, y: 0.5)
         FindGradient.cornerRadius = 7
         FindButton.layer.insertSublayer(FindGradient, at: 0)
+    }
+    
+    let URL_PROMOTION = "http://ketekmall.com/ketekmall/read_promotion.php";
+    var PROMOTION_ARRY: [String] = []
+    var PROMOTIONKING: [KingfisherSource] = []
+    func ReadPromotion(){
+        Alamofire.request(URL_PROMOTION, method: .post).responseJSON
+            {
+                response in
+                if let result = response.result.value as? Dictionary<String,Any>{
+                    if let list = result["read"] as? [Dictionary<String,Any>]{
+                        for i in list{
+                            self.PROMOTION = i["photo"] as! String
+                            self.PROMOTIONKING.append(KingfisherSource(url: URL(string: self.PROMOTION)!))
+                            
+                            self.Carousel.setImageInputs(self.PROMOTIONKING)
+                            self.Carousel.slideshowInterval = 3.0
+                            self.Carousel.contentScaleMode = .scaleAspectFill
+
+                            print("\(self.PROMOTIONKING)")
+                        }
+                    }
+                    
+                }
+        }
     }
     
     @objc func onListClick(sender: Any){
@@ -1216,9 +1244,17 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         if collectionView == self.HotView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotCollectionViewCell", for: indexPath) as! HotCollectionViewCell
             
-            let NEWIm = self.PHOTOHOT[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            if !self.PHOTOHOT[indexPath.row].contains("%20"){
+                print("contain whitespace \(self.PHOTOHOT[indexPath.row].trimmingCharacters(in: .whitespaces))")
+                let NEWIm = self.PHOTOHOT[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                
+                cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+            }else{
+                print("contain whitespace")
+                
+                cell.ItemImage.setImageWith(URL(string: self.PHOTOHOT[indexPath.row])!)
+            }
             
-            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
             if let n = NumberFormatter().number(from: self.RATINGHOT[indexPath.row]) {
                 let f = CGFloat(truncating: n)
                 cell.Rating.value = f
@@ -1233,25 +1269,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             
             cell.layer.cornerRadius = 5
-            
-            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
-            let colorTwo = UIColor(hexString: "#F7B733").cgColor
-
-            let ViewGradient = CAGradientLayer()
-            ViewGradient.frame = cell.ButtonView.bounds
-            ViewGradient.colors = [colorOne, colorTwo]
-            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-            ViewGradient.cornerRadius = 5
-            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell.delegate = self
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShockingSaleCollectionViewCell", for: indexPath) as! ShockingSaleCollectionViewCell
             
-            let NEWIm = self.PHOTOSHOCKING[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            if !self.PHOTOSHOCKING[indexPath.row].contains("%20"){
+                print("contain whitespace \(self.PHOTOSHOCKING[indexPath.row].trimmingCharacters(in: .whitespaces))")
+                let NEWIm = self.PHOTOSHOCKING[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                
+                cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+            }else{
+                print("contain whitespace")
+                
+                cell.ItemImage.setImageWith(URL(string: self.PHOTOSHOCKING[indexPath.row])!)
+            }
             
-            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
             if let n = NumberFormatter().number(from: self.RATINGSHOCKING[indexPath.row]) {
                 let f = CGFloat(truncating: n)
                 cell.Rating.value = f
@@ -1266,17 +1299,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             
             cell.layer.cornerRadius = 5
-            
-            let colorOne = UIColor(hexString: "#FC4A1A").cgColor
-            let colorTwo = UIColor(hexString: "#F7B733").cgColor
-
-            let ViewGradient = CAGradientLayer()
-            ViewGradient.frame = cell.ButtonView.bounds
-            ViewGradient.colors = [colorOne, colorTwo]
-            ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-            ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-            ViewGradient.cornerRadius = 5
-            cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
             cell.delegate = self
             return cell
         }

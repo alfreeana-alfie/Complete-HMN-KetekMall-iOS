@@ -134,9 +134,16 @@ class MyRatingViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyRatingCollectionViewCell", for: indexPath) as! MyRatingCollectionViewCell
         
-        let NEWIm = self.item_image[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        if !self.item_image[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.item_image[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.item_image[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.item_image[indexPath.row])!)
+        }
         
         if let n = NumberFormatter().number(from: self.customer_rating[indexPath.row]) {
             let f = CGFloat(truncating: n)

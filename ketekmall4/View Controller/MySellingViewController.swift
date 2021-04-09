@@ -16,6 +16,8 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     let URL_SEND = "https://ketekmall.com/ketekmall/sendEmail_product_reject.php"
     let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
     let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
+    let URL_updateOrder = "https://ketekmall.com/ketekmall/updateOrder.php"
+    let URL_getPayment = "https://ketekmall.com/ketekmall/getPaymentSellerIOS.php"
     
     var item_photo: [String] = []
     var ad_Detail: [String] = []
@@ -31,6 +33,9 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     var postcode: [String] = []
     var weight: [String] = []
     var deliveryprice: [String] = []
+    var refno: [String] = []
+    var PaymentStatus: [String] = []
+
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -38,24 +43,13 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     var userID: String = ""
     var CustEmail: String = ""
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        lang = sharedPref.string(forKey: "LANG") ?? "0"
-        
-
-        MySellingView.delegate = self
-        MySellingView.dataSource = self
-        
-        navigationItem.title = "My Selling"
-        spinner.show(in: self.view)
+    func getList(){
         let parameters: Parameters=[
             "seller_id": userID,
         ]
         
         //Sending http post request
-        Alamofire.request(URL_READ, method: .post, parameters: parameters).responseJSON
+        Alamofire.request(URL_getPayment, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 //printing response
@@ -85,6 +79,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         let DeliveryPrice = user.value(forKey: "delivery_price") as! [String]
                         let PostCode = user.value(forKey: "postcode") as! [String]
                         let Weight = user.value(forKey: "weight") as! [String]
+                        let paymentStatus = user.value(forKey: "Status") as! [String]
                         
                         self.tracking_no = Tracking_NO
                         self.customer_id = CustomerID
@@ -100,12 +95,27 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.weight = Weight
                         self.deliveryprice = DeliveryPrice
                         self.order_date = Order_Date
+                        self.PaymentStatus = paymentStatus
                         
                         self.MySellingView.reloadData()
-                        
                     }
                 }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        lang = sharedPref.string(forKey: "LANG") ?? "0"
+        
+
+        MySellingView.delegate = self
+        MySellingView.dataSource = self
+        
+        navigationItem.title = "My Selling"
+        spinner.show(in: self.view)
+        getList()
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -114,8 +124,6 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         view.endEditing(true)
     }
     
-    
-
     func getCustomerDetails(CustomerID: String, OrderID: String){
         let parameters: Parameters=[
             "id": CustomerID,
@@ -179,7 +187,6 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MySellingCollectionViewCell", for: indexPath) as! MySellingCollectionViewCell
-        
         let OrderPlaceOn = "Order Placed On "
         
         cell.OrderID.text! = "KM" + self.item_orderID[indexPath.row]
@@ -188,10 +195,27 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         cell.Quantity.text! = "x" + self.item_quantity[indexPath.row]
         cell.DateOrder.text! = OrderPlaceOn + self.item_orderDate[indexPath.row]
         cell.ShipPlace.text! = "Shipped out to " + self.item_Shipped[indexPath.row]
-        cell.Status.text! = self.item_status[indexPath.row]
-        let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        if(self.PaymentStatus[indexPath.row] == "Unsuccessful"){
+            cell.Status.text! = "Unsuccessful"
+            cell.Status.textColor = UIColor.red
+        }else{
+            cell.Status.text! = self.item_status[indexPath.row]
+            if(self.item_status[indexPath.row] == "Rejected"){
+                cell.Status.textColor = UIColor.red
+            }
+        }
         
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        if !self.item_photo[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.item_photo[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.item_photo[indexPath.row])!)
+        }
+        
         cell.ButtonView.layer.cornerRadius = 7
         cell.ButtonReject.layer.cornerRadius = 7
         if(lang == "ms"){
@@ -202,64 +226,43 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
             cell.ButtonReject.setTitle("REJECT".localized(lang: "en"), for: .normal)
         }
         
-        let color1 = UIColor(hexString: "#FC4A1A").cgColor
-        let color2 = UIColor(hexString: "#F7B733").cgColor
-        
-        let ReceivedGradient = CAGradientLayer()
-        ReceivedGradient.frame = cell.ButtonView.bounds
-        ReceivedGradient.colors = [color1, color2]
-        ReceivedGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ReceivedGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ReceivedGradient.cornerRadius = 5
-            cell.ButtonView.layer.insertSublayer(ReceivedGradient, at: 0)
-        
-        //Button Cancel
-        let color3 = UIColor(hexString: "#FC4A1A").cgColor
-        let color4 = UIColor(hexString: "#F7B733").cgColor
-        
-        let CancelGradient = CAGradientLayer()
-        CancelGradient.frame = cell.ButtonReject.bounds
-        CancelGradient.colors = [color3, color4]
-        CancelGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        CancelGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        CancelGradient.cornerRadius = 5
-        cell.ButtonReject.layer.insertSublayer(CancelGradient, at: 0)
         cell.delegate = self
         return cell
+        
     }
     
+    
     func btnREJECT(cell: MySellingCollectionViewCell) {
+        let spinner1 = JGProgressHUD(style: .dark)
         guard let indexPath = self.MySellingView.indexPath(for: cell) else{
             return
         }
         
         let CustID = self.customer_id[indexPath.row]
         let Order_ID = self.item_orderID[indexPath.row]
-        let Order_Date = self.order_date[indexPath.row]
-        let Remarks = "Reject"
+        let Remarks = "Rejected"
         
-        
+        spinner1.show(in: self.view)
         let parameters: Parameters=[
-            "order_date": Order_Date,
+            "id": Order_ID,
             "remarks": Remarks,
             "status": Remarks
         ]
         
         //Sending http post request
-        Alamofire.request(URL_REJECT, method: .post, parameters: parameters).responseJSON
+        Alamofire.request(URL_updateOrder, method: .post, parameters: parameters).responseJSON
             {
                 response in
                 if let result = response.result.value{
                     let jsonData = result as! NSDictionary
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
-                        self.getCustomerDetails(CustomerID: CustID, OrderID: Order_ID)
-                        self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        self.spinner.textLabel.text = "Successfully Rejected"
-                        self.spinner.show(in: self.view)
-                        self.spinner.dismiss(afterDelay: 4.0)
-                        
+//                        self.getCustomerDetails(CustomerID: CustID, OrderID: Order_ID)
                         self.GetPlayerData(CustomerID: CustID, OrderID: Order_ID)
+                        spinner1.indicatorView = JGProgressHUDSuccessIndicatorView()
+                        spinner1.textLabel.text = "Successfully Rejected"
+                        
+                        spinner1.dismiss(afterDelay: 3.0)
                     }
                 }
         }
@@ -292,6 +295,9 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         MySelling.AMOUNT = TotalAmount
         MySelling.POSTCODE = self.postcode[indexPath.row]
         MySelling.WEIGHT = self.weight[indexPath.row]
+        if(self.tracking_no[indexPath.row] != ""){
+            MySelling.TRACKINGNO = self.tracking_no[indexPath.row]
+        }
         if let navigator = self.navigationController {
             navigator.pushViewController(MySelling, animated: true)
         }

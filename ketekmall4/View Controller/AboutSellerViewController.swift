@@ -318,13 +318,26 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AboutSellerCollectionViewCell", for: indexPath) as! AboutSellerCollectionViewCell
         
-        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        if !self.PHOTO[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.PHOTO[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.PHOTO[indexPath.row])!)
+        }
+        
+        
+        
+//        let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
         if let n = NumberFormatter().number(from: self.RATING[indexPath.row]) {
             let f = CGFloat(truncating: n)
             cell.Rating.value = f
         }
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+//        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
         cell.ItemPrice.text! = "MYR" + self.PRICE[indexPath.row]
         cell.ItemLocation.text! = self.DISTRICT[indexPath.row]
@@ -340,17 +353,6 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         cell.delegate = self
-        let colorViewOne = UIColor(hexString: "#FC4A1A").cgColor
-        let colorViewTwo = UIColor(hexString: "#F7B733").cgColor
-
-        let ViewGradient = CAGradientLayer()
-        ViewGradient.frame = cell.ButtonView.bounds
-        ViewGradient.colors = [colorViewOne, colorViewTwo]
-        ViewGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        ViewGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        ViewGradient.cornerRadius = 10
-        cell.ButtonView.layer.insertSublayer(ViewGradient, at: 0)
-        
         return cell
     }
     

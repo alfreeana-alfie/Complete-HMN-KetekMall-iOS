@@ -191,9 +191,16 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyIncomeCollectionViewCell", for: indexPath) as! MyIncomeCollectionViewCell
         
-        let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        if !self.item_photo[indexPath.row].contains("%20"){
+            print("contain whitespace \(self.item_photo[indexPath.row].trimmingCharacters(in: .whitespaces))")
+            let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            print("contain whitespace")
+            
+            cell.ItemImage.setImageWith(URL(string: self.item_photo[indexPath.row])!)
+        }
         
         cell.ItemName.text! = self.ad_Detail[indexPath.row]
 //        cell.UserName.text! = self.customer_name[indexPath.row]
