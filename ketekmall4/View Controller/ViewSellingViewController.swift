@@ -953,7 +953,6 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
 //        print("\(TrackingNo.text!)")
         spinner.show(in: self.view)
         let parameters: Parameters=[
-            "id": ORDERID,
             "order_date": ORDER_DATE,
             "tracking_no": TrackingNo.text!
         ]

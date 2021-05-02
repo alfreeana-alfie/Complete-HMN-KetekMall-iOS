@@ -370,7 +370,7 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func btnREJECT(cell: MyBuyingCollectionViewCell) {
-        let spinner1 = JGProgressHUD(style: .dark)
+//        let spinner1 = JGProgressHUD(style: .dark)
         
         guard let indexPath = self.MyBuyingView.indexPath(for: cell) else{
             return
@@ -398,11 +398,11 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
                         print("SUCCESS")
 //                        self.getSellerDetails(SellerID: Seller_ID, OrderID: Order_ID)
                         self.GetPlayerData(CustomerID: Seller_ID, OrderID: Order_ID)
-                        
-                        spinner1.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        spinner1.textLabel.text = "Successfully Cancelled"
-                        spinner1.show(in: self.view)
-                        spinner1.dismiss(afterDelay: 3.0)
+                        self.viewDidLoad()
+//                        spinner1.indicatorView = JGProgressHUDSuccessIndicatorView()
+//                        spinner1.textLabel.text = "Successfully Cancelled"
+//                        spinner1.show(in: self.view)
+//                        spinner1.dismiss(afterDelay: 3.0)
                         
                     }
                 }

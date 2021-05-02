@@ -233,7 +233,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     func btnREJECT(cell: MySellingCollectionViewCell) {
-        let spinner1 = JGProgressHUD(style: .dark)
+//        let spinner1 = JGProgressHUD(style: .dark)
         guard let indexPath = self.MySellingView.indexPath(for: cell) else{
             return
         }
@@ -242,7 +242,7 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         let Order_ID = self.item_orderID[indexPath.row]
         let Remarks = "Rejected"
         
-        spinner1.show(in: self.view)
+//        spinner1.show(in: self.view)
         let parameters: Parameters=[
             "id": Order_ID,
             "remarks": Remarks,
@@ -259,10 +259,12 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
 //                        self.getCustomerDetails(CustomerID: CustID, OrderID: Order_ID)
                         self.GetPlayerData(CustomerID: CustID, OrderID: Order_ID)
-                        spinner1.indicatorView = JGProgressHUDSuccessIndicatorView()
-                        spinner1.textLabel.text = "Successfully Rejected"
+//                        spinner1.indicatorView = JGProgressHUDSuccessIndicatorView()
+//                        spinner1.textLabel.text = "Successfully Rejected"
                         
-                        spinner1.dismiss(afterDelay: 3.0)
+//                        spinner1.dismiss(afterDelay: 3.0)
+                        self.viewDidLoad()
+                        
                     }
                 }
         }
