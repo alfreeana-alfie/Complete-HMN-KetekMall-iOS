@@ -526,7 +526,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         flag = 1
         if #available(iOS 14, *) {
         // using PHPickerViewController
-            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            var config = PHPickerConfiguration()
             config.selectionLimit = 1
             config.filter = .images
             config.preferredAssetRepresentationMode = .current
@@ -548,7 +548,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         flag = 2
         if #available(iOS 14, *) {
         // using PHPickerViewController
-            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            var config = PHPickerConfiguration()
             config.selectionLimit = 1
             config.filter = .images
             config.preferredAssetRepresentationMode = .current
@@ -570,7 +570,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         flag = 3
         if #available(iOS 14, *) {
         // using PHPickerViewController
-            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            var config = PHPickerConfiguration()
             config.selectionLimit = 1
             config.filter = .images
             config.preferredAssetRepresentationMode = .current
@@ -592,7 +592,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         flag = 4
         if #available(iOS 14, *) {
         // using PHPickerViewController
-            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            var config = PHPickerConfiguration()
             config.selectionLimit = 1
             config.filter = .images
             config.preferredAssetRepresentationMode = .current
@@ -614,7 +614,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         flag = 5
         if #available(iOS 14, *) {
         // using PHPickerViewController
-            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            var config = PHPickerConfiguration()
             config.selectionLimit = 1
             config.filter = .images
             config.preferredAssetRepresentationMode = .current

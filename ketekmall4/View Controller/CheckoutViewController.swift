@@ -69,6 +69,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var divsionu: String = ""
     var postcode: String = ""
     var PaymentRefNo: String = ""
+    var SharedEmail: String = ""
     
     var ID: [String] = []
     var ITEMID: [String] = []
@@ -120,6 +121,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     let API_PREACCEPTANCE = "https://apis.pos.com.my/apigateway/as2corporate/api/poslajubypostcodedomestic/v1"
     let serverKey_PREACCEPTANCE = "N1hHVHJFRW95cjRkQ0NyR3dialdrZUF4NGxaNm9Na1U="
     
+    let URL_GET_PLAYERID = "https://ketekmall.com/ketekmall/getPlayerID.php"
+    let URL_NOTI = "https://ketekmall.com/ketekmall/onesignal_noti.php"
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -144,6 +147,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         
         lang = sharedPref.string(forKey: "LANG") ?? "0"
+        SharedEmail = sharedPref.string(forKey: "EMAIL") ?? "0"
         
         PaymentRefNo = String.random()
         
@@ -318,56 +322,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         }
                     }
                 }
-        }
-    }
-    
-    func AddCheckout(){
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let resultDate = formatter.string(from: date)
-        print("\(resultDate)")
-
-        spinner.show(in: self.view)
-        for i in 0..<self.SELLERID.count{
-            let parameters: Parameters=[
-                "seller_id": self.SELLERID[i],
-                "customer_id": userID,
-                "ad_detail": self.ADDETAIL[i],
-                "main_category":self.MAINCATE[i],
-                "sub_category": self.SUBCATE[i],
-                "price": self.PRICE[i],
-                "division": self.divsionu,
-                "postcode": self.postcode,
-                "district": self.divsionu,
-                "seller_division": self.DIVISION[i],
-                "seller_postcode": self.POSTCODE_P[i],
-                "seller_district": self.DISTRICT[i],
-                "photo": self.PHOTO[i],
-                "item_id": self.ITEMID[i],
-                "quantity": self.QUANTITY[i],
-                "delivery_price": self.DELIVERYPRICE[i],
-                "delivery_date": resultDate,
-                "delivery_addr": self.NEWADDR,
-                "weight": self.WEIGHT[i],
-                "refno": self.PaymentRefNo
-            ]
-            Alamofire.request(URL_CHECKOUT, method: .post, parameters: parameters).responseJSON
-                {
-                    response in
-                    if let result = response.result.value {
-                        self.spinner.dismiss(afterDelay: 3.0)
-                        let jsonData = result as! NSDictionary
-                        print(jsonData.value(forKey: "message")!)
-                        
-                        self.getSellerDetails()
-                        self.getUserDetails()
-                        print("CHECKOUT SUCCESS")
-                    }
-                    else{
-                        print("CHECKOUT FAILED")
-                    }
-            }
         }
     }
     
@@ -557,13 +511,22 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                 response in
                                 if let result = response.result.value {
                                     self.spinner.dismiss(afterDelay: 3.0)
-                                    let jsonData = result as! NSDictionary
+                                    _ = result as! NSDictionary
             //                        print(jsonData.value(forKey: "message")!)
                                     
                                     self.getSellerDetails()
                                     self.getUserDetails()
-                                    print("CHECKOUT SUCCESS")
                                     
+                                    let Price01 = (Double(self.PRICE[i])! * Double(self.QUANTITY[i])!)
+                                    let Price02 = Price01 + round(Double(self.DELIVERYPRICE[i])!)
+                                    
+                                    let TotalPrice = String(format: "%.2f", Price02)
+                                    
+                                    self.GetPlayerData(UserID: self.userID)
+                                    self.GetPlayerData(UserID: self.SELLERID[i])
+                                    
+                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
+                                    print("CHECKOUT SUCCESS")
                                 }
                                 else{
                                     print("CHECKOUT FAILED")
@@ -637,11 +600,22 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                 response in
                                 if let result = response.result.value {
                                     self.spinner.dismiss(afterDelay: 3.0)
-                                    let jsonData = result as! NSDictionary
+                                    _ = result as! NSDictionary
             //                        print(jsonData.value(forKey: "message")!)
                                     
                                     self.getSellerDetails()
                                     self.getUserDetails()
+                                    
+                                    let Price01 = (Double(self.PRICE[i])! * Double(self.QUANTITY[i])!)
+                                    let Price02 = Price01 + round(Double(self.DELIVERYPRICE[i])!)
+                                    
+                                    let TotalPrice = String(format: "%.2f", Price02)
+                                    
+                                    self.GetPlayerData(UserID: self.userID)
+                                    
+                                    self.GetPlayerData(UserID: self.SELLERID[i])
+                                    
+                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
                                     print("CHECKOUT SUCCESS")
                                     
                                 }
@@ -678,6 +652,31 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBAction func PlaceOrder(_ sender: Any) {
         WarningCheck()
+    }
+    
+    let URL_SEND_EMAIL_BUYER_02 = "https://ketekmall.com/ketekmall/sendEmail_buyer_two.php"
+    
+    func sendEmailBuyer02(Email: String, ItemID: String, ProductName: String, Price: String, DeliveryPrice: String, Quantity: String, Total: String) {
+        let parameters: Parameters=[
+            "email": Email,
+            "id": ItemID,
+            "ad_detail": ProductName,
+            "price": Price,
+            "delivery_price": DeliveryPrice,
+            "quantity": Quantity,
+            "total": Total
+        ]
+        
+        Alamofire.request(URL_SEND_EMAIL_BUYER_02, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    _ = result as! NSDictionary
+                    print("SENT")
+                }else{
+                    print("FAILED")
+                }
+        }
     }
     
     func getSellerDetails(){
@@ -733,9 +732,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     if((jsonData.value(forKey: "success") as! NSString).boolValue){
                         let user = jsonData.value(forKey: "read") as! NSArray
-                        let email = user.value(forKey: "email") as! [String]
+                        _ = user.value(forKey: "email") as! [String]
                         
-                        self.sendEmailBuyer(Email: email[0])
+//                        self.sendEmailBuyer(Email: email[0])
                         
                         
                     }
@@ -746,20 +745,49 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    func sendEmailBuyer(Email: String){
+    func OneSignalNoti(PlayerID: String, Name: String){
         let parameters: Parameters=[
-            "email": Email
+            "PlayerID": PlayerID,
+            "Name": Name,
+            "Words": "New order has been placed! Check My Buying for information."
         ]
-        Alamofire.request(URL_SEND_EMAILBUYER, method: .post, parameters: parameters).responseJSON
+        
+        Alamofire.request(URL_NOTI, method: .post, parameters: parameters).responseJSON
             {
                 response in
-                if let result = response.result.value{
-                    _ = result as! NSDictionary
-                    print("SENT")
+            if response.result.value != nil{
+                    print("ONESIGNAL SUCCESS")
                 }else{
                     print("FAILED")
                 }
+                
         }
     }
     
+    func GetPlayerData(UserID: String){
+        let parameters: Parameters=[
+            "UserID": UserID
+        ]
+        
+        Alamofire.request(URL_GET_PLAYERID, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value{
+                    let jsonData = result as! NSDictionary
+                    
+                    if((jsonData.value(forKey: "success") as! NSString).boolValue){
+                        let user = jsonData.value(forKey: "read") as! NSArray
+                        
+                        let PlayerID = user.value(forKey: "PlayerID") as! [String]
+                        let Name = user.value(forKey: "Name") as! [String]
+                        _ = user.value(forKey: "UserID") as! [String]
+                        
+                        self.OneSignalNoti(PlayerID: PlayerID[0], Name: Name[0])
+                    }
+                }else{
+                    print("FAILED")
+                }
+                
+        }
+    }
 }
