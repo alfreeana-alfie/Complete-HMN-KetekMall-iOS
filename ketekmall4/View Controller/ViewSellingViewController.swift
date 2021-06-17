@@ -344,11 +344,19 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                         
                         let name = user.value(forKey: "name") as! [String]
                         let email = user.value(forKey: "email") as! [String]
-                        let district = user.value(forKey: "division") as! [String]
+                        let address_01 = user.value(forKey: "address_01") as! [String]
+                        let address_02 = user.value(forKey: "address_02") as! [String]
+//                        let district = user.value(forKey: "district") as! [String]
+                        let division = user.value(forKey: "division") as! [String]
+                        let postcode = user.value(forKey: "postcode") as! [String]
                         let Phone = user.value(forKey: "phone_no") as! [String]
                         
+                        var half_address = address_01[0] + "," + address_02[0]
+                        var half_address_02 = postcode[0] + " " + division[0]
+                        var full_address = half_address + ", " + half_address_02
+                        
                         self.Customer_Name.text = name[0]
-                        self.Customer_Address.text! = district[0]
+                        self.Customer_Address.text! = full_address
                         self.Customer_Phone.text! = Phone[0]
                         
                         self.sendEmail(Email: email[0], OrderID: self.ORDERID)
@@ -398,8 +406,8 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                                         
                                         let ReceiverName = user.value(forKey: "name") as! [String]
                                         let ReceiverEmail = user.value(forKey: "email") as! [String]
-                                        let ReceiverAddress01 = user.value(forKey: "division") as! [String]
-                                        let ReceiverAddress02 = user.value(forKey: "phone_no") as! [String]
+                                        let ReceiverAddress01 = user.value(forKey: "address_01") as! [String]
+                                        let ReceiverAddress02 = user.value(forKey: "address_02") as! [String]
                                         let ReceiverDivision = user.value(forKey: "division") as! [String]
                                         let ReceiverPostCode = user.value(forKey: "postcode") as! [String]
                                         let ReceiverPhoneNo = user.value(forKey: "phone_no") as! [String]
@@ -412,7 +420,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                                         let ReceiverFullAddress02 = "\(ReceiverPostCode[0]) \(ReceiverDivision[0])"
                                         let ReceiverFullAddress = ReceiverFullAddress01 + "," + ReceiverFullAddress02
                                         
-                                        self.RoutingCode(Origin: SellerPostCode[0],Destination: ReceiverPostCode[0], OrderID: self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName[0], SellerPhone: SellerPhoneNo[0], SellerAddress: SellerFullAddress, PickupLocationID: self.ORDERID + SellerPostCode[0], ContactPerson: SellerPhoneNo[0], PickupAddress: SellerFullAddress, PostCode: SellerPostCode[0], TotalQuantityToPickup: self.QUANTITY, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName[0], ReceiverAddress: ReceiverFullAddress, ReceiverPostCode: ReceiverPostCode[0], ReceiverPhone: ReceiverPhoneNo[0], PickupDistrict: SellerAddress02[0], PickupProvince: SellerDivision[0], PickupEmail: SellerEmail[0], ReceiverFirstName: ReceiverName[0], ReceiverLastName: ReceiverName[0], ReceiverDistrict: ReceiverAddress02[0], ReceiverProvince: ReceiverAddress02[0], ReceiverCity: ReceiverDivision[0], ReceiverAddress01: ReceiverAddress01[0], ReceiverAddress02: ReceiverAddress02[0], ReceiverEmail: ReceiverEmail[0])
+                                        self.RoutingCode(Origin: SellerPostCode[0],Destination: ReceiverPostCode[0], OrderID: "KM00" + self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName[0], SellerPhone: SellerPhoneNo[0], SellerAddress: SellerFullAddress, PickupLocationID: self.ORDERID + SellerPostCode[0], ContactPerson: SellerPhoneNo[0], PickupAddress: SellerFullAddress, PostCode: SellerPostCode[0], TotalQuantityToPickup: self.QUANTITY, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName[0], ReceiverAddress: ReceiverFullAddress, ReceiverPostCode: ReceiverPostCode[0], ReceiverPhone: ReceiverPhoneNo[0], PickupDistrict: SellerAddress02[0], PickupProvince: SellerDivision[0], PickupEmail: SellerEmail[0], ReceiverFirstName: ReceiverName[0], ReceiverLastName: ReceiverName[0], ReceiverDistrict: ReceiverAddress02[0], ReceiverProvince: ReceiverAddress02[0], ReceiverCity: ReceiverDivision[0], ReceiverAddress01: ReceiverAddress01[0], ReceiverAddress02: ReceiverAddress02[0], ReceiverEmail: ReceiverEmail[0])
                                     }
                                 }else{
                                     print("FAILED")
@@ -464,8 +472,8 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                                         
                                         let ReceiverName = user.value(forKey: "name") as! [String]
                                         let ReceiverEmail = user.value(forKey: "email") as! [String]
-                                        let ReceiverAddress01 = user.value(forKey: "division") as! [String]
-                                        let ReceiverAddress02 = user.value(forKey: "phone_no") as! [String]
+                                        let ReceiverAddress01 = user.value(forKey: "address_01") as! [String]
+                                        let ReceiverAddress02 = user.value(forKey: "address_02") as! [String]
                                         let ReceiverDivision = user.value(forKey: "division") as! [String]
                                         let ReceiverPostCode = user.value(forKey: "postcode") as! [String]
                                         let ReceiverPhoneNo = user.value(forKey: "phone_no") as! [String]
@@ -478,7 +486,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                                         let ReceiverFullAddress02 = "\(ReceiverPostCode[0]) \(ReceiverDivision[0])"
                                         let ReceiverFullAddress = ReceiverFullAddress01 + "," + ReceiverFullAddress02
                                         
-                                        self.RoutingCode02(Origin: SellerPostCode[0],Destination: ReceiverPostCode[0], OrderID: self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName[0], SellerPhone: SellerPhoneNo[0], SellerAddress: SellerFullAddress, PickupLocationID: self.ORDERID + SellerPostCode[0], ContactPerson: SellerPhoneNo[0], PickupAddress: SellerFullAddress, PostCode: SellerPostCode[0], TotalQuantityToPickup: self.QUANTITY, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName[0], ReceiverAddress: ReceiverFullAddress, ReceiverPostCode: ReceiverPostCode[0], ReceiverPhone: ReceiverPhoneNo[0], PickupDistrict: SellerAddress02[0], PickupProvince: SellerDivision[0], PickupEmail: SellerEmail[0], ReceiverFirstName: ReceiverName[0], ReceiverLastName: ReceiverName[0], ReceiverDistrict: ReceiverAddress02[0], ReceiverProvince: ReceiverAddress02[0], ReceiverCity: ReceiverDivision[0], ReceiverAddress01: ReceiverAddress01[0], ReceiverAddress02: ReceiverAddress02[0], ReceiverEmail: ReceiverEmail[0])
+                                        self.RoutingCode02(Origin: SellerPostCode[0],Destination: ReceiverPostCode[0], OrderID: "KM00" + self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName[0], SellerPhone: SellerPhoneNo[0], SellerAddress: SellerFullAddress, PickupLocationID: self.ORDERID + SellerPostCode[0], ContactPerson: SellerPhoneNo[0], PickupAddress: SellerFullAddress, PostCode: SellerPostCode[0], TotalQuantityToPickup: self.QUANTITY, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName[0], ReceiverAddress: ReceiverFullAddress, ReceiverPostCode: ReceiverPostCode[0], ReceiverPhone: ReceiverPhoneNo[0], PickupDistrict: SellerAddress02[0], PickupProvince: SellerDivision[0], PickupEmail: SellerEmail[0], ReceiverFirstName: ReceiverName[0], ReceiverLastName: ReceiverName[0], ReceiverDistrict: ReceiverAddress02[0], ReceiverProvince: ReceiverAddress02[0], ReceiverCity: ReceiverDivision[0], ReceiverAddress01: ReceiverAddress01[0], ReceiverAddress02: ReceiverAddress02[0], ReceiverEmail: ReceiverEmail[0])
                                     }
                                 }else{
                                     print("FAILED")
@@ -529,7 +537,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                         let RoutingCode = details.value(forKey: "RoutingCode") as! String
                         print("JSON: \(RoutingCode)")
                         
-                        self.GenConnote(numberOfItem: TotalQuantityToPickup, OrderID: self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverAddress01: ReceiverAddress01, ReceiverAddress02: ReceiverAddress02, ReceiverEmail: ReceiverEmail, RoutingCode: RoutingCode)
+                        self.GenConnote(numberOfItem: TotalQuantityToPickup, OrderID: "KM00" + self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverAddress01: ReceiverAddress01, ReceiverAddress02: ReceiverAddress02, ReceiverEmail: ReceiverEmail, RoutingCode: RoutingCode)
                         
                     }else{
                         print("FAILED TO RECEIVE")
@@ -571,7 +579,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                         let RoutingCode = details.value(forKey: "RoutingCode") as! String
                         print("JSON: \(RoutingCode)")
                         
-                        self.GenConnote02(numberOfItem: TotalQuantityToPickup, OrderID: self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverAddress01: ReceiverAddress01, ReceiverAddress02: ReceiverAddress02, ReceiverEmail: ReceiverEmail, RoutingCode: RoutingCode)
+                        self.GenConnote02(numberOfItem: TotalQuantityToPickup, OrderID: "KM00" + self.ORDERID, subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverAddress01: ReceiverAddress01, ReceiverAddress02: ReceiverAddress02, ReceiverEmail: ReceiverEmail, RoutingCode: RoutingCode)
                         
                     }else{
                         print("FAILED TO RECEIVE")
@@ -635,7 +643,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                             
                             self.PreAcceptanceSingle(subscriptionCode: subscriptionCode, AccountNo: AccountNo, SellerName: SellerName, SellerPhone: SellerPhone, SellerAddress: SellerAddress, PickupLocationID: PickupLocationID, ContactPerson: ContactPerson, PostCode: PostCode, TotalQuantityToPickup: TotalQuantityToPickup, Weight: self.WEIGHT, ConsignmentNoteNumber: ConnoteNo, Amount: self.AMOUNT, ReceiverName: ReceiverName, ReceiverAddress: ReceiverAddress, ReceiverPostCode: ReceiverPostCode, ReceiverPhone: ReceiverPhone, PickupDistrict: PickupDistrict, PickupProvince: PickupProvince, PickupEmail: PickupEmail, ReceiverFirstName: ReceiverFirstName, ReceiverLastName: ReceiverLastName, ReceiverDistrict: ReceiverDistrict, ReceiverProvince: ReceiverProvince, ReceiverCity: ReceiverCity, ReceiverEmail: ReceiverEmail)
                             
-                            self.GeneratePDF(ShipDate: date, Weight: self.WEIGHT, OrderID: self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
+                            self.GeneratePDF(ShipDate: date, Weight: self.WEIGHT, OrderID: "KM00" + self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
                             spinner1.dismiss(afterDelay: 3.0)
                         }
                         
@@ -699,7 +707,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
                             
                             self.CreateConnote(ConnoteNo: ConnoteNo, ConnoteDate: date, ProductCode: "KM00" + self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderPostcode: PostCode, RecipientAccountNo: AccountNo, RecipientName: ReceiverName, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientPostcode: ReceiverPostCode, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientPhone: ReceiverPhone, RecipientEmail: ReceiverEmail, Weight: self.WEIGHT)
                             
-                            self.DownloadPDF(ShipDate: date, Weight: self.WEIGHT, OrderID: self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
+                            self.DownloadPDF(ShipDate: date, Weight: self.WEIGHT, OrderID: "KM00" + self.ORDERID, SenderName: SellerName, SenderPhone: SellerPhone, SenderAddress: SellerAddress, SenderPostCode: PostCode, RecipientName: ReceiverName, RecipientPhone: ReceiverPhone, RecipientPostCode: ReceiverPostCode, RecipientAccountNO: AccountNo, RecipientAddress: ReceiverAddress, RecipientAddress01: ReceiverAddress01, RecipientAddress02: ReceiverAddress02, RecipientCity: ReceiverCity, RecipientState: ReceiverProvince, RecipientEmail: ReceiverEmail, ProductCode: self.ORDERID, Type: "Document", RoutingCode: RoutingCode, ConnoteNo: ConnoteNo, ConnoteDate: date)
                             spinner1.dismiss(afterDelay: 3.0)
                         }
                         
@@ -780,7 +788,7 @@ class ViewSellingViewController: UIViewController,URLSessionDownloadDelegate{
             "packVol": "",
             "packLeng": "",
             "postCode": PostCode,
-            "ConsignmentNoteNumber": "ERC500599407MY",
+            "ConsignmentNoteNumber": ConsignmentNoteNumber,
             "packWidth": "",
             "packHeight": "",
             "packTotalitem": "",

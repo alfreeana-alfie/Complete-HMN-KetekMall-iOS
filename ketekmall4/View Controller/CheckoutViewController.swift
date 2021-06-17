@@ -85,6 +85,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var POSTCODE_P: [String] = []
     var WEIGHT: [String] = []
     
+    var PRODUCTDESCRIPTION: [String] = []
+    
     var DELIVERYDIVISION: [String] = []
     var DELIVERYDISTRICT: [String] = []
     var DELIVERYPRICE: [String] = []
@@ -230,6 +232,8 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.POSTCODE_P = user.value(forKey: "postcode") as! [String]
                         self.WEIGHT = user.value(forKey: "weight") as! [String]
                         
+                        
+                        
                         print("\(self.DISTRICT)")
                         
                         let parameters: Parameters=[
@@ -267,6 +271,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                         }
                                         
                                         for i in 0..<self.ID.count{
+                                            let product_details = self.ADDETAIL[i] + " x" + self.QUANTITY[i]
+                                            
+                                            self.PRODUCTDESCRIPTION.append(product_details)
                                             
                                             strCharges = Double(Int(self.QUANTITY[i])!) * Double(self.WEIGHT[i])!
                                             
@@ -539,12 +546,17 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     if let navigator = self.navigationController {
                         navigator.pushViewController(myBuying, animated: true)
                     }
-
+                    
+                    let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
+                    
+                    print("PRODUCT: " + productDesc)
+                    
                     let vc = DetailViewController()
                     vc.UserName = self.NAME[0]
                     vc.UserEmail = self.EMAIL[0]
                     vc.UserContact = self.PHONE_NO[0]
                     vc.RefNo = self.PaymentRefNo
+                    vc.ProdDesc = productDesc
                     vc.Amount = self.GrandTotal2.text!
 
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -630,14 +642,17 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     if let navigator = self.navigationController {
                         navigator.pushViewController(myBuying, animated: true)
                     }
-
+                    let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
+                    
+                    print("PRODUCT: " + productDesc)
+                    
                     let vc = DetailViewController()
                     vc.UserName = self.NAME[0]
                     vc.UserEmail = self.EMAIL[0]
                     vc.UserContact = self.PHONE_NO[0]
                     vc.RefNo = self.PaymentRefNo
+                    vc.ProdDesc = productDesc
                     vc.Amount = self.GrandTotal2.text!
-
 
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

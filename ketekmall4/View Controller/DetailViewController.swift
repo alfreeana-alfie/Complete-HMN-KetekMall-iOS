@@ -90,8 +90,8 @@ class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigatio
         super.viewDidLoad()
         MerchantKey = "8bgBOjTkij"
         MerchantCode = "M29640"
-        ProdDesc = "KetekMall"
-        Remarks = "KetekMall"
+//        ProdDesc = "KetekMall"
+//        Remarks = "KetekMall"
         BackendURL = "https://ketekmall.com/ketekmall/backendURL.php"
 
         paymentSDK?.delegate = self
@@ -108,7 +108,7 @@ class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigatio
         requeryPayment?.userName = UserName
         requeryPayment?.userEmail = UserEmail
         requeryPayment?.userContact = UserContact
-        requeryPayment?.remark = Remarks
+        requeryPayment?.remark = "Product Purchased: " + ProdDesc
         requeryPayment?.lang = "ISO-8859-1"
         requeryPayment?.country = "MY"
         requeryPayment?.backendPostURL = BackendURL
