@@ -560,19 +560,18 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         navigator.pushViewController(myBuying, animated: true)
                     }
                     
-//                    let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
-                    
-//                    print("PRODUCT: " + productDesc)
-                    
                     let vc = DetailViewController()
+                    
                     vc.UserName = self.NAME[0]
                     vc.UserEmail = self.EMAIL[0]
                     vc.UserContact = self.PHONE_NO[0]
                     vc.RefNo = self.PaymentRefNo
-//                    vc.ProdDesc = productDesc
+                    vc.ProdDesc = productDesc
                     vc.Amount = self.GrandTotal2.text!
-
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(vc, animated: true)
+                    }
                 }
                 return
             }))
@@ -631,11 +630,11 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                     self.getSellerDetails()
                                     self.getUserDetails()
                                     
-//                                    self.GetPlayerData(UserID: self.userID)
-//
-//                                    self.GetPlayerData(UserID: self.SELLERID[i])
+                                    self.GetPlayerData(UserID: self.userID)
+
+                                    self.GetPlayerData(UserID: self.SELLERID[i])
                                     
-//                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
+                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: self.GrandTotal2.text!)
                                     print("CHECKOUT SUCCESS")
                                     
                                 }
@@ -647,25 +646,27 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     
                     let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
                     
-                    print("PRODUCT: " + self.NAME[0])
-                    print("PRODUCT: " + self.EMAIL[0])
-                    print("PRODUCT: " + self.PHONE_NO[0])
-                    print("PRODUCT: " + self.PaymentRefNo)
-                    print("PRODUCT: " + productDesc)
-                    print("PRODUCT: " + self.GrandTotal2.text!)
                     
-//                    let vc = DetailViewController()
-//                    
-//                    if let navigator = self.navigationController {
-//                        navigator.pushViewController(vc, animated: true)
-//                    }
-//
-//                    
-//                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-//                    myBuying.userID = self.userID
-//                    if let navigator = self.navigationController {
-//                        navigator.pushViewController(myBuying, animated: true)
-//                    }
+                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+                    myBuying.userID = self.userID
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(myBuying, animated: true)
+                    }
+                    
+                    let vc = DetailViewController()
+                    
+                    vc.UserName = self.NAME[0]
+                    vc.UserEmail = self.EMAIL[0]
+                    vc.UserContact = self.PHONE_NO[0]
+                    vc.RefNo = self.PaymentRefNo
+                    vc.ProdDesc = productDesc
+                    vc.Amount = self.GrandTotal2.text!
+                    
+                    if let navigator = self.navigationController {
+                        navigator.pushViewController(vc, animated: true)
+                    }
+
+                    
                 }
                 return
             }))

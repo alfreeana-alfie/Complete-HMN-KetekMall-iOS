@@ -86,14 +86,6 @@ class DetailViewController: UIViewController, PaymentResultDelegate, WKNavigatio
         MerchantKey = "8bgBOjTkij"
         MerchantCode = "M29640"
         
-        UserName = "Sell"
-        UserEmail = "sell@ketekmall.com"
-        UserContact = "0138940023"
-        Amount = "24.00"
-        RefNo = "BtVbTSjuELw9g3Lbqk8v"
-        
-        ProdDesc = "KetekMall"
-        Remarks = "KetekMall"
         BackendURL = "https://ketekmall.com/ketekmall/backendURL.php"
 
         paymentSDK?.delegate = self
