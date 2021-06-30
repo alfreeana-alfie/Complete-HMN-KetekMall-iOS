@@ -173,13 +173,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyProductsCollectionViewCell", for: indexPath) as! MyProductsCollectionViewCell
         
         if !self.ItemPhoto[indexPath.row].contains("%20"){
-            print("contain whitespace \(self.ItemPhoto[indexPath.row].trimmingCharacters(in: .whitespaces))")
             let NEWIm = self.ItemPhoto[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-        }else{
-            print("contain whitespace")
-            
+        }else{            
             cell.ItemImage.setImageWith(URL(string: self.ItemPhoto[indexPath.row])!)
         }
         

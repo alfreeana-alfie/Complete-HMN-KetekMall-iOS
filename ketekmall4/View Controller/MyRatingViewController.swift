@@ -135,13 +135,10 @@ class MyRatingViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyRatingCollectionViewCell", for: indexPath) as! MyRatingCollectionViewCell
         
         if !self.item_image[indexPath.row].contains("%20"){
-            print("contain whitespace \(self.item_image[indexPath.row].trimmingCharacters(in: .whitespaces))")
             let NEWIm = self.item_image[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
-        }else{
-            print("contain whitespace")
-            
+        }else{            
             cell.ItemImage.setImageWith(URL(string: self.item_image[indexPath.row])!)
         }
         

@@ -245,17 +245,12 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyBuyingCollectionViewCell", for: indexPath) as! MyBuyingCollectionViewCell
         
         if !self.ItemImage[indexPath.row].contains("%20"){
-            print("contain whitespace \(self.ItemImage[indexPath.row].trimmingCharacters(in: .whitespaces))")
             let NEWIm = self.ItemImage[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         }else{
-            print("contain whitespace")
-            
             cell.ItemImage.setImageWith(URL(string: self.ItemImage[indexPath.row])!)
         }
-        
-        
         
         cell.AdDetail.text! = ad_Detail[indexPath.row]
         

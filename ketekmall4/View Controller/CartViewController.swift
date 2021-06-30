@@ -324,13 +324,10 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartCollectionViewCell", for: indexPath) as! CartCollectionViewCell
         
         if !self.PHOTO[indexPath.row].contains("%20"){
-            print("contain whitespace \(self.PHOTO[indexPath.row].trimmingCharacters(in: .whitespaces))")
             let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         }else{
-            print("contain whitespace")
-            
             cell.ItemImage.setImageWith(URL(string: self.PHOTO[indexPath.row])!)
         }
         

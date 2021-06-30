@@ -10,19 +10,27 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         var newPrice: Double = 0.00
-        var newGrandTotal: Double = 0.00
-        
-        
-        newGrandTotal = Double(self.GRANDTOTAL[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
-        newPrice = Double(self.DELIVERYPRICE[indexPath.row])! - Double(self.DELIVERYPRICE[indexPath.row])!
-        
-        print(String(format: "%.2f", newGrandTotal))
-        self.GrandTotal.text! = "RM" + String(format: "%.2f", newGrandTotal)
-        self.GrandTotal2.text! = String(format: "%.2f", newGrandTotal)
+        let newWeight = Double(self.WEIGHT[indexPath.row])!
+        let delivery_charge = newWeight * ceil(Double(self.DELIVERYPRICE[indexPath.row])!)
+        newPrice = delivery_charge - delivery_charge
         
         cell.DeliveryPrice.text! = "RM" + String(format: "%.2f", newPrice)
-        
         cell.ButtonSelfPickUp.isHidden = true
+        
+        var newGrandTotal: Double = 0.00
+        let grandText: String = self.GrandTotal2.text!
+        let grandDouble: Double = Double(grandText)!
+        
+        newGrandTotal = grandDouble
+        newGrandTotal -= delivery_charge
+        
+        print(String(format: "%.2f", delivery_charge))
+        print(String(format: "%.2f", newGrandTotal))
+//        print(String(format: "%.2f", newGrandTotal))
+        self.GrandTotal.text! = "RM" + String(format: "%.2f", newGrandTotal)
+        self.GrandTotal2.text! = String(format: "%.2f", newGrandTotal)
+//
+        
     }
     
     private let spinner = JGProgressHUD(style: .dark)
@@ -101,7 +109,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ADDR02: [String] = []
     var DIVISIONU: [String] = []
     var POSTCODE: [String] = []
-    var GRANDTOTAL: [String] = []
+    var GRANDTOTAL: String = ""
+    var strGrandTotal: Double = 0.00
+//    var GRANDTOTAL: [String] = []
     
     let URL_READ = "https://ketekmall.com/ketekmall/read_detail.php"
     let URL_READ_DELIVERY = "https://ketekmall.com/ketekmall/read_delivery_single_delivery.php"
@@ -293,7 +303,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         let details = result as! NSArray
                                                         
                                                         let totalAmount = details.value(forKey: "totalAmount") as! [String]
-//                                                        print("JSON: \(totalAmount)")
+                                                        
+                                                        
+                                                        print("JSON: \(totalAmount)")
                                                         
                                                         self.DELIVERYPRICE.append(contentsOf: totalAmount)
                                                         
@@ -301,18 +313,22 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         
                                                         let indexPrice = i
                                                         
+                                                        
                                                         if indexPrice < self.DELIVERYPRICE.count{
-                                                            let strDel: Double = round(Double(self.DELIVERYPRICE[i])!)
-                                                            var strGrandTotal: Double = 0.00
+                                                            let newWeight: Double = Double(self.WEIGHT[i])!
+                                                            let strDel: Double = newWeight * ceil(Double(self.DELIVERYPRICE[i])!)
+                                                            
                                                             strGrand2 += strDel
-                                                            strGrandTotal = strGrand + strGrand2
+                                                            self.strGrandTotal = strGrand + strGrand2
                                                             
-                                                            self.GrandTotal.text! = "RM" + String(format: "%.2f", strGrandTotal)
+                                                            self.GRANDTOTAL.append(String(format: "%.2f", self.strGrandTotal))
                                                             
-                                                            self.GrandTotal2.text! = String(format: "%.2f", strGrandTotal)
+                                                            self.GrandTotal.text! = "RM" + String(format: "%.2f", self.strGrandTotal)
                                                             
-                                                            self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
-                                                            print("JSON: \(String(format: "%.2f", strGrandTotal))")
+                                                            self.GrandTotal2.text! = String(format: "%.2f", self.strGrandTotal)
+                                                            
+//                                                            self.GRANDTOTAL.append(String(format: "%.2f", strGrandTotal))
+//                                                            print("JSON: \(String(format: "%.2f", self.strGrandTotal))")
                                                         }
                                                         self.ButtonPlaceOrder.isHidden = false
                                                         self.TotalLabel.isHidden = false
@@ -437,17 +453,14 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         if !self.PHOTO[indexPath.row].contains("%20"){
-            print("contain whitespace \(self.PHOTO[indexPath.row].trimmingCharacters(in: .whitespaces))")
             let NEWIm = self.PHOTO[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         }else{
-            print("contain whitespace")
-            
             cell.ItemImage.setImageWith(URL(string: self.PHOTO[indexPath.row])!)
         }
-        
-        let NewDeliveryPrice = round(Double(self.DELIVERYPRICE[indexPath.row])!)
+        let newWeight = Double(self.WEIGHT[indexPath.row])!
+        let NewDeliveryPrice = newWeight * ceil(Double(self.DELIVERYPRICE[indexPath.row])!)
                 
         cell.OrderID.text! = "KM" + self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
@@ -525,14 +538,14 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                     self.getUserDetails()
                                     
                                     let Price01 = (Double(self.PRICE[i])! * Double(self.QUANTITY[i])!)
-                                    let Price02 = Price01 + round(Double(self.DELIVERYPRICE[i])!)
+                                    let Price02 = Price01 + ceil(Double(self.DELIVERYPRICE[i])!)
                                     
                                     let TotalPrice = String(format: "%.2f", Price02)
                                     
                                     self.GetPlayerData(UserID: self.userID)
                                     self.GetPlayerData(UserID: self.SELLERID[i])
                                     
-                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
+//                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
                                     print("CHECKOUT SUCCESS")
                                 }
                                 else{
@@ -547,16 +560,16 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         navigator.pushViewController(myBuying, animated: true)
                     }
                     
-                    let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
+//                    let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
                     
-                    print("PRODUCT: " + productDesc)
+//                    print("PRODUCT: " + productDesc)
                     
                     let vc = DetailViewController()
                     vc.UserName = self.NAME[0]
                     vc.UserEmail = self.EMAIL[0]
                     vc.UserContact = self.PHONE_NO[0]
                     vc.RefNo = self.PaymentRefNo
-                    vc.ProdDesc = productDesc
+//                    vc.ProdDesc = productDesc
                     vc.Amount = self.GrandTotal2.text!
 
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -618,16 +631,11 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                     self.getSellerDetails()
                                     self.getUserDetails()
                                     
-                                    let Price01 = (Double(self.PRICE[i])! * Double(self.QUANTITY[i])!)
-                                    let Price02 = Price01 + round(Double(self.DELIVERYPRICE[i])!)
+//                                    self.GetPlayerData(UserID: self.userID)
+//
+//                                    self.GetPlayerData(UserID: self.SELLERID[i])
                                     
-                                    let TotalPrice = String(format: "%.2f", Price02)
-                                    
-                                    self.GetPlayerData(UserID: self.userID)
-                                    
-                                    self.GetPlayerData(UserID: self.SELLERID[i])
-                                    
-                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
+//                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
                                     print("CHECKOUT SUCCESS")
                                     
                                 }
@@ -637,24 +645,27 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                         }
                     }
                     
-                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
-                    myBuying.userID = self.userID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(myBuying, animated: true)
-                    }
                     let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
                     
+                    print("PRODUCT: " + self.NAME[0])
+                    print("PRODUCT: " + self.EMAIL[0])
+                    print("PRODUCT: " + self.PHONE_NO[0])
+                    print("PRODUCT: " + self.PaymentRefNo)
                     print("PRODUCT: " + productDesc)
+                    print("PRODUCT: " + self.GrandTotal2.text!)
                     
-                    let vc = DetailViewController()
-                    vc.UserName = self.NAME[0]
-                    vc.UserEmail = self.EMAIL[0]
-                    vc.UserContact = self.PHONE_NO[0]
-                    vc.RefNo = self.PaymentRefNo
-                    vc.ProdDesc = productDesc
-                    vc.Amount = self.GrandTotal2.text!
-
-                    self.navigationController?.pushViewController(vc, animated: true)
+//                    let vc = DetailViewController()
+//                    
+//                    if let navigator = self.navigationController {
+//                        navigator.pushViewController(vc, animated: true)
+//                    }
+//
+//                    
+//                    let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
+//                    myBuying.userID = self.userID
+//                    if let navigator = self.navigationController {
+//                        navigator.pushViewController(myBuying, animated: true)
+//                    }
                 }
                 return
             }))

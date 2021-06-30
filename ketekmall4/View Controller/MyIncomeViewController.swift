@@ -192,12 +192,10 @@ class MyIncomeViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyIncomeCollectionViewCell", for: indexPath) as! MyIncomeCollectionViewCell
         
         if !self.item_photo[indexPath.row].contains("%20"){
-            print("contain whitespace \(self.item_photo[indexPath.row].trimmingCharacters(in: .whitespaces))")
             let NEWIm = self.item_photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         }else{
-            print("contain whitespace")
             
             cell.ItemImage.setImageWith(URL(string: self.item_photo[indexPath.row])!)
         }

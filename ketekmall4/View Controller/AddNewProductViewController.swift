@@ -700,14 +700,20 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             if(flag == 1){
                 ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage.image = chosenImage
+                if(self.ItemImage2.image == chosenImage){
+                    print("PRESENT")
+//                    saveImage(number: "1", Image: ItemImage2)
+                }else{
+                    print("EMPTY")
+//                    saveImage1(Image: ItemImage)
+                }
                 dismiss(animated: true, completion: nil)
             }else if(flag == 2){
                 ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage2.image = chosenImage
                 if(self.ItemImage2.image == chosenImage){
                     print("PRESENT")
-                    self.Delete_2.isHidden = false
-//                        saveImage(number: "2", Image: ItemImage2)
+//                    saveImage(number: "2", Image: ItemImage2)
                 }else{
                     print("EMPTY")
                 }
@@ -717,8 +723,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                 ItemImage3.image = chosenImage
                 if(self.ItemImage2.image == chosenImage){
                     print("PRESENT")
-                    self.Delete_3.isHidden = false
-//                        saveImage(number: "3", Image: ItemImage2)
+//                    saveImage(number: "3", Image: ItemImage2)
                 }else{
                     print("EMPTY")
                 }
@@ -728,8 +733,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                 ItemImage4.image = chosenImage
                 if(self.ItemImage2.image == chosenImage){
                     print("PRESENT")
-                    self.Delete_4.isHidden = false
-//                        saveImage(number: "4", Image: ItemImage2)
+//                    saveImage(number: "4", Image: ItemImage2)
                 }else{
                     print("EMPTY")
                 }
@@ -739,15 +743,13 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                 ItemImage5.image = chosenImage
                 if(self.ItemImage2.image == chosenImage){
                     print("PRESENT")
-                    self.Delete_5.isHidden = false
-//                        saveImage(number: "5", Image: ItemImage2)
+//                    saveImage(number: "5", Image: ItemImage2)
                 }else{
                     print("EMPTY")
                 }
                 dismiss(animated: true, completion: nil)
             }
         }
-//        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func Accept(_ sender: Any) {
@@ -756,7 +758,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         spinner.show(in: self.view)
         let imageData: Data = ItemImage.image!.pngData()!
         let imageStr: String = imageData.base64EncodedString()
-        
+
         let parameters: Parameters=[
             "user_id": userID,
             "main_category":CategoryText,
@@ -776,7 +778,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             "filename": Addetail,
             "filepath": imageStr
         ]
-        
+
         //Sending http post request
         Alamofire.request(URL_ADD, method: .post, parameters: parameters).responseJSON
             {
@@ -791,14 +793,14 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                         self.saveImage(number: "2", Image: self.ItemImage2)
                         print("SUCCESS 2")
                     }
-                    
+
                     if(self.ItemImage3.image == UIImage(named: "AddPhoto")){
                         print("EMPTY")
                     }else{
                         self.saveImage(number: "3", Image: self.ItemImage3)
                         print("SUCCESS 3")
                     }
-                    
+
                     if(self.ItemImage4.image == UIImage(named: "AddPhoto")){
                         print("EMPTY")
                     }else{
@@ -806,7 +808,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
 //                        self.Delete_4.isHidden = false
                         print("SUCCESS 4")
                     }
-                    
+
                     if(self.ItemImage5.image == UIImage(named: "AddPhoto")){
                         print("EMPTY")
                     }else{
@@ -819,14 +821,9 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
                     if let navigator = self.navigationController {
                         navigator.pushViewController(accountsettings, animated: true)
                     }
-                    
+
                 }else{
                     print("FAILED")
-                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
-                    accountsettings.userID = self.userID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(accountsettings, animated: true)
-                    }
             }
         }
     }

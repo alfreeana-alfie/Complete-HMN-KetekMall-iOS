@@ -127,13 +127,10 @@ class BoostAdViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoostAdCollectionViewCell", for: indexPath) as! BoostAdCollectionViewCell
         
         if !self.Item_Photo[indexPath.row].contains("%20"){
-            print("contain whitespace \(self.Item_Photo[indexPath.row].trimmingCharacters(in: .whitespaces))")
             let NEWIm = self.Item_Photo[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             
             cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         }else{
-            print("contain whitespace")
-            
             cell.ItemImage.setImageWith(URL(string: self.Item_Photo[indexPath.row])!)
         }
         

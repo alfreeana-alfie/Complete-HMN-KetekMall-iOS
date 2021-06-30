@@ -34,9 +34,14 @@ class ProductRatingViewController: UIViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductRatingCollectionViewCell", for: indexPath) as! ProductRatingCollectionViewCell
         
-        let NEWIm = self.item_image[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        if !self.item_image[indexPath.row].contains("%20"){
+            let NEWIm = self.item_image[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }else{
+            cell.ItemImage.setImageWith(URL(string: self.item_image[indexPath.row])!)
+        }
         
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
         cell.AdDetail.text! = self.ad_detail[indexPath.row]
         cell.UserName.text! = self.customer_name[indexPath.row]
         cell.UserImage.setImageWith(URL(string: Customer_Image)!)
