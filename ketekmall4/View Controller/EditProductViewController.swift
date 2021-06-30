@@ -5,7 +5,7 @@ import Alamofire
 import JGProgressHUD
 import ImagePicker
 
-class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditProductViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private static var Manager : Alamofire.SessionManager = {
         // Create the server trust policies
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
@@ -27,23 +27,6 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let URL_READ_PHOTO = "https://ketekmall.com/ketekmall/products_img/read_photo.php"
     let URL_EDIT_PROD = "https://ketekmall.com/ketekmall/edit_product_detail.php"
     let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
-    
-    let category = ["Process food", "Handicraft","Health and Beauty", "Home and Living", "Fashion Accessories", "Sarawak - Based Product", "Self Pickup"]
-    
-    let division = ["Kuching", "Kota Samarahan", "Serian", "Sri Aman", "Betong", "Sarikei", "Sibu", "Mukah", "Bintulu", "Kapit", "Miri", "Limbang"]
-    
-    let kuching = ["Kuching", "Bau", "Lundu"]
-    let samarahan = ["Kota Samarahan", "Asajaya", "Simunjan"]
-    let serian = ["Serian", "Tembedu"]
-    let sri_aman = ["Sri Aman", "Lubok Antu"]
-    let betong = ["Betong", "Saratok", "Pusa","Kabong"]
-    let sarikei = ["Sarikei", "Meradong", "Julau", "Pakan"]
-    let sibu = ["Sibu", "Kanowit", "Selangau"]
-    let mukah = ["Mukah", "Dalat", "Matu", "Daro", "Tanjong"]
-    let bintulu = ["Bintulu", "Sebauh", "Tatau"]
-    let kapit = ["Kapit", "Song", "Belaga", "Bukit Mabong"]
-    let miri = ["Miri", "Marudi", "Subis", "Beluru", "Telang Usan"]
-    let limbang = ["Limbang", "Lawas"]
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -99,10 +82,6 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     var viewController1: UIViewController?
     
-    var CategoryPicker = UIPickerView()
-    var DivisionPicker = UIPickerView()
-    var DistrictPicker = UIPickerView()
-    
     var MAINCATE: String = ""
     var SUBCATE: String = ""
     var BRAND: String = ""
@@ -153,23 +132,6 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         saveItemID()
         ViewPhoto()
-        
-        CategoryPicker.dataSource = self
-        CategoryPicker.delegate = self
-        
-        DivisionPicker.dataSource = self
-        DivisionPicker.delegate = self
-        
-        DistrictPicker.dataSource = self
-        DistrictPicker.delegate = self
-        
-        Category.inputView = CategoryPicker
-        Division.inputView = DivisionPicker
-        District.inputView = DistrictPicker
-        
-        CreateCategoryPicker()
-        CreateDivisionPicker()
-        CreateDistrictPicker()
         
         ButtonAccept.layer.cornerRadius = 7
         ButtonCancel.layer.cornerRadius = 7
@@ -312,167 +274,26 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         DivisionLabel.text = "Division".localized(lang: str)
         DistrictLabel.text = "District".localized(lang: str)
         MaxOrderLabel.text = "Max Order".localized(lang: str)
+//        SetupDeliveryLabel.text = "Setup Delivery".localized(lang: str)
+        //        UploadImage.titleLabel?.text = "Upload Image".localized(lang: str)
+        
         UploadImage.setTitle("Upload Image".localized(lang: str), for: .normal)
         
         Category.placeholder = "Category".localized(lang: str)
+        //        ButtonAdDetail.titleLabel?.text = "Ad Detail".localized(lang: str)
         Price.placeholder = "Price".localized(lang: str)
         Division.placeholder = "Division".localized(lang: str)
         District.placeholder = "District".localized(lang: str)
         Max_Order.placeholder = "Max Order".localized(lang: str)
+        //        ButtonSetupDelivery.titleLabel?.text = "Setup Delivery".localized(lang: str)
+        
+//        ButtonSetupDelivery.setTitle("Click to Edit Setup Delivery".localized(lang: str), for: .normal)
+        
+        //        ButtonAccept.titleLabel?.text = "ACCEPT".localized(lang: str)
+        //        ButtonCancel.titleLabel?.text = "CANCEL".localized(lang: str)
         
         ButtonAccept.setTitle("ACCEPT".localized(lang: str), for: .normal)
         ButtonCancel.setTitle("CANCEL".localized(lang: str), for: .normal)
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == CategoryPicker {
-            return category.count
-            
-        } else if pickerView == DivisionPicker{
-            return division.count        }
-        else if pickerView == DistrictPicker{
-            if(Division.text == "Kuching"){
-                return kuching.count
-            } else if(Division.text == "Kota Samarahan"){
-                return samarahan.count
-            } else if(Division.text == "Serian"){
-                return serian.count
-            }  else if(Division.text == "Sri Aman"){
-                return sri_aman.count
-            } else if(Division.text == "Betong"){
-                return betong.count
-            } else if(Division.text == "Sarikei"){
-                return sarikei.count
-            }else if(Division.text == "Sibu"){
-                return sibu.count
-            }else if(Division.text == "Mukah"){
-                return mukah.count
-            }else if(Division.text == "Bintulu"){
-                return bintulu.count
-            }else if(Division.text == "Kapit"){
-                return kapit.count
-            }else if(Division.text == "Miri"){
-                return miri.count
-            }else if(Division.text == "Limbang"){
-                return limbang.count
-            }
-        }
-        
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == CategoryPicker {
-            return category[row]
-            
-        } else if pickerView == DivisionPicker{
-            return division[row]
-        }else if pickerView == DistrictPicker{
-            if(Division.text == "Kuching"){
-                return kuching[row]
-            } else if(Division.text == "Kota Samarahan"){
-                return samarahan[row]
-            }else if(Division.text == "Serian"){
-                return serian[row]
-            }  else if(Division.text == "Sri Aman"){
-                return sri_aman[row]
-            } else if(Division.text == "Betong"){
-                return betong[row]
-            } else if(Division.text == "Sarikei"){
-                return sarikei[row]
-            }else if(Division.text == "Sibu"){
-                return sibu[row]
-            }else if(Division.text == "Mukah"){
-                return mukah[row]
-            }else if(Division.text == "Bintulu"){
-                return bintulu[row]
-            }else if(Division.text == "Kapit"){
-                return kapit[row]
-            }else if(Division.text == "Miri"){
-                return miri[row]
-            }else if(Division.text == "Limbang"){
-                return limbang[row]
-            }
-        }
-        
-        return ""
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == CategoryPicker {
-            Category.text = category[row]
-            self.view.endEditing(false)
-        } else if pickerView == DivisionPicker{
-            Division.text = division[row]
-            self.view.endEditing(false)
-        }else if pickerView == DistrictPicker{
-            if(Division.text == "Kuching"){
-                District.text = kuching[row]
-                self.view.endEditing(false)
-            } else if(Division.text == "Kota Samarahan"){
-                District.text = samarahan[row]
-                self.view.endEditing(false)
-            }else if(Division.text == "Serian"){
-                District.text = serian[row]
-            }  else if(Division.text == "Sri Aman"){
-                District.text = sri_aman[row]
-            } else if(Division.text == "Betong"){
-                District.text = betong[row]
-            } else if(Division.text == "Sarikei"){
-                District.text = sarikei[row]
-            }else if(Division.text == "Sibu"){
-                District.text = sibu[row]
-            }else if(Division.text == "Mukah"){
-                District.text = mukah[row]
-            }else if(Division.text == "Bintulu"){
-                District.text = bintulu[row]
-            }else if(Division.text == "Kapit"){
-                District.text = kapit[row]
-            }else if(Division.text == "Miri"){
-                District.text = miri[row]
-            }else if(Division.text == "Limbang"){
-                District.text = limbang[row]
-            }
-            
-        }
-    }
-    
-    func CreateCategoryPicker(){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([doneBtn], animated: true)
-        Category.inputAccessoryView = toolbar
-        Category.inputView = CategoryPicker
-    }
-    
-    func CreateDivisionPicker(){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([doneBtn], animated: true)
-        Division.inputAccessoryView = toolbar
-        Division.inputView = DivisionPicker
-    }
-    
-    func CreateDistrictPicker(){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([doneBtn], animated: true)
-        District.inputAccessoryView = toolbar
-        District.inputView = DistrictPicker
-    }
-    
-    @objc func donePressed(){
-        self.view.endEditing(true)
     }
     
     @IBAction func AdDetail(_ sender: Any) {
@@ -655,7 +476,7 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
             {
                 response in
                 
-            if response.result.value != nil {
+                if let result = response.result.value {
                     print("SUCCESS DELETE")
                     
                 }else{
@@ -910,8 +731,8 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         present(imagePicker, animated: true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let chosenImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage{
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
             if(flag == 1){
                 ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
                 ItemImage.image = chosenImage
@@ -967,61 +788,4 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
-//    @objc func imagePickerController(_picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        if let chosenImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage{
-//            if(flag == 1){
-//                ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "1", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                    saveImage1(Image: ItemImage)
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 2){
-//                ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage2.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "2", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 3){
-//                ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage3.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "3", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 4){
-//                ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage4.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "4", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }else if(flag == 5){
-//                ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
-//                ItemImage5.image = chosenImage
-//                if(self.ItemImage2.image == chosenImage){
-//                    print("PRESENT")
-//                    saveImage(number: "5", Image: ItemImage2)
-//                }else{
-//                    print("EMPTY")
-//                }
-//                dismiss(animated: true, completion: nil)
-//            }
-//        }
-//    }
-//
 }
