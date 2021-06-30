@@ -240,15 +240,13 @@ class MySellingViewController: UIViewController, UICollectionViewDelegate, UICol
         
         let CustID = self.customer_id[indexPath.row]
         let Order_ID = self.item_orderID[indexPath.row]
-        let Ref_No = self.refno[indexPath.row]
-        let Remarks = "Cancelled"
+        let Remarks = "Rejected"
         
 //        spinner1.show(in: self.view)
         let parameters: Parameters=[
             "id": Order_ID,
             "remarks": Remarks,
-            "status": Remarks,
-            "refno": Ref_No
+            "status": Remarks
         ]
         
         //Sending http post request
