@@ -204,29 +204,39 @@ class ReviewPageViewController: UIViewController, UITabBarDelegate {
         ItemQuantity.text! = "x" + QUANTITY
         let strShippingCost = round(Double(SHIPPINGTOTAL)!)
         
-        if(SHIPPEDTO == SELLER_DIVISION){
-            SHIPPINGTOTAL = "0.00"
-            
-            Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
-            Total2 = Total1 + Double(SHIPPINGTOTAL)!
-            
-            let strShippingCost = round(Double(SHIPPINGTOTAL)!)
-            print(SHIPPINGTOTAL)
-            
-            SubTotal.text! = "RM" + PRICE
-            ShippingTotal.text! = "RM" + String(format: "%.2f", strShippingCost)
-            GrandTotal.text! = "RM" + String(format: "%.2f", Total2)
-        }else{
-            Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
-            Total2 = Total1 + strShippingCost 
-            
+        Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
+        Total2 = Total1 + strShippingCost
+        
 //            let strDel: Double = round(Double(self.DELIVERYPRICE[i])!)
-            
-            print(SHIPPINGTOTAL)
-            SubTotal.text! = "RM" + PRICE
-            ShippingTotal.text! = "RM" + String(format: "%.2f", strShippingCost)
-            GrandTotal.text! = "RM" + String(format: "%.2f", Total2)
-        }
+        
+        print(SHIPPINGTOTAL)
+        SubTotal.text! = "RM" + PRICE
+        ShippingTotal.text! = "RM" + String(format: "%.2f", strShippingCost)
+        GrandTotal.text! = "RM" + String(format: "%.2f", Total2)
+        
+//        if(SHIPPEDTO == SELLER_DIVISION){
+//            SHIPPINGTOTAL = "0.00"
+//
+//            Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
+//            Total2 = Total1 + Double(SHIPPINGTOTAL)!
+//
+//            let strShippingCost = round(Double(SHIPPINGTOTAL)!)
+//            print(SHIPPINGTOTAL)
+//
+//            SubTotal.text! = "RM" + PRICE
+//            ShippingTotal.text! = "RM" + String(format: "%.2f", strShippingCost)
+//            GrandTotal.text! = "RM" + String(format: "%.2f", Total2)
+//        }else{
+//            Total1 = Double(PRICE)! * Double(Int(QUANTITY)!)
+//            Total2 = Total1 + strShippingCost
+//
+////            let strDel: Double = round(Double(self.DELIVERYPRICE[i])!)
+//
+//            print(SHIPPINGTOTAL)
+//            SubTotal.text! = "RM" + PRICE
+//            ShippingTotal.text! = "RM" + String(format: "%.2f", strShippingCost)
+//            GrandTotal.text! = "RM" + String(format: "%.2f", Total2)
+//        }
         
         ButtonReceived.layer.cornerRadius = 5
         

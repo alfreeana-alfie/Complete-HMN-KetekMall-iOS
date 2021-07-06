@@ -214,6 +214,8 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
+        
+        print("HOTSELLING: " + self.PHOTOHOT[indexPath.row])
         if let navigator = self.navigationController {
             navigator.pushViewController(viewProduct, animated: true)
         }
@@ -1129,7 +1131,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.DISTRICTHOT = district
                         self.POSTCODEHOT = postcode
                         self.WEIGHTHOT = weight
-                        
+                                                
                         self.HotView.reloadData()
                         
                     }

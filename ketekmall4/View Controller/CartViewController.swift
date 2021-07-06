@@ -82,6 +82,7 @@ class CartViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ButtonCheckout.layer.cornerRadius = 5
         ButtonCheckout.isHidden = true
         
+        DeleteOrder()
         ViewList()
     }
     

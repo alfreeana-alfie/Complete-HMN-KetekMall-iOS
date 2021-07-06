@@ -204,7 +204,6 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         NoReviewLabel.isHidden = true
         lang = sharedPref.string(forKey: "LANG") ?? "0"
         email_user = sharedPref.string(forKey: "EMAIL") ?? "0"
@@ -728,11 +727,26 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                             self.ItemImage.isHidden = true
                             for i in list{
                                 let photo = i["filepath"] as! String
+                                if photo.contains("%20"){
+                                    print("LIST %20: " + photo)
+                                    
+                                    let image = KingfisherSource(urlString: photo)
+                                    ImageKing.append(image!)
+                                    
+                                }else{
+                                    print("LIST: " + photo)
+                                    let NEWIm = photo.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+
+                                    let image = KingfisherSource(urlString: NEWIm!)
+                                    ImageKing.append(image!)
+                                }
                                 
-                                let NEWIm = photo.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
                                 
-                                let image = KingfisherSource(urlString: NEWIm!)
-                                ImageKing.append(image!)
+                                
+//                                let NEWIm = photo.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+//
+//                                let image = KingfisherSource(urlString: NEWIm!)
+//                                ImageKing.append(image!)
                             }
                             self.Carousel.setImageInputs(ImageKing)
                             self.Carousel.contentScaleMode = .scaleAspectFill
@@ -762,10 +776,14 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                     let f = CGFloat(truncating: n)
                     cell.Rating.value = f
                 }
-
-        let NEWIm = self.PHOTO_SAMESHOP[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-                
-        cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        if self.PHOTO_SAMESHOP[indexPath.row].contains("%20"){
+            cell.ItemImage.setImageWith(URL(string: self.PHOTO_SAMESHOP[indexPath.row])!)
+        }else{
+            let NEWIm = self.PHOTO_SAMESHOP[indexPath.row].addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                    
+            cell.ItemImage.setImageWith(URL(string: NEWIm!)!)
+        }
+        
         cell.ItemName.text! = self.ADDETAIL_SAMESHOP[indexPath.row]
         cell.ItemPrice.text! = self.PRICE_SAMESHOP[indexPath.row]
         cell.ButtonView.layer.cornerRadius = 5
@@ -886,6 +904,4 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                 
             }
         }
-        
-    
 }

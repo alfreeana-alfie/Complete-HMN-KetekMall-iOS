@@ -427,6 +427,8 @@ class MyBuyingViewController: UIViewController, UICollectionViewDelegate, UIColl
         ReviewProduct.SELLERID = self.seller_id[indexPath.row]
         ReviewProduct.STATUS = self.ItemStatus[indexPath.row]
         ReviewProduct.BarHidden = true
+        
+        print("PRICE" + self.DeliveryPrice[indexPath.row])
         if let navigator = self.navigationController {
             navigator.pushViewController(ReviewProduct, animated: true)
         }

@@ -11,7 +11,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         var newPrice: Double = 0.00
         let newWeight = Double(self.WEIGHT[indexPath.row])!
-        let delivery_charge = newWeight * ceil(Double(self.DELIVERYPRICE[indexPath.row])!)
+        let delivery_charge = ceil(Double(self.DELIVERYPRICE[indexPath.row])!)
         newPrice = delivery_charge - delivery_charge
         
         cell.DeliveryPrice.text! = "RM" + String(format: "%.2f", newPrice)
@@ -316,7 +316,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                                         
                                                         if indexPrice < self.DELIVERYPRICE.count{
                                                             let newWeight: Double = Double(self.WEIGHT[i])!
-                                                            let strDel: Double = newWeight * ceil(Double(self.DELIVERYPRICE[i])!)
+                                                            let strDel: Double = ceil(Double(self.DELIVERYPRICE[i])!)
                                                             
                                                             strGrand2 += strDel
                                                             self.strGrandTotal = strGrand + strGrand2
@@ -460,7 +460,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
             cell.ItemImage.setImageWith(URL(string: self.PHOTO[indexPath.row])!)
         }
         let newWeight = Double(self.WEIGHT[indexPath.row])!
-        let NewDeliveryPrice = newWeight * ceil(Double(self.DELIVERYPRICE[indexPath.row])!)
+        let NewDeliveryPrice = ceil(Double(self.DELIVERYPRICE[indexPath.row])!)
                 
         cell.OrderID.text! = "KM" + self.ID[indexPath.row]
         cell.ItemName.text! = self.ADDETAIL[indexPath.row]
@@ -504,6 +504,9 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
 
                     self.spinner.show(in: self.view)
                     for i in 0..<self.SELLERID.count{
+                        let priceInDouble = ceil(Double(self.DELIVERYPRICE[i])!)
+                        let priceInStr = String(format: "%.2f", priceInDouble)
+                        
                         let parameters: Parameters=[
                             "seller_id": self.SELLERID[i],
                             "customer_id": self.userID,
@@ -520,7 +523,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                             "photo": self.PHOTO[i],
                             "item_id": self.ITEMID[i],
                             "quantity": self.QUANTITY[i],
-                            "delivery_price": self.DELIVERYPRICE[i],
+                            "delivery_price": priceInStr,
                             "delivery_date": resultDate,
                             "delivery_addr": self.NEWADDR,
                             "weight": self.WEIGHT[i],
@@ -537,15 +540,10 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                     self.getSellerDetails()
                                     self.getUserDetails()
                                     
-                                    let Price01 = (Double(self.PRICE[i])! * Double(self.QUANTITY[i])!)
-                                    let Price02 = Price01 + ceil(Double(self.DELIVERYPRICE[i])!)
-                                    
-                                    let TotalPrice = String(format: "%.2f", Price02)
-                                    
                                     self.GetPlayerData(UserID: self.userID)
                                     self.GetPlayerData(UserID: self.SELLERID[i])
                                     
-//                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: TotalPrice)
+                                    self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: self.GrandTotal2.text!)
                                     print("CHECKOUT SUCCESS")
                                 }
                                 else{
@@ -553,6 +551,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                 }
                         }
                     }
+                    let productDesc = self.PRODUCTDESCRIPTION.joined(separator: ", ")
                     
                     let myBuying = self.storyboard!.instantiateViewController(withIdentifier: "AfterPlaceOrderViewController") as! AfterPlaceOrderViewController
                     myBuying.userID = self.userID
@@ -596,7 +595,13 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                     print("\(resultDate)")
 
                     self.spinner.show(in: self.view)
+                    
+                    
+                    
                     for i in 0..<self.SELLERID.count{
+                        let priceInDouble = ceil(Double(self.DELIVERYPRICE[i])!)
+                        let priceInStr = String(format: "%.2f", priceInDouble)
+                        
                         let parameters: Parameters=[
                             "seller_id": self.SELLERID[i],
                             "customer_id": self.userID,
@@ -613,7 +618,7 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                             "photo": self.PHOTO[i],
                             "item_id": self.ITEMID[i],
                             "quantity": self.QUANTITY[i],
-                            "delivery_price": self.DELIVERYPRICE[i],
+                            "delivery_price": priceInStr,
                             "delivery_date": resultDate,
                             "delivery_addr": self.NEWADDR,
                             "weight": self.WEIGHT[i],
@@ -631,7 +636,6 @@ class CheckoutViewController: UIViewController, UICollectionViewDelegate, UIColl
                                     self.getUserDetails()
                                     
                                     self.GetPlayerData(UserID: self.userID)
-
                                     self.GetPlayerData(UserID: self.SELLERID[i])
                                     
                                     self.sendEmailBuyer02(Email: self.SharedEmail, ItemID: self.ITEMID[i], ProductName: self.ADDETAIL[i], Price: self.PRICE[i], DeliveryPrice: self.DELIVERYPRICE[i], Quantity: self.QUANTITY[i], Total: self.GrandTotal2.text!)
