@@ -185,6 +185,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.POSTCODE = self.POSTCODESHOCKING[indexPath.row]
         viewProduct.WEIGHT = self.WEIGHTSHOCKING[indexPath.row]
         viewProduct.PHOTO = self.PHOTOSHOCKING[indexPath.row]
+        viewProduct.PHOTO02 = self.PHOTOSHOCKING02[indexPath.row]
+        viewProduct.PHOTO03 = self.PHOTOSHOCKING03[indexPath.row]
+        viewProduct.PHOTO04 = self.PHOTOSHOCKING04[indexPath.row]
+        viewProduct.PHOTO05 = self.PHOTOSHOCKING05[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONSHOCKING[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICTSHOCKING[indexPath.row]
         if let navigator = self.navigationController {
@@ -212,10 +216,14 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         viewProduct.POSTCODE = self.POSTCODEHOT[indexPath.row]
         viewProduct.WEIGHT = self.WEIGHTHOT[indexPath.row]
         viewProduct.PHOTO = self.PHOTOHOT[indexPath.row]
+        viewProduct.PHOTO02 = self.PHOTOHOT02[indexPath.row]
+        viewProduct.PHOTO03 = self.PHOTOHOT03[indexPath.row]
+        viewProduct.PHOTO04 = self.PHOTOHOT04[indexPath.row]
+        viewProduct.PHOTO05 = self.PHOTOHOT05[indexPath.row]
         viewProduct.DIVISION = self.DIVISIONHOT[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICTHOT[indexPath.row]
         
-        print("HOTSELLING: " + self.PHOTOHOT[indexPath.row])
+//        print("HOTSELLING: " + self.PHOTOHOT[indexPath.row])
         if let navigator = self.navigationController {
             navigator.pushViewController(viewProduct, animated: true)
         }
@@ -312,6 +320,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var PRICEHOT: [String] = []
     var RATINGHOT: [String] = []
     var PHOTOHOT: [String] = []
+    var PHOTOHOT02: [String] = []
+    var PHOTOHOT03: [String] = []
+    var PHOTOHOT04: [String] = []
+    var PHOTOHOT05: [String] = []
     var DIVISIONHOT: [String] = []
     var POSTCODEHOT: [String] = []
     var DISTRICTHOT: [String] = []
@@ -330,6 +342,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     var PRICESHOCKING: [String] = []
     var RATINGSHOCKING: [String] = []
     var PHOTOSHOCKING: [String] = []
+    var PHOTOSHOCKING02: [String] = []
+    var PHOTOSHOCKING03: [String] = []
+    var PHOTOSHOCKING04: [String] = []
+    var PHOTOSHOCKING05: [String] = []
     var DIVISIONSHOCKING: [String] = []
     var DISTRICTSHOCKING: [String] = []
     var POSTCODESHOCKING: [String] = []
@@ -1110,6 +1126,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         let Price = user.value(forKey: "price") as! [String]
                         let rating = user.value(forKey: "rating") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
+                        
                         let division = user.value(forKey: "division") as! [String]
                         let district = user.value(forKey: "district") as! [String]
                         let postcode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
@@ -1127,6 +1148,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                         self.PRICEHOT = Price
                         self.RATINGHOT = rating
                         self.PHOTOHOT = Photo
+                        self.PHOTOHOT02 = Photo02
+                        self.PHOTOHOT03 = Photo03
+                        self.PHOTOHOT04 = Photo04
+                        self.PHOTOHOT05 = Photo05
+                        
                         self.DIVISIONHOT = division
                         self.DISTRICTHOT = district
                         self.POSTCODEHOT = postcode
@@ -1163,6 +1189,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             let Price = user.value(forKey: "price") as! [String]
                             let rating = user.value(forKey: "rating") as! [String]
                             let Photo = user.value(forKey: "photo") as! [String]
+                            let Photo02 = user.value(forKey: "photo02") as! [String]
+                            let Photo03 = user.value(forKey: "photo03") as! [String]
+                            let Photo04 = user.value(forKey: "photo04") as! [String]
+                            let Photo05 = user.value(forKey: "photo05") as! [String]
                             let division = user.value(forKey: "division") as! [String]
                             let district = user.value(forKey: "district") as! [String]
                             let postcode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
@@ -1180,6 +1210,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
                             self.PRICESHOCKING = Price
                             self.RATINGSHOCKING = rating
                             self.PHOTOSHOCKING = Photo
+                            self.PHOTOSHOCKING02 = Photo02
+                            self.PHOTOSHOCKING03 = Photo03
+                            self.PHOTOSHOCKING04 = Photo04
+                            self.PHOTOSHOCKING05 = Photo05
                             self.DIVISIONSHOCKING = division
                             self.DISTRICTSHOCKING = district
                             self.POSTCODESHOCKING = postcode

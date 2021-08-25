@@ -57,6 +57,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
     var ADDETAIL: [String] = []
     var PRICE: [String] = []
     var PHOTO: [String] = []
+    var PHOTO02: [String] = []
+    var PHOTO03: [String] = []
+    var PHOTO04: [String] = []
+    var PHOTO05: [String] = []
     var DISTRICT: [String] = []
     var SOLD: [String] = []
     var POSTCODE: [String] = []
@@ -225,7 +229,6 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
          self.view.frame.origin.y = 0 // Move view to original position
     }
     
-    
     func getSold(){
         let parameters: Parameters=[
             "seller_id": SELLERID1,
@@ -278,6 +281,11 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                         let rating = user.value(forKey: "rating") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
+                        
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
                         let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
@@ -294,6 +302,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
                         self.DESC = description
                         self.PRICE = Price
                         self.PHOTO = Photo
+                        self.PHOTO02 = Photo02
+                        self.PHOTO03 = Photo03
+                        self.PHOTO04 = Photo04
+                        self.PHOTO05 = Photo05
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
@@ -393,6 +405,10 @@ class AboutSellerViewController: UIViewController, UICollectionViewDelegate, UIC
         viewProduct.DESC = self.DESC[indexPath.row]
         viewProduct.PRICE = self.PRICE[indexPath.row]
         viewProduct.PHOTO = self.PHOTO[indexPath.row]
+        viewProduct.PHOTO02 = self.PHOTO02[indexPath.row]
+        viewProduct.PHOTO03 = self.PHOTO03[indexPath.row]
+        viewProduct.PHOTO04 = self.PHOTO04[indexPath.row]
+        viewProduct.PHOTO05 = self.PHOTO05[indexPath.row]
         viewProduct.DIVISION = self.DIVISION[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICT[indexPath.row]
         if let navigator = self.navigationController {

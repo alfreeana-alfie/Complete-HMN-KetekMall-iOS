@@ -30,11 +30,17 @@ class EditProductAdDetailViewController: UIViewController, UITextFieldDelegate, 
     var ADDETAIL: String = ""
     var PRICE: String = ""
     var PHOTO: String = ""
+    var PHOTO02: String = ""
+    var PHOTO03: String = ""
+    var PHOTO04: String = ""
+    var PHOTO05: String = ""
     var DISTRICT: String = ""
     var USERID: String = ""
     var POSTCODE: String = ""
     var WEIGHT: String = ""
     var CheckView: Bool = false
+    
+    var PhotoId: [String] = []
     
     let sharedPref = UserDefaults.standard
     var lang: String = ""
@@ -66,6 +72,7 @@ class EditProductAdDetailViewController: UIViewController, UITextFieldDelegate, 
 //        self.InnerMaterial.text! = INNER
         self.Stock.text! = STOCK
         self.Description.text! = DESC
+        
         
         ButtonAccept.layer.cornerRadius = 5
         ButtonCancel.layer.cornerRadius = 5
@@ -149,6 +156,7 @@ class EditProductAdDetailViewController: UIViewController, UITextFieldDelegate, 
             ADDETAIL.Description = self.Description.text!
             ADDETAIL.DivisionText = DIVISION
             ADDETAIL.DistrictText = DISTRICT
+            ADDETAIL.photoTempId = self.PhotoId
 //            ADDETAIL.MaxOrder.text! = MAXORDER
 //            ADDETAIL.PostCode.text! = POSTCODE
 //            ADDETAIL.Weight.text! = WEIGHT
@@ -170,6 +178,11 @@ class EditProductAdDetailViewController: UIViewController, UITextFieldDelegate, 
             AdDetail.DIVISION = DIVISION
             AdDetail.DISTRICT = DISTRICT
             AdDetail.PHOTO = PHOTO
+            AdDetail.PHOTO02 = PHOTO02
+            AdDetail.PHOTO03 = PHOTO03
+            AdDetail.PHOTO04 = PHOTO04
+            AdDetail.PHOTO05 = PHOTO05
+//            AdDetail.PhotoTempId = self.PhotoId
             AdDetail.MAXORDER = MAXORDER
             AdDetail.POSTCODE = POSTCODE
             AdDetail.WEIGHT = WEIGHT

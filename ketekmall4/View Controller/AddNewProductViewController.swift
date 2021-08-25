@@ -8,8 +8,6 @@ import PhotosUI
 
 class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, PHPickerViewControllerDelegate {
     
-    
-    
     @IBOutlet weak var CategoryLabel: UILabel!
     @IBOutlet weak var AdDetailLabel: UILabel!
     @IBOutlet weak var DistrictLabel: UILabel!
@@ -54,6 +52,12 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     let URL_UPLOAD_EXTRA = "https://ketekmall.com/ketekmall/products_img/uploadimg03.php"
     let URL_DELETE_PHOTO = "https://ketekmall.com/ketekmall/products_img/delete_photo.php"
     
+    // NEW SETUP FOR IMAGE UPLOADING
+    let ADD_TEMP = "https://ketekmall.com/ketekmall/products/add_temp.php"
+    let DELETE_TEMP = "https://ketekmall.com/ketekmall/products/delete_temp.php"
+    let DELETE_DB_TEMP = "https://ketekmall.com/ketekmall/products/delete_db_temp.php"
+    let ADD = "https://ketekmall.com/ketekmall/products/add.php"
+    
     let category = ["Process food", "Handicraft","Health and Beauty", "Home and Living", "Fashion Accessories", "Sarawak Product"]
     let division = ["Kuching", "Kota Samarahan", "Serian", "Sri Aman", "Betong", "Sarikei", "Sibu", "Mukah", "Bintulu", "Kapit", "Miri", "Limbang"]
     let kuching = ["Kuching", "Bau", "Lundu"]
@@ -82,6 +86,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     var CategorySubText: String = ""
     var DivisionText: String = ""
     var DistrictText: String = ""
+    var photoTempId: [String] = []
     
     var flag = 0
     
@@ -99,13 +104,9 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
                 
         //Looks for single or multiple taps.
          let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryViewController.dismissKeyboard))
-
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
 
         view.addGestureRecognizer(tap)
 
@@ -202,7 +203,78 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         self.hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
-   
+        
+        print(String(photoTempId.count))
+        
+        let link = "https://ketekmall.com/ketekmall/products/"
+        let jpg = ".jpg"
+        
+        if(photoTempId.isEmpty){
+            ItemImage.image = UIImage(named: "AddPhoto")
+            ItemImage2.image = UIImage(named: "AddPhoto")
+            ItemImage3.image = UIImage(named: "AddPhoto")
+            ItemImage4.image = UIImage(named: "AddPhoto")
+            ItemImage5.image = UIImage(named: "AddPhoto")
+        }else if(photoTempId.count == 1){
+            ItemImage.setImageWith(URL(string: link + photoTempId[0] + jpg)!)
+            ItemImage.contentMode = UIView.ContentMode.scaleAspectFill;
+        }else if(photoTempId.count == 2){
+            ItemImage.setImageWith(URL(string: link + photoTempId[0] + jpg)!)
+            ItemImage.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage2.setImageWith(URL(string: link + photoTempId[1] + jpg)!)
+            ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            Delete_2.isHidden = false
+        }else if(photoTempId.count == 3){
+            ItemImage.setImageWith(URL(string: link + photoTempId[0] + jpg)!)
+            ItemImage.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage2.setImageWith(URL(string: link + photoTempId[1] + jpg)!)
+            ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage3.setImageWith(URL(string: link + photoTempId[2] + jpg)!)
+            ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            Delete_2.isHidden = false
+            Delete_3.isHidden = false
+        }else if(photoTempId.count == 4){
+            ItemImage.setImageWith(URL(string: link + photoTempId[0] + jpg)!)
+            ItemImage.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage2.setImageWith(URL(string: link + photoTempId[1] + jpg)!)
+            ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage3.setImageWith(URL(string: link + photoTempId[2] + jpg)!)
+            ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage4.setImageWith(URL(string: link + photoTempId[3] + jpg)!)
+            ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            Delete_2.isHidden = false
+            Delete_3.isHidden = false
+            Delete_4.isHidden = false
+        }else if(photoTempId.count == 5){
+            ItemImage.setImageWith(URL(string: link + photoTempId[0] + jpg)!)
+            ItemImage.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage2.setImageWith(URL(string: link + photoTempId[1] + jpg)!)
+            ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage3.setImageWith(URL(string: link + photoTempId[2] + jpg)!)
+            ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage4.setImageWith(URL(string: link + photoTempId[3] + jpg)!)
+            ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            ItemImage5.setImageWith(URL(string: link + photoTempId[4] + jpg)!)
+            ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill;
+
+            Delete_2.isHidden = false
+            Delete_3.isHidden = false
+            Delete_4.isHidden = false
+            Delete_5.isHidden = false
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -285,7 +357,6 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @objc func keyboardWillHide(sender: NSNotification) {
          self.view.frame.origin.y = 0 // Move view to original position
     }
-    
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -377,6 +448,7 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
         AdDetail.INNER = InnerMaterial
         AdDetail.STOCK = Stock
         AdDetail.DESC = Description
+        AdDetail.PhotoId = photoTempId
 //        AdDetail.DIVISION = Division.text!
 //        AdDetail.DISTRICT = District.text!
 //        AdDetail.PHOTO = ""
@@ -493,29 +565,33 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func DeletePhoto2(_ sender: Any) {
         ItemImage2.contentMode = .center
         ItemImage2.image = UIImage(named: "AddPhoto")
-//        deletePhoto(number: "2")
-        Delete_2.isHidden = true
+        if(deleteTemp(count: 1)){
+            Delete_2.isHidden = true
+        }
     }
     
     @IBAction func DeletePhoto3(_ sender: Any) {
         ItemImage3.contentMode = .center
         ItemImage3.image = UIImage(named: "AddPhoto")
-//        deletePhoto(number: "3")
-        Delete_3.isHidden = true
+        if(deleteTemp(count: 2)){
+            Delete_3.isHidden = true
+        }
     }
     
     @IBAction func DeletePhoto4(_ sender: Any) {
         ItemImage4.contentMode = .center
         ItemImage4.image = UIImage(named: "AddPhoto")
-//        deletePhoto(number: "4")
-        Delete_4.isHidden = true
+        if(deleteTemp(count: 3)){
+            Delete_4.isHidden = true
+        }
     }
     
     @IBAction func DeletePhoto5(_ sender: Any) {
         ItemImage5.contentMode = .center
         ItemImage5.image = UIImage(named: "AddPhoto")
-//        deletePhoto(number: "5")
-        Delete_5.isHidden = true
+        if(deleteTemp(count: 4)){
+            Delete_5.isHidden = true
+        }
     }
     
     @objc private func selectImage1(sender: UITapGestureRecognizer) {
@@ -633,58 +709,92 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
        for result in results {
         picker.dismiss(animated: true, completion: nil)
           result.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { (object, error) in
-             if let image = object as? UIImage {
+             if let chosenImage = object as? UIImage {
                 if(self.flag == 1){
-                    self.ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
-                    self.ItemImage.image = image
-//                    if(self.ItemImage.image == image){
-//                        print("PRESENT")
-//                        self.Delete_2.isHidden = false
-//    //                        saveImage(number: "2", Image: ItemImage2)
-//                    }else{
-//                        print("EMPTY")
-//                    }
-                }else if(self.flag == 2){
-                    self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
-                    self.ItemImage2.image = image
-                    if(self.ItemImage2.image == image){
-                        print("PRESENT")
-                        self.Delete_2.isHidden = false
-    //                        saveImage(number: "3", Image: ItemImage2)
-                    }else{
-                        print("EMPTY")
-                    }
-                }else if(self.flag == 3){
-                    self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
-                    self.ItemImage3.image = image
-                    if(self.ItemImage3.image == image){
-                        print("PRESENT")
-                        self.Delete_3.isHidden = false
-    //                        saveImage(number: "3", Image: ItemImage2)
-                    }else{
-                        print("EMPTY")
+                    if(self.photoTempId.isEmpty){
+                        self.ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                        self.ItemImage.image = chosenImage
+                        self.AddTemp(filename: chosenImage.toPngString()!, count: 0)
+
+//                        self.dismiss(animated: true, completion: nil)
+                    }else if(!self.photoTempId.isEmpty){
+                        if(self.deleteTemp(count: 0)){
+                            self.ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                            self.ItemImage.image = chosenImage
+                            self.AddTemp(filename: chosenImage.toPngString()!, count: 0)
+//                            self.dismiss(animated: true, completion: nil)
+                        }
                     }
                     
+                }else if(self.flag == 2){
+                    if(self.photoTempId.count == 2){
+                        if(self.deleteTemp(count: 1)){
+                            self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                            self.ItemImage2.image = chosenImage
+                            
+                            self.AddTemp(filename: chosenImage.toPngString()!, count: 1)
+                            self.Delete_2.isHidden = false
+                            
+//                            dismiss(animated: true, completion: nil)
+                        }
+                    }else{
+                        self.ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                        self.ItemImage2.image = chosenImage
+                        
+                        self.AddTemp(filename: chosenImage.toPngString()!, count: 1)
+                        self.Delete_2.isHidden = false
+                        
+//                        dismiss(animated: true, completion: nil)
+                    }
+                }else if(self.flag == 3){
+                    if(self.photoTempId.count == 3){
+                        if(self.deleteTemp(count: 2)){
+                            self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                            self.ItemImage3.image = chosenImage
+                            
+                            self.AddTemp(filename: chosenImage.toPngString()!, count: 2)
+                            self.Delete_3.isHidden = false
+                        }
+                    }else{
+                        self.ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                        self.ItemImage3.image = chosenImage
+                        
+                        self.AddTemp(filename: chosenImage.toPngString()!, count: 2)
+                        self.Delete_3.isHidden = false
+                    }
+//                    dismiss(animated: true, completion: nil)
                 }else if(self.flag == 4){
-                    self.ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
-                    self.ItemImage4.image = image
-                    if(self.ItemImage4.image == image){
-                        print("PRESENT")
+                    if(self.photoTempId.count == 4){
+                        if(self.deleteTemp(count: 3)){
+                            self.ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                            self.ItemImage4.image = chosenImage
+                            
+                            self.AddTemp(filename: chosenImage.toPngString()!, count: 3)
+                            self.Delete_4.isHidden = false
+                        }
+                    }else{
+                        self.ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                        self.ItemImage4.image = chosenImage
+                        
+                        self.AddTemp(filename: chosenImage.toPngString()!, count: 3)
                         self.Delete_4.isHidden = false
-    //                        saveImage(number: "4", Image: ItemImage2)
-                    }else{
-                        print("EMPTY")
                     }
+//                    dismiss(animated: true, completion: nil)
                 }else if(self.flag == 5){
-                    self.ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
-                    self.ItemImage5.image = image
-                    if(self.ItemImage5.image == image){
-                        print("PRESENT")
-                        self.Delete_5.isHidden = false
-    //                        saveImage(number: "5", Image: ItemImage2)
+                    if(self.photoTempId.count == 5){
+                        if(self.deleteTemp(count: 4)){
+                            self.ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                            self.ItemImage5.image = chosenImage
+                            self.AddTemp(filename: chosenImage.toPngString()!, count: 4)
+                            self.Delete_5.isHidden = false
+                        }
                     }else{
-                        print("EMPTY")
+                        self.ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                        self.ItemImage5.image = chosenImage
+                        self.AddTemp(filename: chosenImage.toPngString()!, count: 4)
+                        self.Delete_5.isHidden = false
                     }
+//                    dismiss(animated: true, completion: nil)
                 }
              }
           })
@@ -694,102 +804,233 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let chosenImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage{
             if(flag == 1){
-                ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
-                ItemImage.image = chosenImage
-//                if(self.ItemImage.image == chosenImage){
+                if(photoTempId.isEmpty){
+                    ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                    ItemImage.image = chosenImage
+                    AddTemp(filename: chosenImage.toPngString()!, count: 0)
+
+                    dismiss(animated: true, completion: nil)
+                }else if(!photoTempId.isEmpty){
+                    if(deleteTemp(count: 0)){
+                        ItemImage.contentMode = UIView.ContentMode.scaleAspectFill
+                        ItemImage.image = chosenImage
+                        AddTemp(filename: chosenImage.toPngString()!, count: 0)
+
+                        dismiss(animated: true, completion: nil)
+                    }
+                }
+                
+            }else if(flag == 2){
+                if(photoTempId.count == 2){
+                    if(deleteTemp(count: 1)){
+                        ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                        ItemImage2.image = chosenImage
+                        
+                        AddTemp(filename: chosenImage.toPngString()!, count: 1)
+                        self.Delete_2.isHidden = false
+                        
+                        dismiss(animated: true, completion: nil)
+                    }
+                }else{
+                    ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
+                    ItemImage2.image = chosenImage
+                    
+                    AddTemp(filename: chosenImage.toPngString()!, count: 1)
+                    self.Delete_2.isHidden = false
+                    
+                    dismiss(animated: true, completion: nil)
+                }
+            }else if(flag == 3){
+                if(photoTempId.count == 3){
+                    if(deleteTemp(count: 2)){
+                        ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                        ItemImage3.image = chosenImage
+                        
+                        AddTemp(filename: chosenImage.toPngString()!, count: 2)
+                        self.Delete_3.isHidden = false
+                    }
+                }else{
+                    ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
+                    ItemImage3.image = chosenImage
+                    
+                    AddTemp(filename: chosenImage.toPngString()!, count: 2)
+                    self.Delete_3.isHidden = false
+                }
+//                if(self.ItemImage3.image == chosenImage){
 //                    print("PRESENT")
-////                    saveImage(number: "1", Image: ItemImage2)
+//                    self.Delete_3.isHidden = false
 //                }else{
 //                    print("EMPTY")
-////                    saveImage1(Image: ItemImage)
 //                }
                 dismiss(animated: true, completion: nil)
-            }else if(flag == 2){
-                ItemImage2.contentMode = UIView.ContentMode.scaleAspectFill
-                ItemImage2.image = chosenImage
-                if(self.ItemImage2.image == chosenImage){
-                    print("PRESENT")
-                    self.Delete_2.isHidden = false
-//                    saveImage(number: "2", Image: ItemImage2)
-                }else{
-                    print("EMPTY")
-                }
-                dismiss(animated: true, completion: nil)
-            }else if(flag == 3){
-                ItemImage3.contentMode = UIView.ContentMode.scaleAspectFill
-                ItemImage3.image = chosenImage
-                if(self.ItemImage3.image == chosenImage){
-                    print("PRESENT")
-                    self.Delete_3.isHidden = false
-//                    saveImage(number: "3", Image: ItemImage2)
-                }else{
-                    print("EMPTY")
-                }
-                dismiss(animated: true, completion: nil)
             }else if(flag == 4){
-                ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
-                ItemImage4.image = chosenImage
-                if(self.ItemImage4.image == chosenImage){
-                    print("PRESENT")
-                    self.Delete_4.isHidden = false
-//                    saveImage(number: "4", Image: ItemImage2)
+                if(photoTempId.count == 4){
+                    if(deleteTemp(count: 3)){
+                        ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                        ItemImage4.image = chosenImage
+                        
+                        AddTemp(filename: chosenImage.toPngString()!, count: 3)
+                        self.Delete_4.isHidden = false
+                    }
                 }else{
-                    print("EMPTY")
+                    ItemImage4.contentMode = UIView.ContentMode.scaleAspectFill
+                    ItemImage4.image = chosenImage
+                    
+                    AddTemp(filename: chosenImage.toPngString()!, count: 3)
+                    self.Delete_4.isHidden = false
                 }
+//                if(self.ItemImage4.image == chosenImage){
+//                    print("PRESENT")
+//
+//                }else{
+//                    print("EMPTY")
+//                }
                 dismiss(animated: true, completion: nil)
             }else if(flag == 5){
-                ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
-                ItemImage5.image = chosenImage
-                if(self.ItemImage5.image == chosenImage){
-                    print("PRESENT")
-                    self.Delete_5.isHidden = false
-//                    saveImage(number: "5", Image: ItemImage2)
+                if(photoTempId.count == 5){
+                    if(deleteTemp(count: 4)){
+                        ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                        ItemImage5.image = chosenImage
+                        AddTemp(filename: chosenImage.toPngString()!, count: 4)
+                        self.Delete_5.isHidden = false
+                    }
                 }else{
-                    print("EMPTY")
+                    ItemImage5.contentMode = UIView.ContentMode.scaleAspectFill
+                    ItemImage5.image = chosenImage
+                    AddTemp(filename: chosenImage.toPngString()!, count: 4)
+                    self.Delete_5.isHidden = false
                 }
+//                if(self.ItemImage5.image == chosenImage){
+//                    print("PRESENT")
+//
+//                }else{
+//                    print("EMPTY")
+//                }
                 dismiss(animated: true, completion: nil)
             }
         }
     }
     
     @IBAction func Accept(_ sender: Any) {
+        add()
+    }
+    
+    @IBAction func Cancel(_ sender: Any) {
+        for n in 0..<photoTempId.count {
+            deleteAllTemp(count: n)
+        }
+        
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func randomString() -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var s = ""
+        for _ in 0 ..< 20 {
+            s.append(letters.randomElement()!)
+        }
+        return s
+    }
+    
+    func AddTemp(filename: String, count: Int) {
+        let filename_temp = randomString()
+        photoTempId.insert(filename_temp, at: count)
+        
+        let parameters: Parameters=[
+            "filename_temp": filename_temp,
+            "photo": filename
+        ]
+        
+        //Sending http post request
+        Alamofire.request(ADD_TEMP, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }else{
+                    print("FAILED UPLOAD")
+                }
+        }
+        
+        print(String(photoTempId.count))
+        print(photoTempId[count])
+    }
+    
+    func deleteTemp(count: Int) -> Bool{
+        let photoId = photoTempId[count]
+        
+        let parameters: Parameters=[
+            "id": photoId
+        ]
+        
+        //Sending http post request
+        Alamofire.request(DELETE_TEMP, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }else{
+                    print("FAILED UPLOAD")
+                }
+        }
+        photoTempId.remove(at: count)
+        return true
+    }
+    
+    func deleteAllTemp(count: Int){
+        let photoId = photoTempId[count]
+        
+        let parameters: Parameters=[
+            "id": photoId
+        ]
+        
+        //Sending http post request
+        Alamofire.request(DELETE_TEMP, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }else{
+                    print("FAILED UPLOAD")
+                }
+        }
+    }
+    
+    func deleteDbTemp(count: Int){
+        let photoId = photoTempId[count]
+        
+        let parameters: Parameters=[
+            "id": photoId
+        ]
+        
+        //Sending http post request
+        Alamofire.request(DELETE_DB_TEMP, method: .post, parameters: parameters).responseJSON
+            {
+                response in
+                if let result = response.result.value {
+                    let jsonData = result as! NSDictionary
+                    print(jsonData.value(forKey: "message")!)
+                }else{
+                    print("FAILED UPLOAD")
+                }
+        }
+//        photoTempId.remove(at: count)
+    }
+    
+    func add(){
         let spinner = JGProgressHUD(style: .dark)
 
         spinner.show(in: self.view)
         
-        // Add photos to photo_products
-        if(self.ItemImage2.image != UIImage(named: "AddPhoto")){
-            self.saveImage(number: "2",addetail: Addetail, Image: self.ItemImage2)
-            print("SUCCESS 2")
-        }else{
-            print("EMPTY 2")
-        }
-
-        if(self.ItemImage3.image != UIImage(named: "AddPhoto")){
-            self.saveImage(number: "3",addetail: Addetail, Image: self.ItemImage3)
-            print("SUCCESS 3")
-        }else{
-            print("EMPTY 3")
-        }
-
-        if(self.ItemImage4.image != UIImage(named: "AddPhoto")){
-            self.saveImage(number: "4",addetail: Addetail, Image: self.ItemImage4)
-            print("SUCCESS 4")
-        }else{
-            print("EMPTY 4")
-        }
-
-        if(self.ItemImage5.image != UIImage(named: "AddPhoto")){
-            self.saveImage(number: "5",addetail: Addetail, Image: self.ItemImage5)
-            print("SUCCESS 5")
-        }else{
-            print("EMPTY 5")
+        if(photoTempId.count < 5){
+            for _ in photoTempId.count...4 {
+                photoTempId.append("null")
+            }
         }
         
-        // Add item to products
-        let imageData: Data = ItemImage.image!.pngData()!
-        let imageStr: String = imageData.base64EncodedString()
-
         let parameters: Parameters=[
             "user_id": userID,
             "main_category":CategoryText,
@@ -804,37 +1045,43 @@ class AddNewProductViewController: UIViewController, UIPickerViewDelegate, UIPic
             "division": Division.text!,
             "postcode": PostCode.text!,
             "district": District.text!,
-            "photo": imageStr + Addetail,
-            "weight": Weight.text!,
-            "filename": Addetail,
-            "filepath": imageStr
+            "photo": photoTempId[0],
+            "photo02": photoTempId[1],
+            "photo03": photoTempId[2],
+            "photo04": photoTempId[3],
+            "photo05": photoTempId[4],
+            "weight": Weight.text!
         ]
-
-        //Sending http post request
-        Alamofire.request(URL_ADD, method: .post, parameters: parameters).responseJSON
+        
+//        //Sending http post request
+        Alamofire.request(ADD, method: .post, parameters: parameters).responseJSON
             {
                 response in
             if let result = response.result.value {
                     spinner.dismiss(afterDelay: 3.0)
-                    
+                    for n in 0..<self.photoTempId.count {
+                        self.deleteDbTemp(count: n)
+                    }
                     let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
                     accountsettings.userID = self.userID
                     if let navigator = self.navigationController {
                         navigator.pushViewController(accountsettings, animated: true)
                     }
-
                 }else{
                     print("FAILED")
-                    let accountsettings = self.storyboard!.instantiateViewController(withIdentifier: "MyProductsCollectionViewController") as! MyProductsCollectionViewController
-                    accountsettings.userID = self.userID
-                    if let navigator = self.navigationController {
-                        navigator.pushViewController(accountsettings, animated: true)
-                    }
             }
         }
     }
-    
-    @IBAction func Cancel(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
+}
+
+extension UIImage {
+    func toPngString() -> String? {
+        let data = self.pngData()
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
+    }
+  
+    func toJpegString(compressionQuality cq: CGFloat) -> String? {
+        let data = self.jpegData(compressionQuality: cq)
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }

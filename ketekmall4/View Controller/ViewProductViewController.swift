@@ -156,6 +156,10 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var DIVISION: String = ""
     var DISTRICT: String = ""
     var PHOTO: String = ""
+    var PHOTO02: String = ""
+    var PHOTO03: String = ""
+    var PHOTO04: String = ""
+    var PHOTO05: String = ""
     var USERID: String = ""
     var SOLD: String = ""
     var POSTCODE: String = ""
@@ -179,10 +183,14 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     var ADDETAIL_SAMESHOP: [String] = []
     var PRICE_SAMESHOP: [String] = []
     var PHOTO_SAMESHOP: [String] = []
+    var PHOTO02_SAMESHOP: [String] = []
+    var PHOTO03_SAMESHOP: [String] = []
+    var PHOTO04_SAMESHOP: [String] = []
+    var PHOTO05_SAMESHOP: [String] = []
+    
     var DISTRICT_SAMESHOP: [String] = []
     var POSTCODE_SAMESHOP: [String] = []
     var WEIGHT_SAMESHOP: [String] = []
-    
     
     var ITEMID_DEL: [String] = []
     var USERID_DEL: [String] = []
@@ -570,6 +578,12 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         let rating = user.value(forKey: "rating") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
+                        
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
                         
@@ -588,6 +602,11 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                         self.PRICE_SAMESHOP = Price
                         //                        self.MAXORDER = max_order
                         self.PHOTO_SAMESHOP = Photo
+                        self.PHOTO02_SAMESHOP = Photo02
+                        self.PHOTO03_SAMESHOP = Photo03
+                        self.PHOTO04_SAMESHOP = Photo04
+                        self.PHOTO05_SAMESHOP = Photo05
+                        
                         self.RATING_SAMESHOP = rating
                         self.DIVISION_SAMESHOP = Division
                         self.DISTRICT_SAMESHOP = District
@@ -711,51 +730,71 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func ViewPhoto(){
+        self.ItemImage.isHidden = true
         var ImageKing = [KingfisherSource]()
-        let parameters: Parameters=[
-            "ad_detail": ADDETAIL
-        ]
         
-        Alamofire.request(URL_READ_PHOTO, method: .post, parameters: parameters).responseJSON
-            {
-                response in
-                if let result = response.result.value as? Dictionary<String, Any>{
-                    if let list = result["read"] as? [Dictionary<String, Any>]{
-                        if(list.count == 0){
-                            self.ItemImage.isHidden = false
-                        }else{
-                            self.ItemImage.isHidden = true
-                            for i in list{
-                                let photo = i["filepath"] as! String
-                                if photo.contains("%20"){
-                                    print("LIST %20: " + photo)
-                                    
-                                    let image = KingfisherSource(urlString: photo)
-                                    ImageKing.append(image!)
-                                    
-                                }else{
-                                    print("LIST: " + photo)
-                                    let NEWIm = photo.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        print(PHOTO02)
+        
+        if(PHOTO != "null"){
+            if PHOTO.contains("%20"){
+                let image = KingfisherSource(urlString: PHOTO)
+                ImageKing.append(image!)
+            }else{
+                let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
 
-                                    let image = KingfisherSource(urlString: NEWIm!)
-                                    ImageKing.append(image!)
-                                }
-                                
-                                
-                                
-//                                let NEWIm = photo.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-//
-//                                let image = KingfisherSource(urlString: NEWIm!)
-//                                ImageKing.append(image!)
-                            }
-                            self.Carousel.setImageInputs(ImageKing)
-                            self.Carousel.contentScaleMode = .scaleAspectFill
-                        }
-                        
-                    }
-                }
-                
+                let image = KingfisherSource(urlString: NEWIm!)
+                ImageKing.append(image!)
+            }
         }
+        if(PHOTO02 != "null"){
+            if PHOTO02.contains("%20"){
+                let image = KingfisherSource(urlString: PHOTO02)
+                ImageKing.append(image!)
+            }else{
+                let NEWIm = PHOTO02.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+
+                let image = KingfisherSource(urlString: NEWIm!)
+                ImageKing.append(image!)
+            }
+            
+        }
+        if(PHOTO03 != "null"){
+            if PHOTO03.contains("%20"){
+                let image = KingfisherSource(urlString: PHOTO03)
+                ImageKing.append(image!)
+            }else{
+                let NEWIm = PHOTO03.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+
+                let image = KingfisherSource(urlString: NEWIm!)
+                ImageKing.append(image!)
+            }
+        }
+        if(PHOTO04 != "null"){
+            if PHOTO04.contains("%20"){
+                let image = KingfisherSource(urlString: PHOTO04)
+                ImageKing.append(image!)
+            }else{
+                let NEWIm = PHOTO04.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+
+                let image = KingfisherSource(urlString: NEWIm!)
+                ImageKing.append(image!)
+            }
+            
+        }
+        if(PHOTO05 != "null"){
+            if PHOTO05.contains("%20"){
+                let image = KingfisherSource(urlString: PHOTO05)
+                ImageKing.append(image!)
+            }else{
+                let NEWIm = PHOTO05.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+
+                let image = KingfisherSource(urlString: NEWIm!)
+                ImageKing.append(image!)
+            }
+        }
+        
+        self.Carousel.setImageInputs(ImageKing)
+        self.Carousel.contentScaleMode = .scaleAspectFill
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -822,6 +861,11 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         viewProduct.DESC = self.DESC_SAMESHOP[indexPath.row]
         viewProduct.PRICE = self.PRICE_SAMESHOP[indexPath.row]
         viewProduct.PHOTO = self.PHOTO_SAMESHOP[indexPath.row]
+        viewProduct.PHOTO02 = self.PHOTO02_SAMESHOP[indexPath.row]
+        viewProduct.PHOTO03 = self.PHOTO03_SAMESHOP[indexPath.row]
+        viewProduct.PHOTO04 = self.PHOTO04_SAMESHOP[indexPath.row]
+        viewProduct.PHOTO05 = self.PHOTO05_SAMESHOP[indexPath.row]
+        
         viewProduct.DIVISION = self.DIVISION_SAMESHOP[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICT_SAMESHOP[indexPath.row]
         viewProduct.POSTCODE = self.POSTCODE_SAMESHOP[indexPath.row]

@@ -24,6 +24,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ADDETAIL: [String] = []
     var PRICE: [String] = []
     var PHOTO: [String] = []
+    var PHOTO02: [String] = []
+    var PHOTO03: [String] = []
+    var PHOTO04: [String] = []
+    var PHOTO05: [String] = []
     var DISTRICT: [String] = []
     var POSTCODE: [String] = []
     var WEIGHT: [String] = []
@@ -56,6 +60,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
     var ADDETAIL1: String = ""
     var PRICE1: String = ""
     var PHOTO1: String = ""
+    var PHOTO2: String = ""
+    var PHOTO3: String = ""
+    var PHOTO4: String = ""
+    var PHOTO5: String = ""
     var DISTRICT1: String = ""
     var POSTCODE1: String = ""
     var WEIGHT1: String = ""
@@ -414,6 +422,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         viewProduct.DESC = self.DESC[indexPath.row]
         viewProduct.PRICE = self.PRICE[indexPath.row]
         viewProduct.PHOTO = self.PHOTO[indexPath.row]
+        viewProduct.PHOTO02 = self.PHOTO02[indexPath.row]
+        viewProduct.PHOTO03 = self.PHOTO03[indexPath.row]
+        viewProduct.PHOTO04 = self.PHOTO04[indexPath.row]
+        viewProduct.PHOTO05 = self.PHOTO05[indexPath.row]
         viewProduct.DIVISION = self.DIVISION[indexPath.row]
         viewProduct.DISTRICT = self.DISTRICT[indexPath.row]
         if let navigator = self.navigationController {
@@ -465,6 +477,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let rating = user.value(forKey: "rating") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
                         let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
@@ -481,6 +497,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.DESC = description
                         self.PRICE = Price
                         self.PHOTO = Photo
+                        self.PHOTO02 = Photo02
+                        self.PHOTO03 = Photo03
+                        self.PHOTO04 = Photo04
+                        self.PHOTO05 = Photo05
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
@@ -522,6 +542,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let rating = user.value(forKey: "rating") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
                         let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
@@ -538,6 +562,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.DESC = description
                         self.PRICE = Price
                         self.PHOTO = Photo
+                        self.PHOTO02 = Photo02
+                        self.PHOTO03 = Photo03
+                        self.PHOTO04 = Photo04
+                        self.PHOTO05 = Photo05
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
@@ -580,6 +608,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let rating = user.value(forKey: "rating") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
                         let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
@@ -597,6 +629,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.DESC = description
                         self.PRICE = Price
                         self.PHOTO = Photo
+                        self.PHOTO02 = Photo02
+                        self.PHOTO03 = Photo03
+                        self.PHOTO04 = Photo04
+                        self.PHOTO05 = Photo05
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
@@ -639,6 +675,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         let rating = user.value(forKey: "rating") as! [String]
                         let Price = user.value(forKey: "price") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
                         let Division = user.value(forKey: "division") as! [String]
                         let District = user.value(forKey: "district") as! [String]
                         let PostCode = user.value(forKey: "postcode") as? [String] ?? ["93050"]
@@ -655,6 +695,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                         self.DESC = description
                         self.PRICE = Price
                         self.PHOTO = Photo
+                        self.PHOTO02 = Photo02
+                        self.PHOTO03 = Photo03
+                        self.PHOTO04 = Photo04
+                        self.PHOTO05 = Photo05
                         self.RATING = rating
                         self.DIVISION = Division
                         self.DISTRICT = District
@@ -680,6 +724,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.ITEMID1 = i["id"] as! String
                             self.ADDETAIL1 = i["ad_detail"] as! String
                             self.PHOTO1 = i["photo"] as! String
+                            self.PHOTO2 = i["photo02"] as! String
+                            self.PHOTO3 = i["photo03"] as! String
+                            self.PHOTO4 = i["photo04"] as! String
+                            self.PHOTO5 = i["photo05"] as! String
                             self.PRICE1 = i["price"] as! String
                             self.MAINCATE1 = i["main_category"] as! String
                             self.SUBCATE1 = i["sub_category"] as! String
@@ -706,7 +754,13 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.DIVISION.append(self.DIVISION1)
                             self.DISTRICT.append(self.DISTRICT1)
                             self.RATING.append(self.RATING1)
+                            
                             self.PHOTO.append(self.PHOTO1)
+                            self.PHOTO02.append(self.PHOTO2)
+                            self.PHOTO03.append(self.PHOTO3)
+                            self.PHOTO04.append(self.PHOTO4)
+                            self.PHOTO05.append(self.PHOTO5)
+                            
                             self.PRICE.append(self.PRICE1)
                             self.POSTCODE.append(self.POSTCODE1)
                             self.WEIGHT.append(self.WEIGHT1)
@@ -736,6 +790,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.DESC.removeAll()
         self.PRICE.removeAll()
         self.PHOTO.removeAll()
+        self.PHOTO02.removeAll()
+        self.PHOTO03.removeAll()
+        self.PHOTO04.removeAll()
+        self.PHOTO05.removeAll()
         self.DIVISION.removeAll()
         self.DISTRICT.removeAll()
         self.POSTCODE.removeAll()
@@ -751,6 +809,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.ITEMID1 = i["id"] as! String
                             self.ADDETAIL1 = i["ad_detail"] as! String
                             self.PHOTO1 = i["photo"] as! String
+                            self.PHOTO2 = i["photo02"] as! String
+                            self.PHOTO3 = i["photo03"] as! String
+                            self.PHOTO4 = i["photo04"] as! String
+                            self.PHOTO5 = i["photo05"] as! String
                             self.PRICE1 = i["price"] as! String
                             self.MAINCATE1 = i["main_category"] as! String
                             self.SUBCATE1 = i["sub_category"] as! String
@@ -778,6 +840,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.DISTRICT.append(self.DISTRICT1)
                             self.RATING.append(self.RATING1)
                             self.PHOTO.append(self.PHOTO1)
+                            self.PHOTO02.append(self.PHOTO2)
+                            self.PHOTO03.append(self.PHOTO3)
+                            self.PHOTO04.append(self.PHOTO4)
+                            self.PHOTO05.append(self.PHOTO5)
                             self.PRICE.append(self.PRICE1)
                             self.POSTCODE.append(self.POSTCODE1)
                             self.WEIGHT.append(self.WEIGHT1)
@@ -807,6 +873,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.DESC.removeAll()
         self.PRICE.removeAll()
         self.PHOTO.removeAll()
+        self.PHOTO02.removeAll()
+        self.PHOTO03.removeAll()
+        self.PHOTO04.removeAll()
+        self.PHOTO05.removeAll()
         self.DIVISION.removeAll()
         self.DISTRICT.removeAll()
         self.POSTCODE.removeAll()
@@ -823,6 +893,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.ITEMID1 = i["id"] as! String
                             self.ADDETAIL1 = i["ad_detail"] as! String
                             self.PHOTO1 = i["photo"] as! String
+                            self.PHOTO2 = i["photo02"] as! String
+                            self.PHOTO3 = i["photo03"] as! String
+                            self.PHOTO4 = i["photo04"] as! String
+                            self.PHOTO5 = i["photo05"] as! String
                             self.PRICE1 = i["price"] as! String
                             self.MAINCATE1 = i["main_category"] as! String
                             self.SUBCATE1 = i["sub_category"] as! String
@@ -850,6 +924,10 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
                             self.DISTRICT.append(self.DISTRICT1)
                             self.RATING.append(self.RATING1)
                             self.PHOTO.append(self.PHOTO1)
+                            self.PHOTO02.append(self.PHOTO2)
+                            self.PHOTO03.append(self.PHOTO3)
+                            self.PHOTO04.append(self.PHOTO4)
+                            self.PHOTO05.append(self.PHOTO5)
                             self.PRICE.append(self.PRICE1)
                             self.POSTCODE.append(self.POSTCODE1)
                             self.WEIGHT.append(self.WEIGHT1)

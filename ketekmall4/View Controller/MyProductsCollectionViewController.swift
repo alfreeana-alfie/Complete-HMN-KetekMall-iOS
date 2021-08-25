@@ -6,13 +6,14 @@ import JGProgressHUD
 
 class MyProductsCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MyProductDelegate, UICollectionViewDelegateFlowLayout {
     
-    
     private let spinner = JGProgressHUD(style: .dark)
     
     var userID: String = ""
-    let URL_READ = "https://ketekmall.com/ketekmall/readuser.php";
-    let URL_REMOVE = "https://ketekmall.com/ketekmall/delete_item.php";
-    let URL_EDIT_BOOST = "https://ketekmall.com/ketekmall/edit_boost_ad.php";
+    let URL_READ = "https://ketekmall.com/ketekmall/readuser.php"
+    let URL_REMOVE = "https://ketekmall.com/ketekmall/delete_item.php"
+    let URL_EDIT_BOOST = "https://ketekmall.com/ketekmall/edit_boost_ad.php"
+    
+    let DELETE_PRODUCT = "https://ketekmall.com/ketekmall/products/delete.php"
     
     @IBOutlet var productView: UICollectionView!
     
@@ -22,6 +23,11 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     var price: [String] = []
     var location: [String] = []
     var ItemPhoto: [String] = []
+    var ItemPhoto02: [String] = []
+    var ItemPhoto03: [String] = []
+    var ItemPhoto04: [String] = []
+    var ItemPhoto05: [String] = []
+    
     var ItemID: [String] = []
     
     var MAINCATE: [String] = []
@@ -83,6 +89,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         let Price = user.value(forKey: "price") as! [String]
                         let Location = user.value(forKey: "district") as! [String]
                         let Photo = user.value(forKey: "photo") as! [String]
+                        let Photo02 = user.value(forKey: "photo02") as! [String]
+                        let Photo03 = user.value(forKey: "photo03") as! [String]
+                        let Photo04 = user.value(forKey: "photo04") as! [String]
+                        let Photo05 = user.value(forKey: "photo05") as! [String]
                         let ID = user.value(forKey: "id") as! [String]
                         
                         let Main_Cate = user.value(forKey: "main_category") as! [String]
@@ -105,6 +115,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                         self.price = Price
                         self.location = Location
                         self.ItemPhoto = Photo
+                        self.ItemPhoto02 = Photo02
+                        self.ItemPhoto03 = Photo03
+                        self.ItemPhoto04 = Photo04
+                        self.ItemPhoto05 = Photo05
                         self.MAINCATE = Main_Cate
                         self.SUBCATE = Sub_Cate
                         self.MAXORDER = max_order
@@ -131,7 +145,6 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         view.endEditing(true)
     }
 
-
     func ColorFunc(){
         let color1 = UIColor(hexString: "#FC4A1A").cgColor
                    let color2 = UIColor(hexString: "#F7B733").cgColor
@@ -157,17 +170,17 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
             return CGSize(width: cellSquareSize, height: cellSquareHeight);
         }
            
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0.0, right: 0.0)
+    }
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 0.0
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 0.0
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyProductsCollectionViewCell", for: indexPath) as! MyProductsCollectionViewCell
@@ -223,25 +236,38 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
     }
     
     func btnRemove(cell: MyProductsCollectionViewCell) {
+        guard let indexPath = self.productView.indexPath(for: cell) else{
+            return
+        }
         if(lang == "ms"){
             let refreshAlert = UIAlertController(title: "Delete".localized(lang: "ms"), message: "Are you sure?".localized(lang: "ms"), preferredStyle: UIAlertController.Style.alert)
             refreshAlert.addAction(UIAlertAction(title: "Yes".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
                 guard let indexPath = self.productView.indexPath(for: cell) else{
                     return
                 }
-                
+                let photoID = self.ItemPhoto[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo02ID = self.ItemPhoto02[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo03ID = self.ItemPhoto03[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo04ID = self.ItemPhoto04[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo05ID = self.ItemPhoto05[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+
                 let ID = self.ItemID[indexPath.row]
                 let parameters: Parameters=[
                     "id": ID,
+                    "photo": photoID[1],
+                    "photo02": photo02ID[1],
+                    "photo03": photo03ID[1],
+                    "photo04": photo04ID[1],
+                    "photo05": photo05ID[1]
                 ]
-                
+
                 //Sending http post request
-                Alamofire.request(self.URL_REMOVE, method: .post, parameters: parameters).responseJSON
+                Alamofire.request(self.DELETE_PRODUCT, method: .post, parameters: parameters).responseJSON
                     {
                         response in
                         if let result = response.result.value{
                             let jsonData = result as! NSDictionary
-                            
+
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 self.ItemPhoto.remove(at: indexPath.row)
                                 self.ad_Detail.remove(at: indexPath.row)
@@ -254,7 +280,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                 }
                 return
             }))
-            
+
             refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "ms"), style: .default, handler: { (action: UIAlertAction!) in
                 return
             }))
@@ -266,18 +292,29 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                     return
                 }
                 
+                let photoID = self.ItemPhoto[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo02ID = self.ItemPhoto02[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo03ID = self.ItemPhoto03[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo04ID = self.ItemPhoto04[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+                let photo05ID = self.ItemPhoto05[indexPath.row].components(separatedBy: "https://ketekmall.com/ketekmall/products/")
+
                 let ID = self.ItemID[indexPath.row]
                 let parameters: Parameters=[
                     "id": ID,
+                    "photo": photoID[1],
+                    "photo02": photo02ID[1],
+                    "photo03": photo03ID[1],
+                    "photo04": photo04ID[1],
+                    "photo05": photo05ID[1]
                 ]
-                
+
                 //Sending http post request
-                Alamofire.request(self.URL_REMOVE, method: .post, parameters: parameters).responseJSON
+                Alamofire.request(self.DELETE_PRODUCT, method: .post, parameters: parameters).responseJSON
                     {
                         response in
                         if let result = response.result.value{
                             let jsonData = result as! NSDictionary
-                            
+
                             if((jsonData.value(forKey: "success") as! NSString).boolValue){
                                 self.ItemPhoto.remove(at: indexPath.row)
                                 self.ad_Detail.remove(at: indexPath.row)
@@ -290,7 +327,7 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
                 }
                 return
             }))
-            
+
             refreshAlert.addAction(UIAlertAction(title: "Cancel".localized(lang: "en"), style: .default, handler: { (action: UIAlertAction!) in
                 return
             }))
@@ -318,6 +355,10 @@ class MyProductsCollectionViewController: UIViewController, UICollectionViewDele
         ProductView.DIVISION = self.DIVISION[indexPath.row]
         ProductView.DISTRICT = self.location[indexPath.row]
         ProductView.PHOTO = self.ItemPhoto[indexPath.row]
+        ProductView.PHOTO02 = self.ItemPhoto02[indexPath.row]
+        ProductView.PHOTO03 = self.ItemPhoto03[indexPath.row]
+        ProductView.PHOTO04 = self.ItemPhoto04[indexPath.row]
+        ProductView.PHOTO05 = self.ItemPhoto05[indexPath.row]
         ProductView.MAXORDER = self.MAXORDER[indexPath.row]
         ProductView.POSTCODE = self.POSTCODE[indexPath.row]
         ProductView.WEIGHT = self.WEIGHT[indexPath.row]
