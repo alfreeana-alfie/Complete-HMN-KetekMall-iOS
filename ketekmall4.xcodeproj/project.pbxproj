@@ -1234,7 +1234,7 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/ketekmall4.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = ketekmall4/Info.plist;
@@ -1247,7 +1247,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.4.3;
+				MARKETING_VERSION = 1.4.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
@@ -1274,7 +1274,7 @@
 				CODE_SIGN_ENTITLEMENTS = ketekmall4/KetekMallRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 2BX2FBLM49;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = ketekmall4/Info.plist;
@@ -1287,7 +1287,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ketekmall4",
 				);
-				MARKETING_VERSION = 1.4.3;
+				MARKETING_VERSION = 1.4.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ketekmall.ketekmall4;
 				PRODUCT_NAME = KetekMall;
