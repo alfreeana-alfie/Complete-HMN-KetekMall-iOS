@@ -389,7 +389,7 @@ class CategoryViewController: UIViewController, UICollectionViewDelegate, UIColl
         let screenSize = collectionView.bounds
         let screenWidth = screenSize.width
         let cellSquareSize: CGFloat = screenWidth / 2.0
-        return CGSize(width: cellSquareSize, height: 238);
+        return CGSize(width: cellSquareSize, height: 310);
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

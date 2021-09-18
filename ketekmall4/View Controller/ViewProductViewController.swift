@@ -244,6 +244,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         ButtonAddCart.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
+        ItemImage.contentMode = .scaleAspectFit
         ItemImage.setImageWith(URL(string: NEWIm!)!)
         
         
@@ -794,7 +795,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         self.Carousel.setImageInputs(ImageKing)
-        self.Carousel.contentScaleMode = .scaleAspectFill
+        self.Carousel.contentScaleMode = .scaleAspectFit
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
