@@ -7,14 +7,21 @@ import UIKit
 class AppVersionViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var Tabbar: UITabBar!
-
+    @IBOutlet weak var tvAppVersion: UITextView!
+    
     var viewController1: UIViewController?
+    
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     override func viewDidLoad() {
         super.viewDidLoad()
          
         Tabbar.delegate = self
         self.hideKeyboardWhenTappedAround()
+        
+        let strAppVersion = "Current Version 1.4.8"
+        
+        tvAppVersion.text = strAppVersion
         
     }
 

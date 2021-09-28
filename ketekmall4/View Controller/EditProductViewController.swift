@@ -211,35 +211,35 @@ class EditProductViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         ItemImage.setImageWith(URL(string: NEWIm!)!)
         
-        if(PHOTO != "null"){
+        if(!PHOTO.contains("null") && PHOTO != "https://ketekmall.com/ketekmall/products/.jpg"){
             PhotoUrlLink.append(PHOTO)
             let linkArr = PHOTO.components(separatedBy: "https://ketekmall.com/ketekmall/products/")
             let extensionArr = linkArr[1].components(separatedBy: ".")
             
             PhotoTempId.append(extensionArr[0])
         }
-        if(PHOTO02 != "null"){
+        if(!PHOTO02.contains("null") && PHOTO02 != "https://ketekmall.com/ketekmall/products/.jpg"){
             PhotoUrlLink.append(PHOTO02)
             let linkArr = PHOTO02.components(separatedBy: "https://ketekmall.com/ketekmall/products/")
             let extensionArr = linkArr[1].components(separatedBy: ".")
             
             PhotoTempId.append(extensionArr[0])
         }
-        if(PHOTO03 != "null"){
+        if(!PHOTO03.contains("null") && PHOTO03 != "https://ketekmall.com/ketekmall/products/.jpg"){
             PhotoUrlLink.append(PHOTO03)
             let linkArr = PHOTO03.components(separatedBy: "https://ketekmall.com/ketekmall/products/")
             let extensionArr = linkArr[1].components(separatedBy: ".")
             
             PhotoTempId.append(extensionArr[0])
         }
-        if(PHOTO04 != "null"){
+        if(!PHOTO04.contains("null") && PHOTO04 != "https://ketekmall.com/ketekmall/products/.jpg"){
             PhotoUrlLink.append(PHOTO04)
             let linkArr = PHOTO04.components(separatedBy: "https://ketekmall.com/ketekmall/products/")
             let extensionArr = linkArr[1].components(separatedBy: ".")
             
             PhotoTempId.append(extensionArr[0])
         }
-        if(PHOTO05 != "null"){
+        if(!PHOTO05.contains("null") && PHOTO05 != "https://ketekmall.com/ketekmall/products/.jpg"){
             PhotoUrlLink.append(PHOTO05)
             let linkArr = PHOTO05.components(separatedBy: "https://ketekmall.com/ketekmall/products/")
             let extensionArr = linkArr[1].components(separatedBy: ".")

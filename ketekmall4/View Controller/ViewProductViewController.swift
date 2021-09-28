@@ -244,7 +244,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         ButtonAddCart.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         let NEWIm = PHOTO.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
-        ItemImage.contentMode = .scaleAspectFit
+        ItemImage.contentMode = .scaleAspectFill
         ItemImage.setImageWith(URL(string: NEWIm!)!)
         
         
@@ -734,9 +734,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         self.ItemImage.isHidden = true
         var ImageKing = [KingfisherSource]()
         
-        print(PHOTO02)
-        
-        if(PHOTO != "null"){
+        if(!PHOTO.contains("null") && PHOTO != "https://ketekmall.com/ketekmall/products/.jpg"){
             if PHOTO.contains("%20"){
                 let image = KingfisherSource(urlString: PHOTO)
                 ImageKing.append(image!)
@@ -747,7 +745,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                 ImageKing.append(image!)
             }
         }
-        if(PHOTO02 != "null"){
+        if(!PHOTO02.contains("null") && PHOTO02 != "https://ketekmall.com/ketekmall/products/.jpg"){
             if PHOTO02.contains("%20"){
                 let image = KingfisherSource(urlString: PHOTO02)
                 ImageKing.append(image!)
@@ -759,7 +757,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             }
             
         }
-        if(PHOTO03 != "null"){
+        if(!PHOTO03.contains("null") && PHOTO03 != "https://ketekmall.com/ketekmall/products/.jpg"){
             if PHOTO03.contains("%20"){
                 let image = KingfisherSource(urlString: PHOTO03)
                 ImageKing.append(image!)
@@ -770,7 +768,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
                 ImageKing.append(image!)
             }
         }
-        if(PHOTO04 != "null"){
+        if(!PHOTO04.contains("null") && PHOTO04 != "https://ketekmall.com/ketekmall/products/.jpg"){
             if PHOTO04.contains("%20"){
                 let image = KingfisherSource(urlString: PHOTO04)
                 ImageKing.append(image!)
@@ -782,7 +780,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
             }
             
         }
-        if(PHOTO05 != "null"){
+        if(!PHOTO05.contains("null") && PHOTO05 != "https://ketekmall.com/ketekmall/products/.jpg"){
             if PHOTO05.contains("%20"){
                 let image = KingfisherSource(urlString: PHOTO05)
                 ImageKing.append(image!)
@@ -795,7 +793,7 @@ class ViewProductViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         self.Carousel.setImageInputs(ImageKing)
-        self.Carousel.contentScaleMode = .scaleAspectFit
+        self.Carousel.contentScaleMode = .scaleAspectFill
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
